@@ -84,6 +84,12 @@ Player must have a log entry with:
 
 ---
 
+## Reason Codes
+
+> No reason codes defined for this point.
+
+---
+
 ## Analytics Script
 
 ```js

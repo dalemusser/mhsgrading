@@ -36,9 +36,41 @@ Check whether the student needed multiple attempts to build the correct argument
 
 ## Reason Codes
 
-| Code | Short Description | Teacher Guidance |
-|------|-------------------|------------------|
-| WRONG_ARG_SELECTED | Needed multiple tries to build the correct argument | Review the three parts of an argument with student: 1. Claim: statement that answers the driving question. 2. Evidence: scientific data and facts that support your claim. 3. Reasoning: links your claim to the evidence presented by explaining how or why the evidence supports the claim. |
+### WRONG_ARG_SELECTED
+
+**Short Description:** Needed multiple tries to build the correct argument
+
+**Instructor Message:** The student used {attempt_number} to construct the correct argument during the activity of learning to use the argumentation engine and identifying a claim in an argument. The threshold for success is to construct the correct argument at the first attempt.
+
+**Quantities:** `attempt_number` — count of attempts
+
+**Teacher Guidance:**
+1. Claim: statement that answers the driving question.
+2. Evidence: scientific data and facts that support your claim.
+3. Reasoning: links your claim to the evidence presented by explaining how or why the evidence supports the claim.
+
+### Reason Quantity Scripts
+
+#### Data Analytics Script (Python)
+
+```python
+# U1P3: Determine attempt_number for WRONG_ARG_SELECTED
+# Count the number of attempts to construct the correct argument
+```
+
+#### Analytics-Matching Script (MongoDB/JS)
+
+```js
+// U1P3: Determine attempt_number for WRONG_ARG_SELECTED
+// Exact match to data analytics script
+```
+
+#### Production Script (Attempt-Based, MongoDB/JS)
+
+```js
+// U1P3: Determine attempt_number for WRONG_ARG_SELECTED
+// With windowing for replay support
+```
 
 ---
 

@@ -45,6 +45,12 @@ sum_score = pos_score - neg_score
 
 ---
 
+## Reason Codes
+
+> No reason codes defined for this point.
+
+---
+
 ## Analytics Script
 
 ```js

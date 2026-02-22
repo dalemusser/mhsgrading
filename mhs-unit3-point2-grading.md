@@ -53,6 +53,12 @@ Where `capped_penalty(cnt)`:
 
 ---
 
+## Reason Codes
+
+> No reason codes defined for this point.
+
+---
+
 ## Analytics Script
 
 ```js

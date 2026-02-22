@@ -31,6 +31,12 @@ Count-based rule. The student must have more than one occurrence of the target e
 
 ---
 
+## Reason Codes
+
+> No reason codes defined for this point.
+
+---
+
 ## Analytics Script
 
 ```js
