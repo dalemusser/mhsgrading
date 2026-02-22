@@ -26,12 +26,6 @@ Completion-only check. If the trigger event exists for the player, the point is 
 
 ---
 
-## Reason Codes
-
-> No reason codes — this point is always green when the trigger event exists.
-
----
-
 ## Analytics Script
 
 ```js
@@ -53,3 +47,9 @@ color;
 ```
 
 > No evidence keys exist, so attempt-based semantics don't change the outcome.
+
+---
+
+## Reason Codes
+
+> No reason codes — this point is always green when the trigger event exists.

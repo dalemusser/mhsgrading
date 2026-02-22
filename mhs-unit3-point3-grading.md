@@ -84,12 +84,6 @@ Player must have a log entry with:
 
 ---
 
-## Reason Codes
-
-> No reason codes defined for this point.
-
----
-
 ## Analytics Script
 
 ```js
@@ -203,3 +197,9 @@ if (!latestTrigger) {
   totalScore >= 3 ? "green" : "yellow";
 }
 ```
+
+---
+
+## Reason Codes
+
+> No reason codes defined for this point.

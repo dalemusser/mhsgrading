@@ -106,46 +106,6 @@ score = pos_count - (neg_count / 3.0)
 
 ---
 
-## Reason Codes
-
-### TOO_MANY_NEGATIVES
-
-**Short Description:** Too many incorrect attempts identifying argument parts (claim, evidence, reasoning)
-
-**Instructor Message:** Students selected {wrong_number} number of wrong argument components during the activity of fixing DANI by identifying the parts of a scientific argument. The success threshold is to select wrong argument components equal to or less than 6 times.
-
-**Quantities:** `wrong_number` — count of incorrect argument component selections
-
-**Teacher Guidance:**
-1. Claim: statement that answers the driving question.
-2. Evidence: scientific data and facts that support your claim.
-3. Reasoning: links your claim to the evidence presented by explaining how or why the evidence supports the claim.
-
-### Reason Quantity Scripts
-
-#### Data Analytics Script (Python)
-
-```python
-# U2P5: Determine wrong_number for TOO_MANY_NEGATIVES
-# Count the number of wrong argument component selections
-```
-
-#### Analytics-Matching Script (MongoDB/JS)
-
-```js
-// U2P5: Determine wrong_number for TOO_MANY_NEGATIVES
-// Exact match to data analytics script
-```
-
-#### Production Script (Attempt-Based, MongoDB/JS)
-
-```js
-// U2P5: Determine wrong_number for TOO_MANY_NEGATIVES
-// With windowing for replay support
-```
-
----
-
 ## Analytics Script
 
 ```js
@@ -262,4 +222,44 @@ if (!latestTrigger) {
   const score = posCount - (negCount / 3.0);
   score >= 4 ? "green" : "yellow";
 }
+```
+
+---
+
+## Reason Codes
+
+### TOO_MANY_NEGATIVES
+
+**Short Description:** Too many incorrect attempts identifying argument parts (claim, evidence, reasoning)
+
+**Instructor Message:** Students selected {wrong_number} number of wrong argument components during the activity of fixing DANI by identifying the parts of a scientific argument. The success threshold is to select wrong argument components equal to or less than 6 times.
+
+**Quantities:** `wrong_number` — count of incorrect argument component selections
+
+**Teacher Guidance:**
+1. Claim: statement that answers the driving question.
+2. Evidence: scientific data and facts that support your claim.
+3. Reasoning: links your claim to the evidence presented by explaining how or why the evidence supports the claim.
+
+### Reason Quantity Scripts
+
+#### Data Analytics Script (Python)
+
+```python
+# U2P5: Determine wrong_number for TOO_MANY_NEGATIVES
+# Count the number of wrong argument component selections
+```
+
+#### Analytics-Matching Script (MongoDB/JS)
+
+```js
+// U2P5: Determine wrong_number for TOO_MANY_NEGATIVES
+// Exact match to data analytics script
+```
+
+#### Production Script (Attempt-Based, MongoDB/JS)
+
+```js
+// U2P5: Determine wrong_number for TOO_MANY_NEGATIVES
+// With windowing for replay support
 ```

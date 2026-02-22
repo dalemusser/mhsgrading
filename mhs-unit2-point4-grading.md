@@ -35,62 +35,6 @@ Student must complete the watershed-flow matching independently and solve the gl
 
 ---
 
-## Reason Codes
-
-> This point has multiple possible reasons for a yellow grade. Scripts are needed to determine which reason(s) apply.
-
-### MISSING_SUCCESS_NODE
-
-**Short Description:** Did not complete watershed-flow matching independently
-
-**Instructor Message:** Students didn't figure out the correct match of the watershed size and the flow rate by themselves during the activity of finding Jasper and relating watershed size to flow rate through its main river. One of the successful conditions for this activity is to make correct matches by students themselves.
-
-**Determination:** Check whether the success node (`DialogueNodeEvent:74:21`) is absent.
-
-**Teacher Guidance:** Review the relationship between watershed size and flow rate.
-
-### TOO_MANY_NEGATIVES
-
-**Short Description:** Too many attempts on watershed-flow glyph puzzle
-
-**Instructor Message:** Students tried {attempts_number} attempts to solve the glyph puzzle. The other successful condition is to solve the puzzle within 5 attempts.
-
-**Determination:** Count bad feedback node occurrences; yellow if count > 5.
-
-**Quantities:** `attempts_number` — count of glyph puzzle attempts
-
-**Teacher Guidance:** Review the relationship between watershed size and flow rate.
-
-### Reason Determination Scripts
-
-#### Data Analytics Script (Python)
-
-```python
-# U2P4: Determine which reason code(s) apply and compute quantities
-# MISSING_SUCCESS_NODE: check if success node (74:21) is absent
-# TOO_MANY_NEGATIVES: count attempts_number from bad feedback node occurrences
-```
-
-#### Analytics-Matching Script (MongoDB/JS)
-
-```js
-// U2P4: Determine which reason code(s) apply and compute quantities
-// MISSING_SUCCESS_NODE: check if success node (74:21) is absent
-// TOO_MANY_NEGATIVES: count attempts_number from bad feedback node occurrences
-// Exact match to data analytics script
-```
-
-#### Production Script (Attempt-Based, MongoDB/JS)
-
-```js
-// U2P4: Determine which reason code(s) apply and compute quantities
-// MISSING_SUCCESS_NODE: check if success node (74:21) is absent within attempt window
-// TOO_MANY_NEGATIVES: count attempts_number from bad feedback node occurrences within attempt window
-// With windowing for replay support
-```
-
----
-
 ## Analytics Script
 
 ```js
@@ -185,4 +129,60 @@ if (!latestTrigger) {
 
   hasSuccess && !hasBad ? "green" : "yellow";
 }
+```
+
+---
+
+## Reason Codes
+
+> This point has multiple possible reasons for a yellow grade. Scripts are needed to determine which reason(s) apply.
+
+### MISSING_SUCCESS_NODE
+
+**Short Description:** Did not complete watershed-flow matching independently
+
+**Instructor Message:** Students didn't figure out the correct match of the watershed size and the flow rate by themselves during the activity of finding Jasper and relating watershed size to flow rate through its main river. One of the successful conditions for this activity is to make correct matches by students themselves.
+
+**Determination:** Check whether the success node (`DialogueNodeEvent:74:21`) is absent.
+
+**Teacher Guidance:** Review the relationship between watershed size and flow rate.
+
+### TOO_MANY_NEGATIVES
+
+**Short Description:** Too many attempts on watershed-flow glyph puzzle
+
+**Instructor Message:** Students tried {attempts_number} attempts to solve the glyph puzzle. The other successful condition is to solve the puzzle within 5 attempts.
+
+**Determination:** Count bad feedback node occurrences; yellow if count > 5.
+
+**Quantities:** `attempts_number` — count of glyph puzzle attempts
+
+**Teacher Guidance:** Review the relationship between watershed size and flow rate.
+
+### Reason Determination Scripts
+
+#### Data Analytics Script (Python)
+
+```python
+# U2P4: Determine which reason code(s) apply and compute quantities
+# MISSING_SUCCESS_NODE: check if success node (74:21) is absent
+# TOO_MANY_NEGATIVES: count attempts_number from bad feedback node occurrences
+```
+
+#### Analytics-Matching Script (MongoDB/JS)
+
+```js
+// U2P4: Determine which reason code(s) apply and compute quantities
+// MISSING_SUCCESS_NODE: check if success node (74:21) is absent
+// TOO_MANY_NEGATIVES: count attempts_number from bad feedback node occurrences
+// Exact match to data analytics script
+```
+
+#### Production Script (Attempt-Based, MongoDB/JS)
+
+```js
+// U2P4: Determine which reason code(s) apply and compute quantities
+// MISSING_SUCCESS_NODE: check if success node (74:21) is absent within attempt window
+// TOO_MANY_NEGATIVES: count attempts_number from bad feedback node occurrences within attempt window
+// With windowing for replay support
 ```

@@ -35,66 +35,6 @@ Student must complete the map-profile matching independently and without excessi
 
 ---
 
-## Reason Codes
-
-> This point has multiple possible reasons for a yellow grade. Scripts are needed to determine which reason(s) apply.
-
-### MISSING_SUCCESS_NODE
-
-**Short Description:** Did not complete map-profile matching independently
-
-**Instructor Message:** Students didn't make the correct matches by themselves during the activity of matching topographic maps to elevation profiles. One of the successful conditions for this activity is to make correct matches.
-
-**Determination:** Check whether the success node (`DialogueNodeEvent:68:29`) is absent.
-
-**Teacher Guidance:**
-1. How information about elevation can be gained from contour lines.
-2. How to use the compass and contour indices to aid navigation.
-
-### TOO_MANY_NEGATIVES
-
-**Short Description:** Too many incorrect map-terrain matches
-
-**Instructor Message:** Students made wrong matches of topographic maps and real-world terrains using {attempts_number} attempts. The other successful condition for this activity is to make the correct matches within 4 attempts.
-
-**Determination:** Count yellow node occurrences; yellow if count > 4.
-
-**Quantities:** `attempts_number` — count of incorrect match attempts
-
-**Teacher Guidance:**
-1. How information about elevation can be gained from contour lines.
-2. How to use the compass and contour indices to aid navigation.
-
-### Reason Determination Scripts
-
-#### Data Analytics Script (Python)
-
-```python
-# U2P1: Determine which reason code(s) apply and compute quantities
-# MISSING_SUCCESS_NODE: check if success node (68:29) is absent
-# TOO_MANY_NEGATIVES: count attempts_number from yellow node occurrences
-```
-
-#### Analytics-Matching Script (MongoDB/JS)
-
-```js
-// U2P1: Determine which reason code(s) apply and compute quantities
-// MISSING_SUCCESS_NODE: check if success node (68:29) is absent
-// TOO_MANY_NEGATIVES: count attempts_number from yellow node occurrences
-// Exact match to data analytics script
-```
-
-#### Production Script (Attempt-Based, MongoDB/JS)
-
-```js
-// U2P1: Determine which reason code(s) apply and compute quantities
-// MISSING_SUCCESS_NODE: check if success node (68:29) is absent within attempt window
-// TOO_MANY_NEGATIVES: count attempts_number from yellow node occurrences within attempt window
-// With windowing for replay support
-```
-
----
-
 ## Analytics Script
 
 ```js
@@ -194,4 +134,64 @@ if (!latestTrigger) {
 
   hasSuccess && !hasAnyYellow ? "green" : "yellow";
 }
+```
+
+---
+
+## Reason Codes
+
+> This point has multiple possible reasons for a yellow grade. Scripts are needed to determine which reason(s) apply.
+
+### MISSING_SUCCESS_NODE
+
+**Short Description:** Did not complete map-profile matching independently
+
+**Instructor Message:** Students didn't make the correct matches by themselves during the activity of matching topographic maps to elevation profiles. One of the successful conditions for this activity is to make correct matches.
+
+**Determination:** Check whether the success node (`DialogueNodeEvent:68:29`) is absent.
+
+**Teacher Guidance:**
+1. How information about elevation can be gained from contour lines.
+2. How to use the compass and contour indices to aid navigation.
+
+### TOO_MANY_NEGATIVES
+
+**Short Description:** Too many incorrect map-terrain matches
+
+**Instructor Message:** Students made wrong matches of topographic maps and real-world terrains using {attempts_number} attempts. The other successful condition for this activity is to make the correct matches within 4 attempts.
+
+**Determination:** Count yellow node occurrences; yellow if count > 4.
+
+**Quantities:** `attempts_number` — count of incorrect match attempts
+
+**Teacher Guidance:**
+1. How information about elevation can be gained from contour lines.
+2. How to use the compass and contour indices to aid navigation.
+
+### Reason Determination Scripts
+
+#### Data Analytics Script (Python)
+
+```python
+# U2P1: Determine which reason code(s) apply and compute quantities
+# MISSING_SUCCESS_NODE: check if success node (68:29) is absent
+# TOO_MANY_NEGATIVES: count attempts_number from yellow node occurrences
+```
+
+#### Analytics-Matching Script (MongoDB/JS)
+
+```js
+// U2P1: Determine which reason code(s) apply and compute quantities
+// MISSING_SUCCESS_NODE: check if success node (68:29) is absent
+// TOO_MANY_NEGATIVES: count attempts_number from yellow node occurrences
+// Exact match to data analytics script
+```
+
+#### Production Script (Attempt-Based, MongoDB/JS)
+
+```js
+// U2P1: Determine which reason code(s) apply and compute quantities
+// MISSING_SUCCESS_NODE: check if success node (68:29) is absent within attempt window
+// TOO_MANY_NEGATIVES: count attempts_number from yellow node occurrences within attempt window
+// With windowing for replay support
 ```

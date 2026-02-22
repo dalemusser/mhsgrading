@@ -53,12 +53,6 @@ Where `capped_penalty(cnt)`:
 
 ---
 
-## Reason Codes
-
-> No reason codes defined for this point.
-
----
-
 ## Analytics Script
 
 ```js
@@ -161,3 +155,9 @@ if (!latestTrigger) {
   score < 3 ? "yellow" : "green";
 }
 ```
+
+---
+
+## Reason Codes
+
+> No reason codes defined for this point.

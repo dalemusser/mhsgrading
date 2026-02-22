@@ -45,12 +45,6 @@ sum_score = pos_score - neg_score
 
 ---
 
-## Reason Codes
-
-> No reason codes defined for this point.
-
----
-
 ## Analytics Script
 
 ```js
@@ -129,3 +123,9 @@ if (!latestTrigger) {
   sumScore < 3 ? "yellow" : "green";
 }
 ```
+
+---
+
+## Reason Codes
+
+> No reason codes defined for this point.

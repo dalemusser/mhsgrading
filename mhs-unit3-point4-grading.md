@@ -47,12 +47,6 @@ Gate + score-based rule. First, the student must have the gate event (78:24). Th
 
 ---
 
-## Reason Codes
-
-> No reason codes defined for this point.
-
----
-
 ## Analytics Script
 
 ```js
@@ -159,3 +153,9 @@ if (!latestTrigger) {
   }
 }
 ```
+
+---
+
+## Reason Codes
+
+> No reason codes defined for this point.

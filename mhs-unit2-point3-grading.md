@@ -69,45 +69,6 @@ Uses the latest trigger `DialogueNodeEvent:22:18` and the most recent start key 
 
 ---
 
-## Reason Codes
-
-### BAD_FEEDBACK
-
-**Short Description:** Repeated wrong-direction prompts while searching for Tera/Aryn
-
-**Instructor Message:** Students triggered {triggering_number} dialogues reminding them of their wrong exploring trajectories during the activity of finding Tara and Aryn using the topographic map. The success threshold is triggering such dialogues less than 6 times.
-
-**Quantities:** `triggering_number` — count of wrong-direction dialogues triggered
-
-**Teacher Guidance:**
-1. How information about elevation can be gained from contour lines.
-2. How to use the compass and contour indices to aid navigation.
-
-### Reason Quantity Scripts
-
-#### Data Analytics Script (Python)
-
-```python
-# U2P3: Determine triggering_number for BAD_FEEDBACK
-# Count the number of wrong-direction dialogues triggered while searching for Tera and Aryn
-```
-
-#### Analytics-Matching Script (MongoDB/JS)
-
-```js
-// U2P3: Determine triggering_number for BAD_FEEDBACK
-// Exact match to data analytics script
-```
-
-#### Production Script (Attempt-Based, MongoDB/JS)
-
-```js
-// U2P3: Determine triggering_number for BAD_FEEDBACK
-// With windowing for replay support
-```
-
----
-
 ## Analytics Script
 
 ```js
@@ -223,4 +184,43 @@ if (!endDoc || !endDoc.timestamp) {
     countTargets <= 6 ? "green" : "yellow";
   }
 }
+```
+
+---
+
+## Reason Codes
+
+### BAD_FEEDBACK
+
+**Short Description:** Repeated wrong-direction prompts while searching for Tera/Aryn
+
+**Instructor Message:** Students triggered {triggering_number} dialogues reminding them of their wrong exploring trajectories during the activity of finding Tara and Aryn using the topographic map. The success threshold is triggering such dialogues less than 6 times.
+
+**Quantities:** `triggering_number` — count of wrong-direction dialogues triggered
+
+**Teacher Guidance:**
+1. How information about elevation that can be gained from contour lines.
+2. How to use the compass and contour indices to aid navigation.
+
+### Reason Quantity Scripts
+
+#### Data Analytics Script (Python)
+
+```python
+# U2P3: Determine triggering_number for BAD_FEEDBACK
+# Count the number of wrong-direction dialogues triggered
+```
+
+#### Analytics-Matching Script (MongoDB/JS)
+
+```js
+// U2P3: Determine triggering_number for BAD_FEEDBACK
+// Exact match to data analytics script
+```
+
+#### Production Script (Attempt-Based, MongoDB/JS)
+
+```js
+// U2P3: Determine triggering_number for BAD_FEEDBACK
+// With windowing for replay support
 ```

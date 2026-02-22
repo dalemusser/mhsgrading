@@ -36,48 +36,6 @@ Student must select the correct criterion for determining watershed size on the 
 
 ---
 
-## Reason Codes
-
-### HIT_YELLOW_NODE
-
-**Short Description:** Chose an incorrect criterion for watershed size on first try
-
-**Instructor Message:** Students chose the wrong standards to determine which watershed is larger, {dialogue_node_1} or/and {dialogue_node_2} at the first attempt during the activity of collecting evidence to construct an argument about watershed size. The success threshold is to select the correct standard, {dialogue_node_3}, at the first attempt.
-
-**Quantities:**
-- `dialogue_node_1` — first incorrect standard chosen
-- `dialogue_node_2` — second incorrect standard chosen (if applicable)
-- `dialogue_node_3` — the correct standard
-
-**Teacher Guidance:**
-1. Claim: statement that answers the driving question.
-2. Evidence: scientific data and facts that support your claim.
-
-### Reason Quantity Scripts
-
-#### Data Analytics Script (Python)
-
-```python
-# U2P6: Determine dialogue_node_1, dialogue_node_2, dialogue_node_3 for HIT_YELLOW_NODE
-# Identify which incorrect standards were chosen and which is the correct standard
-```
-
-#### Analytics-Matching Script (MongoDB/JS)
-
-```js
-// U2P6: Determine dialogue_node_1, dialogue_node_2, dialogue_node_3 for HIT_YELLOW_NODE
-// Exact match to data analytics script
-```
-
-#### Production Script (Attempt-Based, MongoDB/JS)
-
-```js
-// U2P6: Determine dialogue_node_1, dialogue_node_2, dialogue_node_3 for HIT_YELLOW_NODE
-// With windowing for replay support
-```
-
----
-
 ## Analytics Script
 
 ```js
@@ -174,4 +132,46 @@ if (!latestTrigger) {
     hasYellow ? "yellow" : "green";
   }
 }
+```
+
+---
+
+## Reason Codes
+
+### HIT_YELLOW_NODE
+
+**Short Description:** Chose an incorrect criterion for watershed size on first try
+
+**Instructor Message:** Students chose the wrong standards to determine which watershed is larger, {dialogue_node_1} or/and {dialogue_node_2} at the first attempt during the activity of collecting evidence to construct an argument about watershed size. The success threshold is to select the correct standard, {dialogue_node_3}, at the first attempt.
+
+**Quantities:**
+- `dialogue_node_1` — first incorrect standard chosen
+- `dialogue_node_2` — second incorrect standard chosen (if applicable)
+- `dialogue_node_3` — the correct standard
+
+**Teacher Guidance:**
+1. Claim: statement that answers the driving question.
+2. Evidence: scientific data and facts that support your claim.
+
+### Reason Quantity Scripts
+
+#### Data Analytics Script (Python)
+
+```python
+# U2P6: Determine dialogue_node_1, dialogue_node_2, dialogue_node_3 for HIT_YELLOW_NODE
+# Identify which incorrect standards were chosen and which is the correct standard
+```
+
+#### Analytics-Matching Script (MongoDB/JS)
+
+```js
+// U2P6: Determine dialogue_node_1, dialogue_node_2, dialogue_node_3 for HIT_YELLOW_NODE
+// Exact match to data analytics script
+```
+
+#### Production Script (Attempt-Based, MongoDB/JS)
+
+```js
+// U2P6: Determine dialogue_node_1, dialogue_node_2, dialogue_node_3 for HIT_YELLOW_NODE
+// With windowing for replay support
 ```

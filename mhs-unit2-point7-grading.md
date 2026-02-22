@@ -61,45 +61,6 @@ Student must successfully build the watershed argument with limited incorrect ev
 
 ---
 
-## Reason Codes
-
-### WRONG_ARG_SELECTED
-
-**Short Description:** Too many attempts to select evidence to support the claim
-
-**Instructor Message:** The student used {attempt_number} to construct the correct argument during the activity of building an argument about which watershed is bigger by supporting a claim with evidence. The threshold for success is to construct the correct argument using equal to or less than 5 attempts.
-
-**Quantities:** `attempt_number` — count of attempts to construct the correct argument
-
-**Teacher Guidance:**
-1. Claim: statement that answers the driving question.
-2. Evidence: scientific data and facts that support your claim.
-
-### Reason Quantity Scripts
-
-#### Data Analytics Script (Python)
-
-```python
-# U2P7: Determine attempt_number for WRONG_ARG_SELECTED
-# Count the number of attempts to construct the correct argument
-```
-
-#### Analytics-Matching Script (MongoDB/JS)
-
-```js
-// U2P7: Determine attempt_number for WRONG_ARG_SELECTED
-// Exact match to data analytics script
-```
-
-#### Production Script (Attempt-Based, MongoDB/JS)
-
-```js
-// U2P7: Determine attempt_number for WRONG_ARG_SELECTED
-// With windowing for replay support
-```
-
----
-
 ## Analytics Script
 
 ```js
@@ -188,4 +149,43 @@ if (!latestTrigger) {
 
   (hasSuccess && negCount <= 3) ? "green" : "yellow";
 }
+```
+
+---
+
+## Reason Codes
+
+### WRONG_ARG_SELECTED
+
+**Short Description:** Too many attempts to select evidence to support the claim
+
+**Instructor Message:** The student used {attempt_number} to construct the correct argument during the activity of building an argument about which watershed is bigger by supporting a claim with evidence. The threshold for success is to construct the correct argument using equal to or less than 5 attempts.
+
+**Quantities:** `attempt_number` — count of attempts to construct the correct argument
+
+**Teacher Guidance:**
+1. Claim: statement that answers the driving question.
+2. Evidence: scientific data and facts that support your claim.
+
+### Reason Quantity Scripts
+
+#### Data Analytics Script (Python)
+
+```python
+# U2P7: Determine attempt_number for WRONG_ARG_SELECTED
+# Count the number of attempts to construct the correct argument
+```
+
+#### Analytics-Matching Script (MongoDB/JS)
+
+```js
+// U2P7: Determine attempt_number for WRONG_ARG_SELECTED
+// Exact match to data analytics script
+```
+
+#### Production Script (Attempt-Based, MongoDB/JS)
+
+```js
+// U2P7: Determine attempt_number for WRONG_ARG_SELECTED
+// With windowing for replay support
 ```
