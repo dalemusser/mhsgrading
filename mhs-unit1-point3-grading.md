@@ -132,6 +132,15 @@ if (!latestTrigger) {
 ```python
 # U1P3: Determine attempt_number for WRONG_ARG_SELECTED
 # Count the number of attempts to construct the correct argument
+
+ATTEMPT_KEYS = ["DialogueNodeEvent:70:25", "DialogueNodeEvent:70:33", "DialogueNodeEvent:70:7"]
+
+attempt = coll.count_documents({
+        "playerId": pid,
+        "eventKey": {"$in": ATTEMPT_KEYS}
+    })
+
+attempt
 ```
 
 #### Analytics-Matching Script (MongoDB/JS)
@@ -139,6 +148,21 @@ if (!latestTrigger) {
 ```js
 // U1P3: Determine attempt_number for WRONG_ARG_SELECTED
 // Exact match to data analytics script
+
+const playerId = "<playerId>";
+
+const ATTEMPT_KEYS = [
+  "DialogueNodeEvent:70:25",
+  "DialogueNodeEvent:70:33",
+  "DialogueNodeEvent:70:7"
+];
+
+const attempt = db.logdata.countDocuments({
+  playerId: playerId,
+  eventKey: { $in: ATTEMPT_KEYS }
+});
+
+attempt
 ```
 
 #### Production Script (Attempt-Based, MongoDB/JS)
@@ -146,4 +170,48 @@ if (!latestTrigger) {
 ```js
 // U1P3: Determine attempt_number for WRONG_ARG_SELECTED
 // With windowing for replay support
+
+const playerId = "<playerId>";
+
+const TRIGGER_KEY = "questActiveEvent:34";
+
+const ATTEMPT_KEYS = [
+  "DialogueNodeEvent:70:25",
+  "DialogueNodeEvent:70:33",
+  "DialogueNodeEvent:70:7"
+];
+
+// 1) Latest trigger (end anchor)
+const latestTrigger = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+  { sort: { _id: -1 } }
+);
+
+if (!latestTrigger) {
+  0;
+} else {
+  // 2) Previous trigger (attempt boundary)
+  const prevTrigger = db.logdata.findOne(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventKey: TRIGGER_KEY,
+      _id: { $lt: latestTrigger._id }
+    },
+    { sort: { _id: -1 }}
+  );
+
+  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestTrigger._id;
+
+  // 3) Count attempt dialogue triggers only inside the window
+  const attempts = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventKey: { $in: ATTEMPT_KEYS },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+
+  attempts;
+}
 ```
