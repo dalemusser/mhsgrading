@@ -28,6 +28,7 @@ Student must complete the map-profile matching independently and without excessi
 |------|-----------|
 | Trigger | `questFinishEvent:21` |
 | Success | `DialogueNodeEvent:68:29` |
+| Yellow | `DialogueNodeEvent:68:22` |
 | Yellow | `DialogueNodeEvent:68:23` |
 | Yellow | `DialogueNodeEvent:68:27` |
 | Yellow | `DialogueNodeEvent:68:28` |
@@ -46,6 +47,7 @@ const playerId = "<playerId>";
 const successKey = "DialogueNodeEvent:68:29";
 
 const yellowNodes = [
+  "DialogueNodeEvent:68:22",
   "DialogueNodeEvent:68:23",
   "DialogueNodeEvent:68:27",
   "DialogueNodeEvent:68:28",
@@ -87,6 +89,7 @@ const TRIGGER_KEY = "questFinishEvent:21";
 const successKey = "DialogueNodeEvent:68:29";
 
 const yellowNodes = [
+  "DialogueNodeEvent:68:22",
   "DialogueNodeEvent:68:23",
   "DialogueNodeEvent:68:27",
   "DialogueNodeEvent:68:28",
@@ -175,7 +178,53 @@ if (!latestTrigger) {
 ```python
 # U2P1: Determine which reason code(s) apply and compute quantities
 # MISSING_SUCCESS_NODE: check if success node (68:29) is absent
+
+has_success_node = coll.find_one(
+        {
+            "playerId": playerId,
+            "eventKey": "DialogueNodeEvent:68:29"
+        },
+        projection={"_id": 1}
+    ) is not None
+
+has_success_node
+```
+
+```python
 # TOO_MANY_NEGATIVES: count attempts_number from yellow node occurrences
+
+FIVE_ATTEMPT_KEYS = [
+        "DialogueNodeEvent:68:22",
+        "DialogueNodeEvent:68:23"
+    ]
+
+SIX_ATTEMPT_KEYS = [
+        "DialogueNodeEvent:68:27",
+        "DialogueNodeEvent:68:31"
+    ]
+    
+NPC_HELP_KEY = "DialogueNodeEvent:68:28"
+
+relevant_keys = FIVE_ATTEMPT_KEYS + SIX_ATTEMPT_KEYS + [NPC_HELP_KEY]
+
+events = list(coll.find(
+        {"playerId": pid, "eventKey": {"$in": relevant_keys}}
+    ))
+
+triggered_keys = {e["eventKey"] for e in events}
+
+attempt = 0
+
+if NPC_HELP_KEY in triggered_keys:
+  attempt = 7
+
+if any(k in triggered_keys for k in SIX_ATTEMPT_KEYS):
+  attempt = 6
+
+if any(k in triggered_keys for k in FIVE_ATTEMPT_KEYS):
+  attempt = 5
+  
+attempt
 ```
 
 #### Analytics-Matching Script (MongoDB/JS)
@@ -183,8 +232,66 @@ if (!latestTrigger) {
 ```js
 // U2P1: Determine which reason code(s) apply and compute quantities
 // MISSING_SUCCESS_NODE: check if success node (68:29) is absent
+
+const has_success_node =
+  db.logdata.findOne(
+    {
+      playerId: playerId,
+      eventKey: "DialogueNodeEvent:68:29"
+    }
+    ) !== null;
+    
+has_success_node
+```
+
+```js
 // TOO_MANY_NEGATIVES: count attempts_number from yellow node occurrences
 // Exact match to data analytics script
+
+const playerId = "<playerId>";
+
+const FIVE_ATTEMPT_KEYS = [
+  "DialogueNodeEvent:68:22",
+  "DialogueNodeEvent:68:23"
+];
+
+const SIX_ATTEMPT_KEYS = [
+  "DialogueNodeEvent:68:27",
+  "DialogueNodeEvent:68:31"
+];
+
+const NPC_HELP_KEY = "DialogueNodeEvent:68:28";
+
+const relevantKeys = [
+  ...FIVE_ATTEMPT_KEYS,
+  ...SIX_ATTEMPT_KEYS,
+  NPC_HELP_KEY
+];
+
+const events = db.logdata.find(
+  {
+    playerId: playerId,
+    eventKey: { $in: relevantKeys }
+  }
+).toArray();
+
+const triggeredKeys = new Set(events.map(e => e.eventKey));
+
+let attempt = 0;
+
+if (triggeredKeys.has(NPC_HELP_KEY)) {
+  attempt = 7;
+}
+
+if (SIX_ATTEMPT_KEYS.some(k => triggeredKeys.has(k))) {
+  attempt = 6;
+}
+
+if (FIVE_ATTEMPT_KEYS.some(k => triggeredKeys.has(k))) {
+  attempt = 5;
+}
+
+attempt;
 ```
 
 #### Production Script (Attempt-Based, MongoDB/JS)
@@ -192,6 +299,117 @@ if (!latestTrigger) {
 ```js
 // U2P1: Determine which reason code(s) apply and compute quantities
 // MISSING_SUCCESS_NODE: check if success node (68:29) is absent within attempt window
+
+const playerId = "<playerId>";
+
+const TRIGGER_KEY = "questFinishEvent:21";
+const SUCCESS_KEY = "DialogueNodeEvent:68:29";
+
+// 1) Latest trigger
+const latestTrigger = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+  { sort: { _id: -1 }}
+);
+
+let hasSuccessNode = false;
+
+if (!latestTrigger) {
+  hasSuccessNode = false;
+} else {
+  const prevTrigger = db.logdata.findOne(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventKey: TRIGGER_KEY,
+      _id: { $lt: latestTrigger._id }
+    },
+    { sort: { _id: -1 }}
+  );
+
+  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestTrigger._id;
+
+  hasSuccessNode =
+    db.logdata.findOne(
+      {
+        game: "mhs",
+        playerId: playerId,
+        eventKey: SUCCESS_KEY,
+        _id: { $gt: windowStartId, $lte: windowEndId }
+      }
+    ) !== null;
+}
+
+const MISSING_SUCCESS_NODE = !hasSuccessNode;
+
+hasSuccessNode;
+```
+
+```js
 // TOO_MANY_NEGATIVES: count attempts_number from yellow node occurrences within attempt window
 // With windowing for replay support
+
+const playerId = "<playerId>";
+
+const TRIGGER_KEY = "questFinishEvent:21";
+
+const FIVE_ATTEMPT_KEYS = [
+  "DialogueNodeEvent:68:22",
+  "DialogueNodeEvent:68:23"
+];
+
+const SIX_ATTEMPT_KEYS = [
+  "DialogueNodeEvent:68:27",
+  "DialogueNodeEvent:68:31"
+];
+
+const NPC_HELP_KEY = "DialogueNodeEvent:68:28";
+
+const relevantKeys = [
+  ...FIVE_ATTEMPT_KEYS,
+  ...SIX_ATTEMPT_KEYS,
+  NPC_HELP_KEY
+];
+
+// 1) Latest trigger
+const latestTrigger = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+  { sort: { _id: -1 }}
+);
+
+let attempt = 0;
+
+if (!latestTrigger) {
+  attempt = 0;
+} else {
+  const prevTrigger = db.logdata.findOne(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventKey: TRIGGER_KEY,
+      _id: { $lt: latestTrigger._id }
+    },
+    { sort: { _id: -1 }}
+  );
+
+  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestTrigger._id;
+
+  const events = db.logdata.find(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventKey: { $in: relevantKeys },
+      _id: { $gt: windowStartId, $lte: windowEndId }
+    }
+  ).toArray();
+
+  const triggeredKeys = new Set(events.map(e => e.eventKey));
+
+  if (triggeredKeys.has(NPC_HELP_KEY)) attempt = 7;
+  else if (SIX_ATTEMPT_KEYS.some(k => triggeredKeys.has(k))) attempt = 6;
+  else if (FIVE_ATTEMPT_KEYS.some(k => triggeredKeys.has(k))) attempt = 5;
+}
+
+attempt;
 ```
