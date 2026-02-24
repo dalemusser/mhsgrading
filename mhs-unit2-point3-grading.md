@@ -209,6 +209,26 @@ if (!endDoc || !endDoc.timestamp) {
 ```python
 # U2P3: Determine triggering_number for BAD_FEEDBACK
 # Count the number of wrong-direction dialogues triggered
+
+BAD_FEEDBACK_KEYS = [
+  "DialogueNodeEvent:18:225", "DialogueNodeEvent:28:185", "DialogueNodeEvent:59:185",
+  "DialogueNodeEvent:28:184", "DialogueNodeEvent:28:191", "DialogueNodeEvent:59:184", "DialogueNodeEvent:59:191",
+  "DialogueNodeEvent:18:226", "DialogueNodeEvent:18:227", "DialogueNodeEvent:28:186", "DialogueNodeEvent:59:186",
+  "DialogueNodeEvent:18:228", "DialogueNodeEvent:28:187", "DialogueNodeEvent:59:187",
+  "DialogueNodeEvent:18:229", "DialogueNodeEvent:28:188", "DialogueNodeEvent:59:188",
+  "DialogueNodeEvent:18:230", "DialogueNodeEvent:28:180", "DialogueNodeEvent:59:180",
+  "DialogueNodeEvent:18:233", "DialogueNodeEvent:28:192", "DialogueNodeEvent:59:192",
+  "DialogueNodeEvent:18:234", "DialogueNodeEvent:28:193", "DialogueNodeEvent:59:193",
+  "DialogueNodeEvent:18:235", "DialogueNodeEvent:28:194", "DialogueNodeEvent:59:194",
+  "DialogueNodeEvent:18:236", "DialogueNodeEvent:18:237", "DialogueNodeEvent:28:190", "DialogueNodeEvent:59:190"
+]
+
+count = coll.count_documents({
+        "playerId": pid,
+        "eventKey": {"$in": BAD_FEEDBACK_KEYS}
+    })
+
+count
 ```
 
 #### Analytics-Matching Script (MongoDB/JS)
@@ -216,6 +236,28 @@ if (!endDoc || !endDoc.timestamp) {
 ```js
 // U2P3: Determine triggering_number for BAD_FEEDBACK
 // Exact match to data analytics script
+
+const playerId = "<playerId>";
+
+const BAD_FEEDBACK_KEYS = [
+  "DialogueNodeEvent:18:225", "DialogueNodeEvent:28:185", "DialogueNodeEvent:59:185",
+  "DialogueNodeEvent:28:184", "DialogueNodeEvent:28:191", "DialogueNodeEvent:59:184", "DialogueNodeEvent:59:191",
+  "DialogueNodeEvent:18:226", "DialogueNodeEvent:18:227", "DialogueNodeEvent:28:186", "DialogueNodeEvent:59:186",
+  "DialogueNodeEvent:18:228", "DialogueNodeEvent:28:187", "DialogueNodeEvent:59:187",
+  "DialogueNodeEvent:18:229", "DialogueNodeEvent:28:188", "DialogueNodeEvent:59:188",
+  "DialogueNodeEvent:18:230", "DialogueNodeEvent:28:180", "DialogueNodeEvent:59:180",
+  "DialogueNodeEvent:18:233", "DialogueNodeEvent:28:192", "DialogueNodeEvent:59:192",
+  "DialogueNodeEvent:18:234", "DialogueNodeEvent:28:193", "DialogueNodeEvent:59:193",
+  "DialogueNodeEvent:18:235", "DialogueNodeEvent:28:194", "DialogueNodeEvent:59:194",
+  "DialogueNodeEvent:18:236", "DialogueNodeEvent:18:237", "DialogueNodeEvent:28:190", "DialogueNodeEvent:59:190"
+];
+
+const count = db.logdata.countDocuments({
+  playerId: playerId,
+  eventKey: { $in: BAD_FEEDBACK_KEYS }
+});
+
+count;
 ```
 
 #### Production Script (Attempt-Based, MongoDB/JS)
@@ -223,4 +265,66 @@ if (!endDoc || !endDoc.timestamp) {
 ```js
 // U2P3: Determine triggering_number for BAD_FEEDBACK
 // With windowing for replay support
+
+const playerId = "<playerId>";
+
+const START_KEY = "DialogueNodeEvent:20:33";
+const END_KEY = "DialogueNodeEvent:22:18";
+
+const BAD_FEEDBACK_KEYS = [
+  "DialogueNodeEvent:18:225", "DialogueNodeEvent:28:185", "DialogueNodeEvent:59:185",
+  "DialogueNodeEvent:28:184", "DialogueNodeEvent:28:191", "DialogueNodeEvent:59:184", "DialogueNodeEvent:59:191",
+  "DialogueNodeEvent:18:226", "DialogueNodeEvent:18:227", "DialogueNodeEvent:28:186", "DialogueNodeEvent:59:186",
+  "DialogueNodeEvent:18:228", "DialogueNodeEvent:28:187", "DialogueNodeEvent:59:187",
+  "DialogueNodeEvent:18:229", "DialogueNodeEvent:28:188", "DialogueNodeEvent:59:188",
+  "DialogueNodeEvent:18:230", "DialogueNodeEvent:28:180", "DialogueNodeEvent:59:180",
+  "DialogueNodeEvent:18:233", "DialogueNodeEvent:28:192", "DialogueNodeEvent:59:192",
+  "DialogueNodeEvent:18:234", "DialogueNodeEvent:28:193", "DialogueNodeEvent:59:193",
+  "DialogueNodeEvent:18:235", "DialogueNodeEvent:28:194", "DialogueNodeEvent:59:194",
+  "DialogueNodeEvent:18:236", "DialogueNodeEvent:18:237", "DialogueNodeEvent:28:190", "DialogueNodeEvent:59:190"
+];
+
+const latestStart = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: START_KEY },
+  { sort: { _id: -1 }}
+);
+
+let count = 0;
+
+if (!latestStart) {
+  count = 0;
+} else {
+  const prevStart = db.logdata.findOne(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventKey: START_KEY,
+      _id: { $lt: latestStart._id }
+    },
+    { sort: { _id: -1 }}
+  );
+
+  const windowStartId = prevStart ? prevStart._id : ObjectId("000000000000000000000000");
+
+  const endDoc = db.logdata.findOne(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventKey: END_KEY,
+      _id: { $gte: latestStart._id }
+    },
+    { sort: { _id: -1 }}
+  );
+
+  const windowEndId = endDoc ? endDoc._id : latestStart._id;
+
+  count = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventKey: { $in: BAD_FEEDBACK_KEYS },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+}
+
+count;
 ```
