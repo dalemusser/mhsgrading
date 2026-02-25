@@ -183,8 +183,7 @@ has_success_node = coll.find_one(
         {
             "playerId": playerId,
             "eventKey": "DialogueNodeEvent:68:29"
-        },
-        projection={"_id": 1}
+        }
     ) is not None
 
 has_success_node
@@ -342,7 +341,7 @@ if (!latestTrigger) {
 
 const MISSING_SUCCESS_NODE = !hasSuccessNode;
 
-hasSuccessNode;
+MISSING_SUCCESS_NODE;
 ```
 
 ```js

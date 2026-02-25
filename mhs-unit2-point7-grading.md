@@ -174,6 +174,21 @@ if (!latestTrigger) {
 ```python
 # U2P7: Determine attempt_number for WRONG_ARG_SELECTED
 # Count the number of attempts to construct the correct argument
+
+NEG_DIALOGUE_KEYS = [
+    "DialogueNodeEvent:27:11", "DialogueNodeEvent:27:12", "DialogueNodeEvent:27:13", "DialogueNodeEvent:27:14",
+    "DialogueNodeEvent:27:15", "DialogueNodeEvent:27:16", "DialogueNodeEvent:27:17", "DialogueNodeEvent:27:18",
+    "DialogueNodeEvent:27:19", "DialogueNodeEvent:27:20", "DialogueNodeEvent:27:21", "DialogueNodeEvent:27:22",
+    "DialogueNodeEvent:27:23", "DialogueNodeEvent:27:24", "DialogueNodeEvent:27:25", "DialogueNodeEvent:27:26",
+    "DialogueNodeEvent:27:27", "DialogueNodeEvent:27:28", "DialogueNodeEvent:27:29", "DialogueNodeEvent:27:30"
+]
+
+attempts = coll.count_documents({
+    "playerId": pid,
+    "eventKey": {"$in": NEG_DIALOGUE_KEYS}
+}) + 1
+
+attempts
 ```
 
 #### Analytics-Matching Script (MongoDB/JS)
@@ -181,6 +196,24 @@ if (!latestTrigger) {
 ```js
 // U2P7: Determine attempt_number for WRONG_ARG_SELECTED
 // Exact match to data analytics script
+
+const playerId = "<playerId>";
+
+const NEG_DIALOGUE_KEYS = [
+  "DialogueNodeEvent:27:11", "DialogueNodeEvent:27:12", "DialogueNodeEvent:27:13", "DialogueNodeEvent:27:14",
+  "DialogueNodeEvent:27:15", "DialogueNodeEvent:27:16", "DialogueNodeEvent:27:17", "DialogueNodeEvent:27:18",
+  "DialogueNodeEvent:27:19", "DialogueNodeEvent:27:20", "DialogueNodeEvent:27:21", "DialogueNodeEvent:27:22",
+  "DialogueNodeEvent:27:23", "DialogueNodeEvent:27:24", "DialogueNodeEvent:27:25", "DialogueNodeEvent:27:26",
+  "DialogueNodeEvent:27:27", "DialogueNodeEvent:27:28", "DialogueNodeEvent:27:29", "DialogueNodeEvent:27:30"
+];
+
+const attempts =
+  db.logdata.countDocuments({
+    playerId: playerId,
+    eventKey: { $in: NEG_DIALOGUE_KEYS }
+  }) + 1;
+
+attempts;
 ```
 
 #### Production Script (Attempt-Based, MongoDB/JS)
@@ -188,4 +221,51 @@ if (!latestTrigger) {
 ```js
 // U2P7: Determine attempt_number for WRONG_ARG_SELECTED
 // With windowing for replay support
+
+const playerId = "<playerId>";
+
+const TRIGGER_KEY = "questFinishEvent:54";
+
+const NEG_DIALOGUE_KEYS = [
+  "DialogueNodeEvent:27:11", "DialogueNodeEvent:27:12", "DialogueNodeEvent:27:13", "DialogueNodeEvent:27:14",
+  "DialogueNodeEvent:27:15", "DialogueNodeEvent:27:16", "DialogueNodeEvent:27:17", "DialogueNodeEvent:27:18",
+  "DialogueNodeEvent:27:19", "DialogueNodeEvent:27:20", "DialogueNodeEvent:27:21", "DialogueNodeEvent:27:22",
+  "DialogueNodeEvent:27:23", "DialogueNodeEvent:27:24", "DialogueNodeEvent:27:25", "DialogueNodeEvent:27:26",
+  "DialogueNodeEvent:27:27", "DialogueNodeEvent:27:28", "DialogueNodeEvent:27:29", "DialogueNodeEvent:27:30"
+];
+
+const latestTrigger = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+  { sort: { _id: -1 }}
+);
+
+let attempts = 0;
+
+if (!latestTrigger) {
+  attempts = 0;
+} else {
+  const prevTrigger = db.logdata.findOne(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventKey: TRIGGER_KEY,
+      _id: { $lt: latestTrigger._id }
+    },
+    { sort: { _id: -1 }}
+  );
+
+  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestTrigger._id;
+
+  const negCount = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventKey: { $in: NEG_DIALOGUE_KEYS },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+
+  attempts = negCount + 1;
+}
+
+attempts;
 ```

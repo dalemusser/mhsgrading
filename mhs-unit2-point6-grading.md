@@ -160,6 +160,30 @@ if (!latestTrigger) {
 ```python
 # U2P6: Determine dialogue_node_1, dialogue_node_2, dialogue_node_3 for HIT_YELLOW_NODE
 # Identify which incorrect standards were chosen and which is the correct standard
+
+KEY_44 = "DialogueNodeEvent:20:44"
+KEY_45 = "DialogueNodeEvent:20:45"
+
+events = list(coll.find(
+        {
+            "playerId": pid,
+            "eventKey": {"$in": [KEY_44, KEY_45]}
+        }
+    ))
+
+triggered = {e["eventKey"] for e in events}
+
+has_44 = KEY_44 in triggered
+has_45 = KEY_45 in triggered
+
+if has_44 and has_45:
+  result = "guessing through the correct answer"
+elif has_44:
+  result = "waterfall height"
+elif has_45:
+  result = "salinity"
+  
+result
 ```
 
 #### Analytics-Matching Script (MongoDB/JS)
@@ -167,6 +191,35 @@ if (!latestTrigger) {
 ```js
 // U2P6: Determine dialogue_node_1, dialogue_node_2, dialogue_node_3 for HIT_YELLOW_NODE
 // Exact match to data analytics script
+
+const playerId = "<playerId>";
+
+const KEY_44 = "DialogueNodeEvent:20:44";
+const KEY_45 = "DialogueNodeEvent:20:45";
+
+const events = db.logdata.find(
+  {
+    playerId: playerId,
+    eventKey: { $in: [KEY_44, KEY_45] }
+  }
+).toArray();
+
+const triggered = new Set(events.map(e => e.eventKey));
+
+const has_44 = triggered.has(KEY_44);
+const has_45 = triggered.has(KEY_45);
+
+let result;
+
+if (has_44 && has_45) {
+  result = "guessing through the correct answer";
+} else if (has_44) {
+  result = "waterfall height";
+} else if (has_45) {
+  result = "salinity";
+}
+
+result;
 ```
 
 #### Production Script (Attempt-Based, MongoDB/JS)
@@ -174,4 +227,58 @@ if (!latestTrigger) {
 ```js
 // U2P6: Determine dialogue_node_1, dialogue_node_2, dialogue_node_3 for HIT_YELLOW_NODE
 // With windowing for replay support
+
+const playerId = "<playerId>";
+
+const TRIGGER_KEY = "DialogueNodeEvent:20:46";
+const KEY_44 = "DialogueNodeEvent:20:44";
+const KEY_45 = "DialogueNodeEvent:20:45";
+
+const latestTrigger = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+  { sort: { _id: -1 }}
+);
+
+let result = null;
+
+if (!latestTrigger) {
+  result = null;
+} else {
+  const prevTrigger = db.logdata.findOne(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventKey: TRIGGER_KEY,
+      _id: { $lt: latestTrigger._id }
+    },
+    { sort: { _id: -1 }}
+  );
+
+  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestTrigger._id;
+
+  const events = db.logdata.find(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventKey: { $in: [KEY_44, KEY_45] },
+      _id: { $gt: windowStartId, $lte: windowEndId }
+    }
+  ).toArray();
+
+  const triggered = new Set(events.map(e => e.eventKey));
+
+  const has_44 = triggered.has(KEY_44);
+  const has_45 = triggered.has(KEY_45);
+
+  if (has_44 && has_45) {
+    result = "guessing through the correct answer";
+  } else if (has_44) {
+    result = "waterfall height";
+  } else if (has_45) {
+    result = "salinity";
+  }
+
+}
+result;
 ```

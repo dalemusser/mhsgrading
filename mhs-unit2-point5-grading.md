@@ -248,6 +248,25 @@ if (!latestTrigger) {
 ```python
 # U2P5: Determine wrong_number for TOO_MANY_NEGATIVES
 # Count the number of wrong argument component selections
+
+NEGATIVE_DIALOGUE_KEYS = [
+    "DialogueNodeEvent:26:187", "DialogueNodeEvent:26:188", "DialogueNodeEvent:26:189",
+    "DialogueNodeEvent:26:190", "DialogueNodeEvent:26:191", "DialogueNodeEvent:26:192",
+    "DialogueNodeEvent:26:193", "DialogueNodeEvent:26:194", "DialogueNodeEvent:26:195",
+    "DialogueNodeEvent:26:196", "DialogueNodeEvent:26:197", "DialogueNodeEvent:26:198",
+    "DialogueNodeEvent:26:199", "DialogueNodeEvent:26:200", "DialogueNodeEvent:26:201",
+    "DialogueNodeEvent:26:202", "DialogueNodeEvent:26:203", "DialogueNodeEvent:26:204",
+    "DialogueNodeEvent:26:205", "DialogueNodeEvent:26:206", "DialogueNodeEvent:26:207",
+    "DialogueNodeEvent:26:208", "DialogueNodeEvent:26:209", "DialogueNodeEvent:26:210",
+    "DialogueNodeEvent:26:211"
+]
+
+negative_attempts = coll.count_documents({
+        "playerId": pid,
+        "eventKey": {"$in": NEGATIVE_DIALOGUE_KEYS}
+    })
+    
+negative_attempts
 ```
 
 #### Analytics-Matching Script (MongoDB/JS)
@@ -255,6 +274,27 @@ if (!latestTrigger) {
 ```js
 // U2P5: Determine wrong_number for TOO_MANY_NEGATIVES
 // Exact match to data analytics script
+
+const playerId = "<playerId>";
+
+const NEGATIVE_DIALOGUE_KEYS = [
+  "DialogueNodeEvent:26:187", "DialogueNodeEvent:26:188", "DialogueNodeEvent:26:189",
+  "DialogueNodeEvent:26:190", "DialogueNodeEvent:26:191", "DialogueNodeEvent:26:192",
+  "DialogueNodeEvent:26:193", "DialogueNodeEvent:26:194", "DialogueNodeEvent:26:195",
+  "DialogueNodeEvent:26:196", "DialogueNodeEvent:26:197", "DialogueNodeEvent:26:198",
+  "DialogueNodeEvent:26:199", "DialogueNodeEvent:26:200", "DialogueNodeEvent:26:201",
+  "DialogueNodeEvent:26:202", "DialogueNodeEvent:26:203", "DialogueNodeEvent:26:204",
+  "DialogueNodeEvent:26:205", "DialogueNodeEvent:26:206", "DialogueNodeEvent:26:207",
+  "DialogueNodeEvent:26:208", "DialogueNodeEvent:26:209", "DialogueNodeEvent:26:210",
+  "DialogueNodeEvent:26:211"
+];
+
+const negative_attempts = db.logdata.countDocuments({
+  playerId: playerId,
+  eventKey: { $in: NEGATIVE_DIALOGUE_KEYS }
+});
+
+negative_attempts;
 ```
 
 #### Production Script (Attempt-Based, MongoDB/JS)
@@ -262,4 +302,52 @@ if (!latestTrigger) {
 ```js
 // U2P5: Determine wrong_number for TOO_MANY_NEGATIVES
 // With windowing for replay support
+
+const playerId = "<playerId>";
+const TRIGGER_KEY = "DialogueNodeEvent:23:42";
+
+const NEGATIVE_DIALOGUE_KEYS = [
+  "DialogueNodeEvent:26:187", "DialogueNodeEvent:26:188", "DialogueNodeEvent:26:189",
+  "DialogueNodeEvent:26:190", "DialogueNodeEvent:26:191", "DialogueNodeEvent:26:192",
+  "DialogueNodeEvent:26:193", "DialogueNodeEvent:26:194", "DialogueNodeEvent:26:195",
+  "DialogueNodeEvent:26:196", "DialogueNodeEvent:26:197", "DialogueNodeEvent:26:198",
+  "DialogueNodeEvent:26:199", "DialogueNodeEvent:26:200", "DialogueNodeEvent:26:201",
+  "DialogueNodeEvent:26:202", "DialogueNodeEvent:26:203", "DialogueNodeEvent:26:204",
+  "DialogueNodeEvent:26:205", "DialogueNodeEvent:26:206", "DialogueNodeEvent:26:207",
+  "DialogueNodeEvent:26:208", "DialogueNodeEvent:26:209", "DialogueNodeEvent:26:210",
+  "DialogueNodeEvent:26:211"
+];
+
+const latestTrigger = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+  { sort: { _id: -1 } }
+);
+
+let negative_attempts = 0;
+
+if (!latestTrigger) {
+  negative_attempts = 0;
+} else {
+  const prevTrigger = db.logdata.findOne(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventKey: TRIGGER_KEY,
+      _id: { $lt: latestTrigger._id }
+    },
+    { sort: { _id: -1 } }
+  );
+
+  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestTrigger._id;
+
+  negative_attempts = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventKey: { $in: NEGATIVE_DIALOGUE_KEYS },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+}
+
+negative_attempts;
 ```
