@@ -202,4 +202,208 @@ if (!latestTrigger) {
 
 ## Reason Codes
 
-> No reason codes defined for this point.
+### MISSING_SUCCESS_NODE
+
+**Short Description:** Did not check backing information for key knowledge.
+
+**Instructor Message:** The student didn’t open the backing information regarding the pollution site data during the activity of constructing an argument about the location of the pollutant that includes reasoning and links a claim with evidence. The threshold for success is to check the information at least once during the activity.
+
+**Determination:** Check whether the argumentationToolEvent event (`BackingInfoPanel - Pollution Site Data`) is absent.
+
+**Teacher Guidance:** Review the three parts of an argument with student:
+1. Claim: statement that answers the driving question.
+2. Evidence: scientific data and facts that support your claim.
+3. Reasoning: links your claim to the evidence presented by explaining how or why the evidence supports the claim.
+
+### WRONG_ARG_SELECTED
+
+**Short Description:** Too many attempts to select correct reasoning to connect the claim with evidence.
+
+**Instructor Message:** The student used {attempt_number} to construct the correct argument during the activity of constructing an argument about the location of the pollutant that includes reasoning and links a claim with evidence. The threshold for success is to construct the correct argument within 4 attempts.
+
+**Determination:** Count yellow node occurrences; yellow if count > 4.
+
+**Quantities:** `attempts_number` — count of yellow node occurrences.
+
+**Teacher Guidance:** Review the three parts of an argument with student: 
+1. Claim: statement that answers the driving question.
+2. Evidence: scientific data and facts that support your claim.
+3. Reasoning: links your claim to the evidence presented by explaining how or why the evidence supports the claim.
+
+### Reason Determination Scripts
+
+#### Data Analytics Script (Python)
+
+```python
+# U3P3: The performnace of the student's argumentation performance in Unit 3
+# MISSING_SUCCESS_NODE: Check if the player look at the backing informaiton regarding the the pollution site data. 
+
+has_backing_info = coll.find_one({
+    "playerId": pid,
+    "eventType": "argumentationToolEvent",
+    "data.toolName": "BackingInfoPanel - Pollution Site Data"
+}) is not None
+
+has_backing_info
+```
+
+```python
+# WRONG_ARG_SELECTED: How many times students construct the wrong arguments. 
+
+WRONG_ARGUMENT_KEYS = [
+    "DialogueNodeEvent:84:20", "DialogueNodeEvent:84:25", "DialogueNodeEvent:84:32",
+    "DialogueNodeEvent:84:33", "DialogueNodeEvent:84:34", "DialogueNodeEvent:84:35",
+    "DialogueNodeEvent:84:37", "DialogueNodeEvent:84:39", "DialogueNodeEvent:84:40",
+    "DialogueNodeEvent:84:41", "DialogueNodeEvent:84:42", "DialogueNodeEvent:84:43",
+    "DialogueNodeEvent:84:44", "DialogueNodeEvent:84:45", "DialogueNodeEvent:84:46",
+    "DialogueNodeEvent:84:47"
+]
+
+wrong_argument_count = coll.count_documents({
+    "playerId": pid,
+    "eventKey": {"$in": WRONG_ARGUMENT_KEYS}
+})
+
+wrong_argument_count
+```
+
+#### Analytics-Matching Script (MongoDB/JS)
+
+```js
+// U3P3: The performnace of the student's argumentation performance in Unit 3
+// MISSING_SUCCESS_NODE: Exact match to data analytics script
+
+const playerId = "<playerId>";
+
+const has_backing_info =
+  db.logdata.findOne({
+    playerId: playerId,
+    eventType: "argumentationToolEvent",
+    "data.toolName": "BackingInfoPanel - Pollution Site Data"
+  }) !== null;
+
+has_backing_info;
+```
+
+```js
+// U3P3: The performnace of the student's argumentation performance in Unit 3.
+// WRONG_ARG_SELECTED: How many times students construct the wrong arguments. 
+
+const playerId = "<playerId>";
+
+const WRONG_ARGUMENT_KEYS = [
+  "DialogueNodeEvent:84:20", "DialogueNodeEvent:84:25", "DialogueNodeEvent:84:32",
+  "DialogueNodeEvent:84:33", "DialogueNodeEvent:84:34", "DialogueNodeEvent:84:35",
+  "DialogueNodeEvent:84:37", "DialogueNodeEvent:84:39", "DialogueNodeEvent:84:40",
+  "DialogueNodeEvent:84:41", "DialogueNodeEvent:84:42", "DialogueNodeEvent:84:43",
+  "DialogueNodeEvent:84:44", "DialogueNodeEvent:84:45", "DialogueNodeEvent:84:46",
+  "DialogueNodeEvent:84:47"
+];
+
+const wrong_argument_count = db.logdata.countDocuments({
+  playerId: playerId,
+  eventKey: { $in: WRONG_ARGUMENT_KEYS }
+});
+
+wrong_argument_count;
+```
+
+#### Production Script (Attempt-Based, MongoDB/JS)
+
+```js
+// U3P3: Determine whether the student triggered the success node.
+// Exact match to data analytics script
+
+const playerId = "<playerId>";
+
+const TRIGGER_KEY = "questFinishEvent:18";
+
+const latestTrigger = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+  { sort: { _id: -1 }}
+);
+
+let has_backing_info = false;
+
+if (!latestTrigger) {
+  has_backing_info = false;
+} else {
+  const prevTrigger = db.logdata.findOne(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventKey: TRIGGER_KEY,
+      _id: { $lt: latestTrigger._id }
+    },
+    { sort: { _id: -1 }}
+  );
+
+  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestTrigger._id;
+
+  has_backing_info =
+    db.logdata.findOne(
+      {
+        game: "mhs",
+        playerId: playerId,
+        eventType: "argumentationToolEvent",
+        "data.toolName": "BackingInfoPanel - Pollution Site Data",
+        _id: { $gt: windowStartId, $lte: windowEndId }
+      }
+    ) !== null;
+}
+
+has_backing_info;
+```
+
+```js
+// U3P3: Determine whether the student triggered the success node.
+// WRONG_ARG_SELECTED: How many times students construct the wrong arguments.
+
+const playerId = "<playerId>";
+
+const TRIGGER_KEY = "questFinishEvent:18";
+
+const WRONG_ARGUMENT_KEYS = [
+  "DialogueNodeEvent:84:20", "DialogueNodeEvent:84:25", "DialogueNodeEvent:84:32",
+  "DialogueNodeEvent:84:33", "DialogueNodeEvent:84:34", "DialogueNodeEvent:84:35",
+  "DialogueNodeEvent:84:37", "DialogueNodeEvent:84:39", "DialogueNodeEvent:84:40",
+  "DialogueNodeEvent:84:41", "DialogueNodeEvent:84:42", "DialogueNodeEvent:84:43",
+  "DialogueNodeEvent:84:44", "DialogueNodeEvent:84:45", "DialogueNodeEvent:84:46",
+  "DialogueNodeEvent:84:47"
+];
+
+const latestTrigger = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+  { sort: { _id: -1 }}
+);
+
+let wrong_argument_count = 0;
+
+if (!latestTrigger) {
+  wrong_argument_count = 0;
+} else {
+  const prevTrigger = db.logdata.findOne(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventKey: TRIGGER_KEY,
+      _id: { $lt: latestTrigger._id }
+    },
+    { sort: { _id: -1 }}
+  );
+
+  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestTrigger._id;
+
+  wrong_argument_count = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventKey: { $in: WRONG_ARGUMENT_KEYS },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+}
+
+wrong_argument_count;
+```
+

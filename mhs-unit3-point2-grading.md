@@ -160,4 +160,106 @@ if (!latestTrigger) {
 
 ## Reason Codes
 
-> No reason codes defined for this point.
+### BAD_FEEDBACK
+
+**Short Description:** Repeated reminding dialogues triggered regarding redundant sensor usage.
+
+**Instructor Message:** The student triggered {attempt_number} times of the reminding dialogues regarding the redundant sensor usage during the activity of finding the source of a pollutant by predicting the spread of dissolved materials through a watershed. The threshold for success is not to trigger such reminding dialogues more than 6 times.
+
+**Quantities:** `attempt_number` — count of negative feedback triggered.
+
+**Teacher Guidance:**
+Review watershed maps with students, and ask them to predict flow of water. Remind students that rivers empty into the ocean.
+
+### Reason Determination Scripts
+
+#### Data Analytics Script (Python)
+```python
+# U3P2: Determine attempt_number for BAD_FEEDBACK
+# Count the number of dialogues triggered to remind redundant sensors used
+
+REMINDING_KEYS = [
+    "DialogueNodeEvent:11:27",
+    "DialogueNodeEvent:11:29",
+    "DialogueNodeEvent:11:230"
+]
+
+reminding_count = coll.count_documents({
+    "playerId": pid,
+    "eventKey": {"$in": REMINDING_KEYS}
+})
+
+reminding_count
+```
+
+#### Analytics-Matching Script (MongoDB/JS)
+```js
+// U3P2: Determine attempt_number for BAD_FEEDBACK
+// Count the number of dialogues triggered to remind redundant sensors used
+
+const playerId = "<playerId>";
+
+const REMINDING_KEYS = [
+  "DialogueNodeEvent:11:27",
+  "DialogueNodeEvent:11:29",
+  "DialogueNodeEvent:11:230"
+];
+
+const reminding_count = db.logdata.countDocuments({
+  playerId: playerId,
+  eventKey: { $in: REMINDING_KEYS }
+});
+
+reminding_count;
+```
+
+#### Production Script (Attempt-Based, MongoDB/JS)
+```js
+// U3P2: Determine attempt_number for BAD_FEEDBACK
+// Count the number of dialogues triggered to remind redundant sensors used
+
+const playerId = "<playerId>";
+
+const TRIGGER_KEY = "DialogueNodeEvent:11:34";
+
+const REMINDING_KEYS = [
+  "DialogueNodeEvent:11:27",
+  "DialogueNodeEvent:11:29",
+  "DialogueNodeEvent:11:230"
+];
+
+// 1) Latest trigger (end anchor)
+const latestTrigger = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+  { sort: { _id: -1 }}
+);
+
+let reminding_count = 0;
+
+if (!latestTrigger) {
+  reminding_count = 0;
+} else {
+  const prevTrigger = db.logdata.findOne(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventKey: TRIGGER_KEY,
+      _id: { $lt: latestTrigger._id }
+    },
+    { sort: { _id: -1 }}
+  );
+
+  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestTrigger._id;
+
+  reminding_count = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventKey: { $in: REMINDING_KEYS },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+}
+
+reminding_count;
+```
+

@@ -120,7 +120,7 @@ if (!latestTrigger) {
   });
 
   const sumScore = (posCount * 1.0) - (negCount * 0.5);
-  sumScore < 3 ? "yellow" : "green";
+  sumScore < 2.5 ? "yellow" : "green";
 }
 ```
 
@@ -128,4 +128,109 @@ if (!latestTrigger) {
 
 ## Reason Codes
 
-> No reason codes defined for this point.
+### TOO_MANY_NEGATIVES
+
+**Short Description:** Made too many wrong plantings.
+
+**Instructor Message:** The student planted super-fruit seeds into {attempt_number} wrong spots during the activity of helping Tera plant seeds in ideal locations by predicting the spread of a dissolved nutrient through a watershed. The success threshold is not to plant the seeds into wrong spots more than once.
+
+**Determination:** Count yellow node occurrences; yellow if the wrong attempt > 1.
+
+**Quantities:** `attempts_number` — count of yellow node occurrences.
+
+**Teacher Guidance:** Review watershed maps with students, and ask them to predict flow of water. Remind students that dissolved material in water moves with the flow of water.
+
+### Reason Determination Scripts
+
+#### Data Analytics Script (Python)
+
+```python
+# U3P5: The performnace of how students plant superfruit seeds into spots along the river.
+# TOO_MANY_NEGATIVES: Check how many negative feedbacks the student received. 
+
+NEGATIVE_KEYS = [
+    "DialogueNodeEvent:73:164",
+    "DialogueNodeEvent:73:168",
+    "DialogueNodeEvent:73:171"
+]
+
+negative_count = coll.count_documents({
+    "playerId": pid,
+    "eventKey": {"$in": NEGATIVE_KEYS}
+})
+
+negative_count
+```
+
+#### Analytics-Matching Script (MongoDB/JS)
+
+```js
+# U3P5: The performnace of how students plant superfruit seeds into spots along the river.
+# TOO_MANY_NEGATIVES: Check how many negative feedbacks the student received. 
+
+const playerId = "<playerId>";
+
+const NEGATIVE_KEYS = [
+  "DialogueNodeEvent:73:164",
+  "DialogueNodeEvent:73:168",
+  "DialogueNodeEvent:73:171"
+];
+
+const negative_count = db.logdata.countDocuments({
+  playerId: playerId,
+  eventKey: { $in: NEGATIVE_KEYS }
+});
+
+negative_count;
+```
+
+#### Production Script (Attempt-Based, MongoDB/JS)
+
+```js
+# U3P5: The performnace of how students plant superfruit seeds into spots along the river.
+# TOO_MANY_NEGATIVES: Check how many negative feedbacks the student received. 
+
+const playerId = "<playerId>";
+
+const TRIGGER_KEY = "DialogueNodeEvent:10:194";
+
+const NEGATIVE_KEYS = [
+  "DialogueNodeEvent:73:164",
+  "DialogueNodeEvent:73:168",
+  "DialogueNodeEvent:73:171"
+];
+
+// 1) Latest trigger (end anchor)
+const latestTrigger = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+  { sort: { _id: -1 }}
+);
+
+let negative_count = 0;
+
+if (!latestTrigger) {
+  negative_count = 0;
+} else {
+  const prevTrigger = db.logdata.findOne(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventKey: TRIGGER_KEY,
+      _id: { $lt: latestTrigger._id }
+    },
+    { sort: { _id: -1 }}
+  );
+
+  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestTrigger._id;
+
+  negative_count = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventKey: { $in: NEGATIVE_KEYS },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+}
+
+negative_count;
+```
