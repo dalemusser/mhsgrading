@@ -165,8 +165,8 @@ negative_count
 #### Analytics-Matching Script (MongoDB/JS)
 
 ```js
-# U3P5: The performnace of how students plant superfruit seeds into spots along the river.
-# TOO_MANY_NEGATIVES: Check how many negative feedbacks the student received. 
+// U3P5: The performnace of how students plant superfruit seeds into spots along the river.
+// TOO_MANY_NEGATIVES: Check how many negative feedbacks the student received. 
 
 const playerId = "<playerId>";
 
@@ -187,8 +187,8 @@ negative_count;
 #### Production Script (Attempt-Based, MongoDB/JS)
 
 ```js
-# U3P5: The performnace of how students plant superfruit seeds into spots along the river.
-# TOO_MANY_NEGATIVES: Check how many negative feedbacks the student received. 
+// U3P5: The performnace of how students plant superfruit seeds into spots along the river.
+// TOO_MANY_NEGATIVES: Check how many negative feedbacks the student received. 
 
 const playerId = "<playerId>";
 
