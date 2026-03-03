@@ -24,7 +24,7 @@
 
 **B. Reason Code Definitions (When color is yellow)**
 
-| Progress Point | Reason Code | When This Occurs (Short) | When This Occurs (Long) | Specific scripts | Teacher Guidance |
+| Progress Point | Reason Code | When This Occurs (Short) | When This Occurs (Long) | Teacher Guidance |
 | :---- | :---- | :---- | :---- | :---- |
 | U1P3 | WRONG\_ARG\_SELECTED | Needed multiple tries to build the correct argument | The student used {attempt\_number} to construct the correct argument during the activity of learning to use the argumentation engine and identifying a claim in an argument. The threshold for success is to construct the correct argument at the first attempt. | Review the three parts of an argument with student: 1\. Claim: statement that answers the driving question. 2\. Evidence: scientific data and facts that support your claim. 3\. Reasoning: links your claim to the evidence presented by explaining how or why the evidence supports the claim. |
 | U2P1 | MISSING\_SUCCESS\_NODE | Did not complete map-profile matching independently | Students didn’t make the correct matches by themselves during the activity of matching topographic maps to elevation profiles.  One of the successful conditions for this activity is to make correct matches. | Review how to read a topographic map with the student including… 1\. How information about elevation can be gained from contour lines. 2\. How to use the compass and contour indices to aid navigation. |
