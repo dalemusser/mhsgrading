@@ -135,7 +135,7 @@ if (!latestTrigger) {
       eventKey: TRIGGER_KEY,
       _id: { $lt: latestTrigger._id }
     },
-    { sort: { _id: -1 }, projection: { _id: 1 } }
+    { sort: { _id: -1 }}
   );
 
   const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
@@ -151,8 +151,7 @@ if (!latestTrigger) {
         playerId: playerId,
         eventKey: CORRECT_KEY,
         _id: { $gt: windowStartId, $lte: windowEndId }
-      },
-      { projection: { _id: 1 } }
+      }
     ) !== null;
 
   if (has8805) score += 0.5;
