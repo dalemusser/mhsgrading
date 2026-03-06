@@ -2,7 +2,8 @@
 
 **Activity:** Classified Information
 
-**Trigger Event:** `DialogueNodeEvent:23:42`
+**Trigger(Start) Event:** `DialogueNodeEvent:23:17`
+**Trigger(End) Event:** `DialogueNodeEvent:23:42`
 
 ---
 

@@ -2,7 +2,8 @@
 
 **Activity:** Which Watershed? Part II
 
-**Trigger Event:** `questFinishEvent:54`
+**Trigger(Start) Event:** `DialogueNodeEvent:20:46`
+**Trigger(End) Event:** `questFinishEvent:54`
 
 ---
 

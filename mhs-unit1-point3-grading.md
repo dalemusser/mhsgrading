@@ -2,7 +2,8 @@
 
 **Activity:** Defend the Expedition
 
-**Trigger Event:** `questActiveEvent:34`
+**Trigger(Start) Event:** `DialogueNodeEvent:30:98`
+**Trigger(End) Event:** `questActiveEvent:34`
 
 ---
 

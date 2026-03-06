@@ -2,7 +2,8 @@
 
 **Activity:** Good Morning Cadet + Establishing a Foothold
 
-**Trigger Event:** `questFinishEvent:17`
+**Trigger(Start) Event:** `DialogueNodeEvent:10:1`
+**Trigger(End) Event:** `questFinishEvent:17`
 
 ---
 

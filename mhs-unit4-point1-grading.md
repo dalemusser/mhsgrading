@@ -2,7 +2,8 @@
 
 **Activity:** Well Wishes
 
-**Trigger Event:** `questActiveEvent:39`
+**Trigger(Start) Event:** `DialogueNodeEvent:88:0`
+**Trigger(End) Event:** `questActiveEvent:39`
 
 ---
 

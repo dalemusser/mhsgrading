@@ -2,7 +2,8 @@
 
 **Activity:** Infiltration Glyph + Alien Well Floors 1 & 2
 
-**Trigger Event:** `questActiveEvent:48`
+**Trigger(Start) Event:** `questActiveEvent:39`
+**Trigger(End) Event:** `questActiveEvent:48`
 
 ---
 

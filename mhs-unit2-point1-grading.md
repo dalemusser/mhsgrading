@@ -2,7 +2,8 @@
 
 **Activity:** Escape the Ruin
 
-**Trigger Event:** `questFinishEvent:21`
+**Trigger(Start) Event:** `DialogueNodeEvent:18:1`
+**Trigger(End) Event:** `questFinishEvent:21`
 
 ---
 

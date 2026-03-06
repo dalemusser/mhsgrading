@@ -2,7 +2,8 @@
 
 **Activity:** Alien Well Floor 5 + You Know the Drill
 
-**Trigger Event:** `questActiveEvent:36`
+**Trigger(Start) Event:** `questActiveEvent:50`
+**Trigger(End) Event:** `questActiveEvent:36`
 
 ---
 

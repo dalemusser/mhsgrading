@@ -2,7 +2,8 @@
 
 **Activity:** Alien Well Floor 3 & 4
 
-**Trigger Event:** `questActiveEvent:50`
+**Trigger(Start) Event:** `questActiveEvent:48`
+**Trigger(End) Event:** `questActiveEvent:50`
 
 ---
 

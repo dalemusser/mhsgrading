@@ -2,7 +2,8 @@
 
 **Activity:** Saving Cadet Anderson
 
-**Trigger Event:** `questActiveEvent:41`
+**Trigger(Start) Event:** `questActiveEvent:36`
+**Trigger(End) Event:** `questActiveEvent:41`
 
 ---
 

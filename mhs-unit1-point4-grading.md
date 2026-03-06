@@ -2,7 +2,8 @@
 
 **Activity:** What Was That?
 
-**Trigger Event:** `DialogueNodeEvent:33:19`
+**Trigger(Start) Event:** `questActiveEvent:34`
+**Trigger(End) Event:** `DialogueNodeEvent:33:19`
 
 ---
 

@@ -2,7 +2,8 @@
 
 **Activity:** Info and Intros
 
-**Trigger Event:** `DialogueNodeEvent:30:98`
+**Trigger(Start) Event:** `DialogueNodeEvent:31:29`
+**Trigger(End) Event:** `DialogueNodeEvent:30:98`
 
 ---
 

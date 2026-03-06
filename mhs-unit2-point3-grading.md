@@ -2,7 +2,8 @@
 
 **Activity:** Getting the Band Back Together Part II
 
-**Trigger Event:** `DialogueNodeEvent:22:18`
+**Trigger(Start) Event:** `DialogueNodeEvent:20:26`
+**Trigger(End) Event:** `DialogueNodeEvent:22:18`
 
 ---
 

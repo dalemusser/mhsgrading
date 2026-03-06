@@ -2,7 +2,8 @@
 
 **Activity:** Pollution Argument
 
-**Trigger Event:** `questFinishEvent:18`
+**Trigger(Start) Event:** `DialogueNodeEvent:11:34`
+**Trigger(End) Event:** `questFinishEvent:18`
 
 ---
 

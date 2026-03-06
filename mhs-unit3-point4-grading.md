@@ -2,7 +2,8 @@
 
 **Activity:** Forsaken Facility
 
-**Trigger Event:** `DialogueNodeEvent:73:200`
+**Trigger(Start) Event:** `questFinishEvent:18`
+**Trigger(End) Event:** `DialogueNodeEvent:73:200`
 
 ---
 

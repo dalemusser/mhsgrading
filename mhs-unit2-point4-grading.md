@@ -2,7 +2,8 @@
 
 **Activity:** Investigate the Temple
 
-**Trigger Event:** `DialogueNodeEvent:23:17`
+**Trigger(Start) Event:** `DialogueNodeEvent:22:18`
+**Trigger(End) Event:** `DialogueNodeEvent:23:17`
 
 ---
 

@@ -2,7 +2,8 @@
 
 **Activity:** Getting Your Space Legs
 
-**Trigger Event:** `DialogueNodeEvent:31:29`
+**Trigger(Start) Event:** `questActiveEvent:28`
+**Trigger(End) Event:** `DialogueNodeEvent:31:29`
 
 ---
 

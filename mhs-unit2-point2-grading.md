@@ -2,7 +2,8 @@
 
 **Activity:** Foraged Forging
 
-**Trigger Event:** `DialogueNodeEvent:20:26`
+**Trigger(Start) Event:** `questFinishEvent:21`
+**Trigger(End) Event:** `DialogueNodeEvent:20:26`
 
 ---
 

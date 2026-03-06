@@ -2,7 +2,8 @@
 
 **Activity:** Plant the Superfruit Seeds
 
-**Trigger Event:** `DialogueNodeEvent:10:194`
+**Trigger(Start) Event:** `DialogueNodeEvent:73:200`
+**Trigger(End) Event:** `DialogueNodeEvent:10:194`
 
 ---
 
