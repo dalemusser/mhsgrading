@@ -19,7 +19,7 @@ Count-based rule. The student must have more than one occurrence of the target e
 ### Attempt Window (Production)
 
 - **Start:** Previous `DialogueNodeEvent:11:22` (exclusive)
-- **End:** Latest `DialogueNodeEvent:11:22` (inclusive)
+- **End:** Latest `DialogueNodeEvent:11:22` (inclusive) 
 
 ---
 
@@ -36,7 +36,7 @@ Count-based rule. The student must have more than one occurrence of the target e
 
 ```js
 // Unit 3, Point 1 — Analytics-matching script
-// Trigger eventKey: "questFinishEvent:17"
+// Trigger eventKey: "DialogueNodeEvent:11:22"
 
 const playerId = "<playerId>";
 
@@ -54,7 +54,7 @@ color;
 
 ```js
 // Unit 3, Point 1 — Attempt-based standalone production script (latest attempt)
-// Trigger eventKey: "questFinishEvent:17"
+// Trigger eventKey: "DialogueNodeEvent:11:22"
 
 const playerId = "<playerId>";
 
