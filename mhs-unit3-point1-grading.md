@@ -141,12 +141,12 @@ count;
 
 #### Production Script (Attempt-Based, MongoDB/JS)
 ```js
-// U2P3: Determine triggering_number for BAD_FEEDBACK
+// U3P1: Determine attempt_number for TOO_MANY_NEGATIVES
 // With windowing for replay support
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "questFinishEvent:17";
+const TRIGGER_KEY = "DialogueNodeEvent:11:22";
 const TARGET_KEY = "DialogueNodeEvent:10:30";
 
 const latestTrigger = db.logdata.findOne(
