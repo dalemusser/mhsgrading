@@ -3,7 +3,7 @@
 **Activity:** Good Morning Cadet + Establishing a Foothold
 
 **Trigger(Start) Event:** `DialogueNodeEvent:10:1`
-**Trigger(End) Event:** `questFinishEvent:17`
+**Trigger(End) Event:** `DialogueNodeEvent:11:22`
 
 ---
 
@@ -18,8 +18,8 @@ Count-based rule. The student must have more than one occurrence of the target e
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questFinishEvent:17` (exclusive)
-- **End:** Latest `questFinishEvent:17` (inclusive)
+- **Start:** Previous `DialogueNodeEvent:11:22` (exclusive)
+- **End:** Latest `DialogueNodeEvent:11:22` (inclusive)
 
 ---
 
@@ -27,7 +27,7 @@ Count-based rule. The student must have more than one occurrence of the target e
 
 | Role | Event Key |
 |------|-----------|
-| Trigger | `questFinishEvent:17` |
+| Trigger | `DialogueNodeEvent:11:22` |
 | Target | `DialogueNodeEvent:10:30` |
 
 ---
@@ -58,7 +58,7 @@ color;
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "questFinishEvent:17";
+const TRIGGER_KEY = "DialogueNodeEvent:11:22";
 const TARGET_KEY = "DialogueNodeEvent:10:30";
 
 // 1) Latest trigger (end anchor)
