@@ -19,7 +19,7 @@ Count-based rule. The student must have more than one occurrence of the target e
 ### Attempt Window (Production)
 
 - **Start:** Previous `DialogueNodeEvent:11:22` (exclusive)
-- **End:** Latest `DialogueNodeEvent:11:22` (inclusive) 
+- **End:** Latest `DialogueNodeEvent:11:22` (inclusive)
 
 ---
 
