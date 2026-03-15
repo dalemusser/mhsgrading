@@ -22,7 +22,7 @@ Finally, if the aggregated score is larger than 2 then the color is green; other
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questActiveEvent:36` (exclusive)
+- **Start:** Previous `questActiveEvent:50` (exclusive)
 - **End:** Latest `questActiveEvent:36` (inclusive)
 
 ---
@@ -110,32 +110,39 @@ color;
 
 ```js
 // Unit 4, Point 4 — Production (replay-safe, latest attempt window)
-// Trigger eventKey: "questActiveEvent:36"
+// Window start: latest "questActiveEvent:50"
+// Window end:   latest "questActiveEvent:36"
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "questActiveEvent:36";
+const WINDOW_START_KEY = "questActiveEvent:50";
+const WINDOW_END_KEY = "questActiveEvent:36";
 
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
-  { sort: { _id: -1 }}
+// 1) Find latest window start
+const latestStart = db.logdata.findOne(
+  {
+    game: "mhs",
+    playerId: playerId,
+    eventKey: WINDOW_START_KEY
+  },
+  { sort: { _id: -1 } }
 );
 
-if (!latestTrigger) {
+// 2) Find latest window end
+const latestEnd = db.logdata.findOne(
+  {
+    game: "mhs",
+    playerId: playerId,
+    eventKey: WINDOW_END_KEY
+  },
+  { sort: { _id: -1 } }
+);
+
+if (!latestStart || !latestEnd || latestEnd._id <= latestStart._id) {
   "yellow";
 } else {
-  const prevTrigger = db.logdata.findOne(
-    {
-      game: "mhs",
-      playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
-    },
-    { sort: { _id: -1 }}
-  );
-
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart._id;
+  const windowEndId = latestEnd._id;
 
   let score = 0;
 
@@ -159,7 +166,7 @@ if (!latestTrigger) {
     _id: { $gt: windowStartId, $lte: windowEndId }
   });
 
-  if (c_m1_top === 1 && c_m1_bottom === 0) {
+  if (c_m1_top === 1 && c_m1_bottom === 1) {
     score += 1;
   }
 

@@ -145,7 +145,7 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
       playerId: playerId,
       eventType: "TerasGardenBox",
       "data.actionType": "cameraPlaced",
-      "data.boxId": "1",
+      "data.boxId": "0",
       _id: { $gt: windowStartId, $lte: windowEndId }
     },
     {
@@ -153,7 +153,7 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
     }
   );
 
-  if (latestBox1 && latestBox1.data && latestBox1.data.soilType === "Gravel") {
+  if (latestBox1 && latestBox1.data && latestBox1.data.soilType === "Clay") {
     score += 1;
   }
 
@@ -164,7 +164,7 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
       playerId: playerId,
       eventType: "TerasGardenBox",
       "data.actionType": "cameraPlaced",
-      "data.boxId": "2",
+      "data.boxId": "1",
       _id: { $gt: windowStartId, $lte: windowEndId }
     },
     {
@@ -183,7 +183,7 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
       playerId: playerId,
       eventType: "TerasGardenBox",
       "data.actionType": "cameraPlaced",
-      "data.boxId": "3",
+      "data.boxId": "2",
       _id: { $gt: windowStartId, $lte: windowEndId }
     },
     {
@@ -191,7 +191,7 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
     }
   );
 
-  if (latestBox3 && latestBox3.data && latestBox3.data.soilType === "Clay") {
+  if (latestBox3 && latestBox3.data && latestBox3.data.soilType === "Gravel") {
     score += 1;
   }
 

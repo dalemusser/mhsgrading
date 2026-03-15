@@ -28,6 +28,7 @@ This progress point is a number-based progress. Firstly, it will check whether t
 | Role | Event Key |
 |------|-----------|
 | Trigger | `questFinishEvent:44` |
+| Target | `DialogueNodeEvent:106:35` |
 | Target | `DialogueNodeEvent:106:4` |
 | Target | `DialogueNodeEvent:106:25` |
 | Target | `DialogueNodeEvent:106:26` |
