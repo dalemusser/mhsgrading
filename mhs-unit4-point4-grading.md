@@ -166,7 +166,7 @@ if (!latestStart || !latestEnd || latestEnd._id <= latestStart._id) {
     _id: { $gt: windowStartId, $lte: windowEndId }
   });
 
-  if (c_m1_top === 1 && c_m1_bottom === 1) {
+  if (c_m1_top === 1 && c_m1_bottom === 0) {
     score += 1;
   }
 
@@ -214,4 +214,22 @@ if (!latestStart || !latestEnd || latestEnd._id <= latestStart._id) {
 
 ## Reason Codes
 
-> Still figuring out the reason codes
+### NO_TRIGGER
+
+**Short Description:** Student has not yet completed the trigger event for this activity.
+
+**Instructor Message:** The student has not yet reached the point in the game where this progress point is evaluated.
+
+**Determination:** The trigger event `questActiveEvent:36` has not been logged.
+
+### SCORE_BELOW_THRESHOLD
+
+**Short Description:** Student needed too many attempts on the floor 5 soil machines and/or dialogue selections.
+
+**Instructor Message:** The student's score was below the expected threshold. The score is based on three components: (1) efficient interaction with the two-layer machine on floor 5 (+1 if top row solved in one attempt with no bottom row interactions), (2) efficient interaction with the one-layer machine on floor 5 (+1 if solved in one attempt), and (3) correct dialogue choices (+2 if correct on first attempt, +1 if correct within two attempts). A score greater than 2 is required.
+
+**Quantities:** `score`
+
+**Determination:** The combined score from soil machine interactions and dialogue choices is 2 or less.
+
+**Teacher Guidance:** Review groundwater concepts with the student, particularly how soil layers interact and how to apply that understanding to identify the correct soil type. Also review the dialogue choices related to drilling and well construction.

@@ -161,4 +161,35 @@ if (!latestTrigger) {
 
 ## Reason Codes
 
-> Still figuring out the reason codes
+### NO_TRIGGER
+
+**Short Description:** Student has not yet completed the trigger event for this activity.
+
+**Instructor Message:** The student has not yet reached the point in the game where this progress point is evaluated.
+
+**Determination:** The trigger event `questActiveEvent:41` has not been logged.
+
+### MISSING_SUCCESS_NODE
+
+**Short Description:** Student did not successfully construct the correct argumentation.
+
+**Instructor Message:** The student did not reach the expected success outcome for the argumentation task. Neither `DialogueNodeEvent:90:50` nor `DialogueNodeEvent:90:57` were found, indicating the student did not successfully construct the correct argument about saving Cadet Anderson.
+
+**Determination:** Neither positive feedback node (`DialogueNodeEvent:90:50`, `90:57`) is present in the attempt window.
+
+**Teacher Guidance:** Review the argumentation task with the student. Discuss how to construct a complete scientific argument with claim, evidence, and reasoning in the context of the rescue scenario.
+
+### TOO_MANY_NEGATIVES
+
+**Short Description:** Student received too many negative feedback responses during the argumentation task.
+
+**Instructor Message:** The student received {negativeCount} negative feedback responses while constructing the argument about saving Cadet Anderson. The threshold for success is 4 or fewer negative responses.
+
+**Quantities:** `negativeCount` — count of negative feedback events
+
+**Determination:** The count of negative feedback nodes (`DialogueNodeEvent:90:25`, `90:37`, `90:39`, `90:45`, `90:47`, `90:52`, `90:54`-`90:61`) exceeds 4 in the attempt window.
+
+**Teacher Guidance:** Review the components of a scientific argument with the student:
+1. Claim: a statement that answers the driving question
+2. Evidence: scientific data and facts that support the claim
+3. Reasoning: explains how or why the evidence supports the claim

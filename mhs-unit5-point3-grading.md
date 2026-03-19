@@ -163,4 +163,22 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
 
 ## Reason Codes
 
-> Still figuring out the reason codes
+### NO_TRIGGER
+
+**Short Description:** Student has not yet completed the trigger event for this activity.
+
+**Instructor Message:** The student has not yet reached the point in the game where this progress point is evaluated.
+
+**Determination:** The trigger event `questFinishEvent:44` has not been logged.
+
+### TOO_MANY_NEGATIVES
+
+**Short Description:** Student made too many incorrect selections during the investigation.
+
+**Instructor Message:** The student made {negativeCount} incorrect selections during the investigation activity. The threshold for success is fewer than 4 incorrect selections.
+
+**Quantities:** `negativeCount` — count of negative dialogue events
+
+**Determination:** The count of negative dialogue nodes (33 target events across `DialogueNodeEvent:108:*`) is 4 or more in the attempt window.
+
+**Teacher Guidance:** Review the investigation process with the student. Discuss how to systematically evaluate evidence and make informed selections rather than guessing.

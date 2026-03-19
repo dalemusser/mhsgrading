@@ -207,4 +207,20 @@ if (!latestTrigger) {
 
 ## Reason Codes
 
-> Still figuring out the reason codes
+### NO_TRIGGER
+
+**Short Description:** Student has not yet completed the trigger event for this activity.
+
+**Instructor Message:** The student has not yet reached the point in the game where this progress point is evaluated.
+
+**Determination:** The trigger event `questActiveEvent:39` has not been logged.
+
+### SCORE_BELOW_THRESHOLD
+
+**Short Description:** Student's combined score from correct choice and puzzle timing was below the threshold.
+
+**Instructor Message:** The student's score was below the expected threshold. The score is based on selecting the correct choice (+0.5) and solving the Soil Key Puzzle efficiently (+1.0 if within 30 seconds, +0.5 if within 90 seconds). A score of at least 1.0 is required.
+
+**Determination:** The combined score from correct choice selection (`DialogueNodeEvent:88:5`) and puzzle completion timing is less than 1.0.
+
+**Teacher Guidance:** Review the soil key concepts with the student. Ensure they understand the relationship between soil types and the puzzle mechanics.

@@ -160,7 +160,7 @@ if (!latestTrigger) {
 
 **Short Description:** Too many attempts to select evidence to support the claim
 
-**Instructor Message:** The student used {attempt_number} to construct the correct argument during the activity of building an argument about which watershed is bigger by supporting a claim with evidence. The threshold for success is to construct the correct argument using equal to or less than 5 attempts.
+**Instructor Message:** The student used {attempt_number} attempts to construct the correct argument during the activity of building an argument about which watershed is bigger by supporting a claim with evidence. The threshold for success is to construct the correct argument using equal to or less than 4 attempts.
 
 **Quantities:** `attempt_number` — count of attempts to construct the correct argument
 

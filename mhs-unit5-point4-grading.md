@@ -1,4 +1,4 @@
-# Unit 5 Point 3 Grading
+# Unit 5 Point 4 Grading
 
 **Activity:** Water Problems Require Water Solutions
 
@@ -179,4 +179,32 @@ if (!latestEnd) {
 
 ## Reason Codes
 
-> Still figuring out the reason codes
+### NO_TRIGGER
+
+**Short Description:** Student has not yet completed the trigger event for this activity.
+
+**Instructor Message:** The student has not yet reached the point in the game where this progress point is evaluated.
+
+**Determination:** The trigger event `questFinishEvent:45` has not been logged.
+
+### MISSING_SUCCESS_NODE
+
+**Short Description:** Student did not figure out the correct water solution plan.
+
+**Instructor Message:** The student did not reach the expected success outcome (`DialogueNodeEvent:106:35`), indicating they did not correctly identify the water solution plan.
+
+**Determination:** The success node `DialogueNodeEvent:106:35` is absent from the attempt window.
+
+**Teacher Guidance:** Review atmospheric water and the water cycle with the student. Discuss how water problems in the game scenario connect to real-world water solutions.
+
+### TOO_MANY_NEGATIVES
+
+**Short Description:** Student made incorrect selections while constructing the water solution.
+
+**Instructor Message:** The student made {negativeCount} incorrect selections during the water solution activity. The threshold for success is zero incorrect selections — the student must select the correct plan without errors.
+
+**Quantities:** `negativeCount` — count of negative dialogue events
+
+**Determination:** Any of the negative dialogue nodes (`DialogueNodeEvent:106:4`, `106:25`-`106:34`) are present in the attempt window. Zero tolerance — any incorrect selection results in yellow.
+
+**Teacher Guidance:** Review the water cycle concepts covered in Unit 5 with the student. Discuss how the evidence gathered throughout the unit should inform the final solution plan.

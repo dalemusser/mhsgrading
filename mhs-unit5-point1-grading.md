@@ -149,4 +149,32 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
 
 ## Reason Codes
 
-> Still figuring out the reason codes
+### NO_TRIGGER
+
+**Short Description:** Student has not yet completed the trigger event for this activity.
+
+**Instructor Message:** The student has not yet reached the point in the game where this progress point is evaluated.
+
+**Determination:** The trigger event `questFinishEvent:43` has not been logged.
+
+### MISSING_SUCCESS_NODE
+
+**Short Description:** Student did not solve the water chamber puzzle on floors 1 and 2.
+
+**Instructor Message:** The student did not reach the expected success outcome (`DialogueNodeEvent:100:44`) for the water chamber puzzle on floors 1 and 2.
+
+**Determination:** The success node `DialogueNodeEvent:100:44` is absent from the attempt window.
+
+**Teacher Guidance:** Review the water chamber puzzle mechanics with the student. Discuss how condensation and evaporation processes work and how to apply that understanding to solve the puzzle.
+
+### TOO_MANY_NEGATIVES
+
+**Short Description:** Student received too many negative feedback responses during the water chamber puzzle.
+
+**Instructor Message:** The student received {negativeCount} negative feedback responses while solving the water chamber puzzle on floors 1 and 2. The threshold for success is 2 or fewer negative responses.
+
+**Quantities:** `negativeCount` — count of negative feedback events
+
+**Determination:** The count of negative feedback nodes (`DialogueNodeEvent:100:38`, `100:39`, `100:43`) exceeds 2 in the attempt window.
+
+**Teacher Guidance:** Review condensation and evaporation with the student. Discuss how water moves between different states and how these processes relate to the puzzle solutions.

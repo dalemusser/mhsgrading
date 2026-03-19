@@ -149,4 +149,30 @@ if (!latestTrigger) {
 
 ## Reason Codes
 
-> Still figuring out the reason codes
+### NO_TRIGGER
+
+**Short Description:** Student has not yet completed the trigger event for this activity.
+
+**Instructor Message:** The student has not yet reached the point in the game where this progress point is evaluated.
+
+**Determination:** The trigger event `questActiveEvent:48` has not been logged.
+
+### MISSING_SUCCESS_NODE
+
+**Short Description:** Student did not complete the infiltration glyph puzzle independently.
+
+**Instructor Message:** The student did not reach the expected success outcome (`DialogueNodeEvent:88:11`) for the infiltration glyph matching puzzle. This indicates the student may not have completed the puzzle on their own.
+
+**Determination:** The success node `DialogueNodeEvent:88:11` is absent from the attempt window.
+
+**Teacher Guidance:** Review the glyph puzzle mechanics with the student. Ensure they understand how to match the patterns independently.
+
+### TOO_MANY_NEGATIVES
+
+**Short Description:** Student received negative feedback indicating too many puzzle attempts.
+
+**Instructor Message:** The student received corrective feedback during the infiltration glyph puzzle, indicating they needed more than 2 attempts to figure out the correct matches.
+
+**Determination:** Any of the negative feedback nodes (`DialogueNodeEvent:102:9`, `102:10`, `102:12`, `102:18`, `102:23`) are present in the attempt window.
+
+**Teacher Guidance:** Review the matching puzzle strategy with the student. Discuss how to use the visual clues to identify correct matches more efficiently.

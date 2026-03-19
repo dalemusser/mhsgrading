@@ -9,7 +9,7 @@
 
 ## Grading Rule
 
-This is a score-based progress point. There are three garden boxes, each time when the player places the camera on the correct soil type then the score will add one. In the first box, if the latest camera placement is gravel, then the score add one; In the second box, if the latest camera placement is sand, then the score add another one; In the third box, if the latest camera placement is clay, then the score further add one. If the score is equal to or larger than 2, then the color turns to green; otherwise the color returns yellow.
+This is a score-based progress point. There are three garden boxes, each time when the player places the camera on the correct soil type then the score will add one. In box 0, if the latest camera placement is gravel, then the score adds one; in box 1, if the latest camera placement is sand, then the score adds another one; in box 2, if the latest camera placement is clay, then the score further adds one. If the score is equal to or larger than 2, then the color turns to green; otherwise the color returns yellow.
 
 | Outcome | Condition |
 |---------|-----------|
@@ -42,6 +42,23 @@ const playerId = "<playerId>";
 
 let score = 0;
 
+// Latest placement for Box 0
+const latestBox0 = db.logdata.findOne(
+  {
+    playerId: playerId,
+    eventType: "TerasGardenBox",
+    "data.actionType": "cameraPlaced",
+    "data.boxId": "0"
+  },
+  {
+    sort: { _id: -1 }
+  }
+);
+
+if (latestBox0 && latestBox0.data && latestBox0.data.soilType === "Gravel") {
+  score += 1;
+}
+
 // Latest placement for Box 1
 const latestBox1 = db.logdata.findOne(
   {
@@ -55,7 +72,7 @@ const latestBox1 = db.logdata.findOne(
   }
 );
 
-if (latestBox1 && latestBox1.data && latestBox1.data.soilType === "Gravel") {
+if (latestBox1 && latestBox1.data && latestBox1.data.soilType === "Sand") {
   score += 1;
 }
 
@@ -72,24 +89,7 @@ const latestBox2 = db.logdata.findOne(
   }
 );
 
-if (latestBox2 && latestBox2.data && latestBox2.data.soilType === "Sand") {
-  score += 1;
-}
-
-// Latest placement for Box 3
-const latestBox3 = db.logdata.findOne(
-  {
-    playerId: playerId,
-    eventType: "TerasGardenBox",
-    "data.actionType": "cameraPlaced",
-    "data.boxId": "3"
-  },
-  {
-    sort: { _id: -1 }
-  }
-);
-
-if (latestBox3 && latestBox3.data && latestBox3.data.soilType === "Clay") {
+if (latestBox2 && latestBox2.data && latestBox2.data.soilType === "Clay") {
   score += 1;
 }
 
@@ -153,11 +153,11 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
     }
   );
 
-  if (latestBox1 && latestBox1.data && latestBox1.data.soilType === "Clay") {
+  if (latestBox1 && latestBox1.data && latestBox1.data.soilType === "Gravel") {
     score += 1;
   }
 
-  // Latest placement for Box 2 within window
+  // Latest placement for Box 1 within window
   const latestBox2 = db.logdata.findOne(
     {
       game: "mhs",
@@ -176,7 +176,7 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
     score += 1;
   }
 
-  // Latest placement for Box 3 within window
+  // Latest placement for Box 2 within window
   const latestBox3 = db.logdata.findOne(
     {
       game: "mhs",
@@ -191,7 +191,7 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
     }
   );
 
-  if (latestBox3 && latestBox3.data && latestBox3.data.soilType === "Gravel") {
+  if (latestBox3 && latestBox3.data && latestBox3.data.soilType === "Clay") {
     score += 1;
   }
 
@@ -203,4 +203,22 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
 
 ## Reason Codes
 
-> Still figuring out the reason codes
+### NO_TRIGGER
+
+**Short Description:** Student has not yet completed the trigger event for this activity.
+
+**Instructor Message:** The student has not yet reached the point in the game where this progress point is evaluated.
+
+**Determination:** The trigger event `questFinishEvent:56` has not been logged.
+
+### SCORE_BELOW_THRESHOLD
+
+**Short Description:** Student placed incorrect soil types in the garden boxes.
+
+**Instructor Message:** The student placed the correct soil type in {score} out of 3 garden boxes. The threshold for success is at least 2 out of 3 correct placements.
+
+**Quantities:** `score`, `details` (e.g., "1/3 correct")
+
+**Determination:** The count of garden boxes with the correct latest soil placement is less than 2. Expected placements: Box 0 = Gravel, Box 1 = Sand, Box 2 = Clay.
+
+**Teacher Guidance:** Review soil types and their water-holding properties with the student. Discuss which soil types are best suited for different plants based on water retention characteristics.

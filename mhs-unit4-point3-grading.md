@@ -150,4 +150,22 @@ if (!latestTrigger) {
 
 ## Reason Codes
 
-> Still figuring out the reason codes
+### NO_TRIGGER
+
+**Short Description:** Student has not yet completed the trigger event for this activity.
+
+**Instructor Message:** The student has not yet reached the point in the game where this progress point is evaluated.
+
+**Determination:** The trigger event `questActiveEvent:50` has not been logged.
+
+### SCORE_BELOW_THRESHOLD
+
+**Short Description:** Student needed too many attempts on the soil machines on floors 3 and 4.
+
+**Instructor Message:** The student's score was below the expected threshold. The score is based on efficient interaction with the soil machines: floor 3 awards +1 if solved on the first attempt, floor 4 awards +2 if solved on the first attempt or +1 if solved in two attempts. A score greater than 1 is required.
+
+**Quantities:** `score`, `floor3_attempts`, `floor4_attempts`
+
+**Determination:** The combined score from floor 3 and floor 4 soil machine interactions is 1 or less.
+
+**Teacher Guidance:** Review groundwater and soil layer concepts with the student. Discuss how different soil types affect water flow and how to use that knowledge to select the correct soil type efficiently.
