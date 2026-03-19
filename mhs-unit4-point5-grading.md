@@ -82,7 +82,7 @@ if (!has_trigger) {
     eventKey: { $in: NEG_KEYS }
   });
 
-  color = (cnt > 4) ? "yellow" : "green";
+  color = (cnt >= 3) ? "yellow" : "green";
 }
 
 color;
@@ -152,7 +152,7 @@ if (!latestTrigger) {
       _id: { $gt: windowStartId, $lte: windowEndId }
     });
 
-    cnt > 4 ? "yellow" : "green";
+    cnt >= 3 ? "yellow" : "green";
   }
 }
 ```

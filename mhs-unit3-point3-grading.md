@@ -41,7 +41,7 @@ Player must have a log entry with:
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questFinishEvent:18` (exclusive)
+- **Start:** Previous `DialogueNodeEvent:11:34` (exclusive)
 - **End:** Latest `questFinishEvent:18` (inclusive)
 
 ---
