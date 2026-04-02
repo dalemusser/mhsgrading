@@ -55,7 +55,7 @@ Player must have a log entry with:
 **Target Keys (incorrect argument selections):**
 
 <details>
-<summary>Full list (16 keys)</summary>
+<summary>Full list (18 keys)</summary>
 
 - `DialogueNodeEvent:84:20`
 - `DialogueNodeEvent:84:25`
@@ -63,7 +63,9 @@ Player must have a log entry with:
 - `DialogueNodeEvent:84:33`
 - `DialogueNodeEvent:84:34`
 - `DialogueNodeEvent:84:35`
+- `DialogueNodeEvent:84:36`
 - `DialogueNodeEvent:84:37`
+- `DialogueNodeEvent:84:38`
 - `DialogueNodeEvent:84:39`
 - `DialogueNodeEvent:84:40`
 - `DialogueNodeEvent:84:41`
@@ -96,10 +98,10 @@ const playerId = "<playerId>";
 const TARGET_KEYS = [
   "DialogueNodeEvent:84:20", "DialogueNodeEvent:84:25", "DialogueNodeEvent:84:32",
   "DialogueNodeEvent:84:33", "DialogueNodeEvent:84:34", "DialogueNodeEvent:84:35",
-  "DialogueNodeEvent:84:37", "DialogueNodeEvent:84:39", "DialogueNodeEvent:84:40",
-  "DialogueNodeEvent:84:41", "DialogueNodeEvent:84:42", "DialogueNodeEvent:84:43",
-  "DialogueNodeEvent:84:44", "DialogueNodeEvent:84:45", "DialogueNodeEvent:84:46",
-  "DialogueNodeEvent:84:47"
+  "DialogueNodeEvent:84:36", "DialogueNodeEvent:84:37", "DialogueNodeEvent:84:38",
+  "DialogueNodeEvent:84:39", "DialogueNodeEvent:84:40", "DialogueNodeEvent:84:41",
+  "DialogueNodeEvent:84:42", "DialogueNodeEvent:84:43", "DialogueNodeEvent:84:44",
+  "DialogueNodeEvent:84:45", "DialogueNodeEvent:84:46", "DialogueNodeEvent:84:47"
 ];
 
 const sumCount = db.logdata.countDocuments({
@@ -141,10 +143,10 @@ const TRIGGER_KEY = "questFinishEvent:18";
 const TARGET_KEYS = [
   "DialogueNodeEvent:84:20", "DialogueNodeEvent:84:25", "DialogueNodeEvent:84:32",
   "DialogueNodeEvent:84:33", "DialogueNodeEvent:84:34", "DialogueNodeEvent:84:35",
-  "DialogueNodeEvent:84:37", "DialogueNodeEvent:84:39", "DialogueNodeEvent:84:40",
-  "DialogueNodeEvent:84:41", "DialogueNodeEvent:84:42", "DialogueNodeEvent:84:43",
-  "DialogueNodeEvent:84:44", "DialogueNodeEvent:84:45", "DialogueNodeEvent:84:46",
-  "DialogueNodeEvent:84:47"
+  "DialogueNodeEvent:84:36", "DialogueNodeEvent:84:37", "DialogueNodeEvent:84:38",
+  "DialogueNodeEvent:84:39", "DialogueNodeEvent:84:40", "DialogueNodeEvent:84:41",
+  "DialogueNodeEvent:84:42", "DialogueNodeEvent:84:43", "DialogueNodeEvent:84:44",
+  "DialogueNodeEvent:84:45", "DialogueNodeEvent:84:46", "DialogueNodeEvent:84:47"
 ];
 
 // 1) Latest trigger (end anchor)
@@ -254,10 +256,10 @@ has_backing_info
 WRONG_ARGUMENT_KEYS = [
     "DialogueNodeEvent:84:20", "DialogueNodeEvent:84:25", "DialogueNodeEvent:84:32",
     "DialogueNodeEvent:84:33", "DialogueNodeEvent:84:34", "DialogueNodeEvent:84:35",
-    "DialogueNodeEvent:84:37", "DialogueNodeEvent:84:39", "DialogueNodeEvent:84:40",
-    "DialogueNodeEvent:84:41", "DialogueNodeEvent:84:42", "DialogueNodeEvent:84:43",
-    "DialogueNodeEvent:84:44", "DialogueNodeEvent:84:45", "DialogueNodeEvent:84:46",
-    "DialogueNodeEvent:84:47"
+    "DialogueNodeEvent:84:36", "DialogueNodeEvent:84:37", "DialogueNodeEvent:84:38",
+    "DialogueNodeEvent:84:39", "DialogueNodeEvent:84:40", "DialogueNodeEvent:84:41",
+    "DialogueNodeEvent:84:42", "DialogueNodeEvent:84:43", "DialogueNodeEvent:84:44",
+    "DialogueNodeEvent:84:45", "DialogueNodeEvent:84:46", "DialogueNodeEvent:84:47"
 ]
 
 wrong_argument_count = coll.count_documents({
@@ -295,10 +297,10 @@ const playerId = "<playerId>";
 const WRONG_ARGUMENT_KEYS = [
   "DialogueNodeEvent:84:20", "DialogueNodeEvent:84:25", "DialogueNodeEvent:84:32",
   "DialogueNodeEvent:84:33", "DialogueNodeEvent:84:34", "DialogueNodeEvent:84:35",
-  "DialogueNodeEvent:84:37", "DialogueNodeEvent:84:39", "DialogueNodeEvent:84:40",
-  "DialogueNodeEvent:84:41", "DialogueNodeEvent:84:42", "DialogueNodeEvent:84:43",
-  "DialogueNodeEvent:84:44", "DialogueNodeEvent:84:45", "DialogueNodeEvent:84:46",
-  "DialogueNodeEvent:84:47"
+  "DialogueNodeEvent:84:36", "DialogueNodeEvent:84:37", "DialogueNodeEvent:84:38",
+  "DialogueNodeEvent:84:39", "DialogueNodeEvent:84:40", "DialogueNodeEvent:84:41",
+  "DialogueNodeEvent:84:42", "DialogueNodeEvent:84:43", "DialogueNodeEvent:84:44",
+  "DialogueNodeEvent:84:45", "DialogueNodeEvent:84:46", "DialogueNodeEvent:84:47"
 ];
 
 const wrong_argument_count = db.logdata.countDocuments({
@@ -368,10 +370,10 @@ const TRIGGER_KEY = "questFinishEvent:18";
 const WRONG_ARGUMENT_KEYS = [
   "DialogueNodeEvent:84:20", "DialogueNodeEvent:84:25", "DialogueNodeEvent:84:32",
   "DialogueNodeEvent:84:33", "DialogueNodeEvent:84:34", "DialogueNodeEvent:84:35",
-  "DialogueNodeEvent:84:37", "DialogueNodeEvent:84:39", "DialogueNodeEvent:84:40",
-  "DialogueNodeEvent:84:41", "DialogueNodeEvent:84:42", "DialogueNodeEvent:84:43",
-  "DialogueNodeEvent:84:44", "DialogueNodeEvent:84:45", "DialogueNodeEvent:84:46",
-  "DialogueNodeEvent:84:47"
+  "DialogueNodeEvent:84:36", "DialogueNodeEvent:84:37", "DialogueNodeEvent:84:38",
+  "DialogueNodeEvent:84:39", "DialogueNodeEvent:84:40", "DialogueNodeEvent:84:41",
+  "DialogueNodeEvent:84:42", "DialogueNodeEvent:84:43", "DialogueNodeEvent:84:44",
+  "DialogueNodeEvent:84:45", "DialogueNodeEvent:84:46", "DialogueNodeEvent:84:47"
 ];
 
 const latestTrigger = db.logdata.findOne(

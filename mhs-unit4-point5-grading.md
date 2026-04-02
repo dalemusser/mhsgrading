@@ -183,11 +183,11 @@ if (!latestTrigger) {
 
 **Short Description:** Student received too many negative feedback responses during the argumentation task.
 
-**Instructor Message:** The student received {negativeCount} negative feedback responses while constructing the argument about saving Cadet Anderson. The threshold for success is 4 or fewer negative responses.
+**Instructor Message:** The student received {negativeCount} negative feedback responses while constructing the argument about saving Cadet Anderson. The threshold for success is fewer than 4 negative responses.
 
 **Quantities:** `negativeCount` — count of negative feedback events
 
-**Determination:** The count of negative feedback nodes (`DialogueNodeEvent:90:25`, `90:37`, `90:39`, `90:45`, `90:47`, `90:52`, `90:54`-`90:61`) exceeds 4 in the attempt window.
+**Determination:** The count of negative feedback nodes (`DialogueNodeEvent:90:25`, `90:37`, `90:39`, `90:45`, `90:47`, `90:52`, `90:54`-`90:61`) is 4 or more in the attempt window.
 
 **Teacher Guidance:** Review the components of a scientific argument with the student:
 1. Claim: a statement that answers the driving question

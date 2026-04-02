@@ -51,7 +51,7 @@ The Go code includes **18 target keys** — a contiguous range from `84:32` thro
 | `DialogueNodeEvent:84:36` | No | Yes |
 | `DialogueNodeEvent:84:38` | No | Yes |
 
-**Action Required:** Determine whether `84:36` and `84:38` are incorrect argument selections (should be counted) or correct/neutral nodes (should not be counted). If the doc is correct, remove them from the Go code. If the code is correct, add them to the doc.
+**Resolution:** Per dialogue document review: `84:36` is positive feedback and `84:38` has no feedback. Neither is negative feedback, but both are included in the code's target key count. The code is kept as-is (18 keys). Documentation updated to match the code.
 
 ---
 
@@ -108,9 +108,7 @@ The Go code and analytics script both use `negCount > 4` (yellow if > 4), meanin
 
 **The code allows 4 negatives and still passes; the doc text says 4 negatives should fail.**
 
-**Action Required:** Clarify the correct threshold. Either:
-- Update the doc to say "less than or equal to 4" / "larger than 4" (matching code), OR
-- Update the code to `negCount >= 4` (matching the doc description)
+**Resolution:** Per embedded assessment document review, the doc description is correct: green requires strictly fewer than 4 negatives. Code updated to `negCount >= 4`, and doc scripts updated from `> 4` to `>= 4` to match.
 
 ---
 
@@ -209,10 +207,10 @@ The MHS Dashboard `reasonCodeToMessage` map in `stratahub/internal/app/features/
 | Priority | Count | Description | Status |
 |----------|-------|-------------|--------|
 | Critical | 1 | U4P6 Box ID mismatch | **Fixed** |
-| Critical | 1 | U3P3 extra target keys (84:36, 84:38) | **Needs input** |
+| Critical | 1 | U3P3 extra target keys (84:36, 84:38) | **Fixed** |
 | Critical | 1 | U3P3 missing MISSING_SUCCESS_NODE in code | **Fixed** |
 | Critical | 1 | U4P4 production script bug in doc | **Fixed** |
-| Threshold | 1 | U4P5 boundary condition (< 4 vs <= 4) | **Needs input** |
+| Threshold | 1 | U4P5 boundary condition (< 4 vs <= 4) | **Fixed** |
 | Threshold | 1 | U2P7 attempt_number off-by-one | **Fixed** |
 | Documentation | 1 | U5P4 title error | **Fixed** |
 | Documentation | 1 | 10 files missing reason codes | **Fixed** |
