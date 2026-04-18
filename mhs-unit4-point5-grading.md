@@ -20,7 +20,7 @@ If there is no correct feedback then the color is yellow, or the negative feedba
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questActiveEvent:41` (exclusive)
+- **Start:** Previous `questActiveEvent:36` (exclusive)
 - **End:** Latest `questActiveEvent:41` (inclusive)
 
 ---
