@@ -18,7 +18,7 @@ Student must complete the map-profile matching independently and without excessi
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questFinishEvent:21` (exclusive)
+- **Start:** Previous `DialogueNodeEvent:18:1` (exclusive)
 - **End:** Latest `questFinishEvent:21` (inclusive)
 
 ---

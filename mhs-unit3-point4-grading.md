@@ -2,7 +2,7 @@
 
 **Activity:** Forsaken Facility
 
-**Trigger(Start) Event:** `questFinishEvent:18`
+**Trigger(Start) Event:** `questActiveEvent:18`
 **Trigger(End) Event:** `DialogueNodeEvent:73:200`
 
 ---
@@ -26,7 +26,7 @@ Gate + score-based rule. First, the student must have the gate event (78:24). Th
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `DialogueNodeEvent:73:200` (exclusive)
+- **Start:** Previous `questActiveEvent:18` (exclusive)
 - **End:** Latest `DialogueNodeEvent:73:200` (inclusive)
 
 ---
@@ -93,7 +93,9 @@ if (!has7824) {
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "DialogueNodeEvent:73:200";
+const START_KEY = "questActiveEvent:18";
+const END_KEY = "DialogueNodeEvent:73:200";
+const GATE_KEY = "DialogueNodeEvent:78:24";
 
 const TARGET_KEYS = [
   "DialogueNodeEvent:78:3", "DialogueNodeEvent:78:4", "DialogueNodeEvent:78:7",
@@ -101,56 +103,58 @@ const TARGET_KEYS = [
   "DialogueNodeEvent:78:18", "DialogueNodeEvent:78:23"
 ];
 
-// 1) Latest trigger (end anchor)
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Latest start anchor
+const latestStart = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: START_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!latestTrigger) {
+// 2) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
+  { sort: { _id: -1 } }
+);
+
+// Must have both anchors
+if (!latestStart || !latestEnd) {
   "yellow";
 } else {
-  // 2) Previous trigger (attempt boundary)
-  const prevTrigger = db.logdata.findOne(
-    {
-      game: "mhs",
-      playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
-    },
-    { sort: { _id: -1 } }
-  );
-
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
-
-  // Gate: must have 78:24 within attempt window
-  const has7824 =
-    db.logdata.findOne(
-      {
-        game: "mhs",
-        playerId: playerId,
-        eventKey: "DialogueNodeEvent:78:24",
-        _id: { $gt: windowStartId, $lte: windowEndId }
-      },
-      { projection: { _id: 1 } }
-    ) !== null;
-
-  if (!has7824) {
+  // End must happen after start
+  if (latestEnd._id <= latestStart._id) {
     "yellow";
   } else {
-    const totalCount = db.logdata.countDocuments({
-      game: "mhs", playerId: playerId,
-      eventKey: { $in: TARGET_KEYS },
-      _id: { $gt: windowStartId, $lte: windowEndId }
-    });
+    const windowStartId = latestStart._id;
+    const windowEndId = latestEnd._id;
 
-    let score;
-    if (totalCount === 0) score = 2;
-    else if (totalCount <= 2) score = 1;
-    else score = 0;
+    // Gate: must have 78:24 within (start, end]
+    const has7824 =
+      db.logdata.findOne(
+        {
+          game: "mhs",
+          playerId: playerId,
+          eventKey: GATE_KEY,
+          _id: { $gt: windowStartId, $lte: windowEndId }
+        },
+        { projection: { _id: 1 } }
+      ) !== null;
 
-    score === 0 ? "yellow" : "green";
+    if (!has7824) {
+      "yellow";
+    } else {
+      const totalCount = db.logdata.countDocuments({
+        game: "mhs",
+        playerId: playerId,
+        eventKey: { $in: TARGET_KEYS },
+        _id: { $gt: windowStartId, $lte: windowEndId }
+      });
+
+      let score;
+      if (totalCount === 0) score = 2;
+      else if (totalCount <= 2) score = 1;
+      else score = 0;
+
+      score === 0 ? "yellow" : "green";
+    }
   }
 }
 ```

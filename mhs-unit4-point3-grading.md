@@ -20,7 +20,7 @@ For the forth floor, if the player interacts with the machine once to figure the
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questActiveEvent:50` (exclusive)
+- **Start:** Previous `questActiveEvent:48` (exclusive)
 - **End:** Latest `questActiveEvent:50` (inclusive)
 
 ---

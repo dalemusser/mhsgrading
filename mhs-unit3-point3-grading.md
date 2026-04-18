@@ -3,7 +3,7 @@
 **Activity:** Pollution Argument
 
 **Trigger(Start) Event:** `DialogueNodeEvent:11:34`
-**Trigger(End) Event:** `questFinishEvent:18`
+**Trigger(End) Event:** `questActiveEvent:18`
 
 ---
 
@@ -50,7 +50,7 @@ Player must have a log entry with:
 
 | Role | Event Key |
 |------|-----------|
-| Trigger | `questFinishEvent:18` |
+| Trigger | `questActiveEvent:18` |
 
 **Target Keys (incorrect argument selections):**
 
@@ -138,7 +138,7 @@ color;
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "questFinishEvent:18";
+const TRIGGER_KEY = "questActiveEvent:18";
 
 const TARGET_KEYS = [
   "DialogueNodeEvent:84:20", "DialogueNodeEvent:84:25", "DialogueNodeEvent:84:32",
@@ -319,7 +319,7 @@ wrong_argument_count;
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "questFinishEvent:18";
+const TRIGGER_KEY = "questActiveEvent:18";
 
 const latestTrigger = db.logdata.findOne(
   { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
@@ -365,7 +365,7 @@ has_backing_info;
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "questFinishEvent:18";
+const TRIGGER_KEY = "questActiveEvent:18";
 
 const WRONG_ARGUMENT_KEYS = [
   "DialogueNodeEvent:84:20", "DialogueNodeEvent:84:25", "DialogueNodeEvent:84:32",

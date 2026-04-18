@@ -55,7 +55,7 @@ const latestBox0 = db.logdata.findOne(
   }
 );
 
-if (latestBox0 && latestBox0.data && latestBox0.data.soilType === "Gravel") {
+if (latestBox0 && latestBox0.data && latestBox0.data.soilType === "Clay") {
   score += 1;
 }
 
@@ -89,7 +89,7 @@ const latestBox2 = db.logdata.findOne(
   }
 );
 
-if (latestBox2 && latestBox2.data && latestBox2.data.soilType === "Clay") {
+if (latestBox2 && latestBox2.data && latestBox2.data.soilType === "Gravel") {
   score += 1;
 }
 
@@ -153,7 +153,7 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
     }
   );
 
-  if (latestBox1 && latestBox1.data && latestBox1.data.soilType === "Gravel") {
+  if (latestBox1 && latestBox1.data && latestBox1.data.soilType === "Clay") {
     score += 1;
   }
 
@@ -191,7 +191,7 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
     }
   );
 
-  if (latestBox3 && latestBox3.data && latestBox3.data.soilType === "Clay") {
+  if (latestBox3 && latestBox3.data && latestBox3.data.soilType === "Gravel") {
     score += 1;
   }
 

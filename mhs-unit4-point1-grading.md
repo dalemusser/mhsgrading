@@ -1,9 +1,9 @@
 # Unit 4 Point 1 Grading
 
-**Activity:** Well Wishes
+**Activity:** Well What Have We Here?: Water Table Basics
 
 **Trigger(Start) Event:** `DialogueNodeEvent:88:0`
-**Trigger(End) Event:** `questActiveEvent:39`
+**Trigger(End) Event:** `DialogueNodeEvent:88:10`
 
 ---
 
@@ -20,8 +20,8 @@ If the time duration less than 90 seconds and larger than 30 seconds then the sc
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questActiveEvent:39` (exclusive)
-- **End:** Latest `questActiveEvent:39` (inclusive)
+- **Start:** Previous `DialogueNodeEvent:88:0` (exclusive)
+- **End:** Latest `DialogueNodeEvent:88:10` (inclusive)
 
 ---
 
@@ -29,7 +29,7 @@ If the time duration less than 90 seconds and larger than 30 seconds then the sc
 
 | Role | Event Key |
 |------|-----------|
-| Trigger | `questActiveEvent:39` |
+| Trigger | `DialogueNodeEvent:88:10` |
 | Target | `DialogueNodeEvent:88:5` |
 | Target | soil key puzzle |
 
@@ -112,35 +112,35 @@ color;
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "questActiveEvent:39";
+const START_KEY = "DialogueNodeEvent:88:0";
+const END_KEY = "DialogueNodeEvent:88:10";
 const CORRECT_KEY = "DialogueNodeEvent:88:5";
 
 const EVENT_TYPE = "Soil Key Puzzle";
 const START_STATUS = "Started";
 const END_STATUS = "Finished";
 
-// 1) Latest trigger (end anchor)
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Most recent start anchor
+const latestStart = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: START_KEY },
   { sort: { _id: -1 }, projection: { _id: 1 } }
 );
 
-if (!latestTrigger) {
+// 2) Most recent end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
+  { sort: { _id: -1 }, projection: { _id: 1 } }
+);
+
+// Must have both anchors
+if (!latestStart || !latestEnd) {
+  "yellow";
+} else if (latestEnd._id <= latestStart._id) {
+  // End must happen after start
   "yellow";
 } else {
-  // 2) Previous trigger (attempt boundary)
-  const prevTrigger = db.logdata.findOne(
-    {
-      game: "mhs",
-      playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
-    },
-    { sort: { _id: -1 }}
-  );
-
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart._id;
+  const windowEndId = latestEnd._id;
 
   let score = 0.0;
 
@@ -152,7 +152,8 @@ if (!latestTrigger) {
         playerId: playerId,
         eventKey: CORRECT_KEY,
         _id: { $gt: windowStartId, $lte: windowEndId }
-      }
+      },
+      { projection: { _id: 1 } }
     ) !== null;
 
   if (has8805) score += 0.5;
@@ -181,12 +182,13 @@ if (!latestTrigger) {
         "data.Soil Key Puzzle Status": END_STATUS,
         _id: { $gt: startDoc._id, $lte: windowEndId }
       },
-      { sort: { _id: 1 }, projection: { serverTimestamp: 1 } }
+      { sort: { _id: 1 }, projection: { serverTimestamp: 1, _id: 1 } }
     );
 
     if (endDoc && endDoc.serverTimestamp) {
       const startMs = new Date(startDoc.serverTimestamp).getTime();
       const endMs = new Date(endDoc.serverTimestamp).getTime();
+
       if (!Number.isNaN(startMs) && !Number.isNaN(endMs)) {
         durationSeconds = (endMs - startMs) / 1000.0;
       }

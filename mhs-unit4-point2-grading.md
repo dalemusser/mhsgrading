@@ -2,7 +2,7 @@
 
 **Activity:** Infiltration Glyph + Alien Well Floors 1 & 2
 
-**Trigger(Start) Event:** `questActiveEvent:39`
+**Trigger(Start) Event:** `DialogueNodeEvent:88:10`
 **Trigger(End) Event:** `questActiveEvent:48`
 
 ---
@@ -20,7 +20,7 @@ Another check is to see whether the player figured out the correct matches by th
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questActiveEvent:48` (exclusive)
+- **Start:** Previous `DialogueNodeEvent:88:10` (exclusive)
 - **End:** Latest `questActiveEvent:48` (inclusive)
 
 ---
