@@ -68,7 +68,7 @@ const c_m1_bottom = db.logdata.countDocuments({
   "data.row": "BottomRow"
 });
 
-if (c_m1_top === 1 && c_m1_bottom === 0) {
+if (c_m1_top === 1 && c_m1_bottom === 1) {
   score += 1;
 }
 
@@ -96,9 +96,9 @@ const neg_total = db.logdata.countDocuments({
   eventKey: { $in: NEG_KEYS }
 });
 
-if (success_total === 1 && neg_total === 0) {
+if (success_total > 0 && neg_total === 0) {
   score += 2;
-} else if (success_total === 1 && neg_total === 1) {
+} else if (success_total > 0 && neg_total === 1) {
   score += 1;
 }
 
@@ -166,7 +166,7 @@ if (!latestStart || !latestEnd || latestEnd._id <= latestStart._id) {
     _id: { $gt: windowStartId, $lte: windowEndId }
   });
 
-  if (c_m1_top === 1 && c_m1_bottom === 0) {
+  if (c_m1_top === 1 && c_m1_bottom === 1) {
     score += 1;
   }
 
@@ -200,9 +200,9 @@ if (!latestStart || !latestEnd || latestEnd._id <= latestStart._id) {
     _id: { $gt: windowStartId, $lte: windowEndId }
   });
 
-  if (success_total === 1 && neg_total === 0) {
+  if (success_total > 0 && neg_total === 0) {
     score += 2;
-  } else if (success_total === 1 && neg_total === 1) {
+  } else if (success_total > 0 && neg_total === 1) {
     score += 1;
   }
 
