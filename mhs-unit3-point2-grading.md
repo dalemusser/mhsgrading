@@ -38,7 +38,7 @@ Where `capped_penalty(cnt)`:
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `DialogueNodeEvent:11:34` (exclusive)
+- **Start:** Previous `questFinishEvent:17` (exclusive)
 - **End:** Latest `DialogueNodeEvent:11:34` (inclusive)
 
 ---

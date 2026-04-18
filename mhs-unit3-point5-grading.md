@@ -29,7 +29,7 @@ sum_score = pos_score - neg_score
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `DialogueNodeEvent:10:194` (exclusive)
+- **Start:** Previous `DialogueNodeEvent:73:200` (exclusive)
 - **End:** Latest `DialogueNodeEvent:10:194` (inclusive)
 
 ---
