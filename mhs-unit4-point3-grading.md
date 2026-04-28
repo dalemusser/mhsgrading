@@ -160,12 +160,32 @@ if (!latestTrigger) {
 
 ### SCORE_BELOW_THRESHOLD
 
-**Short Description:** Student needed too many attempts on the soil machines on floors 3 and 4.
-
-**Instructor Message:** The student's score was below the expected threshold. The score is based on efficient interaction with the soil machines: floor 3 awards +1 if solved on the first attempt, floor 4 awards +2 if solved on the first attempt or +1 if solved in two attempts. A score greater than 1 is required.
-
 **Quantities:** `score`, `floor3_attempts`, `floor4_attempts`
 
 **Determination:** The combined score from floor 3 and floor 4 soil machine interactions is 1 or less.
 
-**Teacher Guidance:** Review groundwater and soil layer concepts with the student. Discuss how different soil types affect water flow and how to use that knowledge to select the correct soil type efficiently.
+#### TOO_MANY_ATTEMPTS_3
+
+**Short Description:** The student interacted with the soil-type machines within the dungeon on the third floor too many times.
+
+**Instructor Message:** The optimal interaction number is only one interaction. So, if the student interacted only one time for the machine the score will gain 1; If the student interacted with the machine more than once, then the score will not gain. Since the student interacted with the soil-type machines for {attempt_number}, which is more than the optimal attempt, they cannot gain the full score for this floor.
+
+**Determination:** Wether the machine interaction time on the third floor, `floor3_attempts`, is more than once.
+
+**Teacher Guidance:** Remind students that water moves through different soils at different rates. Water will move fastest through sand, and slowest through clay. Water moves through sand at a slower rate than gravel and a faster rate than clay.
+
+#### TOO_MANY_ATTEMPTS_4
+
+**Short Description:** The student interacted with the soil-type machines within the dungeon on the fourth floor too many times.
+
+**Instructor Message:** The optimal interaction number is only one interaction. So, if the student interacted only one time for the machine the score will further gain 2; If the student interacted with the machine twice, then the score will further gain 1; otherwise the score for this floor is 0. Since the student interacted with the soil-type machines for {attempt_number}, which is more than the optimal attempt, they cannot gain the full score for this floor.
+
+**Determination:** Wether the machine interaction time on the fourth floor, `floor4_attempts`, is more than once.
+
+**Teacher Guidance:** Remind students that water moves through different soils at different rates. Water will move fastest through sand, and slowest through clay. Water moves through sand at a slower rate than gravel and a faster rate than clay.
+
+#### Analytics-Matching Script (MongoDB/JS)
+
+
+
+

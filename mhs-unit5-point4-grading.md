@@ -195,9 +195,9 @@ if (!latestEnd) {
 
 **Determination:** The success node `DialogueNodeEvent:106:35` is absent from the attempt window.
 
-**Teacher Guidance:** Review atmospheric water and the water cycle with the student. Discuss how water problems in the game scenario connect to real-world water solutions.
+**Teacher Guidance:** Review the water cycle with students focusing on connection between evaporation and condensation. Have students work through Unit 5 followup activity.
 
-### TOO_MANY_NEGATIVES
+### BAD_FEEDBACK
 
 **Short Description:** Student made incorrect selections while constructing the water solution.
 
@@ -205,6 +205,8 @@ if (!latestEnd) {
 
 **Quantities:** `negativeCount` — count of negative dialogue events
 
-**Determination:** Any of the negative dialogue nodes (`DialogueNodeEvent:106:4`, `106:25`-`106:34`) are present in the attempt window. Zero tolerance — any incorrect selection results in yellow.
+**Determination:** Any of the negative dialogue nodes (`DialogueNodeEvent:106:4`,`DialogueNodeEvent:106:25`,`DialogueNodeEvent:106:26`,`DialogueNodeEvent:106:27`,`DialogueNodeEvent:106:28`,`DialogueNodeEvent:106:29`,`DialogueNodeEvent:106:30`,`DialogueNodeEvent:106:31`,`DialogueNodeEvent:106:32`,`DialogueNodeEvent:106:33`,`DialogueNodeEvent:106:34`) are present in the attempt window. Zero tolerance — any incorrect selection results in yellow.
 
 **Teacher Guidance:** Review the water cycle concepts covered in Unit 5 with the student. Discuss how the evidence gathered throughout the unit should inform the final solution plan.
+
+#### Analytics-Matching Script (MongoDB/JS)

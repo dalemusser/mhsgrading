@@ -224,12 +224,24 @@ if (!latestStart || !latestEnd || latestEnd._id <= latestStart._id) {
 
 ### SCORE_BELOW_THRESHOLD
 
-**Short Description:** Student needed too many attempts on the floor 5 soil machines and/or dialogue selections.
-
-**Instructor Message:** The student's score was below the expected threshold. The score is based on three components: (1) efficient interaction with the two-layer machine on floor 5 (+1 if top row solved in one attempt with no bottom row interactions), (2) efficient interaction with the one-layer machine on floor 5 (+1 if solved in one attempt), and (3) correct dialogue choices (+2 if correct on first attempt, +1 if correct within two attempts). A score greater than 2 is required.
-
 **Quantities:** `score`
 
-**Determination:** The combined score from soil machine interactions and dialogue choices is 2 or less.
+**Determination:** The combined score from soil machine interactions and water bed dialogue choices is 2 or less.
 
-**Teacher Guidance:** Review groundwater concepts with the student, particularly how soil layers interact and how to apply that understanding to identify the correct soil type. Also review the dialogue choices related to drilling and well construction.
+#### TOO_MANY_ATTEMPTS
+
+**Short Description:** The student interacted with the soil-type machines within the dungeon on the fifth floor too many times.
+
+**Instructor Message:** There are two soil-type machines on this floor. There are two layers for the first machine, the optimal interaction times for this machine is one for the first layer and one for the second layer; if it is the case then the score will gain 1; otherwise, the score will not gain. For the second machine, if there is only one interaction time, then the score will further gain 1; otherwise, the score will not gain. The student had {attempt_time} interactions for the machines on the floor, which surpass the optimal interaction time.
+
+**Teacher Guidance:** Remind students that water moves through different soils at different rates. Water will move fastest through sand, and slowest through clay. Water moves through sand at a slower rate than gravel and a faster rate than clay.
+
+#### BAD_FEEDBACK
+
+**Short Description:** The student chose the correct ground layer containing water after too many attempts.
+
+**Instructor Message:** Before choosing the correct layer containing water, the student chose {negative_feedback_number} times of wrong answers.
+
+**Teacher Guidance:** Remind students that water moves through different soils at different rates. Water will move fastest through sand, and slowest through clay. Water moves through sand at a slower rate than gravel and a faster rate than clay.
+
+#### Analytics-Matching Script (MongoDB/JS)

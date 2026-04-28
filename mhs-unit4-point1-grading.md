@@ -219,10 +219,34 @@ if (!latestStart || !latestEnd) {
 
 ### SCORE_BELOW_THRESHOLD
 
-**Short Description:** Student's combined score from correct choice and puzzle timing was below the threshold.
+The reason for turning yellow in this progress point is becuase the aggregated score is less than 1, if there is no eventkey of `DialogueNodeEvent:88:5`, then the reason code WRONG_CHOISE_SELECTED will be triggered; if the duration is larger than 30 seconds then the reason code TOO_LONG_TO_SOLVE_PROBLEM will be triggured; if both conditions exist, then both reason codes triggered.
 
-**Instructor Message:** The student's score was below the expected threshold. The score is based on selecting the correct choice (+0.5) and solving the Soil Key Puzzle efficiently (+1.0 if within 30 seconds, +0.5 if within 90 seconds). A score of at least 1.0 is required.
+#### WRONG_CHOISE_SELECTED
 
-**Determination:** The combined score from correct choice selection (`DialogueNodeEvent:88:5`) and puzzle completion timing is less than 1.0.
+**Short Description:** Missing the correct answer to the question.
 
-**Teacher Guidance:** Review the soil key concepts with the student. Ensure they understand the relationship between soil types and the puzzle mechanics.
+**Instructor Message:** The student didn’t select the answer of “It’s the boundary between saturated and unsaturated soil layers” to a question from Anderson. One success condition is to select this answer at the first attempt.
+
+**Determination:** Whether the eventkey of (`DialogueNodeEvent:88:5`) existed within the game log.
+
+**Teacher Guidance:** Remind students the definition of water table: underground boundary between the soil surface and the area where groundwater saturates spaces between soil particles.
+
+#### TOO_LONG_TO_SOLVE_PROBLEM
+
+**Short Description:** Spent too much time on solving the soil key puzzle.
+
+**Instructor Message:** The student spent too much time, {time duration} seconds, on solving the soil key puzzle. Depending on the time duration, there are two levels of the score the students can gain, if the students can solve the puzzle within 30 seconds, then the score could gain 1 point; if the students can solve the puzzle surpass 30 seconds but within 90 seconds, then the score could gain 0.5 point; if else there is no score could gain.
+
+**Determination:** Calculate the time duration between `START_STATUS` and `END_STATUS` of `Soil Key Puzzle Status`.
+
+**Teacher Guidance:** Remind students the definition of water table: underground boundary between the soil surface and the area where groundwater saturates spaces between soil particles.
+
+#### Analytics-Matching Script (MongoDB/JS)
+
+
+
+
+
+
+
+

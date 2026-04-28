@@ -167,14 +167,16 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
 
 **Teacher Guidance:** Review the water chamber puzzle mechanics with the student. Discuss how condensation and evaporation processes work and how to apply that understanding to solve the puzzle.
 
-### TOO_MANY_NEGATIVES
+### BAD_FEEDBACK
 
-**Short Description:** Student received too many negative feedback responses during the water chamber puzzle.
+**Short Description:** The student received too much negative feedback before solving the glyph puzzle.
 
-**Instructor Message:** The student received {negativeCount} negative feedback responses while solving the water chamber puzzle on floors 1 and 2. The threshold for success is 2 or fewer negative responses.
+**Instructor Message:** Students received totally {negative_feedback_number} negative feedback, which surpasses the threshold of two times, before solving the puzzle.
 
-**Quantities:** `negativeCount` — count of negative feedback events
+**Quantities:** `negative_feedback_number` — count of negative feedback events
 
-**Determination:** The count of negative feedback nodes (`DialogueNodeEvent:100:38`, `100:39`, `100:43`) exceeds 2 in the attempt window.
+**Determination:** The count of negative feedback nodes (`DialogueNodeEvent:100:38`, `DialogueNodeEvent:100:39`, `DialogueNodeEvent:100:43`) exceeds 2 in the attempt window.
 
-**Teacher Guidance:** Review condensation and evaporation with the student. Discuss how water moves between different states and how these processes relate to the puzzle solutions.
+**Teacher Guidance:** Remind students that evaporation  is the phase change that occurs when energy is added to liquid to turn it into a gas Have students work through Unit 5 followup activity.
+
+#### Analytics-Matching Script (MongoDB/JS)

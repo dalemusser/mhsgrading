@@ -171,12 +171,22 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
 
 ### SCORE_BELOW_THRESHOLD
 
-**Short Description:** Student needed too many attempts on the water chamber machines on floors 3 and 4.
-
-**Instructor Message:** The student's score was below the expected threshold. The score is based on efficient interaction with the Condenser and Evaporator machines: floor 3 awards +2 if solved within 6 attempts or +1 if within 10 attempts; floor 4 awards +2 if solved within 5 attempts or +1 if within 9 attempts. A score of at least 3 is required.
+**Determination:** The combined score from floor 3 and floor 4 water chamber interactions is less than 3.
 
 **Quantities:** `score`, `floor3_attempts`, `floor4_attempts`
 
-**Determination:** The combined score from floor 3 and floor 4 water chamber interactions is less than 3.
+#### TOO_MANY_ATTEMPTS_3
 
-**Teacher Guidance:** Review atmospheric water concepts with the student. Discuss how condensation and evaporation work in the water cycle and how to apply that knowledge to efficiently configure the water chamber machines.
+**Short Description:** The students interacted with the condenser and evaporator machines  too many times on the 3rd floor to solve the puzzle.
+
+**Instructor Message:** When interacting with the condenser and evaporator machines on the third floor, the student conducted {floor3_attempts} interactions, which surpasses the optimal interaction times, which is 6.
+
+#### TOO_MANY_ATTEMPTS_4
+
+**Short Description:** The students interacted with the condenser and evaporator machines too many times on the 4th floor to solve the puzzle.
+
+**Instructor Message:** When interacting with the condenser and evaporator machines on the fourth floor, the student conducted {floor4_attempts} interactions, which surpasses the optimal interaction times, which is 5.
+
+**Teacher Guidance:** Remind students that condensation is the phase change that occurs when energy is removed from a gas to turn it into a liquid. Have students work through Unit 5 followup activity.
+
+#### Analytics-Matching Script (MongoDB/JS)

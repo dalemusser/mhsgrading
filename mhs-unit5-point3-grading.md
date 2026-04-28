@@ -171,14 +171,16 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
 
 **Determination:** The trigger event `questFinishEvent:44` has not been logged.
 
-### TOO_MANY_NEGATIVES
+### WRONG_ARG_SELECTED
 
-**Short Description:** Student made too many incorrect selections during the investigation.
+**Short Description:** The students submitted too many wrong arguments before submitting the correct one.
 
-**Instructor Message:** The student made {negativeCount} incorrect selections during the investigation activity. The threshold for success is fewer than 4 incorrect selections.
+**Instructor Message:** Before submitting the correct argument, the student triggered {negativeCount} negative feedback before submitting the correct argument.
 
 **Quantities:** `negativeCount` — count of negative dialogue events
 
 **Determination:** The count of negative dialogue nodes (33 target events across `DialogueNodeEvent:108:*`) is 4 or more in the attempt window.
 
-**Teacher Guidance:** Review the investigation process with the student. Discuss how to systematically evaluate evidence and make informed selections rather than guessing.
+**Teacher Guidance:** Review parts of an argument with students. Have students work through argumentation review followup activity.
+
+#### Analytics-Matching Script (MongoDB/JS)

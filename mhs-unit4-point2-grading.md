@@ -165,7 +165,7 @@ if (!latestTrigger) {
 
 **Determination:** The success node `DialogueNodeEvent:88:11` is absent from the attempt window.
 
-**Teacher Guidance:** Review the glyph puzzle mechanics with the student. Ensure they understand how to match the patterns independently.
+**Teacher Guidance:** Remind students that infiltration is the process by which water on the ground surface enters the soil. Water moves through sand at a slower rate than gravel and a faster rate than clay.
 
 ### TOO_MANY_NEGATIVES
 
@@ -173,6 +173,8 @@ if (!latestTrigger) {
 
 **Instructor Message:** The student received corrective feedback during the infiltration glyph puzzle, indicating they needed more than 2 attempts to figure out the correct matches.
 
-**Determination:** Any of the negative feedback nodes (`DialogueNodeEvent:102:9`, `102:10`, `102:12`, `102:18`, `102:23`) are present in the attempt window.
+**Determination:** Any of the negative feedback nodes (`DialogueNodeEvent:102:9`, `DialogueNodeEvent:102:10`, `DialogueNodeEvent:102:12`, `DialogueNodeEvent:102:18`, `DialogueNodeEvent:102:23`) are present in the attempt window.
 
-**Teacher Guidance:** Review the matching puzzle strategy with the student. Discuss how to use the visual clues to identify correct matches more efficiently.
+**Teacher Guidance:** Remind students that infiltration is the process by which water on the ground surface enters the soil. Water moves through sand at a slower rate than gravel and a faster rate than clay.
+
+#### Analytics-Matching Script (MongoDB/JS)

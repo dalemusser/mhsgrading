@@ -211,14 +211,16 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
 
 **Determination:** The trigger event `questFinishEvent:56` has not been logged.
 
-### SCORE_BELOW_THRESHOLD
+### WRONG_CHOISE_SELECTED
 
-**Short Description:** Student placed incorrect soil types in the garden boxes.
+**Short Description:** The student chose the wrong soil type for the garden box more than one time.
 
-**Instructor Message:** The student placed the correct soil type in {score} out of 3 garden boxes. The threshold for success is at least 2 out of 3 correct placements.
+**Instructor Message:** There are three garden boxes. Each box has its unique id and correct soil type answer. The student chose the wrong soil type for boxes of {wrong_box_ids}. For {wrong_box_ids}, the correct answer should be {correct_answer_for_box_ids}, instead the student chose the answer {wrong_answer_for_box_ids}.
 
-**Quantities:** `score`, `details` (e.g., "1/3 correct")
+**Quantities:** `wrongTime`, `wrong_box_id_1`, `wrong_box_id_2`
 
-**Determination:** The count of garden boxes with the correct latest soil placement is less than 2. Expected placements: Box 0 = Gravel, Box 1 = Sand, Box 2 = Clay.
+**Determination:** The count of garden boxes with the correct latest soil placement is less than 2. Expected placements: Box 0 = Clay, Box 1 = Sand, Box 2 = Gravel.
 
-**Teacher Guidance:** Review soil types and their water-holding properties with the student. Discuss which soil types are best suited for different plants based on water retention characteristics.
+**Teacher Guidance:** Remind students that water moves through different soils at different rates. Water will move fastest through sand, and slowest through clay. Water moves through sand at a slower rate than gravel and a faster rate than clay.
+
+#### Analytics-Matching Script (MongoDB/JS)
