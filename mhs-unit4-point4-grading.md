@@ -234,6 +234,8 @@ if (!latestStart || !latestEnd || latestEnd._id <= latestStart._id) {
 
 **Instructor Message:** There are two soil-type machines on this floor. There are two layers for the first machine, the optimal interaction times for this machine is one for the first layer and one for the second layer; if it is the case then the score will gain 1; otherwise, the score will not gain. For the second machine, if there is only one interaction time, then the score will further gain 1; otherwise, the score will not gain. The student had {attempt_time} interactions for the machines on the floor, which surpass the optimal interaction time.
 
+**Determination:** Wether the machine interaction time on the fifth floor, `attempt_time`, is more than three.
+
 **Teacher Guidance:** Remind students that water moves through different soils at different rates. Water will move fastest through sand, and slowest through clay. Water moves through sand at a slower rate than gravel and a faster rate than clay.
 
 #### BAD_FEEDBACK
@@ -242,6 +244,142 @@ if (!latestStart || !latestEnd || latestEnd._id <= latestStart._id) {
 
 **Instructor Message:** Before choosing the correct layer containing water, the student chose {negative_feedback_number} times of wrong answers.
 
+**Determination:** Wether the negative feedback regarding water table knowledge, `negative_feedback_number`, is more than 0.
+
 **Teacher Guidance:** Remind students that water moves through different soils at different rates. Water will move fastest through sand, and slowest through clay. Water moves through sand at a slower rate than gravel and a faster rate than clay.
 
-#### Analytics-Matching Script (MongoDB/JS)
+### Analytics-Matching Script (MongoDB/JS)
+
+```js
+// Unit 4, Point 4 — Show score, attempt_time, and negative_feedback_number
+// within latest attempt window
+
+const playerId = "<playerId>";
+
+const WINDOW_START_KEY = "questActiveEvent:50";
+const WINDOW_END_KEY = "questActiveEvent:36";
+
+const SUCCESS_KEYS = [
+  "DialogueNodeEvent:107:4",
+  "DialogueNodeEvent:107:5"
+];
+
+const NEG_KEYS = [
+  "DialogueNodeEvent:107:2",
+  "DialogueNodeEvent:107:3",
+  "DialogueNodeEvent:107:6"
+];
+
+// 1) Find latest window start
+const latestStart = db.logdata.findOne(
+  {
+    game: "mhs",
+    playerId: playerId,
+    eventKey: WINDOW_START_KEY
+  },
+  {
+    sort: { _id: -1 },
+    projection: { _id: 1 }
+  }
+);
+
+// 2) Find latest window end / trigger
+const latestEnd = db.logdata.findOne(
+  {
+    game: "mhs",
+    playerId: playerId,
+    eventKey: WINDOW_END_KEY
+  },
+  {
+    sort: { _id: -1 },
+    projection: { _id: 1 }
+  }
+);
+
+let score = null;
+let attempt_time = null;
+let negative_feedback_number = null;
+
+if (latestStart && latestEnd && latestEnd._id > latestStart._id) {
+  const windowStartId = latestStart._id;
+  const windowEndId = latestEnd._id;
+
+  score = 0;
+
+  // ------------------------------------------------------
+  // 3) Count fifth-floor soil machine interactions
+  // ------------------------------------------------------
+
+  const c_m1_top = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventType: "soilMachine",
+    "data.floor": "5",
+    "data.machine": "1",
+    "data.row": "TopRow",
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+
+  const c_m1_bottom = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventType: "soilMachine",
+    "data.floor": "5",
+    "data.machine": "1",
+    "data.row": "BottomRow",
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+
+  const c_m2_floor5 = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventType: "soilMachine",
+    "data.floor": "5",
+    "data.machine": "2",
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+
+  // Total fifth-floor machine interaction attempts
+  attempt_time = c_m1_top + c_m1_bottom + c_m2_floor5;
+
+  // Machine score
+  if (c_m1_top === 1 && c_m1_bottom === 1) {
+    score += 1;
+  }
+
+  if (c_m2_floor5 === 1) {
+    score += 1;
+  }
+
+  // ------------------------------------------------------
+  // 4) Count water-table dialogue choices
+  // ------------------------------------------------------
+
+  const success_total = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventKey: { $in: SUCCESS_KEYS },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+
+  negative_feedback_number = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventKey: { $in: NEG_KEYS },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+
+  // Dialogue score
+  if (success_total > 0 && negative_feedback_number === 0) {
+    score += 2;
+  } else if (success_total > 0 && negative_feedback_number === 1) {
+    score += 1;
+  }
+}
+
+({
+  score: score,
+  attempt_time: attempt_time,
+  negative_feedback_number: negative_feedback_number
+});
+```

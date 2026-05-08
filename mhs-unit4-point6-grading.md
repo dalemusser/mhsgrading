@@ -223,4 +223,106 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
 
 **Teacher Guidance:** Remind students that water moves through different soils at different rates. Water will move fastest through sand, and slowest through clay. Water moves through sand at a slower rate than gravel and a faster rate than clay.
 
-#### Analytics-Matching Script (MongoDB/JS)
+### Analytics-Matching Script (MongoDB/JS)
+```js
+// Unit 4, Point 6 — Calculate wrongTime and wrong box details
+// Window start: questActiveEvent:41
+// Window end: questFinishEvent:56
+
+const playerId = "<playerId>";
+
+const WINDOW_START_KEY = "questActiveEvent:41";
+const WINDOW_END_KEY = "questFinishEvent:56";
+
+const EXPECTED_SOIL_BY_BOX = {
+  "0": "Clay",
+  "1": "Sand",
+  "2": "Gravel"
+};
+
+// 1) Find latest window start
+const latestStart = db.logdata.findOne(
+  {
+    game: "mhs",
+    playerId: playerId,
+    eventKey: WINDOW_START_KEY
+  },
+  {
+    sort: { _id: -1 },
+    projection: { _id: 1 }
+  }
+);
+
+// 2) Find latest window end / trigger
+const latestEnd = db.logdata.findOne(
+  {
+    game: "mhs",
+    playerId: playerId,
+    eventKey: WINDOW_END_KEY
+  },
+  {
+    sort: { _id: -1 },
+    projection: { _id: 1 }
+  }
+);
+
+let wrongTime = null;
+let wrong_box_ids = [];
+let correct_answer_for_box_ids = {};
+let wrong_answer_for_box_ids = {};
+let latest_answer_for_box_ids = {};
+
+if (latestStart && latestEnd && latestEnd._id > latestStart._id) {
+  const windowStartId = latestStart._id;
+  const windowEndId = latestEnd._id;
+
+  Object.keys(EXPECTED_SOIL_BY_BOX).forEach(function(boxId) {
+    const expectedSoil = EXPECTED_SOIL_BY_BOX[boxId];
+
+    // 3) Find latest placement for this box within the attempt window
+    const latestBoxPlacement = db.logdata.findOne(
+      {
+        game: "mhs",
+        playerId: playerId,
+        eventType: "TerasGardenBox",
+        "data.actionType": "cameraPlaced",
+        "data.boxId": boxId,
+        _id: { $gt: windowStartId, $lte: windowEndId }
+      },
+      {
+        sort: { _id: -1 },
+        projection: {
+          _id: 1,
+          "data.boxId": 1,
+          "data.soilType": 1
+        }
+      }
+    );
+
+    const actualSoil =
+      latestBoxPlacement &&
+      latestBoxPlacement.data &&
+      latestBoxPlacement.data.soilType
+        ? latestBoxPlacement.data.soilType
+        : null;
+
+    latest_answer_for_box_ids[boxId] = actualSoil;
+
+    // 4) If latest answer is missing or incorrect, mark this box as wrong
+    if (actualSoil !== expectedSoil) {
+      wrong_box_ids.push(boxId);
+      correct_answer_for_box_ids[boxId] = expectedSoil;
+      wrong_answer_for_box_ids[boxId] = actualSoil;
+    }
+  });
+
+  wrongTime = wrong_box_ids.length;
+}
+
+({
+  wrongTime: wrongTime,
+  wrong_box_ids: wrong_box_ids,
+  correct_answer_for_box_ids: correct_answer_for_box_ids,
+  wrong_answer_for_box_ids: wrong_answer_for_box_ids
+});
+```

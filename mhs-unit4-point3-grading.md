@@ -9,9 +9,7 @@
 
 ## Grading Rule
 
-This progress point will check how many times the player interacts with the soil machines on the third and forth floors within the alien dungeon. Depending on the number of attempts, a score will calculated.
-Basically the score will increase one if the player just interacted with the machine on the third floor at the first attempt to figure out the right type, otherwise zero.
-For the forth floor, if the player interacts with the machine once to figure the correct type then further increase two; if the interaction time is two then further increase 1; otherwise no further score increased.
+This progress point will check how many times the player interacts with the soil machines on the third and forth floors within the alien dungeon. Depending on the number of attempts, a score will calculated. Basically the score will increase one if the player just interacted with the machine on the third floor at the first attempt to figure out the right type, otherwise zero. For the forth floor, if the player interacts with the machine once to figure the correct type then further increase two; if the interaction time is two then further increase 1; otherwise no further score increased.
 
 | Outcome | Condition |
 |---------|-----------|
@@ -150,6 +148,8 @@ if (!latestTrigger) {
 
 ## Reason Codes
 
+If the color truns out to be yellow then depending on which condition(s) described below was reached, we decided which reaon codes to show on the pup-up message.
+
 ### NO_TRIGGER
 
 **Short Description:** Student has not yet completed the trigger event for this activity.
@@ -184,8 +184,88 @@ if (!latestTrigger) {
 
 **Teacher Guidance:** Remind students that water moves through different soils at different rates. Water will move fastest through sand, and slowest through clay. Water moves through sand at a slower rate than gravel and a faster rate than clay.
 
-#### Analytics-Matching Script (MongoDB/JS)
+### Analytics-Matching Script (MongoDB/JS)
 
+```js
+const playerId = "<playerId>";
 
+const START_KEY = "questActiveEvent:48";
+const END_KEY = "questActiveEvent:50";
+
+// 1) Find latest end/trigger event
+const latestEnd = db.logdata.findOne(
+  {
+    game: "mhs",
+    playerId: playerId,
+    eventKey: END_KEY
+  },
+  {
+    sort: { _id: -1 },
+    projection: { _id: 1 }
+  }
+);
+
+// 2) Find the previous start event before the latest end
+const latestStart = latestEnd
+  ? db.logdata.findOne(
+      {
+        game: "mhs",
+        playerId: playerId,
+        eventKey: START_KEY,
+        _id: { $lt: latestEnd._id }
+      },
+      {
+        sort: { _id: -1 },
+        projection: { _id: 1 }
+      }
+    )
+  : null;
+
+let score = 0;
+let floor3_attempts = null;
+let floor4_attempts = null;
+
+if (latestStart && latestEnd && latestEnd._id > latestStart._id) {
+  const windowStartId = latestStart._id;
+  const windowEndId = latestEnd._id;
+
+  // 3) Count floor 3 soil machine interactions within latest attempt window
+  floor3_attempts = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventType: "soilMachine",
+    "data.machine": "1",
+    "data.floor": "3",
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+
+  // 4) Count floor 4 soil machine interactions within latest attempt window
+  floor4_attempts = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventType: "soilMachine",
+    "data.machine": "1",
+    "data.floor": "4",
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+
+  // 5) Score calculation
+  if (floor3_attempts === 1) {
+    score += 1;
+  }
+
+  if (floor4_attempts === 1) {
+    score += 2;
+  } else if (floor4_attempts === 2) {
+    score += 1;
+  }
+}
+
+({
+  score: score,
+  floor3_attempts: floor3_attempts,
+  floor4_attempts: floor4_attempts
+});
+```
 
 

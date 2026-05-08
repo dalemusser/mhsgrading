@@ -176,5 +176,3 @@ if (!latestTrigger) {
 **Determination:** Any of the negative feedback nodes (`DialogueNodeEvent:102:9`, `DialogueNodeEvent:102:10`, `DialogueNodeEvent:102:12`, `DialogueNodeEvent:102:18`, `DialogueNodeEvent:102:23`) are present in the attempt window.
 
 **Teacher Guidance:** Remind students that infiltration is the process by which water on the ground surface enters the soil. Water moves through sand at a slower rate than gravel and a faster rate than clay.
-
-#### Analytics-Matching Script (MongoDB/JS)
