@@ -1,4 +1,4 @@
-# Unit 5 Point 1 Grading
+# Unit 5 Point 2 Grading
 
 **Activity:** If I Had a Nickel- Floors 3 & 4
 
@@ -189,4 +189,99 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
 
 **Teacher Guidance:** Remind students that condensation is the phase change that occurs when energy is removed from a gas to turn it into a liquid. Have students work through Unit 5 followup activity.
 
-#### Analytics-Matching Script (MongoDB/JS)
+### Analytics-Matching Script (MongoDB/JS)
+
+```js
+// Unit 5, Point 2 — Return trigger status, score, floor3_attempts, floor4_attempts
+// Window start: questFinishEvent:43
+// Window end: DialogueNodeEvent:96:1
+
+const playerId = "<playerId>";
+
+const WINDOW_START_KEY = "questFinishEvent:43";
+const WINDOW_END_KEY = "DialogueNodeEvent:96:1";
+
+const VALID_TYPES = ["Condenser", "Evaporator"];
+
+// 1) Find latest window start
+const latestStart = db.logdata.findOne(
+  {
+    game: "mhs",
+    playerId: playerId,
+    eventKey: WINDOW_START_KEY
+  },
+  {
+    sort: { _id: -1 },
+    projection: { _id: 1 }
+  }
+);
+
+// 2) Find latest window end / trigger
+const latestEnd = db.logdata.findOne(
+  {
+    game: "mhs",
+    playerId: playerId,
+    eventKey: WINDOW_END_KEY
+  },
+  {
+    sort: { _id: -1 },
+    projection: { _id: 1 }
+  }
+);
+
+// Whether the trigger event exists in the gameplay logs
+const hasTrigger = latestEnd !== null;
+
+let score = null;
+let floor3_attempts = null;
+let floor4_attempts = null;
+
+if (latestStart && latestEnd && latestEnd._id > latestStart._id) {
+  const windowStartId = latestStart._id;
+  const windowEndId = latestEnd._id;
+
+  // 3) Count relevant interactions on Floor 3
+  floor3_attempts = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventType: "WaterChamberEvent",
+    "data.floor": "3",
+    "data.machineType": { $in: VALID_TYPES },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+
+  // 4) Count relevant interactions on Floor 4
+  floor4_attempts = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventType: "WaterChamberEvent",
+    "data.floor": "4",
+    "data.machineType": { $in: VALID_TYPES },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+
+  // 5) Calculate score
+  score = 0;
+
+  // Floor 3 scoring
+  if (floor3_attempts <= 6) {
+    score += 2;
+  } else if (floor3_attempts < 11) {
+    score += 1;
+  }
+
+  // Floor 4 scoring
+  if (floor4_attempts <= 5) {
+    score += 2;
+  } else if (floor4_attempts < 10) {
+    score += 1;
+  }
+}
+
+({
+  hasTrigger: hasTrigger,
+  score: score,
+  floor3_attempts: floor3_attempts,
+  floor4_attempts: floor4_attempts
+});
+```

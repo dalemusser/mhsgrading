@@ -209,4 +209,101 @@ if (!latestEnd) {
 
 **Teacher Guidance:** Review the water cycle concepts covered in Unit 5 with the student. Discuss how the evidence gathered throughout the unit should inform the final solution plan.
 
-#### Analytics-Matching Script (MongoDB/JS)
+### Analytics-Matching Script (MongoDB/JS)
+
+```js
+// Unit 5, Point 4 — Return hasTrigger, isSuccessMissing, and negativeCount
+// Window start: questFinishEvent:44
+// Window end: questFinishEvent:45
+
+const playerId = "<playerId>";
+
+const START_KEY = "questFinishEvent:44";
+const END_KEY = "questFinishEvent:45";
+
+const SUCCESS_KEY = "DialogueNodeEvent:106:35";
+
+const NEGATIVE_KEYS = [
+  "DialogueNodeEvent:106:4",
+  "DialogueNodeEvent:106:25",
+  "DialogueNodeEvent:106:26",
+  "DialogueNodeEvent:106:27",
+  "DialogueNodeEvent:106:28",
+  "DialogueNodeEvent:106:29",
+  "DialogueNodeEvent:106:30",
+  "DialogueNodeEvent:106:31",
+  "DialogueNodeEvent:106:32",
+  "DialogueNodeEvent:106:33",
+  "DialogueNodeEvent:106:34"
+];
+
+// 1) Find latest window end / trigger
+const latestEnd = db.logdata.findOne(
+  {
+    game: "mhs",
+    playerId: playerId,
+    eventKey: END_KEY
+  },
+  {
+    sort: { _id: -1 },
+    projection: { _id: 1 }
+  }
+);
+
+// Whether the trigger event exists in the gameplay logs
+const hasTrigger = latestEnd !== null;
+
+// 2) Find latest window start before the trigger
+const latestStart = latestEnd
+  ? db.logdata.findOne(
+      {
+        game: "mhs",
+        playerId: playerId,
+        eventKey: START_KEY,
+        _id: { $lt: latestEnd._id }
+      },
+      {
+        sort: { _id: -1 },
+        projection: { _id: 1 }
+      }
+    )
+  : null;
+
+let isSuccessMissing = null;
+let negativeCount = null;
+
+if (latestStart && latestEnd && latestEnd._id > latestStart._id) {
+  const windowStartId = latestStart._id;
+  const windowEndId = latestEnd._id;
+
+  // 3) Check whether success node exists within the attempt window
+  const hasSuccessNode =
+    db.logdata.findOne(
+      {
+        game: "mhs",
+        playerId: playerId,
+        eventKey: SUCCESS_KEY,
+        _id: { $gt: windowStartId, $lte: windowEndId }
+      },
+      {
+        projection: { _id: 1 }
+      }
+    ) !== null;
+
+  isSuccessMissing = !hasSuccessNode;
+
+  // 4) Count negative feedback nodes within the attempt window
+  negativeCount = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventKey: { $in: NEGATIVE_KEYS },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+}
+
+({
+  hasTrigger: hasTrigger,
+  isSuccessMissing: isSuccessMissing,
+  negativeCount: negativeCount
+});
+```

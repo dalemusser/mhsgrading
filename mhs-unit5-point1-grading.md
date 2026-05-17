@@ -179,4 +179,63 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
 
 **Teacher Guidance:** Remind students that evaporation  is the phase change that occurs when energy is added to liquid to turn it into a gas Have students work through Unit 5 followup activity.
 
-#### Analytics-Matching Script (MongoDB/JS)
+### Analytics-Matching Script (MongoDB/JS)
+
+```js
+// Unit 5, Point 1 — Calculate negative_feedback_number within latest attempt window
+// Window start: questActiveEvent:43
+// Window end: questFinishEvent:43
+
+const playerId = "<playerId>";
+
+const WINDOW_START_KEY = "questActiveEvent:43";
+const WINDOW_END_KEY = "questFinishEvent:43";
+
+const NEG_KEYS = [
+  "DialogueNodeEvent:100:38",
+  "DialogueNodeEvent:100:39",
+  "DialogueNodeEvent:100:43"
+];
+
+// 1) Find latest window start
+const latestStart = db.logdata.findOne(
+  {
+    game: "mhs",
+    playerId: playerId,
+    eventKey: WINDOW_START_KEY
+  },
+  {
+    sort: { _id: -1 },
+    projection: { _id: 1 }
+  }
+);
+
+// 2) Find latest window end / trigger
+const latestEnd = db.logdata.findOne(
+  {
+    game: "mhs",
+    playerId: playerId,
+    eventKey: WINDOW_END_KEY
+  },
+  {
+    sort: { _id: -1 },
+    projection: { _id: 1 }
+  }
+);
+
+let negative_feedback_number = null;
+
+if (latestStart && latestEnd && latestEnd._id > latestStart._id) {
+  const windowStartId = latestStart._id;
+  const windowEndId = latestEnd._id;
+
+  negative_feedback_number = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventKey: { $in: NEG_KEYS },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+}
+
+negative_feedback_number;
+```

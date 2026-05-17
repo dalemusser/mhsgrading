@@ -183,4 +183,103 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
 
 **Teacher Guidance:** Review parts of an argument with students. Have students work through argumentation review followup activity.
 
-#### Analytics-Matching Script (MongoDB/JS)
+### Analytics-Matching Script (MongoDB/JS)
+
+```js
+// Unit 5, Point 3 — Return hasTrigger and negativeCount within latest attempt window
+// Window start: DialogueNodeEvent:96:1
+// Window end: questFinishEvent:44
+
+const playerId = "<playerId>";
+
+const WINDOW_START_KEY = "DialogueNodeEvent:96:1";
+const WINDOW_END_KEY = "questFinishEvent:44";
+
+const NEGATIVE_KEYS = [
+  "DialogueNodeEvent:108:25",
+  "DialogueNodeEvent:108:32",
+  "DialogueNodeEvent:108:33",
+  "DialogueNodeEvent:108:37",
+  "DialogueNodeEvent:108:39",
+  "DialogueNodeEvent:108:41",
+  "DialogueNodeEvent:108:47",
+  "DialogueNodeEvent:108:53",
+  "DialogueNodeEvent:108:54",
+  "DialogueNodeEvent:108:55",
+  "DialogueNodeEvent:108:59",
+  "DialogueNodeEvent:108:60",
+  "DialogueNodeEvent:108:61",
+  "DialogueNodeEvent:108:62",
+  "DialogueNodeEvent:108:70",
+  "DialogueNodeEvent:108:72",
+  "DialogueNodeEvent:108:73",
+  "DialogueNodeEvent:108:74",
+  "DialogueNodeEvent:108:75",
+  "DialogueNodeEvent:108:76",
+  "DialogueNodeEvent:108:78",
+  "DialogueNodeEvent:108:79",
+  "DialogueNodeEvent:108:80",
+  "DialogueNodeEvent:108:82",
+  "DialogueNodeEvent:108:83",
+  "DialogueNodeEvent:108:84",
+  "DialogueNodeEvent:108:85",
+  "DialogueNodeEvent:108:86",
+  "DialogueNodeEvent:108:87",
+  "DialogueNodeEvent:108:88",
+  "DialogueNodeEvent:108:89",
+  "DialogueNodeEvent:108:90",
+  "DialogueNodeEvent:108:91"
+];
+
+// 1) Find latest window end / trigger
+const latestEnd = db.logdata.findOne(
+  {
+    game: "mhs",
+    playerId: playerId,
+    eventKey: WINDOW_END_KEY
+  },
+  {
+    sort: { _id: -1 },
+    projection: { _id: 1 }
+  }
+);
+
+// Whether the trigger event exists in the gameplay logs
+const hasTrigger = latestEnd !== null;
+
+// 2) Find latest window start before the trigger
+const latestStart = latestEnd
+  ? db.logdata.findOne(
+      {
+        game: "mhs",
+        playerId: playerId,
+        eventKey: WINDOW_START_KEY,
+        _id: { $lt: latestEnd._id }
+      },
+      {
+        sort: { _id: -1 },
+        projection: { _id: 1 }
+      }
+    )
+  : null;
+
+let negativeCount = null;
+
+if (latestStart && latestEnd && latestEnd._id > latestStart._id) {
+  const windowStartId = latestStart._id;
+  const windowEndId = latestEnd._id;
+
+  // 3) Count targeted negative dialogue events within the latest attempt window
+  negativeCount = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventKey: { $in: NEGATIVE_KEYS },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+}
+
+({
+  hasTrigger: hasTrigger,
+  negativeCount: negativeCount
+});
+```
