@@ -18,10 +18,10 @@ Student must select the correct criterion for determining watershed size on the 
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `DialogueNodeEvent:20:35` (exclusive)
-- **End:** Latest `DialogueNodeEvent:20:35` (inclusive)
+- **Start:** Latest `DialogueNodeEvent:23:42` (exclusive)
+- **End:** Latest `DialogueNodeEvent:20:46` (inclusive)
 
-> Note: The production script uses `DialogueNodeEvent:20:35` as the trigger key for windowing.
+> Note: The production script windows on `DialogueNodeEvent:23:42` (Trigger Start) and `DialogueNodeEvent:20:46` (Trigger End). `DialogueNodeEvent:20:35` opens the question mid-attempt and must not anchor the window, since the pass/yellow nodes fire after it.
 
 ---
 
@@ -29,8 +29,8 @@ Student must select the correct criterion for determining watershed size on the 
 
 | Role | Event Key |
 |------|-----------|
-| Trigger | `DialogueNodeEvent:20:46` |
-| Production Trigger | `DialogueNodeEvent:20:35` |
+| Trigger (Start) | `DialogueNodeEvent:23:42` |
+| Trigger (End) | `DialogueNodeEvent:20:46` |
 | Pass (correct choice) | `DialogueNodeEvent:20:43` |
 | Yellow (wrong choice) | `DialogueNodeEvent:20:44` |
 | Yellow (wrong choice) | `DialogueNodeEvent:20:45` |
@@ -78,36 +78,35 @@ if (!hasPass) {
 
 ```js
 // Unit 2, Point 6 — Attempt-based standalone production grading script
-// Trigger eventKey: "DialogueNodeEvent:20:35"
+// Attempt window:
+//   Start: latest "DialogueNodeEvent:23:42" (Trigger Start, exclusive)
+//   End:   latest "DialogueNodeEvent:20:46" (Trigger End, inclusive)
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "DialogueNodeEvent:20:35";
-const PASS_KEY = "DialogueNodeEvent:20:43";
+const START_KEY = "DialogueNodeEvent:23:42"; // opens the activity
+const END_KEY   = "DialogueNodeEvent:20:46"; // closes the attempt
+const PASS_KEY  = "DialogueNodeEvent:20:43";
 const YELLOW_KEYS = ["DialogueNodeEvent:20:44", "DialogueNodeEvent:20:45"];
 
-// 1) Latest trigger (end anchor)
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Latest start trigger (window start, exclusive)
+const startTrigger = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: START_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!latestTrigger) {
+// 2) Latest end trigger (window end, inclusive)
+const endTrigger = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
+  { sort: { _id: -1 } }
+);
+
+if (!startTrigger || !endTrigger || endTrigger._id <= startTrigger._id) {
+  // No valid window (missing start/end, or end not after start)
   "yellow";
 } else {
-  // 2) Previous trigger (attempt boundary)
-  const prevTrigger = db.logdata.findOne(
-    {
-      game: "mhs",
-      playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
-    },
-    { sort: { _id: -1 } }
-  );
-
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = startTrigger._id;
+  const windowEndId = endTrigger._id;
 
   // 3) Must have PASS_KEY within attempt window
   const hasPass =
@@ -227,36 +226,34 @@ result;
 
 ```js
 // U2P6: Determine dialogue_node_1, dialogue_node_2, dialogue_node_3 for HIT_YELLOW_NODE
-// With windowing for replay support
+// Windowed to match the production grade script:
+//   Start: latest "DialogueNodeEvent:23:42" (Trigger Start, exclusive)
+//   End:   latest "DialogueNodeEvent:20:46" (Trigger End, inclusive)
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "DialogueNodeEvent:20:46";
+const START_KEY = "DialogueNodeEvent:23:42";
+const END_KEY   = "DialogueNodeEvent:20:46";
 const KEY_44 = "DialogueNodeEvent:20:44";
 const KEY_45 = "DialogueNodeEvent:20:45";
 
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+const startTrigger = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: START_KEY },
+  { sort: { _id: -1 }}
+);
+
+const endTrigger = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 }}
 );
 
 let result = null;
 
-if (!latestTrigger) {
+if (!startTrigger || !endTrigger || endTrigger._id <= startTrigger._id) {
   result = null;
 } else {
-  const prevTrigger = db.logdata.findOne(
-    {
-      game: "mhs",
-      playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
-    },
-    { sort: { _id: -1 }}
-  );
-
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = startTrigger._id;
+  const windowEndId = endTrigger._id;
 
   const events = db.logdata.find(
     {
