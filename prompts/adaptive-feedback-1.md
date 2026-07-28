@@ -92,11 +92,11 @@ Treat the grading logic as the authoritative source for determining why a cell i
 
 The gameplay logs from a previous test playthrough are stored in:
 
-`tests/05-01-26`
+`playthrough-logs-and-results/05-01-26`
 
 The expected dashboard colors are documented in:
 
-`tests/TEST_RESULTS.md`
+`playthrough-logs-and-results/05-01-26/TEST_RESULTS.md`
 
 The expected colors, in dashboard order, are:
 
@@ -106,7 +106,7 @@ Use the progress-point order defined by the dashboard, grading files, or test do
 
 ## Goal
 
-Generate the teacher-facing pop-up feedback for every progress point in **Units 1 and 2** that is expected to appear yellow for the test player represented in `tests/05-01-26`.
+Generate the teacher-facing pop-up feedback for every progress point in **Units 1 and 2** that is expected to appear yellow for the test player represented in `playthrough-logs-and-results/05-01-26`.
 
 The feedback should help a teacher quickly understand:
 
@@ -288,4 +288,4 @@ Before completing the task:
 6. Confirm that unsupported interpretations are expressed cautiously.
 7. Report any missing, inconsistent, or contradictory documentation rather than silently resolving it.
 
-If the expected color conflicts with the grading code or gameplay logs, please follow the expected colors, which are Green, Green, Yellow, Green, Green, Yellow, Green, Green, Green, Green, Yellow, instead of the actual colors summarized from the gameplay log and the programming codes for units 1 and 2.
+If the expected color conflicts with the grading code or gameplay logs, please follow the expected colors, instead of the actual colors summarized from the gameplay log in units 1 and 2.
