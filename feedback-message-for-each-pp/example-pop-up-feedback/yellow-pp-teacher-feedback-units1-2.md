@@ -1,6 +1,6 @@
 # Teacher-Facing Feedback — Yellow Progress Points (Units 1–2)
 
-**Player:** `wenyi050126-1` (test playthrough, log dump `tests/05-01-26/wenyi050126-1.stratalog.logdata.json`)
+**Player:** `wenyi050126-1` (test playthrough, log dump `playthrough-logs-and-results/05-01-26/wenyi050126-1.stratalog.logdata.json`)
 **Expected dashboard colors (Units 1–2, in order U1P1–U1P4, U2P1–U2P7):**
 Green, Green, **Yellow**, Green, Green, **Yellow**, Green, Green, Green, Green, **Yellow**
 
