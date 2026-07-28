@@ -4,7 +4,7 @@
 **Expected dashboard colors (Units 1–2, in order U1P1–U1P4, U2P1–U2P7):**
 Green, Green, **Yellow**, Green, Green, **Yellow**, Green, Green, Green, Green, **Yellow**
 
-Per `tests/TEST_RESULTS.md`, the three expected-yellow progress points are:
+Per `playthrough-logs-and-results/05-01-26/TEST_RESULTS.md`, the three expected-yellow progress points are:
 
 | Dashboard position | Point | Activity |
 |---|---|---|
