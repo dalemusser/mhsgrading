@@ -1,0 +1,6 @@
+# Curriculum goal
+At this progress point, players use the observations collected during the drone investigation to complete a scientific argument about whether the Eastern or Western watershed is larger. The argument includes a claim, evidence, and reasoning.
+
+Players first select the claim that correctly identifies the larger watershed. They then choose evidence from the factors observed at the two waterfalls, including water flow rate, waterfall height, water salinity, and distance from the waterfall to the ocean. Because the reasoning component is provided as a single fixed choice, the main task is to identify which collected evidence is scientifically relevant and supports the selected claim.
+
+The curriculum goal is to strengthen players’ ability to support a scientific claim with appropriate evidence. Players learn that not every collected observation is equally useful for answering a scientific question. Within the context of this investigation, the difference in water flow rate provides the most relevant evidence for comparing watershed size because a larger drainage area can collect and deliver more water to its outlet when other environmental conditions are comparable. Waterfall height, salinity, and distance from the ocean do not directly provide evidence of watershed size.

@@ -4,6 +4,7 @@
 3. The game this dashboard based on or developed around with is in its development process, so it may keep updating to form a new build around a week, which may also change the color logic behind each progress point on the dashboard. The dashboard will read the trace data or log data collected from the game to determine the progress points' colors.
 4. To determine whether we should chnage the programming codes behind each progress point, we need to create comprehensive testing program codes to test whether the codes of progress points returning the expected colors. And, if not, what might be the issue, like lacking key log records, the way to calculate the attempts is wrong, etc.
 5. An example of the gameplay log records the dashbaord relies on is saved in a JSON file within the path of `./tests/05-01-26`. 
+6. All work memory regarding this project is saved in `C:\Users\wldh6\.claude\projects\c--Users-wenyi-OneDrive-Documents-GitHub-mhsgrading\memory\MEMORY.md`
 
 # Goal
 1. Creating testing programs or functions to test each of the `mhs-unitx-pointx-grading.md` files, focusing on the production codes determining the colors (yellow or green) of the specific progress point, to see whether they returns the expected colors.

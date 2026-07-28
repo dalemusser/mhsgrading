@@ -1,0 +1,2 @@
+# Curriculum goal
+Argumentation consists of three core components: a claim, evidence, and reasoning. A claim states the conclusion or position being argued; evidence provides relevant information that supports the claim; and reasoning explains how the evidence supports the claim. At this progress point, players learn how to interact within the argumentation engine, and identify the claim in an argument by examining the provided evidence and reasoning.

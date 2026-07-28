@@ -1,0 +1,6 @@
+# Curriculum goal
+At this progress point, players use a drone to investigate the Western and Eastern Falls. They collect and compare evidence from the two locations to determine which waterfall is supplied by the larger watershed.
+
+At each waterfall, players observe several factors, including water flow rate, waterfall height, water salinity, and distance from the waterfall to the ocean. They must evaluate which of these observations is most relevant for comparing the sizes of the two watersheds. After completing the investigation, players respond to Dr. Toppo’s question about which observable factor provides the strongest evidence for identifying the larger watershed. Within the context of the activity, the correct answer is water flow rate.
+
+The curriculum goal is to help players identify and use relevant scientific evidence when comparing watershed size. Players learn that a larger drainage area can collect and deliver more water to its main river or outlet, potentially resulting in a greater flow rate when other environmental conditions are comparable. Therefore, flow rate can serve as evidence for inferring relative watershed size, whereas factors such as waterfall height, salinity, and distance from the ocean do not directly indicate the size of the watershed.  

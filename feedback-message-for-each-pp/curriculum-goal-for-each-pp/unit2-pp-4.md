@@ -1,0 +1,6 @@
+# Curriculum goal
+At this progress point, players solve a watershed-modeling puzzle to locate another team member. The puzzle helps players understand how watershed size and terrain characteristics influence the collection and movement of water through a river system.
+
+Players examine terrain pieces representing hills and mountains of varying elevations and arrange or match them with the appropriate watershed categories. To solve the puzzle, they compare characteristics such as drainage-area size, differences in elevation and slope, and the relative flow rate of the main river.
+
+The curriculum goal is to help players understand that a watershed is an area of land where water drains downslope toward a common river or outlet. Players learn that a larger drainage area can collect and contribute more water to the main river, potentially producing a greater flow rate. They also learn that elevation and slope influence the direction and speed of water movement across the landscape, but do not by themselves determine the size of a watershed.
