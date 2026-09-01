@@ -1,0 +1,17 @@
+# Gameplay coverage manifest for the 08-31-26 playthrough.
+# Statuses: complete
+# Update this file after each weekly playtest BEFORE running the audit —
+# it is what lets the audit distinguish "logging failed" from "not tested".
+
+build: "08-31-26"
+game_version: "20260826-12286"
+
+tested_content:
+  Unit1: complete
+  Unit2: complete
+  Unit3: complete
+  Unit4: complete
+  Unit5: complete
+
+notes:
+  - "Single full playthrough by one tester (log shows EndOfUnit for units 1-5)."

@@ -18,8 +18,8 @@ Check whether the student needed multiple attempts to build the correct argument
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questActiveEvent:34` (exclusive)
-- **End:** Latest `questActiveEvent:34` (inclusive)
+- **Start:** `DialogueNodeEvent:30:98` (exclusive)
+- **End:** `questActiveEvent:34` (inclusive)
 
 > Without windowing, one early mistake permanently results in yellow. With windowing, a student can replay and earn green on a later attempt.
 
@@ -31,7 +31,6 @@ Check whether the student needed multiple attempts to build the correct argument
 |------|-----------|
 | Trigger | `questActiveEvent:34` |
 | Yellow | `DialogueNodeEvent:70:25` |
-| Yellow | `DialogueNodeEvent:70:33` |
 
 ---
 
@@ -40,12 +39,12 @@ Check whether the student needed multiple attempts to build the correct argument
 ```js
 // Unit 1, Point 3 — Analytics-matching script
 // Trigger eventKey: "questActiveEvent:34"
+// Success eventKey: "DialogueNodeEvent:70:7"
 
 const playerId = "<playerId>";
 
 const YELLOW_KEYS = [
-  "DialogueNodeEvent:70:25",
-  "DialogueNodeEvent:70:33"
+  "DialogueNodeEvent:70:25"
 ];
 
 const hasYellow =
@@ -70,8 +69,7 @@ const playerId = "<playerId>";
 const TRIGGER_KEY = "questActiveEvent:34";
 
 const YELLOW_KEYS = [
-  "DialogueNodeEvent:70:25",
-  "DialogueNodeEvent:70:33"
+  "DialogueNodeEvent:70:25"
 ];
 
 // 1) Latest trigger (end anchor)
@@ -134,7 +132,7 @@ if (!latestTrigger) {
 # U1P3: Determine attempt_number for WRONG_ARG_SELECTED
 # Count the number of attempts to construct the correct argument
 
-ATTEMPT_KEYS = ["DialogueNodeEvent:70:25", "DialogueNodeEvent:70:33", "DialogueNodeEvent:70:7"]
+ATTEMPT_KEYS = ["DialogueNodeEvent:70:25", "DialogueNodeEvent:70:7"]
 
 attempt = coll.count_documents({
         "playerId": pid,
@@ -154,7 +152,6 @@ const playerId = "<playerId>";
 
 const ATTEMPT_KEYS = [
   "DialogueNodeEvent:70:25",
-  "DialogueNodeEvent:70:33",
   "DialogueNodeEvent:70:7"
 ];
 
@@ -178,7 +175,6 @@ const TRIGGER_KEY = "questActiveEvent:34";
 
 const ATTEMPT_KEYS = [
   "DialogueNodeEvent:70:25",
-  "DialogueNodeEvent:70:33",
   "DialogueNodeEvent:70:7"
 ];
 

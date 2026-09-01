@@ -1,0 +1,32 @@
+﻿change,eventType,item,baseline,current
+new_event_type,SolarStillDesignEvent,,-,4
+cadence_change,DEBUGMenu,median_interval_s,2.008,4.445
+cadence_change,DaniEvent,median_interval_s,1.859,11.039
+new_values,EndOfUnit,data.Unit,,1; 2; 3
+new_values,InputEvent,data.actionType,,Descend
+new_values,ObjectInterEvent,data.actionType,,Inspect Alien Glyph; Press E to Collect; Press E to Place; Press E to Scan; Press [E/Action button] to enter escape pod 
+new_values,ObjectInterEvent,data.objectName,,Alien Glyph; Crash Pod; Eastern Ocean; Eastern River Distance; Eastern River Salinity; Eastern River Waterfall Flow; Eastern River Waterfall Height; Glyph Socket 1; Glyph Socket 2; Glyph Socket 3; Glyph Socket 4; Glyph Socket 5; Glyph Socket 6; Soil Key; Soil Key Puzzle Soil Key Room; Soil Key Puzzle Soil Outside Temple; Topography Piece 1; Topography Piece 2; Topography Piece 3; Topography Piece 4; Topography Piece 5; Topography Piece 6; Western River Distance; Western River Salinity; Western River Waterfall Flow; Western River Waterfall Height
+volume_change,PuzzlePieceVisibleEvent,record_count,346,1137
+new_values,PuzzlePieceVisibleEvent,data.pieceId,,Topography Piece 1; Topography Piece 2; Topography Piece 3; Topography Piece 4; Topography Piece 5; Topography Piece 6; Topography Slot 1; Topography Slot 2; Topography Slot 3; Topography Slot 4; Topography Slot 5; Topography Slot 6; Watershed Piece 1; Watershed Piece 2; Watershed Piece 3; Watershed Piece 4; WatershedSlotWall
+new_values,Soil Key Puzzle,data.Unit,,Unit 2 Prod (Refactor)
+new_values,TopographicMapEvent,data.actionType,,WaypointMoveEvent; WaypointResetEvent; WaypointSetEvent
+removed_values,TopographicMapEvent,data.actionType,dragEnd,
+new_values,TopographicMapEvent,data.featureUsed,,Waypoint
+removed_values,TopographicMapEvent,data.featureUsed,waypoint,
+removed_values,WaterChamberEvent,data.machineType,DualChamber_Evaporator,
+new_values,argumentationAnswerEvent,data.answerSubmitted,,"A,1,II; D,C,3,II"
+removed_values,argumentationAnswerEvent,data.answerSubmitted,"C,D,3,II",
+new_values,argumentationAnswerEvent,data.argumentationTitle,,Unit 2 – Watershed
+new_values,argumentationEvent,data.argumentationDescription,,U2 – Watershed - Which watershed is bigger based on collected evidence from eastern and western waterfalls
+new_values,argumentationEvent,data.argumentationTitle,,Unit 2 – Watershed
+new_values,argumentationNodeEvent,data.actionType,,argumentationNodeRemove
+new_values,argumentationNodeEvent,data.argumentationTitle,,Unit 2 – Watershed
+new_values,argumentationToolEvent,data.argumentationTitle,,Unit 2 – Watershed
+new_values,argumentationToolEvent,data.toolName,,BackingInfoPanel - Waterfall Data; BackingInfoPanel - Watershed Graph
+new_values,chatEvent,data.chatID,,"[16-3, 18-1, 18-2, 18-4, 18-5, 18-7]; [16-3, 18-1, 18-2, 18-4, 18-5]; [17-19, 17-20, 17-22, 17-26, 18-21, 18-22]; [17-22, 17-26, 18-21, 18-22, 18-24, 18-25, 18-33]; [17-22, 17-26, 18-21, 18-22, 18-24]; [18-10, 17-17, 17-19, 17-20, 17-22, 17-26]; [18-22, 18-24, 18-25, 18-33, 18-34, 18-35]; [18-33, 18-34, 18-35, 18-36, 18-37, 18-38, 18-39]; [18-34, 18-35, 18-36, 18-37, 18-38, 18-39]; [18-37, 18-38, 18-39, 18-269, 18-271, 18-273]; [18-38, 18-39, 18-269, 18-271, 18-273]; [18-4, 18-5, 18-7, 18-8, 18-10, 17-17]; [18-4, 18-5, 18-7, 18-8, 18-10]; [18-8, 18-10, 17-17, 17-19, 17-20, 17-22]"
+removed_values,chatEvent,data.chatID,"[31-45, 31-48, 31-68, 31-83, 31-84]; [31-51, 31-67, 31-69, 31-70]; [31-55, 31-65, 31-56, 31-59, 31-60]; [31-68, 31-83, 31-84, 31-51, 31-67]; [31-69, 31-70, 31-71, 31-72, 31-73]; [31-71, 31-72, 31-73, 31-74, 31-78]; [31-74, 31-78, 31-82, 70-0, 70-7, 31-55]; [70-0, 70-7, 31-55, 31-65, 31-56, 31-59]; [95-1, 95-4, 95-5, 95-76, 95-77, 95-78]; [95-11, 95-35, 95-83, 95-79, 95-36, 95-37]; [95-36, 95-37, 95-38, 95-36, 95-39, 95-40]; [95-37, 95-38, 95-36, 95-39, 95-40]; [95-76, 95-77, 95-78, 100-44, 95-80, 95-32]; [95-80, 95-32, 95-81, 95-82, 95-35]; [95-82, 95-35, 95-8, 95-9, 95-11, 95-35]",
+cadence_change,gameWindowFocusEvent,median_interval_s,142.327,293.986
+new_values,questEvent,data.questID,,22; 23; 24; 25; 54
+new_values,questEvent,data.questName,,Claim of Command; Foraged Forging; Getting the Band Back Together; Investigate the Temple; Which Watershed?
+cadence_change,soilMachine,median_interval_s,35.166,15.582
+new_values,soilMachine,data.canisterType,,Bedrock

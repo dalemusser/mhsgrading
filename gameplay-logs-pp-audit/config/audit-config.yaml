@@ -1,0 +1,44 @@
+# Configuration for the gameplay-log → progress-point grading audit pipeline.
+# All paths are relative to the repository root unless absolute.
+#
+# To audit a future build: change `log_dir`, `build_label`, and (if present)
+# `coverage_yaml`, then run  python gameplay-logs-pp-audit/scripts/run_audit.py
+
+build_label: "08-31-26"
+
+# Folder containing one or more *.json gameplay-log dumps (arrays of records).
+log_dir: "playthrough-logs-and-results/08-31-26"
+
+# Production grading markdown files (read-only for this audit).
+grading_dir: "grading-logic"
+
+# Prior 1:1 Python transcriptions of the production scripts (Stage 2 executor).
+tests_dir: "tests"
+
+# Dialogue reference materials.
+dialogue_xlsx: "grading-logic/original-score-rubric-table-and-dialogue-database/Dialogue-ID-Texts.xlsx"
+dialogue_export_csv: "grading-logic/original-score-rubric-table-and-dialogue-database/2026-06-10-MHSDialogueExport.csv"
+
+# Assessment-intent source documents (docx). The pipeline reads the docx
+# directly; OneDrive placeholder files are hydrated via a temp copy.
+progress_points_docx: "grading-logic/original-score-rubric-table-and-dialogue-database/Progress-Points.docx"
+ea_working_doc_docx: "grading-logic/original-score-rubric-table-and-dialogue-database/MHS-2.0-Embedded-Assessment-Working-Doc.docx"
+
+# Playthrough coverage manifest (which units were actually played). Optional;
+# used to separate "not logged" from "not exercised".
+coverage_yaml: "gameplay-logs-test/config/coverage/08-31-26.yaml"
+
+# Which top-level field identifies the player in the log records.
+#   auto  -> detect: prefer 'playerId' if present, else 'user_id' (adaptation
+#            is recorded as a finding, never silent).
+player_field: "auto"
+
+# Output locations (relative to gameplay-logs-pp-audit/). Per-run dated
+# subdirectories keep earlier runs intact — every run, 08-25-26 included
+# (relocated 2026-09-01), lives in its own outputs/<run>/ + reports/<run>/.
+outputs_dir: "outputs/08-31-26"
+reports_dir: "reports/08-31-26"
+
+# Minimum dialogue-text length for cross-ID text matching (shorter strings
+# like "Great!" produce false relocation matches).
+text_match_min_chars: 15

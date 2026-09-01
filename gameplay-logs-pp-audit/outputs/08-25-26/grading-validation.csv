@@ -1,0 +1,27 @@
+﻿progress_point,name,production_color,expected_color,grading_test_status,expected_confidence,doc_window_color,records_in_window,executor
+U1P1,Getting Your Space Legs,green,green,PASS,HIGH,,164,tests/test_u1p1.py
+U1P2,Info and Intros,green,green,PASS,HIGH,,305,tests/test_u1p2.py
+U1P3,Defend the Expedition,green,green,PASS,MEDIUM,green,397,tests/test_u1p3.py
+U1P4,What Was That?,green,green,PASS,HIGH,,471,tests/test_u1p4.py
+U2P1,Escape the Ruin,green,green,PASS,MEDIUM,green,1319,tests/test_u2p1.py
+U2P2,Foraged Forging,green,,EXECUTED_NO_INDEPENDENT_CHECK,LOW,,159,tests/test_u2p2.py
+U2P3,Getting the Band Back Together Part II,green,green,PASS,MEDIUM,green,1553,tests/test_u2p3.py
+U2P4,Investigate the Temple,green,green,PASS,MEDIUM,green,2042,tests/test_u2p4.py
+U2P5,Classified Information,green,green,PASS,MEDIUM,green,2266,tests/test_u2p5.py
+U2P6,Which Watershed? Part I,green,,EXECUTED_NO_INDEPENDENT_CHECK,LOW,,,tests/test_u2p6.py + audit override (current markdown script)
+U2P7,Which Watershed? Part II,green,green,PASS,MEDIUM,green,2542,tests/test_u2p7.py
+U3P1,Good Morning Cadet + Establishing a Foothold,green,green,PASS,MEDIUM,green,2691,tests/test_u3p1.py
+U3P2,Pollution Solution,green,green,PASS,MEDIUM,green,2887,tests/test_u3p2.py
+U3P3,Pollution Argument,green,green,PASS,MEDIUM,green,3587,tests/test_u3p3.py + audit override (current markdown script)
+U3P4,Forsaken Facility,green,,EXECUTED_NO_INDEPENDENT_CHECK,LOW,,541,tests/test_u3p4.py
+U3P5,Plant the Superfruit Seeds,green,green,PASS,MEDIUM,green,3763,tests/test_u3p5.py
+U4P1,Well What Have We Here?: Water Table Basics,green,,EXECUTED_NO_INDEPENDENT_CHECK,LOW,,99,tests/test_u4p1.py
+U4P2,Infiltration Glyph + Alien Well Floors 1 & 2,yellow,green,MISMATCH_NEEDS_REVIEW,LOW,yellow,4201,tests/test_u4p2.py
+U4P3,Alien Well Floor 3 & 4,green,green,PASS,MEDIUM,green,4437,tests/test_u4p3.py
+U4P4,Alien Well Floor 5 + You Know the Drill,green,,EXECUTED_NO_INDEPENDENT_CHECK,LOW,,350,tests/test_u4p4.py
+U4P5,Saving Cadet Anderson,green,green,PASS,MEDIUM,green,5037,tests/test_u4p5.py
+U4P6,Desert Delicacies,yellow,green,MISMATCH_NEEDS_REVIEW,MEDIUM,,208,tests/test_u4p6.py
+U5P1,If I Had a Nickel- Floors 1 & 2,green,,EXECUTED_NO_INDEPENDENT_CHECK,LOW,,132,tests/test_u5p1.py
+U5P2,If I Had a Nickel- Floors 3 & 4,green,,EXECUTED_NO_INDEPENDENT_CHECK,LOW,,336,tests/test_u5p2.py
+U5P3,What Happened Here?,green,,EXECUTED_NO_INDEPENDENT_CHECK,LOW,,155,tests/test_u5p3.py
+U5P4,Water Problems Require Water Solutions,green,,EXECUTED_NO_INDEPENDENT_CHECK,LOW,,174,tests/test_u5p4.py

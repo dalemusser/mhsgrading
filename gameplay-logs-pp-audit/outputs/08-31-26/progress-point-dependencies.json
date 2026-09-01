@@ -1,0 +1,3454 @@
+{
+  "generated_from": "grading-logic",
+  "progress_points": [
+    {
+      "pp_id": "U1P1",
+      "alt_ids": [
+        "U1.C1"
+      ],
+      "unit": 1,
+      "point": 1,
+      "activity": "Getting Your Space Legs",
+      "grading_file": "grading-logic/mhs-unit1-point1-grading.md",
+      "trigger_start": "questActiveEvent:28",
+      "trigger_end": "DialogueNodeEvent:31:29",
+      "grading_rule_prose": "Completion-only check. If the trigger event exists for the player, the point is green.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "Trigger event exists"
+        }
+      ],
+      "attempt_window": null,
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "DialogueNodeEvent:31:29",
+          "kind": "dialogue",
+          "expectation": "required_anchor"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:31:29"
+        ],
+        "event_types": [],
+        "data_filters": [],
+        "data_fields": [],
+        "script": "// Unit 1, Point 1 — Attempt-based standalone production script (latest attempt)\n// Trigger eventKey: \"DialogueNodeEvent:31:29\"\n\nconst color = \"green\";\ncolor;\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:31:29"
+      ],
+      "reason_codes": [],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:31:29",
+        "questActiveEvent:28"
+      ],
+      "warnings": []
+    },
+    {
+      "pp_id": "U1P2",
+      "alt_ids": [
+        "U1.C2"
+      ],
+      "unit": 1,
+      "point": 2,
+      "activity": "Info and Intros",
+      "grading_file": "grading-logic/mhs-unit1-point2-grading.md",
+      "trigger_start": "DialogueNodeEvent:31:29",
+      "trigger_end": "DialogueNodeEvent:30:98",
+      "grading_rule_prose": "Completion-only check. If the trigger event exists for the player, the point is green.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "Trigger event exists"
+        }
+      ],
+      "attempt_window": null,
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "DialogueNodeEvent:30:98",
+          "kind": "dialogue",
+          "expectation": "required_anchor"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:30:98"
+        ],
+        "event_types": [],
+        "data_filters": [],
+        "data_fields": [],
+        "script": "// Unit 1, Point 2 — Attempt-based standalone production script\n// Trigger eventKey: \"DialogueNodeEvent:30:98\"\n\nconst color = \"green\";\ncolor;\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:30:98"
+      ],
+      "reason_codes": [],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:30:98",
+        "DialogueNodeEvent:31:29"
+      ],
+      "warnings": []
+    },
+    {
+      "pp_id": "U1P3",
+      "alt_ids": [
+        "U1.C3"
+      ],
+      "unit": 1,
+      "point": 3,
+      "activity": "Defend the Expedition",
+      "grading_file": "grading-logic/mhs-unit1-point3-grading.md",
+      "trigger_start": "DialogueNodeEvent:30:98",
+      "trigger_end": "questActiveEvent:34",
+      "grading_rule_prose": "Check whether the student needed multiple attempts to build the correct argument.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "No yellow nodes found within the attempt window"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "Any yellow node found within the attempt window, or no trigger exists"
+        }
+      ],
+      "attempt_window": {
+        "start": {
+          "raw": "`DialogueNodeEvent:30:98` (exclusive)",
+          "which": null,
+          "key": "DialogueNodeEvent:30:98",
+          "bound": "exclusive"
+        },
+        "end": {
+          "raw": "`questActiveEvent:34` (inclusive)",
+          "which": null,
+          "key": "questActiveEvent:34",
+          "bound": "inclusive"
+        }
+      },
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "questActiveEvent:34",
+          "kind": "quest",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Yellow",
+          "key": "DialogueNodeEvent:70:25",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:70:25",
+          "questActiveEvent:34"
+        ],
+        "event_types": [],
+        "data_filters": [],
+        "data_fields": [],
+        "script": "// Unit 1, Point 3 — Attempt-based standalone production script\n// Trigger eventKey: \"questActiveEvent:34\"\n\nconst playerId = \"<playerId>\";\n\nconst TRIGGER_KEY = \"questActiveEvent:34\";\n\nconst YELLOW_KEYS = [\n  \"DialogueNodeEvent:70:25\"\n];\n\n// 1) Latest trigger (end anchor)\nconst latestTrigger = db.logdata.findOne(\n  { game: \"mhs\", playerId: playerId, eventKey: TRIGGER_KEY },\n  { sort: { _id: -1 } }\n);\n\nif (!latestTrigger) {\n  \"yellow\";\n} else {\n  // 2) Previous trigger (attempt boundary)\n  const prevTrigger = db.logdata.findOne(\n    {\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: TRIGGER_KEY,\n      _id: { $lt: latestTrigger._id }\n    },\n    { sort: { _id: -1 } }\n  );\n\n  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId(\"000000000000000000000000\");\n  const windowEndId = latestTrigger._id;\n\n  const hasYellow =\n    db.logdata.findOne({\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: { $in: YELLOW_KEYS },\n      _id: { $gt: windowStartId, $lte: windowEndId }\n    }) !== null;\n\n  hasYellow ? \"yellow\" : \"green\";\n}\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:70:25",
+        "DialogueNodeEvent:70:7",
+        "questActiveEvent:34"
+      ],
+      "reason_codes": [
+        "WRONG_ARG_SELECTED"
+      ],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:30:98",
+        "DialogueNodeEvent:70:25",
+        "questActiveEvent:34"
+      ],
+      "warnings": []
+    },
+    {
+      "pp_id": "U1P4",
+      "alt_ids": [
+        "U1.C4"
+      ],
+      "unit": 1,
+      "point": 4,
+      "activity": "What Was That?",
+      "grading_file": "grading-logic/mhs-unit1-point4-grading.md",
+      "trigger_start": "questActiveEvent:34",
+      "trigger_end": "DialogueNodeEvent:33:19",
+      "grading_rule_prose": "Completion-only check. If the trigger event exists for the player, the point is green.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "Trigger event exists"
+        }
+      ],
+      "attempt_window": null,
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "DialogueNodeEvent:33:19",
+          "kind": "dialogue",
+          "expectation": "required_anchor"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:33:19"
+        ],
+        "event_types": [],
+        "data_filters": [],
+        "data_fields": [],
+        "script": "// Unit 1, Point 4 — Attempt-based standalone production script\n// Trigger eventKey: \"DialogueNodeEvent:33:19\"\n\nconst color = \"green\";\ncolor;\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:33:19"
+      ],
+      "reason_codes": [],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:33:19",
+        "questActiveEvent:34"
+      ],
+      "warnings": []
+    },
+    {
+      "pp_id": "U2P1",
+      "alt_ids": [
+        "U2.C1"
+      ],
+      "unit": 2,
+      "point": 1,
+      "activity": "Escape the Ruin",
+      "grading_file": "grading-logic/mhs-unit2-point1-grading.md",
+      "trigger_start": "DialogueNodeEvent:18:1",
+      "trigger_end": "questFinishEvent:21",
+      "grading_rule_prose": "Student must complete the map-profile matching independently and without excessive incorrect attempts.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "Success node present AND no yellow nodes in attempt window"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "Success node missing OR any yellow node present"
+        }
+      ],
+      "attempt_window": {
+        "start": {
+          "raw": "Previous `DialogueNodeEvent:18:1` (exclusive)",
+          "which": "previous",
+          "key": "DialogueNodeEvent:18:1",
+          "bound": "exclusive"
+        },
+        "end": {
+          "raw": "Latest `questFinishEvent:21` (inclusive)",
+          "which": "latest",
+          "key": "questFinishEvent:21",
+          "bound": "inclusive"
+        }
+      },
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "questFinishEvent:21",
+          "kind": "quest",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Success",
+          "key": "DialogueNodeEvent:68:29",
+          "kind": "dialogue",
+          "expectation": "required_evidence"
+        },
+        {
+          "role": "Yellow",
+          "key": "DialogueNodeEvent:68:22",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Yellow",
+          "key": "DialogueNodeEvent:68:23",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Yellow",
+          "key": "DialogueNodeEvent:68:27",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Yellow",
+          "key": "DialogueNodeEvent:68:28",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Yellow",
+          "key": "DialogueNodeEvent:68:31",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:68:22",
+          "DialogueNodeEvent:68:23",
+          "DialogueNodeEvent:68:27",
+          "DialogueNodeEvent:68:28",
+          "DialogueNodeEvent:68:29",
+          "DialogueNodeEvent:68:31",
+          "questFinishEvent:21"
+        ],
+        "event_types": [],
+        "data_filters": [],
+        "data_fields": [],
+        "script": "// Unit 2, Point 1 — Attempt-based standalone production grading script\n// Trigger eventKey: \"questFinishEvent:21\"\n\nconst playerId = \"<playerId>\";\n\nconst TRIGGER_KEY = \"questFinishEvent:21\";\n\nconst successKey = \"DialogueNodeEvent:68:29\";\n\nconst yellowNodes = [\n  \"DialogueNodeEvent:68:22\",\n  \"DialogueNodeEvent:68:23\",\n  \"DialogueNodeEvent:68:27\",\n  \"DialogueNodeEvent:68:28\",\n  \"DialogueNodeEvent:68:31\"\n];\n\n// 1) Latest trigger (end anchor)\nconst latestTrigger = db.logdata.findOne(\n  { game: \"mhs\", playerId: playerId, eventKey: TRIGGER_KEY },\n  { sort: { _id: -1 } }\n);\n\nif (!latestTrigger) {\n  \"yellow\";\n} else {\n  // 2) Previous trigger (attempt boundary)\n  const prevTrigger = db.logdata.findOne(\n    {\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: TRIGGER_KEY,\n      _id: { $lt: latestTrigger._id }\n    },\n    { sort: { _id: -1 } }\n  );\n\n  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId(\"000000000000000000000000\");\n  const windowEndId = latestTrigger._id;\n\n  const hasSuccess =\n    db.logdata.findOne({\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: successKey,\n      _id: { $gt: windowStartId, $lte: windowEndId }\n    }) !== null;\n\n  const hasAnyYellow =\n    db.logdata.findOne({\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: { $in: yellowNodes },\n      _id: { $gt: windowStartId, $lte: windowEndId }\n    }) !== null;\n\n  hasSuccess && !hasAnyYellow ? \"green\" : \"yellow\";\n}\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:68:22",
+        "DialogueNodeEvent:68:23",
+        "DialogueNodeEvent:68:27",
+        "DialogueNodeEvent:68:28",
+        "DialogueNodeEvent:68:29",
+        "DialogueNodeEvent:68:31",
+        "questFinishEvent:21"
+      ],
+      "reason_codes": [
+        "MISSING_SUCCESS_NODE",
+        "TOO_MANY_NEGATIVES"
+      ],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:18:1",
+        "DialogueNodeEvent:68:22",
+        "DialogueNodeEvent:68:23",
+        "DialogueNodeEvent:68:27",
+        "DialogueNodeEvent:68:28",
+        "DialogueNodeEvent:68:29",
+        "DialogueNodeEvent:68:31",
+        "questFinishEvent:21"
+      ],
+      "warnings": []
+    },
+    {
+      "pp_id": "U2P2",
+      "alt_ids": [
+        "U2.C2"
+      ],
+      "unit": 2,
+      "point": 2,
+      "activity": "Foraged Forging",
+      "grading_file": "grading-logic/mhs-unit2-point2-grading.md",
+      "trigger_start": "questFinishEvent:21",
+      "trigger_end": "DialogueNodeEvent:20:26",
+      "grading_rule_prose": "Windowed rule using client timestamps. Count wrong-direction prompts between the start and end of the activity. The student should trigger at most 1 wrong-direction dialogue.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "Target count <= 1 within the activity window"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "Target count > 1, or start/end events missing"
+        }
+      ],
+      "attempt_window": null,
+      "event_keys": [
+        {
+          "role": "Trigger / End",
+          "key": "DialogueNodeEvent:20:26",
+          "kind": "dialogue",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Start",
+          "key": "questFinishEvent:21",
+          "kind": "quest",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:28:179",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:59:179",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:28:182",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:59:182",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:28:183",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:59:183",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:20:26",
+          "DialogueNodeEvent:28:179",
+          "DialogueNodeEvent:28:182",
+          "DialogueNodeEvent:28:183",
+          "DialogueNodeEvent:59:179",
+          "DialogueNodeEvent:59:182",
+          "DialogueNodeEvent:59:183",
+          "questFinishEvent:21"
+        ],
+        "event_types": [],
+        "data_filters": [],
+        "data_fields": [],
+        "script": "// Unit 2, Point 2 — Attempt-based standalone production grading script (latest attempt)\n// Trigger eventKey: \"DialogueNodeEvent:20:26\"\n\nconst playerId = \"<playerId>\";\n\nconst END_KEY = \"DialogueNodeEvent:20:26\";     // trigger\nconst START_KEY = \"questFinishEvent:21\";\n\nconst TARGET_KEYS = [\n  \"DialogueNodeEvent:28:179\",\n  \"DialogueNodeEvent:59:179\",\n  \"DialogueNodeEvent:28:182\",\n  \"DialogueNodeEvent:59:182\",\n  \"DialogueNodeEvent:28:183\",\n  \"DialogueNodeEvent:59:183\"\n];\n\n// 1) Latest end trigger by arrival order\nconst endDoc = db.logdata.findOne(\n  { game: \"mhs\", playerId: playerId, eventKey: END_KEY },\n  { sort: { _id: -1 } }\n);\n\nif (!endDoc || !endDoc.timestamp) {\n  \"yellow\";\n} else {\n  const endIso = endDoc.timestamp;\n\n  // 2) Latest start before this end (same attempt) by arrival order\n  const startDoc = db.logdata.findOne(\n    {\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: START_KEY,\n      _id: { $lte: endDoc._id }\n    },\n    { sort: { _id: -1 } }\n  );\n\n  if (!startDoc || !startDoc.timestamp) {\n    \"yellow\";\n  } else {\n    const startIso = startDoc.timestamp;\n\n    // 3) Count targets within [startIso, endIso] fenced by _id window\n    const countTargets = db.logdata.countDocuments({\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: { $in: TARGET_KEYS },\n      timestamp: { $gte: startIso, $lte: endIso },\n      _id: { $gte: startDoc._id, $lte: endDoc._id }\n    });\n\n    countTargets <= 1 ? \"green\" : \"yellow\";\n  }\n}\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:20:26",
+        "DialogueNodeEvent:28:179",
+        "DialogueNodeEvent:28:182",
+        "DialogueNodeEvent:28:183",
+        "DialogueNodeEvent:59:179",
+        "DialogueNodeEvent:59:182",
+        "DialogueNodeEvent:59:183",
+        "questFinishEvent:21"
+      ],
+      "reason_codes": [
+        "BAD_FEEDBACK"
+      ],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:20:26",
+        "DialogueNodeEvent:28:179",
+        "DialogueNodeEvent:28:182",
+        "DialogueNodeEvent:28:183",
+        "DialogueNodeEvent:59:179",
+        "DialogueNodeEvent:59:182",
+        "DialogueNodeEvent:59:183",
+        "questFinishEvent:21"
+      ],
+      "warnings": []
+    },
+    {
+      "pp_id": "U2P3",
+      "alt_ids": [
+        "U2.C3"
+      ],
+      "unit": 2,
+      "point": 3,
+      "activity": "Getting the Band Back Together Part II",
+      "grading_file": "grading-logic/mhs-unit2-point3-grading.md",
+      "trigger_start": "DialogueNodeEvent:20:26",
+      "trigger_end": "DialogueNodeEvent:22:18",
+      "grading_rule_prose": "Windowed rule using client timestamps. Count wrong-direction prompts between the start and end of the activity. The student should trigger at most 6 wrong-direction dialogues.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "Target count <= 6 within the activity window"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "Target count > 6, or start/end events missing"
+        }
+      ],
+      "attempt_window": null,
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "DialogueNodeEvent:22:18",
+          "kind": "dialogue",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Start",
+          "key": "DialogueNodeEvent:20:33",
+          "kind": "dialogue",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "End (analytics)",
+          "key": "DialogueNodeEvent:22:1",
+          "kind": "dialogue",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:18:225",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:28:185",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:59:185",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:28:184",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:28:191",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:59:184",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:59:191",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:18:226",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:18:227",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:28:186",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:59:186",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:18:228",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:28:187",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:59:187",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:18:229",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:28:188",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:59:188",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:18:230",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:28:180",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:59:180",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:18:233",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:28:192",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:59:192",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:18:234",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:28:193",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:59:193",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:18:235",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:28:194",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:59:194",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:18:236",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:18:237",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:28:190",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target (wrong direction)",
+          "key": "DialogueNodeEvent:59:190",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:18:225",
+          "DialogueNodeEvent:18:226",
+          "DialogueNodeEvent:18:227",
+          "DialogueNodeEvent:18:228",
+          "DialogueNodeEvent:18:229",
+          "DialogueNodeEvent:18:230",
+          "DialogueNodeEvent:18:233",
+          "DialogueNodeEvent:18:234",
+          "DialogueNodeEvent:18:235",
+          "DialogueNodeEvent:18:236",
+          "DialogueNodeEvent:18:237",
+          "DialogueNodeEvent:20:33",
+          "DialogueNodeEvent:22:18",
+          "DialogueNodeEvent:28:180",
+          "DialogueNodeEvent:28:184",
+          "DialogueNodeEvent:28:185",
+          "DialogueNodeEvent:28:186",
+          "DialogueNodeEvent:28:187",
+          "DialogueNodeEvent:28:188",
+          "DialogueNodeEvent:28:190",
+          "DialogueNodeEvent:28:191",
+          "DialogueNodeEvent:28:192",
+          "DialogueNodeEvent:28:193",
+          "DialogueNodeEvent:28:194",
+          "DialogueNodeEvent:59:180",
+          "DialogueNodeEvent:59:184",
+          "DialogueNodeEvent:59:185",
+          "DialogueNodeEvent:59:186",
+          "DialogueNodeEvent:59:187",
+          "DialogueNodeEvent:59:188",
+          "DialogueNodeEvent:59:190",
+          "DialogueNodeEvent:59:191",
+          "DialogueNodeEvent:59:192",
+          "DialogueNodeEvent:59:193",
+          "DialogueNodeEvent:59:194"
+        ],
+        "event_types": [],
+        "data_filters": [],
+        "data_fields": [],
+        "script": "// Unit 2, Point 3 — Standalone production grading script\n// Trigger eventKey: \"DialogueNodeEvent:22:18\"\n\nconst playerId = \"<playerId>\";\n\nconst TRIGGER_KEY = \"DialogueNodeEvent:22:18\";\nconst START_KEY = \"DialogueNodeEvent:20:33\";\n\nconst TARGET_KEYS = [\n  \"DialogueNodeEvent:18:225\", \"DialogueNodeEvent:28:185\", \"DialogueNodeEvent:59:185\",\n  \"DialogueNodeEvent:28:184\", \"DialogueNodeEvent:28:191\", \"DialogueNodeEvent:59:184\", \"DialogueNodeEvent:59:191\",\n  \"DialogueNodeEvent:18:226\", \"DialogueNodeEvent:18:227\", \"DialogueNodeEvent:28:186\", \"DialogueNodeEvent:59:186\",\n  \"DialogueNodeEvent:18:228\", \"DialogueNodeEvent:28:187\", \"DialogueNodeEvent:59:187\",\n  \"DialogueNodeEvent:18:229\", \"DialogueNodeEvent:28:188\", \"DialogueNodeEvent:59:188\",\n  \"DialogueNodeEvent:18:230\", \"DialogueNodeEvent:28:180\", \"DialogueNodeEvent:59:180\",\n  \"DialogueNodeEvent:18:233\", \"DialogueNodeEvent:28:192\", \"DialogueNodeEvent:59:192\",\n  \"DialogueNodeEvent:18:234\", \"DialogueNodeEvent:28:193\", \"DialogueNodeEvent:59:193\",\n  \"DialogueNodeEvent:18:235\", \"DialogueNodeEvent:28:194\", \"DialogueNodeEvent:59:194\",\n  \"DialogueNodeEvent:18:236\", \"DialogueNodeEvent:18:237\", \"DialogueNodeEvent:28:190\", \"DialogueNodeEvent:59:190\"\n];\n\n// 1) Latest trigger (end anchor) by arrival order\nconst endDoc = db.logdata.findOne(\n  { game: \"mhs\", playerId: playerId, eventKey: TRIGGER_KEY },\n  { sort: { _id: -1 } }\n);\n\nif (!endDoc || !endDoc.timestamp) {\n  \"yellow\";\n} else {\n  // 2) Latest start before that end (same attempt) by arrival order\n  const startDoc = db.logdata.findOne(\n    {\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: START_KEY,\n      _id: { $lte: endDoc._id }\n    },\n    { sort: { _id: -1 } }\n  );\n\n  if (!startDoc || !startDoc.timestamp) {\n    \"yellow\";\n  } else {\n    const startIso = startDoc.timestamp;\n    const endIso = endDoc.timestamp;\n\n    // 3) Count targets within the bounded attempt window\n    const countTargets = db.logdata.countDocuments({\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: { $in: TARGET_KEYS },\n      timestamp: { $gte: startIso, $lte: endIso },\n      _id: { $gte: startDoc._id, $lte: endDoc._id }\n    });\n\n    countTargets <= 6 ? \"green\" : \"yellow\";\n  }\n}\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:18:225",
+        "DialogueNodeEvent:18:226",
+        "DialogueNodeEvent:18:227",
+        "DialogueNodeEvent:18:228",
+        "DialogueNodeEvent:18:229",
+        "DialogueNodeEvent:18:230",
+        "DialogueNodeEvent:18:233",
+        "DialogueNodeEvent:18:234",
+        "DialogueNodeEvent:18:235",
+        "DialogueNodeEvent:18:236",
+        "DialogueNodeEvent:18:237",
+        "DialogueNodeEvent:20:33",
+        "DialogueNodeEvent:22:1",
+        "DialogueNodeEvent:22:18",
+        "DialogueNodeEvent:28:180",
+        "DialogueNodeEvent:28:184",
+        "DialogueNodeEvent:28:185",
+        "DialogueNodeEvent:28:186",
+        "DialogueNodeEvent:28:187",
+        "DialogueNodeEvent:28:188",
+        "DialogueNodeEvent:28:190",
+        "DialogueNodeEvent:28:191",
+        "DialogueNodeEvent:28:192",
+        "DialogueNodeEvent:28:193",
+        "DialogueNodeEvent:28:194",
+        "DialogueNodeEvent:59:180",
+        "DialogueNodeEvent:59:184",
+        "DialogueNodeEvent:59:185",
+        "DialogueNodeEvent:59:186",
+        "DialogueNodeEvent:59:187",
+        "DialogueNodeEvent:59:188",
+        "DialogueNodeEvent:59:190",
+        "DialogueNodeEvent:59:191",
+        "DialogueNodeEvent:59:192",
+        "DialogueNodeEvent:59:193",
+        "DialogueNodeEvent:59:194"
+      ],
+      "reason_codes": [
+        "BAD_FEEDBACK"
+      ],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:18:225",
+        "DialogueNodeEvent:18:226",
+        "DialogueNodeEvent:18:227",
+        "DialogueNodeEvent:18:228",
+        "DialogueNodeEvent:18:229",
+        "DialogueNodeEvent:18:230",
+        "DialogueNodeEvent:18:233",
+        "DialogueNodeEvent:18:234",
+        "DialogueNodeEvent:18:235",
+        "DialogueNodeEvent:18:236",
+        "DialogueNodeEvent:18:237",
+        "DialogueNodeEvent:20:26",
+        "DialogueNodeEvent:20:33",
+        "DialogueNodeEvent:22:1",
+        "DialogueNodeEvent:22:18",
+        "DialogueNodeEvent:28:180",
+        "DialogueNodeEvent:28:184",
+        "DialogueNodeEvent:28:185",
+        "DialogueNodeEvent:28:186",
+        "DialogueNodeEvent:28:187",
+        "DialogueNodeEvent:28:188",
+        "DialogueNodeEvent:28:190",
+        "DialogueNodeEvent:28:191",
+        "DialogueNodeEvent:28:192",
+        "DialogueNodeEvent:28:193",
+        "DialogueNodeEvent:28:194",
+        "DialogueNodeEvent:59:180",
+        "DialogueNodeEvent:59:184",
+        "DialogueNodeEvent:59:185",
+        "DialogueNodeEvent:59:186",
+        "DialogueNodeEvent:59:187",
+        "DialogueNodeEvent:59:188",
+        "DialogueNodeEvent:59:190",
+        "DialogueNodeEvent:59:191",
+        "DialogueNodeEvent:59:192",
+        "DialogueNodeEvent:59:193",
+        "DialogueNodeEvent:59:194"
+      ],
+      "warnings": []
+    },
+    {
+      "pp_id": "U2P4",
+      "alt_ids": [
+        "U2.C4"
+      ],
+      "unit": 2,
+      "point": 4,
+      "activity": "Investigate the Temple",
+      "grading_file": "grading-logic/mhs-unit2-point4-grading.md",
+      "trigger_start": "DialogueNodeEvent:22:18",
+      "trigger_end": "DialogueNodeEvent:23:17",
+      "grading_rule_prose": "Student must complete the watershed-flow matching independently and solve the glyph puzzle without excessive attempts.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "Success node present AND no bad feedback nodes in attempt window"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "Success node missing OR any bad feedback node present"
+        }
+      ],
+      "attempt_window": {
+        "start": {
+          "raw": "`DialogueNodeEvent:22:18` (exclusive)",
+          "which": null,
+          "key": "DialogueNodeEvent:22:18",
+          "bound": "exclusive"
+        },
+        "end": {
+          "raw": "`DialogueNodeEvent:23:17` (inclusive)",
+          "which": null,
+          "key": "DialogueNodeEvent:23:17",
+          "bound": "inclusive"
+        }
+      },
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "DialogueNodeEvent:23:17",
+          "kind": "dialogue",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Success",
+          "key": "DialogueNodeEvent:74:21",
+          "kind": "dialogue",
+          "expectation": "required_evidence"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:23:17",
+          "DialogueNodeEvent:74:16",
+          "DialogueNodeEvent:74:17",
+          "DialogueNodeEvent:74:20",
+          "DialogueNodeEvent:74:21",
+          "DialogueNodeEvent:74:22"
+        ],
+        "event_types": [],
+        "data_filters": [],
+        "data_fields": [],
+        "script": "// Unit 2, Point 4 — Standalone replay-aware grading (latest attempt)\n// Trigger eventKey: \"DialogueNodeEvent:23:17\"\n\nconst playerId = \"<playerId>\";\n\nconst TRIGGER_KEY = \"DialogueNodeEvent:23:17\";\n\nconst successKey = \"DialogueNodeEvent:74:21\";\nconst badKeys = [\n  \"DialogueNodeEvent:74:16\",\n  \"DialogueNodeEvent:74:17\",\n  \"DialogueNodeEvent:74:20\",\n  \"DialogueNodeEvent:74:22\"\n];\n\n// 1) Latest trigger\nconst latestTrigger = db.logdata.findOne(\n  { game: \"mhs\", playerId: playerId, eventKey: TRIGGER_KEY },\n  { sort: { _id: -1 } }\n);\n\nif (!latestTrigger) {\n  \"yellow\";\n} else {\n  // 2) Previous trigger (defines prior attempt boundary)\n  const prevTrigger = db.logdata.findOne(\n    { game: \"mhs\", playerId: playerId, eventKey: TRIGGER_KEY, _id: { $lt: latestTrigger._id } },\n    { sort: { _id: -1 } }\n  );\n\n  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId(\"000000000000000000000000\");\n  const windowEndId = latestTrigger._id;\n\n  // 3) Check success/bad within this attempt window\n  const hasSuccess =\n    db.logdata.findOne({\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: successKey,\n      _id: { $gt: windowStartId, $lte: windowEndId }\n    }) !== null;\n\n  const hasBad =\n    db.logdata.findOne({\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: { $in: badKeys },\n      _id: { $gt: windowStartId, $lte: windowEndId }\n    }) !== null;\n\n  hasSuccess && !hasBad ? \"green\" : \"yellow\";\n}\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:23:17",
+        "DialogueNodeEvent:74:16",
+        "DialogueNodeEvent:74:17",
+        "DialogueNodeEvent:74:20",
+        "DialogueNodeEvent:74:21",
+        "DialogueNodeEvent:74:22"
+      ],
+      "reason_codes": [
+        "MISSING_SUCCESS_NODE",
+        "TOO_MANY_NEGATIVES"
+      ],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:22:18",
+        "DialogueNodeEvent:23:17",
+        "DialogueNodeEvent:74:16",
+        "DialogueNodeEvent:74:17",
+        "DialogueNodeEvent:74:20",
+        "DialogueNodeEvent:74:21",
+        "DialogueNodeEvent:74:22"
+      ],
+      "warnings": [
+        "production script uses keys absent from Event Keys table: ['DialogueNodeEvent:74:16', 'DialogueNodeEvent:74:17', 'DialogueNodeEvent:74:20', 'DialogueNodeEvent:74:22']"
+      ]
+    },
+    {
+      "pp_id": "U2P5",
+      "alt_ids": [
+        "U2.C5"
+      ],
+      "unit": 2,
+      "point": 5,
+      "activity": "Classified Information",
+      "grading_file": "grading-logic/mhs-unit2-point5-grading.md",
+      "trigger_start": "DialogueNodeEvent:23:17",
+      "trigger_end": "DialogueNodeEvent:23:42",
+      "grading_rule_prose": "Score-based rule. Count positive (correct) and negative (incorrect) argument component selections, then compute a weighted score.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "score >= 4"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "score < 4, or no trigger exists"
+        }
+      ],
+      "attempt_window": {
+        "start": {
+          "raw": "Previous `DialogueNodeEvent:23:42` (exclusive)",
+          "which": "previous",
+          "key": "DialogueNodeEvent:23:42",
+          "bound": "exclusive"
+        },
+        "end": {
+          "raw": "Latest `DialogueNodeEvent:23:42` (inclusive)",
+          "which": "latest",
+          "key": "DialogueNodeEvent:23:42",
+          "bound": "inclusive"
+        }
+      },
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "DialogueNodeEvent:23:42",
+          "kind": "dialogue",
+          "expectation": "required_anchor"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:23:42",
+          "DialogueNodeEvent:26:137",
+          "DialogueNodeEvent:26:140",
+          "DialogueNodeEvent:26:142",
+          "DialogueNodeEvent:26:143",
+          "DialogueNodeEvent:26:144",
+          "DialogueNodeEvent:26:145",
+          "DialogueNodeEvent:26:146",
+          "DialogueNodeEvent:26:147",
+          "DialogueNodeEvent:26:148",
+          "DialogueNodeEvent:26:165",
+          "DialogueNodeEvent:26:166",
+          "DialogueNodeEvent:26:167",
+          "DialogueNodeEvent:26:168",
+          "DialogueNodeEvent:26:169",
+          "DialogueNodeEvent:26:170",
+          "DialogueNodeEvent:26:172",
+          "DialogueNodeEvent:26:173",
+          "DialogueNodeEvent:26:174",
+          "DialogueNodeEvent:26:175",
+          "DialogueNodeEvent:26:176",
+          "DialogueNodeEvent:26:177",
+          "DialogueNodeEvent:26:178",
+          "DialogueNodeEvent:26:179",
+          "DialogueNodeEvent:26:180",
+          "DialogueNodeEvent:26:181",
+          "DialogueNodeEvent:26:182",
+          "DialogueNodeEvent:26:183",
+          "DialogueNodeEvent:26:184",
+          "DialogueNodeEvent:26:185",
+          "DialogueNodeEvent:26:186",
+          "DialogueNodeEvent:26:187",
+          "DialogueNodeEvent:26:188",
+          "DialogueNodeEvent:26:189",
+          "DialogueNodeEvent:26:191",
+          "DialogueNodeEvent:26:192",
+          "DialogueNodeEvent:26:193",
+          "DialogueNodeEvent:26:194",
+          "DialogueNodeEvent:26:195",
+          "DialogueNodeEvent:26:196",
+          "DialogueNodeEvent:26:197",
+          "DialogueNodeEvent:26:198",
+          "DialogueNodeEvent:26:199",
+          "DialogueNodeEvent:26:200",
+          "DialogueNodeEvent:26:201",
+          "DialogueNodeEvent:26:202",
+          "DialogueNodeEvent:26:203",
+          "DialogueNodeEvent:26:204",
+          "DialogueNodeEvent:26:205",
+          "DialogueNodeEvent:26:206",
+          "DialogueNodeEvent:26:207",
+          "DialogueNodeEvent:26:208",
+          "DialogueNodeEvent:26:209",
+          "DialogueNodeEvent:26:210",
+          "DialogueNodeEvent:26:211"
+        ],
+        "event_types": [],
+        "data_filters": [],
+        "data_fields": [],
+        "script": "// Unit 2, Point 5 — Attempt-based standalone production grading script\n// Trigger eventKey: \"DialogueNodeEvent:23:42\"\n\nconst playerId = \"<playerId>\";\n\nconst TRIGGER_KEY = \"DialogueNodeEvent:23:42\";\n\nconst POS_KEYS = [\n  \"DialogueNodeEvent:26:140\", \"DialogueNodeEvent:26:142\",\n  \"DialogueNodeEvent:26:143\", \"DialogueNodeEvent:26:146\",\n  \"DialogueNodeEvent:26:147\", \"DialogueNodeEvent:26:148\",\n  \"DialogueNodeEvent:26:165\", \"DialogueNodeEvent:26:166\", \"DialogueNodeEvent:26:167\",\n  \"DialogueNodeEvent:26:168\", \"DialogueNodeEvent:26:169\", \"DialogueNodeEvent:26:170\", \"DialogueNodeEvent:26:172\", \"DialogueNodeEvent:26:173\",\n  \"DialogueNodeEvent:26:174\", \"DialogueNodeEvent:26:175\", \"DialogueNodeEvent:26:176\",\n  \"DialogueNodeEvent:26:177\", \"DialogueNodeEvent:26:178\", \"DialogueNodeEvent:26:179\",\n  \"DialogueNodeEvent:26:180\", \"DialogueNodeEvent:26:181\", \"DialogueNodeEvent:26:182\",\n  \"DialogueNodeEvent:26:183\", \"DialogueNodeEvent:26:184\", \"DialogueNodeEvent:26:185\",\n  \"DialogueNodeEvent:26:186\"\n];\n\nconst NEG_KEYS = [\n  \"DialogueNodeEvent:26:137\", \"DialogueNodeEvent:26:144\",\n  \"DialogueNodeEvent:26:145\",\n  \"DialogueNodeEvent:26:187\", \"DialogueNodeEvent:26:188\", \"DialogueNodeEvent:26:189\", \"DialogueNodeEvent:26:191\", \"DialogueNodeEvent:26:192\",\n  \"DialogueNodeEvent:26:193\", \"DialogueNodeEvent:26:194\", \"DialogueNodeEvent:26:195\",\n  \"DialogueNodeEvent:26:196\", \"DialogueNodeEvent:26:197\", \"DialogueNodeEvent:26:198\",\n  \"DialogueNodeEvent:26:199\", \"DialogueNodeEvent:26:200\", \"DialogueNodeEvent:26:201\",\n  \"DialogueNodeEvent:26:202\", \"DialogueNodeEvent:26:203\", \"DialogueNodeEvent:26:204\",\n  \"DialogueNodeEvent:26:205\", \"DialogueNodeEvent:26:206\", \"DialogueNodeEvent:26:207\",\n  \"DialogueNodeEvent:26:208\", \"DialogueNodeEvent:26:209\", \"DialogueNodeEvent:26:210\",\n  \"DialogueNodeEvent:26:211\"\n];\n\n// 1) Latest trigger (end anchor) by arrival order\nconst latestTrigger = db.logdata.findOne(\n  { game: \"mhs\", playerId: playerId, eventKey: TRIGGER_KEY },\n  { sort: { _id: -1 } }\n);\n\nif (!latestTrigger) {\n  \"yellow\";\n} else {\n  // 2) Previous trigger (defines attempt start boundary)\n  const prevTrigger = db.logdata.findOne(\n    {\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: TRIGGER_KEY,\n      _id: { $lt: latestTrigger._id }\n    },\n    { sort: { _id: -1 } }\n  );\n\n  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId(\"000000000000000000000000\");\n  const windowEndId = latestTrigger._id;\n\n  // 3) Count POS/NEG inside window\n  const posCount = db.logdata.countDocuments({\n    game: \"mhs\", playerId: playerId,\n    eventKey: { $in: POS_KEYS },\n    _id: { $gt: windowStartId, $lte: windowEndId }\n  });\n\n  const negCount = db.logdata.countDocuments({\n    game: \"mhs\", playerId: playerId,\n    eventKey: { $in: NEG_KEYS },\n    _id: { $gt: windowStartId, $lte: windowEndId }\n  });\n\n  const score = posCount - (negCount / 3.0);\n  score >= 4 ? \"green\" : \"yellow\";\n}\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:23:42",
+        "DialogueNodeEvent:26:137",
+        "DialogueNodeEvent:26:140",
+        "DialogueNodeEvent:26:142",
+        "DialogueNodeEvent:26:143",
+        "DialogueNodeEvent:26:144",
+        "DialogueNodeEvent:26:145",
+        "DialogueNodeEvent:26:146",
+        "DialogueNodeEvent:26:147",
+        "DialogueNodeEvent:26:148",
+        "DialogueNodeEvent:26:165",
+        "DialogueNodeEvent:26:166",
+        "DialogueNodeEvent:26:167",
+        "DialogueNodeEvent:26:168",
+        "DialogueNodeEvent:26:169",
+        "DialogueNodeEvent:26:170",
+        "DialogueNodeEvent:26:172",
+        "DialogueNodeEvent:26:173",
+        "DialogueNodeEvent:26:174",
+        "DialogueNodeEvent:26:175",
+        "DialogueNodeEvent:26:176",
+        "DialogueNodeEvent:26:177",
+        "DialogueNodeEvent:26:178",
+        "DialogueNodeEvent:26:179",
+        "DialogueNodeEvent:26:180",
+        "DialogueNodeEvent:26:181",
+        "DialogueNodeEvent:26:182",
+        "DialogueNodeEvent:26:183",
+        "DialogueNodeEvent:26:184",
+        "DialogueNodeEvent:26:185",
+        "DialogueNodeEvent:26:186",
+        "DialogueNodeEvent:26:187",
+        "DialogueNodeEvent:26:188",
+        "DialogueNodeEvent:26:189",
+        "DialogueNodeEvent:26:191",
+        "DialogueNodeEvent:26:192",
+        "DialogueNodeEvent:26:193",
+        "DialogueNodeEvent:26:194",
+        "DialogueNodeEvent:26:195",
+        "DialogueNodeEvent:26:196",
+        "DialogueNodeEvent:26:197",
+        "DialogueNodeEvent:26:198",
+        "DialogueNodeEvent:26:199",
+        "DialogueNodeEvent:26:200",
+        "DialogueNodeEvent:26:201",
+        "DialogueNodeEvent:26:202",
+        "DialogueNodeEvent:26:203",
+        "DialogueNodeEvent:26:204",
+        "DialogueNodeEvent:26:205",
+        "DialogueNodeEvent:26:206",
+        "DialogueNodeEvent:26:207",
+        "DialogueNodeEvent:26:208",
+        "DialogueNodeEvent:26:209",
+        "DialogueNodeEvent:26:210",
+        "DialogueNodeEvent:26:211"
+      ],
+      "reason_codes": [
+        "TOO_MANY_NEGATIVES"
+      ],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:23:17",
+        "DialogueNodeEvent:23:42",
+        "DialogueNodeEvent:26:137",
+        "DialogueNodeEvent:26:140",
+        "DialogueNodeEvent:26:142",
+        "DialogueNodeEvent:26:143",
+        "DialogueNodeEvent:26:144",
+        "DialogueNodeEvent:26:145",
+        "DialogueNodeEvent:26:146",
+        "DialogueNodeEvent:26:147",
+        "DialogueNodeEvent:26:148",
+        "DialogueNodeEvent:26:165",
+        "DialogueNodeEvent:26:166",
+        "DialogueNodeEvent:26:167",
+        "DialogueNodeEvent:26:168",
+        "DialogueNodeEvent:26:169",
+        "DialogueNodeEvent:26:170",
+        "DialogueNodeEvent:26:172",
+        "DialogueNodeEvent:26:173",
+        "DialogueNodeEvent:26:174",
+        "DialogueNodeEvent:26:175",
+        "DialogueNodeEvent:26:176",
+        "DialogueNodeEvent:26:177",
+        "DialogueNodeEvent:26:178",
+        "DialogueNodeEvent:26:179",
+        "DialogueNodeEvent:26:180",
+        "DialogueNodeEvent:26:181",
+        "DialogueNodeEvent:26:182",
+        "DialogueNodeEvent:26:183",
+        "DialogueNodeEvent:26:184",
+        "DialogueNodeEvent:26:185",
+        "DialogueNodeEvent:26:186",
+        "DialogueNodeEvent:26:187",
+        "DialogueNodeEvent:26:188",
+        "DialogueNodeEvent:26:189",
+        "DialogueNodeEvent:26:191",
+        "DialogueNodeEvent:26:192",
+        "DialogueNodeEvent:26:193",
+        "DialogueNodeEvent:26:194",
+        "DialogueNodeEvent:26:195",
+        "DialogueNodeEvent:26:196",
+        "DialogueNodeEvent:26:197",
+        "DialogueNodeEvent:26:198",
+        "DialogueNodeEvent:26:199",
+        "DialogueNodeEvent:26:200",
+        "DialogueNodeEvent:26:201",
+        "DialogueNodeEvent:26:202",
+        "DialogueNodeEvent:26:203",
+        "DialogueNodeEvent:26:204",
+        "DialogueNodeEvent:26:205",
+        "DialogueNodeEvent:26:206",
+        "DialogueNodeEvent:26:207",
+        "DialogueNodeEvent:26:208",
+        "DialogueNodeEvent:26:209",
+        "DialogueNodeEvent:26:210",
+        "DialogueNodeEvent:26:211"
+      ],
+      "warnings": [
+        "production script uses keys absent from Event Keys table: ['DialogueNodeEvent:26:137', 'DialogueNodeEvent:26:140', 'DialogueNodeEvent:26:142', 'DialogueNodeEvent:26:143', 'DialogueNodeEvent:26:144', 'DialogueNodeEvent:26:145', 'DialogueNodeEvent:26:146', 'DialogueNodeEvent:26:147', 'DialogueNodeEvent:26:148', 'DialogueNodeEvent:26:165', 'DialogueNodeEvent:26:166', 'DialogueNodeEvent:26:167', 'DialogueNodeEvent:26:168', 'DialogueNodeEvent:26:169', 'DialogueNodeEvent:26:170', 'DialogueNodeEvent:26:172', 'DialogueNodeEvent:26:173', 'DialogueNodeEvent:26:174', 'DialogueNodeEvent:26:175', 'DialogueNodeEvent:26:176', 'DialogueNodeEvent:26:177', 'DialogueNodeEvent:26:178', 'DialogueNodeEvent:26:179', 'DialogueNodeEvent:26:180', 'DialogueNodeEvent:26:181', 'DialogueNodeEvent:26:182', 'DialogueNodeEvent:26:183', 'DialogueNodeEvent:26:184', 'DialogueNodeEvent:26:185', 'DialogueNodeEvent:26:186', 'DialogueNodeEvent:26:187', 'DialogueNodeEvent:26:188', 'DialogueNodeEvent:26:189', 'DialogueNodeEvent:26:191', 'DialogueNodeEvent:26:192', 'DialogueNodeEvent:26:193', 'DialogueNodeEvent:26:194', 'DialogueNodeEvent:26:195', 'DialogueNodeEvent:26:196', 'DialogueNodeEvent:26:197', 'DialogueNodeEvent:26:198', 'DialogueNodeEvent:26:199', 'DialogueNodeEvent:26:200', 'DialogueNodeEvent:26:201', 'DialogueNodeEvent:26:202', 'DialogueNodeEvent:26:203', 'DialogueNodeEvent:26:204', 'DialogueNodeEvent:26:205', 'DialogueNodeEvent:26:206', 'DialogueNodeEvent:26:207', 'DialogueNodeEvent:26:208', 'DialogueNodeEvent:26:209', 'DialogueNodeEvent:26:210', 'DialogueNodeEvent:26:211']"
+      ]
+    },
+    {
+      "pp_id": "U2P6",
+      "alt_ids": [
+        "U2.C6"
+      ],
+      "unit": 2,
+      "point": 6,
+      "activity": "Which Watershed? Part I",
+      "grading_file": "grading-logic/mhs-unit2-point6-grading.md",
+      "trigger_start": "DialogueNodeEvent:23:42",
+      "trigger_end": "DialogueNodeEvent:20:46",
+      "grading_rule_prose": "Student must select the correct criterion for determining watershed size on the first try.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "Pass node present AND no yellow nodes in attempt window"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "Pass node missing OR any yellow node present"
+        }
+      ],
+      "attempt_window": {
+        "start": {
+          "raw": "Latest `DialogueNodeEvent:23:42` (exclusive)",
+          "which": "latest",
+          "key": "DialogueNodeEvent:23:42",
+          "bound": "exclusive"
+        },
+        "end": {
+          "raw": "Latest `DialogueNodeEvent:20:46` (inclusive)",
+          "which": "latest",
+          "key": "DialogueNodeEvent:20:46",
+          "bound": "inclusive"
+        }
+      },
+      "event_keys": [
+        {
+          "role": "Trigger (Start)",
+          "key": "DialogueNodeEvent:23:42",
+          "kind": "dialogue",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Trigger (End)",
+          "key": "DialogueNodeEvent:20:46",
+          "kind": "dialogue",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Pass (correct choice)",
+          "key": "DialogueNodeEvent:20:43",
+          "kind": "dialogue",
+          "expectation": "required_evidence"
+        },
+        {
+          "role": "Yellow (wrong choice)",
+          "key": "DialogueNodeEvent:20:44",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Yellow (wrong choice)",
+          "key": "DialogueNodeEvent:20:45",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:20:43",
+          "DialogueNodeEvent:20:44",
+          "DialogueNodeEvent:20:45",
+          "DialogueNodeEvent:20:46",
+          "DialogueNodeEvent:23:42"
+        ],
+        "event_types": [],
+        "data_filters": [],
+        "data_fields": [],
+        "script": "// Unit 2, Point 6 — Attempt-based standalone production grading script\n// Attempt window:\n//   Start: latest \"DialogueNodeEvent:23:42\" (Trigger Start, exclusive)\n//   End:   latest \"DialogueNodeEvent:20:46\" (Trigger End, inclusive)\n\nconst playerId = \"<playerId>\";\n\nconst START_KEY = \"DialogueNodeEvent:23:42\"; // opens the activity\nconst END_KEY   = \"DialogueNodeEvent:20:46\"; // closes the attempt\nconst PASS_KEY  = \"DialogueNodeEvent:20:43\";\nconst YELLOW_KEYS = [\"DialogueNodeEvent:20:44\", \"DialogueNodeEvent:20:45\"];\n\n// 1) Latest start trigger (window start, exclusive)\nconst startTrigger = db.logdata.findOne(\n  { game: \"mhs\", playerId: playerId, eventKey: START_KEY },\n  { sort: { _id: -1 } }\n);\n\n// 2) Latest end trigger (window end, inclusive)\nconst endTrigger = db.logdata.findOne(\n  { game: \"mhs\", playerId: playerId, eventKey: END_KEY },\n  { sort: { _id: -1 } }\n);\n\nif (!startTrigger || !endTrigger || endTrigger._id <= startTrigger._id) {\n  // No valid window (missing start/end, or end not after start)\n  \"yellow\";\n} else {\n  const windowStartId = startTrigger._id;\n  const windowEndId = endTrigger._id;\n\n  // 3) Must have PASS_KEY within attempt window\n  const hasPass =\n    db.logdata.findOne({\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: PASS_KEY,\n      _id: { $gt: windowStartId, $lte: windowEndId }\n    }) !== null;\n\n  if (!hasPass) {\n    \"yellow\";\n  } else {\n    // 4) Must have none of YELLOW_KEYS within attempt window\n    const hasYellow =\n      db.logdata.findOne({\n        game: \"mhs\",\n        playerId: playerId,\n        eventKey: { $in: YELLOW_KEYS },\n        _id: { $gt: windowStartId, $lte: windowEndId }\n      }) !== null;\n\n    hasYellow ? \"yellow\" : \"green\";\n  }\n}\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:20:43",
+        "DialogueNodeEvent:20:44",
+        "DialogueNodeEvent:20:45",
+        "DialogueNodeEvent:20:46"
+      ],
+      "reason_codes": [
+        "HIT_YELLOW_NODE"
+      ],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:20:43",
+        "DialogueNodeEvent:20:44",
+        "DialogueNodeEvent:20:45",
+        "DialogueNodeEvent:20:46",
+        "DialogueNodeEvent:23:42"
+      ],
+      "warnings": []
+    },
+    {
+      "pp_id": "U2P7",
+      "alt_ids": [
+        "U2.C7"
+      ],
+      "unit": 2,
+      "point": 7,
+      "activity": "Which Watershed? Part II",
+      "grading_file": "grading-logic/mhs-unit2-point7-grading.md",
+      "trigger_start": "DialogueNodeEvent:20:46",
+      "trigger_end": "questFinishEvent:54",
+      "grading_rule_prose": "Student must successfully build the watershed argument with limited incorrect evidence selections.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "Success key present AND neg_count <= 3 in attempt window"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "Success key missing OR neg_count > 3, or no trigger exists"
+        }
+      ],
+      "attempt_window": {
+        "start": {
+          "raw": "Previous `questFinishEvent:54` (exclusive)",
+          "which": "previous",
+          "key": "questFinishEvent:54",
+          "bound": "exclusive"
+        },
+        "end": {
+          "raw": "Latest `questFinishEvent:54` (inclusive)",
+          "which": "latest",
+          "key": "questFinishEvent:54",
+          "bound": "inclusive"
+        }
+      },
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "questFinishEvent:54",
+          "kind": "quest",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Success",
+          "key": "DialogueNodeEvent:27:7",
+          "kind": "dialogue",
+          "expectation": "required_evidence"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:27:11",
+          "DialogueNodeEvent:27:12",
+          "DialogueNodeEvent:27:13",
+          "DialogueNodeEvent:27:14",
+          "DialogueNodeEvent:27:15",
+          "DialogueNodeEvent:27:16",
+          "DialogueNodeEvent:27:17",
+          "DialogueNodeEvent:27:18",
+          "DialogueNodeEvent:27:20",
+          "DialogueNodeEvent:27:25",
+          "DialogueNodeEvent:27:26",
+          "DialogueNodeEvent:27:27",
+          "DialogueNodeEvent:27:28",
+          "DialogueNodeEvent:27:29",
+          "DialogueNodeEvent:27:30",
+          "DialogueNodeEvent:27:7",
+          "questFinishEvent:54"
+        ],
+        "event_types": [],
+        "data_filters": [],
+        "data_fields": [],
+        "script": "// Unit 2, Point 7 — Attempt-based standalone production grading script\n// Trigger eventKey: \"questFinishEvent:54\"\n\nconst playerId = \"<playerId>\";\n\nconst TRIGGER_KEY = \"questFinishEvent:54\";\nconst SUCCESS_KEY = \"DialogueNodeEvent:27:7\";\n\nconst NEG_KEYS = [\n  \"DialogueNodeEvent:27:11\", \"DialogueNodeEvent:27:12\", \"DialogueNodeEvent:27:13\", \"DialogueNodeEvent:27:14\",\n  \"DialogueNodeEvent:27:15\", \"DialogueNodeEvent:27:16\", \"DialogueNodeEvent:27:17\", \"DialogueNodeEvent:27:18\", \"DialogueNodeEvent:27:20\", \"DialogueNodeEvent:27:25\", \"DialogueNodeEvent:27:26\",\n  \"DialogueNodeEvent:27:27\", \"DialogueNodeEvent:27:28\", \"DialogueNodeEvent:27:29\", \"DialogueNodeEvent:27:30\"\n];\n\n// 1) Latest trigger (end anchor)\nconst latestTrigger = db.logdata.findOne(\n  { game: \"mhs\", playerId: playerId, eventKey: TRIGGER_KEY },\n  { sort: { _id: -1 } }\n);\n\nif (!latestTrigger) {\n  \"yellow\";\n} else {\n  // 2) Previous trigger (attempt boundary)\n  const prevTrigger = db.logdata.findOne(\n    {\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: TRIGGER_KEY,\n      _id: { $lt: latestTrigger._id }\n    },\n    { sort: { _id: -1 } }\n  );\n\n  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId(\"000000000000000000000000\");\n  const windowEndId = latestTrigger._id;\n\n  const hasSuccess =\n    db.logdata.findOne({\n      game: \"mhs\", playerId: playerId,\n      eventKey: SUCCESS_KEY,\n      _id: { $gt: windowStartId, $lte: windowEndId }\n    }) !== null;\n\n  const negCount = db.logdata.countDocuments({\n    game: \"mhs\", playerId: playerId,\n    eventKey: { $in: NEG_KEYS },\n    _id: { $gt: windowStartId, $lte: windowEndId }\n  });\n\n  (hasSuccess && negCount <= 3) ? \"green\" : \"yellow\";\n}\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:27:11",
+        "DialogueNodeEvent:27:12",
+        "DialogueNodeEvent:27:13",
+        "DialogueNodeEvent:27:14",
+        "DialogueNodeEvent:27:15",
+        "DialogueNodeEvent:27:16",
+        "DialogueNodeEvent:27:17",
+        "DialogueNodeEvent:27:18",
+        "DialogueNodeEvent:27:20",
+        "DialogueNodeEvent:27:25",
+        "DialogueNodeEvent:27:26",
+        "DialogueNodeEvent:27:27",
+        "DialogueNodeEvent:27:28",
+        "DialogueNodeEvent:27:29",
+        "DialogueNodeEvent:27:30",
+        "DialogueNodeEvent:27:7",
+        "questFinishEvent:54"
+      ],
+      "reason_codes": [
+        "WRONG_ARG_SELECTED"
+      ],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:20:46",
+        "DialogueNodeEvent:27:11",
+        "DialogueNodeEvent:27:12",
+        "DialogueNodeEvent:27:13",
+        "DialogueNodeEvent:27:14",
+        "DialogueNodeEvent:27:15",
+        "DialogueNodeEvent:27:16",
+        "DialogueNodeEvent:27:17",
+        "DialogueNodeEvent:27:18",
+        "DialogueNodeEvent:27:20",
+        "DialogueNodeEvent:27:25",
+        "DialogueNodeEvent:27:26",
+        "DialogueNodeEvent:27:27",
+        "DialogueNodeEvent:27:28",
+        "DialogueNodeEvent:27:29",
+        "DialogueNodeEvent:27:30",
+        "DialogueNodeEvent:27:7",
+        "questFinishEvent:54"
+      ],
+      "warnings": [
+        "production script uses keys absent from Event Keys table: ['DialogueNodeEvent:27:11', 'DialogueNodeEvent:27:12', 'DialogueNodeEvent:27:13', 'DialogueNodeEvent:27:14', 'DialogueNodeEvent:27:15', 'DialogueNodeEvent:27:16', 'DialogueNodeEvent:27:17', 'DialogueNodeEvent:27:18', 'DialogueNodeEvent:27:20', 'DialogueNodeEvent:27:25', 'DialogueNodeEvent:27:26', 'DialogueNodeEvent:27:27', 'DialogueNodeEvent:27:28', 'DialogueNodeEvent:27:29', 'DialogueNodeEvent:27:30']"
+      ]
+    },
+    {
+      "pp_id": "U3P1",
+      "alt_ids": [
+        "U3.C1"
+      ],
+      "unit": 3,
+      "point": 1,
+      "activity": "Good Morning Cadet + Establishing a Foothold",
+      "grading_file": "grading-logic/mhs-unit3-point1-grading.md",
+      "trigger_start": "DialogueNodeEvent:10:1",
+      "trigger_end": "DialogueNodeEvent:11:22",
+      "grading_rule_prose": "Count-based rule. The student must have more than one occurrence of the target event to demonstrate understanding of water flow direction.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "Count of target event > 1 within the attempt window"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "Count of target event <= 1, or no trigger exists"
+        }
+      ],
+      "attempt_window": {
+        "start": {
+          "raw": "Previous `DialogueNodeEvent:10:1` (exclusive)",
+          "which": "previous",
+          "key": "DialogueNodeEvent:10:1",
+          "bound": "exclusive"
+        },
+        "end": {
+          "raw": "Latest `DialogueNodeEvent:11:22` (inclusive)",
+          "which": "latest",
+          "key": "DialogueNodeEvent:11:22",
+          "bound": "inclusive"
+        }
+      },
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "DialogueNodeEvent:11:22",
+          "kind": "dialogue",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:10:30",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:10:30",
+          "DialogueNodeEvent:11:22"
+        ],
+        "event_types": [],
+        "data_filters": [],
+        "data_fields": [],
+        "script": "// Unit 3, Point 1 — Attempt-based standalone production script (latest attempt)\n// Trigger eventKey: \"DialogueNodeEvent:11:22\"\n\nconst playerId = \"<playerId>\";\n\nconst TRIGGER_KEY = \"DialogueNodeEvent:11:22\";\nconst TARGET_KEY = \"DialogueNodeEvent:10:30\";\n\n// 1) Latest trigger (end anchor)\nconst latestTrigger = db.logdata.findOne(\n  { game: \"mhs\", playerId: playerId, eventKey: TRIGGER_KEY },\n  { sort: { _id: -1 } }\n);\n\nif (!latestTrigger) {\n  \"yellow\";\n} else {\n  // 2) Previous trigger (attempt boundary)\n  const prevTrigger = db.logdata.findOne(\n    {\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: TRIGGER_KEY,\n      _id: { $lt: latestTrigger._id }\n    },\n    { sort: { _id: -1 } }\n  );\n\n  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId(\"000000000000000000000000\");\n  const windowEndId = latestTrigger._id;\n\n  // 3) Count target occurrences within attempt window\n  const cnt = db.logdata.countDocuments({\n    game: \"mhs\",\n    playerId: playerId,\n    eventKey: TARGET_KEY,\n    _id: { $gt: windowStartId, $lte: windowEndId }\n  });\n\n  cnt > 1 ? \"green\" : \"yellow\";\n}\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:10:30",
+        "DialogueNodeEvent:11:22"
+      ],
+      "reason_codes": [
+        "TOO_MANY_NEGATIVES"
+      ],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:10:1",
+        "DialogueNodeEvent:10:30",
+        "DialogueNodeEvent:11:22"
+      ],
+      "warnings": []
+    },
+    {
+      "pp_id": "U3P2",
+      "alt_ids": [
+        "U3.C2"
+      ],
+      "unit": 3,
+      "point": 2,
+      "activity": "Pollution Solution",
+      "grading_file": "grading-logic/mhs-unit3-point2-grading.md",
+      "trigger_start": "questFinishEvent:17",
+      "trigger_end": "DialogueNodeEvent:11:34",
+      "grading_rule_prose": "Score-based rule with capped penalties. The student starts with 5 points and loses points based on incorrect attempts, capped per category.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "score >= 3"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "score < 3, or no trigger exists"
+        }
+      ],
+      "attempt_window": {
+        "start": {
+          "raw": "Previous `questFinishEvent:17` (exclusive)",
+          "which": "previous",
+          "key": "questFinishEvent:17",
+          "bound": "exclusive"
+        },
+        "end": {
+          "raw": "Latest `DialogueNodeEvent:11:34` (inclusive)",
+          "which": "latest",
+          "key": "DialogueNodeEvent:11:34",
+          "bound": "inclusive"
+        }
+      },
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "DialogueNodeEvent:11:34",
+          "kind": "dialogue",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Penalty group 1",
+          "key": "DialogueNodeEvent:11:27",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Penalty group 2",
+          "key": "DialogueNodeEvent:11:29",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Penalty group 2",
+          "key": "DialogueNodeEvent:11:230",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:11:230",
+          "DialogueNodeEvent:11:27",
+          "DialogueNodeEvent:11:29",
+          "DialogueNodeEvent:11:34"
+        ],
+        "event_types": [],
+        "data_filters": [],
+        "data_fields": [],
+        "script": "// Unit 3, Point 2 — Attempt-based standalone production script (latest attempt)\n// Trigger eventKey: \"DialogueNodeEvent:11:34\"\n\nconst playerId = \"<playerId>\";\n\nconst TRIGGER_KEY = \"DialogueNodeEvent:11:34\";\n\nfunction cappedPenalty(cnt) {\n  if (cnt <= 1) return 0;\n  if (cnt <= 3) return 1;\n  return 2;\n}\n\n// 1) Latest trigger (end anchor)\nconst latestTrigger = db.logdata.findOne(\n  { game: \"mhs\", playerId: playerId, eventKey: TRIGGER_KEY },\n  { sort: { _id: -1 } }\n);\n\nif (!latestTrigger) {\n  \"yellow\";\n} else {\n  // 2) Previous trigger (attempt boundary)\n  const prevTrigger = db.logdata.findOne(\n    {\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: TRIGGER_KEY,\n      _id: { $lt: latestTrigger._id }\n    },\n    { sort: { _id: -1 } }\n  );\n\n  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId(\"000000000000000000000000\");\n  const windowEndId = latestTrigger._id;\n\n  const c27 = db.logdata.countDocuments({\n    game: \"mhs\", playerId: playerId,\n    eventKey: \"DialogueNodeEvent:11:27\",\n    _id: { $gt: windowStartId, $lte: windowEndId }\n  });\n\n  const c29 = db.logdata.countDocuments({\n    game: \"mhs\", playerId: playerId,\n    eventKey: \"DialogueNodeEvent:11:29\",\n    _id: { $gt: windowStartId, $lte: windowEndId }\n  });\n\n  const c230 = db.logdata.countDocuments({\n    game: \"mhs\", playerId: playerId,\n    eventKey: \"DialogueNodeEvent:11:230\",\n    _id: { $gt: windowStartId, $lte: windowEndId }\n  });\n\n  const cSum = c29 + c230;\n\n  let score = 5;\n  score -= cappedPenalty(c27);\n  score -= cappedPenalty(cSum);\n\n  score < 3 ? \"yellow\" : \"green\";\n}\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:11:230",
+        "DialogueNodeEvent:11:27",
+        "DialogueNodeEvent:11:29",
+        "DialogueNodeEvent:11:34"
+      ],
+      "reason_codes": [
+        "BAD_FEEDBACK"
+      ],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:11:230",
+        "DialogueNodeEvent:11:27",
+        "DialogueNodeEvent:11:29",
+        "DialogueNodeEvent:11:34",
+        "questFinishEvent:17"
+      ],
+      "warnings": []
+    },
+    {
+      "pp_id": "U3P3",
+      "alt_ids": [
+        "U3.C3"
+      ],
+      "unit": 3,
+      "point": 3,
+      "activity": "Pollution Argument",
+      "grading_file": "grading-logic/mhs-unit3-point3-grading.md",
+      "trigger_start": "DialogueNodeEvent:11:34",
+      "trigger_end": "questFinishEvent:18",
+      "grading_rule_prose": "Score-based rule with a bonus. Count incorrect argument selections, compute a base score, then add a bonus point if the student used the backing info panel.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "total_score >= 3"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "total_score < 3, or no trigger exists"
+        }
+      ],
+      "attempt_window": {
+        "start": {
+          "raw": "Previous `DialogueNodeEvent:11:34` (exclusive)",
+          "which": "previous",
+          "key": "DialogueNodeEvent:11:34",
+          "bound": "exclusive"
+        },
+        "end": {
+          "raw": "Latest `questFinishEvent:18` (inclusive)",
+          "which": "latest",
+          "key": "questFinishEvent:18",
+          "bound": "inclusive"
+        }
+      },
+      "event_keys": [
+        {
+          "role": "Trigger (End)",
+          "key": "questFinishEvent:18",
+          "kind": "quest",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Field",
+          "key": "Value",
+          "kind": "other",
+          "expectation": "structural"
+        },
+        {
+          "role": "eventType",
+          "key": "argumentationToolEvent",
+          "kind": "other",
+          "expectation": "structural"
+        },
+        {
+          "role": "data.toolName",
+          "key": "BackingInfoPanel - Pollution Site Data",
+          "kind": "other",
+          "expectation": "structural"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:84:20",
+          "DialogueNodeEvent:84:25",
+          "DialogueNodeEvent:84:32",
+          "DialogueNodeEvent:84:33",
+          "DialogueNodeEvent:84:34",
+          "DialogueNodeEvent:84:35",
+          "DialogueNodeEvent:84:36",
+          "DialogueNodeEvent:84:37",
+          "DialogueNodeEvent:84:38",
+          "DialogueNodeEvent:84:39",
+          "DialogueNodeEvent:84:40",
+          "DialogueNodeEvent:84:41",
+          "DialogueNodeEvent:84:42",
+          "DialogueNodeEvent:84:43",
+          "DialogueNodeEvent:84:44",
+          "DialogueNodeEvent:84:45",
+          "DialogueNodeEvent:84:46",
+          "DialogueNodeEvent:84:47",
+          "questFinishEvent:18"
+        ],
+        "event_types": [
+          "argumentationToolEvent"
+        ],
+        "data_filters": [
+          {
+            "field": "toolName",
+            "value": "BackingInfoPanel - Pollution Site Data"
+          }
+        ],
+        "data_fields": [
+          "toolName"
+        ],
+        "script": "// Unit 3, Point 3 — Attempt-based standalone production script (latest attempt)\n// Trigger eventKey: \"questFinishEvent:18\"\n\nconst playerId = \"<playerId>\";\n\nconst TRIGGER_KEY = \"questFinishEvent:18\";\n\nconst TARGET_KEYS = [\n  \"DialogueNodeEvent:84:20\", \"DialogueNodeEvent:84:25\", \"DialogueNodeEvent:84:32\",\n  \"DialogueNodeEvent:84:33\", \"DialogueNodeEvent:84:34\", \"DialogueNodeEvent:84:35\",\n  \"DialogueNodeEvent:84:36\", \"DialogueNodeEvent:84:37\", \"DialogueNodeEvent:84:38\",\n  \"DialogueNodeEvent:84:39\", \"DialogueNodeEvent:84:40\", \"DialogueNodeEvent:84:41\",\n  \"DialogueNodeEvent:84:42\", \"DialogueNodeEvent:84:43\", \"DialogueNodeEvent:84:44\",\n  \"DialogueNodeEvent:84:45\", \"DialogueNodeEvent:84:46\", \"DialogueNodeEvent:84:47\"\n];\n\n// 1) Latest trigger (end anchor)\nconst latestTrigger = db.logdata.findOne(\n  { game: \"mhs\", playerId: playerId, eventKey: TRIGGER_KEY },\n  { sort: { _id: -1 } }\n);\n\nif (!latestTrigger) {\n  \"yellow\";\n} else {\n  // 2) Previous trigger (attempt boundary)\n  const prevTrigger = db.logdata.findOne(\n    {\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: TRIGGER_KEY,\n      _id: { $lt: latestTrigger._id }\n    },\n    { sort: { _id: -1 } }\n  );\n\n  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId(\"000000000000000000000000\");\n  const windowEndId = latestTrigger._id;\n\n  const sumCount = db.logdata.countDocuments({\n    game: \"mhs\", playerId: playerId,\n    eventKey: { $in: TARGET_KEYS },\n    _id: { $gt: windowStartId, $lte: windowEndId }\n  });\n\n  let baseScore;\n  if (sumCount <= 3) baseScore = 3;\n  else if (sumCount === 4) baseScore = 2;\n  else if (sumCount === 5) baseScore = 1;\n  else baseScore = 0;\n\n  const hasBonus =\n    db.logdata.findOne(\n      {\n        game: \"mhs\",\n        playerId: playerId,\n        eventType: \"argumentationToolEvent\",\n        \"data.toolName\": \"BackingInfoPanel - Pollution Site Data\",\n        _id: { $gt: windowStartId, $lte: windowEndId }\n      },\n      { projection: { _id: 1 } }\n    ) !== null;\n\n  const totalScore = baseScore + (hasBonus ? 1 : 0);\n  totalScore >= 3 ? \"green\" : \"yellow\";\n}\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:84:20",
+        "DialogueNodeEvent:84:25",
+        "DialogueNodeEvent:84:32",
+        "DialogueNodeEvent:84:33",
+        "DialogueNodeEvent:84:34",
+        "DialogueNodeEvent:84:35",
+        "DialogueNodeEvent:84:36",
+        "DialogueNodeEvent:84:37",
+        "DialogueNodeEvent:84:38",
+        "DialogueNodeEvent:84:39",
+        "DialogueNodeEvent:84:40",
+        "DialogueNodeEvent:84:41",
+        "DialogueNodeEvent:84:42",
+        "DialogueNodeEvent:84:43",
+        "DialogueNodeEvent:84:44",
+        "DialogueNodeEvent:84:45",
+        "DialogueNodeEvent:84:46",
+        "DialogueNodeEvent:84:47",
+        "questFinishEvent:18"
+      ],
+      "reason_codes": [
+        "MISSING_SUCCESS_NODE",
+        "WRONG_ARG_SELECTED"
+      ],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:11:34",
+        "DialogueNodeEvent:84:20",
+        "DialogueNodeEvent:84:25",
+        "DialogueNodeEvent:84:32",
+        "DialogueNodeEvent:84:33",
+        "DialogueNodeEvent:84:34",
+        "DialogueNodeEvent:84:35",
+        "DialogueNodeEvent:84:36",
+        "DialogueNodeEvent:84:37",
+        "DialogueNodeEvent:84:38",
+        "DialogueNodeEvent:84:39",
+        "DialogueNodeEvent:84:40",
+        "DialogueNodeEvent:84:41",
+        "DialogueNodeEvent:84:42",
+        "DialogueNodeEvent:84:43",
+        "DialogueNodeEvent:84:44",
+        "DialogueNodeEvent:84:45",
+        "DialogueNodeEvent:84:46",
+        "DialogueNodeEvent:84:47",
+        "questFinishEvent:18"
+      ],
+      "warnings": [
+        "production script uses keys absent from Event Keys table: ['DialogueNodeEvent:84:20', 'DialogueNodeEvent:84:25', 'DialogueNodeEvent:84:32', 'DialogueNodeEvent:84:33', 'DialogueNodeEvent:84:34', 'DialogueNodeEvent:84:35', 'DialogueNodeEvent:84:36', 'DialogueNodeEvent:84:37', 'DialogueNodeEvent:84:38', 'DialogueNodeEvent:84:39', 'DialogueNodeEvent:84:40', 'DialogueNodeEvent:84:41', 'DialogueNodeEvent:84:42', 'DialogueNodeEvent:84:43', 'DialogueNodeEvent:84:44', 'DialogueNodeEvent:84:45', 'DialogueNodeEvent:84:46', 'DialogueNodeEvent:84:47']"
+      ]
+    },
+    {
+      "pp_id": "U3P4",
+      "alt_ids": [
+        "U3.C4"
+      ],
+      "unit": 3,
+      "point": 4,
+      "activity": "Forsaken Facility",
+      "grading_file": "grading-logic/mhs-unit3-point4-grading.md",
+      "trigger_start": "questActiveEvent:18",
+      "trigger_end": "DialogueNodeEvent:73:200",
+      "grading_rule_prose": "Gate + score-based rule. First, the student must have the gate event (78:24). Then, count target events and compute a score.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "Gate present AND score > 0 (i.e. target count <= 2)"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "Gate missing OR score == 0 (i.e. target count >= 3), or no trigger exists"
+        }
+      ],
+      "attempt_window": {
+        "start": {
+          "raw": "Previous `questActiveEvent:18` (exclusive)",
+          "which": "previous",
+          "key": "questActiveEvent:18",
+          "bound": "exclusive"
+        },
+        "end": {
+          "raw": "Latest `DialogueNodeEvent:73:200` (inclusive)",
+          "which": "latest",
+          "key": "DialogueNodeEvent:73:200",
+          "bound": "inclusive"
+        }
+      },
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "DialogueNodeEvent:73:200",
+          "kind": "dialogue",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Gate (required)",
+          "key": "DialogueNodeEvent:78:24",
+          "kind": "dialogue",
+          "expectation": "required_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:78:3",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:78:4",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:78:7",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:78:9",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:78:10",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:78:12",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:78:18",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:78:23",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:73:200",
+          "DialogueNodeEvent:78:10",
+          "DialogueNodeEvent:78:12",
+          "DialogueNodeEvent:78:18",
+          "DialogueNodeEvent:78:23",
+          "DialogueNodeEvent:78:24",
+          "DialogueNodeEvent:78:3",
+          "DialogueNodeEvent:78:4",
+          "DialogueNodeEvent:78:7",
+          "DialogueNodeEvent:78:9",
+          "questActiveEvent:18"
+        ],
+        "event_types": [],
+        "data_filters": [],
+        "data_fields": [],
+        "script": "// Unit 3, Point 4 — Attempt-based standalone production script (latest attempt)\n// Trigger eventKey: \"DialogueNodeEvent:73:200\"\n\nconst playerId = \"<playerId>\";\n\nconst START_KEY = \"questActiveEvent:18\";\nconst END_KEY = \"DialogueNodeEvent:73:200\";\nconst GATE_KEY = \"DialogueNodeEvent:78:24\";\n\nconst TARGET_KEYS = [\n  \"DialogueNodeEvent:78:3\", \"DialogueNodeEvent:78:4\", \"DialogueNodeEvent:78:7\",\n  \"DialogueNodeEvent:78:9\", \"DialogueNodeEvent:78:10\", \"DialogueNodeEvent:78:12\",\n  \"DialogueNodeEvent:78:18\", \"DialogueNodeEvent:78:23\"\n];\n\n// 1) Latest start anchor\nconst latestStart = db.logdata.findOne(\n  { game: \"mhs\", playerId: playerId, eventKey: START_KEY },\n  { sort: { _id: -1 } }\n);\n\n// 2) Latest end anchor\nconst latestEnd = db.logdata.findOne(\n  { game: \"mhs\", playerId: playerId, eventKey: END_KEY },\n  { sort: { _id: -1 } }\n);\n\n// Must have both anchors\nif (!latestStart || !latestEnd) {\n  \"yellow\";\n} else {\n  // End must happen after start\n  if (latestEnd._id <= latestStart._id) {\n    \"yellow\";\n  } else {\n    const windowStartId = latestStart._id;\n    const windowEndId = latestEnd._id;\n\n    // Gate: must have 78:24 within (start, end]\n    const has7824 =\n      db.logdata.findOne(\n        {\n          game: \"mhs\",\n          playerId: playerId,\n          eventKey: GATE_KEY,\n          _id: { $gt: windowStartId, $lte: windowEndId }\n        },\n        { projection: { _id: 1 } }\n      ) !== null;\n\n    if (!has7824) {\n      \"yellow\";\n    } else {\n      const totalCount = db.logdata.countDocuments({\n        game: \"mhs\",\n        playerId: playerId,\n        eventKey: { $in: TARGET_KEYS },\n        _id: { $gt: windowStartId, $lte: windowEndId }\n      });\n\n      let score;\n      if (totalCount === 0) score = 2;\n      else if (totalCount <= 2) score = 1;\n      else score = 0;\n\n      score === 0 ? \"yellow\" : \"green\";\n    }\n  }\n}\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:73:200",
+        "DialogueNodeEvent:78:10",
+        "DialogueNodeEvent:78:12",
+        "DialogueNodeEvent:78:18",
+        "DialogueNodeEvent:78:23",
+        "DialogueNodeEvent:78:24",
+        "DialogueNodeEvent:78:3",
+        "DialogueNodeEvent:78:4",
+        "DialogueNodeEvent:78:7",
+        "DialogueNodeEvent:78:9"
+      ],
+      "reason_codes": [
+        "MISSING_SUCCESS_NODE",
+        "TOO_MANY_NEGATIVES"
+      ],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:73:200",
+        "DialogueNodeEvent:78:10",
+        "DialogueNodeEvent:78:12",
+        "DialogueNodeEvent:78:18",
+        "DialogueNodeEvent:78:23",
+        "DialogueNodeEvent:78:24",
+        "DialogueNodeEvent:78:3",
+        "DialogueNodeEvent:78:4",
+        "DialogueNodeEvent:78:7",
+        "DialogueNodeEvent:78:9",
+        "questActiveEvent:18"
+      ],
+      "warnings": []
+    },
+    {
+      "pp_id": "U3P5",
+      "alt_ids": [
+        "U3.C5"
+      ],
+      "unit": 3,
+      "point": 5,
+      "activity": "Plant the Superfruit Seeds",
+      "grading_file": "grading-logic/mhs-unit3-point5-grading.md",
+      "trigger_start": "DialogueNodeEvent:73:200",
+      "trigger_end": "DialogueNodeEvent:10:194",
+      "grading_rule_prose": "Score-based rule using weighted positive and negative counts.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "sum_score >= 3"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "sum_score < 3, or no trigger exists"
+        }
+      ],
+      "attempt_window": {
+        "start": {
+          "raw": "Previous `DialogueNodeEvent:73:200` (exclusive)",
+          "which": "previous",
+          "key": "DialogueNodeEvent:73:200",
+          "bound": "exclusive"
+        },
+        "end": {
+          "raw": "Latest `DialogueNodeEvent:10:194` (inclusive)",
+          "which": "latest",
+          "key": "DialogueNodeEvent:10:194",
+          "bound": "inclusive"
+        }
+      },
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "DialogueNodeEvent:10:194",
+          "kind": "dialogue",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Positive",
+          "key": "DialogueNodeEvent:73:163",
+          "kind": "dialogue",
+          "expectation": "required_evidence"
+        },
+        {
+          "role": "Negative",
+          "key": "DialogueNodeEvent:73:164",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Negative",
+          "key": "DialogueNodeEvent:73:168",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Negative",
+          "key": "DialogueNodeEvent:73:171",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:10:194",
+          "DialogueNodeEvent:73:163",
+          "DialogueNodeEvent:73:164",
+          "DialogueNodeEvent:73:168",
+          "DialogueNodeEvent:73:171"
+        ],
+        "event_types": [],
+        "data_filters": [],
+        "data_fields": [],
+        "script": "// Unit 3, Point 5 — Attempt-based standalone production script (latest attempt)\n// Trigger eventKey: \"DialogueNodeEvent:10:194\"\n\nconst playerId = \"<playerId>\";\n\nconst TRIGGER_KEY = \"DialogueNodeEvent:10:194\";\nconst POS_KEY = \"DialogueNodeEvent:73:163\";\nconst NEG_KEYS = [\"DialogueNodeEvent:73:164\", \"DialogueNodeEvent:73:168\", \"DialogueNodeEvent:73:171\"];\n\n// 1) Latest trigger (end anchor)\nconst latestTrigger = db.logdata.findOne(\n  { game: \"mhs\", playerId: playerId, eventKey: TRIGGER_KEY },\n  { sort: { _id: -1 } }\n);\n\nif (!latestTrigger) {\n  \"yellow\";\n} else {\n  // 2) Previous trigger (attempt boundary)\n  const prevTrigger = db.logdata.findOne(\n    {\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: TRIGGER_KEY,\n      _id: { $lt: latestTrigger._id }\n    },\n    { sort: { _id: -1 } }\n  );\n\n  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId(\"000000000000000000000000\");\n  const windowEndId = latestTrigger._id;\n\n  const posCount = db.logdata.countDocuments({\n    game: \"mhs\", playerId: playerId,\n    eventKey: POS_KEY,\n    _id: { $gt: windowStartId, $lte: windowEndId }\n  });\n\n  const negCount = db.logdata.countDocuments({\n    game: \"mhs\", playerId: playerId,\n    eventKey: { $in: NEG_KEYS },\n    _id: { $gt: windowStartId, $lte: windowEndId }\n  });\n\n  const sumScore = (posCount * 1.0) - (negCount * 0.5);\n  sumScore < 2.5 ? \"yellow\" : \"green\";\n}\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:10:194",
+        "DialogueNodeEvent:73:163",
+        "DialogueNodeEvent:73:164",
+        "DialogueNodeEvent:73:168",
+        "DialogueNodeEvent:73:171"
+      ],
+      "reason_codes": [
+        "TOO_MANY_NEGATIVES"
+      ],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:10:194",
+        "DialogueNodeEvent:73:163",
+        "DialogueNodeEvent:73:164",
+        "DialogueNodeEvent:73:168",
+        "DialogueNodeEvent:73:171",
+        "DialogueNodeEvent:73:200"
+      ],
+      "warnings": []
+    },
+    {
+      "pp_id": "U4P1",
+      "alt_ids": [
+        "U4.C1"
+      ],
+      "unit": 4,
+      "point": 1,
+      "activity": "Well What Have We Here?: Water Table Basics",
+      "grading_file": "grading-logic/mhs-unit4-point1-grading.md",
+      "trigger_start": "DialogueNodeEvent:88:0",
+      "trigger_end": "DialogueNodeEvent:88:10",
+      "grading_rule_prose": "This progress point is a score-based assessment rubric. First, it will check whether the correct choice (`DialogueNodeEvent:88:5`) was selected, if so then the score will increase 0.5; Then, it will calculate the time duration (seconds) between the end and start event of soil key puzzle. If the time duration is less than or equal to 30 seconds, then the score will further add 1; If the time duration less than 90 seconds and larger than 30 seconds then the score will further increase 0.5, other situation will not increase any value.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "score >= 1"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "score < 1"
+        }
+      ],
+      "attempt_window": {
+        "start": {
+          "raw": "Previous `DialogueNodeEvent:88:0` (exclusive)",
+          "which": "previous",
+          "key": "DialogueNodeEvent:88:0",
+          "bound": "exclusive"
+        },
+        "end": {
+          "raw": "Latest `DialogueNodeEvent:88:10` (inclusive)",
+          "which": "latest",
+          "key": "DialogueNodeEvent:88:10",
+          "bound": "inclusive"
+        }
+      },
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "DialogueNodeEvent:88:10",
+          "kind": "dialogue",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:88:5",
+          "kind": "dialogue",
+          "expectation": "required_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "soil key puzzle",
+          "kind": "other",
+          "expectation": "activity_evidence"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:88:0",
+          "DialogueNodeEvent:88:10",
+          "DialogueNodeEvent:88:5",
+          "questActiveEvent:39"
+        ],
+        "event_types": [
+          "Soil Key Puzzle"
+        ],
+        "data_filters": [
+          {
+            "field": "Soil Key Puzzle Status",
+            "value": "Finished"
+          },
+          {
+            "field": "Soil Key Puzzle Status",
+            "value": "Started"
+          }
+        ],
+        "data_fields": [
+          "Soil Key Puzzle Status"
+        ],
+        "script": "// Unit 4, Point 1 — Attempt-based standalone production script (latest attempt)\n// Trigger eventKey: \"questActiveEvent:39\"\n\nconst playerId = \"<playerId>\";\n\nconst START_KEY = \"DialogueNodeEvent:88:0\";\nconst END_KEY = \"DialogueNodeEvent:88:10\";\nconst CORRECT_KEY = \"DialogueNodeEvent:88:5\";\n\nconst EVENT_TYPE = \"Soil Key Puzzle\";\nconst START_STATUS = \"Started\";\nconst END_STATUS = \"Finished\";\n\n// 1) Most recent start anchor\nconst latestStart = db.logdata.findOne(\n  { game: \"mhs\", playerId: playerId, eventKey: START_KEY },\n  { sort: { _id: -1 }, projection: { _id: 1 } }\n);\n\n// 2) Most recent end anchor\nconst latestEnd = db.logdata.findOne(\n  { game: \"mhs\", playerId: playerId, eventKey: END_KEY },\n  { sort: { _id: -1 }, projection: { _id: 1 } }\n);\n\n// Must have both anchors\nif (!latestStart || !latestEnd) {\n  \"yellow\";\n} else if (latestEnd._id <= latestStart._id) {\n  // End must happen after start\n  \"yellow\";\n} else {\n  const windowStartId = latestStart._id;\n  const windowEndId = latestEnd._id;\n\n  let score = 0.0;\n\n  // +0.5 if correct choice selected inside window\n  const has8805 =\n    db.logdata.findOne(\n      {\n        game: \"mhs\",\n        playerId: playerId,\n        eventKey: CORRECT_KEY,\n        _id: { $gt: windowStartId, $lte: windowEndId }\n      },\n      { projection: { _id: 1 } }\n    ) !== null;\n\n  if (has8805) score += 0.5;\n\n  // Find Started inside window (earliest)\n  const startDoc = db.logdata.findOne(\n    {\n      game: \"mhs\",\n      playerId: playerId,\n      eventType: EVENT_TYPE,\n      \"data.Soil Key Puzzle Status\": START_STATUS,\n      _id: { $gt: windowStartId, $lte: windowEndId }\n    },\n    { sort: { _id: 1 }, projection: { serverTimestamp: 1, _id: 1 } }\n  );\n\n  let durationSeconds = null;\n\n  if (startDoc && startDoc.serverTimestamp) {\n    // Find Finished AFTER startDoc, still within window\n    const endDoc = db.logdata.findOne(\n      {\n        game: \"mhs\",\n        playerId: playerId,\n        eventType: EVENT_TYPE,\n        \"data.Soil Key Puzzle Status\": END_STATUS,\n        _id: { $gt: startDoc._id, $lte: windowEndId }\n      },\n      { sort: { _id: 1 }, projection: { serverTimestamp: 1, _id: 1 } }\n    );\n\n    if (endDoc && endDoc.serverTimestamp) {\n      const startMs = new Date(startDoc.serverTimestamp).getTime();\n      const endMs = new Date(endDoc.serverTimestamp).getTime();\n\n      if (!Number.isNaN(startMs) && !Number.isNaN(endMs)) {\n        durationSeconds = (endMs - startMs) / 1000.0;\n      }\n    }\n  }\n\n  // Duration scoring\n  if (durationSeconds !== null) {\n    if (durationSeconds > 0 && durationSeconds <= 30) score += 1.0;\n    else if (durationSeconds > 30 && durationSeconds <= 90) score += 0.5;\n  }\n\n  score >= 1 ? \"green\" : \"yellow\";\n}\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:88:5",
+        "questActiveEvent:39"
+      ],
+      "reason_codes": [
+        "NO_TRIGGER",
+        "SCORE_BELOW_THRESHOLD",
+        "WRONG_CHOISE_SELECTED",
+        "TOO_LONG_TO_SOLVE_PROBLEM"
+      ],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:88:0",
+        "DialogueNodeEvent:88:10",
+        "DialogueNodeEvent:88:5",
+        "questActiveEvent:39"
+      ],
+      "warnings": [
+        "production script uses keys absent from Event Keys table: ['questActiveEvent:39']"
+      ]
+    },
+    {
+      "pp_id": "U4P2",
+      "alt_ids": [
+        "U4.C2"
+      ],
+      "unit": 4,
+      "point": 2,
+      "activity": "Infiltration Glyph + Alien Well Floors 1 & 2",
+      "grading_file": "grading-logic/mhs-unit4-point2-grading.md",
+      "trigger_start": "DialogueNodeEvent:88:10",
+      "trigger_end": "questActiveEvent:48",
+      "grading_rule_prose": "This progress point will check how many attempts the player used to figure out the correct matches of the puzzle by checking what feedback they received after competing the matches. Any feedback received represented by the following dialogues (`DialogueNodeEvent:102:9`, `DialogueNodeEvent:102:10`, `DialogueNodeEvent:102:12`, `DialogueNodeEvent:102:18`, `DialogueNodeEvent:102:23`) means the player tried more than 2 attempts, which will make the block as yellow. Another check is to see whether the player figured out the correct matches by themselves, which is marked by the event of `DialogueNodeEvent:88:11`.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "has `DialogueNodeEvent:88:11` and no yellow feedbacks"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "either no `DialogueNodeEvent:88:11` or has any yellow feedback or both"
+        }
+      ],
+      "attempt_window": {
+        "start": {
+          "raw": "Previous `DialogueNodeEvent:88:10` (exclusive)",
+          "which": "previous",
+          "key": "DialogueNodeEvent:88:10",
+          "bound": "exclusive"
+        },
+        "end": {
+          "raw": "Latest `questActiveEvent:48` (inclusive)",
+          "which": "latest",
+          "key": "questActiveEvent:48",
+          "bound": "inclusive"
+        }
+      },
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "questActiveEvent:48",
+          "kind": "quest",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:88:11",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:102:9",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:102:10",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:102:12",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:102:18",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:102:23",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:102:10",
+          "DialogueNodeEvent:102:12",
+          "DialogueNodeEvent:102:18",
+          "DialogueNodeEvent:102:23",
+          "DialogueNodeEvent:102:9",
+          "DialogueNodeEvent:88:11",
+          "questActiveEvent:48"
+        ],
+        "event_types": [],
+        "data_filters": [],
+        "data_fields": [],
+        "script": "// Unit 4, Point 2 — Attempt-based standalone production script (latest attempt)\n// Trigger eventKey: \"questActiveEvent:48\"\n\nconst playerId = \"<playerId>\";\n\nconst TRIGGER_KEY = \"questActiveEvent:48\";\n\nconst NEGATIVE_KEYS = [\n  \"DialogueNodeEvent:102:9\",\n  \"DialogueNodeEvent:102:10\",\n  \"DialogueNodeEvent:102:12\",\n  \"DialogueNodeEvent:102:18\",\n  \"DialogueNodeEvent:102:23\"\n];\n\nconst latestTrigger = db.logdata.findOne(\n  { game: \"mhs\", playerId: playerId, eventKey: TRIGGER_KEY },\n  { sort: { _id: -1 }}\n);\n\nif (!latestTrigger) {\n  \"yellow\";\n} else {\n  const prevTrigger = db.logdata.findOne(\n    {\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: TRIGGER_KEY,\n      _id: { $lt: latestTrigger._id }\n    },\n    { sort: { _id: -1 }}\n  );\n\n  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId(\"000000000000000000000000\");\n  const windowEndId = latestTrigger._id;\n\n  const has_8811 =\n    db.logdata.findOne(\n      {\n        game: \"mhs\",\n        playerId: playerId,\n        eventKey: \"DialogueNodeEvent:88:11\",\n        _id: { $gt: windowStartId, $lte: windowEndId }\n      }\n    ) !== null;\n\n  if (!has_8811) {\n    \"yellow\";\n  } else {\n    const has_any_102 =\n      db.logdata.findOne(\n        {\n          game: \"mhs\",\n          playerId: playerId,\n          eventKey: { $in: NEGATIVE_KEYS },\n          _id: { $gt: windowStartId, $lte: windowEndId }\n        }\n      ) !== null;\n\n    has_any_102 ? \"yellow\" : \"green\";\n  }\n}\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:102:10",
+        "DialogueNodeEvent:102:12",
+        "DialogueNodeEvent:102:18",
+        "DialogueNodeEvent:102:23",
+        "DialogueNodeEvent:102:9",
+        "DialogueNodeEvent:88:11",
+        "questActiveEvent:48"
+      ],
+      "reason_codes": [
+        "NO_TRIGGER",
+        "MISSING_SUCCESS_NODE",
+        "TOO_MANY_NEGATIVES"
+      ],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:102:10",
+        "DialogueNodeEvent:102:12",
+        "DialogueNodeEvent:102:18",
+        "DialogueNodeEvent:102:23",
+        "DialogueNodeEvent:102:9",
+        "DialogueNodeEvent:88:10",
+        "DialogueNodeEvent:88:11",
+        "questActiveEvent:48"
+      ],
+      "warnings": []
+    },
+    {
+      "pp_id": "U4P3",
+      "alt_ids": [
+        "U4.C3"
+      ],
+      "unit": 4,
+      "point": 3,
+      "activity": "Alien Well Floor 3 & 4",
+      "grading_file": "grading-logic/mhs-unit4-point3-grading.md",
+      "trigger_start": "questActiveEvent:48",
+      "trigger_end": "questActiveEvent:50",
+      "grading_rule_prose": "This progress point will check how many times the player interacts with the soil machines on the third and forth floors within the alien dungeon. Depending on the number of attempts, a score will calculated. Basically the score will increase one if the player just interacted with the machine on the third floor at the first attempt to figure out the right type, otherwise zero. For the forth floor, if the player interacts with the machine once to figure the correct type then further increase two; if the interaction time is two then further increase 1; otherwise no further score increased.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "score > 1"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "score <= 1"
+        }
+      ],
+      "attempt_window": {
+        "start": {
+          "raw": "Previous `questActiveEvent:48` (exclusive)",
+          "which": "previous",
+          "key": "questActiveEvent:48",
+          "bound": "exclusive"
+        },
+        "end": {
+          "raw": "Latest `questActiveEvent:50` (inclusive)",
+          "which": "latest",
+          "key": "questActiveEvent:50",
+          "bound": "inclusive"
+        }
+      },
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "questActiveEvent:50",
+          "kind": "quest",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Target",
+          "key": "soil machine logs related to dungeon floor 3 and 4",
+          "kind": "other",
+          "expectation": "counted_evidence"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "questActiveEvent:50"
+        ],
+        "event_types": [
+          "soilMachine"
+        ],
+        "data_filters": [
+          {
+            "field": "floor",
+            "value": "3"
+          },
+          {
+            "field": "floor",
+            "value": "4"
+          },
+          {
+            "field": "machine",
+            "value": "1"
+          }
+        ],
+        "data_fields": [
+          "floor",
+          "machine"
+        ],
+        "script": "// Unit 4, Point 3 — Production (replay-safe, latest attempt window)\n// Trigger eventKey: \"questActiveEvent:50\"\n\nconst playerId = \"<playerId>\";\n\nconst TRIGGER_KEY = \"questActiveEvent:50\";\n\n// 1) Latest trigger (end anchor)\nconst latestTrigger = db.logdata.findOne(\n  { game: \"mhs\", playerId: playerId, eventKey: TRIGGER_KEY },\n  { sort: { _id: -1 }, projection: { _id: 1 } }\n);\n\nif (!latestTrigger) {\n  \"yellow\";\n} else {\n\n  // 2) Previous trigger (attempt boundary)\n  const prevTrigger = db.logdata.findOne(\n    {\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: TRIGGER_KEY,\n      _id: { $lt: latestTrigger._id }\n    },\n    { sort: { _id: -1 }, projection: { _id: 1 } }\n  );\n\n  const windowStartId = prevTrigger\n    ? prevTrigger._id\n    : ObjectId(\"000000000000000000000000\");\n\n  const windowEndId = latestTrigger._id;\n\n  // 3) Count soilMachine interactions inside attempt window\n\n  const c_floor3 = db.logdata.countDocuments({\n    game: \"mhs\",\n    playerId: playerId,\n    eventType: \"soilMachine\",\n    \"data.machine\": \"1\",\n    \"data.floor\": \"3\",\n    _id: { $gt: windowStartId, $lte: windowEndId }\n  });\n\n  const c_floor4 = db.logdata.countDocuments({\n    game: \"mhs\",\n    playerId: playerId,\n    eventType: \"soilMachine\",\n    \"data.machine\": \"1\",\n    \"data.floor\": \"4\",\n    _id: { $gt: windowStartId, $lte: windowEndId }\n  });\n\n  let score = 0;\n\n  if (c_floor3 === 1) {\n    score += 1;\n  }\n\n  if (c_floor4 === 1) {\n    score += 2;\n  } else if (c_floor4 === 2) {\n    score += 1;\n  }\n\n  score > 1 ? \"green\" : \"yellow\";\n}\n"
+      },
+      "analytics_event_keys": [
+        "questActiveEvent:50"
+      ],
+      "reason_codes": [
+        "NO_TRIGGER",
+        "SCORE_BELOW_THRESHOLD",
+        "TOO_MANY_ATTEMPTS_3",
+        "TOO_MANY_ATTEMPTS_4"
+      ],
+      "all_referenced_event_keys": [
+        "questActiveEvent:48",
+        "questActiveEvent:50"
+      ],
+      "warnings": []
+    },
+    {
+      "pp_id": "U4P4",
+      "alt_ids": [
+        "U4.C4"
+      ],
+      "unit": 4,
+      "point": 4,
+      "activity": "Alien Well Floor 5 + You Know the Drill",
+      "grading_file": "grading-logic/mhs-unit4-point4-grading.md",
+      "trigger_start": "questActiveEvent:50",
+      "trigger_end": "questActiveEvent:36",
+      "grading_rule_prose": "This progress point is score based. There are two tasks under this progress point. The first task is to check how many times the player interact with the two-layer machine and another one-layer machine on the fifth floor. if they interacted with the top machine with one time and the bottom machine with zero time then the score gain once, otherwise zero; if they interacted with the one-layer machine only once to figure out the correct answer, then the score further gains one; otherwise gain zero; The next task is to select the correct dialogue choice. If the player select correct choice at the first attempt individually then the score gains two; if the player figures out the correct answer by themselves within two attemts individually then the score further gains one; otherwise no further score gain. Finally, if the aggregated score is larger than 2 then the color is green; otherwise the color is yellow.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "score > 2"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "score <= 2"
+        }
+      ],
+      "attempt_window": {
+        "start": {
+          "raw": "Previous `questActiveEvent:50` (exclusive)",
+          "which": "previous",
+          "key": "questActiveEvent:50",
+          "bound": "exclusive"
+        },
+        "end": {
+          "raw": "Latest `questActiveEvent:36` (inclusive)",
+          "which": "latest",
+          "key": "questActiveEvent:36",
+          "bound": "inclusive"
+        }
+      },
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "questActiveEvent:36",
+          "kind": "quest",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Target",
+          "key": "soil machine logs related to dungeon floor 5",
+          "kind": "other",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:107:4",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:107:5",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:107:2",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:107:3",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:107:6",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:107:2",
+          "DialogueNodeEvent:107:3",
+          "DialogueNodeEvent:107:4",
+          "DialogueNodeEvent:107:5",
+          "DialogueNodeEvent:107:6",
+          "questActiveEvent:36",
+          "questActiveEvent:50"
+        ],
+        "event_types": [
+          "soilMachine"
+        ],
+        "data_filters": [
+          {
+            "field": "floor",
+            "value": "5"
+          },
+          {
+            "field": "machine",
+            "value": "1"
+          },
+          {
+            "field": "machine",
+            "value": "2"
+          },
+          {
+            "field": "row",
+            "value": "BottomRow"
+          },
+          {
+            "field": "row",
+            "value": "TopRow"
+          }
+        ],
+        "data_fields": [
+          "floor",
+          "machine",
+          "row"
+        ],
+        "script": "// Unit 4, Point 4 — Production (replay-safe, latest attempt window)\n// Window start: latest \"questActiveEvent:50\"\n// Window end:   latest \"questActiveEvent:36\"\n\nconst playerId = \"<playerId>\";\n\nconst WINDOW_START_KEY = \"questActiveEvent:50\";\nconst WINDOW_END_KEY = \"questActiveEvent:36\";\n\n// 1) Find latest window start\nconst latestStart = db.logdata.findOne(\n  {\n    game: \"mhs\",\n    playerId: playerId,\n    eventKey: WINDOW_START_KEY\n  },\n  { sort: { _id: -1 } }\n);\n\n// 2) Find latest window end\nconst latestEnd = db.logdata.findOne(\n  {\n    game: \"mhs\",\n    playerId: playerId,\n    eventKey: WINDOW_END_KEY\n  },\n  { sort: { _id: -1 } }\n);\n\nif (!latestStart || !latestEnd || latestEnd._id <= latestStart._id) {\n  \"yellow\";\n} else {\n  const windowStartId = latestStart._id;\n  const windowEndId = latestEnd._id;\n\n  let score = 0;\n\n  const c_m1_top = db.logdata.countDocuments({\n    game: \"mhs\",\n    playerId: playerId,\n    eventType: \"soilMachine\",\n    \"data.floor\": \"5\",\n    \"data.machine\": \"1\",\n    \"data.row\": \"TopRow\",\n    _id: { $gt: windowStartId, $lte: windowEndId }\n  });\n\n  const c_m1_bottom = db.logdata.countDocuments({\n    game: \"mhs\",\n    playerId: playerId,\n    eventType: \"soilMachine\",\n    \"data.floor\": \"5\",\n    \"data.machine\": \"1\",\n    \"data.row\": \"BottomRow\",\n    _id: { $gt: windowStartId, $lte: windowEndId }\n  });\n\n  if (c_m1_top === 1 && c_m1_bottom === 1) {\n    score += 1;\n  }\n\n  const c_m2_floor5 = db.logdata.countDocuments({\n    game: \"mhs\",\n    playerId: playerId,\n    eventType: \"soilMachine\",\n    \"data.floor\": \"5\",\n    \"data.machine\": \"2\",\n    _id: { $gt: windowStartId, $lte: windowEndId }\n  });\n\n  if (c_m2_floor5 === 1) {\n    score += 1;\n  }\n\n  const SUCCESS_KEYS = [\"DialogueNodeEvent:107:4\", \"DialogueNodeEvent:107:5\"];\n  const NEG_KEYS = [\"DialogueNodeEvent:107:2\", \"DialogueNodeEvent:107:3\", \"DialogueNodeEvent:107:6\"];\n\n  const success_total = db.logdata.countDocuments({\n    game: \"mhs\",\n    playerId: playerId,\n    eventKey: { $in: SUCCESS_KEYS },\n    _id: { $gt: windowStartId, $lte: windowEndId }\n  });\n\n  const neg_total = db.logdata.countDocuments({\n    game: \"mhs\",\n    playerId: playerId,\n    eventKey: { $in: NEG_KEYS },\n    _id: { $gt: windowStartId, $lte: windowEndId }\n  });\n\n  if (success_total > 0 && neg_total === 0) {\n    score += 2;\n  } else if (success_total > 0 && neg_total === 1) {\n    score += 1;\n  }\n\n  score > 2 ? \"green\" : \"yellow\";\n}\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:107:2",
+        "DialogueNodeEvent:107:3",
+        "DialogueNodeEvent:107:4",
+        "DialogueNodeEvent:107:5",
+        "DialogueNodeEvent:107:6",
+        "questActiveEvent:36"
+      ],
+      "reason_codes": [
+        "NO_TRIGGER",
+        "SCORE_BELOW_THRESHOLD",
+        "TOO_MANY_ATTEMPTS",
+        "BAD_FEEDBACK"
+      ],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:107:2",
+        "DialogueNodeEvent:107:3",
+        "DialogueNodeEvent:107:4",
+        "DialogueNodeEvent:107:5",
+        "DialogueNodeEvent:107:6",
+        "questActiveEvent:36",
+        "questActiveEvent:50"
+      ],
+      "warnings": []
+    },
+    {
+      "pp_id": "U4P5",
+      "alt_ids": [
+        "U4.C5"
+      ],
+      "unit": 4,
+      "point": 5,
+      "activity": "Saving Cadet Anderson",
+      "grading_file": "grading-logic/mhs-unit4-point5-grading.md",
+      "trigger_start": "questActiveEvent:36",
+      "trigger_end": "questActiveEvent:41",
+      "grading_rule_prose": "This progress point recording how players perform within the argumentation task. This will first check whether the player successfully construct the correct argumentation (whether their log record contains (`DialogueNodeEvent:90:50`, `DialogueNodeEvent:90:57`)). Then it will check how many negative feedback got from the argumentation construction. If there is no correct feedback then the color is yellow, or the negative feedback number surpass 4, or both then the color is yellow, otherwise green.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "Have correct feedback and the negative feedback number is less than 4"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "Either no correct feedback or the negative feedback number is equal to or larger than 4 or both"
+        }
+      ],
+      "attempt_window": {
+        "start": {
+          "raw": "Previous `questActiveEvent:36` (exclusive)",
+          "which": "previous",
+          "key": "questActiveEvent:36",
+          "bound": "exclusive"
+        },
+        "end": {
+          "raw": "Latest `questActiveEvent:41` (inclusive)",
+          "which": "latest",
+          "key": "questActiveEvent:41",
+          "bound": "inclusive"
+        }
+      },
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "questActiveEvent:41",
+          "kind": "quest",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:90:50",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:90:57",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:90:25",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:90:37",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:90:39",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:90:45",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:90:47",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:90:52",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:90:54",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:90:55",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:90:56",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:90:58",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:90:59",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:90:60",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:90:61",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:90:25",
+          "DialogueNodeEvent:90:37",
+          "DialogueNodeEvent:90:39",
+          "DialogueNodeEvent:90:45",
+          "DialogueNodeEvent:90:47",
+          "DialogueNodeEvent:90:50",
+          "DialogueNodeEvent:90:52",
+          "DialogueNodeEvent:90:54",
+          "DialogueNodeEvent:90:55",
+          "DialogueNodeEvent:90:56",
+          "DialogueNodeEvent:90:57",
+          "DialogueNodeEvent:90:58",
+          "DialogueNodeEvent:90:59",
+          "DialogueNodeEvent:90:60",
+          "DialogueNodeEvent:90:61",
+          "questActiveEvent:41"
+        ],
+        "event_types": [],
+        "data_filters": [],
+        "data_fields": [],
+        "script": "// Unit 4, Point 5 — Production (replay-safe, latest attempt window)\n// Trigger eventKey: \"questActiveEvent:41\"\n\nconst playerId = \"<playerId>\";\n\nconst TRIGGER_KEY = \"questActiveEvent:41\";\n\nconst POS_KEYS = [\"DialogueNodeEvent:90:50\", \"DialogueNodeEvent:90:57\"];\n\nconst NEG_KEYS = [\n  \"DialogueNodeEvent:90:25\",\"DialogueNodeEvent:90:37\",\"DialogueNodeEvent:90:39\",\n  \"DialogueNodeEvent:90:45\",\"DialogueNodeEvent:90:47\",\"DialogueNodeEvent:90:52\",\n  \"DialogueNodeEvent:90:54\",\"DialogueNodeEvent:90:55\",\"DialogueNodeEvent:90:56\",\n  \"DialogueNodeEvent:90:58\",\"DialogueNodeEvent:90:59\",\"DialogueNodeEvent:90:60\",\n  \"DialogueNodeEvent:90:61\"\n];\n\nconst latestTrigger = db.logdata.findOne(\n  { game: \"mhs\", playerId: playerId, eventKey: TRIGGER_KEY },\n  { sort: { _id: -1 }}\n);\n\nif (!latestTrigger) {\n  \"yellow\";\n} else {\n  const prevTrigger = db.logdata.findOne(\n    {\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: TRIGGER_KEY,\n      _id: { $lt: latestTrigger._id }\n    },\n    { sort: { _id: -1 }}\n  );\n\n  const windowStartId = prevTrigger\n    ? prevTrigger._id\n    : ObjectId(\"000000000000000000000000\");\n\n  const windowEndId = latestTrigger._id;\n\n  const has_trigger =\n    db.logdata.findOne(\n      {\n        game: \"mhs\",\n        playerId: playerId,\n        eventKey: { $in: POS_KEYS },\n        _id: { $gt: windowStartId, $lte: windowEndId }\n      }\n    ) !== null;\n\n  if (!has_trigger) {\n    \"yellow\";\n  } else {\n    const cnt = db.logdata.countDocuments({\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: { $in: NEG_KEYS },\n      _id: { $gt: windowStartId, $lte: windowEndId }\n    });\n\n    cnt >= 3 ? \"yellow\" : \"green\";\n  }\n}\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:90:25",
+        "DialogueNodeEvent:90:37",
+        "DialogueNodeEvent:90:39",
+        "DialogueNodeEvent:90:45",
+        "DialogueNodeEvent:90:47",
+        "DialogueNodeEvent:90:50",
+        "DialogueNodeEvent:90:52",
+        "DialogueNodeEvent:90:54",
+        "DialogueNodeEvent:90:55",
+        "DialogueNodeEvent:90:56",
+        "DialogueNodeEvent:90:57",
+        "DialogueNodeEvent:90:58",
+        "DialogueNodeEvent:90:59",
+        "DialogueNodeEvent:90:60",
+        "DialogueNodeEvent:90:61",
+        "questActiveEvent:41"
+      ],
+      "reason_codes": [
+        "NO_TRIGGER",
+        "MISSING_SUCCESS_NODE",
+        "WRONG_ARG_SELECTED"
+      ],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:90:25",
+        "DialogueNodeEvent:90:37",
+        "DialogueNodeEvent:90:39",
+        "DialogueNodeEvent:90:45",
+        "DialogueNodeEvent:90:47",
+        "DialogueNodeEvent:90:50",
+        "DialogueNodeEvent:90:52",
+        "DialogueNodeEvent:90:54",
+        "DialogueNodeEvent:90:55",
+        "DialogueNodeEvent:90:56",
+        "DialogueNodeEvent:90:57",
+        "DialogueNodeEvent:90:58",
+        "DialogueNodeEvent:90:59",
+        "DialogueNodeEvent:90:60",
+        "DialogueNodeEvent:90:61",
+        "questActiveEvent:36",
+        "questActiveEvent:41"
+      ],
+      "warnings": []
+    },
+    {
+      "pp_id": "U4P6",
+      "alt_ids": [
+        "U4.C6"
+      ],
+      "unit": 4,
+      "point": 6,
+      "activity": "Desert Delicacies",
+      "grading_file": "grading-logic/mhs-unit4-point6-grading.md",
+      "trigger_start": "questActiveEvent:41",
+      "trigger_end": "questFinishEvent:56",
+      "grading_rule_prose": "This is a score-based progress point. There are three garden boxes, each time when the player places the camera on the correct soil type then the score will add one. In box 0, if the latest camera placement is gravel, then the score adds one; in box 1, if the latest camera placement is sand, then the score adds another one; in box 2, if the latest camera placement is clay, then the score further adds one. If the score is equal to or larger than 2, then the color turns to green; otherwise the color returns yellow.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "The score >= 2"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "The score < 2"
+        }
+      ],
+      "attempt_window": {
+        "start": {
+          "raw": "Previous `questActiveEvent:41` (exclusive)",
+          "which": "previous",
+          "key": "questActiveEvent:41",
+          "bound": "exclusive"
+        },
+        "end": {
+          "raw": "Latest `questFinishEvent:56` (inclusive)",
+          "which": "latest",
+          "key": "questFinishEvent:56",
+          "bound": "inclusive"
+        }
+      },
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "questFinishEvent:56",
+          "kind": "quest",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Target",
+          "key": "TerasGardenBox",
+          "kind": "other",
+          "expectation": "activity_evidence"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "questActiveEvent:41",
+          "questFinishEvent:56"
+        ],
+        "event_types": [
+          "TerasGardenBox"
+        ],
+        "data_filters": [
+          {
+            "field": "actionType",
+            "value": "cameraPlaced"
+          },
+          {
+            "field": "boxId",
+            "value": "0"
+          },
+          {
+            "field": "boxId",
+            "value": "1"
+          },
+          {
+            "field": "boxId",
+            "value": "2"
+          },
+          {
+            "field": "soilType",
+            "value": "Clay"
+          },
+          {
+            "field": "soilType",
+            "value": "Gravel"
+          },
+          {
+            "field": "soilType",
+            "value": "Sand"
+          }
+        ],
+        "data_fields": [
+          "actionType",
+          "boxId",
+          "soilType"
+        ],
+        "script": "// Production — replay-safe TerasGardenBox scoring\n// Window start: \"questActiveEvent:41\"\n// Window end:   \"questFinishEvent:56\"\n\nconst playerId = \"<playerId>\";\n\nconst WINDOW_START_KEY = \"questActiveEvent:41\";\nconst WINDOW_END_KEY = \"questFinishEvent:56\";\n\n// 1) Most recent window start\nconst latestStart = db.logdata.findOne(\n  {\n    game: \"mhs\",\n    playerId: playerId,\n    eventKey: WINDOW_START_KEY\n  },\n  { sort: { _id: -1 }}\n);\n\n// 2) Most recent window end\nconst latestEnd = db.logdata.findOne(\n  {\n    game: \"mhs\",\n    playerId: playerId,\n    eventKey: WINDOW_END_KEY\n  },\n  { sort: { _id: -1 }}\n);\n\nif (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {\n  \"yellow\";\n} else {\n  const windowStartId = latestStart._id;\n  const windowEndId = latestEnd._id;\n\n  let score = 0;\n\n  // Latest placement for Box 1 within window\n  const latestBox1 = db.logdata.findOne(\n    {\n      game: \"mhs\",\n      playerId: playerId,\n      eventType: \"TerasGardenBox\",\n      \"data.actionType\": \"cameraPlaced\",\n      \"data.boxId\": \"0\",\n      _id: { $gt: windowStartId, $lte: windowEndId }\n    },\n    {\n      sort: { _id: -1 }\n    }\n  );\n\n  if (latestBox1 && latestBox1.data && latestBox1.data.soilType === \"Gravel\") {\n    score += 1;\n  }\n\n  // Latest placement for Box 1 within window\n  const latestBox2 = db.logdata.findOne(\n    {\n      game: \"mhs\",\n      playerId: playerId,\n      eventType: \"TerasGardenBox\",\n      \"data.actionType\": \"cameraPlaced\",\n      \"data.boxId\": \"1\",\n      _id: { $gt: windowStartId, $lte: windowEndId }\n    },\n    {\n      sort: { _id: -1 }\n    }\n  );\n\n  if (latestBox2 && latestBox2.data && latestBox2.data.soilType === \"Sand\") {\n    score += 1;\n  }\n\n  // Latest placement for Box 2 within window\n  const latestBox3 = db.logdata.findOne(\n    {\n      game: \"mhs\",\n      playerId: playerId,\n      eventType: \"TerasGardenBox\",\n      \"data.actionType\": \"cameraPlaced\",\n      \"data.boxId\": \"2\",\n      _id: { $gt: windowStartId, $lte: windowEndId }\n    },\n    {\n      sort: { _id: -1 }\n    }\n  );\n\n  if (latestBox3 && latestBox3.data && latestBox3.data.soilType === \"Clay\") {\n    score += 1;\n  }\n\n  score >= 2 ? \"green\" : \"yellow\";\n}\n"
+      },
+      "analytics_event_keys": [
+        "questFinishEvent:56"
+      ],
+      "reason_codes": [
+        "NO_TRIGGER",
+        "WRONG_CHOISE_SELECTED"
+      ],
+      "all_referenced_event_keys": [
+        "questActiveEvent:41",
+        "questFinishEvent:56"
+      ],
+      "warnings": []
+    },
+    {
+      "pp_id": "U5P1",
+      "alt_ids": [
+        "U5.C1"
+      ],
+      "unit": 5,
+      "point": 1,
+      "activity": "If I Had a Nickel- Floors 1 & 2",
+      "grading_file": "grading-logic/mhs-unit5-point1-grading.md",
+      "trigger_start": "questActiveEvent:43",
+      "trigger_end": "questFinishEvent:43",
+      "grading_rule_prose": "This progress point is a attempt-based progress, if the player solved the puzzle (triggered `DialogueNodeEvent:100:44`) at the first attempt, then they will gain all 2 points; If the player solved the puzzle within 3 attempts, triggered `DialogueNodeEvent:100:44` without triggering any of the following bad feedbacks (`DialogueNodeEvent:100:38`, `DialogueNodeEvent:100:39`, `DialogueNodeEvent:100:43`); Either of the above behavior will return green; Anything else will return yellow.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "score >= 1"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "score < 1"
+        }
+      ],
+      "attempt_window": {
+        "start": {
+          "raw": "Previous `questActiveEvent:43` (exclusive)",
+          "which": "previous",
+          "key": "questActiveEvent:43",
+          "bound": "exclusive"
+        },
+        "end": {
+          "raw": "Latest `questFinishEvent:43` (inclusive)",
+          "which": "latest",
+          "key": "questFinishEvent:43",
+          "bound": "inclusive"
+        }
+      },
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "questFinishEvent:43",
+          "kind": "quest",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:100:44",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:100:38",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:100:39",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:100:43",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:100:38",
+          "DialogueNodeEvent:100:39",
+          "DialogueNodeEvent:100:43",
+          "DialogueNodeEvent:100:44",
+          "questActiveEvent:39",
+          "questActiveEvent:43",
+          "questFinishEvent:43"
+        ],
+        "event_types": [],
+        "data_filters": [],
+        "data_fields": [],
+        "script": "// Unit 5, Point 1 — Attempt-based standalone production script (latest attempt)\n// Trigger eventKey: \"questActiveEvent:39\"\n\nconst playerId = \"<playerId>\";\n\nconst WINDOW_START_KEY = \"questActiveEvent:43\";\nconst WINDOW_END_KEY = \"questFinishEvent:43\";\n\nconst POS_KEY = \"DialogueNodeEvent:100:44\";\nconst NEG_KEYS = [\n  \"DialogueNodeEvent:100:38\",\n  \"DialogueNodeEvent:100:39\",\n  \"DialogueNodeEvent:100:43\"\n];\n\n// 1) Most recent window start\nconst latestStart = db.logdata.findOne(\n  {\n    game: \"mhs\",\n    playerId: playerId,\n    eventKey: WINDOW_START_KEY\n  },\n  { sort: { _id: -1 }}\n);\n\n// 2) Most recent window end\nconst latestEnd = db.logdata.findOne(\n  {\n    game: \"mhs\",\n    playerId: playerId,\n    eventKey: WINDOW_END_KEY\n  },\n  { sort: { _id: -1 }}\n);\n\nif (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {\n  \"yellow\";\n} else {\n  const windowStartId = latestStart._id;\n  const windowEndId = latestEnd._id;\n\n  // 3) Check success inside window\n  const hasTrigger =\n    db.logdata.findOne(\n      {\n        game: \"mhs\",\n        playerId: playerId,\n        eventKey: POS_KEY,\n        _id: { $gt: windowStartId, $lte: windowEndId }\n      }\n    ) !== null;\n\n  if (!hasTrigger) {\n    \"yellow\";\n  } else {\n    // 4) Count negative feedback inside window\n    const cnt = db.logdata.countDocuments({\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: { $in: NEG_KEYS },\n      _id: { $gt: windowStartId, $lte: windowEndId }\n    });\n\n    cnt > 2 ? \"yellow\" : \"green\";\n  }\n}\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:100:38",
+        "DialogueNodeEvent:100:39",
+        "DialogueNodeEvent:100:43",
+        "DialogueNodeEvent:100:44",
+        "questFinishEvent:43"
+      ],
+      "reason_codes": [
+        "NO_TRIGGER",
+        "MISSING_SUCCESS_NODE",
+        "BAD_FEEDBACK"
+      ],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:100:38",
+        "DialogueNodeEvent:100:39",
+        "DialogueNodeEvent:100:43",
+        "DialogueNodeEvent:100:44",
+        "questActiveEvent:39",
+        "questActiveEvent:43",
+        "questFinishEvent:43"
+      ],
+      "warnings": [
+        "production script uses keys absent from Event Keys table: ['questActiveEvent:39']"
+      ]
+    },
+    {
+      "pp_id": "U5P2",
+      "alt_ids": [
+        "U5.C2"
+      ],
+      "unit": 5,
+      "point": 2,
+      "activity": "If I Had a Nickel- Floors 3 & 4",
+      "grading_file": "grading-logic/mhs-unit5-point2-grading.md",
+      "trigger_start": "questFinishEvent:43",
+      "trigger_end": "DialogueNodeEvent:96:1",
+      "grading_rule_prose": "This progress point is a score-based progress, at the beggining the score euquals to 0, if the player solved the puzzle on the third floor by interactig with condenser or evaporator machines within equal to or less than 6, attempts, then the score will add 2; If the interaction attempts on the third floor are larger than 6 but less than 11 attempts, then the score will add 1; interaction attempts larger than 10 times, will let the score add 0; Then the players will continue the puzzle solving on the forth floor, if they solved the puzzle on this floor by interacting with condenser or evaporator machines within equal to or less than 5 attempts, then the score will further add 2; if they solved the puzzle on the forth floor by interacting with condenser or evaporator machines larger than 5 and less than 10 times, then the score will fruther add 1; No further score will be added if the interaction attempts on the forth floor surpass 9 times. If the score is euqal to or larger than 3 then the block color turns to green, otherwise if the score is less than 3 then the block color turns to yellow.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "score >= 3"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "score < 3"
+        }
+      ],
+      "attempt_window": {
+        "start": {
+          "raw": "Previous `questFinishEvent:43` (exclusive)",
+          "which": "previous",
+          "key": "questFinishEvent:43",
+          "bound": "exclusive"
+        },
+        "end": {
+          "raw": "Latest `DialogueNodeEvent:96:1` (inclusive)",
+          "which": "latest",
+          "key": "DialogueNodeEvent:96:1",
+          "bound": "inclusive"
+        }
+      },
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "DialogueNodeEvent:96:1",
+          "kind": "dialogue",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Target",
+          "key": "WaterChamberEvent",
+          "kind": "other",
+          "expectation": "activity_evidence"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:96:1",
+          "questFinishEvent:43"
+        ],
+        "event_types": [
+          "WaterChamberEvent"
+        ],
+        "data_filters": [
+          {
+            "field": "floor",
+            "value": "3"
+          },
+          {
+            "field": "floor",
+            "value": "4"
+          }
+        ],
+        "data_fields": [
+          "floor",
+          "machineType"
+        ],
+        "script": "// Production — replay-safe score calculation for Unit 5 water chamber puzzle\n// Window start: \"questFinishEvent:43\"\n// Window end:   \"DialogueNodeEvent:96:1\"\n\nconst playerId = \"<playerId>\";\n\nconst WINDOW_START_KEY = \"questFinishEvent:43\";\nconst WINDOW_END_KEY = \"DialogueNodeEvent:96:1\";\nconst VALID_TYPES = [\"Condenser\", \"Evaporator\"];\n\n// 1) Most recent window start\nconst latestStart = db.logdata.findOne(\n  {\n    game: \"mhs\",\n    playerId: playerId,\n    eventKey: WINDOW_START_KEY\n  },\n  { sort: { _id: -1 }, projection: { _id: 1 } }\n);\n\n// 2) Most recent window end\nconst latestEnd = db.logdata.findOne(\n  {\n    game: \"mhs\",\n    playerId: playerId,\n    eventKey: WINDOW_END_KEY\n  },\n  { sort: { _id: -1 }, projection: { _id: 1 } }\n);\n\nif (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {\n  \"yellow\";\n} else {\n  const windowStartId = latestStart._id;\n  const windowEndId = latestEnd._id;\n\n  let score = 0;\n\n  // Count relevant interactions on Floor 3\n  const floor3_attempts = db.logdata.countDocuments({\n    game: \"mhs\",\n    playerId: playerId,\n    eventType: \"WaterChamberEvent\",\n    \"data.floor\": \"3\",\n    \"data.machineType\": { $in: VALID_TYPES },\n    _id: { $gt: windowStartId, $lte: windowEndId }\n  });\n\n  // Count relevant interactions on Floor 4\n  const floor4_attempts = db.logdata.countDocuments({\n    game: \"mhs\",\n    playerId: playerId,\n    eventType: \"WaterChamberEvent\",\n    \"data.floor\": \"4\",\n    \"data.machineType\": { $in: VALID_TYPES },\n    _id: { $gt: windowStartId, $lte: windowEndId }\n  });\n\n  // Scoring for Floor 3\n  if (floor3_attempts <= 6) {\n    score += 2;\n  } else if (floor3_attempts < 11) {\n    score += 1;\n  }\n\n  // Scoring for Floor 4\n  if (floor4_attempts <= 5) {\n    score += 2;\n  } else if (floor4_attempts < 10) {\n    score += 1;\n  }\n\n  score < 3 ? \"yellow\" : \"green\";\n}\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:96:1"
+      ],
+      "reason_codes": [
+        "NO_TRIGGER",
+        "SCORE_BELOW_THRESHOLD",
+        "TOO_MANY_ATTEMPTS_3",
+        "TOO_MANY_ATTEMPTS_4"
+      ],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:96:1",
+        "questFinishEvent:43"
+      ],
+      "warnings": []
+    },
+    {
+      "pp_id": "U5P3",
+      "alt_ids": [
+        "U5.C3"
+      ],
+      "unit": 5,
+      "point": 3,
+      "activity": "What Happened Here?",
+      "grading_file": "grading-logic/mhs-unit5-point3-grading.md",
+      "trigger_start": "DialogueNodeEvent:96:1",
+      "trigger_end": "questFinishEvent:44",
+      "grading_rule_prose": "This progress point is an attempt-based, if the total number of following dialogues (`DialogueNodeEvent:108:25`,`DialogueNodeEvent:108:32`,`DialogueNodeEvent:108:33`,`DialogueNodeEvent:108:37`,`DialogueNodeEvent:108:39`,`DialogueNodeEvent:108:41`,`DialogueNodeEvent:108:47`,`DialogueNodeEvent:108:53`,`DialogueNodeEvent:108:54`,`DialogueNodeEvent:108:55`,`DialogueNodeEvent:108:59`,`DialogueNodeEvent:108:60`,`DialogueNodeEvent:108:61`,`DialogueNodeEvent:108:62`,`DialogueNodeEvent:108:70`,`DialogueNodeEvent:108:72`,`DialogueNodeEvent:108:73`,`DialogueNodeEvent:108:74`,`DialogueNodeEvent:108:75`,`DialogueNodeEvent:108:76`,`DialogueNodeEvent:108:78`,`DialogueNodeEvent:108:79`,`DialogueNodeEvent:108:80`,`DialogueNodeEvent:108:82`,`DialogueNodeEvent:108:83`,`DialogueNodeEvent:108:84`,`DialogueNodeEvent:108:85`,`DialogueNodeEvent:108:86`,`DialogueNodeEvent:108:87`,`DialogueNodeEvent:108:88`,`DialogueNodeEvent:108:89`,`DialogueNodeEvent:108:90`,`DialogueNodeEvent:108:91`) happened is euqal to or larger than 4 then the color returns yellow, otherwise it will return green.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "attempt <= 4"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "attempt > 4"
+        }
+      ],
+      "attempt_window": {
+        "start": {
+          "raw": "Previous `DialogueNodeEvent:96:1` (exclusive)",
+          "which": "previous",
+          "key": "DialogueNodeEvent:96:1",
+          "bound": "exclusive"
+        },
+        "end": {
+          "raw": "Latest `questFinishEvent:44` (inclusive)",
+          "which": "latest",
+          "key": "questFinishEvent:44",
+          "bound": "inclusive"
+        }
+      },
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "questFinishEvent:44",
+          "kind": "quest",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:25",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:32",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:33",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:37",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:39",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:41",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:47",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:53",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:54",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:55",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:59",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:60",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:61",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:62",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:70",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:72",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:73",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:74",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:75",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:76",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:78",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:79",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:80",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:82",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:83",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:84",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:85",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:86",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:87",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:88",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:89",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:90",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:91",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:108:25",
+          "DialogueNodeEvent:108:32",
+          "DialogueNodeEvent:108:33",
+          "DialogueNodeEvent:108:37",
+          "DialogueNodeEvent:108:39",
+          "DialogueNodeEvent:108:41",
+          "DialogueNodeEvent:108:47",
+          "DialogueNodeEvent:108:53",
+          "DialogueNodeEvent:108:54",
+          "DialogueNodeEvent:108:55",
+          "DialogueNodeEvent:108:59",
+          "DialogueNodeEvent:108:60",
+          "DialogueNodeEvent:108:61",
+          "DialogueNodeEvent:108:62",
+          "DialogueNodeEvent:108:70",
+          "DialogueNodeEvent:108:72",
+          "DialogueNodeEvent:108:73",
+          "DialogueNodeEvent:108:74",
+          "DialogueNodeEvent:108:75",
+          "DialogueNodeEvent:108:76",
+          "DialogueNodeEvent:108:78",
+          "DialogueNodeEvent:108:79",
+          "DialogueNodeEvent:108:80",
+          "DialogueNodeEvent:108:82",
+          "DialogueNodeEvent:108:83",
+          "DialogueNodeEvent:108:84",
+          "DialogueNodeEvent:108:85",
+          "DialogueNodeEvent:108:86",
+          "DialogueNodeEvent:108:87",
+          "DialogueNodeEvent:108:88",
+          "DialogueNodeEvent:108:89",
+          "DialogueNodeEvent:108:90",
+          "DialogueNodeEvent:108:91",
+          "DialogueNodeEvent:96:1",
+          "questFinishEvent:44"
+        ],
+        "event_types": [],
+        "data_filters": [],
+        "data_fields": [],
+        "script": "// Production — replay-safe attempt-based color script\n// Window start: \"DialogueNodeEvent:96:1\"\n// Window end:   \"questFinishEvent:44\"\n\nconst playerId = \"<playerId>\";\n\nconst WINDOW_START_KEY = \"DialogueNodeEvent:96:1\";\nconst WINDOW_END_KEY = \"questFinishEvent:44\";\n\nconst NEGATIVE_KEYS = [\n  \"DialogueNodeEvent:108:25\", \"DialogueNodeEvent:108:32\", \"DialogueNodeEvent:108:33\",\n  \"DialogueNodeEvent:108:37\", \"DialogueNodeEvent:108:39\", \"DialogueNodeEvent:108:41\",\n  \"DialogueNodeEvent:108:47\", \"DialogueNodeEvent:108:53\", \"DialogueNodeEvent:108:54\",\n  \"DialogueNodeEvent:108:55\", \"DialogueNodeEvent:108:59\", \"DialogueNodeEvent:108:60\",\n  \"DialogueNodeEvent:108:61\", \"DialogueNodeEvent:108:62\", \"DialogueNodeEvent:108:70\",\n  \"DialogueNodeEvent:108:72\", \"DialogueNodeEvent:108:73\", \"DialogueNodeEvent:108:74\",\n  \"DialogueNodeEvent:108:75\", \"DialogueNodeEvent:108:76\", \"DialogueNodeEvent:108:78\",\n  \"DialogueNodeEvent:108:79\", \"DialogueNodeEvent:108:80\", \"DialogueNodeEvent:108:82\",\n  \"DialogueNodeEvent:108:83\", \"DialogueNodeEvent:108:84\", \"DialogueNodeEvent:108:85\",\n  \"DialogueNodeEvent:108:86\", \"DialogueNodeEvent:108:87\", \"DialogueNodeEvent:108:88\",\n  \"DialogueNodeEvent:108:89\", \"DialogueNodeEvent:108:90\", \"DialogueNodeEvent:108:91\"\n];\n\n// 1) Most recent window start\nconst latestStart = db.logdata.findOne(\n  {\n    game: \"mhs\",\n    playerId: playerId,\n    eventKey: WINDOW_START_KEY\n  },\n  { sort: { _id: -1 }}\n);\n\n// 2) Most recent window end\nconst latestEnd = db.logdata.findOne(\n  {\n    game: \"mhs\",\n    playerId: playerId,\n    eventKey: WINDOW_END_KEY\n  },\n  { sort: { _id: -1 }}\n);\n\nif (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {\n  \"yellow\";\n} else {\n  const windowStartId = latestStart._id;\n  const windowEndId = latestEnd._id;\n\n  const cnt = db.logdata.countDocuments({\n    game: \"mhs\",\n    playerId: playerId,\n    eventKey: { $in: NEGATIVE_KEYS },\n    _id: { $gt: windowStartId, $lte: windowEndId }\n  });\n\n  cnt >= 4 ? \"yellow\" : \"green\";\n}\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:108:25",
+        "DialogueNodeEvent:108:32",
+        "DialogueNodeEvent:108:33",
+        "DialogueNodeEvent:108:37",
+        "DialogueNodeEvent:108:39",
+        "DialogueNodeEvent:108:41",
+        "DialogueNodeEvent:108:47",
+        "DialogueNodeEvent:108:53",
+        "DialogueNodeEvent:108:54",
+        "DialogueNodeEvent:108:55",
+        "DialogueNodeEvent:108:59",
+        "DialogueNodeEvent:108:60",
+        "DialogueNodeEvent:108:61",
+        "DialogueNodeEvent:108:62",
+        "DialogueNodeEvent:108:70",
+        "DialogueNodeEvent:108:72",
+        "DialogueNodeEvent:108:73",
+        "DialogueNodeEvent:108:74",
+        "DialogueNodeEvent:108:75",
+        "DialogueNodeEvent:108:76",
+        "DialogueNodeEvent:108:78",
+        "DialogueNodeEvent:108:79",
+        "DialogueNodeEvent:108:80",
+        "DialogueNodeEvent:108:82",
+        "DialogueNodeEvent:108:83",
+        "DialogueNodeEvent:108:84",
+        "DialogueNodeEvent:108:85",
+        "DialogueNodeEvent:108:86",
+        "DialogueNodeEvent:108:87",
+        "DialogueNodeEvent:108:88",
+        "DialogueNodeEvent:108:89",
+        "DialogueNodeEvent:108:90",
+        "DialogueNodeEvent:108:91",
+        "questFinishEvent:44"
+      ],
+      "reason_codes": [
+        "NO_TRIGGER",
+        "WRONG_ARG_SELECTED"
+      ],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:108:25",
+        "DialogueNodeEvent:108:32",
+        "DialogueNodeEvent:108:33",
+        "DialogueNodeEvent:108:37",
+        "DialogueNodeEvent:108:39",
+        "DialogueNodeEvent:108:41",
+        "DialogueNodeEvent:108:47",
+        "DialogueNodeEvent:108:53",
+        "DialogueNodeEvent:108:54",
+        "DialogueNodeEvent:108:55",
+        "DialogueNodeEvent:108:59",
+        "DialogueNodeEvent:108:60",
+        "DialogueNodeEvent:108:61",
+        "DialogueNodeEvent:108:62",
+        "DialogueNodeEvent:108:70",
+        "DialogueNodeEvent:108:72",
+        "DialogueNodeEvent:108:73",
+        "DialogueNodeEvent:108:74",
+        "DialogueNodeEvent:108:75",
+        "DialogueNodeEvent:108:76",
+        "DialogueNodeEvent:108:78",
+        "DialogueNodeEvent:108:79",
+        "DialogueNodeEvent:108:80",
+        "DialogueNodeEvent:108:82",
+        "DialogueNodeEvent:108:83",
+        "DialogueNodeEvent:108:84",
+        "DialogueNodeEvent:108:85",
+        "DialogueNodeEvent:108:86",
+        "DialogueNodeEvent:108:87",
+        "DialogueNodeEvent:108:88",
+        "DialogueNodeEvent:108:89",
+        "DialogueNodeEvent:108:90",
+        "DialogueNodeEvent:108:91",
+        "DialogueNodeEvent:96:1",
+        "questFinishEvent:44"
+      ],
+      "warnings": []
+    },
+    {
+      "pp_id": "U5P4",
+      "alt_ids": [
+        "U5.C4"
+      ],
+      "unit": 5,
+      "point": 4,
+      "activity": "Water Problems Require Water Solutions",
+      "grading_file": "grading-logic/mhs-unit5-point4-grading.md",
+      "trigger_start": "questFinishEvent:44",
+      "trigger_end": "questFinishEvent:45",
+      "grading_rule_prose": "This progress point is a number-based progress. Firstly, it will check whether the plan is correctly figured out - (`DialogueNodeEvent:106:35`) - if we don't find the record within the players' event, then the color will return yellow; then it will check if the total number of following dialogues (`DialogueNodeEvent:106:4`,`DialogueNodeEvent:106:25`,`DialogueNodeEvent:106:26`,`DialogueNodeEvent:106:27`,`DialogueNodeEvent:106:28`,`DialogueNodeEvent:106:29`,`DialogueNodeEvent:106:30`,`DialogueNodeEvent:106:31`,`DialogueNodeEvent:106:32`,`DialogueNodeEvent:106:33`,`DialogueNodeEvent:106:34`) happened is euqal to 0 then the color returns green, otherwise it will return yellow.",
+      "outcome_table": [
+        {
+          "outcome": "Green",
+          "condition": "have `DialogueNodeEvent:106:35` and number = 0"
+        },
+        {
+          "outcome": "Yellow",
+          "condition": "no `DialogueNodeEvent:106:35` or number > 0 or both"
+        }
+      ],
+      "attempt_window": {
+        "start": {
+          "raw": "Previous `questFinishEvent:44` (exclusive)",
+          "which": "previous",
+          "key": "questFinishEvent:44",
+          "bound": "exclusive"
+        },
+        "end": {
+          "raw": "Latest `questFinishEvent:45` (inclusive)",
+          "which": "latest",
+          "key": "questFinishEvent:45",
+          "bound": "inclusive"
+        }
+      },
+      "event_keys": [
+        {
+          "role": "Trigger",
+          "key": "questFinishEvent:44",
+          "kind": "quest",
+          "expectation": "required_anchor"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:106:35",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:106:4",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:106:25",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:106:26",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:106:27",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:106:28",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:106:29",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:106:30",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:106:31",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:106:32",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:106:33",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:106:34",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        }
+      ],
+      "production": {
+        "has_script": true,
+        "event_keys": [
+          "DialogueNodeEvent:106:25",
+          "DialogueNodeEvent:106:26",
+          "DialogueNodeEvent:106:27",
+          "DialogueNodeEvent:106:28",
+          "DialogueNodeEvent:106:29",
+          "DialogueNodeEvent:106:30",
+          "DialogueNodeEvent:106:31",
+          "DialogueNodeEvent:106:32",
+          "DialogueNodeEvent:106:33",
+          "DialogueNodeEvent:106:34",
+          "DialogueNodeEvent:106:35",
+          "DialogueNodeEvent:106:4",
+          "questFinishEvent:44",
+          "questFinishEvent:45"
+        ],
+        "event_types": [],
+        "data_filters": [],
+        "data_fields": [],
+        "script": "// Production — replay-safe color script\n// Window start: previous questFinishEvent:44 (exclusive)\n// Window end:   latest questFinishEvent:45 (inclusive)\n\nconst playerId = \"<playerId>\";\n\nconst START_KEY = \"questFinishEvent:44\";\nconst END_KEY = \"questFinishEvent:45\";\nconst SUCCESS_KEY = \"DialogueNodeEvent:106:35\";\n\nconst NEGATIVE_KEYS = [\n  \"DialogueNodeEvent:106:4\",\n  \"DialogueNodeEvent:106:25\",\n  \"DialogueNodeEvent:106:26\",\n  \"DialogueNodeEvent:106:27\",\n  \"DialogueNodeEvent:106:28\",\n  \"DialogueNodeEvent:106:29\",\n  \"DialogueNodeEvent:106:30\",\n  \"DialogueNodeEvent:106:31\",\n  \"DialogueNodeEvent:106:32\",\n  \"DialogueNodeEvent:106:33\",\n  \"DialogueNodeEvent:106:34\"\n];\n\n// 1) Latest end anchor\nconst latestEnd = db.logdata.findOne(\n  {\n    game: \"mhs\",\n    playerId: playerId,\n    eventKey: END_KEY\n  },\n  { sort: { _id: -1 }}\n);\n\nif (!latestEnd) {\n  \"yellow\";\n} else {\n  // 2) Previous start anchor before latest end\n  const prevStart = db.logdata.findOne(\n    {\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: START_KEY,\n      _id: { $lt: latestEnd._id }\n    },\n    { sort: { _id: -1 }}\n  );\n\n  const windowStartId = prevStart\n    ? prevStart._id\n    : ObjectId(\"000000000000000000000000\");\n\n  const windowEndId = latestEnd._id;\n\n  // 3) Check success node inside window\n  const has_success =\n    db.logdata.findOne(\n      {\n        game: \"mhs\",\n        playerId: playerId,\n        eventKey: SUCCESS_KEY,\n        _id: { $gt: windowStartId, $lte: windowEndId }\n      }\n    ) !== null;\n\n  if (!has_success) {\n    \"yellow\";\n  } else {\n    // 4) Count negative nodes inside window\n    const cnt = db.logdata.countDocuments({\n      game: \"mhs\",\n      playerId: playerId,\n      eventKey: { $in: NEGATIVE_KEYS },\n      _id: { $gt: windowStartId, $lte: windowEndId }\n    });\n\n    cnt === 0 ? \"green\" : \"yellow\";\n  }\n}\n"
+      },
+      "analytics_event_keys": [
+        "DialogueNodeEvent:106:25",
+        "DialogueNodeEvent:106:26",
+        "DialogueNodeEvent:106:27",
+        "DialogueNodeEvent:106:28",
+        "DialogueNodeEvent:106:29",
+        "DialogueNodeEvent:106:30",
+        "DialogueNodeEvent:106:31",
+        "DialogueNodeEvent:106:32",
+        "DialogueNodeEvent:106:33",
+        "DialogueNodeEvent:106:34",
+        "DialogueNodeEvent:106:35",
+        "DialogueNodeEvent:106:4",
+        "questFinishEvent:45"
+      ],
+      "reason_codes": [
+        "NO_TRIGGER",
+        "MISSING_SUCCESS_NODE",
+        "BAD_FEEDBACK"
+      ],
+      "all_referenced_event_keys": [
+        "DialogueNodeEvent:106:25",
+        "DialogueNodeEvent:106:26",
+        "DialogueNodeEvent:106:27",
+        "DialogueNodeEvent:106:28",
+        "DialogueNodeEvent:106:29",
+        "DialogueNodeEvent:106:30",
+        "DialogueNodeEvent:106:31",
+        "DialogueNodeEvent:106:32",
+        "DialogueNodeEvent:106:33",
+        "DialogueNodeEvent:106:34",
+        "DialogueNodeEvent:106:35",
+        "DialogueNodeEvent:106:4",
+        "questFinishEvent:44",
+        "questFinishEvent:45"
+      ],
+      "warnings": []
+    }
+  ]
+}

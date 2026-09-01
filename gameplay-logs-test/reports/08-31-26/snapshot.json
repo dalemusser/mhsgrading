@@ -1,0 +1,1243 @@
+{
+ "snapshot_format": 1,
+ "build_id": "08-31-26",
+ "created": "2026-09-01",
+ "source_files": [
+  "wenyi083126-1.stratalog.logdata.json"
+ ],
+ "game_versions": [
+  "20260826-12286"
+ ],
+ "record_count": 5977,
+ "session_count": 1,
+ "scenes": {
+  "MainMenu": 5,
+  "Unit 1 Dev": 500,
+  "Unit 2 Prod (Refactor)": 1823,
+  "Unit 3 Dev": 746,
+  "Unit 3 Dungeon Dev": 475,
+  "Unit 4 Dev": 805,
+  "Unit 4 Dev - Anderson Base": 184,
+  "Unit 4 Dev - Dungeon": 596,
+  "Unit 5 Dev": 384,
+  "Unit 5 Dev - Dungeon": 459
+ },
+ "event_types": {
+  "DaniEvent": {
+   "count": 42,
+   "scenes": {
+    "Unit 1 Dev": 1,
+    "Unit 2 Prod (Refactor)": 18,
+    "Unit 3 Dev": 20,
+    "Unit 4 Dev - Anderson Base": 2,
+    "Unit 5 Dev": 1
+   },
+   "fields": {
+    "data.actionType": {
+     "count": 42,
+     "types": [
+      "string"
+     ]
+    },
+    "data.toolName": {
+     "count": 42,
+     "types": [
+      "string"
+     ]
+    }
+   },
+   "values": {
+    "data.actionType": [
+     "Close",
+     "Open"
+    ],
+    "data.toolName": [
+     "Argumentation",
+     "Map"
+    ]
+   },
+   "median_interval_s": 14.09
+  },
+  "DialogueEvent": {
+   "count": 1775,
+   "scenes": {
+    "Unit 1 Dev": 193,
+    "Unit 2 Prod (Refactor)": 493,
+    "Unit 3 Dev": 273,
+    "Unit 3 Dungeon Dev": 119,
+    "Unit 4 Dev": 232,
+    "Unit 4 Dev - Anderson Base": 73,
+    "Unit 4 Dev - Dungeon": 99,
+    "Unit 5 Dev": 209,
+    "Unit 5 Dev - Dungeon": 84
+   },
+   "fields": {
+    "data.conversationId": {
+     "count": 1775,
+     "types": [
+      "number"
+     ]
+    },
+    "data.dialogueEventType": {
+     "count": 1775,
+     "types": [
+      "string"
+     ]
+    },
+    "data.nodeId": {
+     "count": 1136,
+     "types": [
+      "number"
+     ]
+    }
+   },
+   "values": {
+    "data.dialogueEventType": [
+     "DialogueFinishEvent",
+     "DialogueNodeEvent",
+     "DialogueStartEvent"
+    ]
+   },
+   "median_interval_s": 0.684
+  },
+  "EndOfUnit": {
+   "count": 5,
+   "scenes": {
+    "Unit 1 Dev": 1,
+    "Unit 2 Prod (Refactor)": 1,
+    "Unit 3 Dev": 1,
+    "Unit 4 Dev": 1,
+    "Unit 5 Dev": 1
+   },
+   "fields": {
+    "data.Unit": {
+     "count": 5,
+     "types": [
+      "string"
+     ]
+    }
+   },
+   "values": {
+    "data.Unit": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ]
+   },
+   "median_interval_s": 1432.505
+  },
+  "InputEvent": {
+   "count": 1883,
+   "scenes": {
+    "Unit 1 Dev": 119,
+    "Unit 2 Prod (Refactor)": 400,
+    "Unit 3 Dev": 263,
+    "Unit 3 Dungeon Dev": 182,
+    "Unit 4 Dev": 150,
+    "Unit 4 Dev - Anderson Base": 51,
+    "Unit 4 Dev - Dungeon": 387,
+    "Unit 5 Dev": 70,
+    "Unit 5 Dev - Dungeon": 261
+   },
+   "fields": {
+    "data.Value": {
+     "count": 1883,
+     "types": [
+      "string"
+     ]
+    },
+    "data.actionType": {
+     "count": 1883,
+     "types": [
+      "string"
+     ]
+    },
+    "data.key": {
+     "count": 1883,
+     "types": [
+      "string"
+     ]
+    },
+    "data.playerOrDrone": {
+     "count": 1883,
+     "types": [
+      "string"
+     ]
+    }
+   },
+   "values": {
+    "data.Value": [
+     "pressed"
+    ],
+    "data.actionType": [
+     "Ascend",
+     "Descend",
+     "Hoverboard",
+     "Interact",
+     "Jump",
+     "Map",
+     "Move",
+     "Sprint"
+    ],
+    "data.key": [
+     "",
+     "a",
+     "d",
+     "e",
+     "h",
+     "leftButton",
+     "leftShift",
+     "m",
+     "s",
+     "space",
+     "w"
+    ],
+    "data.playerOrDrone": [
+     "Drone",
+     "Player"
+    ]
+   },
+   "median_interval_s": 0.5
+  },
+  "ObjectInterEvent": {
+   "count": 166,
+   "scenes": {
+    "Unit 1 Dev": 13,
+    "Unit 2 Prod (Refactor)": 26,
+    "Unit 3 Dev": 11,
+    "Unit 3 Dungeon Dev": 23,
+    "Unit 4 Dev": 15,
+    "Unit 4 Dev - Anderson Base": 9,
+    "Unit 4 Dev - Dungeon": 57,
+    "Unit 5 Dev": 6,
+    "Unit 5 Dev - Dungeon": 6
+   },
+   "fields": {
+    "data.actionType": {
+     "count": 166,
+     "types": [
+      "string"
+     ]
+    },
+    "data.objectName": {
+     "count": 166,
+     "types": [
+      "string"
+     ]
+    }
+   },
+   "values": {
+    "data.actionType": [
+     "E to Talk",
+     "Inspect Alien Glyph",
+     "Place Cube",
+     "Press E",
+     "Press E To Change Direction",
+     "Press E To Collect Pipe",
+     "Press E To Pick Up",
+     "Press E To Place Cameras",
+     "Press E To Place Cube In Canal",
+     "Press E To Place Glyph",
+     "Press E To Return To Base",
+     "Press E To Scan",
+     "Press E to Collect",
+     "Press E to Install",
+     "Press E to Open Locker",
+     "Press E to Operate",
+     "Press E to Pick Up",
+     "Press E to Pick up",
+     "Press E to Pickup Canister",
+     "Press E to Place",
+     "Press E to Place Pipe Segment",
+     "Press E to Plant Seed",
+     "Press E to Scan",
+     "Press E to Switch Canister",
+     "Press E to collect cameras",
+     "Press E to collect mega turnips",
+     "Press E to collect super orange",
+     "Press E to collect ultra corn",
+     "Press E to deactivate the fountain",
+     "Press E to examine",
+     "Press E to go down",
+     "Press E to inspect ",
+     "Press E to pick up",
+     "Press E to place canister",
+     "Press E to use",
+     "Press [E/Action button] to enter escape pod ",
+     "Push E To Grab Crate",
+     "Push E To Place Crate On Hoverboard",
+     "TalkTo"
+    ]
+   },
+   "median_interval_s": 7.054
+  },
+  "PlayerPositionEvent": {
+   "count": 655,
+   "scenes": {
+    "Unit 1 Dev": 93,
+    "Unit 2 Prod (Refactor)": 156,
+    "Unit 3 Dev": 96,
+    "Unit 3 Dungeon Dev": 35,
+    "Unit 4 Dev": 97,
+    "Unit 4 Dev - Anderson Base": 20,
+    "Unit 4 Dev - Dungeon": 37,
+    "Unit 5 Dev": 49,
+    "Unit 5 Dev - Dungeon": 72
+   },
+   "fields": {
+    "data.position": {
+     "count": 655,
+     "types": [
+      "object"
+     ]
+    },
+    "data.position.x": {
+     "count": 655,
+     "types": [
+      "number"
+     ]
+    },
+    "data.position.y": {
+     "count": 655,
+     "types": [
+      "number"
+     ]
+    },
+    "data.position.z": {
+     "count": 655,
+     "types": [
+      "number"
+     ]
+    }
+   },
+   "values": {},
+   "median_interval_s": 10.005
+  },
+  "PuzzlePieceVisibleEvent": {
+   "count": 1018,
+   "scenes": {
+    "Unit 2 Prod (Refactor)": 622,
+    "Unit 3 Dungeon Dev": 112,
+    "Unit 4 Dev": 284
+   },
+   "fields": {
+    "data.actionType": {
+     "count": 1018,
+     "types": [
+      "string"
+     ]
+    },
+    "data.pieceId": {
+     "count": 1018,
+     "types": [
+      "string"
+     ]
+    },
+    "data.timestamp": {
+     "count": 1018,
+     "types": [
+      "string"
+     ]
+    }
+   },
+   "values": {
+    "data.actionType": [
+     "BecameCameraCentered",
+     "BecameCameraUncentered",
+     "BecameInvisible",
+     "BecameVisible"
+    ],
+    "data.pieceId": [
+     "Dissolving Particles Piece 1",
+     "Dissolving Particles Piece 2",
+     "Dissolving Particles Piece 3",
+     "Dissolving Particles Slot 1",
+     "Dissolving Particles Slot 2",
+     "Dissolving Particles Slot 3",
+     "Soil Infiltration Puzzle Piece Bedrock",
+     "Soil Infiltration Puzzle Piece Clay",
+     "Soil Infiltration Puzzle Piece Gravel",
+     "Soil Infiltration Puzzle Piece Sand",
+     "Soil Infiltration Puzzle Slot Bedrock",
+     "Soil Infiltration Puzzle Slot Clay",
+     "Soil Infiltration Puzzle Slot Gravel",
+     "Soil Infiltration Puzzle Slot Sand",
+     "Topography Piece 1",
+     "Topography Piece 2",
+     "Topography Piece 3",
+     "Topography Piece 4",
+     "Topography Piece 5",
+     "Topography Piece 6",
+     "Topography Slot 1",
+     "Topography Slot 2",
+     "Topography Slot 3",
+     "Topography Slot 4",
+     "Topography Slot 5",
+     "Topography Slot 6",
+     "Watershed Piece 1",
+     "Watershed Piece 2",
+     "Watershed Piece 3",
+     "Watershed Piece 4",
+     "Watershed Piece 5",
+     "WatershedSlotWall"
+    ]
+   },
+   "median_interval_s": 0.033
+  },
+  "Soil Key Puzzle": {
+   "count": 32,
+   "scenes": {
+    "Unit 2 Prod (Refactor)": 12,
+    "Unit 3 Dev": 12,
+    "Unit 4 Dev": 8
+   },
+   "fields": {
+    "data.Soil Key Puzzle Status": {
+     "count": 8,
+     "types": [
+      "string"
+     ]
+    },
+    "data.Unit": {
+     "count": 8,
+     "types": [
+      "string"
+     ]
+    },
+    "data.actionType": {
+     "count": 24,
+     "types": [
+      "string"
+     ]
+    },
+    "data.currentSoilType": {
+     "count": 24,
+     "types": [
+      "string"
+     ]
+    },
+    "data.isCorrectSelection": {
+     "count": 24,
+     "types": [
+      "string"
+     ]
+    },
+    "data.waterLevelStatus": {
+     "count": 24,
+     "types": [
+      "string"
+     ]
+    },
+    "data.waterRetentionChange": {
+     "count": 24,
+     "types": [
+      "string"
+     ]
+    }
+   },
+   "values": {
+    "data.Soil Key Puzzle Status": [
+     "Finished",
+     "Started"
+    ],
+    "data.Unit": [
+     "Unit 2 Prod (Refactor)",
+     "Unit 3 Dev",
+     "Unit 4 Dev"
+    ],
+    "data.actionType": [
+     "LeftDrag",
+     "RightDrag"
+    ],
+    "data.currentSoilType": [
+     "BEDROCK",
+     "CLAY",
+     "CLAYROCK",
+     "CLAYSAND",
+     "GRAVEL",
+     "SAND",
+     "SANDGRAVEL"
+    ],
+    "data.isCorrectSelection": [
+     "false",
+     "true"
+    ],
+    "data.waterLevelStatus": [
+     "Proper",
+     "TooHigh",
+     "TooLow"
+    ],
+    "data.waterRetentionChange": [
+     "Decrease",
+     "Increase",
+     "NoChange"
+    ]
+   },
+   "median_interval_s": 0.617
+  },
+  "SolarStillDesignEvent": {
+   "count": 4,
+   "scenes": {
+    "Unit 5 Dev": 4
+   },
+   "fields": {
+    "data.actionType": {
+     "count": 4,
+     "types": [
+      "string"
+     ]
+    },
+    "data.designSelections": {
+     "count": 1,
+     "types": [
+      "object"
+     ]
+    },
+    "data.designSelections.glassRoofTemperature": {
+     "count": 1,
+     "types": [
+      "string"
+     ]
+    },
+    "data.designSelections.roofCovering": {
+     "count": 1,
+     "types": [
+      "string"
+     ]
+    },
+    "data.designSelections.roofStyle": {
+     "count": 1,
+     "types": [
+      "string"
+     ]
+    },
+    "data.featureUsed": {
+     "count": 4,
+     "types": [
+      "string"
+     ]
+    },
+    "data.selectedOption": {
+     "count": 3,
+     "types": [
+      "string"
+     ]
+    }
+   },
+   "values": {
+    "data.actionType": [
+     "DesignSubmitted",
+     "optionSelected"
+    ],
+    "data.designSelections.glassRoofTemperature": [
+     "Cold"
+    ],
+    "data.designSelections.roofCovering": [
+     "Uncovered"
+    ],
+    "data.designSelections.roofStyle": [
+     "Tilted Out"
+    ],
+    "data.featureUsed": [
+     "ExtraCovering",
+     "GlassRoofTemperature",
+     "RoofStyle",
+     "Submit"
+    ],
+    "data.selectedOption": [
+     "Cold",
+     "Tilted Out",
+     "Uncovered"
+    ]
+   },
+   "median_interval_s": 2.334
+  },
+  "TerasGardenBox": {
+   "count": 6,
+   "scenes": {
+    "Unit 4 Dev": 6
+   },
+   "fields": {
+    "data.actionType": {
+     "count": 6,
+     "types": [
+      "string"
+     ]
+    },
+    "data.boxID": {
+     "count": 3,
+     "types": [
+      "string"
+     ]
+    },
+    "data.boxId": {
+     "count": 3,
+     "types": [
+      "string"
+     ]
+    },
+    "data.soilType": {
+     "count": 6,
+     "types": [
+      "string"
+     ]
+    }
+   },
+   "values": {
+    "data.actionType": [
+     "cameraPlaced",
+     "soilSelected"
+    ],
+    "data.boxID": [
+     "0",
+     "1",
+     "2"
+    ],
+    "data.boxId": [
+     "0",
+     "1",
+     "2"
+    ],
+    "data.soilType": [
+     "Clay",
+     "Gravel",
+     "Sand"
+    ]
+   },
+   "median_interval_s": 4.718
+  },
+  "TopographicMapEvent": {
+   "count": 63,
+   "scenes": {
+    "Unit 2 Prod (Refactor)": 43,
+    "Unit 3 Dev": 20
+   },
+   "fields": {
+    "data.actionType": {
+     "count": 63,
+     "types": [
+      "string"
+     ]
+    },
+    "data.featureUsed": {
+     "count": 63,
+     "types": [
+      "string"
+     ]
+    },
+    "data.location": {
+     "count": 29,
+     "types": [
+      "object"
+     ]
+    },
+    "data.location.x": {
+     "count": 29,
+     "types": [
+      "number"
+     ]
+    },
+    "data.location.y": {
+     "count": 29,
+     "types": [
+      "number"
+     ]
+    },
+    "data.location.z": {
+     "count": 29,
+     "types": [
+      "number"
+     ]
+    }
+   },
+   "values": {
+    "data.actionType": [
+     "MapCloseEvent",
+     "MapOpenEvent",
+     "WaypointMoveEvent",
+     "WaypointResetEvent",
+     "WaypointSetEvent"
+    ],
+    "data.featureUsed": [
+     "Map",
+     "Waypoint"
+    ]
+   },
+   "median_interval_s": 2.484
+  },
+  "WaterChamberEvent": {
+   "count": 18,
+   "scenes": {
+    "Unit 5 Dev - Dungeon": 18
+   },
+   "fields": {
+    "data.actionType": {
+     "count": 18,
+     "types": [
+      "string"
+     ]
+    },
+    "data.floor": {
+     "count": 18,
+     "types": [
+      "string"
+     ]
+    },
+    "data.machineNumber": {
+     "count": 18,
+     "types": [
+      "string"
+     ]
+    },
+    "data.machineType": {
+     "count": 18,
+     "types": [
+      "string"
+     ]
+    },
+    "data.room": {
+     "count": 18,
+     "types": [
+      "string"
+     ]
+    }
+   },
+   "values": {
+    "data.actionType": [
+     "Off",
+     "On"
+    ],
+    "data.floor": [
+     "1",
+     "2",
+     "3",
+     "4"
+    ],
+    "data.machineNumber": [
+     "One",
+     "Two"
+    ],
+    "data.machineType": [
+     "Condenser",
+     "DualChamber_Condenser",
+     "Evaporator",
+     "VentSwitch"
+    ],
+    "data.room": [
+     "1",
+     "2",
+     "3",
+     "4"
+    ]
+   },
+   "median_interval_s": 16.302
+  },
+  "argumentationAnswerEvent": {
+   "count": 7,
+   "scenes": {
+    "Unit 1 Dev": 3,
+    "Unit 2 Prod (Refactor)": 1,
+    "Unit 3 Dev": 1,
+    "Unit 4 Dev - Anderson Base": 1,
+    "Unit 5 Dev": 1
+   },
+   "fields": {
+    "data.actionType": {
+     "count": 7,
+     "types": [
+      "string"
+     ]
+    },
+    "data.answerSubmitted": {
+     "count": 7,
+     "types": [
+      "string"
+     ]
+    },
+    "data.argumentationTitle": {
+     "count": 7,
+     "types": [
+      "string"
+     ]
+    }
+   },
+   "values": {
+    "data.actionType": [
+     "submitAnswerEvent"
+    ],
+    "data.answerSubmitted": [
+     "A,1,I",
+     "A,1,II",
+     "A,5,I",
+     "A,C,D,2,II",
+     "C,D,3,II"
+    ],
+    "data.argumentationTitle": [
+     "Unit 1 - Argumentation Tutorial",
+     "Unit 1 - Freshwater",
+     "Unit 2 – Watershed",
+     "Unit 3 - Pollution Upstream",
+     "Unit 4 - Flooding",
+     "Unit 5"
+    ]
+   },
+   "median_interval_s": 1006.195
+  },
+  "argumentationEvent": {
+   "count": 14,
+   "scenes": {
+    "Unit 1 Dev": 4,
+    "Unit 2 Prod (Refactor)": 2,
+    "Unit 3 Dev": 3,
+    "Unit 4 Dev - Anderson Base": 3,
+    "Unit 5 Dev": 2
+   },
+   "fields": {
+    "data.actionType": {
+     "count": 14,
+     "types": [
+      "string"
+     ]
+    },
+    "data.argumentationDescription": {
+     "count": 14,
+     "types": [
+      "string"
+     ]
+    },
+    "data.argumentationTitle": {
+     "count": 14,
+     "types": [
+      "string"
+     ]
+    }
+   },
+   "values": {
+    "data.actionType": [
+     "argumentationSessionClose",
+     "argumentationSessionOpen"
+    ],
+    "data.argumentationDescription": [
+     "U1 - Argumentation tutorial - Place the claim, reasoning, and evidence orbs in orbit",
+     "U2 – Watershed - Which watershed is bigger based on collected evidence from eastern and western waterfalls",
+     "U3 – Pollution Upstream\" equals \"Where is the pollution site probably located?",
+     "Unit 1 - Does the planet WAT-247 have freshwater",
+     "Unit 4 - Will the flooding in the workshop resolve after the fountain is turned off",
+     "Unit 5 - What happened to the water when in Aryn's collection tanks"
+    ],
+    "data.argumentationTitle": [
+     "Unit 1 - Argumentation Tutorial",
+     "Unit 1 - Freshwater",
+     "Unit 2 – Watershed",
+     "Unit 3 - Pollution Upstream",
+     "Unit 4 - Flooding",
+     "Unit 5"
+    ]
+   },
+   "median_interval_s": 36.299
+  },
+  "argumentationNodeEvent": {
+   "count": 155,
+   "scenes": {
+    "Unit 1 Dev": 42,
+    "Unit 2 Prod (Refactor)": 33,
+    "Unit 3 Dev": 31,
+    "Unit 4 Dev - Anderson Base": 23,
+    "Unit 5 Dev": 26
+   },
+   "fields": {
+    "data.actionType": {
+     "count": 155,
+     "types": [
+      "string"
+     ]
+    },
+    "data.argumentationTitle": {
+     "count": 155,
+     "types": [
+      "string"
+     ]
+    },
+    "data.nodeName": {
+     "count": 155,
+     "types": [
+      "string"
+     ]
+    }
+   },
+   "values": {
+    "data.actionType": [
+     "argumentationNodeAdd",
+     "argumentationNodeHoverEnd",
+     "argumentationNodeHoverStart",
+     "argumentationNodeRemove"
+    ],
+    "data.argumentationTitle": [
+     "Unit 1 - Argumentation Tutorial",
+     "Unit 1 - Freshwater",
+     "Unit 2 – Watershed",
+     "Unit 3 - Pollution Upstream",
+     "Unit 4 - Flooding",
+     "Unit 5"
+    ],
+    "data.nodeName": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5",
+     "A",
+     "B",
+     "C",
+     "D",
+     "I",
+     "II"
+    ]
+   },
+   "median_interval_s": 0.25
+  },
+  "argumentationToolEvent": {
+   "count": 18,
+   "scenes": {
+    "Unit 1 Dev": 9,
+    "Unit 2 Prod (Refactor)": 2,
+    "Unit 3 Dev": 2,
+    "Unit 5 Dev": 5
+   },
+   "fields": {
+    "data.actionType": {
+     "count": 18,
+     "types": [
+      "string"
+     ]
+    },
+    "data.argumentationTitle": {
+     "count": 18,
+     "types": [
+      "string"
+     ]
+    },
+    "data.toolName": {
+     "count": 18,
+     "types": [
+      "string"
+     ]
+    }
+   },
+   "values": {
+    "data.actionType": [
+     "argumentationToolClose",
+     "argumentationToolOpen"
+    ],
+    "data.argumentationTitle": [
+     "Unit 1 - Argumentation Tutorial",
+     "Unit 1 - Freshwater",
+     "Unit 2 – Watershed",
+     "Unit 3 - Pollution Upstream",
+     "Unit 5"
+    ],
+    "data.toolName": [
+     "BackingInfoPanel - ",
+     "BackingInfoPanel - Argumentation",
+     "BackingInfoPanel - Evaporation Flow Diagram",
+     "BackingInfoPanel - Heat Added/Released Chart",
+     "BackingInfoPanel - Pollution Site Data",
+     "BackingInfoPanel - Waterfall Data",
+     "BackingInfoPanel - Watershed Graph",
+     "BackingInfoPanel - Watershed Image"
+    ]
+   },
+   "median_interval_s": 1.101
+  },
+  "chatEvent": {
+   "count": 2,
+   "scenes": {
+    "Unit 5 Dev": 1,
+    "Unit 5 Dev - Dungeon": 1
+   },
+   "fields": {
+    "data.actionType": {
+     "count": 2,
+     "types": [
+      "string"
+     ]
+    },
+    "data.chatID": {
+     "count": 2,
+     "types": [
+      "string"
+     ]
+    }
+   },
+   "values": {
+    "data.actionType": [
+     "Close"
+    ],
+    "data.chatID": [
+     "NA"
+    ]
+   },
+   "median_interval_s": 721.885
+  },
+  "gameStartEvent": {
+   "count": 5,
+   "scenes": {
+    "MainMenu": 5
+   },
+   "fields": {
+    "data.<empty>": {
+     "count": 5,
+     "types": [
+      "bool"
+     ]
+    }
+   },
+   "values": {
+    "data.<empty>": [
+     "True"
+    ]
+   },
+   "median_interval_s": 1577.217
+  },
+  "gameWindowFocusEvent": {
+   "count": 18,
+   "scenes": {
+    "Unit 1 Dev": 5,
+    "Unit 2 Prod (Refactor)": 1,
+    "Unit 3 Dev": 2,
+    "Unit 3 Dungeon Dev": 1,
+    "Unit 4 Dev": 2,
+    "Unit 4 Dev - Dungeon": 1,
+    "Unit 5 Dev": 1,
+    "Unit 5 Dev - Dungeon": 5
+   },
+   "fields": {
+    "data.<empty>": {
+     "count": 18,
+     "types": [
+      "bool"
+     ]
+    }
+   },
+   "values": {
+    "data.<empty>": [
+     "True"
+    ]
+   },
+   "median_interval_s": 199.213
+  },
+  "gameWindowUnfocusEvent": {
+   "count": 18,
+   "scenes": {
+    "Unit 1 Dev": 5,
+    "Unit 2 Prod (Refactor)": 1,
+    "Unit 3 Dev": 2,
+    "Unit 3 Dungeon Dev": 1,
+    "Unit 4 Dev": 2,
+    "Unit 4 Dev - Dungeon": 1,
+    "Unit 5 Dev": 1,
+    "Unit 5 Dev - Dungeon": 5
+   },
+   "fields": {
+    "data.<empty>": {
+     "count": 18,
+     "types": [
+      "bool"
+     ]
+    }
+   },
+   "values": {
+    "data.<empty>": [
+     "False"
+    ]
+   },
+   "median_interval_s": 216.72
+  },
+  "questEvent": {
+   "count": 68,
+   "scenes": {
+    "Unit 1 Dev": 12,
+    "Unit 2 Prod (Refactor)": 12,
+    "Unit 3 Dev": 9,
+    "Unit 3 Dungeon Dev": 2,
+    "Unit 4 Dev": 8,
+    "Unit 4 Dev - Anderson Base": 2,
+    "Unit 4 Dev - Dungeon": 9,
+    "Unit 5 Dev": 7,
+    "Unit 5 Dev - Dungeon": 7
+   },
+   "fields": {
+    "data.questEventType": {
+     "count": 68,
+     "types": [
+      "string"
+     ]
+    },
+    "data.questID": {
+     "count": 68,
+     "types": [
+      "string"
+     ]
+    },
+    "data.questName": {
+     "count": 68,
+     "types": [
+      "string"
+     ]
+    },
+    "data.questSuccessOrFailure": {
+     "count": 31,
+     "types": [
+      "string"
+     ]
+    }
+   },
+   "values": {
+    "data.questEventType": [
+     "questActiveEvent",
+     "questFinishEvent"
+    ],
+    "data.questID": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "21",
+     "22",
+     "23",
+     "24",
+     "25",
+     "28",
+     "29",
+     "31",
+     "32",
+     "33",
+     "34",
+     "36",
+     "39",
+     "40",
+     "41",
+     "43",
+     "44",
+     "45",
+     "46",
+     "47",
+     "48",
+     "49",
+     "50",
+     "51",
+     "52",
+     "53",
+     "54",
+     "55",
+     "56",
+     "57"
+    ],
+    "data.questName": [
+     "Chief of Reasoning",
+     "Claim of Command",
+     "Defend the Expedition",
+     "Desert Delicacies",
+     "Escape the Ruin",
+     "Foraged Forging",
+     "Forsaken Facility",
+     "Gear Up",
+     "Getting Your Space Legs",
+     "Getting the Band Back Together",
+     "Guru of Arguments",
+     "If I had a Nickel... - Floor 1",
+     "If I had a Nickel... - Floor 2",
+     "If I had a Nickel... - Floor 3",
+     "If I had a Nickel... - Floor 4",
+     "Info and Intros",
+     "Investigate the Temple",
+     "Leader of Evidence",
+     "Part of a Balanced Ecosystem",
+     "Pollution Solution",
+     "Power Play",
+     "Power Play - Floor 1",
+     "Power Play - Floor 2",
+     "Power Play - Floor 3",
+     "Power Play - Floor 4",
+     "Power Play - Floor 5",
+     "Saving Cadet Anderson",
+     "Supply Run",
+     "TK, Reporting In!",
+     "WAT Happened Here?",
+     "Water Problems Require Water Solutions",
+     "Well, What Have We Here?",
+     "What Was That?",
+     "Which Watershed?"
+    ],
+    "data.questSuccessOrFailure": [
+     "Succeeded"
+    ]
+   },
+   "median_interval_s": 64.48
+  },
+  "soilMachine": {
+   "count": 5,
+   "scenes": {
+    "Unit 4 Dev - Dungeon": 5
+   },
+   "fields": {
+    "data.actionType": {
+     "count": 5,
+     "types": [
+      "string"
+     ]
+    },
+    "data.canisterType": {
+     "count": 5,
+     "types": [
+      "string"
+     ]
+    },
+    "data.floor": {
+     "count": 5,
+     "types": [
+      "string"
+     ]
+    },
+    "data.machine": {
+     "count": 5,
+     "types": [
+      "string"
+     ]
+    },
+    "data.row": {
+     "count": 5,
+     "types": [
+      "string"
+     ]
+    }
+   },
+   "values": {
+    "data.actionType": [
+     "ChangeCanister"
+    ],
+    "data.canisterType": [
+     "Clay",
+     "Gravel",
+     "Sand"
+    ],
+    "data.floor": [
+     "3",
+     "4",
+     "5"
+    ],
+    "data.machine": [
+     "1",
+     "2"
+    ],
+    "data.row": [
+     "BottomRow",
+     "TopRow"
+    ]
+   },
+   "median_interval_s": 37.414
+  }
+ }
+}

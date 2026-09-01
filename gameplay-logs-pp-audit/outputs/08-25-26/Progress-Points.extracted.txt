@@ -1,0 +1,764 @@
+Unit 1
+
+ | Name
+ | Description
+ | Checkpoint
+ | Color Determination
+ | Progress Log Mark
+ | EA/Color Log Mark
+ | Argumentation Attempt Number Log Mark
+ | U1.C1
+ | Getting Your Space Legs
+ | Start of gameplay until the conclusion of task 1.2 “Gear Up”. Encompasses character creator, tutorials, and grabbing holo-watch, player meeting Toppo, and Toppo lesson. Ends just before Toppo tells the player to speak to other cadets.
+ | Start
+End
+ | NA- default to green for all players on complete
+ | Start: {“questEventType”: “questActiveEvent,
+questID: “28”}
+End:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “31”,
+“nodeId”: “29”} 
+ | White: Not completed.
+
+Green: completed.
+ | NA
+ | U1.C2
+ | Info and Intros
+ | Starts with Toppo telling the player to visit other cadets and assignment of task 2.2 “Infos and Intros.” Encompasses the player collecting arg pieces from all NPCs. Ends when task 2.2 is complete just before DANI tells the player to go back to Toppo.
+ | Start
+End
+ | NA- default to green for all players on complete
+ | Start: {dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “31”,
+“nodeId”: “29”} 
+End: {dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “30”,
+“nodeId”: “98”} 
+ | White: Not completed.
+
+Green: completed.
+ | NA
+ | U1.C3
+ | Defend the Expedition (Argumentation: Identify a claim)
+ | Starts with DANI telling the player to go back to Toppo. Encompasses arg tutorial and completion of first argument. Ends just before the cutscene “Copernicus Rumbles” (task 3.1).
+ | Start
+End
+
+ | EA item 1.1
+Green: 1 point 
+Yellow: less than 1 point 
+ | Start: {dialogueEventType: “DialogueN odeEvent”,
+“conversationId”: “30”,
+“nodeId”: “98”}
+End: {“questEventType”: “questActiveEvent,
+questID: “34”}
+ | Green (1 point): The feedback dialogue during or right before the close event of the argumentation only contains the following: 70-7 (Conversation ID-Dialogue Node ID)
+
+Yellow (less than 1 point): Other conditions (e.g., 70-33 and 70-7, and each of them only happens once).
+ | Calculate how many feedback dialogues happened (the count of dialogues with conversation ID of 70 )
+ | U1.C4
+ | Unexpected Turbulence
+ | Starts with cutscene “Copernicus Rumbles” (beginning of task 3.1). Encompasses following Toppo, the alien hieroglyph cutscene, and player escaping the Copernicus. Ends when unit 1 concludes. 
+ | Start
+End
+
+ | NA- default to green for all players on complete
+ | Start: {“questEventType”: “questActiveEvent,
+questID: “34”}
+End: {“questEventType”: “questFinishEvent,
+questID: “34”}
+
+ | White: Not completed.
+
+Green: completed.
+ | NA
+ | U1 Finish
+ | 
+ | 
+ | 
+ | 
+ | eventKey: “DialogueNodeEvent:33:19”
+ | 
+ | 
+ | 
+Unit 2
+
+ | Name
+ | Description
+ | Checkpoint
+ | Color Determination
+ | Progress Log Mark
+ | EA/Color Log Mark
+ | Argumentation Attempt Number Log Mark
+ | U2.C1
+ | Escape the Ruins + Topographic Glyph (Identify Topographic map features)
+ | Starts at the beginning of Unit 2. Encompasses first rooms of ruins, both nanomachine panel interactions, and map tutorial #1, topography glyph game and initial soil key interaction. Ends at conclusion of task 1.1 just before cutscene of the player exiting the temple. 
+ | Start
+End
+ | EA Item 2.1
+Green: 1-2 Points 
+Yellow: less than 1 point
+ | Start: {dialogueEventType: “DialogueStartEvent”,
+“conversationId”: “18”}
+End: {“questEventType”: “questFinishEvent,
+questID: “21”}
+ | Green (1-2 points): 
+
+2 points: Only feedback dialogue 68-29 happens, or feedback dialogues 68-4 (68-5) and 68-29 happen.  
+
+
+1 point: Before the feedback dialogue 68-29 happens, there are 2 or 3 other feedback dialogues (68-4, 68-5, 68-6, 68-7, 68-17, 68-18)
+
+
+Yellow (0 points): Before the feedback dialogue 68-29 happens, the following feedback happens: 68-23, 68-28, 68-27, 68-31.
+ | NA
+ | U2.C2
+ | Foraged Forging + Finding Toppo (Find geographic locations on topographic map)
+ | Starts with cutscene of the player exiting the temple. Encompasses player talking to Anderson, second map tutorial, the scrap collection task, map tutorial #3, and the player locating Toppo. Ends at end of task 1.3 just before DANI patches Anderson’s call through. 
+ 
+ | Start
+End
+
+ | EA Item 2.2 
+Green: 1 points
+Yellow: less than 1 point
+
+ | Start: {“questEventType”: “questFinishEvent,
+questID: “21”}
+End: {dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “20”,
+“nodeId”: “26”}
+
+ | Sum score rubric: 
+
+1 point: calculate the time duration between the triggering of dialogue 19-46 and the triggering of dialogue 20-1. If the time duration is equal to or less than 5 minutes, then the player will get 1 point. Otherwise, 0 points.
+
+Green: the sum score is between 1.5 to 2.5.
+
+Yellow: the sum score is less than 1.5 points.
+ | NA
+ | U2.C3
+ | Finding Tera & Aryn
+(Find geographic locations on topographic map)
+ | Starts with DANI patching Anderson’s call with the next topographic clue through. Encompasses the player finding Tera and Aryn. Ends with conclusion of task 1.5 just before DANI’s line about finding Jasper.  
+ | Start
+End
+
+ | Sum of EA Items 2.3 and 2.4 
+
+Green: 2-3 points
+Yellow: less than 2 points
+ | Start: {dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “20”,
+“nodeId”: “26”}
+End: {dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “22”,
+“nodeId”: “18”}
+
+ | Sum score rubric: 
+(3 points: Waiting for map-usage related logs (map (or hotkey-M) open and close; waypoint position on the map))
+
+1 point: calculate the time duration between the triggering of dialogue 20-33 and the triggering of dialogue 21-1. If the time duration is equal to or less than 5 minutes, then the player will get 1 point. Otherwise, 0 points.
+
+1 point: calculate the time duration between the triggering of dialogue 21-15 and the triggering of dialogue 22-1. If the time duration is equal to or less than 5 minutes, then the player will get 1 point. Otherwise, 0 points.
+
+Green: the sum score is equal to or larger than 2 points
+
+Yellow: the sum score is less than 2 points.
+ | NA
+ | U2.C4
+ | Investigate the Temple & Watershed Glyph
+(Relate watershed size to flow rate through main river)
+ | Starts with DANI’s line about finding Jasper. Encompasses soil key puzzle and nanomachine cutsceneU2 Toppo lesson, watershed glyph game, and conversation with Jasper at the end of task 1.6. Ends with conclusion of task 1.6. 
+ | Start
+End
+
+ | EA Item 2.5
+
+Green: 1-2 points
+Yellow: less than 1 point
+
+ | Start: {dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “22”,
+“nodeId”: “18”}
+End: {dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “23”,
+“nodeId”: “17”}
+
+ | Green (1-2 points): 
+2 points: Feedback dialogue74-21 or before 74-21 happens, one or two other feedback dialogues happen (74-4, 74-5, 74-6)
+
+1 point: before the feedback dialogue 74-21 happens, three or four feedback dialogues happen (74-9, 74-10, 74-15)
+
+Yellow:
+0 point: Other situations happen (74-16, 74-17, 74-20, 74-22).
+ | NA
+ | U2.C5
+ | Getting the Band Back Together (Identify the parts of a scientific argument)
+ | Starts at the beginning of task 1.7 where Toppo tells the player to meet up with the team. Encompasses Toppo telling the player to meet up with the team, group arguing cutscene,the classifier activity,and the player visiting other cadets to discuss the watershed issue. Ends with conclusion of task 2.2 just before the player launches the drone. 
+ | Start 
+End
+
+ | EA Item 2.6
+
+Green: 4-6 points
+Yellow: less than 4 points
+
+ | Start: {dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “23”,
+“nodeId”: “17”}
+End: {dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “23”,
+“nodeId”: “42”}
+
+ | Sum score rubric: 
+
+The total problem number is 6 (?)
+
+1 Point: Each time when one of the following dialogues happen: 
+26-140, 142, 143, 146, 147, 148, 165-170, 172-186.
+
+-⅓ Point: Each time when one of the following dialogues happen: 26-137, 144, 145, 187-189, 191-211.
+
+Green:
+The sum score is between 4 and 6.
+
+Yellow:
+The sum score is less than 4 points.
+ | NA
+ | U2.C6
+ | Drone Tutorial +Data Collection (Relate watershed size to flow rate through main river)
+ | Starts with animation of drone launching. Encompasses the drone tutorial & eastern and western watershed data collection. Ends with conclusion of task 2.3. 
+ | Start 
+End
+
+ | EA Item  2.7
+
+Green: 0.5 point
+Yellow: 0 points
+ | Start: {dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “23”,
+“nodeId”: “42”}
+End: {dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “18”,
+“nodeId”: “284”}
+
+ | Green (0.5 points): When the dialogue of 20-43 happens.
+
+Yellow (0 points): When the dialogues of 20-44 or 20-45 happen.
+ | NA
+ | U2.C7
+ | Watershed Argument (Support a claim with evidence)
+ | Starts with the beginning of task 2.4 and Toppos arg introduction. Encompasses argumentation and final dialogue. Ends with the conclusion of Unit 2.  
+ | Start
+End
+
+ | EA Item 2.8
+
+Green: 2-3 points
+Yellow: less than 2 points
+
+ | Start: {dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “18”,
+“nodeId”: “284”}
+End: {dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “20”,
+“nodeId”: “74”}
+ 
+OR
+
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “20”,
+“nodeId”: “75”}
+
+
+ | Green (2-3 points):
+
+3 Points: Only the feedback dialogue 27-7 happens; Or, before 27-7 happens, there are 1 or 2 following feedback dialogues that happen (27 - 11, 12…..30)
+
+2 Points: Before 27-7 happens, there are 3 following feedback dialogues that happen (27 - 11, 12, ….. 30)
+
+Yellow (0-1 points):
+
+1 Points: Before 27-7 happens, there are 4 following feedback dialogues that happen (27 - 11, 12, ….. 30)
+
+0 Points: Other conditions happened.
+ | Calculate how many feedback dialogues happened (the count of dialogues with conversation ID of 27)
+
+Exclude feedback “Remember, you can click on the "Backing Information" orbs to see important information that might help you with your argument.” 
+
+ | Unit Finish
+ | 
+ | 
+ | 
+ | 
+ | {dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “20”,
+“nodeId”: “74”}
+ 
+OR
+
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “20”,
+“nodeId”: “75”}
+ | 
+ | 
+ | 
+Unit 3
+
+ | Name
+ | Description
+ | Checkpoint
+ | Color Determination
+ | Progress Log Mark
+ | EA/Color Log Mark
+ | Argumentation Attempt Number Log Mark
+ | U3.C1
+ | Good morning cadet + Establishing a foothold (Identify the direction of water flow based on a map of the watershed)
+ | Starts at the beginning of Unit 3. Encompasses checking in with Toppo, Toppo lesson, checking in with Anderson, and retrieving Tera’s supplies. Ends with conclusion of task 1.1 just before the alarm siren SFX plays and Tera alerts the player of the pollution issue.
+ | Start
+End
+ | EA Item 3.1
+
+Green: 2-3 points
+Yellow: less than 2 points
+ | Start:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “10”,
+“nodeId”: “1”}
+End:
+questActiveEvent:17
+
+ | Add point: {dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “10”,
+“nodeId”: “30”}
+
+No add point: 
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “10”,
+“nodeId”: “32”}
+
+ | 
+ | U3.C2
+ | Pollution solution (Predict the spread of dissolved materials through a watershed.)
+ | Starts with Tera alerting the player to pollution in the river. Encompasses pollution solution task. Ends just after drone flying back to camp cutscene but before Dani shows player backing info.
+ | Start
+End
+ | EA Item 3.2
+
+Green: 3-5 points
+Yellow: less than 3 points
+ | Start:
+questActiveEvent:17
+End:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “11”,
+“nodeId”: “34”}
+
+
+ | Three reminding dialogues:
+
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “11”,
+“nodeId”: “27”}
+
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “11”,
+“nodeId”: “29”}
+
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “11”,
+“nodeId”: “230”}
+
+Logic: the initial score is 5 points
+
+When certain condition met, minus corresponding scores.
+
+ | 
+ | U3.C3
+ | Pollution argument (Construct an argument with reasoning that links a claim with evidence.)
+ | Starts with Dani showing the player the backing info map. Encompasses argumentation, cutscene of the battery being removed, conversation with Jasper and Tera, and player finding the Alien ruin. Ends just before the cutscene that appears when the player finds the ruins.  
+ | Start
+End
+ | EA Item 3.3
+
+Green: 3-5 points
+Yellow: less than 3 points
+ | Start:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “11”,
+“nodeId”: “34”}
+
+End:
+questActiveEvent:18
+
+ | Correct feedback:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “84”,
+“nodeId”: “36”}
+
+Incorrect feedback:
+84-20,25,32,33,34,35,37,39,40,41,42,43,44,45,46,47.
+
+argumentationToolEvent: 
+toolName: backingInforPanel - Pollution Site Data.
+argumentationTitle: Unit 3
+ | Exclude feedback “Remember, you can click on the "Backing Information" orbs to see important information that might help you with your argument.”
+ | U3.C4
+ | Forsaken Facility (Predict the spread of dissolved materials)
+ | Starts with the cutscene of the player reaching ruins/ bridge crumbling. Encompasses the soil key, dissolved particles glyph, and the entirety of the alien ruins. Ends after cinematic ends/ just before Tera says her line about planting seeds. 
+ | Start
+End
+ | EA Item 3.4
+
+Green: 1-2 points
+Yellow: less than 1 point
+ | Start:
+questActiveEvent:18
+
+End:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “73”,
+“nodeId”: “200”}
+
+
+ | Correct feedback:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “78”,
+“nodeId”: “24”}
+
+Incorrect feedback:
+78-3,4,7,9,10,12,18,23.
+
+ | 
+ | U3.C5
+ | Plant the superfruit seeds (Predict the spread of dissolved materials through a watershed)
+ | Starts with Tera instructing the player to plant the superfruit seeds. Encompasses superfruit seeds planting activity. Ends with the conclusion of Unit 3.
+ | Start
+End
+ | EA Item 3.5
+
+Green: 3-4 points
+Yellow: less than 3 points
+ | Start:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “73”,
+“nodeId”: “200”}
+
+End:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “10”,
+“nodeId”: “194”}
+
+ | The correct feedback:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “73”,
+“nodeId”: “163”}
+
+The incorrect feedback:
+73-164;
+73-168;
+73-171.
+
+ | 
+ | Unit Finish
+ | 
+ | 
+ | 
+ | 
+ | eventKey: {dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “10”,
+“nodeId”: “194”}
+ | 
+ | 
+ | Unit 4 
+U4.C1
+ | Well Wishes
+ | Starts with the beginning of Unit 4. Encompasses intro material, Toppo lesson, and well wishes dialogue. Ends just after completion of soil key puzzle.
+ | Start
+End
+ | EA Item 4.1 & 4.2
+
+Green: greater than or = to 1 point
+Yellow: less than 1 point
+ | Start:
+
+End:
+eventKey: “questActiveEvent:39”
+ | Green:
+If the eventKey - “DialogueNodeEvent:88:5” exists
+(The soil key puzzle doesn’t have logs yet.)
+
+
+Yellow:
+The eventKey not exists
+ | 
+ | U4.C2
+ | Infiltration Glyph + Alien Well Floors 1 & 2
+ | Starts at the entrance to the dungeon once the door is open. Encompasses infiltration glyph and first two dungeon floors. Ends just after the cutscene/animations of elevator door + associated dialogue.
+ | Start
+End
+ | EA Item 4.3
+
+Green: 1-2 points
+Yellow: 0 points
+ | Start:
+eventKey: “questActiveEvent:39”
+
+End:
+eventKey: “questActiveEvent:48”
+
+ | Correct submission
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “88”,
+“nodeId”: “11”}
+
+Incorrect submission
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “102”,
+“nodeId”: “3”}
+102-3,4,7,9,10,12,18,23.
+ | 
+ | U4.C3
+ | Alien Well Floor 3 & 4
+ | Starts with updating the quest tracker to “See if there’s another pipe to repair somewhere on this floor.” Encompasses the third floor of well ruins. Ends just after the cutscene/animations of elevator door + associated dialogue.
+ | Start
+End
+ | EA Items 4.4 & 4.5
+
+Green: 2-3 points
+Yellow: 0-1 points 
+ | Start:
+eventKey: “questActiveEvent:48”
+
+End:
+eventKey: “questActiveEvent:50”
+ | Add points:
+{"eventType": "soilMachine"}
+{“data.canisterType”: “Gravel”}
+{“data.floor
+”: “3”}
+{“data.machine
+”: “1”}
+
+{"eventType": "soilMachine"}
+{“data.canisterType”: “Sand”}
+{“data.floor
+”: “4”}
+{“data.machine
+”: “1”}No points added:
+Other records
+
+
+ | 
+ | U4.C4
+ | Alien Well Floor 5 + You Know the Drill
+ | Starts with updating the quest tracker to “Let’s see what this floor requires of us.” Encompasses the fifth floor of well ruins and the drill task. Ends with the conclusion of Part 1/ quest tracker updating to “Anderson needs our help. Hurry to her base.”
+ | Start
+End
+ | EA Items 4.6 & 4.7
+
+Green: 3-4 points
+Yellow: 0-2 points
+ | Start:
+eventKey: “questActiveEvent:50”
+
+End:
+eventKey: “questActiveEvent:36”
+ | Add points:
+{"eventType": "soilMachine"}
+{“data.canisterType”: “Sand”}
+{“data.floor
+”: “5”}
+{“data.machine
+”: “1”}
+{“data.row
+”: “TopRow”}
+
+No record regarding {"eventType": "soilMachine"}
+{“data.floor
+”: “5”}
+{“data.machine
+”: “1”}
+{“data.row
+”: “BottomRow”}
+
+
+{"eventType": "soilMachine"}
+{“data.canisterType”: “Sand”}
+{“data.floor
+”: “5”}
+{“data.machine
+”: “2”}
+
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “107”,
+“nodeId”: “4”}
+
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “107”,
+“nodeId”: “5”}
+
+
+No points:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “107”,
+“nodeId”: “2”}
+
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “107”,
+“nodeId”: “3”}
+
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “107”,
+“nodeId”: “6”}
+
+ | 
+ | U4.C5
+ | Saving Cadet Anderson
+ | Starts with the beginning of task 2.1. Encompasses all floors of Anderson’s base and argumentation. Ends with the conclusion of Part 2. 
+ | Start
+End
+ | EA Item 4.8
+
+Green: 2-4 points
+Yellow: 0-1 points
+ | Start:
+eventKey: “questActiveEvent:36”
+
+End:
+eventKey: “questActiveEvent:41”
+ | Correct argument:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “90”,
+“nodeId”: “50”} or {dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “90”,
+“nodeId”: “57”}
+
+Wrong argument:
+90-25,37,39,45,47,52,54,55,56,58,59,60,61
+ | 
+ | U4.C6
+ | Tera’s Garden Boxes
+ | Starts with the beginning of task 3.1. Encompasses Tera’s garden box activity and concluding sequences. Ends with the conclusion of the unit. 
+ | Start
+End
+ | EA Item 4.9
+
+Green: 2-3 points
+Yellow: 0-1 points
+ | Start:
+eventKey: “questActiveEvent:41”
+
+End:
+eventKey: “questFinishEvent:56” or
+“dialogueEventType: 
+"DialogueFinishEvent",
+conversationId: 105”
+ | 
+ | 
+ | Unit Finish
+ | 
+ | 
+ | 
+ | 
+ | “dialogueEventType: 
+"DialogueFinishEvent",
+conversationId: 105”
+
+ | 
+ | 
+ | Unit 5
+U5.C1
+ | Glyph evaporation + Floor 1-2
+ | Starts with the beginning of U5. Encompasses evaporation glyph game and floors 1-2 of the dungeon. Ends with the end of the elevator cutscene on the second floor. 
+ | Start
+End
+ | EA Item 5.1
+
+Green: 1-2 pts.
+Yellow:  0 pts.
+ | Start:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “95”,
+“nodeId”: “1”}
+
+End:
+“questFinishEvent:43”
+ | Correct submission:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “100”,
+“nodeId”: “44”}
+
+Yellow trigger:
+100-38,39,43
+
+ | 
+ | U5.C2
+ | Floor 3-4
+ | Starts with arrival on the 3rd floor. Encompasses floors 3-4 of the dungeon. End with end of task 1.1.  
+ | Start
+End
+ | EA Item 5.2 & 5.3
+
+Green: 3-4 pts.
+Yellow: 0-2 pts.
+ | Start:
+“questFinishEvent:43”
+
+End:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “96”,
+“nodeId”: “1”}
+ | 
+ | 
+ | U5.C3
+ | Argumentation
+ | Starts with Aryn rescuing the player from dungeon. Includes evidence collection and argumentation. Ends with conclusion of task 2.1.
+ | Start
+End
+ | EA Item 5.4
+
+Green: 2-3 pts.
+Yellow: 0-1 pts.
+ | Start:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “96”,
+“nodeId”: “1”}
+
+End:
+"questFinishEvent:44"
+ | Correct argumentation:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “108”,
+“nodeId”: “51”} or  {dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “108”,
+“nodeId”: “52”} or
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “98”,
+“nodeId”: “60”}
+
+Incorrect argumentation:
+108-25,32,33,37,39,41,47,53,54,55,59,60,61,62,63,64,65,66,68,69,70,72,73,74,75,76,78,79,80,82,83,84,85,86,87,88,89,90,91.
+ | 
+ | U5.C4
+ | Solar still
+ | Starts with the beginning of  task 2.2. Encompasses the solar still activity and final dialogue. Ends with the conclusion of the unit. 
+ | Start
+End
+ | EA Item 5.5
+
+Green: 2 pts.
+Yellow: 0-1 pts.
+ | Start:
+"questFinishEvent:44"
+ | Correct feedback:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “106”,
+“nodeId”: “35”} 
+
+Incorrect feedback:
+106-4,25,26,27,28,29,30,31,32,33,34.
+ | 
+ | 

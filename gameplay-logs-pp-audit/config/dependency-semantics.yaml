@@ -1,0 +1,55 @@
+# Maps the `Role` column of each grading file's "## Event Keys" table to an
+# expectation class, so the audit can distinguish "absence is a defect" from
+# "absence is normal good play".
+#
+# Expectation classes:
+#   required_anchor   grading cannot even locate its attempt window without it
+#                     (triggers / window anchors). Absence blocks grading.
+#   required_evidence needed for a green outcome (success nodes, gates).
+#                     Absence is a valid grading input (yellow) but if the
+#                     player visibly succeeded, absence indicates lost logging.
+#   counted_evidence  occurrence count feeds the score formula; zero is a
+#                     legitimate value (help dialogs, wrong-answer feedback).
+#                     Absence alone is NOT evidence of a logging problem.
+#   activity_evidence event family proving the activity itself happened
+#                     (puzzle/machine event types). Absence while the activity
+#                     was reached indicates lost logging.
+#   structural        field/type reference used in a query (not an event).
+
+role_semantics:
+  "Trigger": required_anchor
+  "Trigger (Start)": required_anchor
+  "Trigger (End)": required_anchor
+  "Trigger / End": required_anchor
+  "Start": required_anchor
+  "End (analytics)": required_anchor
+  "Gate (required)": required_evidence
+  "Success": required_evidence
+  "Pass (correct choice)": required_evidence
+  "Positive": required_evidence
+  "Yellow": counted_evidence
+  "Yellow (wrong choice)": counted_evidence
+  "Negative": counted_evidence
+  "Target (wrong direction)": counted_evidence
+  "Penalty group 1": counted_evidence
+  "Penalty group 2": counted_evidence
+  "Target": counted_evidence
+  "Field": structural
+  "eventType": structural
+  "data.toolName": structural
+
+# Per-progress-point overrides, keyed by dashboard ID then by the exact
+# Event Key cell text. Used where a generic role (usually "Target") does not
+# reflect the actual semantics of that key in that point.
+pp_overrides:
+  U4P1:
+    "DialogueNodeEvent:88:5": required_evidence   # the correct choice (0.5 pt)
+    "soil key puzzle": activity_evidence          # Soil Key Puzzle timing events
+  U4P3:
+    "soilMachine": activity_evidence
+  U4P4:
+    "soilMachine": activity_evidence
+  U4P6:
+    "TerasGardenBox": activity_evidence
+  U5P2:
+    "WaterChamberEvent": activity_evidence

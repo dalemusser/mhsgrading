@@ -1,0 +1,18 @@
+﻿change,eventType,item,baseline,current
+removed_event_type,DEBUGMenu,,2,-
+removed_scenes,,Transition,,-
+removed_values,DaniEvent,data.toolName,; Chat; Settings,
+removed_values,InputEvent,data.actionType,Pause; ToggleDebug,
+removed_values,InputEvent,data.key,backquote; tab,
+new_values,ObjectInterEvent,data.actionType,,Place Cube; Press E; Press E To Change Direction; Press E To Collect Pipe; Press E To Pick Up; Press E To Place Cameras; Press E To Place Cube In Canal; Press E To Place Glyph; Press E To Return To Base; Press E To Scan; Press E to Pick Up; Press E to Pickup Canister; Press E to Place Pipe Segment; Press E to Plant Seed; Press E to Switch Canister; Press E to collect cameras; Press E to collect mega turnips; Press E to collect super orange; Press E to collect ultra corn; Press E to deactivate the fountain; Press E to examine; Press E to go down; Press E to inspect ; Press E to pick up; Press E to place canister; Press E to use; Push E To Grab Crate; Push E To Place Crate On Hoverboard
+cadence_change,TerasGardenBox,median_interval_s,1.951,4.718
+new_values,argumentationAnswerEvent,data.answerSubmitted,,"C,D,3,II"
+removed_values,argumentationAnswerEvent,data.answerSubmitted,"D,C,3,II",
+cadence_change,argumentationToolEvent,median_interval_s,6.502,1.101
+volume_change,chatEvent,record_count,38,2
+cadence_change,chatEvent,median_interval_s,0.282,721.885
+removed_field,chatEvent,data.actionKey,18,-
+removed_values,chatEvent,data.actionType,Open; ScrollStart,
+removed_values,chatEvent,data.chatID,"[16-3, 18-1, 18-2, 18-4, 18-5, 18-7]; [16-3, 18-1, 18-2, 18-4, 18-5]; [17-19, 17-20, 17-22, 17-26, 18-21, 18-22]; [17-22, 17-26, 18-21, 18-22, 18-24, 18-25, 18-33]; [17-22, 17-26, 18-21, 18-22, 18-24]; [18-10, 17-17, 17-19, 17-20, 17-22, 17-26]; [18-22, 18-24, 18-25, 18-33, 18-34, 18-35]; [18-33, 18-34, 18-35, 18-36, 18-37, 18-38, 18-39]; [18-34, 18-35, 18-36, 18-37, 18-38, 18-39]; [18-37, 18-38, 18-39, 18-269, 18-271, 18-273]; [18-38, 18-39, 18-269, 18-271, 18-273]; [18-4, 18-5, 18-7, 18-8, 18-10, 17-17]; [18-4, 18-5, 18-7, 18-8, 18-10]; [18-8, 18-10, 17-17, 17-19, 17-20, 17-22]",
+cadence_change,soilMachine,median_interval_s,15.582,37.414
+removed_values,soilMachine,data.canisterType,Bedrock,

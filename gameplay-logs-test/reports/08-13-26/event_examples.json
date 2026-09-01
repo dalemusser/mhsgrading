@@ -1,0 +1,4641 @@
+{
+ "DEBUGMenu": {
+  "record_count": 2,
+  "first_occurrence": {
+   "_id": {
+    "$oid": "6a7df107485cab4c9538b0ed"
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 4 Dev",
+   "timestamp": "2026-08-13T16:29:59.0870000Z",
+   "eventType": "DEBUGMenu",
+   "data": {
+    "actionType": "DebugMenuStateChanged",
+    "isOpened": true
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T16:29:59.039Z"
+   },
+   "version": "20260812-12180",
+   "device": {
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "dpi": 106,
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "os": "Windows 10",
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+   }
+  },
+  "last_occurrence": {
+   "_id": {
+    "$oid": "6a7df109485cab4c9538b0ef"
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 4 Dev",
+   "data": {
+    "actionType": "DebugMenuStateChanged",
+    "isOpened": false
+   },
+   "device": {
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "os": "Windows 10",
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "dpi": 106
+   },
+   "version": "20260812-12180",
+   "timestamp": "2026-08-13T16:30:01.0950000Z",
+   "eventType": "DEBUGMenu",
+   "serverTimestamp": {
+    "$date": "2026-08-13T16:30:01.000Z"
+   }
+  },
+  "typical_record": {
+   "_id": {
+    "$oid": "6a7df107485cab4c9538b0ed"
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 4 Dev",
+   "timestamp": "2026-08-13T16:29:59.0870000Z",
+   "eventType": "DEBUGMenu",
+   "data": {
+    "actionType": "DebugMenuStateChanged",
+    "isOpened": true
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T16:29:59.039Z"
+   },
+   "version": "20260812-12180",
+   "device": {
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "dpi": 106,
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "os": "Windows 10",
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+   }
+  },
+  "action_field": "actionType",
+  "by_action_value": {
+   "DebugMenuStateChanged": {
+    "_id": {
+     "$oid": "6a7df107485cab4c9538b0ed"
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "sceneName": "Unit 4 Dev",
+    "timestamp": "2026-08-13T16:29:59.0870000Z",
+    "eventType": "DEBUGMenu",
+    "data": {
+     "actionType": "DebugMenuStateChanged",
+     "isOpened": true
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T16:29:59.039Z"
+    },
+    "version": "20260812-12180",
+    "device": {
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "dpi": 106,
+     "platform": "UnityWebGL",
+     "processors": 1,
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3",
+     "os": "Windows 10",
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    }
+   }
+  }
+ },
+ "DaniEvent": {
+  "record_count": 91,
+  "first_occurrence": {
+   "_id": {
+    "$oid": "6a7de2e8485cab4c95389fa3"
+   },
+   "version": "20260812-12180",
+   "eventType": "DaniEvent",
+   "data": {
+    "toolName": "Settings",
+    "actionType": "Open"
+   },
+   "device": {
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "dpi": 106,
+    "os": "Windows 10",
+    "memory": 181
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 1 Dev",
+   "timestamp": "2026-08-13T15:29:44.7400000Z",
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:29:44.644Z"
+   }
+  },
+  "last_occurrence": {
+   "_id": {
+    "$oid": "6a7dfb0d485cab4c9538c0fc"
+   },
+   "data": {
+    "actionType": "Close",
+    "toolName": "Argumentation"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T17:12:45.813Z"
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "eventType": "DaniEvent",
+   "device": {
+    "gMemory": 512,
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "memory": 181,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "dpi": 106,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+   },
+   "sceneName": "Unit 5 Dev",
+   "timestamp": "2026-08-13T17:12:45.8780000Z"
+  },
+  "typical_record": {
+   "_id": {
+    "$oid": "6a7de2e8485cab4c95389fa3"
+   },
+   "version": "20260812-12180",
+   "eventType": "DaniEvent",
+   "data": {
+    "toolName": "Settings",
+    "actionType": "Open"
+   },
+   "device": {
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "dpi": 106,
+    "os": "Windows 10",
+    "memory": 181
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 1 Dev",
+   "timestamp": "2026-08-13T15:29:44.7400000Z",
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:29:44.644Z"
+   }
+  },
+  "action_field": "actionType",
+  "by_action_value": {
+   "Close": {
+    "_id": {
+     "$oid": "6a7de2ea485cab4c95389fa5"
+    },
+    "timestamp": "2026-08-13T15:29:44.7660000Z",
+    "device": {
+     "processors": 1,
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "refreshRate": {
+       "denominator": 1,
+       "value": 60,
+       "numerator": 60
+      },
+      "width": 3784,
+      "height": 1584
+     },
+     "dpi": 106,
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "os": "Windows 10",
+     "platform": "UnityWebGL"
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "version": "20260812-12180",
+    "eventType": "DaniEvent",
+    "data": {
+     "actionType": "Close",
+     "toolName": "Settings"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:29:46.376Z"
+    },
+    "sceneName": "Unit 1 Dev"
+   },
+   "Open": {
+    "_id": {
+     "$oid": "6a7de2e8485cab4c95389fa3"
+    },
+    "version": "20260812-12180",
+    "eventType": "DaniEvent",
+    "data": {
+     "toolName": "Settings",
+     "actionType": "Open"
+    },
+    "device": {
+     "platform": "UnityWebGL",
+     "processors": 1,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "dpi": 106,
+     "os": "Windows 10",
+     "memory": 181
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "sceneName": "Unit 1 Dev",
+    "timestamp": "2026-08-13T15:29:44.7400000Z",
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:29:44.644Z"
+    }
+   }
+  }
+ },
+ "DialogueEvent": {
+  "record_count": 1347,
+  "first_occurrence": {
+   "_id": {
+    "$oid": "6a7de2fa485cab4c95389faf"
+   },
+   "eventType": "DialogueEvent",
+   "eventKey": "DialogueNodeEvent:30:1",
+   "device": {
+    "memory": 181,
+    "dpi": 106,
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "os": "Windows 10"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:30:02.720Z"
+   },
+   "version": "20260812-12180",
+   "sceneName": "Unit 1 Dev",
+   "data": {
+    "dialogueEventType": "DialogueNodeEvent",
+    "conversationId": 30,
+    "nodeId": 1
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "timestamp": "2026-08-13T15:30:02.3550000Z"
+  },
+  "last_occurrence": {
+   "_id": {
+    "$oid": "6a7dfd18485cab4c9538c2e8"
+   },
+   "data": {
+    "dialogueEventType": "DialogueFinishEvent",
+    "conversationId": 109
+   },
+   "device": {
+    "platform": "UnityWebGL",
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "denominator": 1,
+      "value": 60,
+      "numerator": 60
+     }
+    },
+    "os": "Windows 10",
+    "processors": 1,
+    "memory": 181,
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "dpi": 106
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "sceneName": "Unit 5 Dev",
+   "timestamp": "2026-08-13T17:21:28.9570000Z",
+   "eventType": "DialogueEvent",
+   "serverTimestamp": {
+    "$date": "2026-08-13T17:21:28.839Z"
+   },
+   "game": "mhs"
+  },
+  "typical_record": {
+   "_id": {
+    "$oid": "6a7de2fa485cab4c95389faf"
+   },
+   "eventType": "DialogueEvent",
+   "eventKey": "DialogueNodeEvent:30:1",
+   "device": {
+    "memory": 181,
+    "dpi": 106,
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "os": "Windows 10"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:30:02.720Z"
+   },
+   "version": "20260812-12180",
+   "sceneName": "Unit 1 Dev",
+   "data": {
+    "dialogueEventType": "DialogueNodeEvent",
+    "conversationId": 30,
+    "nodeId": 1
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "timestamp": "2026-08-13T15:30:02.3550000Z"
+  },
+  "rare_schema_variant": {
+   "_id": {
+    "$oid": "6a7de2fa485cab4c95389fb1"
+   },
+   "eventType": "DialogueEvent",
+   "device": {
+    "dpi": 106,
+    "os": "Windows 10",
+    "processors": 1,
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:30:02.988Z"
+   },
+   "data": {
+    "dialogueEventType": "DialogueStartEvent",
+    "conversationId": 30
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "sceneName": "Unit 1 Dev",
+   "timestamp": "2026-08-13T15:30:02.3570000Z"
+  },
+  "action_field": "dialogueEventType",
+  "by_action_value": {
+   "DialogueFinishEvent": {
+    "_id": {
+     "$oid": "6a7de368485cab4c95389ff3"
+    },
+    "game": "mhs",
+    "version": "20260812-12180",
+    "device": {
+     "memory": 181,
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "dpi": 106,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3",
+     "os": "Windows 10",
+     "platform": "UnityWebGL",
+     "processors": 1
+    },
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "sceneName": "Unit 1 Dev",
+    "timestamp": "2026-08-13T15:31:52.9850000Z",
+    "eventType": "DialogueEvent",
+    "data": {
+     "dialogueEventType": "DialogueFinishEvent",
+     "conversationId": 30
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:31:52.889Z"
+    }
+   },
+   "DialogueNodeEvent": {
+    "_id": {
+     "$oid": "6a7de2fa485cab4c95389faf"
+    },
+    "eventType": "DialogueEvent",
+    "eventKey": "DialogueNodeEvent:30:1",
+    "device": {
+     "memory": 181,
+     "dpi": 106,
+     "platform": "UnityWebGL",
+     "processors": 1,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "os": "Windows 10"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:30:02.720Z"
+    },
+    "version": "20260812-12180",
+    "sceneName": "Unit 1 Dev",
+    "data": {
+     "dialogueEventType": "DialogueNodeEvent",
+     "conversationId": 30,
+     "nodeId": 1
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "timestamp": "2026-08-13T15:30:02.3550000Z"
+   },
+   "DialogueStartEvent": {
+    "_id": {
+     "$oid": "6a7de2fa485cab4c95389fb1"
+    },
+    "eventType": "DialogueEvent",
+    "device": {
+     "dpi": 106,
+     "os": "Windows 10",
+     "processors": 1,
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "platform": "UnityWebGL",
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:30:02.988Z"
+    },
+    "data": {
+     "dialogueEventType": "DialogueStartEvent",
+     "conversationId": 30
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "version": "20260812-12180",
+    "sceneName": "Unit 1 Dev",
+    "timestamp": "2026-08-13T15:30:02.3570000Z"
+   }
+  }
+ },
+ "EndOfUnit": {
+  "record_count": 2,
+  "first_occurrence": {
+   "_id": {
+    "$oid": "6a7df661485cab4c9538bb35"
+   },
+   "data": {
+    "Unit": "4"
+   },
+   "device": {
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "resolution": {
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     },
+     "width": 3784
+    },
+    "os": "Windows 10",
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "dpi": 106
+   },
+   "game": "mhs",
+   "version": "20260812-12180",
+   "timestamp": "2026-08-13T16:52:49.4630000Z",
+   "serverTimestamp": {
+    "$date": "2026-08-13T16:52:49.359Z"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 4 Dev",
+   "eventType": "EndOfUnit"
+  },
+  "last_occurrence": {
+   "_id": {
+    "$oid": "6a7dfd1e485cab4c9538c2ee"
+   },
+   "version": "20260812-12180",
+   "timestamp": "2026-08-13T17:21:34.5590000Z",
+   "eventType": "EndOfUnit",
+   "device": {
+    "dpi": 106,
+    "platform": "UnityWebGL",
+    "gMemory": 512,
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "denominator": 1,
+      "value": 60,
+      "numerator": 60
+     }
+    },
+    "os": "Windows 10",
+    "processors": 1,
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gdApiType": "OpenGLES3"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T17:21:34.441Z"
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 5 Dev",
+   "data": {
+    "Unit": "5"
+   }
+  },
+  "typical_record": {
+   "_id": {
+    "$oid": "6a7df661485cab4c9538bb35"
+   },
+   "data": {
+    "Unit": "4"
+   },
+   "device": {
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "resolution": {
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     },
+     "width": 3784
+    },
+    "os": "Windows 10",
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "dpi": 106
+   },
+   "game": "mhs",
+   "version": "20260812-12180",
+   "timestamp": "2026-08-13T16:52:49.4630000Z",
+   "serverTimestamp": {
+    "$date": "2026-08-13T16:52:49.359Z"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 4 Dev",
+   "eventType": "EndOfUnit"
+  }
+ },
+ "InputEvent": {
+  "record_count": 1615,
+  "first_occurrence": {
+   "_id": {
+    "$oid": "6a7de36b485cab4c95389ffb"
+   },
+   "version": "20260812-12180",
+   "timestamp": "2026-08-13T15:31:55.5850000Z",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 1 Dev",
+   "eventType": "InputEvent",
+   "data": {
+    "actionType": "Interact",
+    "playerOrDrone": "Player",
+    "key": "leftButton",
+    "Value": "pressed"
+   },
+   "device": {
+    "processors": 1,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gdApiType": "OpenGLES3",
+    "dpi": 106,
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "gMemory": 512,
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "os": "Windows 10"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:31:55.489Z"
+   },
+   "game": "mhs"
+  },
+  "last_occurrence": {
+   "_id": {
+    "$oid": "6a7dfd1e485cab4c9538c2f0"
+   },
+   "game": "mhs",
+   "version": "20260812-12180",
+   "eventType": "InputEvent",
+   "data": {
+    "Value": "pressed",
+    "actionType": "Interact",
+    "playerOrDrone": "Player",
+    "key": "leftButton"
+   },
+   "device": {
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "memory": 181,
+    "dpi": 106,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "os": "Windows 10"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T17:21:34.490Z"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 5 Dev",
+   "timestamp": "2026-08-13T17:21:34.5610000Z"
+  },
+  "typical_record": {
+   "_id": {
+    "$oid": "6a7de36b485cab4c95389ffb"
+   },
+   "version": "20260812-12180",
+   "timestamp": "2026-08-13T15:31:55.5850000Z",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 1 Dev",
+   "eventType": "InputEvent",
+   "data": {
+    "actionType": "Interact",
+    "playerOrDrone": "Player",
+    "key": "leftButton",
+    "Value": "pressed"
+   },
+   "device": {
+    "processors": 1,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gdApiType": "OpenGLES3",
+    "dpi": 106,
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "gMemory": 512,
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "os": "Windows 10"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:31:55.489Z"
+   },
+   "game": "mhs"
+  },
+  "action_field": "actionType",
+  "by_action_value": {
+   "Ascend": {
+    "_id": {
+     "$oid": "6a7de9ce485cab4c9538a59b"
+    },
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "version": "20260812-12180",
+    "sceneName": "Unit 3 Dev",
+    "data": {
+     "actionType": "Ascend",
+     "playerOrDrone": "Drone",
+     "key": "leftButton",
+     "Value": "pressed"
+    },
+    "device": {
+     "dpi": 106,
+     "platform": "UnityWebGL",
+     "processors": 1,
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "os": "Windows 10",
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:59:10.264Z"
+    },
+    "game": "mhs",
+    "timestamp": "2026-08-13T15:59:10.2720000Z",
+    "eventType": "InputEvent"
+   },
+   "Hoverboard": {
+    "_id": {
+     "$oid": "6a7de8bb485cab4c9538a49d"
+    },
+    "version": "20260812-12180",
+    "timestamp": "2026-08-13T15:54:35.4770000Z",
+    "device": {
+     "processors": 1,
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "dpi": 106,
+     "os": "Windows 10",
+     "platform": "UnityWebGL",
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "sceneName": "Unit 3 Dev",
+    "eventType": "InputEvent",
+    "data": {
+     "actionType": "Hoverboard",
+     "playerOrDrone": "Player",
+     "key": "h",
+     "Value": "pressed"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:54:35.387Z"
+    },
+    "game": "mhs"
+   },
+   "Interact": {
+    "_id": {
+     "$oid": "6a7de36b485cab4c95389ffb"
+    },
+    "version": "20260812-12180",
+    "timestamp": "2026-08-13T15:31:55.5850000Z",
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "sceneName": "Unit 1 Dev",
+    "eventType": "InputEvent",
+    "data": {
+     "actionType": "Interact",
+     "playerOrDrone": "Player",
+     "key": "leftButton",
+     "Value": "pressed"
+    },
+    "device": {
+     "processors": 1,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gdApiType": "OpenGLES3",
+     "dpi": 106,
+     "platform": "UnityWebGL",
+     "memory": 181,
+     "gMemory": 512,
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "os": "Windows 10"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:31:55.489Z"
+    },
+    "game": "mhs"
+   },
+   "Jump": {
+    "_id": {
+     "$oid": "6a7de777485cab4c9538a38f"
+    },
+    "timestamp": "2026-08-13T15:49:11.2280000Z",
+    "eventType": "InputEvent",
+    "data": {
+     "actionType": "Jump",
+     "playerOrDrone": "Player",
+     "key": "space",
+     "Value": "pressed"
+    },
+    "device": {
+     "platform": "UnityWebGL",
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "dpi": 106,
+     "os": "Windows 10",
+     "processors": 1,
+     "memory": 181
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:49:11.136Z"
+    },
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "sceneName": "Unit 2 Prod (Refactor)",
+    "game": "mhs",
+    "version": "20260812-12180"
+   },
+   "Map": {
+    "_id": {
+     "$oid": "6a7de8d8485cab4c9538a4cd"
+    },
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "version": "20260812-12180",
+    "data": {
+     "actionType": "Map",
+     "playerOrDrone": "Player",
+     "key": "m",
+     "Value": "pressed"
+    },
+    "game": "mhs",
+    "sceneName": "Unit 3 Dev",
+    "timestamp": "2026-08-13T15:55:04.6080000Z",
+    "eventType": "InputEvent",
+    "device": {
+     "processors": 1,
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      },
+      "width": 3784
+     },
+     "dpi": 106,
+     "os": "Windows 10",
+     "platform": "UnityWebGL",
+     "gMemory": 512
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:55:04.522Z"
+    }
+   },
+   "Move": {
+    "_id": {
+     "$oid": "6a7de36c485cab4c95389fff"
+    },
+    "version": "20260812-12180",
+    "timestamp": "2026-08-13T15:31:56.6190000Z",
+    "device": {
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "platform": "UnityWebGL",
+     "processors": 1,
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3",
+     "dpi": 106,
+     "os": "Windows 10"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:31:56.523Z"
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "sceneName": "Unit 1 Dev",
+    "eventType": "InputEvent",
+    "data": {
+     "playerOrDrone": "Player",
+     "key": "w",
+     "Value": "pressed",
+     "actionType": "Move"
+    }
+   },
+   "Pause": {
+    "_id": {
+     "$oid": "6a7de5cd485cab4c9538a2eb"
+    },
+    "version": "20260812-12180",
+    "sceneName": "Unit 1 Dev",
+    "timestamp": "2026-08-13T15:42:05.5320000Z",
+    "device": {
+     "processors": 1,
+     "memory": 181,
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3",
+     "platform": "UnityWebGL",
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "dpi": 106,
+     "os": "Windows 10"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:42:05.439Z"
+    },
+    "eventType": "InputEvent",
+    "data": {
+     "playerOrDrone": "Player",
+     "key": "tab",
+     "Value": "pressed",
+     "actionType": "Pause"
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963"
+   },
+   "Sprint": {
+    "_id": {
+     "$oid": "6a7de378485cab4c9538a02f"
+    },
+    "version": "20260812-12180",
+    "timestamp": "2026-08-13T15:32:08.1240000Z",
+    "data": {
+     "actionType": "Sprint",
+     "playerOrDrone": "Player",
+     "key": "leftShift",
+     "Value": "pressed"
+    },
+    "device": {
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "platform": "UnityWebGL",
+     "processors": 1,
+     "memory": 181,
+     "gMemory": 512,
+     "dpi": 106,
+     "os": "Windows 10"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:32:08.028Z"
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "sceneName": "Unit 1 Dev",
+    "eventType": "InputEvent"
+   },
+   "ToggleDebug": {
+    "_id": {
+     "$oid": "6a7df106485cab4c9538b0eb"
+    },
+    "timestamp": "2026-08-13T16:29:59.0850000Z",
+    "device": {
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3",
+     "dpi": 106,
+     "os": "Windows 10",
+     "platform": "UnityWebGL",
+     "memory": 181,
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "processors": 1
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T16:29:58.988Z"
+    },
+    "eventType": "InputEvent",
+    "data": {
+     "actionType": "ToggleDebug",
+     "playerOrDrone": "Player",
+     "key": "backquote",
+     "Value": "pressed"
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "version": "20260812-12180",
+    "sceneName": "Unit 4 Dev"
+   }
+  }
+ },
+ "ObjectInterEvent": {
+  "record_count": 59,
+  "first_occurrence": {
+   "_id": {
+    "$oid": "6a7de382485cab4c9538a043"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "sceneName": "Unit 1 Dev",
+   "timestamp": "2026-08-13T15:32:18.6460000Z",
+   "data": {
+    "actionType": "Press E to Open Locker",
+    "objectName": "Player Locker"
+   },
+   "eventType": "ObjectInterEvent",
+   "device": {
+    "processors": 1,
+    "gdApiType": "OpenGLES3",
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "denominator": 1,
+      "value": 60,
+      "numerator": 60
+     }
+    },
+    "dpi": 106
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:32:18.550Z"
+   },
+   "game": "mhs"
+  },
+  "last_occurrence": {
+   "_id": {
+    "$oid": "6a7df995485cab4c9538bedc"
+   },
+   "timestamp": "2026-08-13T17:06:29.4490000Z",
+   "eventType": "ObjectInterEvent",
+   "data": {
+    "actionType": "Press E to Pick up",
+    "objectName": "Powercube"
+   },
+   "device": {
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "value": 60,
+      "numerator": 60,
+      "denominator": 1
+     }
+    },
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "dpi": 106,
+    "memory": 181,
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3"
+   },
+   "game": "mhs",
+   "serverTimestamp": {
+    "$date": "2026-08-13T17:06:29.340Z"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "sceneName": "Unit 5 Dev - Dungeon"
+  },
+  "typical_record": {
+   "_id": {
+    "$oid": "6a7de382485cab4c9538a043"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "sceneName": "Unit 1 Dev",
+   "timestamp": "2026-08-13T15:32:18.6460000Z",
+   "data": {
+    "actionType": "Press E to Open Locker",
+    "objectName": "Player Locker"
+   },
+   "eventType": "ObjectInterEvent",
+   "device": {
+    "processors": 1,
+    "gdApiType": "OpenGLES3",
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "denominator": 1,
+      "value": 60,
+      "numerator": 60
+     }
+    },
+    "dpi": 106
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:32:18.550Z"
+   },
+   "game": "mhs"
+  },
+  "action_field": "actionType",
+  "by_action_value": {
+   "E to Talk": {
+    "_id": {
+     "$oid": "6a7de4b6485cab4c9538a11f"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:37:26.843Z"
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "sceneName": "Unit 1 Dev",
+    "device": {
+     "memory": 181,
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "platform": "UnityWebGL",
+     "processors": 1,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "dpi": 106,
+     "os": "Windows 10"
+    },
+    "version": "20260812-12180",
+    "timestamp": "2026-08-13T15:37:26.9370000Z",
+    "eventType": "ObjectInterEvent",
+    "data": {
+     "actionType": "E to Talk",
+     "objectName": "Aryn"
+    }
+   },
+   "Press E to Install": {
+    "_id": {
+     "$oid": "6a7de78e485cab4c9538a3bd"
+    },
+    "data": {
+     "actionType": "Press E to Install",
+     "objectName": "Power Dock"
+    },
+    "device": {
+     "processors": 1,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "resolution": {
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      },
+      "width": 3784,
+      "height": 1584
+     },
+     "memory": 181,
+     "gdApiType": "OpenGLES3",
+     "dpi": 106,
+     "os": "Windows 10",
+     "platform": "UnityWebGL"
+    },
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "version": "20260812-12180",
+    "eventType": "ObjectInterEvent",
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:49:34.015Z"
+    },
+    "game": "mhs",
+    "sceneName": "Unit 2 Prod (Refactor)",
+    "timestamp": "2026-08-13T15:49:34.0710000Z"
+   },
+   "Press E to Open Locker": {
+    "_id": {
+     "$oid": "6a7de382485cab4c9538a043"
+    },
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "version": "20260812-12180",
+    "sceneName": "Unit 1 Dev",
+    "timestamp": "2026-08-13T15:32:18.6460000Z",
+    "data": {
+     "actionType": "Press E to Open Locker",
+     "objectName": "Player Locker"
+    },
+    "eventType": "ObjectInterEvent",
+    "device": {
+     "processors": 1,
+     "gdApiType": "OpenGLES3",
+     "os": "Windows 10",
+     "platform": "UnityWebGL",
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "denominator": 1,
+       "value": 60,
+       "numerator": 60
+      }
+     },
+     "dpi": 106
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:32:18.550Z"
+    },
+    "game": "mhs"
+   },
+   "Press E to Operate": {
+    "_id": {
+     "$oid": "6a7debb9485cab4c9538a931"
+    },
+    "sceneName": "Unit 3 Dev",
+    "timestamp": "2026-08-13T16:07:21.0530000Z",
+    "eventType": "ObjectInterEvent",
+    "game": "mhs",
+    "data": {
+     "actionType": "Press E to Operate",
+     "objectName": "Soil Key Puzzle Soil"
+    },
+    "device": {
+     "dpi": 106,
+     "os": "Windows 10",
+     "memory": 181,
+     "platform": "UnityWebGL",
+     "processors": 1,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     }
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T16:07:21.009Z"
+    },
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "version": "20260812-12180"
+   },
+   "Press E to Pick up": {
+    "_id": {
+     "$oid": "6a7de78c485cab4c9538a3b5"
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "sceneName": "Unit 2 Prod (Refactor)",
+    "eventType": "ObjectInterEvent",
+    "data": {
+     "actionType": "Press E to Pick up",
+     "objectName": "Powercube"
+    },
+    "version": "20260812-12180",
+    "timestamp": "2026-08-13T15:49:32.1210000Z",
+    "device": {
+     "processors": 1,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "dpi": 106,
+     "os": "Windows 10",
+     "platform": "UnityWebGL",
+     "memory": 181,
+     "gMemory": 512
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:49:32.030Z"
+    }
+   },
+   "TalkTo": {
+    "_id": {
+     "$oid": "6a7de43e485cab4c9538a09f"
+    },
+    "data": {
+     "actionType": "TalkTo",
+     "objectName": "Toppo"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:35:26.238Z"
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "version": "20260812-12180",
+    "sceneName": "Unit 1 Dev",
+    "timestamp": "2026-08-13T15:35:26.3310000Z",
+    "device": {
+     "memory": 181,
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "dpi": 106,
+     "os": "Windows 10",
+     "platform": "UnityWebGL",
+     "processors": 1,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512
+    },
+    "eventType": "ObjectInterEvent"
+   }
+  }
+ },
+ "PlayerPositionEvent": {
+  "record_count": 578,
+  "first_occurrence": {
+   "_id": {
+    "$oid": "6a7de2ea485cab4c95389fa7"
+   },
+   "device": {
+    "dpi": 106,
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "gdApiType": "OpenGLES3",
+    "os": "Windows 10",
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "value": 60,
+      "numerator": 60,
+      "denominator": 1
+     }
+    }
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:29:46.429Z"
+   },
+   "version": "20260812-12180",
+   "timestamp": "2026-08-13T15:29:44.7830000Z",
+   "data": {
+    "position": {
+     "x": 18.891,
+     "y": 0,
+     "z": -57.984
+    }
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 1 Dev",
+   "eventType": "PlayerPositionEvent"
+  },
+  "last_occurrence": {
+   "_id": {
+    "$oid": "6a7dfd15485cab4c9538c2e0"
+   },
+   "device": {
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "value": 60,
+      "numerator": 60,
+      "denominator": 1
+     }
+    },
+    "os": "Windows 10",
+    "gMemory": 512,
+    "dpi": 106
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 5 Dev",
+   "serverTimestamp": {
+    "$date": "2026-08-13T17:21:25.570Z"
+   },
+   "version": "20260812-12180",
+   "timestamp": "2026-08-13T17:21:25.6880000Z",
+   "eventType": "PlayerPositionEvent",
+   "data": {
+    "position": {
+     "x": -93.75552,
+     "y": -7.97556353,
+     "z": -26.88434
+    }
+   }
+  },
+  "typical_record": {
+   "_id": {
+    "$oid": "6a7de2ea485cab4c95389fa7"
+   },
+   "device": {
+    "dpi": 106,
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "gdApiType": "OpenGLES3",
+    "os": "Windows 10",
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "value": 60,
+      "numerator": 60,
+      "denominator": 1
+     }
+    }
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:29:46.429Z"
+   },
+   "version": "20260812-12180",
+   "timestamp": "2026-08-13T15:29:44.7830000Z",
+   "data": {
+    "position": {
+     "x": 18.891,
+     "y": 0,
+     "z": -57.984
+    }
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 1 Dev",
+   "eventType": "PlayerPositionEvent"
+  }
+ },
+ "PuzzlePieceVisibleEvent": {
+  "record_count": 346,
+  "first_occurrence": {
+   "_id": {
+    "$oid": "6a7de799485cab4c9538a3e3"
+   },
+   "game": "mhs",
+   "version": "20260812-12180",
+   "sceneName": "Unit 2 Prod (Refactor)",
+   "eventType": "PuzzlePieceVisibleEvent",
+   "data": {
+    "actionType": "BecameVisible",
+    "pieceId": "Watershed Piece 5",
+    "timestamp": "2026-08-13T15:49:44.9110000Z"
+   },
+   "device": {
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "gdApiType": "OpenGLES3",
+    "processors": 1,
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "value": 60,
+      "numerator": 60,
+      "denominator": 1
+     }
+    },
+    "dpi": 106
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:49:45.552Z"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "timestamp": "2026-08-13T15:49:44.9110000Z"
+  },
+  "last_occurrence": {
+   "_id": {
+    "$oid": "6a7df305485cab4c9538b76d"
+   },
+   "timestamp": "2026-08-13T16:38:28.3240000Z",
+   "data": {
+    "actionType": "BecameInvisible",
+    "pieceId": "Soil Infiltration Puzzle Slot Bedrock",
+    "timestamp": "2026-08-13T16:38:28.3240000Z"
+   },
+   "device": {
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "processors": 1,
+    "dpi": 106,
+    "os": "Windows 10"
+   },
+   "game": "mhs",
+   "sceneName": "Unit 4 Dev",
+   "eventType": "PuzzlePieceVisibleEvent",
+   "serverTimestamp": {
+    "$date": "2026-08-13T16:38:29.191Z"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180"
+  },
+  "typical_record": {
+   "_id": {
+    "$oid": "6a7de799485cab4c9538a3e3"
+   },
+   "game": "mhs",
+   "version": "20260812-12180",
+   "sceneName": "Unit 2 Prod (Refactor)",
+   "eventType": "PuzzlePieceVisibleEvent",
+   "data": {
+    "actionType": "BecameVisible",
+    "pieceId": "Watershed Piece 5",
+    "timestamp": "2026-08-13T15:49:44.9110000Z"
+   },
+   "device": {
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "gdApiType": "OpenGLES3",
+    "processors": 1,
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "value": 60,
+      "numerator": 60,
+      "denominator": 1
+     }
+    },
+    "dpi": 106
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:49:45.552Z"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "timestamp": "2026-08-13T15:49:44.9110000Z"
+  },
+  "action_field": "actionType",
+  "by_action_value": {
+   "BecameCameraCentered": {
+    "_id": {
+     "$oid": "6a7debd8485cab4c9538a981"
+    },
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "version": "20260812-12180",
+    "eventType": "PuzzlePieceVisibleEvent",
+    "data": {
+     "actionType": "BecameCameraCentered",
+     "pieceId": "Dissolving Particles Slot 1",
+     "timestamp": "2026-08-13T16:07:51.3490000Z"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T16:07:52.657Z"
+    },
+    "game": "mhs",
+    "sceneName": "Unit 3 Dungeon Dev",
+    "timestamp": "2026-08-13T16:07:51.3490000Z",
+    "device": {
+     "platform": "UnityWebGL",
+     "gMemory": 512,
+     "processors": 1,
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "dpi": 106,
+     "os": "Windows 10"
+    }
+   },
+   "BecameCameraUncentered": {
+    "_id": {
+     "$oid": "6a7debdc485cab4c9538a98d"
+    },
+    "version": "20260812-12180",
+    "sceneName": "Unit 3 Dungeon Dev",
+    "timestamp": "2026-08-13T16:07:55.0170000Z",
+    "data": {
+     "actionType": "BecameCameraUncentered",
+     "pieceId": "Dissolving Particles Slot 3",
+     "timestamp": "2026-08-13T16:07:55.0170000Z"
+    },
+    "eventType": "PuzzlePieceVisibleEvent",
+    "device": {
+     "gdApiType": "OpenGLES3",
+     "os": "Windows 10",
+     "platform": "UnityWebGL",
+     "processors": 1,
+     "gMemory": 512,
+     "resolution": {
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      },
+      "width": 3784,
+      "height": 1584
+     },
+     "dpi": 106,
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T16:07:56.042Z"
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963"
+   },
+   "BecameInvisible": {
+    "_id": {
+     "$oid": "6a7de799485cab4c9538a3e5"
+    },
+    "data": {
+     "actionType": "BecameInvisible",
+     "pieceId": "Watershed Piece 5",
+     "timestamp": "2026-08-13T15:49:45.0430000Z"
+    },
+    "device": {
+     "platform": "UnityWebGL",
+     "memory": 181,
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3",
+     "dpi": 106,
+     "os": "Windows 10",
+     "processors": 1,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "resolution": {
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      },
+      "width": 3784
+     }
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "version": "20260812-12180",
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:49:45.618Z"
+    },
+    "sceneName": "Unit 2 Prod (Refactor)",
+    "timestamp": "2026-08-13T15:49:45.0430000Z",
+    "eventType": "PuzzlePieceVisibleEvent"
+   },
+   "BecameVisible": {
+    "_id": {
+     "$oid": "6a7de799485cab4c9538a3e3"
+    },
+    "game": "mhs",
+    "version": "20260812-12180",
+    "sceneName": "Unit 2 Prod (Refactor)",
+    "eventType": "PuzzlePieceVisibleEvent",
+    "data": {
+     "actionType": "BecameVisible",
+     "pieceId": "Watershed Piece 5",
+     "timestamp": "2026-08-13T15:49:44.9110000Z"
+    },
+    "device": {
+     "os": "Windows 10",
+     "platform": "UnityWebGL",
+     "gdApiType": "OpenGLES3",
+     "processors": 1,
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "value": 60,
+       "numerator": 60,
+       "denominator": 1
+      }
+     },
+     "dpi": 106
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:49:45.552Z"
+    },
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "timestamp": "2026-08-13T15:49:44.9110000Z"
+   }
+  }
+ },
+ "Soil Key Puzzle": {
+  "record_count": 26,
+  "first_occurrence": {
+   "_id": {
+    "$oid": "6a7debb8485cab4c9538a92f"
+   },
+   "timestamp": "2026-08-13T16:07:21.0520000Z",
+   "eventType": "Soil Key Puzzle",
+   "data": {
+    "Soil Key Puzzle Status": "Started",
+    "Unit": "Unit 3 Dev"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "device": {
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "dpi": 106,
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "os": "Windows 10"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T16:07:20.961Z"
+   },
+   "game": "mhs",
+   "sceneName": "Unit 3 Dev"
+  },
+  "last_occurrence": {
+   "_id": {
+    "$oid": "6a7df0c4485cab4c9538b007"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "timestamp": "2026-08-13T16:28:52.2220000Z",
+   "data": {
+    "Soil Key Puzzle Status": "Finished",
+    "Unit": "Unit 4 Dev"
+   },
+   "device": {
+    "processors": 1,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gdApiType": "OpenGLES3",
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "gMemory": 512,
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "dpi": 106,
+    "os": "Windows 10"
+   },
+   "game": "mhs",
+   "sceneName": "Unit 4 Dev",
+   "eventType": "Soil Key Puzzle",
+   "serverTimestamp": {
+    "$date": "2026-08-13T16:28:52.126Z"
+   }
+  },
+  "typical_record": {
+   "_id": {
+    "$oid": "6a7debbb485cab4c9538a933"
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "data": {
+    "actionType": "RightDrag",
+    "currentSoilType": "CLAYROCK",
+    "waterRetentionChange": "Increase",
+    "waterLevelStatus": "TooHigh",
+    "isCorrectSelection": "false"
+   },
+   "device": {
+    "processors": 1,
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "dpi": 106,
+    "platform": "UnityWebGL",
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "os": "Windows 10"
+   },
+   "version": "20260812-12180",
+   "sceneName": "Unit 3 Dev",
+   "timestamp": "2026-08-13T16:07:24.0530000Z",
+   "eventType": "Soil Key Puzzle",
+   "serverTimestamp": {
+    "$date": "2026-08-13T16:07:23.961Z"
+   }
+  },
+  "rare_schema_variant": {
+   "_id": {
+    "$oid": "6a7debb8485cab4c9538a92f"
+   },
+   "timestamp": "2026-08-13T16:07:21.0520000Z",
+   "eventType": "Soil Key Puzzle",
+   "data": {
+    "Soil Key Puzzle Status": "Started",
+    "Unit": "Unit 3 Dev"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "device": {
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "dpi": 106,
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "os": "Windows 10"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T16:07:20.961Z"
+   },
+   "game": "mhs",
+   "sceneName": "Unit 3 Dev"
+  },
+  "action_field": "actionType",
+  "by_action_value": {
+   "LeftDrag": {
+    "_id": {
+     "$oid": "6a7debc1485cab4c9538a941"
+    },
+    "version": "20260812-12180",
+    "timestamp": "2026-08-13T16:07:30.0540000Z",
+    "data": {
+     "waterLevelStatus": "Proper",
+     "isCorrectSelection": "false",
+     "actionType": "LeftDrag",
+     "currentSoilType": "SANDGRAVEL",
+     "waterRetentionChange": "Decrease"
+    },
+    "device": {
+     "processors": 1,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "value": 60,
+       "numerator": 60,
+       "denominator": 1
+      }
+     },
+     "dpi": 106,
+     "platform": "UnityWebGL",
+     "memory": 181,
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3",
+     "os": "Windows 10"
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "sceneName": "Unit 3 Dev",
+    "eventType": "Soil Key Puzzle",
+    "serverTimestamp": {
+     "$date": "2026-08-13T16:07:29.964Z"
+    }
+   },
+   "RightDrag": {
+    "_id": {
+     "$oid": "6a7debbb485cab4c9538a933"
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "data": {
+     "actionType": "RightDrag",
+     "currentSoilType": "CLAYROCK",
+     "waterRetentionChange": "Increase",
+     "waterLevelStatus": "TooHigh",
+     "isCorrectSelection": "false"
+    },
+    "device": {
+     "processors": 1,
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "dpi": 106,
+     "platform": "UnityWebGL",
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "os": "Windows 10"
+    },
+    "version": "20260812-12180",
+    "sceneName": "Unit 3 Dev",
+    "timestamp": "2026-08-13T16:07:24.0530000Z",
+    "eventType": "Soil Key Puzzle",
+    "serverTimestamp": {
+     "$date": "2026-08-13T16:07:23.961Z"
+    }
+   }
+  }
+ },
+ "TerasGardenBox": {
+  "record_count": 6,
+  "first_occurrence": {
+   "_id": {
+    "$oid": "6a7df4d0485cab4c9538b9db"
+   },
+   "sceneName": "Unit 4 Dev",
+   "timestamp": "2026-08-13T16:46:09.0740000Z",
+   "data": {
+    "boxID": "0",
+    "soilType": "Gravel",
+    "actionType": "soilSelected"
+   },
+   "eventType": "TerasGardenBox",
+   "device": {
+    "processors": 1,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     },
+     "width": 3784
+    },
+    "dpi": 106
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T16:46:08.972Z"
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180"
+  },
+  "last_occurrence": {
+   "_id": {
+    "$oid": "6a7df4f5485cab4c9538ba19"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "device": {
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "dpi": 106,
+    "memory": 181,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "value": 60,
+      "numerator": 60,
+      "denominator": 1
+     }
+    },
+    "os": "Windows 10"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T16:46:45.306Z"
+   },
+   "game": "mhs",
+   "version": "20260812-12180",
+   "sceneName": "Unit 4 Dev",
+   "timestamp": "2026-08-13T16:46:45.4080000Z",
+   "eventType": "TerasGardenBox",
+   "data": {
+    "boxId": "2",
+    "soilType": "Clay",
+    "actionType": "cameraPlaced"
+   }
+  },
+  "typical_record": {
+   "_id": {
+    "$oid": "6a7df4d0485cab4c9538b9db"
+   },
+   "sceneName": "Unit 4 Dev",
+   "timestamp": "2026-08-13T16:46:09.0740000Z",
+   "data": {
+    "boxID": "0",
+    "soilType": "Gravel",
+    "actionType": "soilSelected"
+   },
+   "eventType": "TerasGardenBox",
+   "device": {
+    "processors": 1,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     },
+     "width": 3784
+    },
+    "dpi": 106
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T16:46:08.972Z"
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180"
+  },
+  "action_field": "actionType",
+  "by_action_value": {
+   "cameraPlaced": {
+    "_id": {
+     "$oid": "6a7df4d2485cab4c9538b9dd"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T16:46:10.490Z"
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "version": "20260812-12180",
+    "sceneName": "Unit 4 Dev",
+    "eventType": "TerasGardenBox",
+    "data": {
+     "boxId": "0",
+     "soilType": "Gravel",
+     "actionType": "cameraPlaced"
+    },
+    "timestamp": "2026-08-13T16:46:10.5920000Z",
+    "device": {
+     "platform": "UnityWebGL",
+     "processors": 1,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "dpi": 106,
+     "os": "Windows 10",
+     "memory": 181
+    }
+   },
+   "soilSelected": {
+    "_id": {
+     "$oid": "6a7df4d0485cab4c9538b9db"
+    },
+    "sceneName": "Unit 4 Dev",
+    "timestamp": "2026-08-13T16:46:09.0740000Z",
+    "data": {
+     "boxID": "0",
+     "soilType": "Gravel",
+     "actionType": "soilSelected"
+    },
+    "eventType": "TerasGardenBox",
+    "device": {
+     "processors": 1,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "os": "Windows 10",
+     "platform": "UnityWebGL",
+     "memory": 181,
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      },
+      "width": 3784
+     },
+     "dpi": 106
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T16:46:08.972Z"
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "version": "20260812-12180"
+   }
+  }
+ },
+ "TopographicMapEvent": {
+  "record_count": 31,
+  "first_occurrence": {
+   "_id": {
+    "$oid": "6a7de61e485cab4c9538a2ff"
+   },
+   "sceneName": "Unit 1 Dev",
+   "timestamp": "2026-08-13T15:43:26.0710000Z",
+   "data": {
+    "featureUsed": "Map",
+    "actionType": "MapOpenEvent"
+   },
+   "device": {
+    "processors": 1,
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "dpi": 106,
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "resolution": {
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     },
+     "width": 3784,
+     "height": 1584
+    }
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:43:26.076Z"
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "eventType": "TopographicMapEvent"
+  },
+  "last_occurrence": {
+   "_id": {
+    "$oid": "6a7deebe485cab4c9538ae69"
+   },
+   "device": {
+    "dpi": 106,
+    "platform": "UnityWebGL",
+    "gMemory": 512,
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "os": "Windows 10",
+    "processors": 1,
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gdApiType": "OpenGLES3"
+   },
+   "timestamp": "2026-08-13T16:20:14.2120000Z",
+   "eventType": "TopographicMapEvent",
+   "data": {
+    "featureUsed": "Map",
+    "actionType": "MapCloseEvent"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T16:20:14.119Z"
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "sceneName": "Unit 3 Dev"
+  },
+  "typical_record": {
+   "_id": {
+    "$oid": "6a7de61e485cab4c9538a2ff"
+   },
+   "sceneName": "Unit 1 Dev",
+   "timestamp": "2026-08-13T15:43:26.0710000Z",
+   "data": {
+    "featureUsed": "Map",
+    "actionType": "MapOpenEvent"
+   },
+   "device": {
+    "processors": 1,
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "dpi": 106,
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "resolution": {
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     },
+     "width": 3784,
+     "height": 1584
+    }
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:43:26.076Z"
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "eventType": "TopographicMapEvent"
+  },
+  "rare_schema_variant": {
+   "_id": {
+    "$oid": "6a7de621485cab4c9538a301"
+   },
+   "game": "mhs",
+   "sceneName": "Unit 1 Dev",
+   "data": {
+    "location": {
+     "x": -773.1006,
+     "y": -313.9632,
+     "z": 0
+    },
+    "featureUsed": "waypoint",
+    "actionType": "dragEnd"
+   },
+   "device": {
+    "gMemory": 512,
+    "dpi": 106,
+    "processors": 1,
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "denominator": 1,
+      "value": 60,
+      "numerator": 60
+     }
+    },
+    "os": "Windows 10",
+    "platform": "UnityWebGL"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:43:29.962Z"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "timestamp": "2026-08-13T15:43:30.0540000Z",
+   "eventType": "TopographicMapEvent"
+  },
+  "action_field": "actionType",
+  "by_action_value": {
+   "MapCloseEvent": {
+    "_id": {
+     "$oid": "6a7de64b485cab4c9538a307"
+    },
+    "version": "20260812-12180",
+    "timestamp": "2026-08-13T15:44:11.2740000Z",
+    "eventType": "TopographicMapEvent",
+    "data": {
+     "featureUsed": "Map",
+     "actionType": "MapCloseEvent"
+    },
+    "device": {
+     "platform": "UnityWebGL",
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gdApiType": "OpenGLES3",
+     "dpi": 106,
+     "os": "Windows 10",
+     "processors": 1,
+     "gMemory": 512,
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     }
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:44:11.181Z"
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "sceneName": "Unit 1 Dev"
+   },
+   "MapOpenEvent": {
+    "_id": {
+     "$oid": "6a7de61e485cab4c9538a2ff"
+    },
+    "sceneName": "Unit 1 Dev",
+    "timestamp": "2026-08-13T15:43:26.0710000Z",
+    "data": {
+     "featureUsed": "Map",
+     "actionType": "MapOpenEvent"
+    },
+    "device": {
+     "processors": 1,
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3",
+     "dpi": 106,
+     "os": "Windows 10",
+     "platform": "UnityWebGL",
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "resolution": {
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      },
+      "width": 3784,
+      "height": 1584
+     }
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:43:26.076Z"
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "version": "20260812-12180",
+    "eventType": "TopographicMapEvent"
+   },
+   "dragEnd": {
+    "_id": {
+     "$oid": "6a7de621485cab4c9538a301"
+    },
+    "game": "mhs",
+    "sceneName": "Unit 1 Dev",
+    "data": {
+     "location": {
+      "x": -773.1006,
+      "y": -313.9632,
+      "z": 0
+     },
+     "featureUsed": "waypoint",
+     "actionType": "dragEnd"
+    },
+    "device": {
+     "gMemory": 512,
+     "dpi": 106,
+     "processors": 1,
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "denominator": 1,
+       "value": 60,
+       "numerator": 60
+      }
+     },
+     "os": "Windows 10",
+     "platform": "UnityWebGL"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:43:29.962Z"
+    },
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "version": "20260812-12180",
+    "timestamp": "2026-08-13T15:43:30.0540000Z",
+    "eventType": "TopographicMapEvent"
+   }
+  }
+ },
+ "WaterChamberEvent": {
+  "record_count": 21,
+  "first_occurrence": {
+   "_id": {
+    "$oid": "6a7df81c485cab4c9538bbfa"
+   },
+   "version": "20260812-12180",
+   "timestamp": "2026-08-13T17:00:12.1920000Z",
+   "data": {
+    "actionType": "On",
+    "floor": "1",
+    "room": "2",
+    "machineType": "Evaporator",
+    "machineNumber": "One"
+   },
+   "device": {
+    "processors": 1,
+    "memory": 181,
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     },
+     "width": 3784,
+     "height": 1584
+    },
+    "platform": "UnityWebGL",
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "dpi": 106,
+    "os": "Windows 10"
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 5 Dev - Dungeon",
+   "eventType": "WaterChamberEvent",
+   "serverTimestamp": {
+    "$date": "2026-08-13T17:00:12.180Z"
+   }
+  },
+  "last_occurrence": {
+   "_id": {
+    "$oid": "6a7dfa07485cab4c9538bf70"
+   },
+   "game": "mhs",
+   "data": {
+    "machineType": "Condenser",
+    "machineNumber": "One",
+    "actionType": "On",
+    "floor": "4",
+    "room": "3"
+   },
+   "device": {
+    "dpi": 106,
+    "platform": "UnityWebGL",
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "os": "Windows 10",
+    "processors": 1,
+    "memory": 181,
+    "resolution": {
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     },
+     "width": 3784
+    }
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T17:08:23.659Z"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "sceneName": "Unit 5 Dev - Dungeon",
+   "timestamp": "2026-08-13T17:08:23.7700000Z",
+   "eventType": "WaterChamberEvent"
+  },
+  "typical_record": {
+   "_id": {
+    "$oid": "6a7df81c485cab4c9538bbfa"
+   },
+   "version": "20260812-12180",
+   "timestamp": "2026-08-13T17:00:12.1920000Z",
+   "data": {
+    "actionType": "On",
+    "floor": "1",
+    "room": "2",
+    "machineType": "Evaporator",
+    "machineNumber": "One"
+   },
+   "device": {
+    "processors": 1,
+    "memory": 181,
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     },
+     "width": 3784,
+     "height": 1584
+    },
+    "platform": "UnityWebGL",
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "dpi": 106,
+    "os": "Windows 10"
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 5 Dev - Dungeon",
+   "eventType": "WaterChamberEvent",
+   "serverTimestamp": {
+    "$date": "2026-08-13T17:00:12.180Z"
+   }
+  },
+  "action_field": "actionType",
+  "by_action_value": {
+   "Off": {
+    "_id": {
+     "$oid": "6a7df8b8485cab4c9538bd30"
+    },
+    "sceneName": "Unit 5 Dev - Dungeon",
+    "timestamp": "2026-08-13T17:02:48.6490000Z",
+    "data": {
+     "room": "1",
+     "machineType": "Condenser",
+     "machineNumber": "One",
+     "actionType": "Off",
+     "floor": "2"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T17:02:48.636Z"
+    },
+    "game": "mhs",
+    "eventType": "WaterChamberEvent",
+    "device": {
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "value": 60,
+       "numerator": 60,
+       "denominator": 1
+      }
+     },
+     "dpi": 106,
+     "os": "Windows 10",
+     "processors": 1,
+     "gMemory": 512,
+     "platform": "UnityWebGL"
+    },
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "version": "20260812-12180"
+   },
+   "On": {
+    "_id": {
+     "$oid": "6a7df81c485cab4c9538bbfa"
+    },
+    "version": "20260812-12180",
+    "timestamp": "2026-08-13T17:00:12.1920000Z",
+    "data": {
+     "actionType": "On",
+     "floor": "1",
+     "room": "2",
+     "machineType": "Evaporator",
+     "machineNumber": "One"
+    },
+    "device": {
+     "processors": 1,
+     "memory": 181,
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      },
+      "width": 3784,
+      "height": 1584
+     },
+     "platform": "UnityWebGL",
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "dpi": 106,
+     "os": "Windows 10"
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "sceneName": "Unit 5 Dev - Dungeon",
+    "eventType": "WaterChamberEvent",
+    "serverTimestamp": {
+     "$date": "2026-08-13T17:00:12.180Z"
+    }
+   }
+  }
+ },
+ "argumentationAnswerEvent": {
+  "record_count": 5,
+  "first_occurrence": {
+   "_id": {
+    "$oid": "6a7de575485cab4c9538a21f"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 1 Dev",
+   "timestamp": "2026-08-13T15:40:37.8080000Z",
+   "data": {
+    "argumentationTitle": "Unit 1 - Argumentation Tutorial",
+    "answerSubmitted": "A,1,I",
+    "actionType": "submitAnswerEvent"
+   },
+   "game": "mhs",
+   "version": "20260812-12180",
+   "eventType": "argumentationAnswerEvent",
+   "device": {
+    "processors": 1,
+    "gdApiType": "OpenGLES3",
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "denominator": 1,
+      "value": 60,
+      "numerator": 60
+     }
+    },
+    "dpi": 106
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:40:37.714Z"
+   }
+  },
+  "last_occurrence": {
+   "_id": {
+    "$oid": "6a7dfb0d485cab4c9538c0fa"
+   },
+   "device": {
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "dpi": 106,
+    "memory": 181,
+    "resolution": {
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     },
+     "width": 3784,
+     "height": 1584
+    },
+    "os": "Windows 10"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T17:12:45.764Z"
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "timestamp": "2026-08-13T17:12:45.8760000Z",
+   "eventType": "argumentationAnswerEvent",
+   "data": {
+    "actionType": "submitAnswerEvent",
+    "argumentationTitle": "Unit 5",
+    "answerSubmitted": "C,D,3,II"
+   },
+   "sceneName": "Unit 5 Dev"
+  },
+  "typical_record": {
+   "_id": {
+    "$oid": "6a7de575485cab4c9538a21f"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 1 Dev",
+   "timestamp": "2026-08-13T15:40:37.8080000Z",
+   "data": {
+    "argumentationTitle": "Unit 1 - Argumentation Tutorial",
+    "answerSubmitted": "A,1,I",
+    "actionType": "submitAnswerEvent"
+   },
+   "game": "mhs",
+   "version": "20260812-12180",
+   "eventType": "argumentationAnswerEvent",
+   "device": {
+    "processors": 1,
+    "gdApiType": "OpenGLES3",
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "denominator": 1,
+      "value": 60,
+      "numerator": 60
+     }
+    },
+    "dpi": 106
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:40:37.714Z"
+   }
+  },
+  "action_field": "actionType",
+  "by_action_value": {
+   "submitAnswerEvent": {
+    "_id": {
+     "$oid": "6a7de575485cab4c9538a21f"
+    },
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "sceneName": "Unit 1 Dev",
+    "timestamp": "2026-08-13T15:40:37.8080000Z",
+    "data": {
+     "argumentationTitle": "Unit 1 - Argumentation Tutorial",
+     "answerSubmitted": "A,1,I",
+     "actionType": "submitAnswerEvent"
+    },
+    "game": "mhs",
+    "version": "20260812-12180",
+    "eventType": "argumentationAnswerEvent",
+    "device": {
+     "processors": 1,
+     "gdApiType": "OpenGLES3",
+     "os": "Windows 10",
+     "platform": "UnityWebGL",
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "denominator": 1,
+       "value": 60,
+       "numerator": 60
+      }
+     },
+     "dpi": 106
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:40:37.714Z"
+    }
+   }
+  }
+ },
+ "argumentationEvent": {
+  "record_count": 12,
+  "first_occurrence": {
+   "_id": {
+    "$oid": "6a7de567485cab4c9538a1f5"
+   },
+   "device": {
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "gdApiType": "OpenGLES3",
+    "dpi": 106,
+    "os": "Windows 10",
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    }
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:40:23.890Z"
+   },
+   "game": "mhs",
+   "version": "20260812-12180",
+   "eventType": "argumentationEvent",
+   "data": {
+    "actionType": "argumentationSessionOpen",
+    "argumentationTitle": "Unit 1 - Argumentation Tutorial",
+    "argumentationDescription": "U1 - Argumentation tutorial - Place the claim, reasoning, and evidence orbs in orbit"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 1 Dev",
+   "timestamp": "2026-08-13T15:40:23.9020000Z"
+  },
+  "last_occurrence": {
+   "_id": {
+    "$oid": "6a7dfb0d485cab4c9538c102"
+   },
+   "sceneName": "Unit 5 Dev",
+   "eventType": "argumentationEvent",
+   "timestamp": "2026-08-13T17:12:45.8820000Z",
+   "data": {
+    "argumentationTitle": "Unit 5",
+    "argumentationDescription": "Unit 5 - What happened to the water when in Aryn's collection tanks",
+    "actionType": "argumentationSessionClose"
+   },
+   "device": {
+    "memory": 181,
+    "dpi": 106,
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "denominator": 1,
+      "value": 60,
+      "numerator": 60
+     }
+    }
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T17:12:45.963Z"
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180"
+  },
+  "typical_record": {
+   "_id": {
+    "$oid": "6a7de567485cab4c9538a1f5"
+   },
+   "device": {
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "gdApiType": "OpenGLES3",
+    "dpi": 106,
+    "os": "Windows 10",
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    }
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:40:23.890Z"
+   },
+   "game": "mhs",
+   "version": "20260812-12180",
+   "eventType": "argumentationEvent",
+   "data": {
+    "actionType": "argumentationSessionOpen",
+    "argumentationTitle": "Unit 1 - Argumentation Tutorial",
+    "argumentationDescription": "U1 - Argumentation tutorial - Place the claim, reasoning, and evidence orbs in orbit"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 1 Dev",
+   "timestamp": "2026-08-13T15:40:23.9020000Z"
+  },
+  "action_field": "actionType",
+  "by_action_value": {
+   "argumentationSessionClose": {
+    "_id": {
+     "$oid": "6a7de578485cab4c9538a225"
+    },
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "sceneName": "Unit 1 Dev",
+    "eventType": "argumentationEvent",
+    "device": {
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3",
+     "os": "Windows 10",
+     "processors": 1,
+     "resolution": {
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      },
+      "width": 3784,
+      "height": 1584
+     },
+     "dpi": 106,
+     "platform": "UnityWebGL"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:40:40.765Z"
+    },
+    "version": "20260812-12180",
+    "timestamp": "2026-08-13T15:40:40.8260000Z",
+    "data": {
+     "actionType": "argumentationSessionClose",
+     "argumentationTitle": "Unit 1 - Argumentation Tutorial",
+     "argumentationDescription": "U1 - Argumentation tutorial - Place the claim, reasoning, and evidence orbs in orbit"
+    },
+    "game": "mhs"
+   },
+   "argumentationSessionOpen": {
+    "_id": {
+     "$oid": "6a7de567485cab4c9538a1f5"
+    },
+    "device": {
+     "platform": "UnityWebGL",
+     "processors": 1,
+     "gdApiType": "OpenGLES3",
+     "dpi": 106,
+     "os": "Windows 10",
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     }
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:40:23.890Z"
+    },
+    "game": "mhs",
+    "version": "20260812-12180",
+    "eventType": "argumentationEvent",
+    "data": {
+     "actionType": "argumentationSessionOpen",
+     "argumentationTitle": "Unit 1 - Argumentation Tutorial",
+     "argumentationDescription": "U1 - Argumentation tutorial - Place the claim, reasoning, and evidence orbs in orbit"
+    },
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "sceneName": "Unit 1 Dev",
+    "timestamp": "2026-08-13T15:40:23.9020000Z"
+   }
+  }
+ },
+ "argumentationNodeEvent": {
+  "record_count": 154,
+  "first_occurrence": {
+   "_id": {
+    "$oid": "6a7de56a485cab4c9538a1f7"
+   },
+   "game": "mhs",
+   "timestamp": "2026-08-13T15:40:26.3370000Z",
+   "data": {
+    "actionType": "argumentationNodeHoverStart",
+    "argumentationTitle": "Unit 1 - Argumentation Tutorial",
+    "nodeName": "A"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:40:26.243Z"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "sceneName": "Unit 1 Dev",
+   "eventType": "argumentationNodeEvent",
+   "device": {
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "os": "Windows 10",
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "dpi": 106,
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3"
+   }
+  },
+  "last_occurrence": {
+   "_id": {
+    "$oid": "6a7dfb09485cab4c9538c0f2"
+   },
+   "data": {
+    "nodeName": "D",
+    "actionType": "argumentationNodeHoverEnd",
+    "argumentationTitle": "Unit 5"
+   },
+   "device": {
+    "platform": "UnityWebGL",
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "dpi": 106,
+    "os": "Windows 10",
+    "processors": 1,
+    "memory": 181,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    }
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T17:12:41.311Z"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "timestamp": "2026-08-13T17:12:41.3900000Z",
+   "game": "mhs",
+   "version": "20260812-12180",
+   "sceneName": "Unit 5 Dev",
+   "eventType": "argumentationNodeEvent"
+  },
+  "typical_record": {
+   "_id": {
+    "$oid": "6a7de56a485cab4c9538a1f7"
+   },
+   "game": "mhs",
+   "timestamp": "2026-08-13T15:40:26.3370000Z",
+   "data": {
+    "actionType": "argumentationNodeHoverStart",
+    "argumentationTitle": "Unit 1 - Argumentation Tutorial",
+    "nodeName": "A"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:40:26.243Z"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "sceneName": "Unit 1 Dev",
+   "eventType": "argumentationNodeEvent",
+   "device": {
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "os": "Windows 10",
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "dpi": 106,
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3"
+   }
+  },
+  "action_field": "actionType",
+  "by_action_value": {
+   "argumentationNodeAdd": {
+    "_id": {
+     "$oid": "6a7de58b485cab4c9538a23f"
+    },
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "version": "20260812-12180",
+    "device": {
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gdApiType": "OpenGLES3",
+     "processors": 1,
+     "memory": 181,
+     "gMemory": 512,
+     "resolution": {
+      "refreshRate": {
+       "denominator": 1,
+       "value": 60,
+       "numerator": 60
+      },
+      "width": 3784,
+      "height": 1584
+     },
+     "dpi": 106,
+     "os": "Windows 10",
+     "platform": "UnityWebGL"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:40:59.975Z"
+    },
+    "game": "mhs",
+    "sceneName": "Unit 1 Dev",
+    "timestamp": "2026-08-13T15:41:00.0680000Z",
+    "eventType": "argumentationNodeEvent",
+    "data": {
+     "argumentationTitle": "Unit 1 - Freshwater",
+     "nodeName": "I",
+     "actionType": "argumentationNodeAdd"
+    }
+   },
+   "argumentationNodeHoverEnd": {
+    "_id": {
+     "$oid": "6a7de56b485cab4c9538a1fb"
+    },
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "version": "20260812-12180",
+    "sceneName": "Unit 1 Dev",
+    "eventType": "argumentationNodeEvent",
+    "device": {
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3",
+     "platform": "UnityWebGL",
+     "processors": 1,
+     "memory": 181,
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "dpi": 106,
+     "os": "Windows 10"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:40:27.861Z"
+    },
+    "timestamp": "2026-08-13T15:40:27.9540000Z",
+    "data": {
+     "actionType": "argumentationNodeHoverEnd",
+     "argumentationTitle": "Unit 1 - Argumentation Tutorial",
+     "nodeName": "A"
+    },
+    "game": "mhs"
+   },
+   "argumentationNodeHoverStart": {
+    "_id": {
+     "$oid": "6a7de56a485cab4c9538a1f7"
+    },
+    "game": "mhs",
+    "timestamp": "2026-08-13T15:40:26.3370000Z",
+    "data": {
+     "actionType": "argumentationNodeHoverStart",
+     "argumentationTitle": "Unit 1 - Argumentation Tutorial",
+     "nodeName": "A"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:40:26.243Z"
+    },
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "version": "20260812-12180",
+    "sceneName": "Unit 1 Dev",
+    "eventType": "argumentationNodeEvent",
+    "device": {
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "os": "Windows 10",
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "dpi": 106,
+     "platform": "UnityWebGL",
+     "processors": 1,
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3"
+    }
+   }
+  }
+ },
+ "argumentationToolEvent": {
+  "record_count": 14,
+  "first_occurrence": {
+   "_id": {
+    "$oid": "6a7de566485cab4c9538a1ed"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "sceneName": "Unit 1 Dev",
+   "data": {
+    "actionType": "argumentationToolOpen",
+    "argumentationTitle": "Unit 1 - Argumentation Tutorial",
+    "toolName": "BackingInfoPanel - Argumentation"
+   },
+   "device": {
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "dpi": 106,
+    "processors": 1,
+    "memory": 181,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     },
+     "width": 3784
+    },
+    "os": "Windows 10",
+    "platform": "UnityWebGL"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:40:22.374Z"
+   },
+   "timestamp": "2026-08-13T15:40:22.4680000Z",
+   "eventType": "argumentationToolEvent",
+   "game": "mhs"
+  },
+  "last_occurrence": {
+   "_id": {
+    "$oid": "6a7dfb0d485cab4c9538c0f8"
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "sceneName": "Unit 5 Dev",
+   "timestamp": "2026-08-13T17:12:45.8090000Z",
+   "serverTimestamp": {
+    "$date": "2026-08-13T17:12:45.697Z"
+   },
+   "eventType": "argumentationToolEvent",
+   "data": {
+    "actionType": "argumentationToolClose",
+    "argumentationTitle": "Unit 5",
+    "toolName": "BackingInfoPanel - Heat Added/Released Chart"
+   },
+   "device": {
+    "processors": 1,
+    "gMemory": 512,
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "denominator": 1,
+      "value": 60,
+      "numerator": 60
+     }
+    },
+    "dpi": 106,
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gdApiType": "OpenGLES3",
+    "os": "Windows 10"
+   }
+  },
+  "typical_record": {
+   "_id": {
+    "$oid": "6a7de566485cab4c9538a1ed"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "sceneName": "Unit 1 Dev",
+   "data": {
+    "actionType": "argumentationToolOpen",
+    "argumentationTitle": "Unit 1 - Argumentation Tutorial",
+    "toolName": "BackingInfoPanel - Argumentation"
+   },
+   "device": {
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "dpi": 106,
+    "processors": 1,
+    "memory": 181,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     },
+     "width": 3784
+    },
+    "os": "Windows 10",
+    "platform": "UnityWebGL"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:40:22.374Z"
+   },
+   "timestamp": "2026-08-13T15:40:22.4680000Z",
+   "eventType": "argumentationToolEvent",
+   "game": "mhs"
+  },
+  "action_field": "actionType",
+  "by_action_value": {
+   "argumentationToolClose": {
+    "_id": {
+     "$oid": "6a7de567485cab4c9538a1f1"
+    },
+    "version": "20260812-12180",
+    "sceneName": "Unit 1 Dev",
+    "eventType": "argumentationToolEvent",
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:40:23.792Z"
+    },
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "timestamp": "2026-08-13T15:40:23.8850000Z",
+    "data": {
+     "actionType": "argumentationToolClose",
+     "argumentationTitle": "Unit 1 - Argumentation Tutorial",
+     "toolName": "BackingInfoPanel - Argumentation"
+    },
+    "device": {
+     "resolution": {
+      "refreshRate": {
+       "denominator": 1,
+       "value": 60,
+       "numerator": 60
+      },
+      "width": 3784,
+      "height": 1584
+     },
+     "dpi": 106,
+     "os": "Windows 10",
+     "platform": "UnityWebGL",
+     "processors": 1,
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3"
+    },
+    "game": "mhs"
+   },
+   "argumentationToolOpen": {
+    "_id": {
+     "$oid": "6a7de566485cab4c9538a1ed"
+    },
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "version": "20260812-12180",
+    "sceneName": "Unit 1 Dev",
+    "data": {
+     "actionType": "argumentationToolOpen",
+     "argumentationTitle": "Unit 1 - Argumentation Tutorial",
+     "toolName": "BackingInfoPanel - Argumentation"
+    },
+    "device": {
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "dpi": 106,
+     "processors": 1,
+     "memory": 181,
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      },
+      "width": 3784
+     },
+     "os": "Windows 10",
+     "platform": "UnityWebGL"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:40:22.374Z"
+    },
+    "timestamp": "2026-08-13T15:40:22.4680000Z",
+    "eventType": "argumentationToolEvent",
+    "game": "mhs"
+   }
+  }
+ },
+ "chatEvent": {
+  "record_count": 32,
+  "first_occurrence": {
+   "_id": {
+    "$oid": "6a7de64f485cab4c9538a311"
+   },
+   "game": "mhs",
+   "version": "20260812-12180",
+   "device": {
+    "os": "Windows 10",
+    "processors": 1,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     },
+     "width": 3784
+    },
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "dpi": 106
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:44:15.748Z"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 1 Dev",
+   "timestamp": "2026-08-13T15:44:15.8120000Z",
+   "eventType": "chatEvent",
+   "data": {
+    "actionType": "Open",
+    "chatID": "[31-55, 31-65, 31-56, 31-59, 31-60]"
+   }
+  },
+  "last_occurrence": {
+   "_id": {
+    "$oid": "6a7df8b4485cab4c9538bd1e"
+   },
+   "timestamp": "2026-08-13T17:02:44.9100000Z",
+   "eventType": "chatEvent",
+   "device": {
+    "dpi": 106,
+    "os": "Windows 10",
+    "memory": 181,
+    "gdApiType": "OpenGLES3",
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "resolution": {
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     },
+     "width": 3784,
+     "height": 1584
+    }
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T17:02:44.803Z"
+   },
+   "sceneName": "Unit 5 Dev - Dungeon",
+   "data": {
+    "actionType": "Close",
+    "chatID": "NA"
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180"
+  },
+  "typical_record": {
+   "_id": {
+    "$oid": "6a7de64f485cab4c9538a311"
+   },
+   "game": "mhs",
+   "version": "20260812-12180",
+   "device": {
+    "os": "Windows 10",
+    "processors": 1,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     },
+     "width": 3784
+    },
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "dpi": 106
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:44:15.748Z"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 1 Dev",
+   "timestamp": "2026-08-13T15:44:15.8120000Z",
+   "eventType": "chatEvent",
+   "data": {
+    "actionType": "Open",
+    "chatID": "[31-55, 31-65, 31-56, 31-59, 31-60]"
+   }
+  },
+  "rare_schema_variant": {
+   "_id": {
+    "$oid": "6a7de652485cab4c9538a315"
+   },
+   "game": "mhs",
+   "version": "20260812-12180",
+   "data": {
+    "actionKey": "ScrollStop",
+    "chatID": "[70-0, 70-7, 31-55, 31-65, 31-56, 31-59]"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:44:18.202Z"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 1 Dev",
+   "timestamp": "2026-08-13T15:44:18.2950000Z",
+   "eventType": "chatEvent",
+   "device": {
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "dpi": 106,
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "denominator": 1,
+      "value": 60,
+      "numerator": 60
+     }
+    }
+   }
+  },
+  "action_field": "actionType",
+  "by_action_value": {
+   "Close": {
+    "_id": {
+     "$oid": "6a7de6e8485cab4c9538a333"
+    },
+    "data": {
+     "actionType": "Close",
+     "chatID": "NA"
+    },
+    "device": {
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "os": "Windows 10",
+     "memory": 181,
+     "gMemory": 512,
+     "dpi": 106,
+     "platform": "UnityWebGL",
+     "processors": 1,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "sceneName": "Unit 1 Dev",
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:46:48.372Z"
+    },
+    "game": "mhs",
+    "version": "20260812-12180",
+    "timestamp": "2026-08-13T15:46:48.4640000Z",
+    "eventType": "chatEvent"
+   },
+   "Open": {
+    "_id": {
+     "$oid": "6a7de64f485cab4c9538a311"
+    },
+    "game": "mhs",
+    "version": "20260812-12180",
+    "device": {
+     "os": "Windows 10",
+     "processors": 1,
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      },
+      "width": 3784
+     },
+     "platform": "UnityWebGL",
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "dpi": 106
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:44:15.748Z"
+    },
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "sceneName": "Unit 1 Dev",
+    "timestamp": "2026-08-13T15:44:15.8120000Z",
+    "eventType": "chatEvent",
+    "data": {
+     "actionType": "Open",
+     "chatID": "[31-55, 31-65, 31-56, 31-59, 31-60]"
+    }
+   },
+   "ScrollStart": {
+    "_id": {
+     "$oid": "6a7de651485cab4c9538a313"
+    },
+    "sceneName": "Unit 1 Dev",
+    "device": {
+     "processors": 1,
+     "memory": 181,
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "denominator": 1,
+       "value": 60,
+       "numerator": 60
+      }
+     },
+     "platform": "UnityWebGL",
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "dpi": 106,
+     "os": "Windows 10"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:44:17.100Z"
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "timestamp": "2026-08-13T15:44:17.1920000Z",
+    "eventType": "chatEvent",
+    "data": {
+     "actionType": "ScrollStart",
+     "chatID": "NA"
+    },
+    "version": "20260812-12180"
+   }
+  }
+ },
+ "gameStartEvent": {
+  "record_count": 5,
+  "first_occurrence": {
+   "_id": {
+    "$oid": "6a7de2e2485cab4c95389fa1"
+   },
+   "eventType": "gameStartEvent",
+   "device": {
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "dpi": 106,
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "memory": 181
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:29:38.775Z"
+   },
+   "game": "mhs",
+   "sceneName": "MainMenu",
+   "data": {
+    "": true
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "timestamp": "2026-08-13T15:29:38.8530000Z"
+  },
+  "last_occurrence": {
+   "_id": {
+    "$oid": "6a7df703485cab4c9538bb3e"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "timestamp": "2026-08-13T16:55:31.4960000Z",
+   "eventType": "gameStartEvent",
+   "version": "20260812-12180",
+   "sceneName": "MainMenu",
+   "data": {
+    "": true
+   },
+   "device": {
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "dpi": 106,
+    "memory": 181,
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "processors": 1
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T16:55:31.450Z"
+   },
+   "game": "mhs"
+  },
+  "typical_record": {
+   "_id": {
+    "$oid": "6a7de2e2485cab4c95389fa1"
+   },
+   "eventType": "gameStartEvent",
+   "device": {
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "dpi": 106,
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "memory": 181
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:29:38.775Z"
+   },
+   "game": "mhs",
+   "sceneName": "MainMenu",
+   "data": {
+    "": true
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "timestamp": "2026-08-13T15:29:38.8530000Z"
+  }
+ },
+ "gameWindowFocusEvent": {
+  "record_count": 29,
+  "first_occurrence": {
+   "_id": {
+    "$oid": "6a7de305485cab4c95389fb5"
+   },
+   "device": {
+    "dpi": 106,
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "denominator": 1,
+      "value": 60,
+      "numerator": 60
+     }
+    },
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:30:13.292Z"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 1 Dev",
+   "timestamp": "2026-08-13T15:30:13.3870000Z",
+   "data": {
+    "": true
+   },
+   "game": "mhs",
+   "version": "20260812-12180",
+   "eventType": "gameWindowFocusEvent"
+  },
+  "last_occurrence": {
+   "_id": {
+    "$oid": "6a7df801485cab4c9538bbd4"
+   },
+   "timestamp": "2026-08-13T16:59:45.3070000Z",
+   "data": {
+    "": true
+   },
+   "device": {
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "processors": 1,
+    "gdApiType": "OpenGLES3",
+    "dpi": 106,
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T16:59:45.202Z"
+   },
+   "game": "mhs",
+   "eventType": "gameWindowFocusEvent",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "sceneName": "Unit 5 Dev - Dungeon"
+  },
+  "typical_record": {
+   "_id": {
+    "$oid": "6a7de305485cab4c95389fb5"
+   },
+   "device": {
+    "dpi": 106,
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "denominator": 1,
+      "value": 60,
+      "numerator": 60
+     }
+    },
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "processors": 1,
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:30:13.292Z"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "sceneName": "Unit 1 Dev",
+   "timestamp": "2026-08-13T15:30:13.3870000Z",
+   "data": {
+    "": true
+   },
+   "game": "mhs",
+   "version": "20260812-12180",
+   "eventType": "gameWindowFocusEvent"
+  }
+ },
+ "gameWindowUnfocusEvent": {
+  "record_count": 31,
+  "first_occurrence": {
+   "_id": {
+    "$oid": "6a7de2f2485cab4c95389fa9"
+   },
+   "device": {
+    "dpi": 106,
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "gdApiType": "OpenGLES3",
+    "processors": 1,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    }
+   },
+   "version": "20260812-12180",
+   "sceneName": "Unit 1 Dev",
+   "eventType": "gameWindowUnfocusEvent",
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:29:54.136Z"
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "timestamp": "2026-08-13T15:29:54.2280000Z",
+   "data": {
+    "": false
+   }
+  },
+  "last_occurrence": {
+   "_id": {
+    "$oid": "6a7df7e5485cab4c9538bbcc"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "timestamp": "2026-08-13T16:59:17.8850000Z",
+   "device": {
+    "processors": 1,
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "dpi": 106,
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "value": 60,
+      "numerator": 60,
+      "denominator": 1
+     }
+    },
+    "os": "Windows 10",
+    "platform": "UnityWebGL"
+   },
+   "game": "mhs",
+   "sceneName": "Unit 5 Dev - Dungeon",
+   "eventType": "gameWindowUnfocusEvent",
+   "data": {
+    "": false
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T16:59:17.781Z"
+   }
+  },
+  "typical_record": {
+   "_id": {
+    "$oid": "6a7de2f2485cab4c95389fa9"
+   },
+   "device": {
+    "dpi": 106,
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "gdApiType": "OpenGLES3",
+    "processors": 1,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    }
+   },
+   "version": "20260812-12180",
+   "sceneName": "Unit 1 Dev",
+   "eventType": "gameWindowUnfocusEvent",
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:29:54.136Z"
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "timestamp": "2026-08-13T15:29:54.2280000Z",
+   "data": {
+    "": false
+   }
+  }
+ },
+ "questEvent": {
+  "record_count": 56,
+  "first_occurrence": {
+   "_id": {
+    "$oid": "6a7de2fa485cab4c95389fad"
+   },
+   "timestamp": "2026-08-13T15:30:02.3510000Z",
+   "device": {
+    "gMemory": 512,
+    "platform": "UnityWebGL",
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "dpi": 106,
+    "os": "Windows 10",
+    "processors": 1,
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:30:02.270Z"
+   },
+   "game": "mhs",
+   "version": "20260812-12180",
+   "sceneName": "Unit 1 Dev",
+   "eventType": "questEvent",
+   "data": {
+    "questEventType": "questActiveEvent",
+    "questID": "28",
+    "questName": "Getting Your Space Legs"
+   },
+   "eventKey": "questActiveEvent:28",
+   "user_id": "6a7ccbfbd35a78a5b38a5963"
+  },
+  "last_occurrence": {
+   "_id": {
+    "$oid": "6a7dfca7485cab4c9538c26e"
+   },
+   "sceneName": "Unit 5 Dev",
+   "timestamp": "2026-08-13T17:19:35.2030000Z",
+   "eventType": "questEvent",
+   "data": {
+    "questEventType": "questActiveEvent",
+    "questID": "57",
+    "questName": "Guru of Arguments"
+   },
+   "game": "mhs",
+   "eventKey": "questActiveEvent:57",
+   "device": {
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "platform": "UnityWebGL",
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     },
+     "width": 3784
+    },
+    "dpi": 106,
+    "os": "Windows 10",
+    "processors": 1,
+    "memory": 181
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T17:19:35.088Z"
+   },
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180"
+  },
+  "typical_record": {
+   "_id": {
+    "$oid": "6a7de2fa485cab4c95389fad"
+   },
+   "timestamp": "2026-08-13T15:30:02.3510000Z",
+   "device": {
+    "gMemory": 512,
+    "platform": "UnityWebGL",
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "dpi": 106,
+    "os": "Windows 10",
+    "processors": 1,
+    "memory": 181,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:30:02.270Z"
+   },
+   "game": "mhs",
+   "version": "20260812-12180",
+   "sceneName": "Unit 1 Dev",
+   "eventType": "questEvent",
+   "data": {
+    "questEventType": "questActiveEvent",
+    "questID": "28",
+    "questName": "Getting Your Space Legs"
+   },
+   "eventKey": "questActiveEvent:28",
+   "user_id": "6a7ccbfbd35a78a5b38a5963"
+  },
+  "rare_schema_variant": {
+   "_id": {
+    "$oid": "6a7de36d485cab4c9538a007"
+   },
+   "sceneName": "Unit 1 Dev",
+   "eventType": "questEvent",
+   "eventKey": "questFinishEvent:28",
+   "device": {
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     },
+     "width": 3784,
+     "height": 1584
+    },
+    "dpi": 106,
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "processors": 1
+   },
+   "version": "20260812-12180",
+   "timestamp": "2026-08-13T15:31:57.6030000Z",
+   "data": {
+    "questEventType": "questFinishEvent",
+    "questID": "28",
+    "questName": "Getting Your Space Legs",
+    "questSuccessOrFailure": "Succeeded"
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T15:31:57.540Z"
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963"
+  },
+  "action_field": "questEventType",
+  "by_action_value": {
+   "questActiveEvent": {
+    "_id": {
+     "$oid": "6a7de2fa485cab4c95389fad"
+    },
+    "timestamp": "2026-08-13T15:30:02.3510000Z",
+    "device": {
+     "gMemory": 512,
+     "platform": "UnityWebGL",
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "width": 3784,
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      }
+     },
+     "dpi": 106,
+     "os": "Windows 10",
+     "processors": 1,
+     "memory": 181,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:30:02.270Z"
+    },
+    "game": "mhs",
+    "version": "20260812-12180",
+    "sceneName": "Unit 1 Dev",
+    "eventType": "questEvent",
+    "data": {
+     "questEventType": "questActiveEvent",
+     "questID": "28",
+     "questName": "Getting Your Space Legs"
+    },
+    "eventKey": "questActiveEvent:28",
+    "user_id": "6a7ccbfbd35a78a5b38a5963"
+   },
+   "questFinishEvent": {
+    "_id": {
+     "$oid": "6a7de36d485cab4c9538a007"
+    },
+    "sceneName": "Unit 1 Dev",
+    "eventType": "questEvent",
+    "eventKey": "questFinishEvent:28",
+    "device": {
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      },
+      "width": 3784,
+      "height": 1584
+     },
+     "dpi": 106,
+     "os": "Windows 10",
+     "platform": "UnityWebGL",
+     "memory": 181,
+     "processors": 1
+    },
+    "version": "20260812-12180",
+    "timestamp": "2026-08-13T15:31:57.6030000Z",
+    "data": {
+     "questEventType": "questFinishEvent",
+     "questID": "28",
+     "questName": "Getting Your Space Legs",
+     "questSuccessOrFailure": "Succeeded"
+    },
+    "serverTimestamp": {
+     "$date": "2026-08-13T15:31:57.540Z"
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963"
+   }
+  }
+ },
+ "soilMachine": {
+  "record_count": 5,
+  "first_occurrence": {
+   "_id": {
+    "$oid": "6a7df217485cab4c9538b39f"
+   },
+   "timestamp": "2026-08-13T16:34:31.8800000Z",
+   "eventType": "soilMachine",
+   "data": {
+    "row": "TopRow",
+    "actionType": "ChangeCanister",
+    "floor": "3",
+    "machine": "1",
+    "canisterType": "Gravel"
+   },
+   "device": {
+    "processors": 1,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "dpi": 106,
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     },
+     "width": 3784
+    }
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "sceneName": "Unit 4 Dev - Dungeon",
+   "serverTimestamp": {
+    "$date": "2026-08-13T16:34:31.782Z"
+   }
+  },
+  "last_occurrence": {
+   "_id": {
+    "$oid": "6a7df2b1485cab4c9538b565"
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "timestamp": "2026-08-13T16:37:05.9690000Z",
+   "device": {
+    "os": "Windows 10",
+    "processors": 1,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "gMemory": 512,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "width": 3784,
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     }
+    },
+    "dpi": 106
+   },
+   "serverTimestamp": {
+    "$date": "2026-08-13T16:37:05.870Z"
+   },
+   "sceneName": "Unit 4 Dev - Dungeon",
+   "eventType": "soilMachine",
+   "data": {
+    "floor": "5",
+    "machine": "2",
+    "canisterType": "Gravel",
+    "row": "TopRow",
+    "actionType": "ChangeCanister"
+   }
+  },
+  "typical_record": {
+   "_id": {
+    "$oid": "6a7df217485cab4c9538b39f"
+   },
+   "timestamp": "2026-08-13T16:34:31.8800000Z",
+   "eventType": "soilMachine",
+   "data": {
+    "row": "TopRow",
+    "actionType": "ChangeCanister",
+    "floor": "3",
+    "machine": "1",
+    "canisterType": "Gravel"
+   },
+   "device": {
+    "processors": 1,
+    "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gMemory": 512,
+    "dpi": 106,
+    "os": "Windows 10",
+    "platform": "UnityWebGL",
+    "memory": 181,
+    "gdApiType": "OpenGLES3",
+    "resolution": {
+     "height": 1584,
+     "refreshRate": {
+      "numerator": 60,
+      "denominator": 1,
+      "value": 60
+     },
+     "width": 3784
+    }
+   },
+   "game": "mhs",
+   "user_id": "6a7ccbfbd35a78a5b38a5963",
+   "version": "20260812-12180",
+   "sceneName": "Unit 4 Dev - Dungeon",
+   "serverTimestamp": {
+    "$date": "2026-08-13T16:34:31.782Z"
+   }
+  },
+  "action_field": "actionType",
+  "by_action_value": {
+   "ChangeCanister": {
+    "_id": {
+     "$oid": "6a7df217485cab4c9538b39f"
+    },
+    "timestamp": "2026-08-13T16:34:31.8800000Z",
+    "eventType": "soilMachine",
+    "data": {
+     "row": "TopRow",
+     "actionType": "ChangeCanister",
+     "floor": "3",
+     "machine": "1",
+     "canisterType": "Gravel"
+    },
+    "device": {
+     "processors": 1,
+     "gdName": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "gMemory": 512,
+     "dpi": 106,
+     "os": "Windows 10",
+     "platform": "UnityWebGL",
+     "memory": 181,
+     "gdApiType": "OpenGLES3",
+     "resolution": {
+      "height": 1584,
+      "refreshRate": {
+       "numerator": 60,
+       "denominator": 1,
+       "value": 60
+      },
+      "width": 3784
+     }
+    },
+    "game": "mhs",
+    "user_id": "6a7ccbfbd35a78a5b38a5963",
+    "version": "20260812-12180",
+    "sceneName": "Unit 4 Dev - Dungeon",
+    "serverTimestamp": {
+     "$date": "2026-08-13T16:34:31.782Z"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,383 @@
+# Mission HydroSci — expected gameplay-logging behavior, one entry per eventType.
+#
+# This file is the CENTRAL place to update when the developers change the
+# logging design: edit here, re-run the audit — the Python stays untouched.
+# Rule vocabulary: see src/mhs_log_audit/config.py docstring.
+#
+# Provenance: seeded 2026-08-26 from the 08-13-26 build investigation notes in
+# playthrough-logs-and-results/08-13-26/Investigation-results/ plus direct
+# inspection of the 08-13-26 and 08-25-26 logs. Where a spec document exists,
+# spec_source names it. InputEvent / DialogueEvent investigation notes exist
+# only as non-text PDFs, so their entries are marked "observed data" —
+# treat mismatches there as SPECIFICATION UNCLEAR rather than defects.
+#
+# Deliberately NOT encoded (surfaces as INFO instead of being hidden):
+#  - TopographicMapEvent waypoint redesign seen in 08-25-26 (Waypoint /
+#    WaypointMoveEvent / WaypointSetEvent / WaypointResetEvent). The entry
+#    below reflects the last documented spec (08-13-26); new values will be
+#    reported as "specification review required" until the spec is confirmed,
+#    then this file should be updated.
+
+meta:
+  updated: "2026-08-26"
+  spec_sources:
+    - playthrough-logs-and-results/08-13-26/Investigation-results/
+  notes:
+    - "sceneName values are build-specific (e.g. 'Unit 2 Prod (Refactor)');
+       expected_scenes is only set for location-bound activities."
+
+thresholds:
+  near_duplicate_seconds: 1.0
+  burst_seconds: 0.05
+  long_gap_seconds: 600
+
+cross_event_rules:
+  - label: "argumentation answer submitted implies an argumentation session was opened"
+    spec_source: argumentation-event-investigation.md
+    if:     {event_type: argumentationAnswerEvent, where: {actionType: submitAnswerEvent}}
+    expect: {event_type: argumentationEvent, where: {actionType: argumentationSessionOpen}}
+  - label: "Soil Key Puzzle finished implies soil drag interactions happened"
+    spec_source: soil-key-puzzle-investigation.md
+    if:     {event_type: "Soil Key Puzzle", where: {"Soil Key Puzzle Status": Finished}}
+    expect: {event_type: "Soil Key Puzzle", where: {actionType: [LeftDrag, RightDrag]}}
+  - label: "waypoint use implies the topographic map was opened"
+    spec_source: topographic-map-event-investigation.md
+    if:     {event_type: TopographicMapEvent, where: {featureUsed: waypoint}}
+    expect: {event_type: TopographicMapEvent, where: {actionType: MapOpenEvent}}
+  - label: "solar still design submission implies option selections"
+    spec_source: "observed data 08-25-26 (no written spec yet)"
+    if:     {event_type: SolarStillDesignEvent, where: {actionType: DesignSubmitted}}
+    expect: {event_type: SolarStillDesignEvent, where: {actionType: optionSelected}}
+
+events:
+
+  PlayerPositionEvent:
+    purpose: Periodic snapshot of the player's world position.
+    spec_source: 08-13-26/Investigation-results/position-event-investigation.md
+    units: [1, 2, 3, 4, 5]
+    required_data_fields: [position.x, position.y, position.z]
+    field_types: {position.x: number, position.y: number, position.z: number}
+    high_frequency: true
+    continuous:
+      expected_interval_seconds: 10
+      tolerance_seconds: 0.6
+    notes: "08-13-26: ~10.005s cadence, 97.5% of same-scene intervals within 9.5–10.5s.
+            Snapshots repeat even when coordinates are unchanged."
+
+  InputEvent:
+    purpose: Raw player input (movement keys, interaction clicks, mode toggles).
+    spec_source: "observed data (input-event PDF not machine-readable)"
+    units: [1, 2, 3, 4, 5]
+    required_data_fields: [actionType, key, Value, playerOrDrone]
+    allowed_values:
+      Value: [pressed]
+      playerOrDrone: [Player, Drone]
+    high_frequency: true
+    notes: "key/actionType vocabularies are left open (keyboard-dependent)."
+
+  DialogueEvent:
+    purpose: Dialogue lifecycle — conversation start/finish and every node shown/selected.
+    spec_source: "observed data (dialogue-event PDF not machine-readable)"
+    units: [1, 2, 3, 4, 5]
+    required_data_fields: [dialogueEventType, conversationId]
+    allowed_values:
+      dialogueEventType: [DialogueStartEvent, DialogueNodeEvent, DialogueFinishEvent]
+    conditional_fields:
+      nodeId: {when: {dialogueEventType: DialogueNodeEvent}, required: true,
+               forbidden_otherwise: true}
+    field_types: {conversationId: number, nodeId: number}
+    event_key:
+      required_when: {dialogueEventType: DialogueNodeEvent}
+      format: "{data.dialogueEventType}:{data.conversationId}:{data.nodeId}"
+    start_finish:
+      - {label: dialogue lifecycle, field: dialogueEventType,
+         start_value: DialogueStartEvent, finish_value: DialogueFinishEvent,
+         group_by: conversationId}
+    high_frequency: true
+    notes: "eventKey on node events is what the grading dashboard keys on —
+            format breaks here are high-impact."
+
+  questEvent:
+    purpose: Quest activation and completion, the backbone of progress tracking.
+    spec_source: 08-13-26/Investigation-results/quest-event-investigation.md
+    units: [1, 2, 3, 4, 5]
+    required_data_fields: [questEventType, questID, questName]
+    allowed_values:
+      questEventType: [questActiveEvent, questFinishEvent]
+      questSuccessOrFailure: [Succeeded]
+    conditional_fields:
+      questSuccessOrFailure: {when: {questEventType: questFinishEvent},
+                              required: true, forbidden_otherwise: true}
+    field_types: {questID: string, questName: string}
+    event_key:
+      required: true
+      format: "{data.questEventType}:{data.questID}"
+    start_finish:
+      - {label: quest lifecycle, field: questEventType,
+         start_value: questActiveEvent, finish_value: questFinishEvent,
+         group_by: questID}
+    notes: "Only 'Succeeded' has ever been observed for questSuccessOrFailure;
+            a 'Failed'-style value would be new and worth review."
+
+  PuzzlePieceVisibleEvent:
+    purpose: Visibility / camera-centering state of drag-puzzle pieces and slots.
+    spec_source: 08-13-26/Investigation-results/puzzle-piece-visible-event.md
+    units: [2, 3, 4]
+    required_data_fields: [actionType, pieceId, timestamp]
+    allowed_values:
+      actionType: [BecameVisible, BecameInvisible, BecameCameraCentered, BecameCameraUncentered]
+    pairing:
+      - {label: piece visibility, field: actionType,
+         open_value: BecameVisible, close_value: BecameInvisible, group_by: pieceId}
+      - {label: camera centering, field: actionType,
+         open_value: BecameCameraCentered, close_value: BecameCameraUncentered,
+         group_by: pieceId}
+
+  ObjectInterEvent:
+    purpose: Player interaction prompts with world objects and NPCs.
+    spec_source: 08-13-26/Investigation-results/objectinter-event-investigation.md
+    units: [1, 2, 3, 4, 5]
+    required_data_fields: [actionType, objectName]
+    known_issues:
+      - "actionType uses two phrasings for talking ('TalkTo' vs 'E to Talk') —
+         naming inconsistency, not merged pending dev confirmation"
+
+  TopographicMapEvent:
+    purpose: Topographic map tool usage — open/close and waypoint placement.
+    spec_source: 08-13-26/Investigation-results/topographic-map-event-investigation.md
+    units: [1, 3]
+    required_data_fields: [featureUsed, actionType]
+    allowed_values:
+      featureUsed: [Map, waypoint]
+      actionType: [MapOpenEvent, MapCloseEvent, dragEnd]
+    conditional_fields:
+      location: {when: {featureUsed: waypoint, actionType: dragEnd}, required: true}
+    pairing:
+      - {label: map open/close, field: actionType,
+         open_value: MapOpenEvent, close_value: MapCloseEvent}
+    notes: "Interaction design has changed over time (drag-based waypoints ->
+            click/reset behavior). New featureUsed/actionType values are
+            expected to appear as spec-review items; update this entry once
+            the current design is confirmed."
+
+  chatEvent:
+    purpose: Chat window usage (open, close, scrolling through chat history).
+    spec_source: 08-13-26/Investigation-results/chat-event-investigation.md
+    units: [1, 5]
+    required_data_fields: [chatID]
+    optional_data_fields: [actionType, actionKey]
+    allowed_values:
+      actionType: [Open, Close, ScrollStart]
+      actionKey: [ScrollStop]
+    pairing:
+      - {label: chat open/close, field: actionType, open_value: Open, close_value: Close}
+    known_issues:
+      - "ScrollStart is logged under data.actionType but ScrollStop under
+         data.actionKey — inconsistent field naming for the same interaction"
+      - "chatID is the string 'NA' for ScrollStart records"
+
+  DaniEvent:
+    purpose: Dani assistant/toolbar usage (opening and closing player tools).
+    spec_source: 08-13-26/Investigation-results/dani-event-investigation.md
+    units: [1, 2, 3, 4, 5]
+    required_data_fields: [actionType, toolName]
+    allowed_values:
+      actionType: [Open, Close]
+      toolName: [Argumentation, Map, Chat, Settings, ""]
+    pairing:
+      - {label: tool open/close, field: actionType, open_value: Open,
+         close_value: Close, group_by: toolName}
+    known_issues:
+      - "toolName is sometimes an empty string (22 of 91 records on 08-13-26) —
+         the tool being opened/closed cannot be identified for those records"
+
+  argumentationEvent:
+    purpose: Argumentation session open/close.
+    spec_source: 08-13-26/Investigation-results/argumentation-event-investigation.md
+    units: [1, 3, 4, 5]
+    required_data_fields: [actionType, argumentationTitle, argumentationDescription]
+    allowed_values:
+      actionType: [argumentationSessionOpen, argumentationSessionClose]
+    pairing:
+      - {label: argumentation session, field: actionType,
+         open_value: argumentationSessionOpen, close_value: argumentationSessionClose,
+         group_by: argumentationTitle}
+    known_issues:
+      - "U3 description string contains stray quoting: 'U3 – Pollution Upstream\"
+         equals \"Where is the pollution site probably located?'"
+
+  argumentationNodeEvent:
+    purpose: Hovering and adding claim/evidence/reasoning nodes in the argumentation tool.
+    spec_source: 08-13-26/Investigation-results/argumentation-node-event-investigation.md
+    units: [1, 3, 4, 5]
+    required_data_fields: [actionType, argumentationTitle, nodeName]
+    allowed_values:
+      actionType: [argumentationNodeHoverStart, argumentationNodeHoverEnd, argumentationNodeAdd]
+    pairing:
+      - {label: node hover, field: actionType,
+         open_value: argumentationNodeHoverStart, close_value: argumentationNodeHoverEnd,
+         group_by: nodeName}
+
+  argumentationToolEvent:
+    purpose: Backing-info panel usage inside the argumentation tool.
+    spec_source: 08-13-26/Investigation-results/argumentation-tool-event-investigation.md
+    units: [1, 3, 5]
+    required_data_fields: [actionType, argumentationTitle, toolName]
+    allowed_values:
+      actionType: [argumentationToolOpen, argumentationToolClose]
+    pairing:
+      - {label: backing-info panel, field: actionType,
+         open_value: argumentationToolOpen, close_value: argumentationToolClose,
+         group_by: toolName}
+    known_issues:
+      - "a truncated toolName 'BackingInfoPanel - ' (nothing after the hyphen)
+         was observed on 08-13-26 in Unit 1 - Freshwater"
+      - "far more opens than closes on 08-13-26 (12 vs 2) — closes appear
+         under-logged"
+
+  argumentationAnswerEvent:
+    purpose: Final argument submission per argumentation activity.
+    spec_source: 08-13-26/Investigation-results/argumentation-answer-event-investigation.md
+    units: [1, 3, 4, 5]
+    required_data_fields: [actionType, argumentationTitle, answerSubmitted]
+    allowed_values:
+      actionType: [submitAnswerEvent]
+    semantics:
+      - question: "Can the exact submitted argument be reconstructed?"
+        satisfied_by: [answerSubmitted, argumentationTitle]
+
+  "Soil Key Puzzle":
+    purpose: Soil key puzzle — start/finish plus every soil-drag attempt.
+    spec_source: 08-13-26/Investigation-results/soil-key-puzzle-investigation.md
+    units: [3, 4]
+    expected_scenes: ["Unit 3 Dev", "Unit 4 Dev"]
+    optional_data_fields: ["Soil Key Puzzle Status", Unit, actionType,
+                           currentSoilType, waterRetentionChange,
+                           waterLevelStatus, isCorrectSelection]
+    allowed_values:
+      "Soil Key Puzzle Status": [Started, Finished]
+      actionType: [LeftDrag, RightDrag]
+      currentSoilType: [BEDROCK, CLAY, CLAYROCK, CLAYSAND, SAND, SANDGRAVEL, GRAVEL]
+      waterRetentionChange: [Increase, Decrease, NoChange]
+      waterLevelStatus: [Proper, TooLow, TooHigh]
+      isCorrectSelection: ["true", "false"]
+    conditional_fields:
+      Unit:                 {when: {"Soil Key Puzzle Status": [Started, Finished]}, required: true}
+      currentSoilType:      {when: {actionType: [LeftDrag, RightDrag]}, required: true}
+      waterRetentionChange: {when: {actionType: [LeftDrag, RightDrag]}, required: true}
+      waterLevelStatus:     {when: {actionType: [LeftDrag, RightDrag]}, required: true}
+      isCorrectSelection:   {when: {actionType: [LeftDrag, RightDrag]}, required: true}
+    field_types: {isCorrectSelection: string}
+    pairing:
+      - {label: puzzle start/finish, field: "Soil Key Puzzle Status",
+         open_value: Started, close_value: Finished, group_by: Unit}
+    notes: "Two intentional schema variants: status records
+            (Soil Key Puzzle Status + Unit) vs drag records (5 action fields).
+            isCorrectSelection is a STRING 'true'/'false', not a JSON bool —
+            a switch to real booleans would show up as a type change.
+            Historically only start/finish existed; drag actions were added
+            later. If dragging semantics change again, update allowed_values."
+
+  soilMachine:
+    purpose: Soil canister changes in the Unit 4 dungeon machines.
+    spec_source: 08-13-26/Investigation-results/soil-machine-investigation.md
+    units: [4]
+    expected_scenes: ["Unit 4 Dev - Dungeon"]
+    required_data_fields: [actionType, floor, machine, canisterType, row]
+    allowed_values:
+      actionType: [ChangeCanister]
+      canisterType: [Gravel, Clay, Sand]
+      row: [TopRow, BottomRow]
+    field_types: {floor: string, machine: string}
+
+  TerasGardenBox:
+    purpose: Tera's garden-box activity — soil selection and camera placement.
+    spec_source: 08-13-26/Investigation-results/tara-garden-box.md
+    units: [4]
+    expected_scenes: ["Unit 4 Dev"]
+    required_data_fields: [actionType, soilType]
+    optional_data_fields: [boxID, boxId]
+    allowed_values:
+      actionType: [soilSelected, cameraPlaced]
+      soilType: [Gravel, Sand, Clay]
+    conditional_fields:
+      boxID: {when: {actionType: soilSelected}, required: true}
+      boxId: {when: {actionType: cameraPlaced}, required: true}
+    known_issues:
+      - "boxID (soilSelected) vs boxId (cameraPlaced) capitalization
+         inconsistency — dashboards expecting one spelling will miss half the
+         records; also see docs/issues_and_updates.md issue 1 (U4P6 box-id
+         scheme mismatch)"
+
+  WaterChamberEvent:
+    purpose: Water chamber machines (condenser/evaporator/vents) toggled in Unit 5 dungeon.
+    spec_source: 08-13-26/Investigation-results/water-chamber-event-investigation.md
+    units: [5]
+    expected_scenes: ["Unit 5 Dev - Dungeon"]
+    required_data_fields: [floor, room, machineType, machineNumber, actionType]
+    allowed_values:
+      machineType: [Condenser, Evaporator, VentSwitch, DualChamber_Evaporator, DualChamber_Condenser]
+      machineNumber: [One, Two]
+      actionType: ["On", "Off"]
+    field_types: {floor: string, room: string}
+
+  SolarStillDesignEvent:
+    purpose: Solar still design activity — option selections and final submitted design.
+    spec_source: "observed data 08-25-26 (first appearance; no written spec yet)"
+    units: [5]
+    required_data_fields: [actionType, featureUsed]
+    allowed_values:
+      actionType: [optionSelected, DesignSubmitted]
+    conditional_fields:
+      selectedOption:   {when: {actionType: optionSelected}, required: true}
+      designSelections: {when: {actionType: DesignSubmitted}, required: true}
+    semantics:
+      - question: "Can the player's solar still design attempt be reconstructed
+                   (each option chosen plus the final submitted design)?"
+        satisfied_by: [featureUsed, selectedOption,
+                       designSelections.roofStyle, designSelections.roofCovering,
+                       designSelections.glassRoofTemperature]
+    notes: "New event type first seen in build 20260819-12237 (08-25-26).
+            SPECIFICATION UNCLEAR: no written spec found in the repository —
+            expectations here are provisional, derived from observed records."
+
+  gameStartEvent:
+    purpose: Game/application start marker.
+    spec_source: "observed data"
+    units: [1, 2, 3, 4, 5]
+    known_issues:
+      - "data payload is {\"\": true} — the field name is an empty string"
+
+  gameWindowFocusEvent:
+    purpose: Browser/game window gained focus.
+    spec_source: "observed data"
+    units: [1, 2, 3, 4, 5]
+    known_issues:
+      - "data payload is {\"\": true} — the field name is an empty string"
+
+  gameWindowUnfocusEvent:
+    purpose: Browser/game window lost focus.
+    spec_source: "observed data"
+    units: [1, 2, 3, 4, 5]
+    known_issues:
+      - "data payload is {\"\": false} — the field name is an empty string"
+
+  EndOfUnit:
+    purpose: Marks the completion of a game unit.
+    spec_source: "observed data"
+    units: [1, 2, 3, 4, 5]
+    required_data_fields: [Unit]
+    allowed_values:
+      Unit: ["1", "2", "3", "4", "5"]
+    field_types: {Unit: string}
+
+  DEBUGMenu:
+    purpose: Debug menu opened/closed — signals debug tooling was used in the playthrough.
+    spec_source: "observed data"
+    units: [1, 2, 3, 4, 5]
+    required_data_fields: [actionType, isOpened]
+    allowed_values:
+      actionType: [DebugMenuStateChanged]
+    field_types: {isOpened: bool}
+    notes: "Presence of this event means the tester opened the debug menu;
+            relevant when judging whether progress was reached legitimately."

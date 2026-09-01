@@ -1,0 +1,17 @@
+# Gameplay coverage manifest for the 08-13-26 playthrough (baseline build).
+# Statuses: complete | partial | skipped
+
+build: "08-13-26"
+game_version: "20260812-12180"
+
+tested_content:
+  Unit1: complete
+  Unit2: partial
+  Unit3: complete
+  Unit4: complete
+  Unit5: complete
+
+notes:
+  - "Unit 2 marked partial: only 125 records in 'Unit 2 Prod (Refactor)' and
+     no Unit 2 EndOfUnit in the log (vs 2068 records on 08-25-26)."
+  - "Manifest written retroactively on 2026-08-26 to serve as the baseline."

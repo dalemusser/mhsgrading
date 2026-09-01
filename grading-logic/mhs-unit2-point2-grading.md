@@ -33,13 +33,10 @@ Uses the latest end trigger and the most recent start key before it, fenced by `
 |------|-----------|
 | Trigger / End | `DialogueNodeEvent:20:26` |
 | Start | `questFinishEvent:21` |
-| Target (wrong direction) | `DialogueNodeEvent:18:99` |
 | Target (wrong direction) | `DialogueNodeEvent:28:179` |
 | Target (wrong direction) | `DialogueNodeEvent:59:179` |
-| Target (wrong direction) | `DialogueNodeEvent:18:223` |
 | Target (wrong direction) | `DialogueNodeEvent:28:182` |
 | Target (wrong direction) | `DialogueNodeEvent:59:182` |
-| Target (wrong direction) | `DialogueNodeEvent:18:224` |
 | Target (wrong direction) | `DialogueNodeEvent:28:183` |
 | Target (wrong direction) | `DialogueNodeEvent:59:183` |
 
@@ -57,13 +54,10 @@ const START_KEY = "questFinishEvent:21";
 const END_KEY = "DialogueNodeEvent:20:26";
 
 const TARGET_KEYS = [
-  "DialogueNodeEvent:18:99",
   "DialogueNodeEvent:28:179",
   "DialogueNodeEvent:59:179",
-  "DialogueNodeEvent:18:223",
   "DialogueNodeEvent:28:182",
   "DialogueNodeEvent:59:182",
-  "DialogueNodeEvent:18:224",
   "DialogueNodeEvent:28:183",
   "DialogueNodeEvent:59:183"
 ];
@@ -120,13 +114,10 @@ const END_KEY = "DialogueNodeEvent:20:26";     // trigger
 const START_KEY = "questFinishEvent:21";
 
 const TARGET_KEYS = [
-  "DialogueNodeEvent:18:99",
   "DialogueNodeEvent:28:179",
   "DialogueNodeEvent:59:179",
-  "DialogueNodeEvent:18:223",
   "DialogueNodeEvent:28:182",
   "DialogueNodeEvent:59:182",
-  "DialogueNodeEvent:18:224",
   "DialogueNodeEvent:28:183",
   "DialogueNodeEvent:59:183"
 ];
@@ -197,13 +188,10 @@ if (!endDoc || !endDoc.timestamp) {
 # Count the number of wrong-direction dialogues triggered
 
 BAD_FEEDBACK_KEYS = [
-    "DialogueNodeEvent:18:99",
     "DialogueNodeEvent:28:179",
     "DialogueNodeEvent:59:179",
-    "DialogueNodeEvent:18:223",
     "DialogueNodeEvent:28:182",
     "DialogueNodeEvent:59:182",
-    "DialogueNodeEvent:18:224",
     "DialogueNodeEvent:28:183",
     "DialogueNodeEvent:59:183"
 ]
@@ -225,13 +213,10 @@ count
 const playerId = "<playerId>";
 
 const BAD_FEEDBACK_KEYS = [
-  "DialogueNodeEvent:18:99",
   "DialogueNodeEvent:28:179",
   "DialogueNodeEvent:59:179",
-  "DialogueNodeEvent:18:223",
   "DialogueNodeEvent:28:182",
   "DialogueNodeEvent:59:182",
-  "DialogueNodeEvent:18:224",
   "DialogueNodeEvent:28:183",
   "DialogueNodeEvent:59:183"
 ];
@@ -256,13 +241,10 @@ const START_KEY = "questFinishEvent:21";
 const END_KEY = "DialogueNodeEvent:20:26";
 
 const BAD_FEEDBACK_KEYS = [
-  "DialogueNodeEvent:18:99",
   "DialogueNodeEvent:28:179",
   "DialogueNodeEvent:59:179",
-  "DialogueNodeEvent:18:223",
   "DialogueNodeEvent:28:182",
   "DialogueNodeEvent:59:182",
-  "DialogueNodeEvent:18:224",
   "DialogueNodeEvent:28:183",
   "DialogueNodeEvent:59:183"
 ];

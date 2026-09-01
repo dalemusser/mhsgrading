@@ -1,0 +1,783 @@
+﻿eventType,field_path,value,type,count,value_list_truncated
+DaniEvent,data.actionType,"""Close""",string,21,False
+DaniEvent,data.actionType,"""Open""",string,21,False
+DaniEvent,data.toolName,"""Map""",string,34,False
+DaniEvent,data.toolName,"""Argumentation""",string,8,False
+DialogueEvent,data.conversationId,18,number,169,False
+DialogueEvent,data.conversationId,10,number,157,False
+DialogueEvent,data.conversationId,82,number,123,False
+DialogueEvent,data.conversationId,91,number,109,False
+DialogueEvent,data.conversationId,92,number,89,False
+DialogueEvent,data.conversationId,79,number,85,False
+DialogueEvent,data.conversationId,21,number,73,False
+DialogueEvent,data.conversationId,95,number,70,False
+DialogueEvent,data.conversationId,30,number,63,False
+DialogueEvent,data.conversationId,11,number,58,False
+DialogueEvent,data.conversationId,20,number,55,False
+DialogueEvent,data.conversationId,31,number,50,False
+DialogueEvent,data.conversationId,99,number,45,False
+DialogueEvent,data.conversationId,19,number,44,False
+DialogueEvent,data.conversationId,105,number,39,False
+DialogueEvent,data.conversationId,109,number,38,False
+DialogueEvent,data.conversationId,23,number,37,False
+DialogueEvent,data.conversationId,98,number,37,False
+DialogueEvent,data.conversationId,117,number,33,False
+DialogueEvent,data.conversationId,103,number,31,False
+DialogueEvent,data.conversationId,118,number,30,False
+DialogueEvent,data.conversationId,26,number,30,False
+DialogueEvent,data.conversationId,104,number,25,False
+DialogueEvent,data.conversationId,33,number,25,False
+DialogueEvent,data.conversationId,73,number,24,False
+DialogueEvent,data.conversationId,22,number,23,False
+DialogueEvent,data.conversationId,88,number,21,False
+DialogueEvent,data.conversationId,96,number,20,False
+DialogueEvent,data.conversationId,75,number,18,False
+DialogueEvent,data.conversationId,35,number,15,False
+DialogueEvent,data.conversationId,32,number,13,False
+DialogueEvent,data.conversationId,36,number,13,False
+DialogueEvent,data.conversationId,114,number,12,False
+DialogueEvent,data.conversationId,116,number,12,False
+DialogueEvent,data.conversationId,17,number,11,False
+DialogueEvent,data.conversationId,8,number,9,False
+DialogueEvent,data.conversationId,83,number,9,False
+DialogueEvent,data.conversationId,15,number,7,False
+DialogueEvent,data.conversationId,37,number,7,False
+DialogueEvent,data.conversationId,70,number,7,False
+DialogueEvent,data.conversationId,106,number,5,False
+DialogueEvent,data.conversationId,107,number,5,False
+DialogueEvent,data.conversationId,100,number,3,False
+DialogueEvent,data.conversationId,111,number,3,False
+DialogueEvent,data.conversationId,13,number,3,False
+DialogueEvent,data.conversationId,16,number,3,False
+DialogueEvent,data.conversationId,27,number,3,False
+DialogueEvent,data.conversationId,68,number,3,False
+DialogueEvent,data.conversationId,78,number,3,False
+DialogueEvent,data.conversationId,84,number,3,False
+DialogueEvent,data.conversationId,90,number,3,False
+DialogueEvent,data.conversationId,74,number,2,False
+DialogueEvent,data.dialogueEventType,"""DialogueNodeEvent""",string,1136,False
+DialogueEvent,data.dialogueEventType,"""DialogueStartEvent""",string,321,False
+DialogueEvent,data.dialogueEventType,"""DialogueFinishEvent""",string,318,False
+DialogueEvent,data.nodeId,0,number,35,True
+DialogueEvent,data.nodeId,1,number,32,True
+DialogueEvent,data.nodeId,2,number,25,True
+DialogueEvent,data.nodeId,5,number,24,True
+DialogueEvent,data.nodeId,7,number,22,True
+DialogueEvent,data.nodeId,8,number,21,True
+DialogueEvent,data.nodeId,4,number,19,True
+DialogueEvent,data.nodeId,10,number,16,True
+DialogueEvent,data.nodeId,3,number,16,True
+DialogueEvent,data.nodeId,25,number,15,True
+DialogueEvent,data.nodeId,29,number,15,True
+DialogueEvent,data.nodeId,32,number,15,True
+DialogueEvent,data.nodeId,12,number,14,True
+DialogueEvent,data.nodeId,19,number,14,True
+DialogueEvent,data.nodeId,20,number,14,True
+DialogueEvent,data.nodeId,21,number,14,True
+DialogueEvent,data.nodeId,6,number,14,True
+DialogueEvent,data.nodeId,13,number,13,True
+DialogueEvent,data.nodeId,15,number,13,True
+DialogueEvent,data.nodeId,17,number,13,True
+DialogueEvent,data.nodeId,22,number,13,True
+DialogueEvent,data.nodeId,24,number,13,True
+DialogueEvent,data.nodeId,35,number,13,True
+DialogueEvent,data.nodeId,39,number,13,True
+DialogueEvent,data.nodeId,64,number,13,True
+DialogueEvent,data.nodeId,9,number,13,True
+DialogueEvent,data.nodeId,31,number,12,True
+DialogueEvent,data.nodeId,33,number,12,True
+DialogueEvent,data.nodeId,16,number,11,True
+DialogueEvent,data.nodeId,26,number,11,True
+DialogueEvent,data.nodeId,30,number,11,True
+DialogueEvent,data.nodeId,34,number,11,True
+DialogueEvent,data.nodeId,36,number,11,True
+DialogueEvent,data.nodeId,50,number,11,True
+DialogueEvent,data.nodeId,61,number,11,True
+DialogueEvent,data.nodeId,65,number,11,True
+DialogueEvent,data.nodeId,38,number,10,True
+DialogueEvent,data.nodeId,69,number,10,True
+DialogueEvent,data.nodeId,14,number,9,True
+DialogueEvent,data.nodeId,18,number,9,True
+DialogueEvent,data.nodeId,27,number,9,True
+DialogueEvent,data.nodeId,28,number,9,True
+DialogueEvent,data.nodeId,41,number,9,True
+DialogueEvent,data.nodeId,60,number,9,True
+DialogueEvent,data.nodeId,63,number,9,True
+DialogueEvent,data.nodeId,67,number,9,True
+DialogueEvent,data.nodeId,141,number,8,True
+DialogueEvent,data.nodeId,23,number,8,True
+DialogueEvent,data.nodeId,37,number,8,True
+DialogueEvent,data.nodeId,42,number,8,True
+DialogueEvent,data.nodeId,11,number,7,True
+DialogueEvent,data.nodeId,48,number,7,True
+DialogueEvent,data.nodeId,55,number,7,True
+DialogueEvent,data.nodeId,56,number,7,True
+DialogueEvent,data.nodeId,59,number,7,True
+DialogueEvent,data.nodeId,68,number,7,True
+DialogueEvent,data.nodeId,73,number,7,True
+DialogueEvent,data.nodeId,76,number,7,True
+DialogueEvent,data.nodeId,80,number,7,True
+DialogueEvent,data.nodeId,49,number,6,True
+EndOfUnit,data.Unit,"""1""",string,1,False
+EndOfUnit,data.Unit,"""2""",string,1,False
+EndOfUnit,data.Unit,"""3""",string,1,False
+EndOfUnit,data.Unit,"""4""",string,1,False
+EndOfUnit,data.Unit,"""5""",string,1,False
+InputEvent,data.Value,"""pressed""",string,1883,False
+InputEvent,data.actionType,"""Move""",string,1357,False
+InputEvent,data.actionType,"""Sprint""",string,235,False
+InputEvent,data.actionType,"""Interact""",string,212,False
+InputEvent,data.actionType,"""Ascend""",string,28,False
+InputEvent,data.actionType,"""Jump""",string,15,False
+InputEvent,data.actionType,"""Descend""",string,13,False
+InputEvent,data.actionType,"""Hoverboard""",string,13,False
+InputEvent,data.actionType,"""Map""",string,10,False
+InputEvent,data.key,"""w""",string,512,False
+InputEvent,data.key,"""a""",string,303,False
+InputEvent,data.key,"""s""",string,286,False
+InputEvent,data.key,"""d""",string,256,False
+InputEvent,data.key,"""leftShift""",string,248,False
+InputEvent,data.key,"""leftButton""",string,204,False
+InputEvent,data.key,"""space""",string,34,False
+InputEvent,data.key,"""e""",string,17,False
+InputEvent,data.key,"""h""",string,12,False
+InputEvent,data.key,"""m""",string,10,False
+InputEvent,data.key,"""""",string,1,False
+InputEvent,data.playerOrDrone,"""Player""",string,1593,False
+InputEvent,data.playerOrDrone,"""Drone""",string,290,False
+ObjectInterEvent,data.actionType,"""Press E to Pick up""",string,35,False
+ObjectInterEvent,data.actionType,"""Press E to Install""",string,11,False
+ObjectInterEvent,data.actionType,"""Press E to Scan""",string,11,False
+ObjectInterEvent,data.actionType,"""Press E To Place Cube In Canal""",string,8,False
+ObjectInterEvent,data.actionType,"""Press E to Place""",string,7,False
+ObjectInterEvent,data.actionType,"""Press E To Place Cameras""",string,6,False
+ObjectInterEvent,data.actionType,"""Press E to go down""",string,6,False
+ObjectInterEvent,data.actionType,"""Place Cube""",string,5,False
+ObjectInterEvent,data.actionType,"""Press E to Pick Up""",string,5,False
+ObjectInterEvent,data.actionType,"""Press E to inspect """,string,5,False
+ObjectInterEvent,data.actionType,"""Press E to use""",string,5,False
+ObjectInterEvent,data.actionType,"""TalkTo""",string,5,False
+ObjectInterEvent,data.actionType,"""E to Talk""",string,4,False
+ObjectInterEvent,data.actionType,"""Press E to Operate""",string,4,False
+ObjectInterEvent,data.actionType,"""Press E to Plant Seed""",string,4,False
+ObjectInterEvent,data.actionType,"""Press E to Switch Canister""",string,4,False
+ObjectInterEvent,data.actionType,"""Press E to examine""",string,4,False
+ObjectInterEvent,data.actionType,"""Press E To Collect Pipe""",string,3,False
+ObjectInterEvent,data.actionType,"""Press E To Place Glyph""",string,3,False
+ObjectInterEvent,data.actionType,"""Press E To Scan""",string,3,False
+ObjectInterEvent,data.actionType,"""Press E to Place Pipe Segment""",string,3,False
+ObjectInterEvent,data.actionType,"""Push E To Grab Crate""",string,3,False
+ObjectInterEvent,data.actionType,"""Press E""",string,2,False
+ObjectInterEvent,data.actionType,"""Press E To Change Direction""",string,2,False
+ObjectInterEvent,data.actionType,"""Press E To Return To Base""",string,2,False
+ObjectInterEvent,data.actionType,"""Press E to Open Locker""",string,2,False
+ObjectInterEvent,data.actionType,"""Press E to Pickup Canister""",string,2,False
+ObjectInterEvent,data.actionType,"""Inspect Alien Glyph""",string,1,False
+ObjectInterEvent,data.actionType,"""Press E To Pick Up""",string,1,False
+ObjectInterEvent,data.actionType,"""Press E to Collect""",string,1,False
+ObjectInterEvent,data.actionType,"""Press E to collect cameras""",string,1,False
+ObjectInterEvent,data.actionType,"""Press E to collect mega turnips""",string,1,False
+ObjectInterEvent,data.actionType,"""Press E to collect super orange""",string,1,False
+ObjectInterEvent,data.actionType,"""Press E to collect ultra corn""",string,1,False
+ObjectInterEvent,data.actionType,"""Press E to deactivate the fountain""",string,1,False
+ObjectInterEvent,data.actionType,"""Press E to pick up""",string,1,False
+ObjectInterEvent,data.actionType,"""Press E to place canister""",string,1,False
+ObjectInterEvent,data.actionType,"""Press [E/Action button] to enter escape pod """,string,1,False
+ObjectInterEvent,data.actionType,"""Push E To Place Crate On Hoverboard""",string,1,False
+ObjectInterEvent,data.objectName,"""Powercube""",string,29,True
+ObjectInterEvent,data.objectName,"""Power Dock""",string,11,True
+ObjectInterEvent,data.objectName,"""Soil View""",string,5,True
+ObjectInterEvent,data.objectName,"""Garden Plot (Super)""",string,4,True
+ObjectInterEvent,data.objectName,"""Use Elevator""",string,4,True
+ObjectInterEvent,data.objectName,"""Anderson""",string,3,True
+ObjectInterEvent,data.objectName,"""Missing Piece""",string,3,True
+ObjectInterEvent,data.objectName,"""Pipe""",string,3,True
+ObjectInterEvent,data.objectName,"""Supply Crate""",string,3,True
+ObjectInterEvent,data.objectName,"""Elevator (Floor 4)""",string,2,True
+ObjectInterEvent,data.objectName,"""GRAVEL (Loose)""",string,2,True
+ObjectInterEvent,data.objectName,"""Garden Box 1""",string,2,True
+ObjectInterEvent,data.objectName,"""Garden Box 2""",string,2,True
+ObjectInterEvent,data.objectName,"""Garden Box 3""",string,2,True
+ObjectInterEvent,data.objectName,"""Player Locker""",string,2,True
+ObjectInterEvent,data.objectName,"""Soil Key Puzzle Soil""",string,2,True
+ObjectInterEvent,data.objectName,"""Tera""",string,2,True
+ObjectInterEvent,data.objectName,"""Toppo""",string,2,True
+ObjectInterEvent,data.objectName,"""Alien Glyph""",string,1,True
+ObjectInterEvent,data.objectName,"""Aryn""",string,1,True
+ObjectInterEvent,data.objectName,"""Canal (Wing 1)""",string,1,True
+ObjectInterEvent,data.objectName,"""Canal (Wing 2, Canal 1)""",string,1,True
+ObjectInterEvent,data.objectName,"""Canal (Wing 2, Canal 2)""",string,1,True
+ObjectInterEvent,data.objectName,"""Canal (Wing 3 Canal 2)""",string,1,True
+ObjectInterEvent,data.objectName,"""Canal (Wing 3, Canal 1)""",string,1,True
+ObjectInterEvent,data.objectName,"""Crash Pod""",string,1,True
+ObjectInterEvent,data.objectName,"""Eastern Ocean""",string,1,True
+ObjectInterEvent,data.objectName,"""Eastern River Distance""",string,1,True
+ObjectInterEvent,data.objectName,"""Eastern River Salinity""",string,1,True
+ObjectInterEvent,data.objectName,"""Eastern River Waterfall Flow""",string,1,True
+ObjectInterEvent,data.objectName,"""Eastern River Waterfall Height""",string,1,True
+ObjectInterEvent,data.objectName,"""Elevator""",string,1,True
+ObjectInterEvent,data.objectName,"""Flow Controller (Wing 2)""",string,1,True
+ObjectInterEvent,data.objectName,"""Flow Controller (Wing 3)""",string,1,True
+ObjectInterEvent,data.objectName,"""Glyph Dock B""",string,1,True
+ObjectInterEvent,data.objectName,"""Glyph Dock C""",string,1,True
+ObjectInterEvent,data.objectName,"""Glyph Dock D""",string,1,True
+ObjectInterEvent,data.objectName,"""Glyph Socket 1""",string,1,True
+ObjectInterEvent,data.objectName,"""Glyph Socket 2""",string,1,True
+ObjectInterEvent,data.objectName,"""Glyph Socket 3""",string,1,True
+ObjectInterEvent,data.objectName,"""Glyph Socket 4""",string,1,True
+ObjectInterEvent,data.objectName,"""Glyph Socket 5""",string,1,True
+ObjectInterEvent,data.objectName,"""Glyph Socket 6""",string,1,True
+ObjectInterEvent,data.objectName,"""Jasper""",string,1,True
+ObjectInterEvent,data.objectName,"""Sensors Crate""",string,1,True
+ObjectInterEvent,data.objectName,"""Soil Key""",string,1,True
+ObjectInterEvent,data.objectName,"""Soil Key Puzzle Soil Key Room""",string,1,True
+ObjectInterEvent,data.objectName,"""Soil Key Puzzle Soil Outside Temple""",string,1,True
+ObjectInterEvent,data.objectName,"""Supply Crate 1""",string,1,True
+ObjectInterEvent,data.objectName,"""Teleporter""",string,1,True
+ObjectInterEvent,data.objectName,"""Topography Piece 1""",string,1,True
+ObjectInterEvent,data.objectName,"""Topography Piece 2""",string,1,True
+ObjectInterEvent,data.objectName,"""Topography Piece 3""",string,1,True
+ObjectInterEvent,data.objectName,"""Topography Piece 4""",string,1,True
+ObjectInterEvent,data.objectName,"""Topography Piece 5""",string,1,True
+ObjectInterEvent,data.objectName,"""Topography Piece 6""",string,1,True
+ObjectInterEvent,data.objectName,"""Western River Distance""",string,1,True
+ObjectInterEvent,data.objectName,"""Western River Salinity""",string,1,True
+ObjectInterEvent,data.objectName,"""Western River Waterfall Flow""",string,1,True
+ObjectInterEvent,data.objectName,"""Western River Waterfall Height""",string,1,True
+PlayerPositionEvent,data.position.x,-12.04724,number,32,True
+PlayerPositionEvent,data.position.x,1401.99719,number,31,True
+PlayerPositionEvent,data.position.x,355.175446,number,25,True
+PlayerPositionEvent,data.position.x,787.31,number,23,True
+PlayerPositionEvent,data.position.x,-1.92,number,20,True
+PlayerPositionEvent,data.position.x,330.338135,number,20,True
+PlayerPositionEvent,data.position.x,-6.37714863,number,17,True
+PlayerPositionEvent,data.position.x,1413.71021,number,17,True
+PlayerPositionEvent,data.position.x,-103.769775,number,15,True
+PlayerPositionEvent,data.position.x,1061.74561,number,15,True
+PlayerPositionEvent,data.position.x,1551.983,number,15,True
+PlayerPositionEvent,data.position.x,-39.7949333,number,13,True
+PlayerPositionEvent,data.position.x,-99.23663,number,11,True
+PlayerPositionEvent,data.position.x,26.27753,number,11,True
+PlayerPositionEvent,data.position.x,-55.3700523,number,8,True
+PlayerPositionEvent,data.position.x,18.891,number,8,True
+PlayerPositionEvent,data.position.x,-15.5975266,number,7,True
+PlayerPositionEvent,data.position.x,784.2,number,7,True
+PlayerPositionEvent,data.position.x,-95.57508,number,6,True
+PlayerPositionEvent,data.position.x,1.59845531,number,5,True
+PlayerPositionEvent,data.position.x,-252.602661,number,4,True
+PlayerPositionEvent,data.position.x,-297.1409,number,4,True
+PlayerPositionEvent,data.position.x,-336.71,number,4,True
+PlayerPositionEvent,data.position.x,-558.38,number,4,True
+PlayerPositionEvent,data.position.x,-7.10150957,number,4,True
+PlayerPositionEvent,data.position.x,1095.80994,number,4,True
+PlayerPositionEvent,data.position.x,1419.31458,number,4,True
+PlayerPositionEvent,data.position.x,1543.07739,number,4,True
+PlayerPositionEvent,data.position.x,577.355,number,4,True
+PlayerPositionEvent,data.position.x,776.801331,number,4,True
+PlayerPositionEvent,data.position.x,-16.636013,number,3,True
+PlayerPositionEvent,data.position.x,-171.3087,number,3,True
+PlayerPositionEvent,data.position.x,-370.44,number,3,True
+PlayerPositionEvent,data.position.x,-6.04890871,number,3,True
+PlayerPositionEvent,data.position.x,1009.18158,number,3,True
+PlayerPositionEvent,data.position.x,1099.108,number,3,True
+PlayerPositionEvent,data.position.x,1438.31824,number,3,True
+PlayerPositionEvent,data.position.x,1543.61768,number,3,True
+PlayerPositionEvent,data.position.x,1548.04053,number,3,True
+PlayerPositionEvent,data.position.x,1549.8479,number,3,True
+PlayerPositionEvent,data.position.x,1558.41882,number,3,True
+PlayerPositionEvent,data.position.x,461.996063,number,3,True
+PlayerPositionEvent,data.position.x,-13.6884031,number,2,True
+PlayerPositionEvent,data.position.x,-235.094345,number,2,True
+PlayerPositionEvent,data.position.x,-274.560547,number,2,True
+PlayerPositionEvent,data.position.x,-3.82,number,2,True
+PlayerPositionEvent,data.position.x,-562.945435,number,2,True
+PlayerPositionEvent,data.position.x,1063.76086,number,2,True
+PlayerPositionEvent,data.position.x,1108.96191,number,2,True
+PlayerPositionEvent,data.position.x,1109.7146,number,2,True
+PlayerPositionEvent,data.position.x,1128.92542,number,2,True
+PlayerPositionEvent,data.position.x,1417.18,number,2,True
+PlayerPositionEvent,data.position.x,1418.58679,number,2,True
+PlayerPositionEvent,data.position.x,16.7114887,number,2,True
+PlayerPositionEvent,data.position.x,291.842682,number,2,True
+PlayerPositionEvent,data.position.x,353.45752,number,2,True
+PlayerPositionEvent,data.position.x,449.739929,number,2,True
+PlayerPositionEvent,data.position.x,895.093567,number,2,True
+PlayerPositionEvent,data.position.x,899.1623,number,2,True
+PlayerPositionEvent,data.position.x,998.41864,number,2,True
+PlayerPositionEvent,data.position.y,0.0338847637,number,32,True
+PlayerPositionEvent,data.position.y,101.643684,number,31,True
+PlayerPositionEvent,data.position.y,-72.6317,number,25,True
+PlayerPositionEvent,data.position.y,-69.1,number,23,True
+PlayerPositionEvent,data.position.y,-73.01,number,20,True
+PlayerPositionEvent,data.position.y,28.66,number,20,True
+PlayerPositionEvent,data.position.y,0.020447731,number,17,True
+PlayerPositionEvent,data.position.y,-7.492833,number,15,True
+PlayerPositionEvent,data.position.y,-85.41521,number,15,True
+PlayerPositionEvent,data.position.y,101.243675,number,15,True
+PlayerPositionEvent,data.position.y,154.113052,number,15,True
+PlayerPositionEvent,data.position.y,101.243683,number,13,True
+PlayerPositionEvent,data.position.y,59.0145264,number,13,True
+PlayerPositionEvent,data.position.y,-7.858778,number,11,True
+PlayerPositionEvent,data.position.y,0.0335979462,number,11,True
+PlayerPositionEvent,data.position.y,151.467041,number,11,True
+PlayerPositionEvent,data.position.y,0,number,8,True
+PlayerPositionEvent,data.position.y,58.58553,number,8,True
+PlayerPositionEvent,data.position.y,153.720016,number,7,True
+PlayerPositionEvent,data.position.y,-85.1481,number,5,True
+PlayerPositionEvent,data.position.y,0.0338345766,number,5,True
+PlayerPositionEvent,data.position.y,153.720032,number,5,True
+PlayerPositionEvent,data.position.y,-1.86803794,number,4,True
+PlayerPositionEvent,data.position.y,-106.235428,number,4,True
+PlayerPositionEvent,data.position.y,-76,number,4,True
+PlayerPositionEvent,data.position.y,-8.0322,number,4,True
+PlayerPositionEvent,data.position.y,-85.4269562,number,4,True
+PlayerPositionEvent,data.position.y,10.05,number,4,True
+PlayerPositionEvent,data.position.y,105.345047,number,4,True
+PlayerPositionEvent,data.position.y,120,number,4,True
+PlayerPositionEvent,data.position.y,138.472977,number,4,True
+PlayerPositionEvent,data.position.y,153.11,number,4,True
+PlayerPositionEvent,data.position.y,153.110016,number,4,True
+PlayerPositionEvent,data.position.y,153.915833,number,4,True
+PlayerPositionEvent,data.position.y,154.15741,number,4,True
+PlayerPositionEvent,data.position.y,217.458923,number,4,True
+PlayerPositionEvent,data.position.y,60.0017548,number,4,True
+PlayerPositionEvent,data.position.y,89.99999,number,4,True
+PlayerPositionEvent,data.position.y,-82.46,number,3,True
+PlayerPositionEvent,data.position.y,-85.05004,number,3,True
+PlayerPositionEvent,data.position.y,-85.3590851,number,3,True
+PlayerPositionEvent,data.position.y,-85.41463,number,3,True
+PlayerPositionEvent,data.position.y,-85.42084,number,3,True
+PlayerPositionEvent,data.position.y,-85.4268951,number,3,True
+PlayerPositionEvent,data.position.y,-89.2340546,number,3,True
+PlayerPositionEvent,data.position.y,0.0202047825,number,3,True
+PlayerPositionEvent,data.position.y,153.7201,number,3,True
+PlayerPositionEvent,data.position.y,154.05,number,3,True
+PlayerPositionEvent,data.position.y,154.11998,number,3,True
+PlayerPositionEvent,data.position.y,155.190033,number,3,True
+PlayerPositionEvent,data.position.y,163.3676,number,3,True
+PlayerPositionEvent,data.position.y,45.60796,number,3,True
+PlayerPositionEvent,data.position.y,58.5818825,number,3,True
+PlayerPositionEvent,data.position.y,0.03363478,number,2,True
+PlayerPositionEvent,data.position.y,0.0339010954,number,2,True
+PlayerPositionEvent,data.position.y,103.555176,number,2,True
+PlayerPositionEvent,data.position.y,103.625679,number,2,True
+PlayerPositionEvent,data.position.y,153.720047,number,2,True
+PlayerPositionEvent,data.position.y,153.975433,number,2,True
+PlayerPositionEvent,data.position.y,155.092575,number,2,True
+PlayerPositionEvent,data.position.z,-99.82519,number,32,True
+PlayerPositionEvent,data.position.z,1113.789,number,31,True
+PlayerPositionEvent,data.position.z,183.808212,number,25,True
+PlayerPositionEvent,data.position.z,-639.68,number,23,True
+PlayerPositionEvent,data.position.z,17.96,number,20,True
+PlayerPositionEvent,data.position.z,174.636215,number,20,True
+PlayerPositionEvent,data.position.z,-100.884148,number,17,True
+PlayerPositionEvent,data.position.z,1134.0321,number,17,True
+PlayerPositionEvent,data.position.z,-709.8695,number,15,True
+PlayerPositionEvent,data.position.z,0.2969954,number,15,True
+PlayerPositionEvent,data.position.z,1207.29932,number,15,True
+PlayerPositionEvent,data.position.z,-24.0550575,number,13,True
+PlayerPositionEvent,data.position.z,-64.90921,number,11,True
+PlayerPositionEvent,data.position.z,16.21201,number,11,True
+PlayerPositionEvent,data.position.z,-41.53137,number,8,True
+PlayerPositionEvent,data.position.z,-57.984,number,8,True
+PlayerPositionEvent,data.position.z,-18.1000957,number,7,True
+PlayerPositionEvent,data.position.z,1235.51,number,7,True
+PlayerPositionEvent,data.position.z,-47.7621536,number,6,True
+PlayerPositionEvent,data.position.z,-29.8788548,number,5,True
+PlayerPositionEvent,data.position.z,-226.518463,number,4,True
+PlayerPositionEvent,data.position.z,-708.8885,number,4,True
+PlayerPositionEvent,data.position.z,-930.25,number,4,True
+PlayerPositionEvent,data.position.z,-936.613953,number,4,True
+PlayerPositionEvent,data.position.z,1129.06616,number,4,True
+PlayerPositionEvent,data.position.z,114.861511,number,4,True
+PlayerPositionEvent,data.position.z,1227.11768,number,4,True
+PlayerPositionEvent,data.position.z,1366.37573,number,4,True
+PlayerPositionEvent,data.position.z,1446.75256,number,4,True
+PlayerPositionEvent,data.position.z,242.08,number,4,True
+PlayerPositionEvent,data.position.z,-2.24672031,number,3,True
+PlayerPositionEvent,data.position.z,-41.4908562,number,3,True
+PlayerPositionEvent,data.position.z,-61.7659378,number,3,True
+PlayerPositionEvent,data.position.z,-706.1406,number,3,True
+PlayerPositionEvent,data.position.z,-707.5803,number,3,True
+PlayerPositionEvent,data.position.z,-709.9282,number,3,True
+PlayerPositionEvent,data.position.z,-710.4865,number,3,True
+PlayerPositionEvent,data.position.z,-720.9394,number,3,True
+PlayerPositionEvent,data.position.z,-936.95,number,3,True
+PlayerPositionEvent,data.position.z,1266.79578,number,3,True
+PlayerPositionEvent,data.position.z,1392.17346,number,3,True
+PlayerPositionEvent,data.position.z,1588.89233,number,3,True
+PlayerPositionEvent,data.position.z,-250.079041,number,2,True
+PlayerPositionEvent,data.position.z,-926.537964,number,2,True
+PlayerPositionEvent,data.position.z,-929.8076,number,2,True
+PlayerPositionEvent,data.position.z,-942.873962,number,2,True
+PlayerPositionEvent,data.position.z,-97.89125,number,2,True
+PlayerPositionEvent,data.position.z,1126.9408,number,2,True
+PlayerPositionEvent,data.position.z,1136.43811,number,2,True
+PlayerPositionEvent,data.position.z,1169.73364,number,2,True
+PlayerPositionEvent,data.position.z,1210.95447,number,2,True
+PlayerPositionEvent,data.position.z,1229.14343,number,2,True
+PlayerPositionEvent,data.position.z,1229.69275,number,2,True
+PlayerPositionEvent,data.position.z,142.894958,number,2,True
+PlayerPositionEvent,data.position.z,1572.96863,number,2,True
+PlayerPositionEvent,data.position.z,1575.77271,number,2,True
+PlayerPositionEvent,data.position.z,181.398209,number,2,True
+PlayerPositionEvent,data.position.z,39.45,number,2,True
+PlayerPositionEvent,data.position.z,9.883445,number,2,True
+PlayerPositionEvent,data.position.z,958.1111,number,2,True
+PuzzlePieceVisibleEvent,data.actionType,"""BecameVisible""",string,337,False
+PuzzlePieceVisibleEvent,data.actionType,"""BecameInvisible""",string,323,False
+PuzzlePieceVisibleEvent,data.actionType,"""BecameCameraUncentered""",string,182,False
+PuzzlePieceVisibleEvent,data.actionType,"""BecameCameraCentered""",string,176,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Dissolving Particles Slot 1""",string,137,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Topography Slot 5""",string,45,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Soil Infiltration Puzzle Piece Bedrock""",string,43,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Topography Slot 3""",string,40,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Soil Infiltration Puzzle Piece Gravel""",string,39,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Watershed Piece 1""",string,38,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Soil Infiltration Puzzle Slot Bedrock""",string,37,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Soil Infiltration Puzzle Slot Clay""",string,35,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Soil Infiltration Puzzle Slot Gravel""",string,35,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Topography Slot 2""",string,35,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Topography Slot 6""",string,35,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Soil Infiltration Puzzle Piece Clay""",string,34,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Topography Piece 3""",string,34,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Soil Infiltration Puzzle Slot Sand""",string,31,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Soil Infiltration Puzzle Piece Sand""",string,30,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Topography Slot 4""",string,30,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Topography Piece 6""",string,29,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Watershed Piece 3""",string,28,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Watershed Piece 4""",string,28,False
+PuzzlePieceVisibleEvent,data.pieceId,"""WatershedSlotWall""",string,28,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Watershed Piece 2""",string,26,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Topography Slot 1""",string,23,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Watershed Piece 5""",string,20,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Dissolving Particles Piece 2""",string,19,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Dissolving Particles Slot 2""",string,19,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Topography Piece 4""",string,19,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Dissolving Particles Piece 3""",string,18,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Topography Piece 5""",string,18,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Dissolving Particles Slot 3""",string,17,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Topography Piece 1""",string,17,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Dissolving Particles Piece 1""",string,16,False
+PuzzlePieceVisibleEvent,data.pieceId,"""Topography Piece 2""",string,15,False
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:08:21.6600000Z""",string,8,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-09-01T00:01:19.7920000Z""",string,8,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-09-01T00:07:51.8120000Z""",string,8,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-09-01T00:08:16.8020000Z""",string,8,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-09-01T00:01:01.3350000Z""",string,7,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:08:21.6620000Z""",string,6,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:09:53.5580000Z""",string,6,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-09-01T00:07:56.6630000Z""",string,6,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:08:21.5790000Z""",string,5,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:09:44.9510000Z""",string,5,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:19:41.6670000Z""",string,5,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:20:40.6670000Z""",string,5,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-09-01T00:00:48.5120000Z""",string,5,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-09-01T00:07:45.1240000Z""",string,5,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:08:21.6120000Z""",string,4,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:08:55.3780000Z""",string,4,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:09:45.4500000Z""",string,4,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:19:25.6120000Z""",string,4,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:19:32.6630000Z""",string,4,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:46:28.7190000Z""",string,4,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-09-01T00:01:08.6040000Z""",string,4,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-09-01T00:01:11.7220000Z""",string,4,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-09-01T00:07:44.6290000Z""",string,4,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-09-01T00:08:21.3380000Z""",string,4,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-09-01T00:08:22.1720000Z""",string,4,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:08:21.6100000Z""",string,3,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:08:59.0630000Z""",string,3,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:09:45.4330000Z""",string,3,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:22:23.7970000Z""",string,3,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:22:26.5800000Z""",string,3,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:22:31.4990000Z""",string,3,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:23:04.1640000Z""",string,3,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:46:19.0400000Z""",string,3,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:46:20.7970000Z""",string,3,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:46:31.4370000Z""",string,3,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:46:35.4210000Z""",string,3,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:46:39.9220000Z""",string,3,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:46:47.8270000Z""",string,3,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:46:54.3300000Z""",string,3,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:47:01.8000000Z""",string,3,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:47:02.2340000Z""",string,3,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:47:04.3010000Z""",string,3,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-09-01T00:00:59.1330000Z""",string,3,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-09-01T00:01:04.7190000Z""",string,3,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-09-01T00:07:44.6660000Z""",string,3,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-09-01T00:08:16.9850000Z""",string,3,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-09-01T00:08:20.1050000Z""",string,3,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:08:21.6290000Z""",string,2,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:08:55.4260000Z""",string,2,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:08:55.5100000Z""",string,2,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:08:55.5260000Z""",string,2,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:08:55.5600000Z""",string,2,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:09:02.5970000Z""",string,2,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:09:12.0350000Z""",string,2,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:09:12.0520000Z""",string,2,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:09:12.2170000Z""",string,2,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:09:20.2050000Z""",string,2,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:09:27.5930000Z""",string,2,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:09:35.6460000Z""",string,2,True
+PuzzlePieceVisibleEvent,data.timestamp,"""2026-08-31T23:09:36.8470000Z""",string,2,True
+Soil Key Puzzle,data.Soil Key Puzzle Status,"""Finished""",string,4,False
+Soil Key Puzzle,data.Soil Key Puzzle Status,"""Started""",string,4,False
+Soil Key Puzzle,data.Unit,"""Unit 2 Prod (Refactor)""",string,4,False
+Soil Key Puzzle,data.Unit,"""Unit 3 Dev""",string,2,False
+Soil Key Puzzle,data.Unit,"""Unit 4 Dev""",string,2,False
+Soil Key Puzzle,data.actionType,"""RightDrag""",string,15,False
+Soil Key Puzzle,data.actionType,"""LeftDrag""",string,9,False
+Soil Key Puzzle,data.currentSoilType,"""CLAY""",string,5,False
+Soil Key Puzzle,data.currentSoilType,"""CLAYROCK""",string,4,False
+Soil Key Puzzle,data.currentSoilType,"""CLAYSAND""",string,4,False
+Soil Key Puzzle,data.currentSoilType,"""SAND""",string,4,False
+Soil Key Puzzle,data.currentSoilType,"""SANDGRAVEL""",string,4,False
+Soil Key Puzzle,data.currentSoilType,"""GRAVEL""",string,2,False
+Soil Key Puzzle,data.currentSoilType,"""BEDROCK""",string,1,False
+Soil Key Puzzle,data.isCorrectSelection,"""false""",string,19,False
+Soil Key Puzzle,data.isCorrectSelection,"""true""",string,5,False
+Soil Key Puzzle,data.waterLevelStatus,"""TooHigh""",string,12,False
+Soil Key Puzzle,data.waterLevelStatus,"""Proper""",string,9,False
+Soil Key Puzzle,data.waterLevelStatus,"""TooLow""",string,3,False
+Soil Key Puzzle,data.waterRetentionChange,"""Decrease""",string,10,False
+Soil Key Puzzle,data.waterRetentionChange,"""Increase""",string,9,False
+Soil Key Puzzle,data.waterRetentionChange,"""NoChange""",string,5,False
+SolarStillDesignEvent,data.actionType,"""optionSelected""",string,3,False
+SolarStillDesignEvent,data.actionType,"""DesignSubmitted""",string,1,False
+SolarStillDesignEvent,data.designSelections.glassRoofTemperature,"""Cold""",string,1,False
+SolarStillDesignEvent,data.designSelections.roofCovering,"""Uncovered""",string,1,False
+SolarStillDesignEvent,data.designSelections.roofStyle,"""Tilted Out""",string,1,False
+SolarStillDesignEvent,data.featureUsed,"""ExtraCovering""",string,1,False
+SolarStillDesignEvent,data.featureUsed,"""GlassRoofTemperature""",string,1,False
+SolarStillDesignEvent,data.featureUsed,"""RoofStyle""",string,1,False
+SolarStillDesignEvent,data.featureUsed,"""Submit""",string,1,False
+SolarStillDesignEvent,data.selectedOption,"""Cold""",string,1,False
+SolarStillDesignEvent,data.selectedOption,"""Tilted Out""",string,1,False
+SolarStillDesignEvent,data.selectedOption,"""Uncovered""",string,1,False
+TerasGardenBox,data.actionType,"""cameraPlaced""",string,3,False
+TerasGardenBox,data.actionType,"""soilSelected""",string,3,False
+TerasGardenBox,data.boxID,"""0""",string,1,False
+TerasGardenBox,data.boxID,"""1""",string,1,False
+TerasGardenBox,data.boxID,"""2""",string,1,False
+TerasGardenBox,data.boxId,"""0""",string,1,False
+TerasGardenBox,data.boxId,"""1""",string,1,False
+TerasGardenBox,data.boxId,"""2""",string,1,False
+TerasGardenBox,data.soilType,"""Clay""",string,2,False
+TerasGardenBox,data.soilType,"""Gravel""",string,2,False
+TerasGardenBox,data.soilType,"""Sand""",string,2,False
+TopographicMapEvent,data.actionType,"""WaypointMoveEvent""",string,23,False
+TopographicMapEvent,data.actionType,"""MapCloseEvent""",string,18,False
+TopographicMapEvent,data.actionType,"""MapOpenEvent""",string,16,False
+TopographicMapEvent,data.actionType,"""WaypointSetEvent""",string,4,False
+TopographicMapEvent,data.actionType,"""WaypointResetEvent""",string,2,False
+TopographicMapEvent,data.featureUsed,"""Map""",string,34,False
+TopographicMapEvent,data.featureUsed,"""Waypoint""",string,29,False
+TopographicMapEvent,data.location.x,-139.740891,number,3,False
+TopographicMapEvent,data.location.x,-199.217331,number,3,False
+TopographicMapEvent,data.location.x,-144.958038,number,2,False
+TopographicMapEvent,data.location.x,-203.391037,number,2,False
+TopographicMapEvent,data.location.x,-272.258484,number,2,False
+TopographicMapEvent,data.location.x,1.1242919,number,2,False
+TopographicMapEvent,data.location.x,-128.262909,number,1,False
+TopographicMapEvent,data.location.x,-138.697433,number,1,False
+TopographicMapEvent,data.location.x,-141.827789,number,1,False
+TopographicMapEvent,data.location.x,-146.0015,number,1,False
+TopographicMapEvent,data.location.x,-189.826263,number,1,False
+TopographicMapEvent,data.location.x,-195.043518,number,1,False
+TopographicMapEvent,data.location.x,-2.00606346,number,1,False
+TopographicMapEvent,data.location.x,-208.608292,number,1,False
+TopographicMapEvent,data.location.x,-6.17976856,number,1,False
+TopographicMapEvent,data.location.x,0.08084014,number,1,False
+TopographicMapEvent,data.location.x,26.1670322,number,1,False
+TopographicMapEvent,data.location.x,33.4710922,number,1,False
+TopographicMapEvent,data.location.x,43.9057121,number,1,False
+TopographicMapEvent,data.location.x,48.07942,number,1,False
+TopographicMapEvent,data.location.x,635.5395,number,1,False
+TopographicMapEvent,data.location.y,102.674141,number,3,False
+TopographicMapEvent,data.location.y,107.8914,number,3,False
+TopographicMapEvent,data.location.y,70.32734,number,2,False
+TopographicMapEvent,data.location.y,71.3708,number,2,False
+TopographicMapEvent,data.location.y,95.37008,number,2,False
+TopographicMapEvent,data.location.y,-135.9296,number,1,False
+TopographicMapEvent,data.location.y,-150.537857,number,1,False
+TopographicMapEvent,data.location.y,100.587288,number,1,False
+TopographicMapEvent,data.location.y,101.630791,number,1,False
+TopographicMapEvent,data.location.y,109.9783,number,1,False
+TopographicMapEvent,data.location.y,111.021759,number,1,False
+TopographicMapEvent,data.location.y,123.543129,number,1,False
+TopographicMapEvent,data.location.y,135.021042,number,1,False
+TopographicMapEvent,data.location.y,53.6322136,number,1,False
+TopographicMapEvent,data.location.y,58.8494759,number,1,False
+TopographicMapEvent,data.location.y,59.8929253,number,1,False
+TopographicMapEvent,data.location.y,76.58805,number,1,False
+TopographicMapEvent,data.location.y,78.67496,number,1,False
+TopographicMapEvent,data.location.y,87.02247,number,1,False
+TopographicMapEvent,data.location.y,93.28318,number,1,False
+TopographicMapEvent,data.location.y,94.32663,number,1,False
+TopographicMapEvent,data.location.y,98.50039,number,1,False
+TopographicMapEvent,data.location.z,0,number,29,False
+WaterChamberEvent,data.actionType,"""On""",string,14,False
+WaterChamberEvent,data.actionType,"""Off""",string,4,False
+WaterChamberEvent,data.floor,"""4""",string,7,False
+WaterChamberEvent,data.floor,"""3""",string,6,False
+WaterChamberEvent,data.floor,"""2""",string,3,False
+WaterChamberEvent,data.floor,"""1""",string,2,False
+WaterChamberEvent,data.machineNumber,"""One""",string,17,False
+WaterChamberEvent,data.machineNumber,"""Two""",string,1,False
+WaterChamberEvent,data.machineType,"""Condenser""",string,9,False
+WaterChamberEvent,data.machineType,"""Evaporator""",string,6,False
+WaterChamberEvent,data.machineType,"""VentSwitch""",string,2,False
+WaterChamberEvent,data.machineType,"""DualChamber_Condenser""",string,1,False
+WaterChamberEvent,data.room,"""2""",string,6,False
+WaterChamberEvent,data.room,"""3""",string,6,False
+WaterChamberEvent,data.room,"""1""",string,4,False
+WaterChamberEvent,data.room,"""4""",string,2,False
+argumentationAnswerEvent,data.actionType,"""submitAnswerEvent""",string,7,False
+argumentationAnswerEvent,data.answerSubmitted,"""A,1,I""",string,2,False
+argumentationAnswerEvent,data.answerSubmitted,"""A,1,II""",string,2,False
+argumentationAnswerEvent,data.answerSubmitted,"""A,5,I""",string,1,False
+argumentationAnswerEvent,data.answerSubmitted,"""A,C,D,2,II""",string,1,False
+argumentationAnswerEvent,data.answerSubmitted,"""C,D,3,II""",string,1,False
+argumentationAnswerEvent,data.argumentationTitle,"""Unit 1 - Freshwater""",string,2,False
+argumentationAnswerEvent,data.argumentationTitle,"""Unit 1 - Argumentation Tutorial""",string,1,False
+argumentationAnswerEvent,data.argumentationTitle,"""Unit 2 – Watershed""",string,1,False
+argumentationAnswerEvent,data.argumentationTitle,"""Unit 3 - Pollution Upstream""",string,1,False
+argumentationAnswerEvent,data.argumentationTitle,"""Unit 4 - Flooding""",string,1,False
+argumentationAnswerEvent,data.argumentationTitle,"""Unit 5""",string,1,False
+argumentationEvent,data.actionType,"""argumentationSessionClose""",string,8,False
+argumentationEvent,data.actionType,"""argumentationSessionOpen""",string,6,False
+argumentationEvent,data.argumentationDescription,"""U3 – Pollution Upstream"" equals ""Where is the pollution site probably located?""",string,3,False
+argumentationEvent,data.argumentationDescription,"""Unit 4 - Will the flooding in the workshop resolve after the fountain is turned off""",string,3,False
+argumentationEvent,data.argumentationDescription,"""U1 - Argumentation tutorial - Place the claim, reasoning, and evidence orbs in orbit""",string,2,False
+argumentationEvent,data.argumentationDescription,"""U2 – Watershed - Which watershed is bigger based on collected evidence from eastern and western waterfalls""",string,2,False
+argumentationEvent,data.argumentationDescription,"""Unit 1 - Does the planet WAT-247 have freshwater""",string,2,False
+argumentationEvent,data.argumentationDescription,"""Unit 5 - What happened to the water when in Aryn's collection tanks""",string,2,False
+argumentationEvent,data.argumentationTitle,"""Unit 3 - Pollution Upstream""",string,3,False
+argumentationEvent,data.argumentationTitle,"""Unit 4 - Flooding""",string,3,False
+argumentationEvent,data.argumentationTitle,"""Unit 1 - Argumentation Tutorial""",string,2,False
+argumentationEvent,data.argumentationTitle,"""Unit 1 - Freshwater""",string,2,False
+argumentationEvent,data.argumentationTitle,"""Unit 2 – Watershed""",string,2,False
+argumentationEvent,data.argumentationTitle,"""Unit 5""",string,2,False
+argumentationNodeEvent,data.actionType,"""argumentationNodeHoverEnd""",string,68,False
+argumentationNodeEvent,data.actionType,"""argumentationNodeHoverStart""",string,65,False
+argumentationNodeEvent,data.actionType,"""argumentationNodeAdd""",string,20,False
+argumentationNodeEvent,data.actionType,"""argumentationNodeRemove""",string,2,False
+argumentationNodeEvent,data.argumentationTitle,"""Unit 2 – Watershed""",string,33,False
+argumentationNodeEvent,data.argumentationTitle,"""Unit 1 - Freshwater""",string,31,False
+argumentationNodeEvent,data.argumentationTitle,"""Unit 3 - Pollution Upstream""",string,31,False
+argumentationNodeEvent,data.argumentationTitle,"""Unit 5""",string,26,False
+argumentationNodeEvent,data.argumentationTitle,"""Unit 4 - Flooding""",string,23,False
+argumentationNodeEvent,data.argumentationTitle,"""Unit 1 - Argumentation Tutorial""",string,11,False
+argumentationNodeEvent,data.nodeName,"""A""",string,35,False
+argumentationNodeEvent,data.nodeName,"""II""",string,27,False
+argumentationNodeEvent,data.nodeName,"""I""",string,21,False
+argumentationNodeEvent,data.nodeName,"""D""",string,14,False
+argumentationNodeEvent,data.nodeName,"""1""",string,13,False
+argumentationNodeEvent,data.nodeName,"""B""",string,12,False
+argumentationNodeEvent,data.nodeName,"""C""",string,12,False
+argumentationNodeEvent,data.nodeName,"""2""",string,9,False
+argumentationNodeEvent,data.nodeName,"""3""",string,5,False
+argumentationNodeEvent,data.nodeName,"""4""",string,4,False
+argumentationNodeEvent,data.nodeName,"""5""",string,3,False
+argumentationToolEvent,data.actionType,"""argumentationToolOpen""",string,13,False
+argumentationToolEvent,data.actionType,"""argumentationToolClose""",string,5,False
+argumentationToolEvent,data.argumentationTitle,"""Unit 1 - Freshwater""",string,7,False
+argumentationToolEvent,data.argumentationTitle,"""Unit 5""",string,5,False
+argumentationToolEvent,data.argumentationTitle,"""Unit 1 - Argumentation Tutorial""",string,2,False
+argumentationToolEvent,data.argumentationTitle,"""Unit 2 – Watershed""",string,2,False
+argumentationToolEvent,data.argumentationTitle,"""Unit 3 - Pollution Upstream""",string,2,False
+argumentationToolEvent,data.toolName,"""BackingInfoPanel - """,string,7,False
+argumentationToolEvent,data.toolName,"""BackingInfoPanel - Heat Added/Released Chart""",string,3,False
+argumentationToolEvent,data.toolName,"""BackingInfoPanel - Argumentation""",string,2,False
+argumentationToolEvent,data.toolName,"""BackingInfoPanel - Evaporation Flow Diagram""",string,2,False
+argumentationToolEvent,data.toolName,"""BackingInfoPanel - Pollution Site Data""",string,1,False
+argumentationToolEvent,data.toolName,"""BackingInfoPanel - Waterfall Data""",string,1,False
+argumentationToolEvent,data.toolName,"""BackingInfoPanel - Watershed Graph""",string,1,False
+argumentationToolEvent,data.toolName,"""BackingInfoPanel - Watershed Image""",string,1,False
+chatEvent,data.actionType,"""Close""",string,2,False
+chatEvent,data.chatID,"""NA""",string,2,False
+gameStartEvent,data.<empty>,true,bool,5,False
+gameWindowFocusEvent,data.<empty>,true,bool,18,False
+gameWindowUnfocusEvent,data.<empty>,false,bool,18,False
+questEvent,data.questEventType,"""questActiveEvent""",string,37,False
+questEvent,data.questEventType,"""questFinishEvent""",string,31,False
+questEvent,data.questID,"""45""",string,4,False
+questEvent,data.questID,"""18""",string,3,False
+questEvent,data.questID,"""36""",string,3,False
+questEvent,data.questID,"""16""",string,2,False
+questEvent,data.questID,"""17""",string,2,False
+questEvent,data.questID,"""19""",string,2,False
+questEvent,data.questID,"""21""",string,2,False
+questEvent,data.questID,"""22""",string,2,False
+questEvent,data.questID,"""23""",string,2,False
+questEvent,data.questID,"""24""",string,2,False
+questEvent,data.questID,"""25""",string,2,False
+questEvent,data.questID,"""28""",string,2,False
+questEvent,data.questID,"""29""",string,2,False
+questEvent,data.questID,"""31""",string,2,False
+questEvent,data.questID,"""32""",string,2,False
+questEvent,data.questID,"""33""",string,2,False
+questEvent,data.questID,"""34""",string,2,False
+questEvent,data.questID,"""40""",string,2,False
+questEvent,data.questID,"""41""",string,2,False
+questEvent,data.questID,"""43""",string,2,False
+questEvent,data.questID,"""44""",string,2,False
+questEvent,data.questID,"""46""",string,2,False
+questEvent,data.questID,"""47""",string,2,False
+questEvent,data.questID,"""48""",string,2,False
+questEvent,data.questID,"""49""",string,2,False
+questEvent,data.questID,"""51""",string,2,False
+questEvent,data.questID,"""52""",string,2,False
+questEvent,data.questID,"""54""",string,2,False
+questEvent,data.questID,"""55""",string,2,False
+questEvent,data.questID,"""56""",string,2,False
+questEvent,data.questID,"""39""",string,1,False
+questEvent,data.questID,"""50""",string,1,False
+questEvent,data.questID,"""53""",string,1,False
+questEvent,data.questID,"""57""",string,1,False
+questEvent,data.questName,"""Water Problems Require Water Solutions""",string,4,False
+questEvent,data.questName,"""Forsaken Facility""",string,3,False
+questEvent,data.questName,"""Saving Cadet Anderson""",string,3,False
+questEvent,data.questName,"""Chief of Reasoning""",string,2,False
+questEvent,data.questName,"""Claim of Command""",string,2,False
+questEvent,data.questName,"""Defend the Expedition""",string,2,False
+questEvent,data.questName,"""Desert Delicacies""",string,2,False
+questEvent,data.questName,"""Escape the Ruin""",string,2,False
+questEvent,data.questName,"""Foraged Forging""",string,2,False
+questEvent,data.questName,"""Gear Up""",string,2,False
+questEvent,data.questName,"""Getting Your Space Legs""",string,2,False
+questEvent,data.questName,"""Getting the Band Back Together""",string,2,False
+questEvent,data.questName,"""If I had a Nickel... - Floor 1""",string,2,False
+questEvent,data.questName,"""If I had a Nickel... - Floor 2""",string,2,False
+questEvent,data.questName,"""If I had a Nickel... - Floor 3""",string,2,False
+questEvent,data.questName,"""Info and Intros""",string,2,False
+questEvent,data.questName,"""Investigate the Temple""",string,2,False
+questEvent,data.questName,"""Leader of Evidence""",string,2,False
+questEvent,data.questName,"""Part of a Balanced Ecosystem""",string,2,False
+questEvent,data.questName,"""Pollution Solution""",string,2,False
+questEvent,data.questName,"""Power Play""",string,2,False
+questEvent,data.questName,"""Power Play - Floor 1""",string,2,False
+questEvent,data.questName,"""Power Play - Floor 2""",string,2,False
+questEvent,data.questName,"""Power Play - Floor 3""",string,2,False
+questEvent,data.questName,"""Power Play - Floor 4""",string,2,False
+questEvent,data.questName,"""Supply Run""",string,2,False
+questEvent,data.questName,"""TK, Reporting In!""",string,2,False
+questEvent,data.questName,"""WAT Happened Here?""",string,2,False
+questEvent,data.questName,"""What Was That?""",string,2,False
+questEvent,data.questName,"""Which Watershed?""",string,2,False
+questEvent,data.questName,"""Guru of Arguments""",string,1,False
+questEvent,data.questName,"""If I had a Nickel... - Floor 4""",string,1,False
+questEvent,data.questName,"""Power Play - Floor 5""",string,1,False
+questEvent,data.questName,"""Well, What Have We Here?""",string,1,False
+questEvent,data.questSuccessOrFailure,"""Succeeded""",string,31,False
+soilMachine,data.actionType,"""ChangeCanister""",string,5,False
+soilMachine,data.canisterType,"""Clay""",string,2,False
+soilMachine,data.canisterType,"""Gravel""",string,2,False
+soilMachine,data.canisterType,"""Sand""",string,1,False
+soilMachine,data.floor,"""5""",string,3,False
+soilMachine,data.floor,"""3""",string,1,False
+soilMachine,data.floor,"""4""",string,1,False
+soilMachine,data.machine,"""1""",string,4,False
+soilMachine,data.machine,"""2""",string,1,False
+soilMachine,data.row,"""TopRow""",string,4,False
+soilMachine,data.row,"""BottomRow""",string,1,False

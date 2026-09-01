@@ -1,0 +1,776 @@
+
+
+Checkpoint
+ | Unit
+ | Topic
+ | Task
+ | Dashboard
+ | Student Action
+ | Log Tag
+ | Score calculation formula
+ | U1.C3
+ | 1.1
+ | Argumentation
+ | Build first argument
+ | X
+On-track:
+(1 pts.)
+Concern:
+(0 pts.)
+ | 1 Point for correct answer on first attempt
+0 points for anything else
+
+ | Check the argument success event
+
+Dialogue tags:
+1 point: The feedback dialogue during or right before the close event of the argumentation only contains the following: 70-7 (Conversation ID-Dialogue Node ID)
+
+0 points: Other conditions (e.g., 70-33|25 and 70-7. And each of them only happens once.)
+ | 1 point for correct submission on 1st attempt.
+
+0 for anything else.
+
+Correct feedback: Great!  You chose the main idea that Toppo is trying to support, also known as the claim. Good Job Cadet!
+ | U2.C1
+ | 2.1 
+ | Topography 
+ | Topographic Map Matching Glyph
+ | X
+On-track:
+(1-2 pts.)
+Concern:
+(0 pts.)
+ | 2 Points correct answer in 1 or 2 attempts
+1 Points 3 or 4 attempts
+0 Points 5 or more attempts
+ | Check number of submissions needed to complete the task
+
+Dialogue tags:
+2 points: Only feedback dialogue 68-29 happens or feedback dialogues 68-4 (68-5) and 68-29 happen.  
+
+
+1 point: Before the feedback dialogue 68-29 happens, there are 2 or 3 other feedback dialogues (68-4, 68-5, 68-6, 68-7, 68-17, 68-18)
+
+
+0 point: Before the feedback dialogue 68-29 happens, there are more than 3 other feedback dialogues.
+
+ | 2 points for submitting correct answer in 1 or 2 attempts.
+
+1 point for 3 or 4 attempts needed to submit the correct answer.
+
+0 point for anything else ( 5 or more attempts, or if task is not attempted) 
+
+
+ | U2.C2
+ | 2.2
+ | Topography
+ | Find Toppo 
+
+ | X
+ | 1 Point Player triggers help dialog one time or less
+½ Point Player triggers help dialog two times 
+0 points Player triggers help dialog more than two times
+ | Help dialog statements:
+
+Anderson said that Toppo’s pod was northwest of our original location. We should look for a location on a hill at an elevation of approximately 90 feet. Remember you can move the waypoint on your map at any time.
+
+Remember to use your map. To open it, [press M/tap the Map button].
+
+We need to find Toppo soon, TK. Use your map to find an area on a hill at an elevation of approximately 90 feet.
+
+Dialogue tags:18-99; 28-179; 59-179; 18-223; 28-182; 59-182; 18-224; 28-183; 59-183.
+
+1 point: the aggregated triggering time of any of 18-99; 28-179; 59-179; 18-223; 28-182; 59-182; 18-224; 28-183; 59-183; is equal to or less than 1 time.
+
+½ point: the aggregated triggering time of any of 18-99, 18-223 and 18-224 is equal to 2 times.
+
+0 point: the aggregated triggering time of any of 18-99, 18-223 and 18-224 is more than 2 times.
+
+
+ | 1 point:Player triggers help dialog one time or less
+
+½ point: Player triggers help dialog two times
+ 
+0 points: Player triggers help dialog more than two times 
+ | 
+ | 
+ | 
+ | 
+ | 
+ | 
+ | 
+ | 
+ | U2.C3
+ | 2.3
+ | Topography
+ | Find Tera
+ | 
+ | 1 ½  Points Player triggers help dialog one time or less
+1 Point Player triggers help dialog two or three times 
+½  Point Player triggers help dialog four times
+0 points Player triggers help dialog more than four times
+ | Help dialog statements:
+
+Anderson said that Tera’s pod was beside a nearby river. Let’s look for a river closer to where we started.
+
+This area has a fairly high elevation. We’re looking for an area with low elevation. Check your map and see if you can find any good candidates on the eastern shore of a river.
+
+Tera’s pod crashed on the eastern shore of a river, but we’re on the western shore. We should make our way to the eastern shore of this river.  Check the compass rose on your map to find it.
+
+Looks like you found an island, Tera's pod is not on an island. Check your map to see if you can find an area of around 0 feet elevation north of Toppo's location along a river.
+
+You found an area of low elevation on this river’s eastern shore, but I don’t see Tera’s pod anywhere. Check your map to see if there’s another area of low elevation along this same shoreline. Maybe Tera’s pod is there?
+
+Try to find Tera as soon as you can. Use your map to find a river nearby then look for an area with an elevation of around 0 feet on its eastern shore.
+
+Dialogue tags:
+18-225; 28-185; 59-185; 28-184; 28-191; 59-184; 59-191; 18-226; 18-227; 28-186; 59-186; 18-228; 28-187; 59-187; 18-229; 28-188; 59-188; 18-230; 28-180; 59-180    
+
+1.5 point: the aggregated triggering time of any of 18-225; 28-185; 59-185; 28-184; 28-191; 59-184; 59-191; 18-226; 18-227; 28-186; 59-186; 18-228; 28-187; 59-187; 18-229; 28-188; 59-188; 18-230; 28-180; 59-180 is equal to or less than 1 time.
+
+1 point: the aggregated triggering time of any of 18-225; 28-185; 59-185; 28-184; 28-191; 59-184; 59-191; 18-226; 18-227; 28-186; 59-186; 18-228; 28-187; 59-187; 18-229; 28-188; 59-188; 18-230; 28-180; 59-180 is equal to 2 or 3 times.
+
+0.5 point: the aggregated triggering time of any of 18-225; 28-185; 59-185; 28-184; 28-191; 59-184; 59-191; 18-226; 18-227; 28-186; 59-186; 18-228; 28-187; 59-187; 18-229; 28-188; 59-188; 18-230; 28-180; 59-180 is equal to 4 times.
+
+0 point: the aggregated triggering time of any of 18-225; 28-185; 59-185; 28-184; 28-191; 59-184; 59-191; 18-226; 18-227; 28-186; 59-186; 18-228; 28-187; 59-187; 18-229; 28-188; 59-188; 18-230; 28-180; 59-180 is more than 4 times.
+
+ | 1 ½ points:Player triggers help dialog one time or less
+
+1 point: Player triggers help dialog two or three time
+
+½ point: Player triggers help dialog four time
+ 
+0 points: Player triggers help dialog more than four times 
+ | 
+ | 2.4
+ | Topography
+ | Find Aryn
+ | 
+ | 1 ½  Points Player triggers help dialog one time or less
+1 Point Player triggers help dialog two or three times 
+½  Point Player triggers help dialog four times
+0 points Player triggers help dialog more than four times
+ | Help Dialog:
+
+Looks like you found a passage that cuts into a mountain but we’re looking for one that cuts all the way through to the other side. Check your map and see if you can find one.
+
+I don’t see a steep mountain range over here anywhere. Open your map and see if you can find an area of even higher elevation that is surrounded by contour lines close together. Then you just need to find the passage through them!
+
+Looks like you found a small mountain, but Aryn crashed in a passage that runs through a mountain range. Look for a path that passes through several mountains joined together.
+
+Great, a mountain range! Let’s look for a passage like this somewhere on the map that cuts all the way through the mountains.
+
+Aryn might need our help. We should try to find him as soon as possible. Check your map and look for a mountain range with a passage that goes all the way through to the other side.
+
+Dialogue tags:
+18-233; 28-192; 59-192; 18-234; 28-193; 59-193;  18-235; 28-194; 59-194; 18-236; 18-237; 28-190; 59-190         
+
+1.5 point: the aggregated triggering time of any of 18-233; 28-192; 59-192; 18-234; 28-193; 59-193;  18-235; 28-194; 59-194; 18-236; 18-237; 28-190; 59-190     is equal to or less than 1 time.
+
+1 point: the aggregated triggering time of any of 18-233; 28-192; 59-192; 18-234; 28-193; 59-193;  18-235; 28-194; 59-194; 18-236; 18-237; 28-190; 59-190     is equal to 2 or 3 times.
+
+0.5 point: the aggregated triggering time of any of 18-233; 28-192; 59-192; 18-234; 28-193; 59-193;  18-235; 28-194; 59-194; 18-236; 18-237; 28-190; 59-190     is equal to 4 times.
+
+0 point: the aggregated triggering time of any of 18-233; 28-192; 59-192; 18-234; 28-193; 59-193;  18-235; 28-194; 59-194; 18-236; 18-237; 28-190; 59-190 is more than 4 times.
+
+ | 1 ½ points:Player triggers help dialog one time or less
+
+1 point: Player triggers help dialog two or three time
+
+½ point: Player triggers help dialog four time
+ 
+0 points: Player triggers help dialog more than four times 
+ | U2.C4
+ | 2.5
+ | Cycling of Water
+ | Watershed Size/ Flow Rate Glyph Activity
+ | X
+On-track:
+(1-2 pts.)
+Concern:
+(0 pts.)
+ | 2 Points correct answer within 3 attempts
+1 Points 4-5 attempts
+0 Points more than 5 attempts
+ | Count of submissions before obtaining win state
+
+Dialogue tag:
+
+2 points: Feedback dialogue 
+74-21 or before 74-21 happens, one or two other feedback dialogues happen (74-4, 74-5, 74-6)
+
+1 point: Feedback dialogue 74-21 happens, three or four feedback dialogues happen (74-9, 74-10, 74-15)
+
+0 point: Other situations happen.
+
+ | 2 points for submitting correct answers within 3 trials.
+
+1 point for 4 or 5 attempts before submitting the correct answer.
+
+0 point for anything else
+ | U2.C5
+ | 2.6
+ | Argumentation
+ | Classify Argument Components 
+ | X
+On-track:
+(4-6 pts.)
+Concern:
+(less than 4 pts.)
+ | 1 Point for each correct placement
+-1/3 Points for each incorrect throw 
+ | Check classifier system related events
+
+1 Point: Each time when the following dialogues happen: 
+26-140, 142, 143, 146, 147, 148, 165-170, 172-186.
+
+-⅓ Point: Each time when the following dialogues happen: 26-137, 144, 145, 187-189, 191-211.
+
+ | final score = correct placement count / (total placements) * 1 + incorrect placement count / (total placements) * (-0.33)
+
+Final score = 1*C - 0.33*I (6 - 0.33*I), where C is the count of making correct classification; I is the count of making wrong classification.
+
+Need 6 correct for completion
+ | U2.C6
+ | 2.7
+ | Argumentation
+ | Evidence Selection (asked by Toppo)
+ | 
+ | 1/2 Point for selecting flow rate
+0 Points for each anything else
+ | Dialog event selection
+
+()
+0.5 Point: when the dialogue of 20-43 happens.
+
+0 Point: when the dialogues of 20-44 or 20-45 happens.
+
+ | ½ Point for selecting flow rate
+
+0 Points for anything else
+ | U2.C7
+ | 2.8
+ | Argumentation/ Cycling of Water
+ | Argue Which Watershed is Bigger
+ | X
+On-track:
+(3 or 2 pts.)
+Concern:
+(less than 2 pts.)
+ | 3 Points correct answer within 3 attempts
+2 Points 4 attempts
+1 Points 5 attempts
+0 Points more than 5 attempts
+ | Check argument success event’s frequency and argument failure event’s frequency. 
+
+3 Points: Only the feedback dialogue 27-7 happens; Or, before 27-7 happens, there are 1 or 2 following feedback dialogues happen (27 - 11, 12…..30)
+
+2 Points: Before 27-7 happens, there are 3 following feedback dialogues happen (27 - 11, 12, ….. 30)
+
+1 Points: Before 27-7 happens, there are 4 following feedback dialogues happen (27 - 11, 12, ….. 30)
+
+0 Points: Other conditions happened.
+
+ | 3 points for submitting correct answer within 3 attempts.
+2 points for submitting correct answer in 4 attempts.
+1 point for 5 attempts before submitting the correct answer.
+0 point for anything else
+
+Correct feedback: Well done! You have made the best argument possible. Good Job, cadet! 
+ | U3.C1
+ | 3.1
+ | Surface Water
+ | Placement of Crates (multiple instances)
+ | On-track: 2-3 points
+Concern: less than 2 points
+ | 1 Point for correct each crate placement
+ | Add point: {dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “10”,
+“nodeId”: “30”}
+
+No add point: 
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “10”,
+“nodeId”: “32”}
+Crate placement
+ | final score= (number of correct crate placements)
+
+The player places 3 crates ( 3pts. possible)
+ | U3.C2
+ | 3.2
+ | Surface Water
+ | Placement of Pollution Sensors (multiple instances)
+ | X
+On-track:
+(3- 5 pts.)
+Concern:
+(less than 3 pts.)
+ | 2 Points for only triggering Dialog (Pollution will only flow downstream, so we need to test upstream of the pollution) fewer than 2 times
+
+2 Points for only triggering Dialog (Blue checkmark means clean. You won’t need to check upstream of a clean sensor.) fewer than 2 times
+
+1 Point for not triggering Dialog (We are at the ocean downstream of Tera’s base–logically, there will be pollution here. I recommended proceeding upstream..)
+
+ | Counts of placement of sensors downstream of previous sensor placements
+
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “11”,
+“nodeId”: “230”}
+
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “11”,
+“nodeId”: “27”}
+
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “11”,
+“nodeId”: “29”}
+
+ | (5 points possible)
+
+2 points if Dialog (Pollution will only flow downstream, so we need to test further upstreamPollution will only flow downstream, so we need to test upstream of the pollution) is triggered 0 or 1 time.
+
+1 point if Dialog (Pollution will only flow downstream, so we need to test further upstreamPollution will only flow downstream, so we need to test upstream of the pollution) is triggered 2 or 3 times
+
+0 points if Dialog (Pollution will only flow downstream, so we need to test further upstreamPollution will only flow downstream, so we need to test upstream of the pollution) is triggered 4 or more times
+
+—-----------------------------------------------------------------------------
+
+2 points if Dialog (GreenBlue checkmark means clean. You won’t need to check upstream of a clean sensor.) is triggered 0 or 1 time.
+
+1 point if Dialog (GreenBlue checkmark means clean. You won’t need to check upstream of a clean sensor.) is triggered 2 or 3 times
+
+0 points if Dialog (GreenBlue checkmark means clean. You won’t need to check upstream of a clean sensor.) is triggered 4 or more times
+
+—-----------------------------------------------------------------------------
+
+1 point if Dialog (We are at the ocean downstream of Tera’s base–logically, there will be pollution here. I recommended proceeding upstream...) is not triggered
+
+0 point if Dialog (We are at the ocean downstream of Tera’s base–logically, there will be pollution here. I recommended proceeding upstream...) is triggered
+ | U3.C3
+ | 3.3
+ | Argumentation
+ | Convince Tera of Pollution Location
+ | X
+On-track:
+(3 - 4 pts.)
+Concern:
+(less than 3 pts.)
+ | 3 Points correct answer within 3 attempts
+2 Points 4 attempts
+1 Point 5 attempts
+1 Point for opening back info 2 at any time
+0 Points more than 5 attempts
+ | Check argument success event’s frequency and argument failure event’s frequency 
+
+Use of backing info (unit 3 #2)
+
+Correct feedback:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “84”,
+“nodeId”: “36”}
+
+Incorrect feedback:
+84-20,25,32,33,34,35,37,39,40,41,42,43,44,45,46,47.
+
+argumentationToolEvent
+
+ | 3 points for submitting correct answer within 3 attempts.
+2 points for submitting correct answer in 4 attempts.
+1 point for 5 attempts before submitting the correct answer.
+
+1 point for viewing backing info  unit 3 item#2  that shows site A and site B at any time
+
+0 point for anything else
+
+Correct feedback: Great Job! You made the best argument possible. Way to go Cadet!
+
+ | U3.C4
+ | 3.4
+ | Surface Water
+ | Glyph: Dissolved Particles 
+ | On-track: 1-2 points
+Concern: less than 1 points
+ | 2 Points correct answer on first attempt 
+1 Points 2 attempt
+0 Points more than 2 attempts
+ | Count of submissions before obtaining win state
+
+Correct feedback:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “78”,
+“nodeId”: “24”}
+
+Incorrect feedback:
+78-3,4,7,9,10,12,18,23.
+
+ | Count of submissions before obtaining win state
+2 points for submitting correct answers on first attempt
+
+1 point for correct answer in 2 attempts
+
+0 point for anything else
+
+
+ | U3.C5
+ | 3.5
+ | Surface Water
+ | Plant Superfruit Seeds in Correct Locations (multiple instances)
+ | X
+On-track:
+(3 or 4 pts.)
+Concern:
+(less than 3 pts.)
+ | 1 Point Selecting a correct garden location
+-1/2 Points selecting an incorrect garden location 
+ | Seed box selections
+
+The correct feedback:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “73”,
+“nodeId”: “163”}
+
+The incorrect feedback:
+73-164,165,166,167;
+73-168,169,170;
+73-171,172,173
+
+ | final score= correct seed planting selections - (incorrect locations selections *0.5)
+
+Player selects 4 boxes (4pts. Maximum)
+ | U4.C1
+ | 4.1
+ | Groundwater
+ | Well Wishes (dialog)
+ | 
+ | ½ Point for selecting “It’s the boundary between saturated and unsaturated soil layers” in dialog
+ | Dialog selection
+
+Correct:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “88”,
+“nodeId”: “5”}
+
+ | ½ point for selecting  “;It’s the boundary between saturated and unsaturated soil layers”
+
+0 points for anything else
+ | 
+ | 4.2
+ | Groundwater
+ | Soil Puzzle Key (each time)
+ | 
+ | 1 Point for completion in less than 30 seconds
+ ½ Point for completion less than 90 seconds, but greater than 30 
+0 points for anything else
+ | Time soil puzzle window is open
+
+"eventType": "Soil Key Puzzle",
+"data": {
+    "Soil Key Puzzle Status": "Started",
+    "Unit": "Unit 4 Dev"
+  }
+
+"eventType": "Soil Key Puzzle",
+"data": {
+    "Soil Key Puzzle Status": "Finished",
+    "Unit": "Unit 4 Dev"
+  }
+
+ | 1 point for completion time less than 30 seconds
+½ point for completion time between 30-90 seconds
+0 points for completion time greater than 90 seconds
+ | U4.C2
+ | 4.3
+ | Groundwater
+ | Glyph: Infiltration
+ | x
+ | 2 Points correct answer on first attempt 
+1 Points 2 attempt
+0 Points more than 2 attempts
+ | Count of submissions before obtaining win state
+
+Correct submission
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “88”,
+“nodeId”: “11”}
+
+Incorrect submission
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “102”,
+“nodeId”: “3”}
+
+ | Count of submissions before obtaining win state
+2 points for submitting correct answers on first attempt
+
+1 point for correct answer in 2 attempts
+
+0 point for anything else
+
+ | U4.C3
+
+ | 4.4
+ | Groundwater
+ | Dungeon (third level)
+ | x
+ | 1 Points player selects gravel from missing pipe section in room 3-2 on first attempt.
+0 Points anything else
+
+ | Missing pipe selection in room 3-2 
+
+{"eventType": "soilMachine"}
+{“data.canisterType”: “Gravel”}
+{“data.floor
+”: “3”}
+{“data.machine
+”: “1”}
+
+ | 1 point for selecting gravel on first attempt 
+0 point for anything else
+ | 
+ | 4.5
+ | Groundwater
+ | Dungeon (fourth level)
+ | x
+ | 2 Point player selects sand from missing pipe section in room 4-1 on first attempt
+1 Points player selects sand from missing pipe section in room 4-1 on second attempt
+0 Points anything else
+
+ | {"eventType": "soilMachine"}
+{“data.canisterType”: “Sand”}
+{“data.floor
+”: “4”}
+{“data.machine
+”: “1”}
+
+ | 2 point for selecting sand on first attempt 
+1 point for selecting sand on second attempt
+0 point for anything else
+ | U4.C4
+ | 4.6
+ | Groundwater
+ | Dungeon (fifth level)
+ | x
+ | 2 Points total:
+
+1 Point in room 5-1, player selects clay from top canister on first attempt AND does not change Bottom canister
+1 Points in room 5-2, player selects clay on bottom canister on first attempt OR selects sand on top canister AND does not change bottom canister
+
+
+ | {"eventType": "soilMachine"}
+{“data.canisterType”: “Sand”}
+{“data.floor
+”: “5”}
+{“data.machine
+”: “1”}
+
+{"eventType": "soilMachine"}
+{“data.canisterType”: “Sand”}
+{“data.floor
+”: “5”}
+{“data.machine
+”: “2”}
+
+ | 1 Point for correct solution to 5-1 puzzle on first attempt
+
+1 Point for correct solution to 5-2 puzzle on first attempt
+
+
+ | 
+ | 4.7
+ | Groundwater
+ | Drill Task
+ | x
+ | 2 Points selection of layer 3 or 4 on first attempt
+1 Points selection of layer 3 or 4 on second attempt
+0 Points anything else
+ | Count of submissions, soil layer selected
+
+Correct: {dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “107”,
+“nodeId”: “4”}
+
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “107”,
+“nodeId”: “5”}
+
+
+Incorrect:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “107”,
+“nodeId”: “2”}
+
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “107”,
+“nodeId”: “3”}
+
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “107”,
+“nodeId”: “6”}
+
+ | 2 Points selection of layer 3 or 4 on first attempt
+
+1 Points selection of layer 3 or 4 on second attempt
+
+0 Points anything else
+ | U4.C5
+ | 4.8
+ | Argumentation
+ | Saving Cadet Anderson
+ | x
+ | 3 Points correct answer within 3 attempts
+2 Points 4 attempts
+1 Point 5 attempts
+1 Point for accessing backing info with warehouse layout
+0 Points more than 5 attempts
+ | Check argument success event’s frequency and argument failure event’s frequency 
+
+Use of backing info
+
+Correct argument:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “90”,
+“nodeId”: “50”} or {dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “90”,
+“nodeId”: “57”}
+
+Wrong argument:
+90-25,37,39,45,47,52,54,55,56,58,59,60,61
+
+ | 3 points for submitting correct answer within 3 attempts.
+2 points for submitting correct answer in 4 attempts.
+1 point for 5 attempts before submitting the correct answer.
+
+0 point for anything else
+
+1 point for opening backing info with warehouse layout
+ | U4.C6
+ | 4.9
+ | Groundwater
+ | Tera’s Garden Boxes
+ | x
+ | 3 Points for correctly placing 3 cameras
+2 Points for correct placement of 2 cameras
+1 Point for correct placement of 1 camera
+0 Points more no correct camera placements
+ | Camera location selection
+ | 1 point for each correct camera placement
+ | U5.C1
+ | 5.1
+ | Atmospheric Water 
+ | Glyph: Evaporation Rate
+ | x
+ | 2 Points correct answer on first attempt 
+1 Points 2-3 attempt
+0 Points more than 4 or more attempts
+ | Count of submissions before obtaining win state
+
+Correct submission:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “100”,
+“nodeId”: “44”}
+
+Yellow trigger:
+100-38,39,43
+
+ | Count of submissions before obtaining win state
+2 points for submitting correct answers on first attempt
+
+1 point for correct answer in 2 or 3 attempts
+
+0 point for anything else
+ | U5.C2
+ | 5.2
+ | Dungeon
+ | Third Level
+ | x
+
+ | 2 Points player interacts with condenser or evaporator panels 6 or less  times while  completing the third level
+1 Point player interacts with condenser or evaporator panels 7-10 times while  completing the third level
+0 points for anything else
+
+
+ | 5 total minimum  interactions with condenser or evaporator panels needed to progress
+
+All relevant event logs:
+“data”: {“floor”: “3”, "machineType": ("Condenser",”Evaporator
+“)
+}
+“eventType”: "WaterChamberEvent"
+
+Calculate the total count of the relevant event logs.
+ | Count of interactions with condenser or evaporator panels
+ | 
+ | 5.3
+ | 
+ | Fourth Level
+ | x
+ | 2 Points player interacts with condenser or evaporator panels 5 or less  times while  completing the fourth level
+1 Point player interacts with condenser or evaporator panels 6-9 times while  completing the fourth level
+0 points for anything else
+
+ | 4 total minimum  interactions with condenser or evaporator panels needed to progress
+
+All relevant event logs:
+“data”: {“floor”: “4”,
+"machineType": ("Condenser",”Evaporator
+“)}
+“eventType”: "WaterChamberEvent"
+
+Calculate the total count of the relevant event logs.
+
+ | Count of interactions with condenser or evaporator panels
+ | U5.C3
+ | 5.4
+ | Atmospheric Water 
+ | Argumentation: What happened to the water?
+ | x
+ | 3 Points correct answer within 3 attempts
+2 Points 4 attempts
+1 Point 5 attempts
+0 Points more than 5 attempts
+ | Check argument success event’s frequency and argument failure event’s frequency 
+
+Correct argumentation:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “108”,
+“nodeId”: “51”} or  {dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “108”,
+“nodeId”: “52”} or
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “98”,
+“nodeId”: “60”}
+
+Incorrect argumentation:
+108-25,32,33,37,39,41,47,53,54,55,59,60,61,62,63,64,65,66,68,69,70,72,73,74,75,76,78,79,80,82,83,84,85,86,87,88,89,90,91.
+ | 3 points for submitting correct answer within 3 attempts.
+2 points for submitting correct answer in 4 attempts.
+1 point for 5 attempts before submitting the correct answer.
+
+0 point for anything else
+ | U5.C4
+ | 5.5
+ | Atmospheric Water 
+ | Solar Still Activity
+ | x
+ | ½  Point: Selecting Tilted Out (icon on left)
+
+½  Point: Selecting X mark for no extra converting
+
+½  Point: Selecting cold for glass roof temperature 
+
+
+
+
+
+
+ | Count of submissions before obtaining win state
+
+Correct feedback:
+{dialogueEventType: “DialogueNodeEvent”,
+“conversationId”: “106”,
+“nodeId”: “35”} 
+
+Incorrect feedback:
+106-4,25,26,27,28,29,30,31,32,33,34
+ | 1.5 points possible (0.5 points for each selection of the solar still)
+ | 
+

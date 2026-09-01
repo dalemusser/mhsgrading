@@ -11,6 +11,8 @@
 
 This is a score-based progress point. There are three garden boxes, each time when the player places the camera on the correct soil type then the score will add one. In box 0, if the latest camera placement is gravel, then the score adds one; in box 1, if the latest camera placement is sand, then the score adds another one; in box 2, if the latest camera placement is clay, then the score further adds one. If the score is equal to or larger than 2, then the color turns to green; otherwise the color returns yellow.
 
+**Dialogue-feedback fallback (OR logic):** the box-id → soil-type mapping above is the primary check, but box ids have shifted between builds before, so the score is additionally secured by Dani's review feedback dialogues. When the player asks for the results (`DialogueNodeEvent:92:33`, "I'm all set. Let's see the results."), each garden box produces exactly one feedback dialogue: `DialogueNodeEvent:92:61` ("You chose the best soil for this plant") when the soil is correct, or `DialogueNodeEvent:92:62` ("Too Little") / `DialogueNodeEvent:92:63` ("Too Much") when it is wrong. A box therefore gains its point only when it shows `92:61` and not `92:62`/`92:63`, so the count of `92:61` events in the latest review round equals the number of correctly filled boxes — with no dependence on box ids. The final score is the **maximum** of the box-id score and this dialogue score (per box: the point is gained if either method shows it correct), so the grading survives a box-id change as long as the feedback dialogue still fires. Caveat: the feedback nodes carry no box id, so a re-inspected plant could in principle re-fire its feedback; anchoring the count to the latest `92:33` and capping it at 3 keeps this secondary evidence conservative.
+
 | Outcome | Condition |
 |---------|-----------|
 | **Green** | The score >= 2 |
@@ -29,6 +31,10 @@ This is a score-based progress point. There are three garden boxes, each time wh
 |------|-----------|
 | Trigger | `questFinishEvent:56` |
 | Target | TerasGardenBox |
+| Target | `DialogueNodeEvent:92:33` |
+| Target | `DialogueNodeEvent:92:61` |
+| Target | `DialogueNodeEvent:92:62` |
+| Target | `DialogueNodeEvent:92:63` |
 
 ---
 
@@ -55,7 +61,7 @@ const latestBox0 = db.logdata.findOne(
   }
 );
 
-if (latestBox0 && latestBox0.data && latestBox0.data.soilType === "Clay") {
+if (latestBox0 && latestBox0.data && latestBox0.data.soilType === "Gravel") {
   score += 1;
 }
 
@@ -89,11 +95,44 @@ const latestBox2 = db.logdata.findOne(
   }
 );
 
-if (latestBox2 && latestBox2.data && latestBox2.data.soilType === "Gravel") {
+if (latestBox2 && latestBox2.data && latestBox2.data.soilType === "Clay") {
   score += 1;
 }
 
-const color = (score >= 2) ? "green" : "yellow";
+// Dialogue-feedback fallback (box-id independent): in each results review,
+// one feedback node fires per garden box — 92:61 = correct soil,
+// 92:62 ("Too Little") / 92:63 ("Too Much") = wrong soil.
+// Count 92:61 in the latest review round (after the latest 92:33).
+const REVIEW_START_KEY = "DialogueNodeEvent:92:33";
+const CORRECT_FEEDBACK_KEY = "DialogueNodeEvent:92:61";
+
+const latestReview = db.logdata.findOne(
+  {
+    playerId: playerId,
+    eventKey: REVIEW_START_KEY
+  },
+  {
+    sort: { _id: -1 },
+    projection: { _id: 1 }
+  }
+);
+
+const feedbackFilter = {
+  playerId: playerId,
+  eventKey: CORRECT_FEEDBACK_KEY
+};
+
+if (latestReview) {
+  feedbackFilter._id = { $gt: latestReview._id };
+}
+
+const dialogueScore = Math.min(3, db.logdata.countDocuments(feedbackFilter));
+
+// OR logic: a box counts if either the box-id check or the feedback dialogue
+// shows it correct — take the better of the two scores.
+const finalScore = Math.max(score, dialogueScore);
+
+const color = (finalScore >= 2) ? "green" : "yellow";
 
 color;
 ```
@@ -153,7 +192,7 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
     }
   );
 
-  if (latestBox1 && latestBox1.data && latestBox1.data.soilType === "Clay") {
+  if (latestBox1 && latestBox1.data && latestBox1.data.soilType === "Gravel") {
     score += 1;
   }
 
@@ -191,11 +230,45 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
     }
   );
 
-  if (latestBox3 && latestBox3.data && latestBox3.data.soilType === "Gravel") {
+  if (latestBox3 && latestBox3.data && latestBox3.data.soilType === "Clay") {
     score += 1;
   }
 
-  score >= 2 ? "green" : "yellow";
+  // Dialogue-feedback fallback (box-id independent): in each results review,
+  // one feedback node fires per garden box — 92:61 = correct soil,
+  // 92:62 ("Too Little") / 92:63 ("Too Much") = wrong soil.
+  const REVIEW_START_KEY = "DialogueNodeEvent:92:33";
+  const CORRECT_FEEDBACK_KEY = "DialogueNodeEvent:92:61";
+
+  const latestReview = db.logdata.findOne(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventKey: REVIEW_START_KEY,
+      _id: { $gt: windowStartId, $lte: windowEndId }
+    },
+    {
+      sort: { _id: -1 },
+      projection: { _id: 1 }
+    }
+  );
+
+  // Count 92:61 in the latest review round; if the review-start node is
+  // missing from the logs, fall back to the whole attempt window.
+  const feedbackStartId = latestReview ? latestReview._id : windowStartId;
+
+  const dialogueScore = Math.min(3, db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventKey: CORRECT_FEEDBACK_KEY,
+    _id: { $gt: feedbackStartId, $lte: windowEndId }
+  }));
+
+  // OR logic: a box counts if either the box-id check or the feedback dialogue
+  // shows it correct — take the better of the two scores.
+  const finalScore = Math.max(score, dialogueScore);
+
+  finalScore >= 2 ? "green" : "yellow";
 }
 ```
 
@@ -219,7 +292,7 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
 
 **Quantities:** `wrongTime`, `wrong_box_id_1`, `wrong_box_id_2`
 
-**Determination:** The count of garden boxes with the correct latest soil placement is less than 2. Expected placements: Box 0 = Clay, Box 1 = Sand, Box 2 = Gravel.
+**Determination:** The count of garden boxes with the correct latest soil placement is less than 2. Expected placements: Box 0 = Gravel, Box 1 = Sand, Box 2 = Clay. The dialogue-feedback fallback (count of `DialogueNodeEvent:92:61` in the latest review round) also stayed below 2.
 
 **Teacher Guidance:** Remind students that water moves through different soils at different rates. Water will move fastest through sand, and slowest through clay. Water moves through sand at a slower rate than gravel and a faster rate than clay.
 
@@ -235,9 +308,9 @@ const WINDOW_START_KEY = "questActiveEvent:41";
 const WINDOW_END_KEY = "questFinishEvent:56";
 
 const EXPECTED_SOIL_BY_BOX = {
-  "0": "Clay",
+  "0": "Gravel",
   "1": "Sand",
-  "2": "Gravel"
+  "2": "Clay"
 };
 
 // 1) Find latest window start

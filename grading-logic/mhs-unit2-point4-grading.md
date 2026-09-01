@@ -18,8 +18,8 @@ Student must complete the watershed-flow matching independently and solve the gl
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `DialogueNodeEvent:23:17` (exclusive)
-- **End:** Latest `DialogueNodeEvent:23:17` (inclusive)
+- **Start:** `DialogueNodeEvent:22:18` (exclusive)
+- **End:** `DialogueNodeEvent:23:17` (inclusive)
 
 ---
 

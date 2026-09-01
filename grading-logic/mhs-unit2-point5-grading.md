@@ -40,11 +40,15 @@ score = pos_count - (neg_count / 3.0)
 
 **Positive Keys (correct identifications):**
 
-`DialogueNodeEvent:26:165` through `DialogueNodeEvent:26:186` (22 keys)
-
 <details>
 <summary>Full list</summary>
 
+- `DialogueNodeEvent:26:140`
+- `DialogueNodeEvent:26:142`
+- `DialogueNodeEvent:26:143`
+- `DialogueNodeEvent:26:146`
+- `DialogueNodeEvent:26:147`
+- `DialogueNodeEvent:26:148`
 - `DialogueNodeEvent:26:165`
 - `DialogueNodeEvent:26:166`
 - `DialogueNodeEvent:26:167`
@@ -72,11 +76,12 @@ score = pos_count - (neg_count / 3.0)
 
 **Negative Keys (incorrect identifications):**
 
-`DialogueNodeEvent:26:187` through `DialogueNodeEvent:26:211` (25 keys)
-
 <details>
 <summary>Full list</summary>
 
+- `DialogueNodeEvent:26:137`
+- `DialogueNodeEvent:26:144`
+- `DialogueNodeEvent:26:145`
 - `DialogueNodeEvent:26:187`
 - `DialogueNodeEvent:26:188`
 - `DialogueNodeEvent:26:189`
@@ -116,9 +121,11 @@ score = pos_count - (neg_count / 3.0)
 const playerId = "<playerId>";
 
 const POS_KEYS = [
+  "DialogueNodeEvent:26:140", "DialogueNodeEvent:26:142",
+  "DialogueNodeEvent:26:143", "DialogueNodeEvent:26:146",
+  "DialogueNodeEvent:26:147", "DialogueNodeEvent:26:148",
   "DialogueNodeEvent:26:165", "DialogueNodeEvent:26:166", "DialogueNodeEvent:26:167",
-  "DialogueNodeEvent:26:168", "DialogueNodeEvent:26:169", "DialogueNodeEvent:26:170",
-  "DialogueNodeEvent:26:171", "DialogueNodeEvent:26:172", "DialogueNodeEvent:26:173",
+  "DialogueNodeEvent:26:168", "DialogueNodeEvent:26:169", "DialogueNodeEvent:26:170", "DialogueNodeEvent:26:172", "DialogueNodeEvent:26:173",
   "DialogueNodeEvent:26:174", "DialogueNodeEvent:26:175", "DialogueNodeEvent:26:176",
   "DialogueNodeEvent:26:177", "DialogueNodeEvent:26:178", "DialogueNodeEvent:26:179",
   "DialogueNodeEvent:26:180", "DialogueNodeEvent:26:181", "DialogueNodeEvent:26:182",
@@ -127,8 +134,9 @@ const POS_KEYS = [
 ];
 
 const NEG_KEYS = [
-  "DialogueNodeEvent:26:187", "DialogueNodeEvent:26:188", "DialogueNodeEvent:26:189",
-  "DialogueNodeEvent:26:190", "DialogueNodeEvent:26:191", "DialogueNodeEvent:26:192",
+  "DialogueNodeEvent:26:137", "DialogueNodeEvent:26:144",
+  "DialogueNodeEvent:26:145",
+  "DialogueNodeEvent:26:187", "DialogueNodeEvent:26:188", "DialogueNodeEvent:26:189", "DialogueNodeEvent:26:191", "DialogueNodeEvent:26:192",
   "DialogueNodeEvent:26:193", "DialogueNodeEvent:26:194", "DialogueNodeEvent:26:195",
   "DialogueNodeEvent:26:196", "DialogueNodeEvent:26:197", "DialogueNodeEvent:26:198",
   "DialogueNodeEvent:26:199", "DialogueNodeEvent:26:200", "DialogueNodeEvent:26:201",
@@ -162,9 +170,11 @@ const playerId = "<playerId>";
 const TRIGGER_KEY = "DialogueNodeEvent:23:42";
 
 const POS_KEYS = [
+  "DialogueNodeEvent:26:140", "DialogueNodeEvent:26:142",
+  "DialogueNodeEvent:26:143", "DialogueNodeEvent:26:146",
+  "DialogueNodeEvent:26:147", "DialogueNodeEvent:26:148",
   "DialogueNodeEvent:26:165", "DialogueNodeEvent:26:166", "DialogueNodeEvent:26:167",
-  "DialogueNodeEvent:26:168", "DialogueNodeEvent:26:169", "DialogueNodeEvent:26:170",
-  "DialogueNodeEvent:26:171", "DialogueNodeEvent:26:172", "DialogueNodeEvent:26:173",
+  "DialogueNodeEvent:26:168", "DialogueNodeEvent:26:169", "DialogueNodeEvent:26:170", "DialogueNodeEvent:26:172", "DialogueNodeEvent:26:173",
   "DialogueNodeEvent:26:174", "DialogueNodeEvent:26:175", "DialogueNodeEvent:26:176",
   "DialogueNodeEvent:26:177", "DialogueNodeEvent:26:178", "DialogueNodeEvent:26:179",
   "DialogueNodeEvent:26:180", "DialogueNodeEvent:26:181", "DialogueNodeEvent:26:182",
@@ -173,8 +183,9 @@ const POS_KEYS = [
 ];
 
 const NEG_KEYS = [
-  "DialogueNodeEvent:26:187", "DialogueNodeEvent:26:188", "DialogueNodeEvent:26:189",
-  "DialogueNodeEvent:26:190", "DialogueNodeEvent:26:191", "DialogueNodeEvent:26:192",
+  "DialogueNodeEvent:26:137", "DialogueNodeEvent:26:144",
+  "DialogueNodeEvent:26:145",
+  "DialogueNodeEvent:26:187", "DialogueNodeEvent:26:188", "DialogueNodeEvent:26:189", "DialogueNodeEvent:26:191", "DialogueNodeEvent:26:192",
   "DialogueNodeEvent:26:193", "DialogueNodeEvent:26:194", "DialogueNodeEvent:26:195",
   "DialogueNodeEvent:26:196", "DialogueNodeEvent:26:197", "DialogueNodeEvent:26:198",
   "DialogueNodeEvent:26:199", "DialogueNodeEvent:26:200", "DialogueNodeEvent:26:201",
@@ -251,15 +262,16 @@ if (!latestTrigger) {
 # Count the number of wrong argument component selections
 
 NEGATIVE_DIALOGUE_KEYS = [
-    "DialogueNodeEvent:26:187", "DialogueNodeEvent:26:188", "DialogueNodeEvent:26:189",
-    "DialogueNodeEvent:26:190", "DialogueNodeEvent:26:191", "DialogueNodeEvent:26:192",
-    "DialogueNodeEvent:26:193", "DialogueNodeEvent:26:194", "DialogueNodeEvent:26:195",
-    "DialogueNodeEvent:26:196", "DialogueNodeEvent:26:197", "DialogueNodeEvent:26:198",
-    "DialogueNodeEvent:26:199", "DialogueNodeEvent:26:200", "DialogueNodeEvent:26:201",
-    "DialogueNodeEvent:26:202", "DialogueNodeEvent:26:203", "DialogueNodeEvent:26:204",
-    "DialogueNodeEvent:26:205", "DialogueNodeEvent:26:206", "DialogueNodeEvent:26:207",
-    "DialogueNodeEvent:26:208", "DialogueNodeEvent:26:209", "DialogueNodeEvent:26:210",
-    "DialogueNodeEvent:26:211"
+    "DialogueNodeEvent:26:137", "DialogueNodeEvent:26:144",
+  "DialogueNodeEvent:26:145",
+  "DialogueNodeEvent:26:187", "DialogueNodeEvent:26:188", "DialogueNodeEvent:26:189", "DialogueNodeEvent:26:191", "DialogueNodeEvent:26:192",
+  "DialogueNodeEvent:26:193", "DialogueNodeEvent:26:194", "DialogueNodeEvent:26:195",
+  "DialogueNodeEvent:26:196", "DialogueNodeEvent:26:197", "DialogueNodeEvent:26:198",
+  "DialogueNodeEvent:26:199", "DialogueNodeEvent:26:200", "DialogueNodeEvent:26:201",
+  "DialogueNodeEvent:26:202", "DialogueNodeEvent:26:203", "DialogueNodeEvent:26:204",
+  "DialogueNodeEvent:26:205", "DialogueNodeEvent:26:206", "DialogueNodeEvent:26:207",
+  "DialogueNodeEvent:26:208", "DialogueNodeEvent:26:209", "DialogueNodeEvent:26:210",
+  "DialogueNodeEvent:26:211"
 ]
 
 negative_attempts = coll.count_documents({
@@ -279,8 +291,9 @@ negative_attempts
 const playerId = "<playerId>";
 
 const NEGATIVE_DIALOGUE_KEYS = [
-  "DialogueNodeEvent:26:187", "DialogueNodeEvent:26:188", "DialogueNodeEvent:26:189",
-  "DialogueNodeEvent:26:190", "DialogueNodeEvent:26:191", "DialogueNodeEvent:26:192",
+  "DialogueNodeEvent:26:137", "DialogueNodeEvent:26:144",
+  "DialogueNodeEvent:26:145",
+  "DialogueNodeEvent:26:187", "DialogueNodeEvent:26:188", "DialogueNodeEvent:26:189", "DialogueNodeEvent:26:191", "DialogueNodeEvent:26:192",
   "DialogueNodeEvent:26:193", "DialogueNodeEvent:26:194", "DialogueNodeEvent:26:195",
   "DialogueNodeEvent:26:196", "DialogueNodeEvent:26:197", "DialogueNodeEvent:26:198",
   "DialogueNodeEvent:26:199", "DialogueNodeEvent:26:200", "DialogueNodeEvent:26:201",
@@ -308,8 +321,9 @@ const playerId = "<playerId>";
 const TRIGGER_KEY = "DialogueNodeEvent:23:42";
 
 const NEGATIVE_DIALOGUE_KEYS = [
-  "DialogueNodeEvent:26:187", "DialogueNodeEvent:26:188", "DialogueNodeEvent:26:189",
-  "DialogueNodeEvent:26:190", "DialogueNodeEvent:26:191", "DialogueNodeEvent:26:192",
+  "DialogueNodeEvent:26:137", "DialogueNodeEvent:26:144",
+  "DialogueNodeEvent:26:145",
+  "DialogueNodeEvent:26:187", "DialogueNodeEvent:26:188", "DialogueNodeEvent:26:189", "DialogueNodeEvent:26:191", "DialogueNodeEvent:26:192",
   "DialogueNodeEvent:26:193", "DialogueNodeEvent:26:194", "DialogueNodeEvent:26:195",
   "DialogueNodeEvent:26:196", "DialogueNodeEvent:26:197", "DialogueNodeEvent:26:198",
   "DialogueNodeEvent:26:199", "DialogueNodeEvent:26:200", "DialogueNodeEvent:26:201",

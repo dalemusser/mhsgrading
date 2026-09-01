@@ -3,7 +3,7 @@
 **Activity:** Well What Have We Here?: Water Table Basics
 
 **Trigger(Start) Event:** `DialogueNodeEvent:88:0`
-**Trigger(End) Event:** `DialogueNodeEvent:88:10`
+**Trigger(End) Event:** The close of the soil key puzzle in Unit 4 — the `Soil Key Puzzle` event with `Soil Key Puzzle Status` = `Finished` and `Unit` matching Unit 4 (currently `"Unit 4 Dev"`; an eventType + data match, not an eventKey)
 
 ---
 
@@ -19,7 +19,7 @@ This progress point is a score-based assessment rubric. First, it will check whe
 ### Attempt Window (Production)
 
 - **Start:** Previous `DialogueNodeEvent:88:0` (exclusive)
-- **End:** Latest `DialogueNodeEvent:88:10` (inclusive)
+- **End:** Latest Unit 4 `Soil Key Puzzle` event with `Soil Key Puzzle Status` = `Finished` (inclusive)
 
 ---
 
@@ -27,7 +27,7 @@ This progress point is a score-based assessment rubric. First, it will check whe
 
 | Role | Event Key |
 |------|-----------|
-| Trigger | `DialogueNodeEvent:88:10` |
+| Trigger | `Soil Key Puzzle` event with `Soil Key Puzzle Status` = `Finished` and `Unit` matching Unit 4 (eventType + data match, not an eventKey) |
 | Target | `DialogueNodeEvent:88:5` |
 | Target | soil key puzzle |
 
@@ -37,7 +37,8 @@ This progress point is a score-based assessment rubric. First, it will check whe
 
 ```js
 // Unit 4, Point 1 — Analytics-matching script
-// Trigger eventKey: "questActiveEvent:39"
+// Trigger: close of the Unit 4 soil key puzzle
+// ("Soil Key Puzzle" event, "Soil Key Puzzle Status" = "Finished", Unit matching "Unit 4")
 
 const playerId = "<playerId>";
 
@@ -46,6 +47,9 @@ const CORRECT_KEY = "DialogueNodeEvent:88:5";
 const EVENT_TYPE = "Soil Key Puzzle";
 const START_STATUS = "Started";
 const END_STATUS = "Finished";
+// data.Unit holds the scene name (currently "Unit 4 Dev"); match by prefix
+// because the soil key puzzle also fires in Units 2 and 3.
+const UNIT_4 = /^Unit 4/;
 
 let score = 0.0;
 
@@ -65,7 +69,8 @@ const startDoc = db.logdata.findOne(
       game: "mhs",
       playerId: playerId,
       eventType: EVENT_TYPE,
-      "data.Soil Key Puzzle Status": START_STATUS
+      "data.Soil Key Puzzle Status": START_STATUS,
+      "data.Unit": UNIT_4
     },
     { sort: { _id: 1 }}
   );
@@ -78,7 +83,8 @@ if (startDoc && startDoc.serverTimestamp) {
         game: "mhs",
         playerId: playerId,
         eventType: EVENT_TYPE,
-        "data.Soil Key Puzzle Status": END_STATUS
+        "data.Soil Key Puzzle Status": END_STATUS,
+        "data.Unit": UNIT_4
       },
       { sort: { _id: 1 }}
     );
@@ -106,17 +112,21 @@ color;
 
 ```js
 // Unit 4, Point 1 — Attempt-based standalone production script (latest attempt)
-// Trigger eventKey: "questActiveEvent:39"
+// Start anchor: DialogueNodeEvent:88:0
+// End anchor: close of the Unit 4 soil key puzzle
+// ("Soil Key Puzzle" event, "Soil Key Puzzle Status" = "Finished", Unit matching "Unit 4")
 
 const playerId = "<playerId>";
 
 const START_KEY = "DialogueNodeEvent:88:0";
-const END_KEY = "DialogueNodeEvent:88:10";
 const CORRECT_KEY = "DialogueNodeEvent:88:5";
 
 const EVENT_TYPE = "Soil Key Puzzle";
 const START_STATUS = "Started";
 const END_STATUS = "Finished";
+// data.Unit holds the scene name (currently "Unit 4 Dev"); match by prefix
+// because the soil key puzzle also fires in Units 2 and 3.
+const UNIT_4 = /^Unit 4/;
 
 // 1) Most recent start anchor
 const latestStart = db.logdata.findOne(
@@ -124,10 +134,16 @@ const latestStart = db.logdata.findOne(
   { sort: { _id: -1 }, projection: { _id: 1 } }
 );
 
-// 2) Most recent end anchor
+// 2) Most recent end anchor: latest Unit 4 soil key puzzle close
 const latestEnd = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: END_KEY },
-  { sort: { _id: -1 }, projection: { _id: 1 } }
+  {
+    game: "mhs",
+    playerId: playerId,
+    eventType: EVENT_TYPE,
+    "data.Soil Key Puzzle Status": END_STATUS,
+    "data.Unit": UNIT_4
+  },
+  { sort: { _id: -1 }, projection: { _id: 1, serverTimestamp: 1 } }
 );
 
 // Must have both anchors
@@ -156,13 +172,14 @@ if (!latestStart || !latestEnd) {
 
   if (has8805) score += 0.5;
 
-  // Find Started inside window (earliest)
+  // Find Started inside window (earliest, Unit 4 only)
   const startDoc = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
       eventType: EVENT_TYPE,
       "data.Soil Key Puzzle Status": START_STATUS,
+      "data.Unit": UNIT_4,
       _id: { $gt: windowStartId, $lte: windowEndId }
     },
     { sort: { _id: 1 }, projection: { serverTimestamp: 1, _id: 1 } }
@@ -170,26 +187,13 @@ if (!latestStart || !latestEnd) {
 
   let durationSeconds = null;
 
-  if (startDoc && startDoc.serverTimestamp) {
-    // Find Finished AFTER startDoc, still within window
-    const endDoc = db.logdata.findOne(
-      {
-        game: "mhs",
-        playerId: playerId,
-        eventType: EVENT_TYPE,
-        "data.Soil Key Puzzle Status": END_STATUS,
-        _id: { $gt: startDoc._id, $lte: windowEndId }
-      },
-      { sort: { _id: 1 }, projection: { serverTimestamp: 1, _id: 1 } }
-    );
+  // The end anchor itself is the puzzle close — its timestamp is the end time.
+  if (startDoc && startDoc.serverTimestamp && latestEnd.serverTimestamp) {
+    const startMs = new Date(startDoc.serverTimestamp).getTime();
+    const endMs = new Date(latestEnd.serverTimestamp).getTime();
 
-    if (endDoc && endDoc.serverTimestamp) {
-      const startMs = new Date(startDoc.serverTimestamp).getTime();
-      const endMs = new Date(endDoc.serverTimestamp).getTime();
-
-      if (!Number.isNaN(startMs) && !Number.isNaN(endMs)) {
-        durationSeconds = (endMs - startMs) / 1000.0;
-      }
+    if (!Number.isNaN(startMs) && !Number.isNaN(endMs)) {
+      durationSeconds = (endMs - startMs) / 1000.0;
     }
   }
 
@@ -209,11 +213,11 @@ if (!latestStart || !latestEnd) {
 
 ### NO_TRIGGER
 
-**Short Description:** Student has not yet completed the trigger event (`DialogueNodeEvent:88:10`) for this activity.
+**Short Description:** Student has not yet completed the trigger event (the close of the Unit 4 soil key puzzle) for this activity.
 
 **Instructor Message:** The student has not yet reached the point in the game where this progress point is evaluated.
 
-**Determination:** The trigger event `DialogueNodeEvent:88:10` has not been logged.
+**Determination:** No `Soil Key Puzzle` event with `Soil Key Puzzle Status` = `Finished` and `Unit` matching Unit 4 has been logged.
 
 ### SCORE_BELOW_THRESHOLD
 
@@ -269,11 +273,13 @@ hasCorrectChoice;
 const playerId = "<playerId>";
 
 const START_KEY = "DialogueNodeEvent:88:0";
-const END_KEY = "DialogueNodeEvent:88:10";
 
 const EVENT_TYPE = "Soil Key Puzzle";
 const START_STATUS = "Started";
 const END_STATUS = "Finished";
+// data.Unit holds the scene name (currently "Unit 4 Dev"); match by prefix
+// because the soil key puzzle also fires in Units 2 and 3.
+const UNIT_4 = /^Unit 4/;
 
 // Latest attempt window
 const latestStart = db.logdata.findOne(
@@ -288,15 +294,18 @@ const latestStart = db.logdata.findOne(
   }
 );
 
+// End anchor: latest Unit 4 soil key puzzle close
 const latestEnd = db.logdata.findOne(
   {
     game: "mhs",
     playerId: playerId,
-    eventKey: END_KEY
+    eventType: EVENT_TYPE,
+    "data.Soil Key Puzzle Status": END_STATUS,
+    "data.Unit": UNIT_4
   },
   {
     sort: { _id: -1 },
-    projection: { _id: 1 }
+    projection: { _id: 1, serverTimestamp: 1 }
   }
 );
 
@@ -312,6 +321,7 @@ if (latestStart && latestEnd && latestEnd._id > latestStart._id) {
       playerId: playerId,
       eventType: EVENT_TYPE,
       "data.Soil Key Puzzle Status": START_STATUS,
+      "data.Unit": UNIT_4,
       _id: { $gt: windowStartId, $lte: windowEndId }
     },
     {
@@ -320,28 +330,13 @@ if (latestStart && latestEnd && latestEnd._id > latestStart._id) {
     }
   );
 
-  if (startDoc && startDoc.serverTimestamp) {
-    const endDoc = db.logdata.findOne(
-      {
-        game: "mhs",
-        playerId: playerId,
-        eventType: EVENT_TYPE,
-        "data.Soil Key Puzzle Status": END_STATUS,
-        _id: { $gt: startDoc._id, $lte: windowEndId }
-      },
-      {
-        sort: { _id: 1 },
-        projection: { _id: 1, serverTimestamp: 1 }
-      }
-    );
+  // The end anchor itself is the puzzle close — its timestamp is the end time.
+  if (startDoc && startDoc.serverTimestamp && latestEnd.serverTimestamp) {
+    const startMs = new Date(startDoc.serverTimestamp).getTime();
+    const endMs = new Date(latestEnd.serverTimestamp).getTime();
 
-    if (endDoc && endDoc.serverTimestamp) {
-      const startMs = new Date(startDoc.serverTimestamp).getTime();
-      const endMs = new Date(endDoc.serverTimestamp).getTime();
-
-      if (!Number.isNaN(startMs) && !Number.isNaN(endMs)) {
-        durationSeconds = (endMs - startMs) / 1000.0;
-      }
+    if (!Number.isNaN(startMs) && !Number.isNaN(endMs)) {
+      durationSeconds = (endMs - startMs) / 1000.0;
     }
   }
 }

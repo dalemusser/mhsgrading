@@ -2,7 +2,7 @@
 
 **Activity:** Infiltration Glyph + Alien Well Floors 1 & 2
 
-**Trigger(Start) Event:** `DialogueNodeEvent:88:10`
+**Trigger(Start) Event:** The close of the soil key puzzle in Unit 4 — the `Soil Key Puzzle` event with `Soil Key Puzzle Status` = `Finished` and `Unit` matching Unit 4 (currently `"Unit 4 Dev"`; an eventType + data match, not an eventKey)
 **Trigger(End) Event:** `questActiveEvent:48`
 
 ---
@@ -20,7 +20,7 @@ Another check is to see whether the player figured out the correct matches by th
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `DialogueNodeEvent:88:10` (exclusive)
+- **Start:** Latest Unit 4 `Soil Key Puzzle` event with `Soil Key Puzzle Status` = `Finished` before the trigger (exclusive)
 - **End:** Latest `questActiveEvent:48` (inclusive)
 
 ---
@@ -30,6 +30,7 @@ Another check is to see whether the player figured out the correct matches by th
 | Role | Event Key |
 |------|-----------|
 | Trigger | `questActiveEvent:48` |
+| Window Start | `Soil Key Puzzle` event with `Soil Key Puzzle Status` = `Finished` and `Unit` matching Unit 4 (eventType + data match, not an eventKey) |
 | Target | `DialogueNodeEvent:88:11` |
 | Target | `DialogueNodeEvent:102:9` |
 | Target | `DialogueNodeEvent:102:10` |
@@ -83,10 +84,18 @@ color;
 ```js
 // Unit 4, Point 2 — Attempt-based standalone production script (latest attempt)
 // Trigger eventKey: "questActiveEvent:48"
+// Window start: close of the Unit 4 soil key puzzle
+// ("Soil Key Puzzle" event, "Soil Key Puzzle Status" = "Finished", Unit matching "Unit 4")
 
 const playerId = "<playerId>";
 
 const TRIGGER_KEY = "questActiveEvent:48";
+
+const SOIL_KEY_EVENT_TYPE = "Soil Key Puzzle";
+const SOIL_KEY_END_STATUS = "Finished";
+// data.Unit holds the scene name (currently "Unit 4 Dev"); match by prefix
+// because the soil key puzzle also fires in Units 2 and 3.
+const UNIT_4 = /^Unit 4/;
 
 const NEGATIVE_KEYS = [
   "DialogueNodeEvent:102:9",
@@ -104,17 +113,20 @@ const latestTrigger = db.logdata.findOne(
 if (!latestTrigger) {
   "yellow";
 } else {
-  const prevTrigger = db.logdata.findOne(
+  // Window start: latest Unit 4 soil key puzzle close before the trigger
+  const soilKeyClose = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
-      eventKey: TRIGGER_KEY,
+      eventType: SOIL_KEY_EVENT_TYPE,
+      "data.Soil Key Puzzle Status": SOIL_KEY_END_STATUS,
+      "data.Unit": UNIT_4,
       _id: { $lt: latestTrigger._id }
     },
     { sort: { _id: -1 }}
   );
 
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
+  const windowStartId = soilKeyClose ? soilKeyClose._id : ObjectId("000000000000000000000000");
   const windowEndId = latestTrigger._id;
 
   const has_8811 =
