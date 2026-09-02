@@ -36,3 +36,13 @@ go.work.sum
 
 # Production
 .html
+
+# Python
+__pycache__/
+*.pyc
+
+# Generated per-run override config (written by grading-readiness-audit/scripts/run_audit.py)
+grading-readiness-audit/config/audit-config.override.yaml
+
+# Ad-hoc rubric-validation runs (informational scratch results)
+rubric-validation/outputs/adhoc-*/

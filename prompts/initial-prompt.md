@@ -1,3 +1,5 @@
+> **Note (2026-09-02):** folders referenced below were renamed during the repository refinement: `tests/` → `rubric-validation/`, `gameplay-logs-test/` → `build-log-qa/`, `gameplay-logs-pp-audit/` → `grading-readiness-audit/`. This prompt is kept as a historical task record.
+
 # Context
 1. This folder contains programming codes for a data visualization dashboard. Each markdown file following the format of `mhs-unitx-pointx-grading.md` contains programing codes that determine what is the color showing on the dashboard based on how a player performed at the specifc game point. Each markdown file also contains additional information regarding the game context descriptions as well as once the color returns yellow, what reasons caused it.
 2. the order of the included markdown files should be unit1-point1, unit1-point2, ..., unit2-point1, ..., unit2-point7, ..., unit5-point4.

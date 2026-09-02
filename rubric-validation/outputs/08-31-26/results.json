@@ -1,0 +1,248 @@
+{
+  "run": "08-31-26",
+  "log": "C:/Users/wenyi/OneDrive/Documents/GitHub/mhsgrading/playthrough-logs-and-results/08-31-26/wenyi083126-1.stratalog.logdata.json",
+  "mode": "fixture",
+  "summary": {
+    "points": 26,
+    "passed": 26,
+    "failed": 0
+  },
+  "results": [
+    {
+      "unit": 1,
+      "point": 1,
+      "name": "Getting Your Space Legs",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 1,
+      "point": 2,
+      "name": "Info and Intros",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 1,
+      "point": 3,
+      "name": "Defend the Expedition",
+      "expected": "yellow",
+      "actual": "yellow",
+      "passed": true,
+      "diagnostics": {
+        "WRONG_ARG_SELECTED": "attempt_number=2 (yellow nodes hit 1x in window) — student needed multiple tries to build the correct argument"
+      }
+    },
+    {
+      "unit": 1,
+      "point": 4,
+      "name": "What Was That?",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 2,
+      "point": 1,
+      "name": "Escape the Ruin",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 2,
+      "point": 2,
+      "name": "Foraged Forging",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 2,
+      "point": 3,
+      "name": "Getting the Band Back Together Part II",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 2,
+      "point": 4,
+      "name": "Investigate the Temple",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 2,
+      "point": 5,
+      "name": "Classified Information",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 2,
+      "point": 6,
+      "name": "Which Watershed? Part I",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 2,
+      "point": 7,
+      "name": "Which Watershed? Part II",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 3,
+      "point": 1,
+      "name": "Good Morning Cadet + Establishing a Foothold",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 3,
+      "point": 2,
+      "name": "Pollution Solution",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 3,
+      "point": 3,
+      "name": "Pollution Argument",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 3,
+      "point": 4,
+      "name": "Forsaken Facility",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 3,
+      "point": 5,
+      "name": "Plant the Superfruit Seeds",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 4,
+      "point": 1,
+      "name": "Well What Have We Here?: Water Table Basics",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 4,
+      "point": 2,
+      "name": "Infiltration Glyph + Alien Well Floors 1 & 2",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 4,
+      "point": 3,
+      "name": "Alien Well Floor 3 & 4",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 4,
+      "point": 4,
+      "name": "Alien Well Floor 5 + You Know the Drill",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 4,
+      "point": 5,
+      "name": "Saving Cadet Anderson",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 4,
+      "point": 6,
+      "name": "Desert Delicacies",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 5,
+      "point": 1,
+      "name": "If I Had a Nickel- Floors 1 & 2",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 5,
+      "point": 2,
+      "name": "If I Had a Nickel- Floors 3 & 4",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 5,
+      "point": 3,
+      "name": "What Happened Here?",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 5,
+      "point": 4,
+      "name": "Water Problems Require Water Solutions",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    }
+  ]
+}

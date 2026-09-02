@@ -1,0 +1,4 @@
+# Python 3.10+ (developed on 3.13). Install with: pip install -r requirements.txt
+pyyaml     # all three pipelines (configs, manifests)
+pandas     # build-log-qa
+openpyxl   # grading-readiness-audit (Dialogue-ID-Texts.xlsx)

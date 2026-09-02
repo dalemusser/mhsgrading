@@ -1,3 +1,5 @@
+> **Note (2026-09-02):** folders referenced below were renamed during the repository refinement: `tests/` → `rubric-validation/`, `gameplay-logs-test/` → `build-log-qa/`, `gameplay-logs-pp-audit/` → `grading-readiness-audit/`. This prompt is kept as a historical task record.
+
 # Task: Build a Reusable Gameplay Log Audit Pipeline for Mission HydroSci
 
 ## Background

@@ -1,3 +1,8 @@
+> **Note (2026-09-02):** historical results — round 1 of the suite now living in
+> `rubric-validation/` (then `tests/`), against the grading logic as of 2026-06-02.
+> The two FAILs below (U2P6, U3P3) were window-anchor bugs fixed in the grading
+> markdowns on 2026-07-22; current results live in `rubric-validation/outputs/`.
+
 # MHS Dashboard Grading — Test Results
 
 **Date:** 2026-06-02

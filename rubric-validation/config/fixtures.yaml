@@ -1,0 +1,59 @@
+# Fixture manifest for the rubric-validation suite.
+#
+# Each fixture pairs one gameplay-log dump (a controlled, already-reviewed
+# playthrough) with the dashboard colors the CURRENT production grading logic
+# is expected to produce for it. `run_all.py` (and each `test_uXpY.py` run
+# standalone) grades the fixture log and compares against `expected`.
+#
+# Adding a fixture for a new build:
+#   1. Drop the log dump under playthrough-logs-and-results/<build-id>/.
+#   2. Establish the expected colors independently — normally by running the
+#      grading-readiness-audit on that build and reviewing its
+#      grading-validation output (see grading-readiness-audit/README.md).
+#   3. Add an entry here mirroring the one below and, if it should become the
+#      default regression fixture, update `default_fixture`.
+#
+# Log paths are relative to the repository root.
+
+default_fixture: "08-31-26"
+
+fixtures:
+  "08-31-26":
+    log: playthrough-logs-and-results/08-31-26/wenyi083126-1.stratalog.logdata.json
+    description: >
+      Full playthrough of the 08-31-26 weekly build (5,977 records, single
+      player, identified via top-level user_id).
+    provenance: >
+      Expected colors established by the grading-readiness-audit run
+      08-31-26-run2 (2026-09-01), which executed the current production
+      grading logic against this dump: 18 points verified against an
+      independent expectation (PASS), 8 points executed without an
+      independent cross-check and are carried here as reviewed regression
+      baselines: U2P2, U2P6, U3P4, U4P4, U5P1, U5P2, U5P3, U5P4.
+    expected:
+      U1P1: green
+      U1P2: green
+      U1P3: yellow
+      U1P4: green
+      U2P1: green
+      U2P2: green
+      U2P3: green
+      U2P4: green
+      U2P5: green
+      U2P6: green
+      U2P7: green
+      U3P1: green
+      U3P2: green
+      U3P3: green
+      U3P4: green
+      U3P5: green
+      U4P1: green
+      U4P2: green
+      U4P3: green
+      U4P4: green
+      U4P5: green
+      U4P6: green
+      U5P1: green
+      U5P2: green
+      U5P3: green
+      U5P4: green
