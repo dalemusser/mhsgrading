@@ -5,7 +5,7 @@ threshold within the latest attempt window. The window is anchored on the latest
 START (`questActiveEvent:43`) and latest END (`questFinishEvent:43`) found
 independently; if either is missing or the end precedes the start => yellow.
 Inside the window green iff the success key `DialogueNodeEvent:100:44` is present
-AND the negative-feedback count is <= 2.
+AND the negative-feedback count is 0.
 """
 
 from mhs_harness import GAME
@@ -54,7 +54,7 @@ def grade(coll, pid):
     cnt = coll.count_documents(
         {"game": GAME, "playerId": pid, "eventKey": {"$in": NEG_KEYS}, **win_filter}
     )
-    return "yellow" if cnt > 2 else "green"
+    return "yellow" if cnt > 0 else "green"
 
 
 def diagnose(coll, pid):
@@ -83,9 +83,9 @@ def diagnose(coll, pid):
     cnt = coll.count_documents(
         {"game": GAME, "playerId": pid, "eventKey": {"$in": NEG_KEYS}, **win_filter}
     )
-    if cnt > 2:
+    if cnt > 0:
         out["BAD_FEEDBACK"] = (
-            f"negative_feedback_number={cnt} (>2) — too much negative feedback "
+            f"negative_feedback_number={cnt} (>0) — received negative feedback "
             f"before solving the puzzle"
         )
     return out

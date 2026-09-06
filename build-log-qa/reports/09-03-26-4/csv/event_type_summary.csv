@@ -1,0 +1,23 @@
+﻿eventType,record_count,percent_of_total,session_count,first_timestamp,last_timestamp,active_span,scene_count,observed_scenes,eventKey_records,data_fields,null_value_count
+PuzzlePieceVisibleEvent,3244,36.79,1,2026-09-06T02:00:25.853000+00:00,2026-09-06T16:32:00.736000+00:00,14h 31m,4,Unit 2 Prod (Refactor); Unit 3 Dungeon Dev; Unit 4 Dev; Unit 5 Dev - Dungeon,0,actionType; pieceId; timestamp,0
+InputEvent,2033,23.06,1,2026-09-06T00:15:38.310000+00:00,2026-09-06T16:32:00.701000+00:00,16h 16m,8,Unit 1 Dev; Unit 2 Prod (Refactor); Unit 3 Dev; Unit 3 Dungeon Dev; Unit 4 Dev; Unit 4 Dev - Anderson Base; Unit 4 Dev - Dungeon; Unit 5 Dev - Dungeon,0,Value; actionType; key; playerOrDrone,0
+DialogueEvent,1655,18.77,1,2026-09-06T00:15:00.763000+00:00,2026-09-06T16:31:42.864000+00:00,16h 16m,8,Unit 1 Dev; Unit 2 Prod (Refactor); Unit 3 Dev; Unit 3 Dungeon Dev; Unit 4 Dev; Unit 4 Dev - Anderson Base; Unit 4 Dev - Dungeon; Unit 5 Dev - Dungeon,1063,conversationId; dialogueEventType; nodeId,0
+PlayerPositionEvent,1280,14.52,1,2026-09-06T00:14:44.230000+00:00,2026-09-06T16:31:57.735000+00:00,16h 17m,8,Unit 1 Dev; Unit 2 Prod (Refactor); Unit 3 Dev; Unit 3 Dungeon Dev; Unit 4 Dev; Unit 4 Dev - Anderson Base; Unit 4 Dev - Dungeon; Unit 5 Dev - Dungeon,0,position,0
+ObjectInterEvent,253,2.87,1,2026-09-06T00:14:44.232000+00:00,2026-09-06T16:31:58.968000+00:00,16h 17m,8,Unit 1 Dev; Unit 2 Prod (Refactor); Unit 3 Dev; Unit 3 Dungeon Dev; Unit 4 Dev; Unit 4 Dev - Anderson Base; Unit 4 Dev - Dungeon; Unit 5 Dev - Dungeon,0,actionType; objectName,0
+argumentationNodeEvent,125,1.42,1,2026-09-06T01:53:42.905000+00:00,2026-09-06T16:20:57.375000+00:00,14h 27m,4,Unit 1 Dev; Unit 2 Prod (Refactor); Unit 3 Dev; Unit 4 Dev - Anderson Base,0,actionType; argumentationTitle; nodeName,0
+questEvent,64,0.73,1,2026-09-06T00:15:00.760000+00:00,2026-09-06T16:28:47.131000+00:00,16h 13m,8,Unit 1 Dev; Unit 2 Prod (Refactor); Unit 3 Dev; Unit 3 Dungeon Dev; Unit 4 Dev; Unit 4 Dev - Anderson Base; Unit 4 Dev - Dungeon; Unit 5 Dev - Dungeon,64,questEventType; questID; questName; questSuccessOrFailure,0
+Soil Key Puzzle,38,0.43,1,2026-09-06T02:08:45.039000+00:00,2026-09-06T16:10:12.636000+00:00,14h 1m,3,Unit 2 Prod (Refactor); Unit 3 Dev; Unit 4 Dev,0,Soil Key Puzzle Status; Unit; actionType; currentSoilType; isCorrectSelection; waterLevelStatus; waterRetentionChange,0
+gameWindowUnfocusEvent,25,0.28,1,2026-09-06T00:15:01.809000+00:00,2026-09-06T16:27:21.756000+00:00,16h 12m,4,Unit 1 Dev; Unit 2 Prod (Refactor); Unit 3 Dev; Unit 4 Dev,0,<empty>,0
+gameWindowFocusEvent,24,0.27,1,2026-09-06T00:15:05.450000+00:00,2026-09-06T16:27:32.192000+00:00,16h 12m,4,Unit 1 Dev; Unit 2 Prod (Refactor); Unit 3 Dev; Unit 4 Dev,0,<empty>,0
+TopographicMapEvent,22,0.25,1,2026-09-06T02:00:44.258000+00:00,2026-09-06T15:58:34.796000+00:00,13h 57m,2,Unit 2 Prod (Refactor); Unit 3 Dev,0,actionType; featureUsed; legendName; location,0
+argumentationEvent,12,0.14,1,2026-09-06T01:53:49.975000+00:00,2026-09-06T16:20:59.510000+00:00,14h 27m,4,Unit 1 Dev; Unit 2 Prod (Refactor); Unit 3 Dev; Unit 4 Dev - Anderson Base,0,actionType; argumentationDescription; argumentationTitle,0
+argumentationToolEvent,8,0.09,1,2026-09-06T01:53:49.241000+00:00,2026-09-06T15:43:43.777000+00:00,13h 49m,3,Unit 1 Dev; Unit 2 Prod (Refactor); Unit 3 Dev,0,actionType; argumentationTitle; toolName,0
+gameStartEvent,7,0.08,1,2026-09-06T00:14:37.471000+00:00,2026-09-06T16:28:44.725000+00:00,16h 14m,1,MainMenu,0,<empty>,0
+TerasGardenBox,6,0.07,1,2026-09-06T16:23:06.629000+00:00,2026-09-06T16:23:45.678000+00:00,39.0s,1,Unit 4 Dev,0,actionType; boxId; soilType,0
+argumentationAnswerEvent,5,0.06,1,2026-09-06T01:53:56.011000+00:00,2026-09-06T16:20:59.476000+00:00,14h 27m,4,Unit 1 Dev; Unit 2 Prod (Refactor); Unit 3 Dev; Unit 4 Dev - Anderson Base,0,actionType; answerSubmitted; argumentationTitle,0
+soilMachine,5,0.06,1,2026-09-06T16:13:43.349000+00:00,2026-09-06T16:15:49.800000+00:00,2m 6s,1,Unit 4 Dev - Dungeon,0,actionType; canisterType; floor; machine; row,0
+EndOfUnit,4,0.05,1,2026-09-06T01:56:37.548000+00:00,2026-09-06T16:28:25.460000+00:00,14h 31m,4,Unit 1 Dev; Unit 2 Prod (Refactor); Unit 3 Dev; Unit 4 Dev,0,Unit,0
+DEBUGMenu,2,0.02,1,2026-09-06T15:49:44.442000+00:00,2026-09-06T15:49:46.914000+00:00,2.5s,1,Unit 3 Dev,0,actionType; isOpened,0
+DaniEvent,2,0.02,1,2026-09-06T02:21:45.541000+00:00,2026-09-06T14:58:13.303000+00:00,12h 36m,1,Unit 2 Prod (Refactor),0,actionType; toolName,0
+crash,2,0.02,1,,,?,1,<missing sceneName>,0,isPWA; message; phase; stack; type; unitId; workspace,0
+chatEvent,1,0.01,1,2026-09-06T16:28:47.103000+00:00,2026-09-06T16:28:47.103000+00:00,0.0s,1,Unit 5 Dev - Dungeon,0,actionType; chatID,0

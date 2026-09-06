@@ -1,0 +1,1721 @@
+{
+  "build": "09-03-26-4",
+  "adaptation": {
+    "player_field_translation": "playerId -> user_id",
+    "reason": "09-03-26-4 export records identify the player via 'user_id'; production scripts filter on playerId. Translation applied openly; whether the LIVE grading DB also changed cannot be verified from this repository.",
+    "player_id_used": "6a9a078fe2ada9cb13ea75c4"
+  },
+  "results": [
+    {
+      "progress_point": "U1P1",
+      "name": "Getting Your Space Legs",
+      "executor": "rubric-validation/test_u1p1.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "green",
+      "query_trace": [],
+      "attempt_window": {
+        "anchors": "DialogueNodeEvent:31:29",
+        "start_id": "6a9cb141485cab4c954055e6",
+        "end_id": "6a9cc6b6485cab4c95405c0c",
+        "records_in_window": 783
+      },
+      "diagnostics": {},
+      "doc_window": null,
+      "expected_color": "green",
+      "expected_basis": "completion-only rubric; end evidence observed in logs",
+      "expected_confidence": "HIGH",
+      "grading_test_status": "PASS",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U1P2",
+      "name": "Info and Intros",
+      "executor": "rubric-validation/test_u1p2.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "green",
+      "query_trace": [],
+      "attempt_window": {
+        "anchors": "DialogueNodeEvent:30:98",
+        "start_id": "000000000000000000000000",
+        "end_id": "6a9cc790485cab4c95405cd4",
+        "records_in_window": 1008
+      },
+      "diagnostics": {},
+      "doc_window": null,
+      "expected_color": "green",
+      "expected_basis": "completion-only rubric; end evidence observed in logs",
+      "expected_confidence": "HIGH",
+      "grading_test_status": "PASS",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U1P3",
+      "name": "Defend the Expedition",
+      "executor": "rubric-validation/test_u1p3.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "green",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questActiveEvent:34"
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questActiveEvent:34",
+            "_id": {
+              "$lt": "6a9cc7de485cab4c95405d8c"
+            }
+          },
+          "matches": 0
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": {
+              "$in": [
+                "DialogueNodeEvent:70:25"
+              ]
+            },
+            "_id": {
+              "$gt": "000000000000000000000000",
+              "$lte": "6a9cc7de485cab4c95405d8c"
+            }
+          },
+          "matches": 0
+        }
+      ],
+      "attempt_window": {
+        "anchors": "questActiveEvent:34",
+        "start_id": "000000000000000000000000",
+        "end_id": "6a9cc7de485cab4c95405d8c",
+        "records_in_window": 1100
+      },
+      "diagnostics": {},
+      "doc_window": {
+        "start_id": "6a9cc790485cab4c95405cd4",
+        "end_id": "6a9cc7de485cab4c95405d8c",
+        "markers": {
+          "start": [
+            "DialogueNodeEvent:30:98"
+          ],
+          "end": [
+            "questActiveEvent:34"
+          ]
+        },
+        "records_in_window": 92,
+        "color": "green"
+      },
+      "expected_color": "green",
+      "expected_basis": "production window and doc-derived activity window yield the same color; rubric formula applied to observed behavior",
+      "expected_confidence": "MEDIUM",
+      "grading_test_status": "PASS",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U1P4",
+      "name": "What Was That?",
+      "executor": "rubric-validation/test_u1p4.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "green",
+      "query_trace": [],
+      "attempt_window": {
+        "anchors": "DialogueNodeEvent:33:19",
+        "start_id": "000000000000000000000000",
+        "end_id": "6a9cc848485cab4c95405e16",
+        "records_in_window": 1169
+      },
+      "diagnostics": {},
+      "doc_window": null,
+      "expected_color": "green",
+      "expected_basis": "completion-only rubric; end evidence observed in logs",
+      "expected_confidence": "HIGH",
+      "grading_test_status": "PASS",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U2P1",
+      "name": "Escape the Ruin",
+      "executor": "rubric-validation/test_u2p1.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "yellow",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questFinishEvent:21"
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questFinishEvent:21",
+            "_id": {
+              "$lt": "6a9ccb3d485cab4c95407684"
+            }
+          },
+          "matches": 0
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:68:29",
+            "_id": {
+              "$gt": "000000000000000000000000",
+              "$lte": "6a9ccb3d485cab4c95407684"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": {
+              "$in": [
+                "DialogueNodeEvent:68:22",
+                "DialogueNodeEvent:68:23",
+                "DialogueNodeEvent:68:27",
+                "DialogueNodeEvent:68:28",
+                "DialogueNodeEvent:68:31"
+              ]
+            },
+            "_id": {
+              "$gt": "000000000000000000000000",
+              "$lte": "6a9ccb3d485cab4c95407684"
+            }
+          },
+          "matches": 2
+        }
+      ],
+      "attempt_window": {
+        "anchors": "questFinishEvent:21",
+        "start_id": "000000000000000000000000",
+        "end_id": "6a9ccb3d485cab4c95407684",
+        "records_in_window": 4295
+      },
+      "diagnostics": {
+        "TOO_MANY_NEGATIVES": "attempts_number=5 (>4) — too many incorrect map-terrain matches"
+      },
+      "doc_window": {
+        "start_id": "000000000000000000000000",
+        "end_id": "6a9ccb3d485cab4c95407684",
+        "markers": {
+          "start": [],
+          "end": [
+            "questFinishEvent:21"
+          ]
+        },
+        "records_in_window": 4295,
+        "color": "yellow"
+      },
+      "expected_color": "yellow",
+      "expected_basis": "production window and doc-derived activity window yield the same color; rubric formula applied to observed behavior",
+      "expected_confidence": "MEDIUM",
+      "grading_test_status": "PASS",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U2P2",
+      "name": "Foraged Forging",
+      "executor": "rubric-validation/test_u2p2.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "yellow",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:20:26"
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questFinishEvent:21",
+            "_id": {
+              "$lte": "6a9ccc6d485cab4c95407824"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": {
+              "$in": [
+                "DialogueNodeEvent:28:179",
+                "DialogueNodeEvent:59:179",
+                "DialogueNodeEvent:28:182",
+                "DialogueNodeEvent:59:182",
+                "DialogueNodeEvent:28:183",
+                "DialogueNodeEvent:59:183"
+              ]
+            },
+            "timestamp": {
+              "$gte": "2026-09-06T02:09:01.7790000Z",
+              "$lte": "2026-09-06T02:14:05.4330000Z"
+            },
+            "_id": {
+              "$gte": "6a9ccb3d485cab4c95407684",
+              "$lte": "6a9ccc6d485cab4c95407824"
+            }
+          },
+          "matches": 11
+        }
+      ],
+      "attempt_window": {
+        "anchors": "latest questFinishEvent:21 .. latest DialogueNodeEvent:20:26",
+        "start_id": "6a9ccb3d485cab4c95407684",
+        "end_id": "6a9ccc6d485cab4c95407824",
+        "records_in_window": 207
+      },
+      "diagnostics": {
+        "BAD_FEEDBACK": "triggering_number=11 (threshold <= 1) — repeated wrong-direction prompts while searching for Toppo"
+      },
+      "doc_window": null,
+      "expected_color": null,
+      "expected_basis": "no independent expectation derivable (custom window or no doc end-marker observed); production executed and traced only",
+      "expected_confidence": "LOW",
+      "grading_test_status": "EXECUTED_NO_INDEPENDENT_CHECK",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U2P3",
+      "name": "Getting the Band Back Together Part II",
+      "executor": "rubric-validation/test_u2p3.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "yellow",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:22:18"
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:20:33",
+            "_id": {
+              "$lte": "6a9ccde6485cab4c9540798e"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": {
+              "$in": "<33 keys>"
+            },
+            "timestamp": {
+              "$gte": "2026-09-06T02:14:07.8050000Z",
+              "$lte": "2026-09-06T02:20:22.2710000Z"
+            },
+            "_id": {
+              "$gte": "6a9ccc6f485cab4c95407832",
+              "$lte": "6a9ccde6485cab4c9540798e"
+            }
+          },
+          "matches": 6
+        }
+      ],
+      "attempt_window": {
+        "anchors": "DialogueNodeEvent:22:18",
+        "start_id": "000000000000000000000000",
+        "end_id": "6a9ccde6485cab4c9540798e",
+        "records_in_window": 4683
+      },
+      "diagnostics": {
+        "BAD_FEEDBACK": "triggering_number=6 (threshold < 6) — repeated wrong-direction prompts while searching for Tera/Aryn"
+      },
+      "doc_window": {
+        "start_id": "6a9ccc6d485cab4c95407824",
+        "end_id": "6a9ccde6485cab4c9540798e",
+        "markers": {
+          "start": [
+            "DialogueNodeEvent:20:26"
+          ],
+          "end": [
+            "DialogueNodeEvent:22:18"
+          ]
+        },
+        "records_in_window": 181,
+        "color": "yellow"
+      },
+      "expected_color": "yellow",
+      "expected_basis": "production window and doc-derived activity window yield the same color; rubric formula applied to observed behavior",
+      "expected_confidence": "MEDIUM",
+      "grading_test_status": "PASS",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U2P4",
+      "name": "Investigate the Temple",
+      "executor": "rubric-validation/test_u2p4.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "green",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:23:17"
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:23:17",
+            "_id": {
+              "$lt": "6a9d803f485cab4c95407e12"
+            }
+          },
+          "matches": 0
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:74:21",
+            "_id": {
+              "$gt": "000000000000000000000000",
+              "$lte": "6a9d803f485cab4c95407e12"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": {
+              "$in": [
+                "DialogueNodeEvent:74:16",
+                "DialogueNodeEvent:74:17",
+                "DialogueNodeEvent:74:20",
+                "DialogueNodeEvent:74:22"
+              ]
+            },
+            "_id": {
+              "$gt": "000000000000000000000000",
+              "$lte": "6a9d803f485cab4c95407e12"
+            }
+          },
+          "matches": 0
+        }
+      ],
+      "attempt_window": {
+        "anchors": "DialogueNodeEvent:23:17",
+        "start_id": "000000000000000000000000",
+        "end_id": "6a9d803f485cab4c95407e12",
+        "records_in_window": 5248
+      },
+      "diagnostics": {},
+      "doc_window": {
+        "start_id": "6a9ccde6485cab4c9540798e",
+        "end_id": "6a9d803f485cab4c95407e12",
+        "markers": {
+          "start": [
+            "DialogueNodeEvent:22:18"
+          ],
+          "end": [
+            "DialogueNodeEvent:23:17"
+          ]
+        },
+        "records_in_window": 565,
+        "color": "green"
+      },
+      "expected_color": "green",
+      "expected_basis": "production window and doc-derived activity window yield the same color; rubric formula applied to observed behavior",
+      "expected_confidence": "MEDIUM",
+      "grading_test_status": "PASS",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U2P5",
+      "name": "Classified Information",
+      "executor": "rubric-validation/test_u2p5.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "green",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:23:42"
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:23:42",
+            "_id": {
+              "$lt": "6a9d84bc485cab4c9540805a"
+            }
+          },
+          "matches": 0
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": {
+              "$in": "<27 keys>"
+            },
+            "_id": {
+              "$gt": "000000000000000000000000",
+              "$lte": "6a9d84bc485cab4c9540805a"
+            }
+          },
+          "matches": 6
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": {
+              "$in": "<27 keys>"
+            },
+            "_id": {
+              "$gt": "000000000000000000000000",
+              "$lte": "6a9d84bc485cab4c9540805a"
+            }
+          },
+          "matches": 0
+        }
+      ],
+      "attempt_window": {
+        "anchors": "DialogueNodeEvent:23:42",
+        "start_id": "000000000000000000000000",
+        "end_id": "6a9d84bc485cab4c9540805a",
+        "records_in_window": 5540
+      },
+      "diagnostics": {},
+      "doc_window": {
+        "start_id": "6a9d803f485cab4c95407e12",
+        "end_id": "6a9d84bc485cab4c9540805a",
+        "markers": {
+          "start": [
+            "DialogueNodeEvent:23:17"
+          ],
+          "end": [
+            "DialogueNodeEvent:23:42"
+          ]
+        },
+        "records_in_window": 292,
+        "color": "green"
+      },
+      "expected_color": "green",
+      "expected_basis": "production window and doc-derived activity window yield the same color; rubric formula applied to observed behavior",
+      "expected_confidence": "MEDIUM",
+      "grading_test_status": "PASS",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U2P6",
+      "name": "Which Watershed? Part I",
+      "executor": "rubric-validation/test_u2p6.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "green",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:23:42"
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:20:46"
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:20:43",
+            "_id": {
+              "$gt": "6a9d84bc485cab4c9540805a",
+              "$lte": "6a9d871a485cab4c954081fc"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": {
+              "$in": [
+                "DialogueNodeEvent:20:44",
+                "DialogueNodeEvent:20:45"
+              ]
+            },
+            "_id": {
+              "$gt": "6a9d84bc485cab4c9540805a",
+              "$lte": "6a9d871a485cab4c954081fc"
+            }
+          },
+          "matches": 0
+        }
+      ],
+      "attempt_window": {
+        "anchors": "latest DialogueNodeEvent:23:42 .. latest DialogueNodeEvent:20:46",
+        "start_id": "6a9d84bc485cab4c9540805a",
+        "end_id": "6a9d871a485cab4c954081fc",
+        "records_in_window": 209
+      },
+      "diagnostics": {},
+      "doc_window": null,
+      "expected_color": null,
+      "expected_basis": "no independent expectation derivable (custom window or no doc end-marker observed); production executed and traced only",
+      "expected_confidence": "LOW",
+      "grading_test_status": "EXECUTED_NO_INDEPENDENT_CHECK",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U2P7",
+      "name": "Which Watershed? Part II",
+      "executor": "rubric-validation/test_u2p7.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "green",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questFinishEvent:54"
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questFinishEvent:54",
+            "_id": {
+              "$lt": "6a9d876d485cab4c95408304"
+            }
+          },
+          "matches": 0
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:27:7",
+            "_id": {
+              "$gt": "000000000000000000000000",
+              "$lte": "6a9d876d485cab4c95408304"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": {
+              "$in": "<15 keys>"
+            },
+            "_id": {
+              "$gt": "000000000000000000000000",
+              "$lte": "6a9d876d485cab4c95408304"
+            }
+          },
+          "matches": 0
+        }
+      ],
+      "attempt_window": {
+        "anchors": "questFinishEvent:54",
+        "start_id": "000000000000000000000000",
+        "end_id": "6a9d876d485cab4c95408304",
+        "records_in_window": 5881
+      },
+      "diagnostics": {},
+      "doc_window": {
+        "start_id": "6a9d870b485cab4c954081da",
+        "end_id": "6a9d874c485cab4c9540828a",
+        "markers": {
+          "start": [
+            "DialogueNodeEvent:18:284"
+          ],
+          "end": [
+            "DialogueNodeEvent:20:74",
+            "DialogueNodeEvent:20:75"
+          ]
+        },
+        "records_in_window": 88,
+        "color": "green"
+      },
+      "expected_color": "green",
+      "expected_basis": "production window and doc-derived activity window yield the same color; rubric formula applied to observed behavior",
+      "expected_confidence": "MEDIUM",
+      "grading_test_status": "PASS",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U3P1",
+      "name": "Good Morning Cadet + Establishing a Foothold",
+      "executor": "rubric-validation/test_u3p1.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "green",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:11:22"
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:11:22",
+            "_id": {
+              "$lt": "6a9d88eb485cab4c9540840c"
+            }
+          },
+          "matches": 0
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:10:30",
+            "_id": {
+              "$gt": "000000000000000000000000",
+              "$lte": "6a9d88eb485cab4c9540840c"
+            }
+          },
+          "matches": 3
+        }
+      ],
+      "attempt_window": {
+        "anchors": "DialogueNodeEvent:11:22",
+        "start_id": "000000000000000000000000",
+        "end_id": "6a9d88eb485cab4c9540840c",
+        "records_in_window": 6012
+      },
+      "diagnostics": {
+        "_score": "cnt=3 wrong_count=0"
+      },
+      "doc_window": {
+        "start_id": "6a9d87c3485cab4c95408314",
+        "end_id": "6a9d8911485cab4c95408438",
+        "markers": {
+          "start": [
+            "DialogueNodeEvent:10:1"
+          ],
+          "end": [
+            "questActiveEvent:17"
+          ]
+        },
+        "records_in_window": 146,
+        "color": "green"
+      },
+      "expected_color": "green",
+      "expected_basis": "production window and doc-derived activity window yield the same color; rubric formula applied to observed behavior",
+      "expected_confidence": "MEDIUM",
+      "grading_test_status": "PASS",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U3P2",
+      "name": "Pollution Solution",
+      "executor": "rubric-validation/test_u3p2.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "green",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:11:34"
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:11:34",
+            "_id": {
+              "$lt": "6a9d898b485cab4c954085bc"
+            }
+          },
+          "matches": 0
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:11:27",
+            "_id": {
+              "$gt": "000000000000000000000000",
+              "$lte": "6a9d898b485cab4c954085bc"
+            }
+          },
+          "matches": 0
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:11:29",
+            "_id": {
+              "$gt": "000000000000000000000000",
+              "$lte": "6a9d898b485cab4c954085bc"
+            }
+          },
+          "matches": 0
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:11:230",
+            "_id": {
+              "$gt": "000000000000000000000000",
+              "$lte": "6a9d898b485cab4c954085bc"
+            }
+          },
+          "matches": 0
+        }
+      ],
+      "attempt_window": {
+        "anchors": "DialogueNodeEvent:11:34",
+        "start_id": "000000000000000000000000",
+        "end_id": "6a9d898b485cab4c954085bc",
+        "records_in_window": 6228
+      },
+      "diagnostics": {
+        "_score": "c27=0 c29=0 c230=0 cSum=0 score=5 reminding_count=0"
+      },
+      "doc_window": {
+        "start_id": "6a9d8911485cab4c95408438",
+        "end_id": "6a9d898b485cab4c954085bc",
+        "markers": {
+          "start": [
+            "questActiveEvent:17"
+          ],
+          "end": [
+            "DialogueNodeEvent:11:34"
+          ]
+        },
+        "records_in_window": 194,
+        "color": "green"
+      },
+      "expected_color": "green",
+      "expected_basis": "production window and doc-derived activity window yield the same color; rubric formula applied to observed behavior",
+      "expected_confidence": "MEDIUM",
+      "grading_test_status": "PASS",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U3P3",
+      "name": "Pollution Argument",
+      "executor": "rubric-validation/test_u3p3.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "green",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questFinishEvent:18"
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questFinishEvent:18",
+            "_id": {
+              "$lt": "6a9d8d11485cab4c95408b2a"
+            }
+          },
+          "matches": 0
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": {
+              "$in": "<18 keys>"
+            },
+            "_id": {
+              "$gt": "000000000000000000000000",
+              "$lte": "6a9d8d11485cab4c95408b2a"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventType": "argumentationToolEvent",
+            "data.toolName": "BackingInfoPanel - Pollution Site Data",
+            "_id": {
+              "$gt": "000000000000000000000000",
+              "$lte": "6a9d8d11485cab4c95408b2a"
+            }
+          },
+          "matches": 1
+        }
+      ],
+      "attempt_window": {
+        "anchors": "questFinishEvent:18",
+        "start_id": "000000000000000000000000",
+        "end_id": "6a9d8d11485cab4c95408b2a",
+        "records_in_window": 6922
+      },
+      "diagnostics": {
+        "_score": "sum_count=1 base_score=3 bonus=1 total_score=4"
+      },
+      "doc_window": {
+        "start_id": "6a9d898b485cab4c954085bc",
+        "end_id": "6a9d8b9c485cab4c95408772",
+        "markers": {
+          "start": [
+            "DialogueNodeEvent:11:34"
+          ],
+          "end": [
+            "questActiveEvent:18"
+          ]
+        },
+        "records_in_window": 218,
+        "color": "green"
+      },
+      "expected_color": "green",
+      "expected_basis": "production window and doc-derived activity window yield the same color; rubric formula applied to observed behavior",
+      "expected_confidence": "MEDIUM",
+      "grading_test_status": "PASS",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U3P4",
+      "name": "Forsaken Facility",
+      "executor": "rubric-validation/test_u3p4.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "green",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questActiveEvent:18"
+          },
+          "matches": 3
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:73:200"
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:78:24",
+            "_id": {
+              "$gt": "6a9d8b9c485cab4c95408772",
+              "$lte": "6a9d8d9c485cab4c95408b8a"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": {
+              "$in": "<8 keys>"
+            },
+            "_id": {
+              "$gt": "6a9d8b9c485cab4c95408772",
+              "$lte": "6a9d8d9c485cab4c95408b8a"
+            }
+          },
+          "matches": 0
+        }
+      ],
+      "attempt_window": {
+        "anchors": "latest questActiveEvent:18 .. latest DialogueNodeEvent:73:200",
+        "start_id": "6a9d8b9c485cab4c95408772",
+        "end_id": "6a9d8d9c485cab4c95408b8a",
+        "records_in_window": 524
+      },
+      "diagnostics": {
+        "_score": "has_gate=1 total_count=0 score=2"
+      },
+      "doc_window": null,
+      "expected_color": null,
+      "expected_basis": "no independent expectation derivable (custom window or no doc end-marker observed); production executed and traced only",
+      "expected_confidence": "LOW",
+      "grading_test_status": "EXECUTED_NO_INDEPENDENT_CHECK",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U3P5",
+      "name": "Plant the Superfruit Seeds",
+      "executor": "rubric-validation/test_u3p5.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "green",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:10:194"
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:10:194",
+            "_id": {
+              "$lt": "6a9d8dfa485cab4c95408c2c"
+            }
+          },
+          "matches": 0
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:73:163",
+            "_id": {
+              "$gt": "000000000000000000000000",
+              "$lte": "6a9d8dfa485cab4c95408c2c"
+            }
+          },
+          "matches": 4
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": {
+              "$in": [
+                "DialogueNodeEvent:73:164",
+                "DialogueNodeEvent:73:168",
+                "DialogueNodeEvent:73:171"
+              ]
+            },
+            "_id": {
+              "$gt": "000000000000000000000000",
+              "$lte": "6a9d8dfa485cab4c95408c2c"
+            }
+          },
+          "matches": 0
+        }
+      ],
+      "attempt_window": {
+        "anchors": "DialogueNodeEvent:10:194",
+        "start_id": "000000000000000000000000",
+        "end_id": "6a9d8dfa485cab4c95408c2c",
+        "records_in_window": 7051
+      },
+      "diagnostics": {
+        "_score": "pos_count=4 neg_count=0 sum_score=4.0"
+      },
+      "doc_window": {
+        "start_id": "6a9d8d9c485cab4c95408b8a",
+        "end_id": "6a9d8dfa485cab4c95408c2c",
+        "markers": {
+          "start": [
+            "DialogueNodeEvent:73:200"
+          ],
+          "end": [
+            "DialogueNodeEvent:10:194"
+          ]
+        },
+        "records_in_window": 81,
+        "color": "green"
+      },
+      "expected_color": "green",
+      "expected_basis": "production window and doc-derived activity window yield the same color; rubric formula applied to observed behavior",
+      "expected_confidence": "MEDIUM",
+      "grading_test_status": "PASS",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U4P1",
+      "name": "Well What Have We Here?: Water Table Basics",
+      "executor": "rubric-validation/test_u4p1.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "green",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:88:0"
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventType": "Soil Key Puzzle",
+            "data.Soil Key Puzzle Status": "Finished",
+            "data.Unit": {
+              "$regex": "^Unit 4"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:88:5",
+            "_id": {
+              "$gt": "6a9d8f53485cab4c95408ca6",
+              "$lte": "6a9d9064485cab4c95408d48"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventType": "Soil Key Puzzle",
+            "data.Soil Key Puzzle Status": "Started",
+            "data.Unit": {
+              "$regex": "^Unit 4"
+            },
+            "_id": {
+              "$gt": "6a9d8f53485cab4c95408ca6",
+              "$lte": "6a9d9064485cab4c95408d48"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventType": "Soil Key Puzzle",
+            "data.Soil Key Puzzle Status": "Finished",
+            "data.Unit": {
+              "$regex": "^Unit 4"
+            }
+          },
+          "matches": 1
+        }
+      ],
+      "attempt_window": {
+        "anchors": "latest DialogueNodeEvent:88:0 .. latest Unit-4 soil-key close",
+        "start_id": "6a9d8f53485cab4c95408ca6",
+        "end_id": "6a9d9064485cab4c95408d48",
+        "records_in_window": 81
+      },
+      "diagnostics": {
+        "_score": "score=1.5 has_correct=1 duration_seconds=13.338"
+      },
+      "doc_window": null,
+      "expected_color": "green",
+      "expected_basis": "rubric formula on unwindowed evidence: correct choice 88:5 observed (+0.5), Unit-4 soil-key duration 13.338s -> score 1.5. Independent of the production window anchors (the 08-31-26 bug was a window-anchor failure).",
+      "expected_confidence": "MEDIUM",
+      "grading_test_status": "PASS",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U4P2",
+      "name": "Infiltration Glyph + Alien Well Floors 1 & 2",
+      "executor": "rubric-validation/test_u4p2.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "green",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questActiveEvent:48"
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventType": "Soil Key Puzzle",
+            "data.Soil Key Puzzle Status": "Finished",
+            "data.Unit": {
+              "$regex": "^Unit 4"
+            },
+            "_id": {
+              "$lt": "6a9d910e485cab4c954090d8"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:88:11",
+            "_id": {
+              "$gt": "6a9d9064485cab4c95408d48",
+              "$lte": "6a9d910e485cab4c954090d8"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": {
+              "$in": [
+                "DialogueNodeEvent:102:9",
+                "DialogueNodeEvent:102:10",
+                "DialogueNodeEvent:102:12",
+                "DialogueNodeEvent:102:18",
+                "DialogueNodeEvent:102:23"
+              ]
+            },
+            "_id": {
+              "$gt": "6a9d9064485cab4c95408d48",
+              "$lte": "6a9d910e485cab4c954090d8"
+            }
+          },
+          "matches": 0
+        }
+      ],
+      "attempt_window": {
+        "anchors": "latest Unit-4 soil-key close .. latest questActiveEvent:48",
+        "start_id": "6a9d9064485cab4c95408d48",
+        "end_id": "6a9d910e485cab4c954090d8",
+        "records_in_window": 456
+      },
+      "diagnostics": {},
+      "doc_window": null,
+      "expected_color": "green",
+      "expected_basis": "success node 88:11 observed x1; conv-102 negative feedback nodes observed: 0. Rubric on unwindowed evidence (valid for a single-attempt playthrough) -> green.",
+      "expected_confidence": "MEDIUM",
+      "grading_test_status": "PASS",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U4P3",
+      "name": "Alien Well Floor 3 & 4",
+      "executor": "rubric-validation/test_u4p3.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "green",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questActiveEvent:50"
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questActiveEvent:50",
+            "_id": {
+              "$lt": "6a9d918d485cab4c954092c8"
+            }
+          },
+          "matches": 0
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventType": "soilMachine",
+            "data.machine": "1",
+            "data.floor": "3",
+            "_id": {
+              "$gt": "000000000000000000000000",
+              "$lte": "6a9d918d485cab4c954092c8"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventType": "soilMachine",
+            "data.machine": "1",
+            "data.floor": "4",
+            "_id": {
+              "$gt": "000000000000000000000000",
+              "$lte": "6a9d918d485cab4c954092c8"
+            }
+          },
+          "matches": 1
+        }
+      ],
+      "attempt_window": {
+        "anchors": "questActiveEvent:50",
+        "start_id": "000000000000000000000000",
+        "end_id": "6a9d918d485cab4c954092c8",
+        "records_in_window": 7896
+      },
+      "diagnostics": {
+        "_score": "score=3 floor3_attempts=1 floor4_attempts=1"
+      },
+      "doc_window": {
+        "start_id": "6a9d910e485cab4c954090d8",
+        "end_id": "6a9d918d485cab4c954092c8",
+        "markers": {
+          "start": [
+            "questActiveEvent:48"
+          ],
+          "end": [
+            "questActiveEvent:50"
+          ]
+        },
+        "records_in_window": 248,
+        "color": "green"
+      },
+      "expected_color": "green",
+      "expected_basis": "production window and doc-derived activity window yield the same color; rubric formula applied to observed behavior",
+      "expected_confidence": "MEDIUM",
+      "grading_test_status": "PASS",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U4P4",
+      "name": "Alien Well Floor 5 + You Know the Drill",
+      "executor": "rubric-validation/test_u4p4.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "green",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questActiveEvent:50"
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questActiveEvent:36"
+          },
+          "matches": 2
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventType": "soilMachine",
+            "data.floor": "5",
+            "data.machine": "1",
+            "data.row": "TopRow",
+            "_id": {
+              "$gt": "6a9d918d485cab4c954092c8",
+              "$lte": "6a9d925e485cab4c954094fc"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventType": "soilMachine",
+            "data.floor": "5",
+            "data.machine": "1",
+            "data.row": "BottomRow",
+            "_id": {
+              "$gt": "6a9d918d485cab4c954092c8",
+              "$lte": "6a9d925e485cab4c954094fc"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventType": "soilMachine",
+            "data.floor": "5",
+            "data.machine": "2",
+            "_id": {
+              "$gt": "6a9d918d485cab4c954092c8",
+              "$lte": "6a9d925e485cab4c954094fc"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": {
+              "$in": [
+                "DialogueNodeEvent:107:4",
+                "DialogueNodeEvent:107:5"
+              ]
+            },
+            "_id": {
+              "$gt": "6a9d918d485cab4c954092c8",
+              "$lte": "6a9d925e485cab4c954094fc"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": {
+              "$in": [
+                "DialogueNodeEvent:107:2",
+                "DialogueNodeEvent:107:3",
+                "DialogueNodeEvent:107:6"
+              ]
+            },
+            "_id": {
+              "$gt": "6a9d918d485cab4c954092c8",
+              "$lte": "6a9d925e485cab4c954094fc"
+            }
+          },
+          "matches": 0
+        }
+      ],
+      "attempt_window": {
+        "anchors": "latest questActiveEvent:50 .. latest questActiveEvent:36",
+        "start_id": "6a9d918d485cab4c954092c8",
+        "end_id": "6a9d925e485cab4c954094fc",
+        "records_in_window": 282
+      },
+      "diagnostics": {
+        "_score": "score=4 attempt_time=3 negative_feedback_number=0"
+      },
+      "doc_window": null,
+      "expected_color": null,
+      "expected_basis": "no independent expectation derivable (custom window or no doc end-marker observed); production executed and traced only",
+      "expected_confidence": "LOW",
+      "grading_test_status": "EXECUTED_NO_INDEPENDENT_CHECK",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U4P5",
+      "name": "Saving Cadet Anderson",
+      "executor": "rubric-validation/test_u4p5.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "green",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questActiveEvent:41"
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questActiveEvent:41",
+            "_id": {
+              "$lt": "6a9d9350485cab4c954096a4"
+            }
+          },
+          "matches": 0
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": {
+              "$in": [
+                "DialogueNodeEvent:90:50",
+                "DialogueNodeEvent:90:57"
+              ]
+            },
+            "_id": {
+              "$gt": "000000000000000000000000",
+              "$lte": "6a9d9350485cab4c954096a4"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": {
+              "$in": "<13 keys>"
+            },
+            "_id": {
+              "$gt": "000000000000000000000000",
+              "$lte": "6a9d9350485cab4c954096a4"
+            }
+          },
+          "matches": 0
+        }
+      ],
+      "attempt_window": {
+        "anchors": "questActiveEvent:41",
+        "start_id": "000000000000000000000000",
+        "end_id": "6a9d9350485cab4c954096a4",
+        "records_in_window": 8390
+      },
+      "diagnostics": {
+        "_score": "has_success=1 negativeCount=0"
+      },
+      "doc_window": {
+        "start_id": "6a9d925e485cab4c954094fc",
+        "end_id": "6a9d9350485cab4c954096a4",
+        "markers": {
+          "start": [
+            "questActiveEvent:36"
+          ],
+          "end": [
+            "questActiveEvent:41"
+          ]
+        },
+        "records_in_window": 212,
+        "color": "green"
+      },
+      "expected_color": "green",
+      "expected_basis": "production window and doc-derived activity window yield the same color; rubric formula applied to observed behavior",
+      "expected_confidence": "MEDIUM",
+      "grading_test_status": "PASS",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U4P6",
+      "name": "Desert Delicacies",
+      "executor": "rubric-validation/test_u4p6.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "green",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questActiveEvent:41"
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questFinishEvent:56"
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventType": "TerasGardenBox",
+            "data.actionType": "cameraPlaced",
+            "data.boxId": "0",
+            "_id": {
+              "$gt": "6a9d9350485cab4c954096a4",
+              "$lte": "6a9d94a8485cab4c95409888"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventType": "TerasGardenBox",
+            "data.actionType": "cameraPlaced",
+            "data.boxId": "1",
+            "_id": {
+              "$gt": "6a9d9350485cab4c954096a4",
+              "$lte": "6a9d94a8485cab4c95409888"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventType": "TerasGardenBox",
+            "data.actionType": "cameraPlaced",
+            "data.boxId": "2",
+            "_id": {
+              "$gt": "6a9d9350485cab4c954096a4",
+              "$lte": "6a9d94a8485cab4c95409888"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:92:33",
+            "_id": {
+              "$gt": "6a9d9350485cab4c954096a4",
+              "$lte": "6a9d94a8485cab4c95409888"
+            }
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:92:61",
+            "_id": {
+              "$gt": "6a9d9395485cab4c95409768",
+              "$lte": "6a9d94a8485cab4c95409888"
+            }
+          },
+          "matches": 3
+        }
+      ],
+      "attempt_window": {
+        "anchors": "latest questActiveEvent:41 .. latest questFinishEvent:56",
+        "start_id": "6a9d9350485cab4c954096a4",
+        "end_id": "6a9d94a8485cab4c95409888",
+        "records_in_window": 242
+      },
+      "diagnostics": {
+        "_score": "box_score=3 dialogue_score=3 final=3 wrongTime=0"
+      },
+      "doc_window": null,
+      "expected_color": "green",
+      "expected_basis": "rule prose mapping box0=Gravel/box1=Sand/box2=Clay applied to observed latest placements {'box0': 'Gravel', 'box1': 'Sand', 'box2': 'Clay'} -> 3/3 correct. Production script uses the same mapping since the 2026-08-31 fix (previously inverted box0/box2 — the 08-25-26 audit's U4P6 finding).",
+      "expected_confidence": "MEDIUM",
+      "grading_test_status": "PASS",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U5P1",
+      "name": "If I Had a Nickel- Floors 1 & 2",
+      "executor": "rubric-validation/test_u5p1.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "yellow",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questActiveEvent:43"
+          },
+          "matches": 1
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questFinishEvent:43"
+          },
+          "matches": 0
+        }
+      ],
+      "attempt_window": {
+        "anchors": "latest questActiveEvent:43 .. latest questFinishEvent:43",
+        "constructed": false
+      },
+      "diagnostics": {
+        "NO_TRIGGER": "no questFinishEvent:43/questActiveEvent:43 attempt window found — defaults to yellow"
+      },
+      "doc_window": null,
+      "expected_color": null,
+      "expected_basis": "no independent expectation derivable (custom window or no doc end-marker observed); production executed and traced only",
+      "expected_confidence": "LOW",
+      "grading_test_status": "EXECUTED_NO_INDEPENDENT_CHECK",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U5P2",
+      "name": "If I Had a Nickel- Floors 3 & 4",
+      "executor": "rubric-validation/test_u5p2.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "yellow",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questFinishEvent:43"
+          },
+          "matches": 0
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:96:1"
+          },
+          "matches": 0
+        }
+      ],
+      "attempt_window": {
+        "anchors": "latest questFinishEvent:43 .. latest DialogueNodeEvent:96:1",
+        "constructed": false
+      },
+      "diagnostics": {
+        "NO_TRIGGER": "no DialogueNodeEvent:96:1/questFinishEvent:43 attempt window found — defaults to yellow"
+      },
+      "doc_window": null,
+      "expected_color": null,
+      "expected_basis": "no independent expectation derivable (custom window or no doc end-marker observed); production executed and traced only",
+      "expected_confidence": "LOW",
+      "grading_test_status": "EXECUTED_NO_INDEPENDENT_CHECK",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U5P3",
+      "name": "What Happened Here?",
+      "executor": "rubric-validation/test_u5p3.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "yellow",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "DialogueNodeEvent:96:1"
+          },
+          "matches": 0
+        },
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questFinishEvent:44"
+          },
+          "matches": 0
+        }
+      ],
+      "attempt_window": {
+        "anchors": "latest DialogueNodeEvent:96:1 .. latest questFinishEvent:44",
+        "constructed": false
+      },
+      "diagnostics": {
+        "NO_TRIGGER": "no questFinishEvent:44/DialogueNodeEvent:96:1 attempt window found — defaults to yellow"
+      },
+      "doc_window": null,
+      "expected_color": null,
+      "expected_basis": "no independent expectation derivable (custom window or no doc end-marker observed); production executed and traced only",
+      "expected_confidence": "LOW",
+      "grading_test_status": "EXECUTED_NO_INDEPENDENT_CHECK",
+      "root_causes": []
+    },
+    {
+      "progress_point": "U5P4",
+      "name": "Water Problems Require Water Solutions",
+      "executor": "rubric-validation/test_u5p4.py",
+      "adaptations": "playerId -> user_id",
+      "executes": true,
+      "production_color": "yellow",
+      "query_trace": [
+        {
+          "query": {
+            "playerId": "6a9a078fe2ada9cb13ea75c4",
+            "eventKey": "questFinishEvent:45"
+          },
+          "matches": 0
+        }
+      ],
+      "attempt_window": {
+        "anchors": "latest questFinishEvent:44 .. latest questFinishEvent:45",
+        "constructed": false
+      },
+      "diagnostics": {
+        "NO_TRIGGER": "no questFinishEvent:45 trigger found — defaults to yellow"
+      },
+      "doc_window": null,
+      "expected_color": null,
+      "expected_basis": "no independent expectation derivable (custom window or no doc end-marker observed); production executed and traced only",
+      "expected_confidence": "LOW",
+      "grading_test_status": "EXECUTED_NO_INDEPENDENT_CHECK",
+      "root_causes": []
+    }
+  ]
+}

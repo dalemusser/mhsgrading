@@ -1,0 +1,36 @@
+﻿change,eventType,item,baseline,current
+new_event_type,DEBUGMenu,,-,2
+new_event_type,crash,,-,2
+removed_event_type,SolarStillDesignEvent,,4,-
+removed_event_type,WaterChamberEvent,,18,-
+new_scenes,,<missing sceneName>,-,
+removed_scenes,,Unit 5 Dev,,-
+volume_change,DaniEvent,record_count,42,2
+cadence_change,DaniEvent,median_interval_s,14.09,45387.762
+new_values,DaniEvent,data.toolName,,
+removed_values,DaniEvent,data.toolName,Argumentation; Map,
+removed_values,EndOfUnit,data.Unit,5,
+new_values,InputEvent,data.actionType,,Pause; ToggleDebug
+removed_values,InputEvent,data.actionType,Map,
+new_values,InputEvent,data.key,,backquote; tab
+removed_values,InputEvent,data.key,; m,
+new_values,ObjectInterEvent,data.actionType,,Press E to place; Press E to place glyph; TurnOff
+removed_values,ObjectInterEvent,data.actionType,Press E; Press E to examine; Press E to pick up,
+volume_change,PuzzlePieceVisibleEvent,record_count,1018,3244
+new_values,PuzzlePieceVisibleEvent,data.pieceId,,Evaporation Puzzle Piece A; Evaporation Puzzle Piece B; Evaporation Puzzle Piece C; Evaporation Puzzle Piece D; Evaporation Puzzle Slot A; Evaporation Puzzle Slot B; Evaporation Puzzle Slot C; Evaporation Puzzle Slot D
+removed_field,TerasGardenBox,data.boxID,3,-
+new_values,TerasGardenBox,data.actionType,,
+removed_values,TerasGardenBox,data.actionType,soilSelected,
+new_field,TopographicMapEvent,data.legendName,-,3
+new_values,TopographicMapEvent,data.actionType,,Selected; Unselected
+removed_values,TopographicMapEvent,data.actionType,WaypointMoveEvent,
+new_values,TopographicMapEvent,data.featureUsed,,Legend
+removed_values,argumentationAnswerEvent,data.answerSubmitted,"C,D,3,II",
+removed_values,argumentationAnswerEvent,data.argumentationTitle,Unit 5,
+removed_values,argumentationEvent,data.argumentationDescription,Unit 5 - What happened to the water when in Aryn's collection tanks,
+removed_values,argumentationEvent,data.argumentationTitle,Unit 5,
+removed_values,argumentationNodeEvent,data.argumentationTitle,Unit 5,
+removed_values,argumentationToolEvent,data.argumentationTitle,Unit 5,
+removed_values,argumentationToolEvent,data.toolName,BackingInfoPanel - Evaporation Flow Diagram; BackingInfoPanel - Heat Added/Released Chart,
+removed_values,questEvent,data.questID,44; 45; 51; 52; 53; 57,
+removed_values,questEvent,data.questName,Guru of Arguments; If I had a Nickel... - Floor 2; If I had a Nickel... - Floor 3; If I had a Nickel... - Floor 4; WAT Happened Here?; Water Problems Require Water Solutions,

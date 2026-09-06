@@ -3,7 +3,7 @@
 Production rule (mhs-unit2-point3-grading.md): same windowed-count shape as
 U2P2. Anchor on latest trigger `DialogueNodeEvent:22:18`, take latest start
 `DialogueNodeEvent:20:33` at/before it, count TARGET keys within both the
-timestamp window and the _id window. Green iff count <= 6. Missing start/end
+timestamp window and the _id window. Green iff count < 6. Missing start/end
 => yellow.
 """
 
@@ -66,7 +66,7 @@ def grade(coll, pid):
     count, reason = _count_targets(coll, pid)
     if reason is not None:
         return "yellow"
-    return "green" if count <= THRESHOLD else "yellow"
+    return "green" if count < THRESHOLD else "yellow"
 
 
 def diagnose(coll, pid):
@@ -75,9 +75,9 @@ def diagnose(coll, pid):
     if reason is not None:
         out["MISSING_WINDOW"] = reason + " — defaults to yellow"
         return out
-    if count > THRESHOLD:
+    if count >= THRESHOLD:
         out["BAD_FEEDBACK"] = (
-            f"triggering_number={count} (threshold <= {THRESHOLD}) — repeated "
+            f"triggering_number={count} (threshold < {THRESHOLD}) — repeated "
             f"wrong-direction prompts while searching for Tera/Aryn"
         )
     return out

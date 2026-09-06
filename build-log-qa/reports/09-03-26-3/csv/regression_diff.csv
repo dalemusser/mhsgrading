@@ -1,0 +1,41 @@
+﻿change,eventType,item,baseline,current
+new_event_type,DEBUGMenu,,-,4
+new_event_type,crash,,-,3
+removed_event_type,DaniEvent,,42,-
+new_scenes,,<missing sceneName>; PodsEscapingCopernicus Cutscene; Transition,-,
+new_values,InputEvent,data.actionType,,ToggleDebug
+new_values,InputEvent,data.key,,backquote
+new_values,ObjectInterEvent,data.actionType,,Lower Map; Press E to Insert; Press E to collect broccoli; Press E to collect peas; Press E to collect potatoes; Press E to place; Press E to place glyph; Raise Map; TurnOff; TurnOn
+removed_values,ObjectInterEvent,data.actionType,Press E to collect mega turnips; Press E to collect super orange; Press E to collect ultra corn,
+volume_change,PuzzlePieceVisibleEvent,record_count,1018,3410
+new_values,PuzzlePieceVisibleEvent,data.pieceId,,Evaporation Puzzle Piece A; Evaporation Puzzle Piece B; Evaporation Puzzle Piece C; Evaporation Puzzle Piece D; Evaporation Puzzle Slot A; Evaporation Puzzle Slot B; Evaporation Puzzle Slot C; Evaporation Puzzle Slot D
+new_values,SolarStillDesignEvent,data.designSelections.glassRoofTemperature,,Hot
+removed_values,SolarStillDesignEvent,data.designSelections.glassRoofTemperature,Cold,
+new_values,SolarStillDesignEvent,data.designSelections.roofCovering,,Covered
+removed_values,SolarStillDesignEvent,data.designSelections.roofCovering,Uncovered,
+new_values,SolarStillDesignEvent,data.designSelections.roofStyle,,Flat
+removed_values,SolarStillDesignEvent,data.designSelections.roofStyle,Tilted Out,
+new_values,SolarStillDesignEvent,data.selectedOption,,Covered; Flat; Hot
+removed_values,SolarStillDesignEvent,data.selectedOption,Cold; Tilted Out; Uncovered,
+cadence_change,TerasGardenBox,median_interval_s,4.718,1.134
+removed_field,TerasGardenBox,data.boxID,3,-
+new_values,TerasGardenBox,data.actionType,,
+removed_values,TerasGardenBox,data.actionType,soilSelected,
+removed_values,TerasGardenBox,data.soilType,Sand,
+new_field,TopographicMapEvent,data.legendName,-,2
+new_values,TopographicMapEvent,data.actionType,,Selected
+removed_values,TopographicMapEvent,data.actionType,WaypointResetEvent,
+new_values,TopographicMapEvent,data.featureUsed,,Legend
+cadence_change,WaterChamberEvent,median_interval_s,16.302,6.386
+new_values,WaterChamberEvent,data.machineType,,DualChamber_Evaporator
+volume_change,argumentationAnswerEvent,record_count,7,50
+cadence_change,argumentationAnswerEvent,median_interval_s,1006.195,9.171
+new_values,argumentationAnswerEvent,data.answerSubmitted,,"4,I; A,2,I; A,3,I; A,4,I; A,B,C,2,II; A,D,3,I; A,D,C,3,I; B,1,I; B,1,II; B,4,I; B,4,II; B,C,1,I; B,C,D,1,II; B,C,D,2,II; B,C,D,3,II; C,1,I; C,1,II; C,2,I; C,3,I; C,4,I; D,1,I; D,1,II; D,4,I; D,C,B,4,I; D,C,B,4,II"
+cadence_change,argumentationEvent,median_interval_s,36.299,114.425
+volume_change,argumentationNodeEvent,record_count,155,743
+removed_values,argumentationToolEvent,data.argumentationTitle,Unit 5,
+removed_values,argumentationToolEvent,data.toolName,BackingInfoPanel - Evaporation Flow Diagram; BackingInfoPanel - Heat Added/Released Chart,
+volume_change,soilMachine,record_count,5,36
+cadence_change,soilMachine,median_interval_s,37.414,3.335
+new_values,soilMachine,data.canisterType,,Bedrock
+new_values,soilMachine,data.floor,,2

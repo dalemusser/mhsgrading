@@ -1,0 +1,32 @@
+﻿change,eventType,item,baseline,current
+new_event_type,DEBUGMenu,,-,6
+new_event_type,crash,,-,3
+new_scenes,,<missing sceneName>,-,
+cadence_change,DaniEvent,median_interval_s,14.09,2.369
+new_values,DaniEvent,data.toolName,,; Settings
+removed_values,DaniEvent,data.toolName,Argumentation; Map,
+new_values,InputEvent,data.actionType,,Pause; ToggleDebug
+new_values,InputEvent,data.key,,backquote; tab
+new_values,ObjectInterEvent,data.actionType,,Press E to Insert; Press E to place
+removed_values,ObjectInterEvent,data.actionType,Press E to pick up,
+new_values,PuzzlePieceVisibleEvent,data.pieceId,,Evaporation Puzzle Piece A; Evaporation Puzzle Piece B; Evaporation Puzzle Piece C; Evaporation Puzzle Piece D; Evaporation Puzzle Slot A; Evaporation Puzzle Slot B; Evaporation Puzzle Slot C; Evaporation Puzzle Slot D
+cadence_change,SolarStillDesignEvent,median_interval_s,2.334,1.067
+removed_field,TerasGardenBox,data.boxID,3,-
+new_values,TerasGardenBox,data.actionType,,
+removed_values,TerasGardenBox,data.actionType,soilSelected,
+removed_values,TerasGardenBox,data.soilType,Gravel,
+new_field,TopographicMapEvent,data.legendName,-,3
+new_values,TopographicMapEvent,data.actionType,,Selected; Unselected
+new_values,TopographicMapEvent,data.featureUsed,,Legend
+removed_values,WaterChamberEvent,data.floor,3,
+removed_values,WaterChamberEvent,data.machineNumber,Two,
+removed_values,WaterChamberEvent,data.machineType,DualChamber_Condenser,
+removed_values,WaterChamberEvent,data.room,4,
+removed_values,argumentationNodeEvent,data.actionType,argumentationNodeRemove,
+volume_change,chatEvent,record_count,2,32
+cadence_change,chatEvent,median_interval_s,721.885,0.232
+new_field,chatEvent,data.actionKey,-,14
+new_values,chatEvent,data.actionType,,Open; ScrollStart
+new_values,chatEvent,data.chatID,,"[18-102, 18-103, 18-105, 18-109, 18-110, 18-274]; [18-109, 18-110, 18-274, 18-112, 18-113, 18-114]; [18-112, 18-113, 18-114, 18-276, 18-277]; [18-114, 18-276, 18-277, 18-279, 18-116, 18-117]; [18-243, 18-118, 74-21, 23-1, 23-2, 23-3]; [18-279, 18-116, 18-117, 18-243, 18-118, 74-21]; [22-19, 22-20, 22-22, 22-46, 22-48, 22-27]; [22-46, 22-48, 22-27, 18-102, 18-103, 18-105]; [23-1, 23-2, 23-3, 23-4, 23-59, 23-61]; [23-17, 23-18, 23-20, 23-21, 23-70, 23-72]; [23-21, 23-70, 23-72, 23-73, 23-22, 23-24]; [23-59, 23-61, 23-63, 23-65, 23-67, 23-68]; [23-65, 23-67, 23-68, 23-69, 23-17, 23-18]; [23-73, 23-22, 23-24, 23-25, 23-27]"
+cadence_change,gameWindowFocusEvent,median_interval_s,199.213,95.131
+cadence_change,gameWindowUnfocusEvent,median_interval_s,216.72,107.559

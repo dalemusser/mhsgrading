@@ -57,3 +57,128 @@ fixtures:
       U5P2: green
       U5P3: green
       U5P4: green
+
+  "09-03-26-2":
+    log: playthrough-logs-and-results/09-03-26-2/wenyi090326-2.stratalog.logdata.json
+    description: >
+      Clean full playthrough of build 20260902-12353 (5,837 records, units 1-5
+      complete, played 2026-09-04). No wrong-version records in the dump.
+    provenance: >
+      Expected colors established by the grading-readiness-audit run 09-03-26-2
+      (re-run 2026-09-06 after the U2P3 <6 and U5P1 zero-negatives rubric
+      tightenings) and confirmed by the tester: a deliberately clean run, all
+      26 points green. 18 points carried an independent doc-window PASS; the
+      8 no-independent-check points match the tester-declared clean intent.
+    expected:
+      U1P1: green
+      U1P2: green
+      U1P3: green
+      U1P4: green
+      U2P1: green
+      U2P2: green
+      U2P3: green
+      U2P4: green
+      U2P5: green
+      U2P6: green
+      U2P7: green
+      U3P1: green
+      U3P2: green
+      U3P3: green
+      U3P4: green
+      U3P5: green
+      U4P1: green
+      U4P2: green
+      U4P3: green
+      U4P4: green
+      U4P5: green
+      U4P6: green
+      U5P1: green
+      U5P2: green
+      U5P3: green
+      U5P4: green
+
+  "09-03-26-3":
+    log: playthrough-logs-and-results/09-03-26-3/wenyi090326-3.stratalog.logdata.json
+    description: >
+      Full deliberately-imperfect playthrough of build 20260902-12353 (11,537
+      records, units 1-5 complete, played 2026-09-05/06). First ~10 minutes are
+      an abandoned Unit-1 stub on old build 20260721-11840 (excluded from all
+      graded windows by latest-anchor windowing).
+    provenance: >
+      Expected colors established by the grading-readiness-audit run 09-03-26-3
+      (re-run 2026-09-06) and cross-checked against tester-declared intent.
+      This log drove the 2026-09-06 U5P1 rubric tightening: the tester failed
+      the glyph puzzle 3 times (uncounted hint nodes 100:34/35/37) then used
+      DANI's assist (100:39 + 100:43), so U5P1 is yellow under the
+      zero-negatives rule. Every independently-checkable yellow matched the
+      doc-derived expectation (18 PASS).
+    expected:
+      U1P1: green
+      U1P2: green
+      U1P3: yellow
+      U1P4: green
+      U2P1: green
+      U2P2: yellow
+      U2P3: green
+      U2P4: yellow
+      U2P5: yellow
+      U2P6: yellow
+      U2P7: yellow
+      U3P1: yellow
+      U3P2: yellow
+      U3P3: yellow
+      U3P4: green
+      U3P5: yellow
+      U4P1: yellow
+      U4P2: yellow
+      U4P3: yellow
+      U4P4: yellow
+      U4P5: yellow
+      U4P6: yellow
+      U5P1: yellow
+      U5P2: yellow
+      U5P3: yellow
+      U5P4: yellow
+
+  "09-03-26-4":
+    log: playthrough-logs-and-results/09-03-26-4/wenyi090326-4.stratalog.logdata.json
+    description: >
+      Playthrough of build 20260902-12353 (8,817 records, units 1-4 complete,
+      played 2026-09-06). Unit 5 truncated ~3.5 minutes in (internet outage,
+      tester-confirmed): no gradable Unit 5 evidence, so U5P1-U5P4 default to
+      yellow as not-played artifacts, not performance signals. Also starts with
+      a small abandoned Unit-1 stub on old build 20260721-11840.
+    provenance: >
+      Expected colors established by the grading-readiness-audit run 09-03-26-4
+      (re-run 2026-09-06) and cross-checked with the tester. U2P3 yellow is the
+      point that motivated the 2026-09-06 threshold change: exactly 6
+      wrong-direction reminders (DialogueNodeEvent:28:185) fired in the window,
+      yellow under the new "fewer than 6" rule (was green at <=6). U2P1/U2P2
+      yellows verified as genuine play outcomes.
+    expected:
+      U1P1: green
+      U1P2: green
+      U1P3: green
+      U1P4: green
+      U2P1: yellow
+      U2P2: yellow
+      U2P3: yellow
+      U2P4: green
+      U2P5: green
+      U2P6: green
+      U2P7: green
+      U3P1: green
+      U3P2: green
+      U3P3: green
+      U3P4: green
+      U3P5: green
+      U4P1: green
+      U4P2: green
+      U4P3: green
+      U4P4: green
+      U4P5: green
+      U4P6: green
+      U5P1: yellow
+      U5P2: yellow
+      U5P3: yellow
+      U5P4: yellow

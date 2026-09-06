@@ -1,0 +1,977 @@
+﻿eventKey,kind,count,eventTypes,scenes,first_ts,last_ts,example_id,example_src
+DialogueNodeEvent:103:0,dialogue,5,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:28.2960000Z,2026-09-06T15:31:56.0770000Z,6a9d874f485cab4c9540829c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:103:1,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:28.2980000Z,2026-09-06T15:31:28.2980000Z,6a9d874f485cab4c954082a0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:103:12,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:37.9330000Z,2026-09-06T15:31:37.9330000Z,6a9d8759485cab4c954082bc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:103:15,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:38.5670000Z,2026-09-06T15:31:38.5670000Z,6a9d8759485cab4c954082be,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:103:16,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:38.7340000Z,2026-09-06T15:31:38.7340000Z,6a9d875a485cab4c954082c0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:103:17,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:46.9740000Z,2026-09-06T15:31:46.9740000Z,6a9d8762485cab4c954082d8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:103:19,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:49.7390000Z,2026-09-06T15:31:49.7390000Z,6a9d8765485cab4c954082dc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:103:2,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:30.0290000Z,2026-09-06T15:31:30.0290000Z,6a9d8751485cab4c954082a4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:103:22,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:50.4720000Z,2026-09-06T15:31:50.4720000Z,6a9d8765485cab4c954082de,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:103:24,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:50.6070000Z,2026-09-06T15:31:50.6070000Z,6a9d8766485cab4c954082e0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:103:25,dialogue,2,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:52.3100000Z,2026-09-06T15:31:56.0800000Z,6a9d8767485cab4c954082f0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:103:26,dialogue,2,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:53.0070000Z,2026-09-06T15:31:56.1750000Z,6a9d8768485cab4c954082f2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:103:27,dialogue,2,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:53.1740000Z,2026-09-06T15:31:56.3090000Z,6a9d8768485cab4c954082f4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:103:28,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:57.7510000Z,2026-09-06T15:31:57.7510000Z,6a9d876d485cab4c95408306,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:103:30,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:55.1410000Z,2026-09-06T15:31:55.1410000Z,6a9d876a485cab4c954082f6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:103:31,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:58.6460000Z,2026-09-06T15:31:58.6460000Z,6a9d876e485cab4c9540830c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:103:32,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:58.4760000Z,2026-09-06T15:31:58.4760000Z,6a9d876d485cab4c95408308,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:103:4,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:30.6300000Z,2026-09-06T15:31:30.6300000Z,6a9d8752485cab4c954082a6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:103:5,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:31.9970000Z,2026-09-06T15:31:31.9970000Z,6a9d8753485cab4c954082a8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:103:7,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:32.8320000Z,2026-09-06T15:31:32.8320000Z,6a9d8754485cab4c954082aa,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:103:8,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:34.9350000Z,2026-09-06T15:31:34.9350000Z,6a9d8756485cab4c954082b8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:103:9,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:35.7660000Z,2026-09-06T15:31:35.7660000Z,6a9d8757485cab4c954082ba,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:104:1,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T16:01:33.7300000Z,2026-09-06T16:01:33.7300000Z,6a9d8e5d485cab4c95408c60,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:104:10,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T16:02:25.4480000Z,2026-09-06T16:02:25.4480000Z,6a9d8e91485cab4c95408c7a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:104:12,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T16:02:25.6160000Z,2026-09-06T16:02:25.6160000Z,6a9d8e91485cab4c95408c7c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:104:13,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T16:00:18.1990000Z,2026-09-06T16:00:18.1990000Z,6a9d8e11485cab4c95408c3a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:104:14,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T16:00:28.1690000Z,2026-09-06T16:00:28.1690000Z,6a9d8e1b485cab4c95408c40,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:104:15,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T16:00:43.6770000Z,2026-09-06T16:00:43.6770000Z,6a9d8e2b485cab4c95408c46,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:104:17,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T16:00:44.5440000Z,2026-09-06T16:00:44.5440000Z,6a9d8e2c485cab4c95408c48,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:104:18,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T16:01:02.7530000Z,2026-09-06T16:01:02.7530000Z,6a9d8e3e485cab4c95408c4e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:104:2,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T16:02:13.5480000Z,2026-09-06T16:02:13.5480000Z,6a9d8e85485cab4c95408c6c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:104:20,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T16:01:11.4900000Z,2026-09-06T16:01:11.4900000Z,6a9d8e47485cab4c95408c50,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:104:22,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T16:01:11.8580000Z,2026-09-06T16:01:11.8580000Z,6a9d8e47485cab4c95408c52,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:104:23,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T16:02:29.6180000Z,2026-09-06T16:02:29.6180000Z,6a9d8e95485cab4c95408c8c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:104:25,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T16:02:33.0600000Z,2026-09-06T16:02:33.0600000Z,6a9d8e98485cab4c95408c96,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:104:26,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T16:02:33.7190000Z,2026-09-06T16:02:33.7190000Z,6a9d8e99485cab4c95408c98,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:104:27,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T16:02:33.8880000Z,2026-09-06T16:02:33.8880000Z,6a9d8e99485cab4c95408c9c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:104:4,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T16:02:14.1820000Z,2026-09-06T16:02:14.1820000Z,6a9d8e85485cab4c95408c6e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:104:5,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T16:02:14.3480000Z,2026-09-06T16:02:14.3480000Z,6a9d8e85485cab4c95408c70,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:104:6,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T16:02:14.5820000Z,2026-09-06T16:02:14.5820000Z,6a9d8e86485cab4c95408c72,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:104:7,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T16:02:14.9150000Z,2026-09-06T16:02:14.9150000Z,6a9d8e86485cab4c95408c74,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:104:8,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T16:02:24.9150000Z,2026-09-06T16:02:24.9150000Z,6a9d8e90485cab4c95408c78,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:1,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:27:38.0090000Z,2026-09-06T16:27:38.0090000Z,6a9d9479485cab4c9540983c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:10,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:27:46.9790000Z,2026-09-06T16:27:46.9790000Z,6a9d9482485cab4c9540984e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:12,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:27:47.1450000Z,2026-09-06T16:27:47.1450000Z,6a9d9482485cab4c95409850,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:14,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:27:47.3460000Z,2026-09-06T16:27:47.3460000Z,6a9d9483485cab4c95409852,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:15,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:23.1930000Z,2026-09-06T16:24:23.1930000Z,6a9d93b6485cab4c954097e4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:16,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:23.8930000Z,2026-09-06T16:24:23.8930000Z,6a9d93b7485cab4c954097e8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:17,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:25.7600000Z,2026-09-06T16:24:25.7600000Z,6a9d93b9485cab4c954097ea,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:19,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:26.3610000Z,2026-09-06T16:24:26.3610000Z,6a9d93ba485cab4c954097ec,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:2,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:27:40.2760000Z,2026-09-06T16:27:40.2760000Z,6a9d947c485cab4c95409840,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:21,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:30.3950000Z,2026-09-06T16:24:30.3950000Z,6a9d93be485cab4c954097ee,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:24,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:31.0960000Z,2026-09-06T16:24:31.0960000Z,6a9d93be485cab4c954097f0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:25,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:32.0300000Z,2026-09-06T16:24:32.0300000Z,6a9d93bf485cab4c954097f2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:26,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:32.6310000Z,2026-09-06T16:24:32.6310000Z,6a9d93c0485cab4c954097f6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:27,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:44.0370000Z,2026-09-06T16:24:44.0370000Z,6a9d93cb485cab4c95409800,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:28,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:45.6360000Z,2026-09-06T16:24:45.6360000Z,6a9d93cd485cab4c95409804,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:29,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:27:32.3050000Z,2026-09-06T16:27:32.3050000Z,6a9d9474485cab4c9540982a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:31,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:27:33.7060000Z,2026-09-06T16:27:33.7060000Z,6a9d9475485cab4c9540982e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:34,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:27:35.6420000Z,2026-09-06T16:27:35.6420000Z,6a9d9477485cab4c95409830,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:37,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:27:36.2740000Z,2026-09-06T16:27:36.2740000Z,6a9d9478485cab4c95409832,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:38,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:27:36.4410000Z,2026-09-06T16:27:36.4410000Z,6a9d9478485cab4c95409834,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:39,dialogue,4,DialogueEvent,Unit 4 Dev,2026-09-06T16:28:18.0240000Z,2026-09-06T16:28:22.0300000Z,6a9d94a1485cab4c95409868,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:4,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:27:41.1100000Z,2026-09-06T16:27:41.1100000Z,6a9d947c485cab4c95409842,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:40,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:28:21.1250000Z,2026-09-06T16:28:21.1250000Z,6a9d94a4485cab4c95409874,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:41,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:28:21.7580000Z,2026-09-06T16:28:21.7580000Z,6a9d94a5485cab4c95409876,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:42,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:28:24.6340000Z,2026-09-06T16:28:24.6340000Z,6a9d94a8485cab4c9540988a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:43,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:28:25.3270000Z,2026-09-06T16:28:25.3270000Z,6a9d94a9485cab4c9540988c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:44,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:28:25.4620000Z,2026-09-06T16:28:25.4620000Z,6a9d94a9485cab4c95409890,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:5,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:27:41.2760000Z,2026-09-06T16:27:41.2760000Z,6a9d947d485cab4c95409844,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:6,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:27:41.4100000Z,2026-09-06T16:27:41.4100000Z,6a9d947d485cab4c95409846,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:7,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:27:41.6100000Z,2026-09-06T16:27:41.6100000Z,6a9d947d485cab4c95409848,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:105:8,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:27:46.1130000Z,2026-09-06T16:27:46.1130000Z,6a9d9481485cab4c9540984c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:107:0,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:16:27.4290000Z,2026-09-06T16:16:27.4290000Z,6a9d91db485cab4c95409406,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:107:1,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:16:27.4320000Z,2026-09-06T16:16:27.4320000Z,6a9d91db485cab4c9540940a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:107:5,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:16:29.0290000Z,2026-09-06T16:16:29.0290000Z,6a9d91dc485cab4c9540940c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:107:9,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:16:30.0970000Z,2026-09-06T16:16:30.0970000Z,6a9d91dd485cab4c9540940e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:0,dialogue,2,DialogueEvent,Unit 3 Dev,2026-09-06T15:38:52.2380000Z,2026-09-06T15:59:42.1210000Z,6a9d890b485cab4c9540841c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:1,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:33:24.3320000Z,2026-09-06T15:33:24.3320000Z,6a9d87c3485cab4c95408314,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:100,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:30.8320000Z,2026-09-06T15:41:30.8320000Z,6a9d89aa485cab4c954085ec,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:101,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:35.2340000Z,2026-09-06T15:41:35.2340000Z,6a9d89ae485cab4c954085f4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:102,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:36.0030000Z,2026-09-06T15:41:36.0030000Z,6a9d89af485cab4c954085f6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:103,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:43:56.6520000Z,2026-09-06T15:43:56.6520000Z,6a9d8a3c485cab4c95408672,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:114,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:47:15.1240000Z,2026-09-06T15:47:15.1240000Z,6a9d8b02485cab4c954086e2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:115,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:47:15.5930000Z,2026-09-06T15:47:15.5930000Z,6a9d8b03485cab4c954086ea,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:122,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:50:44.6140000Z,2026-09-06T15:50:44.6140000Z,6a9d8bd4485cab4c954088f4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:123,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:50:52.6170000Z,2026-09-06T15:50:52.6170000Z,6a9d8bdc485cab4c954088fc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:124,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:50:55.2850000Z,2026-09-06T15:50:55.2850000Z,6a9d8bde485cab4c95408902,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:125,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:50:56.4850000Z,2026-09-06T15:50:56.4850000Z,6a9d8be0485cab4c95408908,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:126,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:51:01.3530000Z,2026-09-06T15:51:01.3530000Z,6a9d8be4485cab4c95408910,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:13,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:35:16.9640000Z,2026-09-06T15:35:16.9640000Z,6a9d8834485cab4c95408344,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:15,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:35:21.8660000Z,2026-09-06T15:35:21.8660000Z,6a9d8839485cab4c95408346,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:154,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:55:55.6410000Z,2026-09-06T15:55:55.6410000Z,6a9d8d0b485cab4c95408b1c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:155,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:55:56.8100000Z,2026-09-06T15:55:56.8100000Z,6a9d8d0c485cab4c95408b22,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:156,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:56:02.1460000Z,2026-09-06T15:56:02.1460000Z,6a9d8d11485cab4c95408b2c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:157,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:57:43.0120000Z,2026-09-06T15:57:43.0120000Z,6a9d8d76485cab4c95408b54,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:158,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:57:46.6810000Z,2026-09-06T15:57:46.6810000Z,6a9d8d7a485cab4c95408b5a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:159,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:57:48.7660000Z,2026-09-06T15:57:48.7660000Z,6a9d8d7c485cab4c95408b60,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:16,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:35:22.1770000Z,2026-09-06T15:35:22.1770000Z,6a9d8839485cab4c9540834a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:160,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:57:57.1030000Z,2026-09-06T15:57:57.1030000Z,6a9d8d84485cab4c95408b68,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:162,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:58:02.2380000Z,2026-09-06T15:58:02.2380000Z,6a9d8d89485cab4c95408b6e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:176,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:59:42.1240000Z,2026-09-06T15:59:42.1240000Z,6a9d8ded485cab4c95408c0c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:177,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:59:43.8210000Z,2026-09-06T15:59:43.8210000Z,6a9d8def485cab4c95408c10,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:178,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:59:44.2880000Z,2026-09-06T15:59:44.2880000Z,6a9d8def485cab4c95408c12,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:179,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:59:46.8230000Z,2026-09-06T15:59:46.8230000Z,6a9d8df2485cab4c95408c14,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:181,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:59:47.5230000Z,2026-09-06T15:59:47.5230000Z,6a9d8df3485cab4c95408c16,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:182,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:59:47.7570000Z,2026-09-06T15:59:47.7570000Z,6a9d8df3485cab4c95408c18,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:183,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:59:48.0900000Z,2026-09-06T15:59:48.0900000Z,6a9d8df3485cab4c95408c1a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:184,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:59:49.6910000Z,2026-09-06T15:59:49.6910000Z,6a9d8df5485cab4c95408c1c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:187,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:59:50.2580000Z,2026-09-06T15:59:50.2580000Z,6a9d8df5485cab4c95408c1e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:188,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:59:51.6250000Z,2026-09-06T15:59:51.6250000Z,6a9d8df7485cab4c95408c20,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:190,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:59:52.3260000Z,2026-09-06T15:59:52.3260000Z,6a9d8df7485cab4c95408c22,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:191,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:59:53.5590000Z,2026-09-06T15:59:53.5590000Z,6a9d8df9485cab4c95408c26,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:193,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:59:54.3590000Z,2026-09-06T15:59:54.3590000Z,6a9d8df9485cab4c95408c28,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:194,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:59:54.4950000Z,2026-09-06T15:59:54.4950000Z,6a9d8dfa485cab4c95408c2c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:195,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:38:14.4020000Z,2026-09-06T15:38:14.4020000Z,6a9d88e5485cab4c954083fa,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:196,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:36.1700000Z,2026-09-06T15:41:36.1700000Z,6a9d89af485cab4c954085fa,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:198,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:38:52.2410000Z,2026-09-06T15:38:52.2410000Z,6a9d890b485cab4c95408420,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:2,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:33:27.8340000Z,2026-09-06T15:33:27.8340000Z,6a9d87c7485cab4c9540831c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:200,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:38:54.0040000Z,2026-09-06T15:38:54.0040000Z,6a9d890d485cab4c95408422,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:202,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:38:54.6710000Z,2026-09-06T15:38:54.6710000Z,6a9d890e485cab4c95408424,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:204,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:38:54.8060000Z,2026-09-06T15:38:54.8060000Z,6a9d890e485cab4c95408428,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:205,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:35:31.9720000Z,2026-09-06T15:35:31.9720000Z,6a9d8843485cab4c9540835c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:211,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:38:56.8720000Z,2026-09-06T15:38:56.8720000Z,6a9d8910485cab4c95408430,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:217,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:38:57.5060000Z,2026-09-06T15:38:57.5060000Z,6a9d8911485cab4c95408432,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:218,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:38:57.6730000Z,2026-09-06T15:38:57.6730000Z,6a9d8911485cab4c95408434,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:224,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:33:32.0360000Z,2026-09-06T15:33:32.0360000Z,6a9d87cb485cab4c95408322,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:29,dialogue,3,DialogueEvent,Unit 3 Dev,2026-09-06T15:36:15.9930000Z,2026-09-06T15:38:01.8900000Z,6a9d886f485cab4c95408390,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:3,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:35:12.6050000Z,2026-09-06T15:35:12.6050000Z,6a9d8830485cab4c9540833a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:30,dialogue,3,DialogueEvent,Unit 3 Dev,2026-09-06T15:36:27.3550000Z,2026-09-06T15:38:13.2620000Z,6a9d887a485cab4c9540839c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:31,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:49:46.9250000Z,2026-09-06T15:49:46.9250000Z,6a9d8b9b485cab4c9540876a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:38,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:38:54.9710000Z,2026-09-06T15:38:54.9710000Z,6a9d890e485cab4c9540842a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:39,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:38:55.1720000Z,2026-09-06T15:38:55.1720000Z,6a9d890e485cab4c9540842c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:4,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:35:14.0060000Z,2026-09-06T15:35:14.0060000Z,6a9d8831485cab4c9540833c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:6,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:35:14.6730000Z,2026-09-06T15:35:14.6730000Z,6a9d8832485cab4c9540833e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:64,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:14.7030000Z,2026-09-06T15:41:14.7030000Z,6a9d899a485cab4c954085c2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:65,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:16.4360000Z,2026-09-06T15:41:16.4360000Z,6a9d899b485cab4c954085c6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:67,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:17.0920000Z,2026-09-06T15:41:17.0920000Z,6a9d899c485cab4c954085c8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:68,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:18.2930000Z,2026-09-06T15:41:18.2930000Z,6a9d899d485cab4c954085ca,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:7,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:35:14.8390000Z,2026-09-06T15:35:14.8390000Z,6a9d8832485cab4c95408340,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:70,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:18.9600000Z,2026-09-06T15:41:18.9600000Z,6a9d899e485cab4c954085cc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:74,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:19.1270000Z,2026-09-06T15:41:19.1270000Z,6a9d899e485cab4c954085ce,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:75,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:19.2610000Z,2026-09-06T15:41:19.2610000Z,6a9d899e485cab4c954085d0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:76,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:19.7610000Z,2026-09-06T15:41:19.7610000Z,6a9d899f485cab4c954085d2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:77,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:21.1270000Z,2026-09-06T15:41:21.1270000Z,6a9d89a0485cab4c954085d4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:79,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:21.8950000Z,2026-09-06T15:41:21.8950000Z,6a9d89a1485cab4c954085d6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:80,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:22.0620000Z,2026-09-06T15:41:22.0620000Z,6a9d89a1485cab4c954085d8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:81,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:23.1950000Z,2026-09-06T15:41:23.1950000Z,6a9d89a2485cab4c954085da,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:82,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:23.9960000Z,2026-09-06T15:41:23.9960000Z,6a9d89a3485cab4c954085dc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:83,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:24.1960000Z,2026-09-06T15:41:24.1960000Z,6a9d89a3485cab4c954085de,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:90,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:25.8300000Z,2026-09-06T15:41:25.8300000Z,6a9d89a5485cab4c954085e0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:91,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:26.6640000Z,2026-09-06T15:41:26.6640000Z,6a9d89a6485cab4c954085e4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:94,dialogue,2,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:26.9640000Z,2026-09-06T15:41:31.9000000Z,6a9d89a6485cab4c954085e6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:98,dialogue,2,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:28.5980000Z,2026-09-06T15:41:33.2000000Z,6a9d89a8485cab4c954085e8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:10:99,dialogue,2,DialogueEvent,Unit 3 Dev,2026-09-06T15:41:29.2650000Z,2026-09-06T15:41:34.0340000Z,6a9d89a8485cab4c954085ea,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:111:1,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:11:04.2080000Z,2026-09-06T16:11:04.2080000Z,6a9d9097485cab4c95408f20,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:114:1,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:21:47.9970000Z,2026-09-06T16:21:47.9970000Z,6a9d931b485cab4c95409666,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:114:2,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:21:52.4330000Z,2026-09-06T16:21:52.4330000Z,6a9d9320485cab4c9540966c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:114:3,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:21:54.3010000Z,2026-09-06T16:21:54.3010000Z,6a9d9322485cab4c95409674,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:114:4,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:21:55.5340000Z,2026-09-06T16:21:55.5340000Z,6a9d9323485cab4c9540967a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:0,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:35:41.2770000Z,2026-09-06T15:35:41.2770000Z,6a9d884c485cab4c95408366,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:1,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:35:41.3100000Z,2026-09-06T15:35:41.3100000Z,6a9d884c485cab4c9540836a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:10,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:35:51.4140000Z,2026-09-06T15:35:51.4140000Z,6a9d8856485cab4c95408378,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:11,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:35:51.5490000Z,2026-09-06T15:35:51.5490000Z,6a9d8857485cab4c9540837c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:12,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:38:14.5630000Z,2026-09-06T15:38:14.5630000Z,6a9d88e6485cab4c954083fc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:13,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:38:15.0960000Z,2026-09-06T15:38:15.0960000Z,6a9d88e6485cab4c954083fe,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:14,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:38:15.4960000Z,2026-09-06T15:38:15.4960000Z,6a9d88e6485cab4c95408400,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:15,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:38:17.1200000Z,2026-09-06T15:38:17.1200000Z,6a9d88e8485cab4c95408404,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:18,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:38:17.8870000Z,2026-09-06T15:38:17.8870000Z,6a9d88e9485cab4c95408406,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:19,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:38:19.3550000Z,2026-09-06T15:38:19.3550000Z,6a9d88ea485cab4c95408408,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:2,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:35:46.1110000Z,2026-09-06T15:35:46.1110000Z,6a9d8851485cab4c9540836c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:21,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:38:20.1880000Z,2026-09-06T15:38:20.1880000Z,6a9d88eb485cab4c9540840a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:22,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:38:20.3630000Z,2026-09-06T15:38:20.3630000Z,6a9d88eb485cab4c9540840c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:224,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:38:57.8060000Z,2026-09-06T15:38:57.8060000Z,6a9d8911485cab4c95408436,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:226,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:38:57.9440000Z,2026-09-06T15:38:57.9440000Z,6a9d8911485cab4c9540843a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:227,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:47:31.4580000Z,2026-09-06T15:47:31.4580000Z,6a9d8b13485cab4c9540870a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:228,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:47:32.5580000Z,2026-09-06T15:47:32.5580000Z,6a9d8b14485cab4c9540870e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:229,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:47:32.6910000Z,2026-09-06T15:47:32.6910000Z,6a9d8b14485cab4c95408710,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:23,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:39:11.2640000Z,2026-09-06T15:39:11.2640000Z,6a9d891e485cab4c9540846e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:24,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:39:25.6300000Z,2026-09-06T15:39:25.6300000Z,6a9d892d485cab4c954084a2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:25,dialogue,6,DialogueEvent,Unit 3 Dev,2026-09-06T15:39:41.8010000Z,2026-09-06T15:40:16.7070000Z,6a9d893d485cab4c954084c2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:26,dialogue,3,DialogueEvent,Unit 3 Dev,2026-09-06T15:40:28.3130000Z,2026-09-06T15:40:38.9180000Z,6a9d896b485cab4c95408570,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:34,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:40:59.4970000Z,2026-09-06T15:40:59.4970000Z,6a9d898b485cab4c954085bc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:35,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:47:24.0550000Z,2026-09-06T15:47:24.0550000Z,6a9d8b0b485cab4c954086f2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:36,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:47:26.1550000Z,2026-09-06T15:47:26.1550000Z,6a9d8b0d485cab4c954086f8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:4,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:35:47.0120000Z,2026-09-06T15:35:47.0120000Z,6a9d8852485cab4c95408370,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:5,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:35:48.3780000Z,2026-09-06T15:35:48.3780000Z,6a9d8853485cab4c95408372,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:7,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:35:49.1460000Z,2026-09-06T15:35:49.1460000Z,6a9d8854485cab4c95408374,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:11:8,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:35:50.6470000Z,2026-09-06T15:35:50.6470000Z,6a9d8856485cab4c95408376,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:12:11,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:44:35.8660000Z,2026-09-06T15:44:35.8660000Z,6a9d8a63485cab4c954086a6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:13:1,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:44:16.7530000Z,2026-09-06T15:44:16.7530000Z,6a9d8a50485cab4c9540868c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:15:13,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:46:12.9680000Z,2026-09-06T15:46:12.9680000Z,6a9d8ac4485cab4c954086c8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:15:14,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:46:13.2340000Z,2026-09-06T15:46:13.2340000Z,6a9d8ac4485cab4c954086ca,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:15:15,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:46:13.5100000Z,2026-09-06T15:46:13.5100000Z,6a9d8ac5485cab4c954086ce,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:15:3,dialogue,2,DialogueEvent,Unit 3 Dev,2026-09-06T15:44:38.8980000Z,2026-09-06T15:44:49.8700000Z,6a9d8a66485cab4c954086ac,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:15:7,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:46:12.2000000Z,2026-09-06T15:46:12.2000000Z,6a9d8ac3485cab4c954086c6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:16:3,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T01:57:52.3850000Z,2026-09-06T01:57:52.3850000Z,6a9cc8a0485cab4c95405e26,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:17:17,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T01:59:59.8060000Z,2026-09-06T01:59:59.8060000Z,6a9cc91f485cab4c95405e64,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:17:19,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:00:01.9740000Z,2026-09-06T02:00:01.9740000Z,6a9cc923485cab4c95405e6c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:17:20,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:00:08.5430000Z,2026-09-06T02:00:08.5430000Z,6a9cc928485cab4c95405e74,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:17:22,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:00:10.2100000Z,2026-09-06T02:00:10.2100000Z,6a9cc92a485cab4c95405e78,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:17:26,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:00:11.7780000Z,2026-09-06T02:00:11.7780000Z,6a9cc92b485cab4c95405e7c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:1,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T01:59:42.8650000Z,2026-09-06T01:59:42.8650000Z,6a9cc90e485cab4c95405e44,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:10,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T01:59:50.5800000Z,2026-09-06T01:59:50.5800000Z,6a9cc916485cab4c95405e54,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:102,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:21:16.5620000Z,2026-09-06T02:21:16.5620000Z,6a9cce1c485cab4c954079be,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:103,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:21:18.9290000Z,2026-09-06T02:21:18.9290000Z,6a9cce1e485cab4c954079c2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:105,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:21:19.5650000Z,2026-09-06T02:21:19.5650000Z,6a9cce1f485cab4c954079c6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:109,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T14:58:40.5510000Z,2026-09-06T14:58:40.5510000Z,6a9d7f9f485cab4c95407a32,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:110,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T14:58:42.7510000Z,2026-09-06T14:58:42.7510000Z,6a9d7fa1485cab4c95407a36,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:112,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T14:58:47.0850000Z,2026-09-06T14:58:47.0850000Z,6a9d7fa6485cab4c95407a3e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:113,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T14:59:02.6590000Z,2026-09-06T14:59:02.6590000Z,6a9d7fb5485cab4c95407a7e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:114,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T14:59:17.3320000Z,2026-09-06T14:59:17.3320000Z,6a9d7fc4485cab4c95407a84,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:116,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T14:59:24.4620000Z,2026-09-06T14:59:24.4620000Z,6a9d7fcb485cab4c95407aca,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:117,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T14:59:27.0870000Z,2026-09-06T14:59:27.0870000Z,6a9d7fce485cab4c95407aec,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:118,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:00:33.4850000Z,2026-09-06T15:00:33.4850000Z,6a9d8010485cab4c95407b1c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:120,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:19:27.7800000Z,2026-09-06T15:19:27.7800000Z,6a9d847f485cab4c95407fd8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:121,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:19:29.7480000Z,2026-09-06T15:19:29.7480000Z,6a9d8481485cab4c95407fdc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:122,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:19:31.6490000Z,2026-09-06T15:19:31.6490000Z,6a9d8482485cab4c95407fde,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:124,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:19:32.8820000Z,2026-09-06T15:19:32.8820000Z,6a9d8484485cab4c95407fe0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:125,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:19:33.2160000Z,2026-09-06T15:19:33.2160000Z,6a9d8484485cab4c95407fe2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:127,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:19:33.5530000Z,2026-09-06T15:19:33.5530000Z,6a9d8484485cab4c95407fe6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:128,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:19:42.2220000Z,2026-09-06T15:19:42.2220000Z,6a9d848d485cab4c95407ff2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:130,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:19:42.9950000Z,2026-09-06T15:19:42.9950000Z,6a9d848e485cab4c95407ff4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:136,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:53.0080000Z,2026-09-06T15:20:53.0080000Z,6a9d84d4485cab4c95408072,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:137,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:55.5740000Z,2026-09-06T15:20:55.5740000Z,6a9d84d6485cab4c95408076,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:139,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:56.2420000Z,2026-09-06T15:20:56.2420000Z,6a9d84d7485cab4c95408078,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:141,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:56.6100000Z,2026-09-06T15:20:56.6100000Z,6a9d84d7485cab4c9540807a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:142,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:21:05.0460000Z,2026-09-06T15:21:05.0460000Z,6a9d84e0485cab4c9540808c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:143,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:21:07.7810000Z,2026-09-06T15:21:07.7810000Z,6a9d84e3485cab4c95408090,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:145,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:21:08.6480000Z,2026-09-06T15:21:08.6480000Z,6a9d84e3485cab4c95408092,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:146,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:28:39.1970000Z,2026-09-06T15:28:39.1970000Z,6a9d86a6485cab4c95408100,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:147,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:28:42.1620000Z,2026-09-06T15:28:42.1620000Z,6a9d86a9485cab4c95408104,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:149,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:28:42.8970000Z,2026-09-06T15:28:42.8970000Z,6a9d86aa485cab4c95408106,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:150,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:28:51.2670000Z,2026-09-06T15:28:51.2670000Z,6a9d86b2485cab4c9540810e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:151,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:28:53.5340000Z,2026-09-06T15:28:53.5340000Z,6a9d86b4485cab4c95408112,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:153,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:28:54.2380000Z,2026-09-06T15:28:54.2380000Z,6a9d86b5485cab4c95408114,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:154,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:29:06.8940000Z,2026-09-06T15:29:06.8940000Z,6a9d86c2485cab4c9540813a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:155,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:29:07.8910000Z,2026-09-06T15:29:07.8910000Z,6a9d86c3485cab4c9540813e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:156,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:29:11.0260000Z,2026-09-06T15:29:11.0260000Z,6a9d86c6485cab4c95408142,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:158,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:29:11.8610000Z,2026-09-06T15:29:11.8610000Z,6a9d86c7485cab4c95408144,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:159,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:29:46.9000000Z,2026-09-06T15:29:46.9000000Z,6a9d86ea485cab4c9540817c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:160,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:29:49.5350000Z,2026-09-06T15:29:49.5350000Z,6a9d86ec485cab4c95408182,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:162,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:29:50.3680000Z,2026-09-06T15:29:50.3680000Z,6a9d86ed485cab4c95408184,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:163,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:29:51.7710000Z,2026-09-06T15:29:51.7710000Z,6a9d86ef485cab4c9540818c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:164,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:29:54.1030000Z,2026-09-06T15:29:54.1030000Z,6a9d86f1485cab4c95408190,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:166,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:29:54.8380000Z,2026-09-06T15:29:54.8380000Z,6a9d86f2485cab4c95408192,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:167,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:02.9100000Z,2026-09-06T15:30:02.9100000Z,6a9d86fa485cab4c954081a0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:169,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:14.3490000Z,2026-09-06T15:30:14.3490000Z,6a9d8705485cab4c954081ca,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:170,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:15.3810000Z,2026-09-06T15:30:15.3810000Z,6a9d8706485cab4c954081ce,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:173,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:15.7470000Z,2026-09-06T15:30:15.7470000Z,6a9d8707485cab4c954081d0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:174,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:16.2470000Z,2026-09-06T15:30:16.2470000Z,6a9d8707485cab4c954081d2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:175,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:18.0720000Z,2026-09-06T15:30:18.0720000Z,6a9d8709485cab4c954081d4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:176,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:19.6800000Z,2026-09-06T15:30:19.6800000Z,6a9d870b485cab4c954081d8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:179,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:00:59.4990000Z,2026-09-06T02:00:59.4990000Z,6a9cc95b485cab4c95405edc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:2,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T01:59:45.5980000Z,2026-09-06T01:59:45.5980000Z,6a9cc911485cab4c95405e48,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:209,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:36.0270000Z,2026-09-06T02:09:36.0270000Z,6a9ccb5f485cab4c954076b2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:21,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:00:15.4480000Z,2026-09-06T02:00:15.4480000Z,6a9cc92f485cab4c95405e90,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:210,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:37.5280000Z,2026-09-06T02:09:37.5280000Z,6a9ccb61485cab4c954076b4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:22,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:00:17.4470000Z,2026-09-06T02:00:17.4470000Z,6a9cc931485cab4c95405e94,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:231,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:20:06.6300000Z,2026-09-06T02:20:06.6300000Z,6a9ccdd6485cab4c95407970,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:24,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:00:21.3830000Z,2026-09-06T02:00:21.3830000Z,6a9cc935485cab4c95405ea0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:243,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T14:59:28.1220000Z,2026-09-06T14:59:28.1220000Z,6a9d7fcf485cab4c95407af8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:25,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:00:23.5500000Z,2026-09-06T02:00:23.5500000Z,6a9cc937485cab4c95405ea4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:269,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:00:51.3280000Z,2026-09-06T02:00:51.3280000Z,6a9cc953485cab4c95405ec6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:271,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:00:51.9280000Z,2026-09-06T02:00:51.9280000Z,6a9cc953485cab4c95405ec8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:273,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:00:52.3280000Z,2026-09-06T02:00:52.3280000Z,6a9cc954485cab4c95405eca,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:274,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T14:58:43.6490000Z,2026-09-06T14:58:43.6490000Z,6a9d7fa2485cab4c95407a38,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:276,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T14:59:18.2660000Z,2026-09-06T14:59:18.2660000Z,6a9d7fc5485cab4c95407a86,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:277,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T14:59:19.4000000Z,2026-09-06T14:59:19.4000000Z,6a9d7fc6485cab4c95407a8a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:279,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T14:59:20.2660000Z,2026-09-06T14:59:20.2660000Z,6a9d7fc7485cab4c95407a8c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:280,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:24.7590000Z,2026-09-06T02:09:24.7590000Z,6a9ccb54485cab4c95407696,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:281,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:32.9930000Z,2026-09-06T02:09:32.9930000Z,6a9ccb5c485cab4c954076ae,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:282,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:32.4260000Z,2026-09-06T02:09:32.4260000Z,6a9ccb5c485cab4c954076ac,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:283,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:10:41.0990000Z,2026-09-06T02:10:41.0990000Z,6a9ccba1485cab4c954076e6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:284,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:19.9420000Z,2026-09-06T15:30:19.9420000Z,6a9d870b485cab4c954081da,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:290,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:19:41.1540000Z,2026-09-06T15:19:41.1540000Z,6a9d848c485cab4c95407fee,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:33,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:00:40.7910000Z,2026-09-06T02:00:40.7910000Z,6a9cc948485cab4c95405eae,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:34,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:00:44.2240000Z,2026-09-06T02:00:44.2240000Z,6a9cc94c485cab4c95405eb4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:35,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:00:47.5600000Z,2026-09-06T02:00:47.5600000Z,6a9cc94f485cab4c95405eb8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:36,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:00:48.0260000Z,2026-09-06T02:00:48.0260000Z,6a9cc94f485cab4c95405eba,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:37,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:00:48.5270000Z,2026-09-06T02:00:48.5270000Z,6a9cc950485cab4c95405ebc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:38,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:00:49.4940000Z,2026-09-06T02:00:49.4940000Z,6a9cc951485cab4c95405ebe,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:39,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:00:49.4960000Z,2026-09-06T02:00:49.4960000Z,6a9cc951485cab4c95405ec0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:4,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T01:59:46.3660000Z,2026-09-06T01:59:46.3660000Z,6a9cc912485cab4c95405e4a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:41,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:08:24.1320000Z,2026-09-06T02:08:24.1320000Z,6a9ccb18485cab4c95407658,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:47,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:08:30.1480000Z,2026-09-06T02:08:30.1480000Z,6a9ccb1e485cab4c9540765e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:5,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T01:59:47.9330000Z,2026-09-06T01:59:47.9330000Z,6a9cc913485cab4c95405e4c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:56,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:01.7810000Z,2026-09-06T02:09:01.7810000Z,6a9ccb3d485cab4c95407686,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:59,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:18.2550000Z,2026-09-06T02:09:18.2550000Z,6a9ccb4e485cab4c9540768e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:61,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:26.3910000Z,2026-09-06T02:09:26.3910000Z,6a9ccb56485cab4c9540769a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:63,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:27.5230000Z,2026-09-06T02:09:27.5230000Z,6a9ccb57485cab4c9540769c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:64,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:27.8900000Z,2026-09-06T02:09:27.8900000Z,6a9ccb57485cab4c9540769e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:65,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:28.2930000Z,2026-09-06T02:09:28.2930000Z,6a9ccb58485cab4c954076a0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:66,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:30.7250000Z,2026-09-06T02:09:30.7250000Z,6a9ccb5a485cab4c954076a2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:68,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:31.2930000Z,2026-09-06T02:09:31.2930000Z,6a9ccb5b485cab4c954076a6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:69,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:31.4930000Z,2026-09-06T02:09:31.4930000Z,6a9ccb5b485cab4c954076a8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:7,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T01:59:48.5330000Z,2026-09-06T01:59:48.5330000Z,6a9cc914485cab4c95405e4e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:71,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:31.6250000Z,2026-09-06T02:09:31.6250000Z,6a9ccb5b485cab4c954076aa,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:72,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:35.2940000Z,2026-09-06T02:09:35.2940000Z,6a9ccb5f485cab4c954076b0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:75,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:38.4950000Z,2026-09-06T02:09:38.4950000Z,6a9ccb62485cab4c954076b6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:76,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:38.6620000Z,2026-09-06T02:09:38.6620000Z,6a9ccb62485cab4c954076b8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:77,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:38.7950000Z,2026-09-06T02:09:38.7950000Z,6a9ccb62485cab4c954076ba,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:79,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:39.1960000Z,2026-09-06T02:09:39.1960000Z,6a9ccb63485cab4c954076bc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:8,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T01:59:49.8000000Z,2026-09-06T01:59:49.8000000Z,6a9cc915485cab4c95405e50,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:81,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:41.0310000Z,2026-09-06T02:09:41.0310000Z,6a9ccb64485cab4c954076be,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:82,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:41.6310000Z,2026-09-06T02:09:41.6310000Z,6a9ccb65485cab4c954076c2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:87,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:42.9970000Z,2026-09-06T02:09:42.9970000Z,6a9ccb66485cab4c954076c4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:89,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:43.7660000Z,2026-09-06T02:09:43.7660000Z,6a9ccb67485cab4c954076c6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:91,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:10:02.8760000Z,2026-09-06T02:10:02.8760000Z,6a9ccb7a485cab4c954076d0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:92,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:10:38.9890000Z,2026-09-06T02:10:38.9890000Z,6a9ccb9e485cab4c954076dc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:93,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:10:40.1560000Z,2026-09-06T02:10:40.1560000Z,6a9ccba0485cab4c954076de,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:95,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:10:40.7900000Z,2026-09-06T02:10:40.7900000Z,6a9ccba0485cab4c954076e0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:18:98,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:10:40.9240000Z,2026-09-06T02:10:40.9240000Z,6a9ccba0485cab4c954076e2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:0,dialogue,2,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:11:26.4460000Z,2026-09-06T15:19:48.0910000Z,6a9ccbce485cab4c95407700,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:1,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:11:26.4490000Z,2026-09-06T02:11:26.4490000Z,6a9ccbce485cab4c95407704,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:16,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:19:48.0940000Z,2026-09-06T15:19:48.0940000Z,6a9d8493485cab4c95408002,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:17,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:19:49.4570000Z,2026-09-06T15:19:49.4570000Z,6a9d8494485cab4c95408006,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:19,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:19:50.2240000Z,2026-09-06T15:19:50.2240000Z,6a9d8495485cab4c95408008,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:2,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:11:27.9110000Z,2026-09-06T02:11:27.9110000Z,6a9ccbcf485cab4c95407708,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:20,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:19:50.5920000Z,2026-09-06T15:19:50.5920000Z,6a9d8495485cab4c9540800a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:21,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:19:51.0250000Z,2026-09-06T15:19:51.0250000Z,6a9d8496485cab4c9540800c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:26,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:19:55.9600000Z,2026-09-06T15:19:55.9600000Z,6a9d849b485cab4c95408010,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:29,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:19:56.8280000Z,2026-09-06T15:19:56.8280000Z,6a9d849c485cab4c95408012,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:30,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:19:57.2280000Z,2026-09-06T15:19:57.2280000Z,6a9d849c485cab4c95408014,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:31,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:00.2950000Z,2026-09-06T15:20:00.2950000Z,6a9d849f485cab4c95408018,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:32,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:01.0630000Z,2026-09-06T15:20:01.0630000Z,6a9d84a0485cab4c9540801a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:4,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:11:45.4040000Z,2026-09-06T02:11:45.4040000Z,6a9ccbe1485cab4c95407730,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:46,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:11:47.8060000Z,2026-09-06T02:11:47.8060000Z,6a9ccbe3485cab4c9540773c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:47,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:19:52.4920000Z,2026-09-06T15:19:52.4920000Z,6a9d8497485cab4c9540800e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:48,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:11:47.6710000Z,2026-09-06T02:11:47.6710000Z,6a9ccbe3485cab4c95407738,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:49,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:11:27.5110000Z,2026-09-06T02:11:27.5110000Z,6a9ccbcf485cab4c95407706,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:5,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:11:46.7700000Z,2026-09-06T02:11:46.7700000Z,6a9ccbe2485cab4c95407732,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:50,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:11:28.3170000Z,2026-09-06T02:11:28.3170000Z,6a9ccbd0485cab4c9540770e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:51,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:11:32.1980000Z,2026-09-06T02:11:32.1980000Z,6a9ccbd4485cab4c95407716,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:52,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:11:34.5320000Z,2026-09-06T02:11:34.5320000Z,6a9ccbd6485cab4c9540771c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:53,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:11:41.4350000Z,2026-09-06T02:11:41.4350000Z,6a9ccbdd485cab4c95407726,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:54,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:11:44.4690000Z,2026-09-06T02:11:44.4690000Z,6a9ccbe0485cab4c9540772a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:56,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:11:45.2360000Z,2026-09-06T02:11:45.2360000Z,6a9ccbe1485cab4c9540772c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:58,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:11:47.8040000Z,2026-09-06T02:11:47.8040000Z,6a9ccbe3485cab4c9540773a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:59,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:11:28.3130000Z,2026-09-06T02:11:28.3130000Z,6a9ccbd0485cab4c9540770a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:60,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:11:54.7110000Z,2026-09-06T02:11:54.7110000Z,6a9ccbea485cab4c9540774a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:19:7,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:11:47.5390000Z,2026-09-06T02:11:47.5390000Z,6a9ccbe3485cab4c95407736,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:0,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:29.3110000Z,2026-09-06T15:30:29.3110000Z,6a9d8714485cab4c954081ec,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:1,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:13:15.3460000Z,2026-09-06T02:13:15.3460000Z,6a9ccc3b485cab4c954077f0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:10,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:13:59.7970000Z,2026-09-06T02:13:59.7970000Z,6a9ccc67485cab4c95407810,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:110,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:35.5140000Z,2026-09-06T15:30:35.5140000Z,6a9d871a485cab4c954081fe,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:111,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:14:07.8040000Z,2026-09-06T02:14:07.8040000Z,6a9ccc6f485cab4c95407830,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:13,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:14:00.7980000Z,2026-09-06T02:14:00.7980000Z,6a9ccc68485cab4c95407812,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:15,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:14:00.9310000Z,2026-09-06T02:14:00.9310000Z,6a9ccc68485cab4c95407814,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:17,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:14:01.0980000Z,2026-09-06T02:14:01.0980000Z,6a9ccc69485cab4c95407816,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:19,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:14:02.7320000Z,2026-09-06T02:14:02.7320000Z,6a9ccc6a485cab4c9540781a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:20,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:14:03.2650000Z,2026-09-06T02:14:03.2650000Z,6a9ccc6b485cab4c9540781c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:21,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:14:03.4330000Z,2026-09-06T02:14:03.4330000Z,6a9ccc6b485cab4c9540781e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:22,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:14:04.5660000Z,2026-09-06T02:14:04.5660000Z,6a9ccc6c485cab4c95407820,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:24,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:14:05.2680000Z,2026-09-06T02:14:05.2680000Z,6a9ccc6d485cab4c95407822,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:26,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:14:05.4330000Z,2026-09-06T02:14:05.4330000Z,6a9ccc6d485cab4c95407824,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:27,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:14:05.5750000Z,2026-09-06T02:14:05.5750000Z,6a9ccc6d485cab4c95407826,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:28,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:14:06.8000000Z,2026-09-06T02:14:06.8000000Z,6a9ccc6e485cab4c95407828,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:30,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:14:07.5340000Z,2026-09-06T02:14:07.5340000Z,6a9ccc6f485cab4c9540782a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:31,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:14:07.6680000Z,2026-09-06T02:14:07.6680000Z,6a9ccc6f485cab4c9540782c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:33,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:14:07.8050000Z,2026-09-06T02:14:07.8050000Z,6a9ccc6f485cab4c95407832,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:35,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:29.3140000Z,2026-09-06T15:30:29.3140000Z,6a9d8714485cab4c954081f0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:36,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:30.9450000Z,2026-09-06T15:30:30.9450000Z,6a9d8716485cab4c954081f2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:37,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:31.3110000Z,2026-09-06T15:30:31.3110000Z,6a9d8716485cab4c954081f4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:4,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:13:26.8200000Z,2026-09-06T02:13:26.8200000Z,6a9ccc46485cab4c954077f8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:41,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:31.6780000Z,2026-09-06T15:30:31.6780000Z,6a9d8717485cab4c954081f6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:42,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:32.0790000Z,2026-09-06T15:30:32.0790000Z,6a9d8717485cab4c954081f8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:43,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:34.2460000Z,2026-09-06T15:30:34.2460000Z,6a9d8719485cab4c954081fa,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:46,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:35.3130000Z,2026-09-06T15:30:35.3130000Z,6a9d871a485cab4c954081fc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:5,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:13:40.1900000Z,2026-09-06T02:13:40.1900000Z,6a9ccc54485cab4c95407802,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:50,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:37.5140000Z,2026-09-06T15:30:37.5140000Z,6a9d871c485cab4c95408200,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:55,dialogue,2,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:38.2820000Z,2026-09-06T15:30:41.0490000Z,6a9d871d485cab4c95408202,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:57,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:44.1510000Z,2026-09-06T15:30:44.1510000Z,6a9d8723485cab4c9540820c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:59,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:40.0150000Z,2026-09-06T15:30:40.0150000Z,6a9d871f485cab4c95408206,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:6,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:13:57.6290000Z,2026-09-06T02:13:57.6290000Z,6a9ccc65485cab4c9540780c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:61,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:40.8820000Z,2026-09-06T15:30:40.8820000Z,6a9d8720485cab4c95408208,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:62,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:44.8190000Z,2026-09-06T15:30:44.8190000Z,6a9d8724485cab4c9540820e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:63,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:30:44.9890000Z,2026-09-06T15:30:44.9890000Z,6a9d8724485cab4c95408212,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:64,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:17.8920000Z,2026-09-06T15:31:17.8920000Z,6a9d8745485cab4c95408276,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:65,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:18.2570000Z,2026-09-06T15:31:18.2570000Z,6a9d8745485cab4c95408278,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:66,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:18.5920000Z,2026-09-06T15:31:18.5920000Z,6a9d8746485cab4c9540827a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:67,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:18.7910000Z,2026-09-06T15:31:18.7910000Z,6a9d8746485cab4c9540827c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:68,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:19.0240000Z,2026-09-06T15:31:19.0240000Z,6a9d8746485cab4c95408280,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:69,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:19.2910000Z,2026-09-06T15:31:19.2910000Z,6a9d8746485cab4c95408282,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:70,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:19.6240000Z,2026-09-06T15:31:19.6240000Z,6a9d8747485cab4c95408284,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:71,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:21.0910000Z,2026-09-06T15:31:21.0910000Z,6a9d8748485cab4c95408286,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:73,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:21.9250000Z,2026-09-06T15:31:21.9250000Z,6a9d8749485cab4c95408288,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:74,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:25.4270000Z,2026-09-06T15:31:25.4270000Z,6a9d874c485cab4c9540828a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:76,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:26.0700000Z,2026-09-06T15:31:26.0700000Z,6a9d874d485cab4c9540828e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:20:8,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:13:58.4300000Z,2026-09-06T02:13:58.4300000Z,6a9ccc66485cab4c9540780e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:0,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:04.2660000Z,2026-09-06T15:20:04.2660000Z,6a9d84a3485cab4c95408020,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:1,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:16:38.7690000Z,2026-09-06T02:16:38.7690000Z,6a9ccd06485cab4c954078ea,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:10,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:16:44.1380000Z,2026-09-06T02:16:44.1380000Z,6a9ccd0c485cab4c954078fa,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:11,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:16:44.5050000Z,2026-09-06T02:16:44.5050000Z,6a9ccd0c485cab4c954078fc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:12,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:16:46.0380000Z,2026-09-06T02:16:46.0380000Z,6a9ccd0d485cab4c954078fe,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:15,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:16:46.9410000Z,2026-09-06T02:16:46.9410000Z,6a9ccd0e485cab4c95407904,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:19,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:56.1940000Z,2026-09-06T15:01:56.1940000Z,6a9d8063485cab4c95407e50,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:2,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:16:42.0360000Z,2026-09-06T02:16:42.0360000Z,6a9ccd09485cab4c954078f0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:20,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:58.4950000Z,2026-09-06T15:01:58.4950000Z,6a9d8065485cab4c95407e56,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:21,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:02:01.2940000Z,2026-09-06T15:02:01.2940000Z,6a9d8068485cab4c95407e5c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:22,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:02:20.0720000Z,2026-09-06T15:02:20.0720000Z,6a9d807b485cab4c95407e64,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:23,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:02:32.0110000Z,2026-09-06T15:02:32.0110000Z,6a9d8087485cab4c95407e6c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:24,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:02:43.0830000Z,2026-09-06T15:02:43.0830000Z,6a9d8092485cab4c95407e74,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:25,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:02:49.3170000Z,2026-09-06T15:02:49.3170000Z,6a9d8098485cab4c95407e7a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:28,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:03:01.3920000Z,2026-09-06T15:03:01.3920000Z,6a9d80a4485cab4c95407e80,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:29,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:03:06.8580000Z,2026-09-06T15:03:06.8580000Z,6a9d80aa485cab4c95407e84,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:30,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:03:23.1680000Z,2026-09-06T15:03:23.1680000Z,6a9d80ba485cab4c95407e8c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:31,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:03:34.3740000Z,2026-09-06T15:03:34.3740000Z,6a9d80c5485cab4c95407e94,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:32,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:03:43.5780000Z,2026-09-06T15:03:43.5780000Z,6a9d80ce485cab4c95407e9c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:33,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:03:54.9820000Z,2026-09-06T15:03:54.9820000Z,6a9d80da485cab4c95407ea2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:34,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:03:59.4840000Z,2026-09-06T15:03:59.4840000Z,6a9d80de485cab4c95407ea6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:35,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:04:04.3860000Z,2026-09-06T15:04:04.3860000Z,6a9d80e3485cab4c95407ea8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:36,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:04:21.2280000Z,2026-09-06T15:04:21.2280000Z,6a9d80f4485cab4c95407eae,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:37,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:04:27.9640000Z,2026-09-06T15:04:27.9640000Z,6a9d80fb485cab4c95407eb2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:38,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:04:36.3680000Z,2026-09-06T15:04:36.3680000Z,6a9d8103485cab4c95407eb6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:39,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:04:42.5740000Z,2026-09-06T15:04:42.5740000Z,6a9d8109485cab4c95407ebc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:4,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:16:43.0370000Z,2026-09-06T02:16:43.0370000Z,6a9ccd0a485cab4c954078f2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:40,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:09:48.8430000Z,2026-09-06T15:09:48.8430000Z,6a9d823c485cab4c95407efe,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:42,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:09:50.0440000Z,2026-09-06T15:09:50.0440000Z,6a9d823d485cab4c95407f02,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:43,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:09:51.9770000Z,2026-09-06T15:09:51.9770000Z,6a9d823f485cab4c95407f04,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:45,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:09:52.6460000Z,2026-09-06T15:09:52.6460000Z,6a9d823f485cab4c95407f08,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:46,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:09:53.0120000Z,2026-09-06T15:09:53.0120000Z,6a9d8240485cab4c95407f0a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:47,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:09:53.4450000Z,2026-09-06T15:09:53.4450000Z,6a9d8240485cab4c95407f0c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:48,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:09:53.8790000Z,2026-09-06T15:09:53.8790000Z,6a9d8241485cab4c95407f0e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:5,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:16:43.2040000Z,2026-09-06T02:16:43.2040000Z,6a9ccd0b485cab4c954078f4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:50,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:09:54.3120000Z,2026-09-06T15:09:54.3120000Z,6a9d8241485cab4c95407f10,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:51,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:09:54.7480000Z,2026-09-06T15:09:54.7480000Z,6a9d8241485cab4c95407f12,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:60,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:04.2680000Z,2026-09-06T15:20:04.2680000Z,6a9d84a3485cab4c95408024,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:61,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:07.9990000Z,2026-09-06T15:20:07.9990000Z,6a9d84a7485cab4c95408026,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:63,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:08.9680000Z,2026-09-06T15:20:08.9680000Z,6a9d84a8485cab4c9540802a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:65,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:10.5340000Z,2026-09-06T15:20:10.5340000Z,6a9d84a9485cab4c9540802c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:68,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:11.3340000Z,2026-09-06T15:20:11.3340000Z,6a9d84aa485cab4c9540802e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:69,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:11.4680000Z,2026-09-06T15:20:11.4680000Z,6a9d84aa485cab4c95408030,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:70,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:13.3690000Z,2026-09-06T15:20:13.3690000Z,6a9d84ac485cab4c95408032,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:72,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:14.1350000Z,2026-09-06T15:20:14.1350000Z,6a9d84ad485cab4c95408034,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:73,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:15.5030000Z,2026-09-06T15:20:15.5030000Z,6a9d84ae485cab4c95408036,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:75,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:16.3890000Z,2026-09-06T15:20:16.3890000Z,6a9d84af485cab4c95408038,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:76,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:16.7570000Z,2026-09-06T15:20:16.7570000Z,6a9d84b0485cab4c9540803a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:8,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:16:43.3370000Z,2026-09-06T02:16:43.3370000Z,6a9ccd0b485cab4c954078f6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:9,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:16:43.7040000Z,2026-09-06T02:16:43.7040000Z,6a9ccd0b485cab4c954078f8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:21:92,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:16:46.8060000Z,2026-09-06T02:16:46.8060000Z,6a9ccd0e485cab4c95407900,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:22:10,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:20:19.0680000Z,2026-09-06T02:20:19.0680000Z,6a9ccde2485cab4c95407980,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:22:12,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:20:19.9030000Z,2026-09-06T02:20:19.9030000Z,6a9ccde3485cab4c95407982,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:22:13,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:20:21.1360000Z,2026-09-06T02:20:21.1360000Z,6a9ccde5485cab4c95407984,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:22:15,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:20:21.7700000Z,2026-09-06T02:20:21.7700000Z,6a9ccde5485cab4c95407988,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:22:16,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:20:21.9370000Z,2026-09-06T02:20:21.9370000Z,6a9ccde5485cab4c9540798a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:22:17,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:20:22.1040000Z,2026-09-06T02:20:22.1040000Z,6a9ccde6485cab4c9540798c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:22:18,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:20:22.2710000Z,2026-09-06T02:20:22.2710000Z,6a9ccde6485cab4c9540798e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:22:19,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:20:22.5040000Z,2026-09-06T02:20:22.5040000Z,6a9ccde6485cab4c95407990,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:22:20,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:20:23.9720000Z,2026-09-06T02:20:23.9720000Z,6a9ccde7485cab4c95407992,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:22:22,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:20:24.6790000Z,2026-09-06T02:20:24.6790000Z,6a9ccde8485cab4c95407994,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:22:27,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:20:26.7390000Z,2026-09-06T02:20:26.7390000Z,6a9ccdea485cab4c9540799a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:22:4,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:20:14.5670000Z,2026-09-06T02:20:14.5670000Z,6a9ccdde485cab4c95407978,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:22:46,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:20:25.9050000Z,2026-09-06T02:20:25.9050000Z,6a9ccde9485cab4c95407996,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:22:48,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:20:26.6060000Z,2026-09-06T02:20:26.6060000Z,6a9ccdea485cab4c95407998,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:22:5,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:20:17.0340000Z,2026-09-06T02:20:17.0340000Z,6a9ccde0485cab4c9540797c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:22:50,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:20:17.8350000Z,2026-09-06T02:20:17.8350000Z,6a9ccde1485cab4c9540797e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:0,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:18.5570000Z,2026-09-06T15:20:18.5570000Z,6a9d84b1485cab4c9540803e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:1,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:08.8370000Z,2026-09-06T15:01:08.8370000Z,6a9d8034485cab4c95407df8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:17,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:19.8740000Z,2026-09-06T15:01:19.8740000Z,6a9d803f485cab4c95407e12,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:18,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:21.2740000Z,2026-09-06T15:01:21.2740000Z,6a9d8040485cab4c95407e14,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:2,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:11.1360000Z,2026-09-06T15:01:11.1360000Z,6a9d8036485cab4c95407dfc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:20,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:21.8750000Z,2026-09-06T15:01:21.8750000Z,6a9d8041485cab4c95407e16,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:21,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:22.1420000Z,2026-09-06T15:01:22.1420000Z,6a9d8041485cab4c95407e18,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:22,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:26.2440000Z,2026-09-06T15:01:26.2440000Z,6a9d8045485cab4c95407e20,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:24,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:26.8110000Z,2026-09-06T15:01:26.8110000Z,6a9d8045485cab4c95407e22,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:25,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:28.0440000Z,2026-09-06T15:01:28.0440000Z,6a9d8047485cab4c95407e24,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:27,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:28.7140000Z,2026-09-06T15:01:28.7140000Z,6a9d8047485cab4c95407e26,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:28,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:18.5600000Z,2026-09-06T15:20:18.5600000Z,6a9d84b1485cab4c95408042,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:29,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:20.5910000Z,2026-09-06T15:20:20.5910000Z,6a9d84b3485cab4c95408046,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:3,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:11.8700000Z,2026-09-06T15:01:11.8700000Z,6a9d8037485cab4c95407dfe,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:31,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:21.4920000Z,2026-09-06T15:20:21.4920000Z,6a9d84b4485cab4c95408048,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:32,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:22.9260000Z,2026-09-06T15:20:22.9260000Z,6a9d84b6485cab4c9540804a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:34,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:23.8600000Z,2026-09-06T15:20:23.8600000Z,6a9d84b7485cab4c9540804c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:35,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:23.9930000Z,2026-09-06T15:20:23.9930000Z,6a9d84b7485cab4c9540804e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:36,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:25.5270000Z,2026-09-06T15:20:25.5270000Z,6a9d84b8485cab4c95408050,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:38,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:26.2280000Z,2026-09-06T15:20:26.2280000Z,6a9d84b9485cab4c95408052,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:39,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:28.4610000Z,2026-09-06T15:20:28.4610000Z,6a9d84bb485cab4c95408054,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:4,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:12.3040000Z,2026-09-06T15:01:12.3040000Z,6a9d8037485cab4c95407e00,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:41,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:29.0970000Z,2026-09-06T15:20:29.0970000Z,6a9d84bc485cab4c95408058,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:42,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:20:29.2300000Z,2026-09-06T15:20:29.2300000Z,6a9d84bc485cab4c9540805a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:59,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:15.0720000Z,2026-09-06T15:01:15.0720000Z,6a9d803a485cab4c95407e02,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:61,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:15.9050000Z,2026-09-06T15:01:15.9050000Z,6a9d803b485cab4c95407e04,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:63,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:16.3400000Z,2026-09-06T15:01:16.3400000Z,6a9d803b485cab4c95407e06,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:65,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:18.1730000Z,2026-09-06T15:01:18.1730000Z,6a9d803d485cab4c95407e08,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:67,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:18.7750000Z,2026-09-06T15:01:18.7750000Z,6a9d803d485cab4c95407e0a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:68,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:19.1400000Z,2026-09-06T15:01:19.1400000Z,6a9d803e485cab4c95407e0e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:69,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:19.5070000Z,2026-09-06T15:01:19.5070000Z,6a9d803e485cab4c95407e10,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:70,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:22.4750000Z,2026-09-06T15:01:22.4750000Z,6a9d8041485cab4c95407e1a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:71,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:24.1090000Z,2026-09-06T15:01:24.1090000Z,6a9d8043485cab4c95407e1c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:23:73,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:24.8430000Z,2026-09-06T15:01:24.8430000Z,6a9d8044485cab4c95407e1e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:26:0,dialogue,6,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:10:28.6510000Z,2026-09-06T15:19:24.5800000Z,6a9d8263485cab4c95407f2c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:26:136,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:19:25.5140000Z,2026-09-06T15:19:25.5140000Z,6a9d847c485cab4c95407fd6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:26:141,dialogue,6,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:10:29.9830000Z,2026-09-06T15:19:25.5130000Z,6a9d8265485cab4c95407f34,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:26:142,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:10:28.6830000Z,2026-09-06T15:10:28.6830000Z,6a9d8263485cab4c95407f30,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:26:167,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:19:24.6120000Z,2026-09-06T15:19:24.6120000Z,6a9d847b485cab4c95407fd2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:26:174,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:10:35.4860000Z,2026-09-06T15:10:35.4860000Z,6a9d826a485cab4c95407f3c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:26:175,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:10:40.4550000Z,2026-09-06T15:10:40.4550000Z,6a9d826f485cab4c95407f48,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:26:178,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:10:47.7580000Z,2026-09-06T15:10:47.7580000Z,6a9d8276485cab4c95407f52,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:26:182,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:19:20.1440000Z,2026-09-06T15:19:20.1440000Z,6a9d8477485cab4c95407fc8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:27:0,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:15.6700000Z,2026-09-06T15:31:15.6700000Z,6a9d8743485cab4c9540826e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:27:7,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:15.6990000Z,2026-09-06T15:31:15.6990000Z,6a9d8743485cab4c95408272,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:28:179,dialogue,11,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:12:15.2180000Z,2026-09-06T02:12:46.4640000Z,6a9ccbff485cab4c95407766,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:28:185,dialogue,6,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:14:33.8130000Z,2026-09-06T02:16:04.2540000Z,6a9ccc89485cab4c95407868,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:1,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:15:00.7630000Z,2026-09-06T00:20:38.1900000Z,6a9cb084485cab4c954054f8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:10,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:15:12.9820000Z,2026-09-06T00:20:45.5560000Z,6a9cb090485cab4c9540550a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:100,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:55:12.5970000Z,2026-09-06T01:55:12.5970000Z,6a9cc800485cab4c95405daa,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:101,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:55:15.0640000Z,2026-09-06T01:55:15.0640000Z,6a9cc802485cab4c95405dae,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:102,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:55:20.2670000Z,2026-09-06T01:55:20.2670000Z,6a9cc808485cab4c95405db2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:103,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:55:22.7670000Z,2026-09-06T01:55:22.7670000Z,6a9cc80a485cab4c95405db8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:104,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:55:24.0360000Z,2026-09-06T01:55:24.0360000Z,6a9cc80b485cab4c95405dbc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:13,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:15:27.4390000Z,2026-09-06T00:21:19.3390000Z,6a9cb09f485cab4c95405512,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:14,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:15:32.2740000Z,2026-09-06T00:21:21.6740000Z,6a9cb0a4485cab4c95405516,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:16,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:15:33.3910000Z,2026-09-06T00:21:22.8070000Z,6a9cb0a5485cab4c9540551a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:2,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:15:07.9640000Z,2026-09-06T00:20:40.8890000Z,6a9cb08b485cab4c95405502,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:29,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:15:40.9970000Z,2026-09-06T00:21:27.9770000Z,6a9cb0ac485cab4c95405538,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:32,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:15:46.3900000Z,2026-09-06T00:21:33.0560000Z,6a9cb0b2485cab4c95405554,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:33,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:15:51.5510000Z,2026-09-06T00:21:35.1140000Z,6a9cb0b7485cab4c95405564,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:37,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:16:00.2560000Z,2026-09-06T01:41:54.3340000Z,6a9cb0c0485cab4c95405576,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:38,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:16:02.0900000Z,2026-09-06T01:41:58.5020000Z,6a9cb0c2485cab4c95405580,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:39,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:16:05.8070000Z,2026-09-06T01:42:00.7680000Z,6a9cb0c5485cab4c95405586,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:41,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:16:06.8240000Z,2026-09-06T01:42:01.7690000Z,6a9cb0c6485cab4c95405588,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:48,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:16:07.8590000Z,2026-09-06T01:42:02.1030000Z,6a9cb0c7485cab4c9540558c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:49,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:16:20.0810000Z,2026-09-06T01:42:14.3420000Z,6a9cb0d3485cab4c95405594,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:5,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:15:09.7640000Z,2026-09-06T00:20:42.8880000Z,6a9cb08d485cab4c95405504,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:50,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:16:21.7650000Z,2026-09-06T01:42:32.6140000Z,6a9cb0d5485cab4c95405598,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:56,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:16:22.4010000Z,2026-09-06T01:42:40.8200000Z,6a9cb0d6485cab4c9540559e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:57,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:16:25.3490000Z,2026-09-06T01:42:42.5510000Z,6a9cb0d9485cab4c954055a2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:7,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:15:10.5810000Z,2026-09-06T00:20:43.6220000Z,6a9cb08e485cab4c95405506,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:77,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:55:00.5570000Z,2026-09-06T01:55:00.5570000Z,6a9cc7f4485cab4c95405d9e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:8,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:15:12.2650000Z,2026-09-06T00:20:44.9220000Z,6a9cb090485cab4c95405508,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:86,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:55:47.3790000Z,2026-09-06T01:55:47.3790000Z,6a9cc823485cab4c95405dde,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:89,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:15:13.2820000Z,2026-09-06T00:20:45.7230000Z,6a9cb091485cab4c9540550c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:90,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:15:28.9390000Z,2026-09-06T00:21:19.5390000Z,6a9cb0a0485cab4c95405514,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:91,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:15:32.9910000Z,2026-09-06T00:21:22.6410000Z,6a9cb0a4485cab4c95405518,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:93,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:15:35.0420000Z,2026-09-06T00:21:24.1080000Z,6a9cb0a6485cab4c9540551e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:94,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:15:35.6590000Z,2026-09-06T00:21:24.7090000Z,6a9cb0a7485cab4c95405520,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:95,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:15:35.8760000Z,2026-09-06T00:21:24.9090000Z,6a9cb0a7485cab4c95405522,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:96,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:15:44.8320000Z,2026-09-06T00:21:32.1140000Z,6a9cb0b0485cab4c9540554e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:97,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:16:07.3580000Z,2026-09-06T01:42:01.9350000Z,6a9cb0c7485cab4c9540558a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:98,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:53:20.4360000Z,2026-09-06T01:53:20.4360000Z,6a9cc790485cab4c95405cd4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:30:99,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:55:10.7360000Z,2026-09-06T01:55:10.7360000Z,6a9cc7fe485cab4c95405da4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:0,dialogue,3,DialogueEvent,Unit 1 Dev,2026-09-06T00:16:46.6950000Z,2026-09-06T01:53:39.8390000Z,6a9cb0ee485cab4c954055be,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:1,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:16:36.9920000Z,2026-09-06T01:46:36.8230000Z,6a9cb0e4485cab4c954055b2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:13,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:16:56.6980000Z,2026-09-06T01:47:04.6670000Z,6a9cb0f8485cab4c954055d0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:2,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:16:46.6970000Z,2026-09-06T01:46:56.7320000Z,6a9cb0ee485cab4c954055c2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:21,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:16:56.8810000Z,2026-09-06T01:47:04.9320000Z,6a9cb0f8485cab4c954055d2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:23,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:16:57.0310000Z,2026-09-06T01:47:05.2660000Z,6a9cb0f8485cab4c954055d4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:24,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:18:09.5820000Z,2026-09-06T01:49:42.2980000Z,6a9cb141485cab4c954055e4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:29,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:18:09.9990000Z,2026-09-06T01:49:42.7650000Z,6a9cb141485cab4c954055e6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:32,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:18:10.4870000Z,2026-09-06T01:49:43.2700000Z,6a9cb142485cab4c954055ec,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:35,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:53:39.8410000Z,2026-09-06T01:53:39.8410000Z,6a9cc7a3485cab4c95405cf2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:38,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:53:40.7710000Z,2026-09-06T01:53:40.7710000Z,6a9cc7a4485cab4c95405cf4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:39,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:53:41.2040000Z,2026-09-06T01:53:41.2040000Z,6a9cc7a5485cab4c95405cf6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:41,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:53:41.6710000Z,2026-09-06T01:53:41.6710000Z,6a9cc7a5485cab4c95405cf8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:45,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:53:41.7070000Z,2026-09-06T01:53:41.7070000Z,6a9cc7a5485cab4c95405cfa,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:48,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:53:46.2400000Z,2026-09-06T01:53:46.2400000Z,6a9cc7aa485cab4c95405d0a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:5,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:16:49.4940000Z,2026-09-06T01:46:58.9290000Z,6a9cb0f1485cab4c954055c4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:51,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:53:49.9430000Z,2026-09-06T01:53:49.9430000Z,6a9cc7ad485cab4c95405d16,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:55,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:54:19.6890000Z,2026-09-06T01:54:19.6890000Z,6a9cc7cb485cab4c95405d72,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:56,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:54:22.6270000Z,2026-09-06T01:54:22.6270000Z,6a9cc7ce485cab4c95405d78,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:59,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:54:25.1250000Z,2026-09-06T01:54:25.1250000Z,6a9cc7d1485cab4c95405d7c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:6,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:16:51.1610000Z,2026-09-06T01:47:00.7630000Z,6a9cb0f2485cab4c954055c6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:60,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:54:33.4950000Z,2026-09-06T01:54:33.4950000Z,6a9cc7d9485cab4c95405d86,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:61,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:16:52.0450000Z,2026-09-06T01:47:01.5300000Z,6a9cb0f3485cab4c954055c8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:64,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:16:56.0800000Z,2026-09-06T01:47:03.9980000Z,6a9cb0f7485cab4c954055ce,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:65,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:54:21.7900000Z,2026-09-06T01:54:21.7900000Z,6a9cc7cd485cab4c95405d74,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:67,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:53:52.6440000Z,2026-09-06T01:53:52.6440000Z,6a9cc7b0485cab4c95405d22,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:68,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:53:46.6400000Z,2026-09-06T01:53:46.6400000Z,6a9cc7aa485cab4c95405d0c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:69,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:53:53.8440000Z,2026-09-06T01:53:53.8440000Z,6a9cc7b1485cab4c95405d2e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:70,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:53:54.8110000Z,2026-09-06T01:53:54.8110000Z,6a9cc7b2485cab4c95405d36,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:71,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:53:56.0120000Z,2026-09-06T01:53:56.0120000Z,6a9cc7b3485cab4c95405d3e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:72,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:53:58.5790000Z,2026-09-06T01:53:58.5790000Z,6a9cc7b6485cab4c95405d40,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:73,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:54:00.8130000Z,2026-09-06T01:54:00.8130000Z,6a9cc7b8485cab4c95405d44,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:74,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:54:01.3140000Z,2026-09-06T01:54:01.3140000Z,6a9cc7b9485cab4c95405d46,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:78,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:54:03.7820000Z,2026-09-06T01:54:03.7820000Z,6a9cc7bb485cab4c95405d4a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:8,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:16:52.3790000Z,2026-09-06T01:47:01.8640000Z,6a9cb0f4485cab4c954055ca,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:82,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:54:04.5500000Z,2026-09-06T01:54:04.5500000Z,6a9cc7bc485cab4c95405d4e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:83,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:53:47.4740000Z,2026-09-06T01:53:47.4740000Z,6a9cc7ab485cab4c95405d0e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:31:84,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:53:49.2420000Z,2026-09-06T01:53:49.2420000Z,6a9cc7ad485cab4c95405d12,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:32:0,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:18:52.8550000Z,2026-09-06T01:50:34.3560000Z,6a9cb16c485cab4c95405676,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:32:101,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:50:42.2580000Z,2026-09-06T01:50:42.2580000Z,6a9cc6f2485cab4c95405c82,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:32:69,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:18:52.8570000Z,2026-09-06T01:50:34.3580000Z,6a9cb16c485cab4c9540567a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:32:73,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:50:38.0890000Z,2026-09-06T01:50:38.0890000Z,6a9cc6ed485cab4c95405c7a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:32:75,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:50:38.8570000Z,2026-09-06T01:50:38.8570000Z,6a9cc6ee485cab4c95405c7c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:32:77,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:50:39.3570000Z,2026-09-06T01:50:39.3570000Z,6a9cc6ef485cab4c95405c7e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:32:87,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:50:42.9250000Z,2026-09-06T01:50:42.9250000Z,6a9cc6f2485cab4c95405c84,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:32:88,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:50:43.0920000Z,2026-09-06T01:50:43.0920000Z,6a9cc6f2485cab4c95405c86,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:32:91,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:50:43.4260000Z,2026-09-06T01:50:43.4260000Z,6a9cc6f3485cab4c95405c88,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:32:95,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:50:45.2260000Z,2026-09-06T01:50:45.2260000Z,6a9cc6f5485cab4c95405c8a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:32:96,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:50:46.0270000Z,2026-09-06T01:50:46.0270000Z,6a9cc6f5485cab4c95405c8c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:33:1,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:55:33.5700000Z,2026-09-06T01:55:33.5700000Z,6a9cc815485cab4c95405dc8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:33:12,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:56:05.4030000Z,2026-09-06T01:56:05.4030000Z,6a9cc835485cab4c95405e00,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:33:15,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:56:08.6380000Z,2026-09-06T01:56:08.6380000Z,6a9cc838485cab4c95405e06,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:33:16,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:56:17.5420000Z,2026-09-06T01:56:17.5420000Z,6a9cc841485cab4c95405e0e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:33:19,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:56:24.8130000Z,2026-09-06T01:56:24.8130000Z,6a9cc848485cab4c95405e16,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:33:3,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:55:35.4040000Z,2026-09-06T01:55:35.4040000Z,6a9cc817485cab4c95405dcc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:33:5,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:55:38.5410000Z,2026-09-06T01:55:38.5410000Z,6a9cc81a485cab4c95405dd0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:33:8,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:55:58.2230000Z,2026-09-06T01:55:58.2230000Z,6a9cc82e485cab4c95405df2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:33:9,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:56:02.0850000Z,2026-09-06T01:56:02.0850000Z,6a9cc831485cab4c95405df8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:35:0,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:50:54.5660000Z,2026-09-06T01:50:54.5660000Z,6a9cc6fe485cab4c95405c9a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:35:1,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:50:54.5680000Z,2026-09-06T01:50:54.5680000Z,6a9cc6fe485cab4c95405c9e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:35:20,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:53:13.0930000Z,2026-09-06T01:53:13.0930000Z,6a9cc788485cab4c95405cca,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:35:21,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:53:13.2600000Z,2026-09-06T01:53:13.2600000Z,6a9cc789485cab4c95405ccc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:35:24,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:53:13.4260000Z,2026-09-06T01:53:13.4260000Z,6a9cc789485cab4c95405cce,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:35:28,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:53:19.2620000Z,2026-09-06T01:53:19.2620000Z,6a9cc78f485cab4c95405cd0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:35:29,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:53:20.2970000Z,2026-09-06T01:53:20.2970000Z,6a9cc790485cab4c95405cd2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:35:33,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:50:56.9980000Z,2026-09-06T01:50:56.9980000Z,6a9cc700485cab4c95405ca0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:35:34,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:50:57.9320000Z,2026-09-06T01:50:57.9320000Z,6a9cc701485cab4c95405ca4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:35:40,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:53:12.1250000Z,2026-09-06T01:53:12.1250000Z,6a9cc788485cab4c95405cc6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:35:7,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:50:57.7660000Z,2026-09-06T01:50:57.7660000Z,6a9cc701485cab4c95405ca2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:35:8,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:50:58.1000000Z,2026-09-06T01:50:58.1000000Z,6a9cc701485cab4c95405ca6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:36:0,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:18:17.8380000Z,2026-09-06T01:49:51.6380000Z,6a9cb149485cab4c9540560e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:36:32,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:18:17.8390000Z,2026-09-06T01:49:51.6390000Z,6a9cb149485cab4c95405612,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:36:33,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:18:20.0870000Z,2026-09-06T01:49:54.1380000Z,6a9cb14b485cab4c95405614,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:36:35,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:18:20.6880000Z,2026-09-06T01:49:54.9050000Z,6a9cb14c485cab4c95405616,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:36:36,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:18:20.8710000Z,2026-09-06T01:49:55.2380000Z,6a9cb14c485cab4c95405618,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:36:50,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:18:23.1560000Z,2026-09-06T01:49:58.1730000Z,6a9cb14e485cab4c9540561c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:36:52,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:18:23.3560000Z,2026-09-06T01:49:58.5410000Z,6a9cb14f485cab4c9540561e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:36:55,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:18:23.5730000Z,2026-09-06T01:49:58.9730000Z,6a9cb14f485cab4c95405620,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:36:59,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:18:25.4400000Z,2026-09-06T01:50:00.7750000Z,6a9cb151485cab4c95405624,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:36:60,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:18:26.2580000Z,2026-09-06T01:50:01.4110000Z,6a9cb152485cab4c95405626,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:36:65,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:18:22.4550000Z,2026-09-06T01:49:57.1390000Z,6a9cb14e485cab4c9540561a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:37:0,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:18:35.4460000Z,2026-09-06T01:50:13.3150000Z,6a9cb15b485cab4c95405640,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:37:64,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:18:35.4480000Z,2026-09-06T01:50:13.3160000Z,6a9cb15b485cab4c95405644,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:37:66,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:18:38.7130000Z,2026-09-06T01:50:16.1480000Z,6a9cb15e485cab4c95405646,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:37:67,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:18:39.6800000Z,2026-09-06T01:50:16.7820000Z,6a9cb15f485cab4c95405648,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:37:97,dialogue,2,DialogueEvent,Unit 1 Dev,2026-09-06T00:18:40.0470000Z,2026-09-06T01:50:17.1160000Z,6a9cb15f485cab4c9540564a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:68:18,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:03:20.4620000Z,2026-09-06T02:03:20.4620000Z,6a9cc9e8485cab4c95406784,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:68:23,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:04:01.5800000Z,2026-09-06T02:04:01.5800000Z,6a9cca11485cab4c95406a4c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:68:28,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:04:53.9690000Z,2026-09-06T02:04:53.9690000Z,6a9cca45485cab4c95406dc8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:68:29,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:07:26.7370000Z,2026-09-06T02:07:26.7370000Z,6a9ccade485cab4c95407636,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:68:5,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:01:40.0180000Z,2026-09-06T02:01:40.0180000Z,6a9cc983485cab4c954061fa,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:68:7,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T02:02:33.1730000Z,2026-09-06T02:02:33.1730000Z,6a9cc9b9485cab4c954064d8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:70:0,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:54:17.7250000Z,2026-09-06T01:54:17.7250000Z,6a9cc7c9485cab4c95405d6c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:70:7,dialogue,1,DialogueEvent,Unit 1 Dev,2026-09-06T01:54:17.7560000Z,2026-09-06T01:54:17.7560000Z,6a9cc7c9485cab4c95405d70,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:73:163,dialogue,4,DialogueEvent,Unit 3 Dev,2026-09-06T15:58:55.1410000Z,2026-09-06T15:59:36.1860000Z,6a9d8dbe485cab4c95408bbc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:73:174,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:59:37.4510000Z,2026-09-06T15:59:37.4510000Z,6a9d8de9485cab4c95408bfa,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:73:175,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:59:37.8860000Z,2026-09-06T15:59:37.8860000Z,6a9d8de9485cab4c95408bfc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:73:200,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:58:21.3390000Z,2026-09-06T15:58:21.3390000Z,6a9d8d9c485cab4c95408b8a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:73:204,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:58:33.4110000Z,2026-09-06T15:58:33.4110000Z,6a9d8da9485cab4c95408b92,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:73:208,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:58:34.1450000Z,2026-09-06T15:58:34.1450000Z,6a9d8da9485cab4c95408b94,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:73:209,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:58:34.3220000Z,2026-09-06T15:58:34.3220000Z,6a9d8daa485cab4c95408b98,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:73:210,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:58:34.4620000Z,2026-09-06T15:58:34.4620000Z,6a9d8daa485cab4c95408b9a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:73:211,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:58:34.5970000Z,2026-09-06T15:58:34.5970000Z,6a9d8daa485cab4c95408b9e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:73:212,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:58:34.5980000Z,2026-09-06T15:58:34.5980000Z,6a9d8daa485cab4c95408ba0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:73:213,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:59:38.3850000Z,2026-09-06T15:59:38.3850000Z,6a9d8dea485cab4c95408bfe,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:74:21,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:06.8360000Z,2026-09-06T15:01:06.8360000Z,6a9d8032485cab4c95407dd6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:75:1,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:44:03.5240000Z,2026-09-06T15:44:03.5240000Z,6a9d8a43485cab4c95408676,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:75:2,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:44:07.4560000Z,2026-09-06T15:44:07.4560000Z,6a9d8a46485cab4c9540867e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:75:3,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:44:09.9580000Z,2026-09-06T15:44:09.9580000Z,6a9d8a49485cab4c95408684,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:75:4,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:44:18.8220000Z,2026-09-06T15:44:18.8220000Z,6a9d8a52485cab4c95408692,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:75:5,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:44:20.7890000Z,2026-09-06T15:44:20.7890000Z,6a9d8a54485cab4c95408698,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:75:6,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:44:32.0950000Z,2026-09-06T15:44:32.0950000Z,6a9d8a5f485cab4c954086a0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:78:24,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:50:07.4700000Z,2026-09-06T15:50:07.4700000Z,6a9d8baf485cab4c9540882e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:0,dialogue,2,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:55:44.5700000Z,2026-09-06T15:55:44.5730000Z,6a9d8d00485cab4c95408b04,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:101,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:51:14.0930000Z,2026-09-06T15:51:14.0930000Z,6a9d8bf1485cab4c95408918,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:102,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:50:24.3690000Z,2026-09-06T15:50:24.3690000Z,6a9d8bbf485cab4c954088e0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:103,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:50:27.8700000Z,2026-09-06T15:50:27.8700000Z,6a9d8bc3485cab4c954088e8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:104,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:50:25.5020000Z,2026-09-06T15:50:25.5020000Z,6a9d8bc1485cab4c954088e4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:108,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:52:42.2380000Z,2026-09-06T15:52:42.2380000Z,6a9d8c49485cab4c9540898a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:109,dialogue,3,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:53:50.8290000Z,2026-09-06T15:53:56.3980000Z,6a9d8c8e485cab4c95408a3c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:110,dialogue,2,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:53:53.6300000Z,2026-09-06T15:53:55.6640000Z,6a9d8c91485cab4c95408a40,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:111,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:53:58.0320000Z,2026-09-06T15:53:58.0320000Z,6a9d8c95485cab4c95408a4c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:112,dialogue,2,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:53:54.2640000Z,2026-09-06T15:53:56.2650000Z,6a9d8c91485cab4c95408a42,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:113,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:53:58.6330000Z,2026-09-06T15:53:58.6330000Z,6a9d8c96485cab4c95408a4e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:114,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:53:21.0820000Z,2026-09-06T15:53:21.0820000Z,6a9d8c70485cab4c954089fc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:115,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:53:05.2820000Z,2026-09-06T15:53:05.2820000Z,6a9d8c60485cab4c954089b8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:116,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:52:09.6470000Z,2026-09-06T15:52:09.6470000Z,6a9d8c29485cab4c9540892c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:117,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:52:10.7120000Z,2026-09-06T15:52:10.7120000Z,6a9d8c2a485cab4c95408930,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:118,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:52:11.1460000Z,2026-09-06T15:52:11.1460000Z,6a9d8c2a485cab4c95408932,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:119,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:53:43.8930000Z,2026-09-06T15:53:43.8930000Z,6a9d8c87485cab4c95408a2a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:120,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:53:45.3600000Z,2026-09-06T15:53:45.3600000Z,6a9d8c88485cab4c95408a2e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:126,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:54:36.1460000Z,2026-09-06T15:54:36.1460000Z,6a9d8cbb485cab4c95408acc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:127,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:55:27.9960000Z,2026-09-06T15:55:27.9960000Z,6a9d8cef485cab4c95408af0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:128,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:55:36.8990000Z,2026-09-06T15:55:36.8990000Z,6a9d8cf8485cab4c95408af6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:134,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:55:44.5750000Z,2026-09-06T15:55:44.5750000Z,6a9d8d00485cab4c95408b0e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:135,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:55:47.8040000Z,2026-09-06T15:55:47.8040000Z,6a9d8d03485cab4c95408b10,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:136,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:55:49.4710000Z,2026-09-06T15:55:49.4710000Z,6a9d8d05485cab4c95408b14,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:137,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:55:50.0050000Z,2026-09-06T15:55:50.0050000Z,6a9d8d05485cab4c95408b16,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:138,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:55:50.5070000Z,2026-09-06T15:55:50.5070000Z,6a9d8d06485cab4c95408b18,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:140,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:56:32.4520000Z,2026-09-06T15:56:32.4520000Z,6a9d8d30485cab4c95408b3c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:141,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:50:27.2030000Z,2026-09-06T15:50:27.2030000Z,6a9d8bc2485cab4c954088e6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:143,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:56:33.8190000Z,2026-09-06T15:56:33.8190000Z,6a9d8d31485cab4c95408b40,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:144,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:56:35.5860000Z,2026-09-06T15:56:35.5860000Z,6a9d8d33485cab4c95408b42,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:146,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:56:36.2870000Z,2026-09-06T15:56:36.2870000Z,6a9d8d33485cab4c95408b44,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:147,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:56:36.4200000Z,2026-09-06T15:56:36.4200000Z,6a9d8d34485cab4c95408b46,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:148,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:56:36.5870000Z,2026-09-06T15:56:36.5870000Z,6a9d8d34485cab4c95408b48,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:149,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:56:36.7210000Z,2026-09-06T15:56:36.7210000Z,6a9d8d34485cab4c95408b4a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:70,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:52:13.6130000Z,2026-09-06T15:52:13.6130000Z,6a9d8c2d485cab4c9540893e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:71,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:52:16.4150000Z,2026-09-06T15:52:16.4150000Z,6a9d8c30485cab4c95408948,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:74,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:52:26.0480000Z,2026-09-06T15:52:26.0480000Z,6a9d8c39485cab4c95408970,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:75,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:52:28.2130000Z,2026-09-06T15:52:28.2130000Z,6a9d8c3b485cab4c95408974,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:76,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:52:28.6140000Z,2026-09-06T15:52:28.6140000Z,6a9d8c3c485cab4c95408976,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:79,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:53:11.8510000Z,2026-09-06T15:53:11.8510000Z,6a9d8c67485cab4c954089d8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:80,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:53:13.0180000Z,2026-09-06T15:53:13.0180000Z,6a9d8c68485cab4c954089dc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:81,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:53:14.9530000Z,2026-09-06T15:53:14.9530000Z,6a9d8c6a485cab4c954089de,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:83,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:53:17.7140000Z,2026-09-06T15:53:17.7140000Z,6a9d8c6d485cab4c954089ea,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:86,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:53:26.2540000Z,2026-09-06T15:53:26.2540000Z,6a9d8c75485cab4c95408a12,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:79:87,dialogue,1,DialogueEvent,Unit 3 Dungeon Dev,2026-09-06T15:53:27.5180000Z,2026-09-06T15:53:27.5180000Z,6a9d8c77485cab4c95408a16,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:0,dialogue,5,DialogueEvent,Unit 4 Dev;Unit 4 Dev - Anderson Base,2026-09-06T16:17:43.9790000Z,2026-09-06T16:19:57.5180000Z,6a9d9227485cab4c9540948e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:1,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:17:45.0790000Z,2026-09-06T16:17:45.0790000Z,6a9d9228485cab4c95409492,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:10,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:17:48.3130000Z,2026-09-06T16:17:48.3130000Z,6a9d922c485cab4c954094a2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:100,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:21:37.6410000Z,2026-09-06T16:21:37.6410000Z,6a9d9311485cab4c95409654,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:101,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:21:37.8080000Z,2026-09-06T16:21:37.8080000Z,6a9d9311485cab4c95409656,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:102,dialogue,2,DialogueEvent,Unit 4 Dev,2026-09-06T16:21:37.9750000Z,2026-09-06T16:21:38.2440000Z,6a9d9311485cab4c95409658,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:104,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:21:38.1430000Z,2026-09-06T16:21:38.1430000Z,6a9d9311485cab4c9540965a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:106,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:20:21.8930000Z,2026-09-06T16:20:21.8930000Z,6a9d92c5485cab4c954095d6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:12,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:17:49.0130000Z,2026-09-06T16:17:49.0130000Z,6a9d922c485cab4c954094a4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:14,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:17:49.1480000Z,2026-09-06T16:17:49.1480000Z,6a9d922c485cab4c954094a6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:15,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:16:34.8160000Z,2026-09-06T16:16:34.8160000Z,6a9d91e2485cab4c95409420,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:16,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:16:34.9490000Z,2026-09-06T16:16:34.9490000Z,6a9d91e2485cab4c95409422,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:17,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:16:35.0830000Z,2026-09-06T16:16:35.0830000Z,6a9d91e2485cab4c95409424,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:18,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:16:36.3180000Z,2026-09-06T16:16:36.3180000Z,6a9d91e4485cab4c95409426,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:20,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:16:37.5170000Z,2026-09-06T16:16:37.5170000Z,6a9d91e5485cab4c9540942a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:22,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:16:38.7170000Z,2026-09-06T16:16:38.7170000Z,6a9d91e6485cab4c9540942c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:24,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:16:39.8200000Z,2026-09-06T16:16:39.8200000Z,6a9d91e7485cab4c95409430,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:26,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:18:01.9560000Z,2026-09-06T16:18:01.9560000Z,6a9d9239485cab4c954094c0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:27,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:18:02.8530000Z,2026-09-06T16:18:02.8530000Z,6a9d923a485cab4c954094c2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:28,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:18:02.9870000Z,2026-09-06T16:18:02.9870000Z,6a9d923a485cab4c954094c4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:29,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:18:20.7280000Z,2026-09-06T16:18:20.7280000Z,6a9d924c485cab4c954094dc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:3,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:17:45.8450000Z,2026-09-06T16:17:45.8450000Z,6a9d9229485cab4c95409494,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:30,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:18:21.8270000Z,2026-09-06T16:18:21.8270000Z,6a9d924d485cab4c954094de,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:31,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:18:21.9920000Z,2026-09-06T16:18:21.9920000Z,6a9d924d485cab4c954094e0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:32,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:18:22.1250000Z,2026-09-06T16:18:22.1250000Z,6a9d924d485cab4c954094e2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:33,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:18:22.5920000Z,2026-09-06T16:18:22.5920000Z,6a9d924e485cab4c954094e4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:34,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:18:22.9590000Z,2026-09-06T16:18:22.9590000Z,6a9d924e485cab4c954094e6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:35,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:18:23.2260000Z,2026-09-06T16:18:23.2260000Z,6a9d924e485cab4c954094e8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:36,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:18:23.3590000Z,2026-09-06T16:18:23.3590000Z,6a9d924f485cab4c954094ea,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:37,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:18:24.5260000Z,2026-09-06T16:18:24.5260000Z,6a9d9250485cab4c954094ec,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:39,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:18:25.2600000Z,2026-09-06T16:18:25.2600000Z,6a9d9250485cab4c954094ee,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:40,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:18:25.3940000Z,2026-09-06T16:18:25.3940000Z,6a9d9251485cab4c954094f0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:41,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:18:38.9980000Z,2026-09-06T16:18:38.9980000Z,6a9d925e485cab4c95409500,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:42,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:18:40.4190000Z,2026-09-06T16:18:40.4190000Z,6a9d9260485cab4c95409504,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:43,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:19:12.4330000Z,2026-09-06T16:19:12.4330000Z,6a9d9280485cab4c95409512,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:44,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:19:13.9010000Z,2026-09-06T16:19:13.9010000Z,6a9d9281485cab4c95409518,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:45,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:19:18.3000000Z,2026-09-06T16:19:18.3000000Z,6a9d9286485cab4c9540952c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:46,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:19:33.0070000Z,2026-09-06T16:19:33.0070000Z,6a9d9294485cab4c9540955e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:47,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:19:38.8420000Z,2026-09-06T16:19:38.8420000Z,6a9d929a485cab4c9540956e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:48,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:19:51.5830000Z,2026-09-06T16:19:51.5830000Z,6a9d92a7485cab4c95409580,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:49,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:19:57.5210000Z,2026-09-06T16:19:57.5210000Z,6a9d92ad485cab4c95409592,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:5,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:17:46.0120000Z,2026-09-06T16:17:46.0120000Z,6a9d9229485cab4c95409496,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:50,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:19:28.0410000Z,2026-09-06T16:19:28.0410000Z,6a9d928f485cab4c95409554,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:51,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:20:02.4870000Z,2026-09-06T16:20:02.4870000Z,6a9d92b2485cab4c95409598,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:52,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:20:11.0910000Z,2026-09-06T16:20:11.0910000Z,6a9d92ba485cab4c954095aa,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:53,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:20:11.9910000Z,2026-09-06T16:20:11.9910000Z,6a9d92bb485cab4c954095b0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:54,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:20:13.1910000Z,2026-09-06T16:20:13.1910000Z,6a9d92bc485cab4c954095b2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:56,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:20:13.8920000Z,2026-09-06T16:20:13.8920000Z,6a9d92bd485cab4c954095b4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:58,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:20:14.0580000Z,2026-09-06T16:20:14.0580000Z,6a9d92bd485cab4c954095b6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:59,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:20:14.2250000Z,2026-09-06T16:20:14.2250000Z,6a9d92bd485cab4c954095b8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:6,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:17:46.1450000Z,2026-09-06T16:17:46.1450000Z,6a9d9229485cab4c95409498,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:60,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:20:14.3590000Z,2026-09-06T16:20:14.3590000Z,6a9d92be485cab4c954095ba,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:61,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:20:14.6920000Z,2026-09-06T16:20:14.6920000Z,6a9d92be485cab4c954095bc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:62,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:20:14.8250000Z,2026-09-06T16:20:14.8250000Z,6a9d92be485cab4c954095be,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:63,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:20:14.9920000Z,2026-09-06T16:20:14.9920000Z,6a9d92be485cab4c954095c0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:64,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:20:15.1260000Z,2026-09-06T16:20:15.1260000Z,6a9d92be485cab4c954095c2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:65,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:20:15.2590000Z,2026-09-06T16:20:15.2590000Z,6a9d92be485cab4c954095c4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:69,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:20:17.0230000Z,2026-09-06T16:20:17.0230000Z,6a9d92c0485cab4c954095c6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:7,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:17:46.3120000Z,2026-09-06T16:17:46.3120000Z,6a9d922a485cab4c9540949a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:73,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:20:17.9230000Z,2026-09-06T16:20:17.9230000Z,6a9d92c1485cab4c954095c8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:77,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:20:19.2900000Z,2026-09-06T16:20:19.2900000Z,6a9d92c3485cab4c954095cc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:8,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:17:46.6790000Z,2026-09-06T16:17:46.6790000Z,6a9d922a485cab4c9540949c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:80,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:20:19.8910000Z,2026-09-06T16:20:19.8910000Z,6a9d92c3485cab4c954095ce,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:82,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:20:21.0920000Z,2026-09-06T16:20:21.0920000Z,6a9d92c4485cab4c954095d0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:84,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:20:21.7600000Z,2026-09-06T16:20:21.7600000Z,6a9d92c5485cab4c954095d2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:85,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:21:01.5780000Z,2026-09-06T16:21:01.5780000Z,6a9d92ed485cab4c95409624,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:86,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:21:01.7440000Z,2026-09-06T16:21:01.7440000Z,6a9d92ed485cab4c95409626,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:87,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:21:02.9110000Z,2026-09-06T16:21:02.9110000Z,6a9d92ee485cab4c95409628,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:9,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:17:46.8460000Z,2026-09-06T16:17:46.8460000Z,6a9d922a485cab4c9540949e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:90,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:21:03.5830000Z,2026-09-06T16:21:03.5830000Z,6a9d92ef485cab4c9540962c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:91,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:21:12.4670000Z,2026-09-06T16:21:12.4670000Z,6a9d92f8485cab4c95409634,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:92,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:21:17.2660000Z,2026-09-06T16:21:17.2660000Z,6a9d92fd485cab4c9540963a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:93,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:21:17.9330000Z,2026-09-06T16:21:17.9330000Z,6a9d92fd485cab4c95409640,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:94,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:21:32.0920000Z,2026-09-06T16:21:32.0920000Z,6a9d930c485cab4c95409648,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:95,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:21:36.7410000Z,2026-09-06T16:21:36.7410000Z,6a9d9310485cab4c9540964e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:97,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:21:37.3750000Z,2026-09-06T16:21:37.3750000Z,6a9d9311485cab4c95409650,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:82:99,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:21:37.5080000Z,2026-09-06T16:21:37.5080000Z,6a9d9311485cab4c95409652,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:83:10,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:58:11.5760000Z,2026-09-06T15:58:11.5760000Z,6a9d8d93485cab4c95408b7c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:83:11,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:58:12.5760000Z,2026-09-06T15:58:12.5760000Z,6a9d8d94485cab4c95408b84,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:83:9,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:58:07.6410000Z,2026-09-06T15:58:07.6410000Z,6a9d8d8f485cab4c95408b76,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:84:0,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:43:54.0200000Z,2026-09-06T15:43:54.0200000Z,6a9d8a39485cab4c95408666,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:84:36,dialogue,1,DialogueEvent,Unit 3 Dev,2026-09-06T15:43:54.0500000Z,2026-09-06T15:43:54.0500000Z,6a9d8a39485cab4c9540866c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:88:0,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:05:39.9780000Z,2026-09-06T16:05:39.9780000Z,6a9d8f53485cab4c95408ca6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:88:1,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:08:38.1960000Z,2026-09-06T16:08:38.1960000Z,6a9d9005485cab4c95408cd4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:88:10,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:10:20.4680000Z,2026-09-06T16:10:20.4680000Z,6a9d906c485cab4c95408d7c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:88:11,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:10:43.1790000Z,2026-09-06T16:10:43.1790000Z,6a9d9082485cab4c95408ee2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:88:12,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:10:46.1140000Z,2026-09-06T16:10:46.1140000Z,6a9d9085485cab4c95408ee6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:88:19,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:05:40.0100000Z,2026-09-06T16:05:40.0100000Z,6a9d8f53485cab4c95408caa,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:88:2,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:08:48.0780000Z,2026-09-06T16:08:48.0780000Z,6a9d900f485cab4c95408cda,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:88:3,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:09:00.5740000Z,2026-09-06T16:09:00.5740000Z,6a9d901c485cab4c95408ce6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:88:4,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:09:29.8830000Z,2026-09-06T16:09:29.8830000Z,6a9d9039485cab4c95408cfc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:88:5,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:09:34.1850000Z,2026-09-06T16:09:34.1850000Z,6a9d903d485cab4c95408d02,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:88:8,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:09:34.8180000Z,2026-09-06T16:09:34.8180000Z,6a9d903e485cab4c95408d04,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:88:9,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:09:48.4250000Z,2026-09-06T16:09:48.4250000Z,6a9d904c485cab4c95408d10,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:8:11,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:09:57.7810000Z,2026-09-06T15:09:57.7810000Z,6a9d8244485cab4c95407f1c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:8:12,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:09:59.4480000Z,2026-09-06T15:09:59.4480000Z,6a9d8246485cab4c95407f24,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:8:2,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:09:55.5830000Z,2026-09-06T15:09:55.5830000Z,6a9d8242485cab4c95407f14,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:8:4,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:09:56.5130000Z,2026-09-06T15:09:56.5130000Z,6a9d8243485cab4c95407f16,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:8:5,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:09:56.9810000Z,2026-09-06T15:09:56.9810000Z,6a9d8244485cab4c95407f18,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:8:6,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:09:57.3810000Z,2026-09-06T15:09:57.3810000Z,6a9d8244485cab4c95407f1a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:8:7,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:09:58.2480000Z,2026-09-06T15:09:58.2480000Z,6a9d8245485cab4c95407f1e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:8:8,dialogue,1,DialogueEvent,Unit 2 Prod (Refactor),2026-09-06T15:09:59.0810000Z,2026-09-06T15:09:59.0810000Z,6a9d8246485cab4c95407f22,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:90:0,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:20:59.4810000Z,2026-09-06T16:20:59.4810000Z,6a9d92eb485cab4c9540961c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:90:50,dialogue,1,DialogueEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:20:59.5110000Z,2026-09-06T16:20:59.5110000Z,6a9d92eb485cab4c95409622,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:0,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:10:58.1660000Z,2026-09-06T16:10:58.1660000Z,6a9d9091485cab4c95408f12,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:1,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:11:15.2110000Z,2026-09-06T16:11:15.2110000Z,6a9d90a2485cab4c95408f2c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:100,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:15:51.5350000Z,2026-09-06T16:15:51.5350000Z,6a9d91b7485cab4c9540938a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:101,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:15:54.0350000Z,2026-09-06T16:15:54.0350000Z,6a9d91b9485cab4c95409390,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:103,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:15:54.6360000Z,2026-09-06T16:15:54.6360000Z,6a9d91ba485cab4c95409392,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:105,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:16:11.6520000Z,2026-09-06T16:16:11.6520000Z,6a9d91cb485cab4c954093b4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:106,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:16:30.2640000Z,2026-09-06T16:16:30.2640000Z,6a9d91dd485cab4c95409410,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:107,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:16:30.4320000Z,2026-09-06T16:16:30.4320000Z,6a9d91de485cab4c95409412,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:108,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:16:31.7470000Z,2026-09-06T16:16:31.7470000Z,6a9d91df485cab4c95409414,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:11,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:11:19.4080000Z,2026-09-06T16:11:19.4080000Z,6a9d90a7485cab4c95408f36,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:110,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:16:32.5820000Z,2026-09-06T16:16:32.5820000Z,6a9d91e0485cab4c95409416,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:111,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:16:33.9490000Z,2026-09-06T16:16:33.9490000Z,6a9d91e1485cab4c95409418,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:113,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:16:34.5160000Z,2026-09-06T16:16:34.5160000Z,6a9d91e2485cab4c9540941a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:115,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:16:34.6840000Z,2026-09-06T16:16:34.6840000Z,6a9d91e2485cab4c9540941e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:116,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:12:15.3510000Z,2026-09-06T16:12:15.3510000Z,6a9d90df485cab4c95409018,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:117,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:13:07.9710000Z,2026-09-06T16:13:07.9710000Z,6a9d9113485cab4c954090f2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:118,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:14:14.8990000Z,2026-09-06T16:14:14.8990000Z,6a9d9156485cab4c954091ee,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:119,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:16:26.1630000Z,2026-09-06T16:16:26.1630000Z,6a9d91d9485cab4c954093fe,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:120,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:11:01.0380000Z,2026-09-06T16:11:01.0380000Z,6a9d9094485cab4c95408f18,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:122,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:11:02.2380000Z,2026-09-06T16:11:02.2380000Z,6a9d9095485cab4c95408f1a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:125,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:11:02.6730000Z,2026-09-06T16:11:02.6730000Z,6a9d9096485cab4c95408f1c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:13,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:11:19.5830000Z,2026-09-06T16:11:19.5830000Z,6a9d90a7485cab4c95408f3a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:19,dialogue,2,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:11:24.0610000Z,2026-09-06T16:11:25.0940000Z,6a9d90ab485cab4c95408f48,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:20,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:11:24.8610000Z,2026-09-06T16:11:24.8610000Z,6a9d90ac485cab4c95408f4e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:21,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:11:32.0670000Z,2026-09-06T16:11:32.0670000Z,6a9d90b3485cab4c95408f7c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:29,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:11:51.6090000Z,2026-09-06T16:11:51.6090000Z,6a9d90c7485cab4c95408fd8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:30,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:12:04.4460000Z,2026-09-06T16:12:04.4460000Z,6a9d90d4485cab4c95408ff6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:31,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:12:05.6800000Z,2026-09-06T16:12:05.6800000Z,6a9d90d5485cab4c95408ffa,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:32,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:12:08.5140000Z,2026-09-06T16:12:08.5140000Z,6a9d90d8485cab4c95408ffe,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:34,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:12:09.2810000Z,2026-09-06T16:12:09.2810000Z,6a9d90d8485cab4c95409000,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:36,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:12:09.4500000Z,2026-09-06T16:12:09.4500000Z,6a9d90d9485cab4c95409006,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:42,dialogue,2,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:12:13.6850000Z,2026-09-06T16:12:15.5850000Z,6a9d90dd485cab4c95409012,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:43,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:12:19.5820000Z,2026-09-06T16:12:19.5820000Z,6a9d90e3485cab4c95409032,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:44,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:12:36.0900000Z,2026-09-06T16:12:36.0900000Z,6a9d90f3485cab4c95409072,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:45,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:12:38.4900000Z,2026-09-06T16:12:38.4900000Z,6a9d90f6485cab4c9540907a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:47,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:12:39.1910000Z,2026-09-06T16:12:39.1910000Z,6a9d90f6485cab4c9540907c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:49,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:12:48.7300000Z,2026-09-06T16:12:48.7300000Z,6a9d9100485cab4c954090ac,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:5,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:11:16.9730000Z,2026-09-06T16:11:16.9730000Z,6a9d90a4485cab4c95408f30,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:50,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:13:00.4010000Z,2026-09-06T16:13:00.4010000Z,6a9d910c485cab4c954090ce,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:51,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:13:02.2010000Z,2026-09-06T16:13:02.2010000Z,6a9d910d485cab4c954090d2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:53,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:13:02.8680000Z,2026-09-06T16:13:02.8680000Z,6a9d910e485cab4c954090d4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:55,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:13:03.0440000Z,2026-09-06T16:13:03.0440000Z,6a9d910e485cab4c954090da,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:61,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:13:07.3380000Z,2026-09-06T16:13:07.3380000Z,6a9d9113485cab4c954090ec,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:62,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:13:35.0470000Z,2026-09-06T16:13:35.0470000Z,6a9d912e485cab4c95409160,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:64,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:13:38.0800000Z,2026-09-06T16:13:38.0800000Z,6a9d9131485cab4c95409166,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:66,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:13:38.8810000Z,2026-09-06T16:13:38.8810000Z,6a9d9132485cab4c9540916a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:67,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:13:54.8900000Z,2026-09-06T16:13:54.8900000Z,6a9d9142485cab4c954091aa,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:68,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:14:07.3280000Z,2026-09-06T16:14:07.3280000Z,6a9d914f485cab4c954091c8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:69,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:14:09.2280000Z,2026-09-06T16:14:09.2280000Z,6a9d9150485cab4c954091ce,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:71,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:14:10.0290000Z,2026-09-06T16:14:10.0290000Z,6a9d9151485cab4c954091d0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:73,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:14:10.1640000Z,2026-09-06T16:14:10.1640000Z,6a9d9151485cab4c954091d6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:79,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:14:14.2320000Z,2026-09-06T16:14:14.2320000Z,6a9d9155485cab4c954091e8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:80,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:14:47.8100000Z,2026-09-06T16:14:47.8100000Z,6a9d9177485cab4c9540926e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:82,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:14:52.6790000Z,2026-09-06T16:14:52.6790000Z,6a9d917c485cab4c95409298,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:83,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:14:54.5780000Z,2026-09-06T16:14:54.5780000Z,6a9d917e485cab4c9540929e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:85,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:14:55.2810000Z,2026-09-06T16:14:55.2810000Z,6a9d917e485cab4c954092a0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:87,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:15:07.0510000Z,2026-09-06T16:15:07.0510000Z,6a9d918a485cab4c954092bc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:88,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:15:08.4850000Z,2026-09-06T16:15:08.4850000Z,6a9d918c485cab4c954092c2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:9,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:11:18.7740000Z,2026-09-06T16:11:18.7740000Z,6a9d90a6485cab4c95408f34,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:90,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:15:09.1520000Z,2026-09-06T16:15:09.1520000Z,6a9d918c485cab4c954092c4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:92,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:15:09.2880000Z,2026-09-06T16:15:09.2880000Z,6a9d918d485cab4c954092ca,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:98,dialogue,2,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:15:13.3220000Z,2026-09-06T16:15:14.1880000Z,6a9d9191485cab4c954092dc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:91:99,dialogue,1,DialogueEvent,Unit 4 Dev - Dungeon,2026-09-06T16:15:13.9550000Z,2026-09-06T16:15:13.9550000Z,6a9d9191485cab4c954092e2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:0,dialogue,8,DialogueEvent,Unit 4 Dev,2026-09-06T16:22:50.4230000Z,2026-09-06T16:24:11.2920000Z,6a9d935a485cab4c954096b6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:1,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:22:01.6700000Z,2026-09-06T16:22:01.6700000Z,6a9d9329485cab4c95409680,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:10,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:22:37.8830000Z,2026-09-06T16:22:37.8830000Z,6a9d934d485cab4c95409698,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:12,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:22:38.5840000Z,2026-09-06T16:22:38.5840000Z,6a9d934e485cab4c9540969a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:13,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:22:39.2500000Z,2026-09-06T16:22:39.2500000Z,6a9d934e485cab4c9540969c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:14,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:22:39.6170000Z,2026-09-06T16:22:39.6170000Z,6a9d934f485cab4c9540969e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:15,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:22:39.9510000Z,2026-09-06T16:22:39.9510000Z,6a9d934f485cab4c954096a0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:16,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:22:40.2840000Z,2026-09-06T16:22:40.2840000Z,6a9d9350485cab4c954096a2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:17,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:22:40.4920000Z,2026-09-06T16:22:40.4920000Z,6a9d9350485cab4c954096a6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:19,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:22:50.4260000Z,2026-09-06T16:22:50.4260000Z,6a9d935a485cab4c954096ba,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:2,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:22:34.6480000Z,2026-09-06T16:22:34.6480000Z,6a9d934a485cab4c9540968c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:20,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:22:53.7270000Z,2026-09-06T16:22:53.7270000Z,6a9d935d485cab4c954096d4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:21,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:22:55.8630000Z,2026-09-06T16:22:55.8630000Z,6a9d935f485cab4c954096e8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:22,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:22:58.4970000Z,2026-09-06T16:22:58.4970000Z,6a9d9362485cab4c954096fe,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:23,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:22:59.6930000Z,2026-09-06T16:22:59.6930000Z,6a9d9363485cab4c95409700,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:25,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:22:59.8270000Z,2026-09-06T16:22:59.8270000Z,6a9d9363485cab4c95409702,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:26,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:23:10.5680000Z,2026-09-06T16:23:10.5680000Z,6a9d936e485cab4c95409710,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:27,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:23:15.6050000Z,2026-09-06T16:23:15.6050000Z,6a9d9373485cab4c95409730,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:29,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:23:29.9400000Z,2026-09-06T16:23:29.9400000Z,6a9d9381485cab4c9540973c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:30,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:23:34.5780000Z,2026-09-06T16:23:34.5780000Z,6a9d9386485cab4c95409756,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:32,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:23:47.2130000Z,2026-09-06T16:23:47.2130000Z,6a9d9393485cab4c95409766,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:33,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:23:50.1830000Z,2026-09-06T16:23:50.1830000Z,6a9d9395485cab4c95409768,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:38,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:06.2910000Z,2026-09-06T16:24:06.2910000Z,6a9d93a6485cab4c95409796,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:39,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:07.1220000Z,2026-09-06T16:24:07.1220000Z,6a9d93a6485cab4c9540979c,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:4,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:22:36.1820000Z,2026-09-06T16:22:36.1820000Z,6a9d934b485cab4c9540968e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:41,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:07.5570000Z,2026-09-06T16:24:07.5570000Z,6a9d93a7485cab4c9540979e,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:42,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:11.2950000Z,2026-09-06T16:24:11.2950000Z,6a9d93ab485cab4c954097b8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:44,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:13.4250000Z,2026-09-06T16:24:13.4250000Z,6a9d93ad485cab4c954097bc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:46,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:13.7920000Z,2026-09-06T16:24:13.7920000Z,6a9d93ad485cab4c954097be,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:47,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:14.1590000Z,2026-09-06T16:24:14.1590000Z,6a9d93ad485cab4c954097c0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:48,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:14.5260000Z,2026-09-06T16:24:14.5260000Z,6a9d93ae485cab4c954097c2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:49,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:14.9260000Z,2026-09-06T16:24:14.9260000Z,6a9d93ae485cab4c954097c4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:50,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:17.7560000Z,2026-09-06T16:24:17.7560000Z,6a9d93b1485cab4c954097c6,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:52,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:18.4230000Z,2026-09-06T16:24:18.4230000Z,6a9d93b2485cab4c954097c8,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:53,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:18.5900000Z,2026-09-06T16:24:18.5900000Z,6a9d93b2485cab4c954097ca,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:54,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:18.7240000Z,2026-09-06T16:24:18.7240000Z,6a9d93b2485cab4c954097cc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:55,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:20.5580000Z,2026-09-06T16:24:20.5580000Z,6a9d93b4485cab4c954097ce,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:57,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:21.2250000Z,2026-09-06T16:24:21.2250000Z,6a9d93b4485cab4c954097d0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:58,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:21.3580000Z,2026-09-06T16:24:21.3580000Z,6a9d93b5485cab4c954097d2,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:59,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:21.5250000Z,2026-09-06T16:24:21.5250000Z,6a9d93b5485cab4c954097d4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:6,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:22:36.4490000Z,2026-09-06T16:22:36.4490000Z,6a9d934c485cab4c95409690,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:60,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:21.6630000Z,2026-09-06T16:24:21.6630000Z,6a9d93b5485cab4c954097da,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:61,dialogue,3,DialogueEvent,Unit 4 Dev,2026-09-06T16:23:53.0490000Z,2026-09-06T16:24:04.4210000Z,6a9d9398485cab4c95409770,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:64,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:24:06.2930000Z,2026-09-06T16:24:06.2930000Z,6a9d93a6485cab4c9540979a,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:65,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:22:59.9940000Z,2026-09-06T16:22:59.9940000Z,6a9d9363485cab4c95409704,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:66,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:23:16.9310000Z,2026-09-06T16:23:16.9310000Z,6a9d9374485cab4c95409732,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:67,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:23:37.7750000Z,2026-09-06T16:23:37.7750000Z,6a9d9389485cab4c95409758,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:7,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:22:36.7820000Z,2026-09-06T16:22:36.7820000Z,6a9d934c485cab4c95409692,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:8,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:22:37.1820000Z,2026-09-06T16:22:37.1820000Z,6a9d934c485cab4c95409694,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:92:9,dialogue,1,DialogueEvent,Unit 4 Dev,2026-09-06T16:22:37.5160000Z,2026-09-06T16:22:37.5160000Z,6a9d934d485cab4c95409696,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:95:1,dialogue,1,DialogueEvent,Unit 5 Dev - Dungeon,2026-09-06T16:28:57.0270000Z,2026-09-06T16:28:57.0270000Z,6a9d94c8485cab4c954098c0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:95:4,dialogue,1,DialogueEvent,Unit 5 Dev - Dungeon,2026-09-06T16:29:37.0740000Z,2026-09-06T16:29:37.0740000Z,6a9d94f0485cab4c954098cc,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:95:5,dialogue,1,DialogueEvent,Unit 5 Dev - Dungeon,2026-09-06T16:29:37.8190000Z,2026-09-06T16:29:37.8190000Z,6a9d94f1485cab4c954098d0,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:95:76,dialogue,1,DialogueEvent,Unit 5 Dev - Dungeon,2026-09-06T16:29:47.6800000Z,2026-09-06T16:29:47.6800000Z,6a9d94fb485cab4c954098f4,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:95:77,dialogue,1,DialogueEvent,Unit 5 Dev - Dungeon,2026-09-06T16:29:49.6140000Z,2026-09-06T16:29:49.6140000Z,6a9d94fd485cab4c954098fe,wenyi090326-4.stratalog.logdata.json
+DialogueNodeEvent:95:78,dialogue,1,DialogueEvent,Unit 5 Dev - Dungeon,2026-09-06T16:31:42.8610000Z,2026-09-06T16:31:42.8610000Z,6a9d956e485cab4c95409936,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:16,quest,1,questEvent,Unit 3 Dev,2026-09-06T15:35:22.1670000Z,2026-09-06T15:35:22.1670000Z,6a9d8839485cab4c95408348,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:17,quest,1,questEvent,Unit 3 Dev,2026-09-06T15:38:57.9400000Z,2026-09-06T15:38:57.9400000Z,6a9d8911485cab4c95408438,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:18,quest,3,questEvent,Unit 3 Dev;Unit 3 Dungeon Dev,2026-09-06T15:46:13.5010000Z,2026-09-06T15:49:49.2580000Z,6a9d8ac5485cab4c954086cc,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:19,quest,1,questEvent,Unit 3 Dev,2026-09-06T15:58:34.3120000Z,2026-09-06T15:58:34.3120000Z,6a9d8da9485cab4c95408b96,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:21,quest,1,questEvent,Unit 2 Prod (Refactor),2026-09-06T01:59:50.5680000Z,2026-09-06T01:59:50.5680000Z,6a9cc916485cab4c95405e52,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:22,quest,1,questEvent,Unit 2 Prod (Refactor),2026-09-06T02:11:47.5370000Z,2026-09-06T02:11:47.5370000Z,6a9ccbe3485cab4c95407734,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:23,quest,1,questEvent,Unit 2 Prod (Refactor),2026-09-06T02:10:41.0910000Z,2026-09-06T02:10:41.0910000Z,6a9ccba0485cab4c954076e4,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:24,quest,1,questEvent,Unit 2 Prod (Refactor),2026-09-06T02:21:19.5630000Z,2026-09-06T02:21:19.5630000Z,6a9cce1f485cab4c954079c4,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:25,quest,1,questEvent,Unit 2 Prod (Refactor),2026-09-06T15:09:52.6450000Z,2026-09-06T15:09:52.6450000Z,6a9d823f485cab4c95407f06,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:28,quest,2,questEvent,Unit 1 Dev,2026-09-06T00:15:00.7600000Z,2026-09-06T00:20:38.1870000Z,6a9cb084485cab4c954054f6,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:29,quest,2,questEvent,Unit 1 Dev,2026-09-06T00:15:46.3810000Z,2026-09-06T00:21:33.0470000Z,6a9cb0b2485cab4c95405552,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:31,quest,2,questEvent,Unit 1 Dev,2026-09-06T00:16:22.4000000Z,2026-09-06T01:42:40.8190000Z,6a9cb0d6485cab4c9540559c,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:32,quest,2,questEvent,Unit 1 Dev,2026-09-06T00:18:10.4840000Z,2026-09-06T01:49:43.2680000Z,6a9cb142485cab4c954055ea,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:33,quest,1,questEvent,Unit 1 Dev,2026-09-06T01:53:39.8410000Z,2026-09-06T01:53:39.8410000Z,6a9cc7a3485cab4c95405cf0,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:34,quest,1,questEvent,Unit 1 Dev,2026-09-06T01:54:38.9290000Z,2026-09-06T01:54:38.9290000Z,6a9cc7de485cab4c95405d8c,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:36,quest,2,questEvent,Unit 4 Dev;Unit 4 Dev - Anderson Base,2026-09-06T16:16:39.8180000Z,2026-09-06T16:18:38.9850000Z,6a9d91e7485cab4c9540942e,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:39,quest,1,questEvent,Unit 4 Dev,2026-09-06T16:08:48.0680000Z,2026-09-06T16:08:48.0680000Z,6a9d900f485cab4c95408cd8,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:40,quest,1,questEvent,Unit 4 Dev,2026-09-06T16:16:11.6430000Z,2026-09-06T16:16:11.6430000Z,6a9d91cb485cab4c954093b2,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:41,quest,1,questEvent,Unit 4 Dev,2026-09-06T16:22:40.4840000Z,2026-09-06T16:22:40.4840000Z,6a9d9350485cab4c954096a4,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:43,quest,1,questEvent,Unit 5 Dev - Dungeon,2026-09-06T16:28:47.1310000Z,2026-09-06T16:28:47.1310000Z,6a9d94bf485cab4c95409898,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:46,quest,1,questEvent,Unit 4 Dev - Dungeon,2026-09-06T16:11:19.5750000Z,2026-09-06T16:11:19.5750000Z,6a9d90a7485cab4c95408f38,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:47,quest,1,questEvent,Unit 4 Dev - Dungeon,2026-09-06T16:12:09.4490000Z,2026-09-06T16:12:09.4490000Z,6a9d90d9485cab4c95409004,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:48,quest,1,questEvent,Unit 4 Dev - Dungeon,2026-09-06T16:13:03.0370000Z,2026-09-06T16:13:03.0370000Z,6a9d910e485cab4c954090d8,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:49,quest,1,questEvent,Unit 4 Dev - Dungeon,2026-09-06T16:14:10.1640000Z,2026-09-06T16:14:10.1640000Z,6a9d9151485cab4c954091d4,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:50,quest,1,questEvent,Unit 4 Dev - Dungeon,2026-09-06T16:15:09.2870000Z,2026-09-06T16:15:09.2870000Z,6a9d918d485cab4c954092c8,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:54,quest,1,questEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:26.0610000Z,2026-09-06T15:31:26.0610000Z,6a9d874d485cab4c9540828c,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:55,quest,1,questEvent,Unit 3 Dev,2026-09-06T15:59:54.4930000Z,2026-09-06T15:59:54.4930000Z,6a9d8dfa485cab4c95408c2a,wenyi090326-4.stratalog.logdata.json
+questActiveEvent:56,quest,1,questEvent,Unit 4 Dev,2026-09-06T16:24:21.6610000Z,2026-09-06T16:24:21.6610000Z,6a9d93b5485cab4c954097d8,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:16,quest,2,questEvent,Unit 3 Dev,2026-09-06T15:38:54.8050000Z,2026-09-06T15:49:46.9210000Z,6a9d890e485cab4c95408426,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:17,quest,1,questEvent,Unit 3 Dev,2026-09-06T15:43:56.6500000Z,2026-09-06T15:43:56.6500000Z,6a9d8a3c485cab4c95408670,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:18,quest,1,questEvent,Unit 3 Dungeon Dev,2026-09-06T15:56:02.1450000Z,2026-09-06T15:56:02.1450000Z,6a9d8d11485cab4c95408b2a,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:19,quest,1,questEvent,Unit 3 Dev,2026-09-06T15:59:42.1240000Z,2026-09-06T15:59:42.1240000Z,6a9d8ded485cab4c95408c0a,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:21,quest,1,questEvent,Unit 2 Prod (Refactor),2026-09-06T02:09:01.7790000Z,2026-09-06T02:09:01.7790000Z,6a9ccb3d485cab4c95407684,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:22,quest,1,questEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:56.1930000Z,2026-09-06T15:01:56.1930000Z,6a9d8063485cab4c95407e4e,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:23,quest,1,questEvent,Unit 2 Prod (Refactor),2026-09-06T02:11:45.4030000Z,2026-09-06T02:11:45.4030000Z,6a9ccbe1485cab4c9540772e,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:24,quest,1,questEvent,Unit 2 Prod (Refactor),2026-09-06T15:01:08.8350000Z,2026-09-06T15:01:08.8350000Z,6a9d8033485cab4c95407df6,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:25,quest,1,questEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:17.8910000Z,2026-09-06T15:31:17.8910000Z,6a9d8745485cab4c95408274,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:28,quest,2,questEvent,Unit 1 Dev,2026-09-06T00:15:44.8310000Z,2026-09-06T00:21:32.1130000Z,6a9cb0b0485cab4c9540554c,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:29,quest,2,questEvent,Unit 1 Dev,2026-09-06T00:16:22.3990000Z,2026-09-06T01:42:40.8180000Z,6a9cb0d6485cab4c9540559a,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:31,quest,2,questEvent,Unit 1 Dev,2026-09-06T00:18:10.4830000Z,2026-09-06T01:49:43.2660000Z,6a9cb142485cab4c954055e8,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:32,quest,1,questEvent,Unit 1 Dev,2026-09-06T01:53:39.8400000Z,2026-09-06T01:53:39.8400000Z,6a9cc7a3485cab4c95405cee,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:33,quest,1,questEvent,Unit 1 Dev,2026-09-06T01:54:33.4940000Z,2026-09-06T01:54:33.4940000Z,6a9cc7d9485cab4c95405d84,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:34,quest,1,questEvent,Unit 1 Dev,2026-09-06T01:55:58.2160000Z,2026-09-06T01:55:58.2160000Z,6a9cc82e485cab4c95405df0,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:36,quest,1,questEvent,Unit 4 Dev - Anderson Base,2026-09-06T16:21:03.5790000Z,2026-09-06T16:21:03.5790000Z,6a9d92ef485cab4c9540962a,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:40,quest,1,questEvent,Unit 4 Dev,2026-09-06T16:16:34.6830000Z,2026-09-06T16:16:34.6830000Z,6a9d91e2485cab4c9540941c,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:41,quest,1,questEvent,Unit 4 Dev,2026-09-06T16:24:21.6590000Z,2026-09-06T16:24:21.6590000Z,6a9d93b5485cab4c954097d6,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:46,quest,1,questEvent,Unit 4 Dev - Dungeon,2026-09-06T16:12:09.4480000Z,2026-09-06T16:12:09.4480000Z,6a9d90d9485cab4c95409002,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:47,quest,1,questEvent,Unit 4 Dev - Dungeon,2026-09-06T16:13:03.0360000Z,2026-09-06T16:13:03.0360000Z,6a9d910e485cab4c954090d6,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:48,quest,1,questEvent,Unit 4 Dev - Dungeon,2026-09-06T16:14:10.1630000Z,2026-09-06T16:14:10.1630000Z,6a9d9151485cab4c954091d2,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:49,quest,1,questEvent,Unit 4 Dev - Dungeon,2026-09-06T16:15:09.2860000Z,2026-09-06T16:15:09.2860000Z,6a9d918c485cab4c954092c6,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:54,quest,1,questEvent,Unit 2 Prod (Refactor),2026-09-06T15:31:57.7430000Z,2026-09-06T15:31:57.7430000Z,6a9d876d485cab4c95408304,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:55,quest,1,questEvent,Unit 3 Dev,2026-09-06T16:02:33.0520000Z,2026-09-06T16:02:33.0520000Z,6a9d8e98485cab4c95408c94,wenyi090326-4.stratalog.logdata.json
+questFinishEvent:56,quest,1,questEvent,Unit 4 Dev,2026-09-06T16:28:24.6270000Z,2026-09-06T16:28:24.6270000Z,6a9d94a8485cab4c95409888,wenyi090326-4.stratalog.logdata.json

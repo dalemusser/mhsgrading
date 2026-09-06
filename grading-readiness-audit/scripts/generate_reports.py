@@ -201,6 +201,23 @@ def pp_report(sup, spec, val, recon_rows, doc):
     return "\n".join(lines)
 
 
+def coverage_phrase(cfg):
+    """Describe the playthrough from the coverage manifest, never a fixed claim."""
+    cov_path = cfg.get("coverage_yaml")
+    if cov_path and os.path.exists(lib.repo_path(cov_path)):
+        import yaml
+        with open(lib.repo_path(cov_path), encoding="utf-8") as f:
+            tested = (yaml.safe_load(f) or {}).get("tested_content", {})
+        if tested:
+            by_status = {}
+            for unit, status in tested.items():
+                by_status.setdefault(status, []).append(unit)
+            parts = [f"{'/'.join(units)} {status}"
+                     for status, units in by_status.items()]
+            return "single playthrough, " + ", ".join(parts)
+    return "single playthrough (no coverage manifest — played-unit statuses unknown)"
+
+
 def main():
     lib.utf8_stdout()
     cfg = lib.load_config()
@@ -238,7 +255,7 @@ def main():
     a(f"# Gameplay-Log → Progress-Point Grading Audit — build {cfg['build_label']}")
     a("")
     meta = val_doc["adaptation"]
-    a(f"- Logs: `{cfg['log_dir']}` — single full playthrough, all 5 units complete "
+    a(f"- Logs: `{cfg['log_dir']}` — {coverage_phrase(cfg)} "
       f"(player `{meta['player_id_used']}`).")
     a("- Stage 1 = can the current logs still feed each grading rule; "
       "Stage 2 = does the production logic then produce a defensible color.")

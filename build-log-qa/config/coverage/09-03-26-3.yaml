@@ -1,0 +1,19 @@
+# Gameplay coverage manifest for the 09-03-26-3 playthrough.
+# Statuses: complete | partial | skipped
+# Update this file after each weekly playtest BEFORE running the audit —
+# it is what lets the audit distinguish "logging failed" from "not tested".
+
+build: "09-03-26-3"
+game_version: "20260902-12353"
+
+tested_content:
+  Unit1: complete
+  Unit2: complete
+  Unit3: complete
+  Unit4: complete
+  Unit5: complete
+
+notes:
+  - "Full playthrough by one tester on 2026-09-05/06 (log shows EndOfUnit for units 1-5)."
+  - "First ~10 minutes (393 records, Unit 1 only, 21:10-21:19Z) were logged on the older build 20260721-11840 before the tester switched to 20260902-12353 and restarted Unit 1 from the intro cutscene; all EndOfUnit events are on the new build."
+  - "Debug menu opened briefly (DebugMenuStateChanged toggles in Unit 3 and Unit 5 dungeon; no debug actions logged)."

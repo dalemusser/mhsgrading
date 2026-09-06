@@ -1,0 +1,300 @@
+{
+  "run": "09-03-26-3",
+  "log": "C:/Users/wenyi/OneDrive/Documents/GitHub/mhsgrading/playthrough-logs-and-results/09-03-26-3/wenyi090326-3.stratalog.logdata.json",
+  "mode": "fixture",
+  "summary": {
+    "points": 26,
+    "passed": 26,
+    "failed": 0
+  },
+  "results": [
+    {
+      "unit": 1,
+      "point": 1,
+      "name": "Getting Your Space Legs",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 1,
+      "point": 2,
+      "name": "Info and Intros",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 1,
+      "point": 3,
+      "name": "Defend the Expedition",
+      "expected": "yellow",
+      "actual": "yellow",
+      "passed": true,
+      "diagnostics": {
+        "WRONG_ARG_SELECTED": "attempt_number=3 (yellow nodes hit 2x in window) — student needed multiple tries to build the correct argument"
+      }
+    },
+    {
+      "unit": 1,
+      "point": 4,
+      "name": "What Was That?",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 2,
+      "point": 1,
+      "name": "Escape the Ruin",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 2,
+      "point": 2,
+      "name": "Foraged Forging",
+      "expected": "yellow",
+      "actual": "yellow",
+      "passed": true,
+      "diagnostics": {
+        "BAD_FEEDBACK": "triggering_number=19 (threshold <= 1) — repeated wrong-direction prompts while searching for Toppo"
+      }
+    },
+    {
+      "unit": 2,
+      "point": 3,
+      "name": "Getting the Band Back Together Part II",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 2,
+      "point": 4,
+      "name": "Investigate the Temple",
+      "expected": "yellow",
+      "actual": "yellow",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 2,
+      "point": 5,
+      "name": "Classified Information",
+      "expected": "yellow",
+      "actual": "yellow",
+      "passed": true,
+      "diagnostics": {
+        "TOO_MANY_NEGATIVES": "wrong_number=10 (score=2.67 < 4) — too many incorrect attempts identifying argument parts"
+      }
+    },
+    {
+      "unit": 2,
+      "point": 6,
+      "name": "Which Watershed? Part I",
+      "expected": "yellow",
+      "actual": "yellow",
+      "passed": true,
+      "diagnostics": {
+        "MISSING_SUCCESS_NODE": "pass node DialogueNodeEvent:20:43 absent in window — correct criterion never selected",
+        "HIT_YELLOW_NODE": "chose an incorrect criterion for watershed size on first try: waterfall height"
+      }
+    },
+    {
+      "unit": 2,
+      "point": 7,
+      "name": "Which Watershed? Part II",
+      "expected": "yellow",
+      "actual": "yellow",
+      "passed": true,
+      "diagnostics": {
+        "WRONG_ARG_SELECTED": "attempt_number=9 (neg_count=8 > 3) — too many attempts to select evidence to support the claim"
+      }
+    },
+    {
+      "unit": 3,
+      "point": 1,
+      "name": "Good Morning Cadet + Establishing a Foothold",
+      "expected": "yellow",
+      "actual": "yellow",
+      "passed": true,
+      "diagnostics": {
+        "_score": "cnt=0 wrong_count=3",
+        "TOO_MANY_NEGATIVES": "attempt_number=3 (>= 2) — selected the wrong river too many times while identifying the direction of water flow"
+      }
+    },
+    {
+      "unit": 3,
+      "point": 2,
+      "name": "Pollution Solution",
+      "expected": "yellow",
+      "actual": "yellow",
+      "passed": true,
+      "diagnostics": {
+        "_score": "c27=13 c29=16 c230=6 cSum=22 score=1 reminding_count=35",
+        "BAD_FEEDBACK": "attempt_number=35 (> 6) — repeated reminding dialogues regarding redundant sensor usage"
+      }
+    },
+    {
+      "unit": 3,
+      "point": 3,
+      "name": "Pollution Argument",
+      "expected": "yellow",
+      "actual": "yellow",
+      "passed": true,
+      "diagnostics": {
+        "_score": "sum_count=6 base_score=0 bonus=1 total_score=1",
+        "WRONG_ARG_SELECTED": "attempts_number=6 (>4) — too many attempts to select correct reasoning"
+      }
+    },
+    {
+      "unit": 3,
+      "point": 4,
+      "name": "Forsaken Facility",
+      "expected": "green",
+      "actual": "green",
+      "passed": true,
+      "diagnostics": {}
+    },
+    {
+      "unit": 3,
+      "point": 5,
+      "name": "Plant the Superfruit Seeds",
+      "expected": "yellow",
+      "actual": "yellow",
+      "passed": true,
+      "diagnostics": {
+        "_score": "pos_count=0 neg_count=4 sum_score=-2.0",
+        "TOO_MANY_NEGATIVES": "attempts_number=4 (> 1) — planted super-fruit seeds into too many wrong spots"
+      }
+    },
+    {
+      "unit": 4,
+      "point": 1,
+      "name": "Well What Have We Here?: Water Table Basics",
+      "expected": "yellow",
+      "actual": "yellow",
+      "passed": true,
+      "diagnostics": {
+        "_score": "score=0.0 has_correct=0 duration_seconds=136.13",
+        "WRONG_CHOISE_SELECTED": "correct choice DialogueNodeEvent:88:5 absent in window — did not select the water-table boundary answer on first attempt",
+        "TOO_LONG_TO_SOLVE_PROBLEM": "soil key puzzle duration=136.13s (> 30s or unmeasured) — spent too long solving the soil key puzzle"
+      }
+    },
+    {
+      "unit": 4,
+      "point": 2,
+      "name": "Infiltration Glyph + Alien Well Floors 1 & 2",
+      "expected": "yellow",
+      "actual": "yellow",
+      "passed": true,
+      "diagnostics": {
+        "TOO_MANY_NEGATIVES": "negative feedback node present in window — needed more than 2 attempts to figure out the correct matches"
+      }
+    },
+    {
+      "unit": 4,
+      "point": 3,
+      "name": "Alien Well Floor 3 & 4",
+      "expected": "yellow",
+      "actual": "yellow",
+      "passed": true,
+      "diagnostics": {
+        "_score": "score=0 floor3_attempts=7 floor4_attempts=6",
+        "TOO_MANY_ATTEMPTS_3": "floor3_attempts=7 (> 1) — interacted with the third-floor soil machine more than the optimal one attempt",
+        "TOO_MANY_ATTEMPTS_4": "floor4_attempts=6 (> 1) — interacted with the fourth-floor soil machine more than the optimal one attempt"
+      }
+    },
+    {
+      "unit": 4,
+      "point": 4,
+      "name": "Alien Well Floor 5 + You Know the Drill",
+      "expected": "yellow",
+      "actual": "yellow",
+      "passed": true,
+      "diagnostics": {
+        "_score": "score=0 attempt_time=16 negative_feedback_number=6",
+        "SCORE_BELOW_THRESHOLD": "score=0 (<= 2) — combined soil-machine and dialogue score too low",
+        "TOO_MANY_ATTEMPTS": "attempt_time=16 (> 3) — too many fifth-floor soil machine interactions",
+        "BAD_FEEDBACK": "negative_feedback_number=6 (> 0) — wrong water-table choices before the correct layer"
+      }
+    },
+    {
+      "unit": 4,
+      "point": 5,
+      "name": "Saving Cadet Anderson",
+      "expected": "yellow",
+      "actual": "yellow",
+      "passed": true,
+      "diagnostics": {
+        "_score": "has_success=1 negativeCount=14",
+        "WRONG_ARG_SELECTED": "negativeCount=14 (>= 3) — too many negative feedback events before submitting the correct argument"
+      }
+    },
+    {
+      "unit": 4,
+      "point": 6,
+      "name": "Desert Delicacies",
+      "expected": "yellow",
+      "actual": "yellow",
+      "passed": true,
+      "diagnostics": {
+        "_score": "box_score=1 dialogue_score=1 final=1 wrongTime=2",
+        "WRONG_CHOISE_SELECTED": "wrongTime=2 (correct boxes < 2, correct-soil feedback dialogues = 1) — box 0: expected Gravel, got Clay, box 1: expected Sand, got Gravel"
+      }
+    },
+    {
+      "unit": 5,
+      "point": 1,
+      "name": "If I Had a Nickel- Floors 1 & 2",
+      "expected": "yellow",
+      "actual": "yellow",
+      "passed": true,
+      "diagnostics": {
+        "BAD_FEEDBACK": "negative_feedback_number=2 (>0) — received negative feedback before solving the puzzle"
+      }
+    },
+    {
+      "unit": 5,
+      "point": 2,
+      "name": "If I Had a Nickel- Floors 3 & 4",
+      "expected": "yellow",
+      "actual": "yellow",
+      "passed": true,
+      "diagnostics": {
+        "_score": "floor3_attempts=8 floor4_attempts=10 score=1",
+        "TOO_MANY_ATTEMPTS_3": "floor3_attempts=8 (>6) — too many condenser/evaporator interactions on the 3rd floor",
+        "TOO_MANY_ATTEMPTS_4": "floor4_attempts=10 (>5) — too many condenser/evaporator interactions on the 4th floor"
+      }
+    },
+    {
+      "unit": 5,
+      "point": 3,
+      "name": "What Happened Here?",
+      "expected": "yellow",
+      "actual": "yellow",
+      "passed": true,
+      "diagnostics": {
+        "WRONG_ARG_SELECTED": "negativeCount=11 (>=4) — too many wrong arguments before submitting the correct one"
+      }
+    },
+    {
+      "unit": 5,
+      "point": 4,
+      "name": "Water Problems Require Water Solutions",
+      "expected": "yellow",
+      "actual": "yellow",
+      "passed": true,
+      "diagnostics": {
+        "MISSING_SUCCESS_NODE": "success node DialogueNodeEvent:106:35 absent in window — did not correctly identify the water solution plan"
+      }
+    }
+  ]
+}

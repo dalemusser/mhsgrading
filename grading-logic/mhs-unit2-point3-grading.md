@@ -9,12 +9,12 @@
 
 ## Grading Rule
 
-Windowed rule using client timestamps. Count wrong-direction prompts between the start and end of the activity. The student should trigger at most 6 wrong-direction dialogues.
+Windowed rule using client timestamps. Count wrong-direction prompts between the start and end of the activity. The student should trigger fewer than 6 wrong-direction dialogues.
 
 | Outcome | Condition |
 |---------|-----------|
-| **Green** | Target count <= 6 within the activity window |
-| **Yellow** | Target count > 6, or start/end events missing |
+| **Green** | Target count < 6 within the activity window |
+| **Yellow** | Target count >= 6, or start/end events missing |
 
 ### Activity Window
 
@@ -118,7 +118,7 @@ if (startDoc) {
       timestamp: { $gte: startIso, $lte: endIso }
     });
 
-    countTargets <= 6 ? "green" : "yellow";
+    countTargets < 6 ? "green" : "yellow";
   }
 }
 ```
@@ -182,7 +182,7 @@ if (!endDoc || !endDoc.timestamp) {
       _id: { $gte: startDoc._id, $lte: endDoc._id }
     });
 
-    countTargets <= 6 ? "green" : "yellow";
+    countTargets < 6 ? "green" : "yellow";
   }
 }
 ```

@@ -1,0 +1,27 @@
+﻿progress_point,name,production_color,expected_color,grading_test_status,expected_confidence,doc_window_color,records_in_window,executor
+U1P1,Getting Your Space Legs,green,green,PASS,HIGH,,437,rubric-validation/test_u1p1.py
+U1P2,Info and Intros,green,green,PASS,HIGH,,453,rubric-validation/test_u1p2.py
+U1P3,Defend the Expedition,yellow,yellow,PASS,MEDIUM,yellow,462,rubric-validation/test_u1p3.py
+U1P4,What Was That?,green,green,PASS,HIGH,,893,rubric-validation/test_u1p4.py
+U2P1,Escape the Ruin,green,green,PASS,MEDIUM,green,1734,rubric-validation/test_u2p1.py
+U2P2,Foraged Forging,yellow,,EXECUTED_NO_INDEPENDENT_CHECK,LOW,,272,rubric-validation/test_u2p2.py
+U2P3,Getting the Band Back Together Part II,green,green,PASS,MEDIUM,green,2133,rubric-validation/test_u2p3.py
+U2P4,Investigate the Temple,yellow,yellow,PASS,MEDIUM,yellow,3746,rubric-validation/test_u2p4.py
+U2P5,Classified Information,yellow,yellow,PASS,MEDIUM,yellow,4023,rubric-validation/test_u2p5.py
+U2P6,Which Watershed? Part I,yellow,,EXECUTED_NO_INDEPENDENT_CHECK,LOW,,166,rubric-validation/test_u2p6.py
+U2P7,Which Watershed? Part II,yellow,yellow,PASS,MEDIUM,yellow,4451,rubric-validation/test_u2p7.py
+U3P1,Good Morning Cadet + Establishing a Foothold,yellow,yellow,PASS,MEDIUM,yellow,4570,rubric-validation/test_u3p1.py
+U3P2,Pollution Solution,yellow,yellow,PASS,MEDIUM,yellow,5360,rubric-validation/test_u3p2.py
+U3P3,Pollution Argument,yellow,yellow,PASS,MEDIUM,yellow,6237,rubric-validation/test_u3p3.py
+U3P4,Forsaken Facility,green,,EXECUTED_NO_INDEPENDENT_CHECK,LOW,,580,rubric-validation/test_u3p4.py
+U3P5,Plant the Superfruit Seeds,yellow,yellow,PASS,MEDIUM,yellow,6458,rubric-validation/test_u3p5.py
+U4P1,Well What Have We Here?: Water Table Basics,yellow,yellow,PASS,MEDIUM,,131,rubric-validation/test_u4p1.py
+U4P2,Infiltration Glyph + Alien Well Floors 1 & 2,yellow,yellow,PASS,MEDIUM,,1486,rubric-validation/test_u4p2.py
+U4P3,Alien Well Floor 3 & 4,yellow,yellow,PASS,MEDIUM,yellow,8437,rubric-validation/test_u4p3.py
+U4P4,Alien Well Floor 5 + You Know the Drill,yellow,,EXECUTED_NO_INDEPENDENT_CHECK,LOW,,429,rubric-validation/test_u4p4.py
+U4P5,Saving Cadet Anderson,yellow,yellow,PASS,MEDIUM,yellow,9406,rubric-validation/test_u4p5.py
+U4P6,Desert Delicacies,yellow,yellow,PASS,MEDIUM,,243,rubric-validation/test_u4p6.py
+U5P1,If I Had a Nickel- Floors 1 & 2,yellow,,EXECUTED_NO_INDEPENDENT_CHECK,LOW,,798,rubric-validation/test_u5p1.py
+U5P2,If I Had a Nickel- Floors 3 & 4,yellow,,EXECUTED_NO_INDEPENDENT_CHECK,LOW,,491,rubric-validation/test_u5p2.py
+U5P3,What Happened Here?,yellow,,EXECUTED_NO_INDEPENDENT_CHECK,LOW,,350,rubric-validation/test_u5p3.py
+U5P4,Water Problems Require Water Solutions,yellow,,EXECUTED_NO_INDEPENDENT_CHECK,LOW,,153,rubric-validation/test_u5p4.py

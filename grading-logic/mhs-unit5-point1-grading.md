@@ -9,7 +9,7 @@
 
 ## Grading Rule
 
-This progress point is a attempt-based progress, if the player solved the puzzle (triggered `DialogueNodeEvent:100:44`) at the first attempt, then they will gain all 2 points; If the player solved the puzzle within 3 attempts, triggered `DialogueNodeEvent:100:44` without triggering any of the following bad feedbacks (`DialogueNodeEvent:100:38`, `DialogueNodeEvent:100:39`, `DialogueNodeEvent:100:43`); Either of the above behavior will return green; Anything else will return yellow. 
+This progress point is an attempt-based progress. If the player solved the puzzle (triggered `DialogueNodeEvent:100:44`) without triggering any of the following bad feedbacks (`DialogueNodeEvent:100:38`, `DialogueNodeEvent:100:39`, `DialogueNodeEvent:100:43`), the color is green; if the success dialogue never fired, or any of the bad feedbacks fired, the color is yellow.
 
 | Outcome | Condition |
 |---------|-----------|
@@ -68,7 +68,7 @@ if (!has_trigger) {
     eventKey: { $in: NEG_KEYS }
   });
 
-  color = (cnt > 2) ? "yellow" : "green";
+  color = (cnt > 0) ? "yellow" : "green";
 }
 
 color;
@@ -140,7 +140,7 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
       _id: { $gt: windowStartId, $lte: windowEndId }
     });
 
-    cnt > 2 ? "yellow" : "green";
+    cnt > 0 ? "yellow" : "green";
   }
 }
 ```
@@ -171,11 +171,11 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
 
 **Short Description:** The student received too much negative feedback before solving the glyph puzzle.
 
-**Instructor Message:** Students received totally {negative_feedback_number} negative feedback, which surpasses the threshold of two times, before solving the puzzle.
+**Instructor Message:** Students received totally {negative_feedback_number} negative feedback before solving the puzzle; receiving any negative feedback marks this progress point yellow.
 
 **Quantities:** `negative_feedback_number` — count of negative feedback events
 
-**Determination:** The count of negative feedback nodes (`DialogueNodeEvent:100:38`, `DialogueNodeEvent:100:39`, `DialogueNodeEvent:100:43`) exceeds 2 in the attempt window.
+**Determination:** The count of negative feedback nodes (`DialogueNodeEvent:100:38`, `DialogueNodeEvent:100:39`, `DialogueNodeEvent:100:43`) is at least 1 in the attempt window.
 
 **Teacher Guidance:** Remind students that evaporation  is the phase change that occurs when energy is added to liquid to turn it into a gas Have students work through Unit 5 followup activity.
 
