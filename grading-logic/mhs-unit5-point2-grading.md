@@ -161,127 +161,63 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
 
 ## Reason Codes
 
-### NO_TRIGGER
-
-**Short Description:** Student has not yet completed the trigger event for this activity.
-
-**Instructor Message:** The student has not yet reached the point in the game where this progress point is evaluated.
-
-**Determination:** The trigger event `DialogueNodeEvent:96:1` has not been logged.
-
 ### SCORE_BELOW_THRESHOLD
 
-**Determination:** The combined score from floor 3 and floor 4 water chamber interactions is less than 3.
+**Instructor Message:** In If I Had a Nickel (floors 3 and 4), the student used {floor3_attempts} condenser and evaporator interactions to solve the third-floor water chamber puzzle and {floor4_attempts} on the fourth floor. This point earns green only when at least one floor is solved within its optimal count (6 interactions on the third floor, 5 on the fourth) and the other stays within its partial range (at most 10 and 9, respectively). Many interactions may indicate trial-and-error switching rather than predicting the phase change each chamber needs — condensation removes energy to turn water vapor into liquid, and evaporation adds energy to turn liquid back into vapor.
 
-**Quantities:** `score`, `floor3_attempts`, `floor4_attempts`
-
-#### TOO_MANY_ATTEMPTS_3
-
-**Short Description:** The students interacted with the condenser and evaporator machines  too many times on the 3rd floor to solve the puzzle.
-
-**Instructor Message:** When interacting with the condenser and evaporator machines on the third floor, the student conducted {floor3_attempts} interactions, which surpasses the optimal interaction times, which is 6.
-
-#### TOO_MANY_ATTEMPTS_4
-
-**Short Description:** The students interacted with the condenser and evaporator machines too many times on the 4th floor to solve the puzzle.
-
-**Instructor Message:** When interacting with the condenser and evaporator machines on the fourth floor, the student conducted {floor4_attempts} interactions, which surpasses the optimal interaction times, which is 5.
-
-**Teacher Guidance:** Remind students that condensation is the phase change that occurs when energy is removed from a gas to turn it into a liquid. Have students work through Unit 5 followup activity.
-
-### Analytics-Matching Script (MongoDB/JS)
+#### Corresponding Script
 
 ```js
-// Unit 5, Point 2 — Return trigger status, score, floor3_attempts, floor4_attempts
-// Window start: questFinishEvent:43
-// Window end: DialogueNodeEvent:96:1
+// U5P2: SCORE_BELOW_THRESHOLD — determine trigger and per-floor counts
+// Window mirrors the production color script: latest questFinishEvent:43 (start)
+// to latest DialogueNodeEvent:96:1 (end). Score: floor3 <=6 -> +2, 7-10 -> +1;
+// floor4 <=5 -> +2, 6-9 -> +1; yellow when total < 3.
+// VALID_TYPES stays mirror-exact with the color script — note the flagged gap:
+// floor 3 also logs DualChamber_Condenser / DualChamber_Evaporator, which are
+// currently not counted (add to both scripts once approved). VentSwitch and
+// the floors-1/2 events inside this window are excluded by design.
 
 const playerId = "<playerId>";
 
 const WINDOW_START_KEY = "questFinishEvent:43";
 const WINDOW_END_KEY = "DialogueNodeEvent:96:1";
-
 const VALID_TYPES = ["Condenser", "Evaporator"];
 
-// 1) Find latest window start
 const latestStart = db.logdata.findOne(
-  {
-    game: "mhs",
-    playerId: playerId,
-    eventKey: WINDOW_START_KEY
-  },
-  {
-    sort: { _id: -1 },
-    projection: { _id: 1 }
-  }
+  { game: "mhs", playerId: playerId, eventKey: WINDOW_START_KEY },
+  { sort: { _id: -1 }, projection: { _id: 1 } }
 );
-
-// 2) Find latest window end / trigger
 const latestEnd = db.logdata.findOne(
-  {
-    game: "mhs",
-    playerId: playerId,
-    eventKey: WINDOW_END_KEY
-  },
-  {
-    sort: { _id: -1 },
-    projection: { _id: 1 }
-  }
+  { game: "mhs", playerId: playerId, eventKey: WINDOW_END_KEY },
+  { sort: { _id: -1 }, projection: { _id: 1 } }
 );
 
-// Whether the trigger event exists in the gameplay logs
-const hasTrigger = latestEnd !== null;
+if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
+  ({ triggered: false, floor3_attempts: 0, floor4_attempts: 0 });
+} else {
+  const windowFilter = { _id: { $gt: latestStart._id, $lte: latestEnd._id } };
 
-let score = null;
-let floor3_attempts = null;
-let floor4_attempts = null;
-
-if (latestStart && latestEnd && latestEnd._id > latestStart._id) {
-  const windowStartId = latestStart._id;
-  const windowEndId = latestEnd._id;
-
-  // 3) Count relevant interactions on Floor 3
-  floor3_attempts = db.logdata.countDocuments({
-    game: "mhs",
-    playerId: playerId,
+  const floorCount = (floor) => db.logdata.countDocuments({
+    game: "mhs", playerId: playerId,
     eventType: "WaterChamberEvent",
-    "data.floor": "3",
+    "data.floor": floor,
     "data.machineType": { $in: VALID_TYPES },
-    _id: { $gt: windowStartId, $lte: windowEndId }
+    ...windowFilter
   });
 
-  // 4) Count relevant interactions on Floor 4
-  floor4_attempts = db.logdata.countDocuments({
-    game: "mhs",
-    playerId: playerId,
-    eventType: "WaterChamberEvent",
-    "data.floor": "4",
-    "data.machineType": { $in: VALID_TYPES },
-    _id: { $gt: windowStartId, $lte: windowEndId }
-  });
+  const floor3 = floorCount("3");
+  const floor4 = floorCount("4");
 
-  // 5) Calculate score
-  score = 0;
+  // Mirror the color formula exactly
+  let score = 0;
+  if (floor3 <= 6) score += 2;
+  else if (floor3 < 11) score += 1;
+  if (floor4 <= 5) score += 2;
+  else if (floor4 < 10) score += 1;
 
-  // Floor 3 scoring
-  if (floor3_attempts <= 6) {
-    score += 2;
-  } else if (floor3_attempts < 11) {
-    score += 1;
-  }
-
-  // Floor 4 scoring
-  if (floor4_attempts <= 5) {
-    score += 2;
-  } else if (floor4_attempts < 10) {
-    score += 1;
-  }
+  ({ triggered: score < 3, floor3_attempts: floor3, floor4_attempts: floor4 });
 }
-
-({
-  hasTrigger: hasTrigger,
-  score: score,
-  floor3_attempts: floor3_attempts,
-  floor4_attempts: floor4_attempts
-});
 ```
+
+### Teacher Guidance 
+Remind students that condensation is the phase change that occurs when energy is removed from a gas to turn it into a liquid. Have students work through Unit 5 followup activity.

@@ -161,85 +161,47 @@ if (!latestTrigger) {
 
 ## Reason Codes
 
-### BAD_FEEDBACK
+### EXCESS_SENSOR_REMINDERS
 
-**Short Description:** Repeated reminding dialogues triggered regarding redundant sensor usage.
+**Instructor Message:** In Pollution Solution, while using drone-dropped sensors to trace the source of the river pollution, the student triggered {downstream_reminder_number} reminders that pollution flows only downstream (testing in the wrong direction) and {redundant_reminder_number} reminders about unnecessary tests (checking upstream of a clean sensor, or pushing past the top of a branch). This point stays green unless reminders accumulate in both categories — one occurring 4 or more times and the other at least twice. Repeated reminders of both kinds may indicate difficulty using sensor readings to reason about how dissolved material spreads through a watershed: pollution can appear only downstream of its source, so a polluted reading means the source is upstream, and a clean reading clears everything upstream of it.
 
-**Instructor Message:** The student triggered {attempt_number} times of the reminding dialogues regarding the redundant sensor usage during the activity of finding the source of a pollutant by predicting the spread of dissolved materials through a watershed. The threshold for success is not to trigger such reminding dialogues more than 6 times.
+#### Correspoinding Script
 
-**Quantities:** `attempt_number` — count of negative feedback triggered.
-
-**Teacher Guidance:**
-Review watershed maps with students, and ask them to predict flow of water. Remind students that rivers empty into the ocean.
-
-### Reason Determination Scripts
-
-#### Data Analytics Script (Python)
-```python
-# U3P2: Determine attempt_number for BAD_FEEDBACK
-# Count the number of dialogues triggered to remind redundant sensors used
-
-REMINDING_KEYS = [
-    "DialogueNodeEvent:11:27",
-    "DialogueNodeEvent:11:29",
-    "DialogueNodeEvent:11:230"
-]
-
-reminding_count = coll.count_documents({
-    "playerId": pid,
-    "eventKey": {"$in": REMINDING_KEYS}
-})
-
-reminding_count
-```
-
-#### Analytics-Matching Script (MongoDB/JS)
 ```js
-// U3P2: Determine attempt_number for BAD_FEEDBACK
-// Count the number of dialogues triggered to remind redundant sensors used
-
-const playerId = "<playerId>";
-
-const REMINDING_KEYS = [
-  "DialogueNodeEvent:11:27",
-  "DialogueNodeEvent:11:29",
-  "DialogueNodeEvent:11:230"
-];
-
-const reminding_count = db.logdata.countDocuments({
-  playerId: playerId,
-  eventKey: { $in: REMINDING_KEYS }
-});
-
-reminding_count;
-```
-
-#### Production Script (Attempt-Based, MongoDB/JS)
-```js
-// U3P2: Determine attempt_number for BAD_FEEDBACK
-// Count the number of dialogues triggered to remind redundant sensors used
+// U3P2: EXCESS_SENSOR_REMINDERS — determine trigger and reminder counts
+// Triggers when the color formula goes yellow: score = 5 - pen(c27) - pen(c29+c230) < 3,
+// where pen caps each category (<=1: 0, 2-3: 1, >=4: 2). Yellow therefore requires
+// reminders in BOTH categories — never gate this on a lump-sum reminder count.
+// downstream_reminder_number = wrong-direction reminders (11:27);
+// redundant_reminder_number = unnecessary-test reminders (11:29 clean-upstream,
+// 11:230 top-of-branch). Related nodes 11:28 and 11:30 are ungraded by design.
 
 const playerId = "<playerId>";
 
 const TRIGGER_KEY = "DialogueNodeEvent:11:34";
 
-const REMINDING_KEYS = [
-  "DialogueNodeEvent:11:27",
-  "DialogueNodeEvent:11:29",
-  "DialogueNodeEvent:11:230"
+const DOWNSTREAM_KEY = "DialogueNodeEvent:11:27";   // test further upstream
+const REDUNDANT_KEYS = [
+  "DialogueNodeEvent:11:29",   // no need to check upstream of a clean sensor
+  "DialogueNodeEvent:11:230"   // top of branch reached, proceed downstream
 ];
+
+function cappedPenalty(cnt) {
+  if (cnt <= 1) return 0;
+  if (cnt <= 3) return 1;
+  return 2;
+}
 
 // 1) Latest trigger (end anchor)
 const latestTrigger = db.logdata.findOne(
   { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
-  { sort: { _id: -1 }}
+  { sort: { _id: -1 } }
 );
 
-let reminding_count = 0;
-
 if (!latestTrigger) {
-  reminding_count = 0;
+  ({ triggered: false, downstream_reminder_number: 0, redundant_reminder_number: 0 });
 } else {
+  // 2) Previous trigger (attempt boundary)
   const prevTrigger = db.logdata.findOne(
     {
       game: "mhs",
@@ -247,20 +209,35 @@ if (!latestTrigger) {
       eventKey: TRIGGER_KEY,
       _id: { $lt: latestTrigger._id }
     },
-    { sort: { _id: -1 }}
+    { sort: { _id: -1 } }
   );
 
   const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
   const windowEndId = latestTrigger._id;
 
-  reminding_count = db.logdata.countDocuments({
-    game: "mhs",
-    playerId: playerId,
-    eventKey: { $in: REMINDING_KEYS },
+  // 3) Category counts inside the window
+  const downstreamCount = db.logdata.countDocuments({
+    game: "mhs", playerId: playerId,
+    eventKey: DOWNSTREAM_KEY,
     _id: { $gt: windowStartId, $lte: windowEndId }
   });
-}
 
-reminding_count;
+  const redundantCount = db.logdata.countDocuments({
+    game: "mhs", playerId: playerId,
+    eventKey: { $in: REDUNDANT_KEYS },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+
+  // 4) Mirror the color formula exactly
+  const score = 5 - cappedPenalty(downstreamCount) - cappedPenalty(redundantCount);
+
+  ({
+    triggered: score < 3,
+    downstream_reminder_number: downstreamCount,
+    redundant_reminder_number: redundantCount
+  });
+}
 ```
 
+### Teacher Guidance
+Review watershed maps with students, and ask them to predict flow of water. Remind students that rivers empty into the ocean.

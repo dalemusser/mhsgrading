@@ -146,176 +146,51 @@ if (!latestTrigger) {
 
 > This point has multiple possible reasons for a yellow grade. Scripts are needed to determine which reason(s) apply.
 
-### MISSING_SUCCESS_NODE
+### SOLVED_WITH_ASSIST
 
-**Short Description:** Did not complete map-profile matching independently
+**Instructor Message:** In Escape the Ruin, the student did not complete the topographic-map matching independently — after {attempt_number} incorrect arrangements, the in-game guide DANI placed the remaining pieces. This point earns green only when the student submits the correct solution on their own within 4 attempts. Needing this level of support may indicate the student would benefit from direct instruction on how contour lines represent elevation and slope before matching maps to terrain shapes.
 
-**Instructor Message:** Students didn't make the correct matches by themselves during the activity of matching topographic maps to elevation profiles. One of the successful conditions for this activity is to make correct matches.
-
-**Determination:** Check whether the success node (`DialogueNodeEvent:68:29`) is absent.
-
-**Teacher Guidance:**
-1. How information about elevation can be gained from contour lines.
-2. How to use the compass and contour indices to aid navigation.
-
-### TOO_MANY_NEGATIVES
-
-**Short Description:** Too many incorrect map-terrain matches
-
-**Instructor Message:** Students made wrong matches of topographic maps and real-world terrains using {attempts_number} attempts. The other successful condition for this activity is to make the correct matches within 4 attempts.
-
-**Determination:** Count yellow node occurrences; yellow if count > 4.
-
-**Quantities:** `attempts_number` — count of incorrect match attempts
-
-**Teacher Guidance:**
-1. How information about elevation can be gained from contour lines.
-2. How to use the compass and contour indices to aid navigation.
-
-### Reason Determination Scripts
-
-#### Data Analytics Script (Python)
-
-```python
-# U2P1: Determine which reason code(s) apply and compute quantities
-# MISSING_SUCCESS_NODE: check if success node (68:29) is absent
-
-has_success_node = coll.find_one(
-        {
-            "playerId": playerId,
-            "eventKey": "DialogueNodeEvent:68:29"
-        }
-    ) is not None
-
-has_success_node
-```
-
-```python
-# TOO_MANY_NEGATIVES: count attempts_number from yellow node occurrences
-
-FIVE_ATTEMPT_KEYS = [
-        "DialogueNodeEvent:68:22",
-        "DialogueNodeEvent:68:23"
-    ]
-
-SIX_ATTEMPT_KEYS = [
-        "DialogueNodeEvent:68:27",
-        "DialogueNodeEvent:68:31"
-    ]
-    
-NPC_HELP_KEY = "DialogueNodeEvent:68:28"
-
-relevant_keys = FIVE_ATTEMPT_KEYS + SIX_ATTEMPT_KEYS + [NPC_HELP_KEY]
-
-events = list(coll.find(
-        {"playerId": pid, "eventKey": {"$in": relevant_keys}}
-    ))
-
-triggered_keys = {e["eventKey"] for e in events}
-
-attempt = 0
-
-if NPC_HELP_KEY in triggered_keys:
-  attempt = 7
-
-if any(k in triggered_keys for k in SIX_ATTEMPT_KEYS):
-  attempt = 6
-
-if any(k in triggered_keys for k in FIVE_ATTEMPT_KEYS):
-  attempt = 5
-  
-attempt
-```
-
-#### Analytics-Matching Script (MongoDB/JS)
+#### Correspoinding Script
 
 ```js
-// U2P1: Determine which reason code(s) apply and compute quantities
-// MISSING_SUCCESS_NODE: check if success node (68:29) is absent
-
-const has_success_node =
-  db.logdata.findOne(
-    {
-      playerId: playerId,
-      eventKey: "DialogueNodeEvent:68:29"
-    }
-    ) !== null;
-    
-has_success_node
-```
-
-```js
-// TOO_MANY_NEGATIVES: count attempts_number from yellow node occurrences
-// Exact match to data analytics script
-
-const playerId = "<playerId>";
-
-const FIVE_ATTEMPT_KEYS = [
-  "DialogueNodeEvent:68:22",
-  "DialogueNodeEvent:68:23"
-];
-
-const SIX_ATTEMPT_KEYS = [
-  "DialogueNodeEvent:68:27",
-  "DialogueNodeEvent:68:31"
-];
-
-const NPC_HELP_KEY = "DialogueNodeEvent:68:28";
-
-const relevantKeys = [
-  ...FIVE_ATTEMPT_KEYS,
-  ...SIX_ATTEMPT_KEYS,
-  NPC_HELP_KEY
-];
-
-const events = db.logdata.find(
-  {
-    playerId: playerId,
-    eventKey: { $in: relevantKeys }
-  }
-).toArray();
-
-const triggeredKeys = new Set(events.map(e => e.eventKey));
-
-let attempt = 0;
-
-if (triggeredKeys.has(NPC_HELP_KEY)) {
-  attempt = 7;
-}
-
-if (SIX_ATTEMPT_KEYS.some(k => triggeredKeys.has(k))) {
-  attempt = 6;
-}
-
-if (FIVE_ATTEMPT_KEYS.some(k => triggeredKeys.has(k))) {
-  attempt = 5;
-}
-
-attempt;
-```
-
-#### Production Script (Attempt-Based, MongoDB/JS)
-
-```js
-// U2P1: Determine which reason code(s) apply and compute quantities
-// MISSING_SUCCESS_NODE: check if success node (68:29) is absent within attempt window
+// U2P1: SOLVED_WITH_ASSIST - determine trigger and attempt_number
+// Triggers when a forced-assist node (68:28 or 68:31) fired in the attempt window.
+// attempt_number = incorrect submissions before DANI completed the puzzle
+// (each wrong submission fires exactly one negative-feedback node, once per window)
 
 const playerId = "<playerId>";
 
 const TRIGGER_KEY = "questFinishEvent:21";
-const SUCCESS_KEY = "DialogueNodeEvent:68:29";
 
-// 1) Latest trigger
+const ASSIST_KEYS = [
+  "DialogueNodeEvent:68:28",
+  "DialogueNodeEvent:68:31"
+];
+
+const NEGATIVE_KEYS = [
+  "DialogueNodeEvent:68:4",   // 1st attempt, 2-3 wrong
+  "DialogueNodeEvent:68:5",   // 1st attempt, >3 wrong
+  "DialogueNodeEvent:68:6",   // 2nd attempt, 2-3 wrong
+  "DialogueNodeEvent:68:7",   // 2nd attempt, >3 wrong
+  "DialogueNodeEvent:68:17",  // 3rd attempt, 2-3 wrong
+  "DialogueNodeEvent:68:18",  // 3rd attempt, >3 wrong
+  "DialogueNodeEvent:68:22",  // 4th attempt, 2-3 wrong
+  "DialogueNodeEvent:68:23",  // 4th attempt, >3 wrong (assist offered)
+  "DialogueNodeEvent:68:27",  // 5th attempt, 2-3 wrong (assist offered)
+  "DialogueNodeEvent:68:28",  // 5th attempt, >3 wrong (DANI assists)
+  "DialogueNodeEvent:68:31"   // 6th attempt, any wrong (DANI assists)
+];
+
+// 1) Latest trigger (end anchor)
 const latestTrigger = db.logdata.findOne(
   { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
-  { sort: { _id: -1 }}
+  { sort: { _id: -1 } }
 );
 
-let hasSuccessNode = false;
-
 if (!latestTrigger) {
-  hasSuccessNode = false;
+  ({ triggered: false, attempt_number: 0 });
 } else {
+  // 2) Previous trigger (attempt boundary)
   const prevTrigger = db.logdata.findOne(
     {
       game: "mhs",
@@ -323,93 +198,124 @@ if (!latestTrigger) {
       eventKey: TRIGGER_KEY,
       _id: { $lt: latestTrigger._id }
     },
-    { sort: { _id: -1 }}
+    { sort: { _id: -1 } }
   );
 
   const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
   const windowEndId = latestTrigger._id;
 
-  hasSuccessNode =
-    db.logdata.findOne(
-      {
-        game: "mhs",
-        playerId: playerId,
-        eventKey: SUCCESS_KEY,
-        _id: { $gt: windowStartId, $lte: windowEndId }
-      }
-    ) !== null;
-}
-
-const MISSING_SUCCESS_NODE = !hasSuccessNode;
-
-MISSING_SUCCESS_NODE;
-```
-
-```js
-// TOO_MANY_NEGATIVES: count attempts_number from yellow node occurrences within attempt window
-// With windowing for replay support
-
-const playerId = "<playerId>";
-
-const TRIGGER_KEY = "questFinishEvent:21";
-
-const FIVE_ATTEMPT_KEYS = [
-  "DialogueNodeEvent:68:22",
-  "DialogueNodeEvent:68:23"
-];
-
-const SIX_ATTEMPT_KEYS = [
-  "DialogueNodeEvent:68:27",
-  "DialogueNodeEvent:68:31"
-];
-
-const NPC_HELP_KEY = "DialogueNodeEvent:68:28";
-
-const relevantKeys = [
-  ...FIVE_ATTEMPT_KEYS,
-  ...SIX_ATTEMPT_KEYS,
-  NPC_HELP_KEY
-];
-
-// 1) Latest trigger
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
-  { sort: { _id: -1 }}
-);
-
-let attempt = 0;
-
-if (!latestTrigger) {
-  attempt = 0;
-} else {
-  const prevTrigger = db.logdata.findOne(
-    {
+  // 3) Reason code triggers if a forced-assist node fired in the window
+  const assisted =
+    db.logdata.findOne({
       game: "mhs",
       playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
-    },
-    { sort: { _id: -1 }}
-  );
-
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
-
-  const events = db.logdata.find(
-    {
-      game: "mhs",
-      playerId: playerId,
-      eventKey: { $in: relevantKeys },
+      eventKey: { $in: ASSIST_KEYS },
       _id: { $gt: windowStartId, $lte: windowEndId }
-    }
-  ).toArray();
+    }) !== null;
 
-  const triggeredKeys = new Set(events.map(e => e.eventKey));
+  // 4) attempt_number: count negative-feedback nodes in the window
+  const attemptNumber = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventKey: { $in: NEGATIVE_KEYS },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
 
-  if (triggeredKeys.has(NPC_HELP_KEY)) attempt = 7;
-  else if (SIX_ATTEMPT_KEYS.some(k => triggeredKeys.has(k))) attempt = 6;
-  else if (FIVE_ATTEMPT_KEYS.some(k => triggeredKeys.has(k))) attempt = 5;
+  ({ triggered: assisted, attempt_number: attemptNumber });
 }
-
-attempt;
 ```
+
+### EXCESS_ATTEMPTS
+
+**Instructor Message:** In Escape the Ruin, the student matched all six topographic maps to their elevation profiles on their own, but needed {attempt_number} attempts. This point earns green only when the correct solution is submitted within 4 attempts. Repeated incorrect arrangements may indicate difficulty connecting the top-down contour-line view of a landscape to its side-view profile.
+
+#### Correspoinding Script
+
+```js
+// U2P1: EXCESS_ATTEMPTS — determine trigger and attempt_number
+// Triggers when the student solved the puzzle independently (68:29 in window, no forced-assist node) but needed 5+ attempts (4+ negative-feedback nodes).
+// attempt_number = incorrect submissions + 1 (the final correct submission)
+
+const playerId = "<playerId>";
+
+const TRIGGER_KEY = "questFinishEvent:21";
+const SUCCESS_KEY = "DialogueNodeEvent:68:29"; // solved-on-their-own completion
+
+const ASSIST_KEYS = [
+  "DialogueNodeEvent:68:28",
+  "DialogueNodeEvent:68:31"
+];
+
+const NEGATIVE_KEYS = [
+  "DialogueNodeEvent:68:4",   // 1st attempt, 2-3 wrong
+  "DialogueNodeEvent:68:5",   // 1st attempt, >3 wrong
+  "DialogueNodeEvent:68:6",   // 2nd attempt, 2-3 wrong
+  "DialogueNodeEvent:68:7",   // 2nd attempt, >3 wrong
+  "DialogueNodeEvent:68:17",  // 3rd attempt, 2-3 wrong
+  "DialogueNodeEvent:68:18",  // 3rd attempt, >3 wrong
+  "DialogueNodeEvent:68:22",  // 4th attempt, 2-3 wrong
+  "DialogueNodeEvent:68:23",  // 4th attempt, >3 wrong (assist offered)
+  "DialogueNodeEvent:68:27",  // 5th attempt, 2-3 wrong (assist offered)
+  "DialogueNodeEvent:68:28",  // 5th attempt, >3 wrong (DANI assists)
+  "DialogueNodeEvent:68:31"   // 6th attempt, any wrong (DANI assists)
+];
+
+// 1) Latest trigger (end anchor)
+const latestTrigger = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+  { sort: { _id: -1 } }
+);
+
+if (!latestTrigger) {
+  ({ triggered: false, attempt_number: 0 });
+} else {
+  // 2) Previous trigger (attempt boundary)
+  const prevTrigger = db.logdata.findOne(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventKey: TRIGGER_KEY,
+      _id: { $lt: latestTrigger._id }
+    },
+    { sort: { _id: -1 } }
+  );
+
+  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestTrigger._id;
+
+  // 3) Student reached the solved-on-their-own completion
+  const solvedSelf =
+    db.logdata.findOne({
+      game: "mhs",
+      playerId: playerId,
+      eventKey: SUCCESS_KEY,
+      _id: { $gt: windowStartId, $lte: windowEndId }
+    }) !== null;
+
+  // 4) DANI did not take over (otherwise SOLVED_WITH_ASSIST applies instead)
+  const assisted =
+    db.logdata.findOne({
+      game: "mhs",
+      playerId: playerId,
+      eventKey: { $in: ASSIST_KEYS },
+      _id: { $gt: windowStartId, $lte: windowEndId }
+    }) !== null;
+
+  // 5) Count incorrect submissions (one negative-feedback node each)
+  const negativeCount = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventKey: { $in: NEGATIVE_KEYS },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+
+  // 6) 4+ wrong submissions means success came on attempt 5 or later
+  const triggered = solvedSelf && !assisted && negativeCount >= 4;
+
+  ({ triggered: triggered, attempt_number: negativeCount + 1 });
+}
+```
+
+### Teacher Guidance
+1. How information about elevation can be gained from contour lines.
+2. How to use the compass and contour indices to aid navigation.

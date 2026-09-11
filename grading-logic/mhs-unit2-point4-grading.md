@@ -138,160 +138,52 @@ if (!latestTrigger) {
 
 > This point has multiple possible reasons for a yellow grade. Scripts are needed to determine which reason(s) apply.
 
-### MISSING_SUCCESS_NODE
+### SOLVED_WITH_ASSIST
 
-**Short Description:** Did not complete watershed-flow matching independently
+**Instructor Message:** In Investigate the Temple, the student did not complete the watershed glyph puzzle independently - after {attempt_number} incorrect arrangements, the in-game guide DANI stepped in to order the watershed pieces. This point earns green only when the student submits the correct arrangement on their own within 5 attempts. Needing this level of support may indicate the student would benefit from reviewing how a larger drainage area collects and delivers more water to the main river, producing a greater flow rate.
 
-**Instructor Message:** Students didn't figure out the correct match of the watershed size and the flow rate by themselves during the activity of finding Jasper and relating watershed size to flow rate through its main river. One of the successful conditions for this activity is to make correct matches by students themselves.
-
-**Determination:** Check whether the success node (`DialogueNodeEvent:74:21`) is absent.
-
-**Teacher Guidance:** Review the relationship between watershed size and flow rate.
-
-### TOO_MANY_NEGATIVES
-
-**Short Description:** Too many attempts on watershed-flow glyph puzzle
-
-**Instructor Message:** Students tried {attempts_number} attempts to solve the glyph puzzle. The other successful condition is to solve the puzzle within 5 attempts.
-
-**Determination:** Count bad feedback node occurrences; yellow if count > 5.
-
-**Quantities:** `attempts_number` — count of glyph puzzle attempts
-
-**Teacher Guidance:** Review the relationship between watershed size and flow rate.
-
-### Reason Determination Scripts
-
-#### Data Analytics Script (Python)
-
-```python
-# U2P4: Determine which reason code(s) apply and compute quantities
-# MISSING_SUCCESS_NODE: check if success node (74:21) is absent
-
-has_not_success_node = coll.find_one(
-        {
-            "playerId": playerId,
-            "eventKey": "DialogueNodeEvent:74:21"
-        }
-    ) is None
-
-has_not_success_node
-```
-
-```python
-# TOO_MANY_NEGATIVES: count attempts_number from bad feedback node occurrences
-
-FIVE_ATTEMPT_KEYS = [
-        "DialogueNodeEvent:74:16",
-        "DialogueNodeEvent:74:17"
-    ]
-
-SIX_ATTEMPT_KEYS = [
-        "DialogueNodeEvent:74:22",
-        "DialogueNodeEvent:74:20"
-    ]
-
-relevant_keys = FIVE_ATTEMPT_KEYS + SIX_ATTEMPT_KEYS
-
-events = list(coll.find(
-        {"playerId": pid, "eventKey": {"$in": relevant_keys}}
-    ))
-
-triggered_keys = {e["eventKey"] for e in events}
-
-attempt = 0
-
-if any(k in triggered_keys for k in SIX_ATTEMPT_KEYS):
-  attempt = 6
-
-if any(k in triggered_keys for k in FIVE_ATTEMPT_KEYS):
-  attempt = 5
-  
-attempt
-```
-
-#### Analytics-Matching Script (MongoDB/JS)
+#### Correspoinding Script
 
 ```js
-// U2P4: Determine which reason code(s) apply and compute quantities
-// MISSING_SUCCESS_NODE: check if success node (74:21) is absent
-
-const has_not_success_node =
-  db.logdata.findOne(
-    {
-      playerId: playerId,
-      eventKey: "DialogueNodeEvent:74:21"
-    }
-    ) !== null;
-    
-has_not_success_node
-```
-
-```js
-// TOO_MANY_NEGATIVES: count attempts_number from bad feedback node occurrences
-// Exact match to data analytics script
-
-const playerId = "<playerId>";
-
-const FIVE_ATTEMPT_KEYS = [
-  "DialogueNodeEvent:74:16",
-  "DialogueNodeEvent:74:17"
-];
-
-const SIX_ATTEMPT_KEYS = [
-  "DialogueNodeEvent:74:22",
-  "DialogueNodeEvent:74:20"
-];
-
-const relevantKeys = [
-  ...FIVE_ATTEMPT_KEYS,
-  ...SIX_ATTEMPT_KEYS
-];
-
-const events = db.logdata.find(
-  {
-    playerId: playerId,
-    eventKey: { $in: relevantKeys }
-  }
-).toArray();
-
-const triggeredKeys = new Set(events.map(e => e.eventKey));
-
-let attempt = 0;
-
-if (SIX_ATTEMPT_KEYS.some(k => triggeredKeys.has(k))) {
-  attempt = 6;
-}
-
-if (FIVE_ATTEMPT_KEYS.some(k => triggeredKeys.has(k))) {
-  attempt = 5;
-}
-
-attempt;
-```
-
-#### Production Script (Attempt-Based, MongoDB/JS)
-
-```js
-// U2P4: Determine which reason code(s) apply and compute quantities
-// MISSING_SUCCESS_NODE: check if success node (74:21) is absent within attempt window
+// U2P4: SOLVED_WITH_ASSIST — determine trigger and attempt_number
+// Triggers when an assist marker fired in the attempt window: 74:18 (player
+// accepted DANI's offer — the node that reliably logs on this build), or
+// 74:20 / 74:25 (DANI orders the pieces) / 74:22 (helped completion).
+// attempt_number = incorrect submissions before DANI completed the puzzle
+// (each wrong submission fires exactly one feedback node, once per window)
 
 const playerId = "<playerId>";
 
 const TRIGGER_KEY = "DialogueNodeEvent:23:17";
-const SUCCESS_KEY = "DialogueNodeEvent:74:21";
 
-// 1) Latest trigger
+const ASSIST_KEYS = [
+  "DialogueNodeEvent:74:18",  // "Sure. I'm stuck" — accepted assist offer
+  "DialogueNodeEvent:74:20",  // DANI orders the pieces
+  "DialogueNodeEvent:74:22",  // DANI-helped completion
+  "DialogueNodeEvent:74:25"   // DANI orders the pieces (video-link variant)
+];
+
+const NEGATIVE_KEYS = [
+  "DialogueNodeEvent:74:4",   // 1st attempt, any wrong
+  "DialogueNodeEvent:74:5",   // 2nd attempt, 2-3 wrong
+  "DialogueNodeEvent:74:6",   // 2nd attempt, >3 wrong
+  "DialogueNodeEvent:74:9",   // 3rd attempt, 2-3 wrong
+  "DialogueNodeEvent:74:10",  // 3rd attempt, >3 wrong (video offered)
+  "DialogueNodeEvent:74:15",  // 4th attempt, any wrong
+  "DialogueNodeEvent:74:16",  // 5th attempt, 2-3 wrong
+  "DialogueNodeEvent:74:17"   // 5th attempt, >3 wrong (assist offered)
+];
+
+// 1) Latest trigger (end anchor)
 const latestTrigger = db.logdata.findOne(
   { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
-  { sort: { _id: -1 }}
+  { sort: { _id: -1 } }
 );
 
-let hasNotSuccessNode = true;
-
 if (!latestTrigger) {
-  hasNotSuccessNode = true;
+  ({ triggered: false, attempt_number: 0 });
 } else {
+  // 2) Previous trigger (attempt boundary)
   const prevTrigger = db.logdata.findOne(
     {
       game: "mhs",
@@ -299,87 +191,137 @@ if (!latestTrigger) {
       eventKey: TRIGGER_KEY,
       _id: { $lt: latestTrigger._id }
     },
-    { sort: { _id: -1 }}
+    { sort: { _id: -1 } }
   );
 
   const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
   const windowEndId = latestTrigger._id;
 
-  hasNotSuccessNode =
-    db.logdata.findOne(
-      {
-        game: "mhs",
-        playerId: playerId,
-        eventKey: SUCCESS_KEY,
-        _id: { $gt: windowStartId, $lte: windowEndId }
-      }
-    ) == null;
-}
-
-hasNotSuccessNode;
-```
-
-```js
-// TOO_MANY_NEGATIVES: count attempts_number from bad feedback node occurrences within attempt window
-// With windowing for replay support
-
-const playerId = "<playerId>";
-
-const TRIGGER_KEY = "DialogueNodeEvent:23:17";
-
-const FIVE_ATTEMPT_KEYS = [
-  "DialogueNodeEvent:74:16",
-  "DialogueNodeEvent:74:17"
-];
-
-const SIX_ATTEMPT_KEYS = [
-  "DialogueNodeEvent:74:22",
-  "DialogueNodeEvent:74:20"
-];
-
-const relevantKeys = [
-  ...FIVE_ATTEMPT_KEYS,
-  ...SIX_ATTEMPT_KEYS
-];
-
-// 1) Latest trigger
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
-  { sort: { _id: -1 }}
-);
-
-let attempt = 0;
-
-if (!latestTrigger) {
-  attempt = 0;
-} else {
-  const prevTrigger = db.logdata.findOne(
-    {
+  // 3) Reason code triggers if any assist marker fired in the window
+  const assisted =
+    db.logdata.findOne({
       game: "mhs",
       playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
-    },
-    { sort: { _id: -1 }}
-  );
-
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
-
-  const events = db.logdata.find(
-    {
-      game: "mhs",
-      playerId: playerId,
-      eventKey: { $in: relevantKeys },
+      eventKey: { $in: ASSIST_KEYS },
       _id: { $gt: windowStartId, $lte: windowEndId }
-    }
-  ).toArray();
+    }) !== null;
 
-  const triggeredKeys = new Set(events.map(e => e.eventKey));
+  // 4) attempt_number: count negative-feedback nodes in the window
+  const attemptNumber = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventKey: { $in: NEGATIVE_KEYS },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
 
-  if (SIX_ATTEMPT_KEYS.some(k => triggeredKeys.has(k))) attempt = 6;
-  else if (FIVE_ATTEMPT_KEYS.some(k => triggeredKeys.has(k))) attempt = 5;
+  ({ triggered: assisted, attempt_number: attemptNumber });
 }
-
-attempt;
 ```
+
+### EXCESS_ATTEMPTS
+
+**Instructor Message:** In Investigate the Temple, the student arranged the watershed terrain pieces correctly on their own, but needed {attempt_number} attempts. This point earns green only when the correct arrangement is submitted within 5 attempts. Repeated incorrect arrangements may indicate difficulty connecting drainage-area size with relative flow rate — the pattern that a larger watershed collects and delivers more water to its main river.
+
+#### Correspoinding Script
+
+```js
+// U2P4: EXCESS_ATTEMPTS — determine trigger and attempt_number
+// Triggers when the student solved the puzzle independently (74:21 in window,
+// no assist marker) but the 5th submission was wrong (74:16 or 74:17 fired),
+// meaning success took 6+ attempts. Mirrors the color rule's yellow keys.
+// attempt_number = incorrect submissions + 1 (the final correct submission)
+
+const playerId = "<playerId>";
+
+const TRIGGER_KEY = "DialogueNodeEvent:23:17";
+const SUCCESS_KEY = "DialogueNodeEvent:74:21"; // solved-on-their-own completion
+
+const FIFTH_ATTEMPT_KEYS = [
+  "DialogueNodeEvent:74:16",  // 5th attempt, 2-3 wrong
+  "DialogueNodeEvent:74:17"   // 5th attempt, >3 wrong (assist offered)
+];
+
+const ASSIST_KEYS = [
+  "DialogueNodeEvent:74:18",
+  "DialogueNodeEvent:74:20",
+  "DialogueNodeEvent:74:22",
+  "DialogueNodeEvent:74:25"
+];
+
+const NEGATIVE_KEYS = [
+  "DialogueNodeEvent:74:4",   // 1st attempt, any wrong
+  "DialogueNodeEvent:74:5",   // 2nd attempt, 2-3 wrong
+  "DialogueNodeEvent:74:6",   // 2nd attempt, >3 wrong
+  "DialogueNodeEvent:74:9",   // 3rd attempt, 2-3 wrong
+  "DialogueNodeEvent:74:10",  // 3rd attempt, >3 wrong (video offered)
+  "DialogueNodeEvent:74:15",  // 4th attempt, any wrong
+  "DialogueNodeEvent:74:16",  // 5th attempt, 2-3 wrong
+  "DialogueNodeEvent:74:17"   // 5th attempt, >3 wrong (assist offered)
+];
+
+// 1) Latest trigger (end anchor)
+const latestTrigger = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+  { sort: { _id: -1 } }
+);
+
+if (!latestTrigger) {
+  ({ triggered: false, attempt_number: 0 });
+} else {
+  // 2) Previous trigger (attempt boundary)
+  const prevTrigger = db.logdata.findOne(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventKey: TRIGGER_KEY,
+      _id: { $lt: latestTrigger._id }
+    },
+    { sort: { _id: -1 } }
+  );
+
+  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestTrigger._id;
+
+  // 3) Student reached the solved-on-their-own completion
+  const solvedSelf =
+    db.logdata.findOne({
+      game: "mhs",
+      playerId: playerId,
+      eventKey: SUCCESS_KEY,
+      _id: { $gt: windowStartId, $lte: windowEndId }
+    }) !== null;
+
+  // 4) DANI did not step in (otherwise SOLVED_WITH_ASSIST applies instead)
+  const assisted =
+    db.logdata.findOne({
+      game: "mhs",
+      playerId: playerId,
+      eventKey: { $in: ASSIST_KEYS },
+      _id: { $gt: windowStartId, $lte: windowEndId }
+    }) !== null;
+
+  // 5) The 5th submission was wrong — success required 6+ attempts
+  const fifthWrong =
+    db.logdata.findOne({
+      game: "mhs",
+      playerId: playerId,
+      eventKey: { $in: FIFTH_ATTEMPT_KEYS },
+      _id: { $gt: windowStartId, $lte: windowEndId }
+    }) !== null;
+
+  // 6) Count incorrect submissions (one feedback node each)
+  const negativeCount = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventKey: { $in: NEGATIVE_KEYS },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+
+  const triggered = solvedSelf && !assisted && fifthWrong;
+
+  ({ triggered: triggered, attempt_number: negativeCount + 1 });
+}
+```
+
+### Teacher Guidance
+Review the relationship between watershed size and flow rate.

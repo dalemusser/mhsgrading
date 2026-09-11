@@ -161,30 +161,205 @@ if (!latestTrigger) {
 
 ## Reason Codes
 
-### NO_TRIGGER
+### Conversation-102 Feedback Nodes by Attempt
 
-**Short Description:** Student has not yet completed the trigger event for this activity.
+All keys are `DialogueNodeEvent:102:<n>`. Each wrong submission fires exactly one
+attempt-indexed feedback node (4-piece ordering puzzle; text-identical to the
+U3P4 conversation-78 set). Yellow keys are the attempt-3-and-later nodes, so
+green = correct order within 3 attempts.
 
-**Instructor Message:** The student has not yet reached the point in the game where this progress point is evaluated.
+| Attempt | 1–2 pieces wrong | 3–4 pieces wrong |
+|---------|------------------|-------------------|
+| 1st | `102:4` "close to the solution" | `102:3` "ordered in a specific way" |
+| 2nd | `102:7` particle-size hint (single branch, any wrong) | — |
+| 3rd | `102:9` "close to the correct order" ★ | `102:10` infiltration-rate graph hint ★ |
+| 4th | `102:12` "very close" ★ | `102:18` assist offer ★ |
+| 5th | `102:23` forced assist — DANI orders the pieces ★ (single branch, any wrong) | — |
 
-**Determination:** The trigger event `questActiveEvent:48` has not been logged.
+★ = yellow key in the color rule.
 
-### MISSING_SUCCESS_NODE
+Other nodes: `88:11` is the post-puzzle explanation and fires on BOTH the
+independent and DANI-assisted paths (verified in run 09-03-26-3) — it is NOT an
+independence signal. `102:0` is structural; `102:14/15/16` are the player's
+empty-text response choices to feedback (they DO log); `102:19/20/21/24` are
+empty and unobserved. If the player accepts the assist offer at `102:18`, the
+node the execution logs as is unconfirmed (only the forced 5th-attempt path,
+which logs `102:23`, has been observed).
 
-**Short Description:** Student did not complete the infiltration glyph puzzle independently.
+### SOLVED_WITH_ASSIST
 
-**Instructor Message:** The student did not reach the expected success outcome (`DialogueNodeEvent:88:11`) for the infiltration glyph matching puzzle. This indicates the student may not have completed the puzzle on their own.
+**Instructor Message:** In the Infiltration Glyph puzzle, the student did not complete the soil-infiltration ordering independently — after {attempt_number} incorrect arrangements, the in-game guide DANI ordered the pieces. This point earns green only when the student submits the correct order on their own within 3 attempts. Needing this level of support may indicate the student would benefit from reviewing how water infiltrates different soils — the larger the soil particles, the faster water passes through.
 
-**Determination:** The success node `DialogueNodeEvent:88:11` is absent from the attempt window.
+#### Corresponding Script
 
-**Teacher Guidance:** Remind students that infiltration is the process by which water on the ground surface enters the soil. Water moves through sand at a slower rate than gravel and a faster rate than clay.
+```js
+// U4P2: SOLVED_WITH_ASSIST — determine trigger and attempt_number
+// Window mirrors the production color script: latest questActiveEvent:48 (end),
+// latest Unit 4 soil-key-puzzle close before it (start, exclusive).
+// Triggers when DANI's assist executed (102:23) in the window. Do NOT infer
+// assistance from 88:11's absence — 88:11 fires on the assisted path too
+// (verified in run 09-03-26-3). attempt_number = incorrect arrangements
+// before DANI completed the puzzle.
 
-### TOO_MANY_NEGATIVES
+const playerId = "<playerId>";
 
-**Short Description:** Student received negative feedback indicating too many puzzle attempts.
+const TRIGGER_KEY = "questActiveEvent:48";
+const ASSIST_KEY = "DialogueNodeEvent:102:23"; // DANI orders the pieces
 
-**Instructor Message:** The student received corrective feedback during the infiltration glyph puzzle, indicating they needed more than 2 attempts to figure out the correct matches.
+const SOIL_KEY_EVENT_TYPE = "Soil Key Puzzle";
+const SOIL_KEY_END_STATUS = "Finished";
+const UNIT_4 = /^Unit 4/;  // data.Unit is the scene name (currently "Unit 4 Dev")
 
-**Determination:** Any of the negative feedback nodes (`DialogueNodeEvent:102:9`, `DialogueNodeEvent:102:10`, `DialogueNodeEvent:102:12`, `DialogueNodeEvent:102:18`, `DialogueNodeEvent:102:23`) are present in the attempt window.
+const NEGATIVE_KEYS = [
+  "DialogueNodeEvent:102:4",   // 1st attempt, 1-2 wrong
+  "DialogueNodeEvent:102:3",   // 1st attempt, 3-4 wrong
+  "DialogueNodeEvent:102:7",   // 2nd attempt, any wrong (particle-size hint)
+  "DialogueNodeEvent:102:9",   // 3rd attempt, 1-2 wrong
+  "DialogueNodeEvent:102:10",  // 3rd attempt, 3-4 wrong (rate-graph hint)
+  "DialogueNodeEvent:102:12",  // 4th attempt, 1-2 wrong
+  "DialogueNodeEvent:102:18"   // 4th attempt, 3-4 wrong (assist offered)
+];
 
-**Teacher Guidance:** Remind students that infiltration is the process by which water on the ground surface enters the soil. Water moves through sand at a slower rate than gravel and a faster rate than clay.
+// 1) Latest trigger (end anchor)
+const latestTrigger = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+  { sort: { _id: -1 } }
+);
+
+if (!latestTrigger) {
+  ({ triggered: false, attempt_number: 0 });
+} else {
+  // 2) Window start: latest Unit 4 soil key puzzle close before the trigger
+  const soilKeyClose = db.logdata.findOne(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventType: SOIL_KEY_EVENT_TYPE,
+      "data.Soil Key Puzzle Status": SOIL_KEY_END_STATUS,
+      "data.Unit": UNIT_4,
+      _id: { $lt: latestTrigger._id }
+    },
+    { sort: { _id: -1 }, projection: { _id: 1 } }
+  );
+
+  const windowStartId = soilKeyClose ? soilKeyClose._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestTrigger._id;
+
+  // 3) Assist executed?
+  const assisted =
+    db.logdata.findOne({
+      game: "mhs",
+      playerId: playerId,
+      eventKey: ASSIST_KEY,
+      _id: { $gt: windowStartId, $lte: windowEndId }
+    }) !== null;
+
+  // 4) Count incorrect arrangements
+  const attemptNumber = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventKey: { $in: NEGATIVE_KEYS },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+
+  ({ triggered: assisted, attempt_number: attemptNumber });
+}
+```
+
+### EXCESS_ATTEMPTS
+
+**Instructor Message:** In the Infiltration Glyph puzzle, the student arranged the pieces showing how water passes through different soils, but needed {attempt_number} attempts. This point earns green only when the correct order is submitted within 3 attempts. Repeated incorrect arrangements may indicate difficulty connecting soil particle size to infiltration rate — water moves quickly through gravel, more slowly through sand, and slowest through clay.
+
+#### Corresponding Scripts
+
+```js
+// U4P2: EXCESS_ATTEMPTS — determine trigger and attempt_number
+// Same window as the color script. Triggers when the student completed the
+// puzzle without DANI's executed assist but a yellow key fired — i.e., the
+// 3rd submission (or later) was wrong, so success took 4+ attempts.
+// attempt_number = incorrect arrangements + 1 (the final correct submission).
+
+const playerId = "<playerId>";
+
+const TRIGGER_KEY = "questActiveEvent:48";
+const ASSIST_KEY = "DialogueNodeEvent:102:23";
+
+const SOIL_KEY_EVENT_TYPE = "Soil Key Puzzle";
+const SOIL_KEY_END_STATUS = "Finished";
+const UNIT_4 = /^Unit 4/;
+
+const YELLOW_KEYS = [
+  "DialogueNodeEvent:102:9",   // 3rd attempt, 1-2 wrong
+  "DialogueNodeEvent:102:10",  // 3rd attempt, 3-4 wrong
+  "DialogueNodeEvent:102:12",  // 4th attempt, 1-2 wrong
+  "DialogueNodeEvent:102:18"   // 4th attempt, 3-4 wrong (assist offered)
+];
+
+const NEGATIVE_KEYS = [
+  "DialogueNodeEvent:102:4",   // 1st attempt, 1-2 wrong
+  "DialogueNodeEvent:102:3",   // 1st attempt, 3-4 wrong
+  "DialogueNodeEvent:102:7",   // 2nd attempt, any wrong (particle-size hint)
+  "DialogueNodeEvent:102:9",   // 3rd attempt, 1-2 wrong
+  "DialogueNodeEvent:102:10",  // 3rd attempt, 3-4 wrong (rate-graph hint)
+  "DialogueNodeEvent:102:12",  // 4th attempt, 1-2 wrong
+  "DialogueNodeEvent:102:18"   // 4th attempt, 3-4 wrong (assist offered)
+];
+
+// 1) Latest trigger (end anchor)
+const latestTrigger = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+  { sort: { _id: -1 } }
+);
+
+if (!latestTrigger) {
+  ({ triggered: false, attempt_number: 0 });
+} else {
+  // 2) Window start: latest Unit 4 soil key puzzle close before the trigger
+  const soilKeyClose = db.logdata.findOne(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventType: SOIL_KEY_EVENT_TYPE,
+      "data.Soil Key Puzzle Status": SOIL_KEY_END_STATUS,
+      "data.Unit": UNIT_4,
+      _id: { $lt: latestTrigger._id }
+    },
+    { sort: { _id: -1 }, projection: { _id: 1 } }
+  );
+
+  const windowStartId = soilKeyClose ? soilKeyClose._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestTrigger._id;
+
+  // 3) DANI's assist did not execute (otherwise SOLVED_WITH_ASSIST applies)
+  const assisted =
+    db.logdata.findOne({
+      game: "mhs",
+      playerId: playerId,
+      eventKey: ASSIST_KEY,
+      _id: { $gt: windowStartId, $lte: windowEndId }
+    }) !== null;
+
+  // 4) A yellow key fired — 3rd-or-later submission was wrong
+  const hasYellow =
+    db.logdata.findOne({
+      game: "mhs",
+      playerId: playerId,
+      eventKey: { $in: YELLOW_KEYS },
+      _id: { $gt: windowStartId, $lte: windowEndId }
+    }) !== null;
+
+  // 5) Count incorrect arrangements
+  const negCount = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventKey: { $in: NEGATIVE_KEYS },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+
+  ({ triggered: !assisted && hasYellow, attempt_number: negCount + 1 });
+}
+```
+
+
+### Teacher Guidance
+Remind students that infiltration is the process by which water on the ground surface enters the soil. Water moves through sand at a slower rate than gravel and a faster rate than clay.

@@ -147,89 +147,65 @@ if (!latestTrigger) {
 
 ## Reason Codes
 
-### WRONG_ARG_SELECTED
+### EXCESS_ATTEMPTS
 
-**Short Description:** Too many attempts to select evidence to support the claim
+**Instructor Message:** In Which Watershed? Part II, the student built the argument about which watershed is larger, but needed {attempt_number} submissions - {wrong_claim_number} where the claim did not match the evidence and reasoning, and {irrelevant_evidence_number} using evidence that does not indicate watershed size (waterfall height, salinity, or the downstream river). This point earns green only when the correct argument is submitted within 4 attempts. Repeated incorrect submissions may indicate difficulty selecting the claim the data supports and distinguishing relevant evidence - flow rate reflects how much land drains to each river - from irrelevant observations.
 
-**Instructor Message:** The student used {attempt_number} attempts to construct the correct argument during the activity of building an argument about which watershed is bigger by supporting a claim with evidence. The threshold for success is to construct the correct argument using equal to or less than 4 attempts.
-
-**Quantities:** `attempt_number` — count of attempts to construct the correct argument
-
-**Teacher Guidance:**
-1. Claim: statement that answers the driving question.
-2. Evidence: scientific data and facts that support your claim.
-
-### Reason Quantity Scripts
-
-#### Data Analytics Script (Python)
-
-```python
-# U2P7: Determine attempt_number for WRONG_ARG_SELECTED
-# Count the number of attempts to construct the correct argument
-
-NEG_DIALOGUE_KEYS = [
-  "DialogueNodeEvent:27:11", "DialogueNodeEvent:27:12", "DialogueNodeEvent:27:13", "DialogueNodeEvent:27:14",
-  "DialogueNodeEvent:27:15", "DialogueNodeEvent:27:16", "DialogueNodeEvent:27:17", "DialogueNodeEvent:27:18", "DialogueNodeEvent:27:20", "DialogueNodeEvent:27:25", "DialogueNodeEvent:27:26",
-  "DialogueNodeEvent:27:27", "DialogueNodeEvent:27:28", "DialogueNodeEvent:27:29", "DialogueNodeEvent:27:30"
-]
-
-attempts = coll.count_documents({
-    "playerId": pid,
-    "eventKey": {"$in": NEG_DIALOGUE_KEYS}
-}) + 1
-
-attempts
-```
-
-#### Analytics-Matching Script (MongoDB/JS)
+#### Correspoinding Script
 
 ```js
-// U2P7: Determine attempt_number for WRONG_ARG_SELECTED
-// Exact match to data analytics script
-
-const playerId = "<playerId>";
-
-const NEG_DIALOGUE_KEYS = [
-  "DialogueNodeEvent:27:11", "DialogueNodeEvent:27:12", "DialogueNodeEvent:27:13", "DialogueNodeEvent:27:14",
-  "DialogueNodeEvent:27:15", "DialogueNodeEvent:27:16", "DialogueNodeEvent:27:17", "DialogueNodeEvent:27:18", "DialogueNodeEvent:27:20", "DialogueNodeEvent:27:25", "DialogueNodeEvent:27:26",
-  "DialogueNodeEvent:27:27", "DialogueNodeEvent:27:28", "DialogueNodeEvent:27:29", "DialogueNodeEvent:27:30"
-];
-
-const attempts =
-  db.logdata.countDocuments({
-    playerId: playerId,
-    eventKey: { $in: NEG_DIALOGUE_KEYS }
-  }) + 1;
-
-attempts;
-```
-
-#### Production Script (Attempt-Based, MongoDB/JS)
-
-```js
-// U2P7: Determine attempt_number for WRONG_ARG_SELECTED
-// With windowing for replay support
+// U2P7: EXCESS_ATTEMPTS - determine trigger and quantities
+// Triggers when the color rule goes yellow in the attempt window:
+// success (27:7) missing OR more than 3 incorrect submissions.
+// (questFinishEvent:54 only fires after the argument completes, so in
+// practice success is present and the trigger means 4+ wrong submissions.)
+// attempt_number = incorrect submissions + 1 (the final correct submission);
+// the two sub-counts split the incorrect submissions by problem type -
+// wrong/mismatched claim vs. irrelevant evidence.
+// Audit invariants: wrong_claim_number + irrelevant_evidence_number = negCount,
+// and count of structural node 27:0 in the window = total submissions.
 
 const playerId = "<playerId>";
 
 const TRIGGER_KEY = "questFinishEvent:54";
+const SUCCESS_KEY = "DialogueNodeEvent:27:7"; // "Well done! You have made the best argument possible."
 
-const NEG_DIALOGUE_KEYS = [
-  "DialogueNodeEvent:27:11", "DialogueNodeEvent:27:12", "DialogueNodeEvent:27:13", "DialogueNodeEvent:27:14",
-  "DialogueNodeEvent:27:15", "DialogueNodeEvent:27:16", "DialogueNodeEvent:27:17", "DialogueNodeEvent:27:18", "DialogueNodeEvent:27:20", "DialogueNodeEvent:27:25", "DialogueNodeEvent:27:26",
-  "DialogueNodeEvent:27:27", "DialogueNodeEvent:27:28", "DialogueNodeEvent:27:29", "DialogueNodeEvent:27:30"
+const WRONG_CLAIM_KEYS = [           // claim wrong or doesn't fit evidence & reasoning
+  "DialogueNodeEvent:27:11",  // evidence doesn't fit claim (backing-info pointer)
+  "DialogueNodeEvent:27:12",  // evidence doesn't fit claim — try another claim
+  "DialogueNodeEvent:27:14",  // both claim and evidence don't link to reasoning
+  "DialogueNodeEvent:27:16",  // both claim and evidence don't link to reasoning
+  "DialogueNodeEvent:27:18"   // both claim and evidence don't link to reasoning
 ];
 
+const IRRELEVANT_EVIDENCE_KEYS = [   // evidence doesn't indicate watershed size
+  "DialogueNodeEvent:27:13",  // waterfall height
+  "DialogueNodeEvent:27:25",  // waterfall height
+  "DialogueNodeEvent:27:26",  // waterfall height (claim was correct)
+  "DialogueNodeEvent:27:15",  // salinity
+  "DialogueNodeEvent:27:27",  // salinity
+  "DialogueNodeEvent:27:28",  // salinity
+  "DialogueNodeEvent:27:17",  // downstream river
+  "DialogueNodeEvent:27:29",  // downstream river
+  "DialogueNodeEvent:27:30",  // downstream river
+  "DialogueNodeEvent:27:20"   // multiple evidence pieces at once
+];
+
+const NEG_KEYS = [
+  ...WRONG_CLAIM_KEYS,
+  ...IRRELEVANT_EVIDENCE_KEYS
+];
+
+// 1) Latest trigger (end anchor)
 const latestTrigger = db.logdata.findOne(
   { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
-  { sort: { _id: -1 }}
+  { sort: { _id: -1 } }
 );
 
-let attempts = 0;
-
 if (!latestTrigger) {
-  attempts = 0;
+  ({ triggered: false, attempt_number: 0, wrong_claim_number: 0, irrelevant_evidence_number: 0 });
 } else {
+  // 2) Previous trigger (attempt boundary)
   const prevTrigger = db.logdata.findOne(
     {
       game: "mhs",
@@ -237,21 +213,49 @@ if (!latestTrigger) {
       eventKey: TRIGGER_KEY,
       _id: { $lt: latestTrigger._id }
     },
-    { sort: { _id: -1 }}
+    { sort: { _id: -1 } }
   );
 
   const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
   const windowEndId = latestTrigger._id;
 
+  const windowFilter = { _id: { $gt: windowStartId, $lte: windowEndId } };
+
+  // 3) Student reached the correct-argument completion
+  const hasSuccess =
+    db.logdata.findOne({
+      game: "mhs", playerId: playerId,
+      eventKey: SUCCESS_KEY, ...windowFilter
+    }) !== null;
+
+  // 4) Counts inside the window
   const negCount = db.logdata.countDocuments({
-    game: "mhs",
-    playerId: playerId,
-    eventKey: { $in: NEG_DIALOGUE_KEYS },
-    _id: { $gt: windowStartId, $lte: windowEndId }
+    game: "mhs", playerId: playerId,
+    eventKey: { $in: NEG_KEYS }, ...windowFilter
   });
 
-  attempts = negCount + 1;
-}
+  const claimCount = db.logdata.countDocuments({
+    game: "mhs", playerId: playerId,
+    eventKey: { $in: WRONG_CLAIM_KEYS }, ...windowFilter
+  });
 
-attempts;
+  const evidenceCount = db.logdata.countDocuments({
+    game: "mhs", playerId: playerId,
+    eventKey: { $in: IRRELEVANT_EVIDENCE_KEYS }, ...windowFilter
+  });
+
+  // 5) Mirror the color rule exactly
+  const triggered = !(hasSuccess && negCount <= 3);
+
+  ({
+    triggered: triggered,
+    attempt_number: hasSuccess ? negCount + 1 : negCount,
+    wrong_claim_number: claimCount,
+    irrelevant_evidence_number: evidenceCount
+  });
+}
 ```
+
+### Teacher Guidance
+1. Claim: statement that answers the driving question.
+2. Evidence: scientific data and facts that support your claim.

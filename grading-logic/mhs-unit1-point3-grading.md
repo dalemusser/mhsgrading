@@ -113,57 +113,9 @@ if (!latestTrigger) {
 
 ### WRONG_ARG_SELECTED
 
-**Short Description:** Needed multiple tries to build the correct argument
+**Instructor Message:** In Defend the Expedition, the student's first argument submission was incorrect; they built the correct argument on attempt {attempt_number}. This point earns green only when the first submission is correct. The early miss may indicate difficulty identifying which claim is supported by the given evidence and reasoning.
 
-**Instructor Message:** The student used {attempt_number} to construct the correct argument during the activity of learning to use the argumentation engine and identifying a claim in an argument. The threshold for success is to construct the correct argument at the first attempt.
-
-**Quantities:** `attempt_number` — count of attempts
-
-**Teacher Guidance:**
-1. Claim: statement that answers the driving question.
-2. Evidence: scientific data and facts that support your claim.
-3. Reasoning: links your claim to the evidence presented by explaining how or why the evidence supports the claim.
-
-### Reason Quantity Scripts
-
-#### Data Analytics Script (Python)
-
-```python
-# U1P3: Determine attempt_number for WRONG_ARG_SELECTED
-# Count the number of attempts to construct the correct argument
-
-ATTEMPT_KEYS = ["DialogueNodeEvent:70:25", "DialogueNodeEvent:70:7"]
-
-attempt = coll.count_documents({
-        "playerId": pid,
-        "eventKey": {"$in": ATTEMPT_KEYS}
-    })
-
-attempt
-```
-
-#### Analytics-Matching Script (MongoDB/JS)
-
-```js
-// U1P3: Determine attempt_number for WRONG_ARG_SELECTED
-// Exact match to data analytics script
-
-const playerId = "<playerId>";
-
-const ATTEMPT_KEYS = [
-  "DialogueNodeEvent:70:25",
-  "DialogueNodeEvent:70:7"
-];
-
-const attempt = db.logdata.countDocuments({
-  playerId: playerId,
-  eventKey: { $in: ATTEMPT_KEYS }
-});
-
-attempt
-```
-
-#### Production Script (Attempt-Based, MongoDB/JS)
+#### Quantitative script
 
 ```js
 // U1P3: Determine attempt_number for WRONG_ARG_SELECTED
@@ -212,3 +164,8 @@ if (!latestTrigger) {
   attempts;
 }
 ```
+
+### Teacher Guidance:
+1. Claim: statement that answers the driving question.
+2. Evidence: scientific data and facts that support your claim.
+3. Reasoning: links your claim to the evidence presented by explaining how or why the evidence supports the claim.

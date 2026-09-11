@@ -167,129 +167,71 @@ if (!endDoc || !endDoc.timestamp) {
 
 ## Reason Codes
 
-### BAD_FEEDBACK
+### EXCESS_NAV_REMINDERS
 
-**Short Description:** Repeated wrong-direction prompts while searching for Toppo
+**Instructor Message:** In Foraged Forging, while navigating to find Captain Toppo, the student triggered {triggering_number} adaptive reminders — dialogues that fire when the player travels somewhere inconsistent with Anderson's clues or has not been consulting the map. This point earns green only when at most 1 such reminder fires during the search. Repeated reminders may indicate difficulty translating the clues about direction, elevation, and terrain features into a location on the topographic map using contour lines and the compass.
 
-**Instructor Message:** Students triggered {triggering_number} dialogues reminding them of their wrong exploring trajectories during the activity of finding Toppo using the topographic map. The success threshold is triggering such dialogues equal to or less than 1 time.
-
-**Quantities:** `triggering_number` — count of wrong-direction dialogues triggered
-
-**Teacher Guidance:**
-1. How information about elevation can be gained from contour lines.
-2. How to use the compass and contour indices to aid navigation.
-
-### Reason Quantity Scripts
-
-#### Data Analytics Script (Python)
-
-```python
-# U2P2: Determine triggering_number for BAD_FEEDBACK
-# Count the number of wrong-direction dialogues triggered
-
-BAD_FEEDBACK_KEYS = [
-    "DialogueNodeEvent:28:179",
-    "DialogueNodeEvent:59:179",
-    "DialogueNodeEvent:28:182",
-    "DialogueNodeEvent:59:182",
-    "DialogueNodeEvent:28:183",
-    "DialogueNodeEvent:59:183"
-]
-
-count = coll.count_documents({
-        "playerId": pid,
-        "eventKey": {"$in": BAD_FEEDBACK_KEYS}
-    })
-
-count
-```
-
-#### Analytics-Matching Script (MongoDB/JS)
+#### Correspoinding Script
 
 ```js
-// U2P2: Determine triggering_number for BAD_FEEDBACK
-// Exact match to data analytics script
+// U2P2: EXCESS_NAV_REMINDERS — determine trigger and triggering_number
+// Window mirrors the production color script exactly: latest end trigger
+// (DialogueNodeEvent:20:26), then the latest start (questFinishEvent:21)
+// at or before it, fenced by both timestamp and _id.
+// triggering_number = adaptive navigation reminders fired during the search.
 
 const playerId = "<playerId>";
 
-const BAD_FEEDBACK_KEYS = [
-  "DialogueNodeEvent:28:179",
-  "DialogueNodeEvent:59:179",
-  "DialogueNodeEvent:28:182",
-  "DialogueNodeEvent:59:182",
-  "DialogueNodeEvent:28:183",
-  "DialogueNodeEvent:59:183"
-];
-
-const count = db.logdata.countDocuments({
-  playerId: playerId,
-  eventKey: { $in: BAD_FEEDBACK_KEYS }
-});
-
-count;
-```
-
-#### Production Script (Attempt-Based, MongoDB/JS)
-
-```js
-// U2P2: Determine triggering_number for BAD_FEEDBACK
-// With windowing for replay support
-
-const playerId = "<playerId>";
-
+const END_KEY = "DialogueNodeEvent:20:26";     // trigger
 const START_KEY = "questFinishEvent:21";
-const END_KEY = "DialogueNodeEvent:20:26";
 
 const BAD_FEEDBACK_KEYS = [
-  "DialogueNodeEvent:28:179",
+  "DialogueNodeEvent:28:179",  // clue reminder: near original location, rock formations
   "DialogueNodeEvent:59:179",
-  "DialogueNodeEvent:28:182",
+  "DialogueNodeEvent:28:182",  // map-usage reminder: open the map with M
   "DialogueNodeEvent:59:182",
-  "DialogueNodeEvent:28:183",
+  "DialogueNodeEvent:28:183",  // clue reminder: hill at ~90 feet elevation
   "DialogueNodeEvent:59:183"
 ];
 
-const latestStart = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: START_KEY },
-  { sort: { _id: -1 }}
+// 1) Latest end trigger by arrival order
+const endDoc = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
+  { sort: { _id: -1 } }
 );
 
-let count = 0;
-
-if (!latestStart) {
-  count = 0;
+if (!endDoc || !endDoc.timestamp) {
+  ({ triggered: false, triggering_number: 0 });
 } else {
-  const prevStart = db.logdata.findOne(
+  // 2) Latest start at or before this end (same attempt)
+  const startDoc = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
       eventKey: START_KEY,
-      _id: { $lt: latestStart._id }
+      _id: { $lte: endDoc._id }
     },
-    { sort: { _id: -1 }}
+    { sort: { _id: -1 } }
   );
 
-  const windowStartId = prevStart ? prevStart._id : ObjectId("000000000000000000000000");
-
-  const endDoc = db.logdata.findOne(
-    {
+  if (!startDoc || !startDoc.timestamp) {
+    ({ triggered: false, triggering_number: 0 });
+  } else {
+    // 3) Count reminders within the window, fenced by timestamp and _id
+    const count = db.logdata.countDocuments({
       game: "mhs",
       playerId: playerId,
-      eventKey: END_KEY,
-      _id: { $gte: latestStart._id }
-    },
-    { sort: { _id: -1 }}
-  );
+      eventKey: { $in: BAD_FEEDBACK_KEYS },
+      timestamp: { $gte: startDoc.timestamp, $lte: endDoc.timestamp },
+      _id: { $gte: startDoc._id, $lte: endDoc._id }
+    });
 
-  const windowEndId = endDoc ? endDoc._id : latestStart._id;
-
-  count = db.logdata.countDocuments({
-    game: "mhs",
-    playerId: playerId,
-    eventKey: { $in: BAD_FEEDBACK_KEYS },
-    _id: { $gt: windowStartId, $lte: windowEndId }
-  });
+    // 4) Green allows at most 1 reminder; more than 1 triggers the reason code
+    ({ triggered: count > 1, triggering_number: count });
+  }
 }
-
-count;
 ```
+
+### Teacher Guidance
+1. How information about elevation can be gained from contour lines.
+2. How to use the compass and contour indices to aid navigation.

@@ -138,145 +138,64 @@ if (!startTrigger || !endTrigger || endTrigger._id <= startTrigger._id) {
 
 ## Reason Codes
 
-### HIT_YELLOW_NODE
+### WRONG_EVIDENCE_SELECTED
 
 **Short Description:** Chose an incorrect criterion for watershed size on first try
 
-**Instructor Message:** Students chose the wrong standards to determine which watershed is larger, {dialogue_node_1} or/and {dialogue_node_2} at the first attempt during the activity of collecting evidence to construct an argument about watershed size. The success threshold is to select the correct standard, {dialogue_node_3}, at the first attempt.
+**Instructor Message:** In Which Watershed? Part I, when Dr. Toppo asked which observation provides the strongest evidence for identifying the larger watershed, the student selected {wrong_choice} instead of the correct answer, water flow rate. This point earns green only when water flow rate is selected. This may indicate difficulty distinguishing evidence that directly relates to watershed size - a larger drainage area collects and delivers more water, producing a greater flow rate - from observations such as waterfall height or salinity that do not indicate how much land drains to the river.
 
-**Quantities:**
-- `dialogue_node_1` — first incorrect standard chosen
-- `dialogue_node_2` — second incorrect standard chosen (if applicable)
-- `dialogue_node_3` — the correct standard
-
-**Teacher Guidance:**
-1. Claim: statement that answers the driving question.
-2. Evidence: scientific data and facts that support your claim.
-
-### Reason Quantity Scripts
-
-#### Data Analytics Script (Python)
-
-```python
-# U2P6: Determine dialogue_node_1, dialogue_node_2, dialogue_node_3 for HIT_YELLOW_NODE
-# Identify which incorrect standards were chosen and which is the correct standard
-
-KEY_44 = "DialogueNodeEvent:20:44"
-KEY_45 = "DialogueNodeEvent:20:45"
-
-events = list(coll.find(
-        {
-            "playerId": pid,
-            "eventKey": {"$in": [KEY_44, KEY_45]}
-        }
-    ))
-
-triggered = {e["eventKey"] for e in events}
-
-has_44 = KEY_44 in triggered
-has_45 = KEY_45 in triggered
-
-if has_44 and has_45:
-  result = "guessing through the correct answer"
-elif has_44:
-  result = "waterfall height"
-elif has_45:
-  result = "salinity"
-  
-result
-```
-
-#### Analytics-Matching Script (MongoDB/JS)
+#### Correspoinding Script
 
 ```js
-// U2P6: Determine dialogue_node_1, dialogue_node_2, dialogue_node_3 for HIT_YELLOW_NODE
-// Exact match to data analytics script
+// U2P6: WRONG_EVIDENCE_SELECTED — determine trigger and wrong_choice
+// Triggers when a wrong-option node (20:44 waterfall height, 20:45 salinity)
+// fired in the attempt window. The question is single-select with no retry on
+// the current build, so exactly one choice node fires per window; the
+// both-options fallback below is defensive only.
 
 const playerId = "<playerId>";
 
-const KEY_44 = "DialogueNodeEvent:20:44";
-const KEY_45 = "DialogueNodeEvent:20:45";
-
-const events = db.logdata.find(
-  {
-    playerId: playerId,
-    eventKey: { $in: [KEY_44, KEY_45] }
-  }
-).toArray();
-
-const triggered = new Set(events.map(e => e.eventKey));
-
-const has_44 = triggered.has(KEY_44);
-const has_45 = triggered.has(KEY_45);
-
-let result;
-
-if (has_44 && has_45) {
-  result = "guessing through the correct answer";
-} else if (has_44) {
-  result = "waterfall height";
-} else if (has_45) {
-  result = "salinity";
-}
-
-result;
-```
-
-#### Production Script (Attempt-Based, MongoDB/JS)
-
-```js
-// U2P6: Determine dialogue_node_1, dialogue_node_2, dialogue_node_3 for HIT_YELLOW_NODE
-// Windowed to match the production grade script:
-//   Start: latest "DialogueNodeEvent:23:42" (Trigger Start, exclusive)
-//   End:   latest "DialogueNodeEvent:20:46" (Trigger End, inclusive)
-
-const playerId = "<playerId>";
-
-const START_KEY = "DialogueNodeEvent:23:42";
-const END_KEY   = "DialogueNodeEvent:20:46";
-const KEY_44 = "DialogueNodeEvent:20:44";
-const KEY_45 = "DialogueNodeEvent:20:45";
+const START_KEY = "DialogueNodeEvent:23:42"; // opens the activity (exclusive)
+const END_KEY   = "DialogueNodeEvent:20:46"; // closes the attempt (inclusive)
+const HEIGHT_KEY   = "DialogueNodeEvent:20:44"; // chose waterfall height
+const SALINITY_KEY = "DialogueNodeEvent:20:45"; // chose salinity
 
 const startTrigger = db.logdata.findOne(
   { game: "mhs", playerId: playerId, eventKey: START_KEY },
-  { sort: { _id: -1 }}
+  { sort: { _id: -1 } }
 );
 
 const endTrigger = db.logdata.findOne(
   { game: "mhs", playerId: playerId, eventKey: END_KEY },
-  { sort: { _id: -1 }}
+  { sort: { _id: -1 } }
 );
 
-let result = null;
-
 if (!startTrigger || !endTrigger || endTrigger._id <= startTrigger._id) {
-  result = null;
+  ({ triggered: false, wrong_choice: null });
 } else {
-  const windowStartId = startTrigger._id;
-  const windowEndId = endTrigger._id;
+  const windowFilter = { _id: { $gt: startTrigger._id, $lte: endTrigger._id } };
 
-  const events = db.logdata.find(
-    {
-      game: "mhs",
-      playerId: playerId,
-      eventKey: { $in: [KEY_44, KEY_45] },
-      _id: { $gt: windowStartId, $lte: windowEndId }
-    }
-  ).toArray();
+  const hasHeight =
+    db.logdata.findOne({
+      game: "mhs", playerId: playerId,
+      eventKey: HEIGHT_KEY, ...windowFilter
+    }) !== null;
 
-  const triggered = new Set(events.map(e => e.eventKey));
+  const hasSalinity =
+    db.logdata.findOne({
+      game: "mhs", playerId: playerId,
+      eventKey: SALINITY_KEY, ...windowFilter
+    }) !== null;
 
-  const has_44 = triggered.has(KEY_44);
-  const has_45 = triggered.has(KEY_45);
+  let wrongChoice = null;
+  if (hasHeight && hasSalinity) wrongChoice = "waterfall height and salinity";
+  else if (hasHeight) wrongChoice = "waterfall height";
+  else if (hasSalinity) wrongChoice = "salinity";
 
-  if (has_44 && has_45) {
-    result = "guessing through the correct answer";
-  } else if (has_44) {
-    result = "waterfall height";
-  } else if (has_45) {
-    result = "salinity";
-  }
-
+  ({ triggered: wrongChoice !== null, wrong_choice: wrongChoice });
 }
-result;
 ```
+
+### Teacher Guidance
+1. Claim: statement that answers the driving question.
+2. Evidence: scientific data and facts that support your claim.

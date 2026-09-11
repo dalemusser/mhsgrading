@@ -179,131 +179,114 @@ if (!latestEnd) {
 
 ## Reason Codes
 
-### NO_TRIGGER
+### Conversation-106 Desalinator Outcome Nodes by Failure Mode
 
-**Short Description:** Student has not yet completed the trigger event for this activity.
+All keys are `DialogueNodeEvent:106:<n>`. Each solar desalinator run produces
+exactly one outcome node, so on single-run paths a missing success node and a
+present failure node are the same event. The color rule (zero tolerance)
+requires the success node with no failure nodes in the window.
 
-**Instructor Message:** The student has not yet reached the point in the game where this progress point is evaluated.
+| Outcome | Nodes | Meaning |
+|---------|-------|---------|
+| Success — maximum water | `106:35` | "You set the solar desalinator to its best settings. As a result, you gathered the maximum amount of water." |
+| No water — sunlight blocked | `106:4`, `106:25`, `106:26`, `106:27`, `106:28`, `106:29` | Settings blocked sunlight, so the salt water could not heat up and evaporate (6 variants) |
+| No water — glass too hot | `106:30`, `106:31`, `106:32` | The glass surface was too hot, so condensation could not form (3 variants) |
+| Small amount — roof angle | `106:33`, `106:34` | Evaporation and condensation worked, but the roof's angle let most of the condensed water escape (2 variants) |
 
-**Determination:** The trigger event `questFinishEvent:45` has not been logged.
+Nodes that are **not** graded: `106:37` fires after either outcome (structural
+continuation); `106:36` is the engine's "No matching response found" line;
+`106:0` is empty. Window note: `questFinishEvent:45` (the end trigger) logs
+twice back-to-back — the latest-anchor windowing absorbs the duplicate.
 
-### MISSING_SUCCESS_NODE
+### WRONG_SETTINGS_SELECTED
 
-**Short Description:** Student did not figure out the correct water solution plan.
+**Instructor Message:** In Water Problems Require Water Solutions, the student ran the solar desalinator with settings that did not produce the maximum amount of water: {failure_phrase}. This point earns green only when the desalinator collects the maximum water with no failed runs. Each failure mode maps directly to the water cycle - the salt water needs sunlight to heat it for evaporation, the glass surface must stay cool for condensation to form, and the roof angle determines whether the condensed water is collected.
 
-**Instructor Message:** The student did not reach the expected success outcome (`DialogueNodeEvent:106:35`), indicating they did not correctly identify the water solution plan.
-
-**Determination:** The success node `DialogueNodeEvent:106:35` is absent from the attempt window.
-
-**Teacher Guidance:** Review the water cycle with students focusing on connection between evaporation and condensation. Have students work through Unit 5 followup activity.
-
-### BAD_FEEDBACK
-
-**Short Description:** Student made incorrect selections while constructing the water solution.
-
-**Instructor Message:** The student made {negativeCount} incorrect selections during the water solution activity. The threshold for success is zero incorrect selections — the student must select the correct plan without errors.
-
-**Quantities:** `negativeCount` — count of negative dialogue events
-
-**Determination:** Any of the negative dialogue nodes (`DialogueNodeEvent:106:4`,`DialogueNodeEvent:106:25`,`DialogueNodeEvent:106:26`,`DialogueNodeEvent:106:27`,`DialogueNodeEvent:106:28`,`DialogueNodeEvent:106:29`,`DialogueNodeEvent:106:30`,`DialogueNodeEvent:106:31`,`DialogueNodeEvent:106:32`,`DialogueNodeEvent:106:33`,`DialogueNodeEvent:106:34`) are present in the attempt window. Zero tolerance — any incorrect selection results in yellow.
-
-**Teacher Guidance:** Review the water cycle concepts covered in Unit 5 with the student. Discuss how the evidence gathered throughout the unit should inform the final solution plan.
-
-### Analytics-Matching Script (MongoDB/JS)
+#### Corresponding Script
 
 ```js
-// Unit 5, Point 4 — Return hasTrigger, isSuccessMissing, and negativeCount
-// Window start: questFinishEvent:44
-// Window end: questFinishEvent:45
+// U5P4: WRONG_SETTINGS_SELECTED — determine trigger and failure summary
+// Window mirrors the production color script: latest questFinishEvent:45 (end),
+// previous questFinishEvent:44 before it (start, exclusive; note 45 logs twice
+// back-to-back — latest-anchor windowing absorbs the duplicate).
+// Color rule (zero tolerance): green only when 106:35 fired AND no failure
+// outcome fired. Each desalinator run produces exactly one outcome node, so
+// success-missing and failure-present coincide on single-run paths.
+// failure_phrase names the observed failure mode(s) for the instructor.
 
 const playerId = "<playerId>";
 
 const START_KEY = "questFinishEvent:44";
 const END_KEY = "questFinishEvent:45";
-
 const SUCCESS_KEY = "DialogueNodeEvent:106:35";
 
-const NEGATIVE_KEYS = [
-  "DialogueNodeEvent:106:4",
-  "DialogueNodeEvent:106:25",
-  "DialogueNodeEvent:106:26",
-  "DialogueNodeEvent:106:27",
-  "DialogueNodeEvent:106:28",
-  "DialogueNodeEvent:106:29",
-  "DialogueNodeEvent:106:30",
-  "DialogueNodeEvent:106:31",
-  "DialogueNodeEvent:106:32",
-  "DialogueNodeEvent:106:33",
-  "DialogueNodeEvent:106:34"
+const SUNLIGHT_KEYS = [   // no water: sunlight blocked, no evaporation
+  "DialogueNodeEvent:106:4", "DialogueNodeEvent:106:25", "DialogueNodeEvent:106:26",
+  "DialogueNodeEvent:106:27", "DialogueNodeEvent:106:28", "DialogueNodeEvent:106:29"
+];
+const GLASS_KEYS = [      // no water: glass too hot, no condensation
+  "DialogueNodeEvent:106:30", "DialogueNodeEvent:106:31", "DialogueNodeEvent:106:32"
+];
+const ROOF_KEYS = [       // small amount: roof angle didn't collect the water
+  "DialogueNodeEvent:106:33", "DialogueNodeEvent:106:34"
 ];
 
-// 1) Find latest window end / trigger
+const NEGATIVE_KEYS = [...SUNLIGHT_KEYS, ...GLASS_KEYS, ...ROOF_KEYS];
+
+// 1) Latest end anchor
 const latestEnd = db.logdata.findOne(
-  {
-    game: "mhs",
-    playerId: playerId,
-    eventKey: END_KEY
-  },
-  {
-    sort: { _id: -1 },
-    projection: { _id: 1 }
-  }
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
+  { sort: { _id: -1 }, projection: { _id: 1 } }
 );
 
-// Whether the trigger event exists in the gameplay logs
-const hasTrigger = latestEnd !== null;
+if (!latestEnd) {
+  ({ triggered: false, wrong_run_number: 0, failure_phrase: "" });
+} else {
+  // 2) Previous start anchor before the latest end
+  const prevStart = db.logdata.findOne(
+    { game: "mhs", playerId: playerId, eventKey: START_KEY, _id: { $lt: latestEnd._id } },
+    { sort: { _id: -1 }, projection: { _id: 1 } }
+  );
 
-// 2) Find latest window start before the trigger
-const latestStart = latestEnd
-  ? db.logdata.findOne(
-      {
-        game: "mhs",
-        playerId: playerId,
-        eventKey: START_KEY,
-        _id: { $lt: latestEnd._id }
-      },
-      {
-        sort: { _id: -1 },
-        projection: { _id: 1 }
-      }
-    )
-  : null;
+  const windowStartId = prevStart ? prevStart._id : ObjectId("000000000000000000000000");
+  const windowFilter = { _id: { $gt: windowStartId, $lte: latestEnd._id } };
 
-let isSuccessMissing = null;
-let negativeCount = null;
+  const countIn = (keys) => db.logdata.countDocuments({
+    game: "mhs", playerId: playerId, eventKey: { $in: keys }, ...windowFilter
+  });
 
-if (latestStart && latestEnd && latestEnd._id > latestStart._id) {
-  const windowStartId = latestStart._id;
-  const windowEndId = latestEnd._id;
+  const hasSuccess = db.logdata.findOne({
+    game: "mhs", playerId: playerId, eventKey: SUCCESS_KEY, ...windowFilter
+  }, { projection: { _id: 1 } }) !== null;
 
-  // 3) Check whether success node exists within the attempt window
-  const hasSuccessNode =
-    db.logdata.findOne(
-      {
-        game: "mhs",
-        playerId: playerId,
-        eventKey: SUCCESS_KEY,
-        _id: { $gt: windowStartId, $lte: windowEndId }
-      },
-      {
-        projection: { _id: 1 }
-      }
-    ) !== null;
+  const sunlightCount = countIn(SUNLIGHT_KEYS);
+  const glassCount = countIn(GLASS_KEYS);
+  const roofCount = countIn(ROOF_KEYS);
+  const negCount = sunlightCount + glassCount + roofCount;
 
-  isSuccessMissing = !hasSuccessNode;
+  const parts = [];
+  if (sunlightCount > 0) parts.push(
+    "the settings blocked sunlight, so the salt water could not heat up and evaporate"
+    + (sunlightCount > 1 ? " (" + sunlightCount + " runs)" : ""));
+  if (glassCount > 0) parts.push(
+    "the glass surface was too hot for condensation to form"
+    + (glassCount > 1 ? " (" + glassCount + " runs)" : ""));
+  if (roofCount > 0) parts.push(
+    "the roof angle let most of the condensed water escape, collecting only a small amount"
+    + (roofCount > 1 ? " (" + roofCount + " runs)" : ""));
 
-  // 4) Count negative feedback nodes within the attempt window
-  negativeCount = db.logdata.countDocuments({
-    game: "mhs",
-    playerId: playerId,
-    eventKey: { $in: NEGATIVE_KEYS },
-    _id: { $gt: windowStartId, $lte: windowEndId }
+  const failurePhrase = parts.length > 0
+    ? parts.join("; and ")
+    : "no successful desalinator run was recorded";
+
+  // Mirror the color rule exactly: green requires success AND zero failures
+  ({
+    triggered: !hasSuccess || negCount > 0,
+    wrong_run_number: negCount,
+    failure_phrase: failurePhrase
   });
 }
-
-({
-  hasTrigger: hasTrigger,
-  isSuccessMissing: isSuccessMissing,
-  negativeCount: negativeCount
-});
 ```
+
+### Teacher Guidance 
+Review the water cycle concepts covered in Unit 5 with the student. Discuss how the evidence gathered throughout the unit should inform the final solution plan.

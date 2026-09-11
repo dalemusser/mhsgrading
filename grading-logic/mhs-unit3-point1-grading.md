@@ -100,65 +100,41 @@ if (!latestTrigger) {
 
 ## Reason Codes
 
-### TOO_MANY_NEGATIVES
+### EXCESS_WRONG_RIVERS
 
-**Short Description:** Too many wrong river selections.
+**Instructor Message:** In Establishing a Foothold, while sending Tera's three supply crates back to her camp by floating them down a river, the student dropped {wrong_river_number} crates into the wrong river. This point earns green only when at most 1 crate goes into the wrong river. Wrong-river choices may indicate difficulty using the watershed map to determine flow direction - water flows from higher to lower elevation toward the ocean, so the correct river is the one that flows past Tera's camp.
 
-**Instructor Message:** The student selected {attempt_number} times of the wrong river during the activity of sending Tera’s crates back to her by identifying the direction of water flow based on a map of the watershed. The threshold for success is not to select the wrong river equal to 2 or more than 2 times.
+#### Correspoinding Script
 
-**Quantities:** `attempt_number` — count of wrong river selected.
-
-**Teacher Guidance:**
-Review watershed maps with students, and ask them to predict flow of water. Remind students that rivers empty into the ocean.
-
-### Reason Quantity Scripts
-
-#### Data Analytics Script (Python)
-```python
-# U3P1: Determine attempt_number for TOO_MANY_NEGATIVES
-# Count the number of wrong-reiver selection dialogues triggered
-
-count  = 3 - coll.count_documents({"playerId": pid, "eventKey": "DialogueNodeEvent:10:30"})
-
-count
-```
-
-#### Analytics-Matching Script (MongoDB/JS)
 ```js
-// U3P1: Determine attempt_number for TOO_MANY_NEGATIVES
-// Exact match to data analytics script
-
-const playerId = "<playerId>";
-
-const count =
-  3 - db.logdata.countDocuments({
-        playerId: playerId,
-        eventKey: "DialogueNodeEvent:10:30"
-      });
-
-count;
-```
-
-#### Production Script (Attempt-Based, MongoDB/JS)
-```js
-// U3P1: Determine attempt_number for TOO_MANY_NEGATIVES
-// With windowing for replay support
+// U3P1: EXCESS_WRONG_RIVERS - determine trigger and wrong_river_number
+// Triggers when the color rule goes yellow: fewer than 2 correct-river
+// confirmations (10:30) in the attempt window. wrong_river_number counts the
+// wrong-river feedback nodes directly (10:31 mid-task, 10:32 last crate).
+// Audit invariant: correct + wrong = 3 (three crates, each thrown once).
+// The wrong-river keys ALSO fire during the ungraded Morris-Galactic
+// bonus-crate segment after this window - never count them unwindowed.
 
 const playerId = "<playerId>";
 
 const TRIGGER_KEY = "DialogueNodeEvent:11:22";
-const TARGET_KEY = "DialogueNodeEvent:10:30";
+const CORRECT_KEY = "DialogueNodeEvent:10:30";  // "you picked the right river"
 
+const WRONG_RIVER_KEYS = [
+  "DialogueNodeEvent:10:31",  // wrong river, crate lost (crates 1-2)
+  "DialogueNodeEvent:10:32"   // wrong river, last crate
+];
+
+// 1) Latest trigger (end anchor)
 const latestTrigger = db.logdata.findOne(
   { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
-  { sort: { _id: -1 }}
+  { sort: { _id: -1 } }
 );
 
-let wrongCount = null;
-
 if (!latestTrigger) {
-  wrongCount = null;
+  ({ triggered: false, wrong_river_number: 0 });
 } else {
+  // 2) Previous trigger (attempt boundary)
   const prevTrigger = db.logdata.findOne(
     {
       game: "mhs",
@@ -166,23 +142,32 @@ if (!latestTrigger) {
       eventKey: TRIGGER_KEY,
       _id: { $lt: latestTrigger._id }
     },
-    { sort: { _id: -1 }}
+    { sort: { _id: -1 } }
   );
 
   const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
   const windowEndId = latestTrigger._id;
 
-  const cnt = db.logdata.countDocuments({
+  // 3) Correct-river confirmations (the color rule's target)
+  const correctCount = db.logdata.countDocuments({
     game: "mhs",
     playerId: playerId,
-    eventKey: TARGET_KEY,
+    eventKey: CORRECT_KEY,
     _id: { $gt: windowStartId, $lte: windowEndId }
   });
 
-  wrongCount = Math.max(0, 3 - cnt);
-}
+  // 4) Wrong-river selections, counted directly
+  const wrongCount = db.logdata.countDocuments({
+    game: "mhs",
+    playerId: playerId,
+    eventKey: { $in: WRONG_RIVER_KEYS },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
 
-wrongCount;
+  // 5) Mirror the color rule exactly (green requires correctCount > 1)
+  ({ triggered: correctCount <= 1, wrong_river_number: wrongCount });
+}
 ```
 
-
+### Teacher Guidance
+Review watershed maps with students, and ask them to predict flow of water. Remind students that rivers empty into the ocean.

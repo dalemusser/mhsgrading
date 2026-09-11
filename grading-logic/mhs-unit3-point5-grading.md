@@ -129,89 +129,43 @@ if (!latestTrigger) {
 
 ## Reason Codes
 
-### TOO_MANY_NEGATIVES
+### EXCESS_WRONG_PLANTINGS
 
-**Short Description:** Made too many wrong plantings.
+**Instructor Message:** In Plant the Superfruit Seeds, while helping Tera plant four superfruit seeds in garden plots along the river, the student planted {wrong_planting_number} seeds into wrong spots - locations that do not receive the super-nutrient. This point earns green only when at most 1 seed is planted in a wrong spot. Repeated wrong plantings may indicate difficulty predicting how a dissolved material spreads through a watershed: the nutrient travels downstream with the water flow, so only plots downstream of the temple source can receive it.
 
-**Instructor Message:** The student planted super-fruit seeds into {attempt_number} wrong spots during the activity of helping Tera plant seeds in ideal locations by predicting the spread of a dissolved nutrient through a watershed. The success threshold is not to plant the seeds into wrong spots more than once.
-
-**Determination:** Count yellow node occurrences; yellow if the wrong attempt > 1.
-
-**Quantities:** `attempts_number` — count of yellow node occurrences.
-
-**Teacher Guidance:** Review watershed maps with students, and ask them to predict flow of water. Remind students that dissolved material in water moves with the flow of water.
-
-### Reason Determination Scripts
-
-#### Data Analytics Script (Python)
-
-```python
-# U3P5: The performnace of how students plant superfruit seeds into spots along the river.
-# TOO_MANY_NEGATIVES: Check how many negative feedbacks the student received. 
-
-NEGATIVE_KEYS = [
-    "DialogueNodeEvent:73:164",
-    "DialogueNodeEvent:73:168",
-    "DialogueNodeEvent:73:171"
-]
-
-negative_count = coll.count_documents({
-    "playerId": pid,
-    "eventKey": {"$in": NEGATIVE_KEYS}
-})
-
-negative_count
-```
-
-#### Analytics-Matching Script (MongoDB/JS)
+#### Corresponding Script
 
 ```js
-// U3P5: The performnace of how students plant superfruit seeds into spots along the river.
-// TOO_MANY_NEGATIVES: Check how many negative feedbacks the student received. 
-
-const playerId = "<playerId>";
-
-const NEGATIVE_KEYS = [
-  "DialogueNodeEvent:73:164",
-  "DialogueNodeEvent:73:168",
-  "DialogueNodeEvent:73:171"
-];
-
-const negative_count = db.logdata.countDocuments({
-  playerId: playerId,
-  eventKey: { $in: NEGATIVE_KEYS }
-});
-
-negative_count;
-```
-
-#### Production Script (Attempt-Based, MongoDB/JS)
-
-```js
-// U3P5: The performnace of how students plant superfruit seeds into spots along the river.
-// TOO_MANY_NEGATIVES: Check how many negative feedbacks the student received. 
+// U3P5: EXCESS_WRONG_PLANTINGS — determine trigger and wrong_planting_number
+// Triggers when the PRODUCTION color formula goes yellow:
+// sum_score = posCount*1.0 - negCount*0.5 < 2.5 (i.e., 2+ wrong plantings).
+// Note: the analytics script and rule table currently say >= 3 (zero-wrong) —
+// flagged for reconciliation; this script mirrors the production dashboard.
+// wrong_planting_number counts wrong-spot feedback directly (164 first wrong,
+// 168 per intermediate wrong — repeats, 171 fourth wrong / activity ends).
+// Invariant: posCount + negCount = 4 seeds when the segment completed.
 
 const playerId = "<playerId>";
 
 const TRIGGER_KEY = "DialogueNodeEvent:10:194";
+const POS_KEY = "DialogueNodeEvent:73:163";
 
-const NEGATIVE_KEYS = [
-  "DialogueNodeEvent:73:164",
-  "DialogueNodeEvent:73:168",
-  "DialogueNodeEvent:73:171"
+const NEG_KEYS = [
+  "DialogueNodeEvent:73:164",  // 1st wrong spot
+  "DialogueNodeEvent:73:168",  // intermediate wrong spot (repeats)
+  "DialogueNodeEvent:73:171"   // 4th wrong spot, activity terminates
 ];
 
 // 1) Latest trigger (end anchor)
 const latestTrigger = db.logdata.findOne(
   { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
-  { sort: { _id: -1 }}
+  { sort: { _id: -1 } }
 );
 
-let negative_count = 0;
-
 if (!latestTrigger) {
-  negative_count = 0;
+  ({ triggered: false, wrong_planting_number: 0 });
 } else {
+  // 2) Previous trigger (attempt boundary)
   const prevTrigger = db.logdata.findOne(
     {
       game: "mhs",
@@ -219,19 +173,29 @@ if (!latestTrigger) {
       eventKey: TRIGGER_KEY,
       _id: { $lt: latestTrigger._id }
     },
-    { sort: { _id: -1 }}
+    { sort: { _id: -1 } }
   );
 
   const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
   const windowEndId = latestTrigger._id;
 
-  negative_count = db.logdata.countDocuments({
-    game: "mhs",
-    playerId: playerId,
-    eventKey: { $in: NEGATIVE_KEYS },
+  const posCount = db.logdata.countDocuments({
+    game: "mhs", playerId: playerId,
+    eventKey: POS_KEY,
     _id: { $gt: windowStartId, $lte: windowEndId }
   });
-}
 
-negative_count;
+  const negCount = db.logdata.countDocuments({
+    game: "mhs", playerId: playerId,
+    eventKey: { $in: NEG_KEYS },
+    _id: { $gt: windowStartId, $lte: windowEndId }
+  });
+
+  const sumScore = (posCount * 1.0) - (negCount * 0.5);
+
+  ({ triggered: sumScore < 2.5, wrong_planting_number: negCount });
+}
 ```
+
+### Teacher Guidance
+Review watershed maps with students, and ask them to predict flow of water. Remind students that dissolved material in water moves with the flow of water.

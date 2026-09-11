@@ -150,122 +150,74 @@ if (!latestTrigger) {
 
 If the color truns out to be yellow then depending on which condition(s) described below was reached, we decided which reaon codes to show on the pup-up message.
 
-### NO_TRIGGER
-
-**Short Description:** Student has not yet completed the trigger event for this activity.
-
-**Instructor Message:** The student has not yet reached the point in the game where this progress point is evaluated.
-
-**Determination:** The trigger event `questActiveEvent:50` has not been logged.
-
 ### SCORE_BELOW_THRESHOLD
 
-**Quantities:** `score`, `floor3_attempts`, `floor4_attempts`
+**Instructor Message:** In the Alien Well (floors 3 and 4), the student changed the soil-type canisters {floor3_attempts} times on the third-floor machine and {floor4_attempts} times on the fourth-floor machine. This point earns green only when the fourth-floor machine is set correctly on the first try, or on the second try with the third floor solved in one. Many canister changes may indicate the student was cycling through soil types rather than predicting which soil matches the floor's water-flow requirement - water passes fastest through gravel, more slowly through sand, slowest through clay, and not at all through bedrock.
 
-**Determination:** The combined score from floor 3 and floor 4 soil machine interactions is 1 or less.
-
-#### TOO_MANY_ATTEMPTS_3
-
-**Short Description:** The student interacted with the soil-type machines within the dungeon on the third floor too many times.
-
-**Instructor Message:** The optimal interaction number is only one interaction. So, if the student interacted only one time for the machine the score will gain 1; If the student interacted with the machine more than once, then the score will not gain. Since the student interacted with the soil-type machines for {attempt_number}, which is more than the optimal attempt, they cannot gain the full score for this floor.
-
-**Determination:** Wether the machine interaction time on the third floor, `floor3_attempts`, is more than once.
-
-**Teacher Guidance:** Remind students that water moves through different soils at different rates. Water will move fastest through sand, and slowest through clay. Water moves through sand at a slower rate than gravel and a faster rate than clay.
-
-#### TOO_MANY_ATTEMPTS_4
-
-**Short Description:** The student interacted with the soil-type machines within the dungeon on the fourth floor too many times.
-
-**Instructor Message:** The optimal interaction number is only one interaction. So, if the student interacted only one time for the machine the score will further gain 2; If the student interacted with the machine twice, then the score will further gain 1; otherwise the score for this floor is 0. Since the student interacted with the soil-type machines for {attempt_number}, which is more than the optimal attempt, they cannot gain the full score for this floor.
-
-**Determination:** Wether the machine interaction time on the fourth floor, `floor4_attempts`, is more than once.
-
-**Teacher Guidance:** Remind students that water moves through different soils at different rates. Water will move fastest through sand, and slowest through clay. Water moves through sand at a slower rate than gravel and a faster rate than clay.
-
-### Analytics-Matching Script (MongoDB/JS)
+#### Corresponding Script
 
 ```js
+// U4P3: SCORE_BELOW_THRESHOLD — determine trigger and per-floor counts
+// Window mirrors the production color script: trigger-to-trigger on
+// questActiveEvent:50 (previous occurrence exclusive, latest inclusive).
+// Score: floor3==1 -> +1; floor4==1 -> +2, floor4==2 -> +1; yellow when <= 1.
+// Counts are soilMachine ChangeCanister interactions on machine "1"
+// (data.floor/machine are strings; floor 5 has a machine "2", excluded).
+
 const playerId = "<playerId>";
 
-const START_KEY = "questActiveEvent:48";
-const END_KEY = "questActiveEvent:50";
+const TRIGGER_KEY = "questActiveEvent:50";
 
-// 1) Find latest end/trigger event
-const latestEnd = db.logdata.findOne(
-  {
-    game: "mhs",
-    playerId: playerId,
-    eventKey: END_KEY
-  },
-  {
-    sort: { _id: -1 },
-    projection: { _id: 1 }
-  }
+// 1) Latest trigger (end anchor)
+const latestTrigger = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+  { sort: { _id: -1 }, projection: { _id: 1 } }
 );
 
-// 2) Find the previous start event before the latest end
-const latestStart = latestEnd
-  ? db.logdata.findOne(
-      {
-        game: "mhs",
-        playerId: playerId,
-        eventKey: START_KEY,
-        _id: { $lt: latestEnd._id }
-      },
-      {
-        sort: { _id: -1 },
-        projection: { _id: 1 }
-      }
-    )
-  : null;
+if (!latestTrigger) {
+  ({ triggered: false, floor3_attempts: 0, floor4_attempts: 0 });
+} else {
+  // 2) Previous trigger (attempt boundary)
+  const prevTrigger = db.logdata.findOne(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventKey: TRIGGER_KEY,
+      _id: { $lt: latestTrigger._id }
+    },
+    { sort: { _id: -1 }, projection: { _id: 1 } }
+  );
 
-let score = 0;
-let floor3_attempts = null;
-let floor4_attempts = null;
+  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestTrigger._id;
 
-if (latestStart && latestEnd && latestEnd._id > latestStart._id) {
-  const windowStartId = latestStart._id;
-  const windowEndId = latestEnd._id;
-
-  // 3) Count floor 3 soil machine interactions within latest attempt window
-  floor3_attempts = db.logdata.countDocuments({
-    game: "mhs",
-    playerId: playerId,
+  // 3) Per-floor interaction counts inside the window
+  const floor3 = db.logdata.countDocuments({
+    game: "mhs", playerId: playerId,
     eventType: "soilMachine",
     "data.machine": "1",
     "data.floor": "3",
     _id: { $gt: windowStartId, $lte: windowEndId }
   });
 
-  // 4) Count floor 4 soil machine interactions within latest attempt window
-  floor4_attempts = db.logdata.countDocuments({
-    game: "mhs",
-    playerId: playerId,
+  const floor4 = db.logdata.countDocuments({
+    game: "mhs", playerId: playerId,
     eventType: "soilMachine",
     "data.machine": "1",
     "data.floor": "4",
     _id: { $gt: windowStartId, $lte: windowEndId }
   });
 
-  // 5) Score calculation
-  if (floor3_attempts === 1) {
-    score += 1;
-  }
+  // 4) Mirror the color formula exactly
+  let score = 0;
+  if (floor3 === 1) score += 1;
+  if (floor4 === 1) score += 2;
+  else if (floor4 === 2) score += 1;
 
-  if (floor4_attempts === 1) {
-    score += 2;
-  } else if (floor4_attempts === 2) {
-    score += 1;
-  }
+  ({ triggered: score <= 1, floor3_attempts: floor3, floor4_attempts: floor4 });
 }
-
-({
-  score: score,
-  floor3_attempts: floor3_attempts,
-  floor4_attempts: floor4_attempts
-});
 ```
 
+### Teacher Guidance 
+Remind students that water moves through different soils at different rates. Water will move fastest through sand, and slowest through clay. Water moves through sand at a slower rate than gravel and a faster rate than clay.
 

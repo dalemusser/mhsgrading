@@ -276,126 +276,92 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
 
 ## Reason Codes
 
-### NO_TRIGGER
+### WRONG_SOIL_SELECTED
 
-**Short Description:** Student has not yet completed the trigger event for this activity.
+**Instructor Message:** In Desert Delicacies, the student placed recording cameras on the soil they predicted would grow each seedling best, but chose a soil that does not match the seedling's water needs in {wrong_box_summary}. This point earns green only when at least 2 of the 3 garden boxes have the correct soil. Wrong choices may indicate difficulty connecting soil particle size to water retention — coarse soils like gravel let water drain past the roots, while fine-particle soils like clay trap too much of it, so each seedling needs the soil whose drainage matches its water requirement.
 
-**Instructor Message:** The student has not yet reached the point in the game where this progress point is evaluated.
-
-**Determination:** The trigger event `questFinishEvent:56` has not been logged.
-
-### WRONG_CHOISE_SELECTED
-
-**Short Description:** The student chose the wrong soil type for the garden box more than one time.
-
-**Instructor Message:** There are three garden boxes. Each box has its unique id and correct soil type answer. The student chose the wrong soil type for boxes of {wrong_box_ids}. For {wrong_box_ids}, the correct answer should be {correct_answer_for_box_ids}, instead the student chose the answer {wrong_answer_for_box_ids}.
-
-**Quantities:** `wrongTime`, `wrong_box_id_1`, `wrong_box_id_2`
-
-**Determination:** The count of garden boxes with the correct latest soil placement is less than 2. Expected placements: Box 0 = Gravel, Box 1 = Sand, Box 2 = Clay. The dialogue-feedback fallback (count of `DialogueNodeEvent:92:61` in the latest review round) also stayed below 2.
-
-**Teacher Guidance:** Remind students that water moves through different soils at different rates. Water will move fastest through sand, and slowest through clay. Water moves through sand at a slower rate than gravel and a faster rate than clay.
-
-### Analytics-Matching Script (MongoDB/JS)
+#### Corresponding Script
 ```js
-// Unit 4, Point 6 — Calculate wrongTime and wrong box details
-// Window start: questActiveEvent:41
-// Window end: questFinishEvent:56
+// U4P6: WRONG_SOIL_SELECTED — determine trigger and wrong-box summary
+// Mirrors the production color rule verbatim: per-box latest cameraPlaced
+// (Box 0=Gravel, 1=Sand, 2=Clay) with the dialogue-feedback fallback
+// (92:61 count in the latest review round, anchored on 92:33), final score =
+// max of both, yellow when < 2. Note: the review can also start at 92:36
+// (second-round "see the results") — flagged as a color-script improvement;
+// this script stays mirror-exact until that is applied to the color scripts.
 
 const playerId = "<playerId>";
 
 const WINDOW_START_KEY = "questActiveEvent:41";
 const WINDOW_END_KEY = "questFinishEvent:56";
 
-const EXPECTED_SOIL_BY_BOX = {
-  "0": "Gravel",
-  "1": "Sand",
-  "2": "Clay"
-};
+const EXPECTED_SOIL_BY_BOX = { "0": "Gravel", "1": "Sand", "2": "Clay" };
+const BOX_LABELS = { "0": "the first box", "1": "the second box", "2": "the third box" };
 
-// 1) Find latest window start
 const latestStart = db.logdata.findOne(
-  {
-    game: "mhs",
-    playerId: playerId,
-    eventKey: WINDOW_START_KEY
-  },
-  {
-    sort: { _id: -1 },
-    projection: { _id: 1 }
-  }
+  { game: "mhs", playerId: playerId, eventKey: WINDOW_START_KEY },
+  { sort: { _id: -1 }, projection: { _id: 1 } }
 );
-
-// 2) Find latest window end / trigger
 const latestEnd = db.logdata.findOne(
-  {
-    game: "mhs",
-    playerId: playerId,
-    eventKey: WINDOW_END_KEY
-  },
-  {
-    sort: { _id: -1 },
-    projection: { _id: 1 }
-  }
+  { game: "mhs", playerId: playerId, eventKey: WINDOW_END_KEY },
+  { sort: { _id: -1 }, projection: { _id: 1 } }
 );
 
-let wrongTime = null;
-let wrong_box_ids = [];
-let correct_answer_for_box_ids = {};
-let wrong_answer_for_box_ids = {};
-let latest_answer_for_box_ids = {};
+if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
+  ({ triggered: false, wrong_box_number: 0, wrong_box_summary: "" });
+} else {
+  const windowFilter = { _id: { $gt: latestStart._id, $lte: latestEnd._id } };
 
-if (latestStart && latestEnd && latestEnd._id > latestStart._id) {
-  const windowStartId = latestStart._id;
-  const windowEndId = latestEnd._id;
+  let boxScore = 0;
+  const wrongParts = [];
 
-  Object.keys(EXPECTED_SOIL_BY_BOX).forEach(function(boxId) {
-    const expectedSoil = EXPECTED_SOIL_BY_BOX[boxId];
-
-    // 3) Find latest placement for this box within the attempt window
-    const latestBoxPlacement = db.logdata.findOne(
+  Object.keys(EXPECTED_SOIL_BY_BOX).forEach(function (boxId) {
+    const expected = EXPECTED_SOIL_BY_BOX[boxId];
+    const latestPlacement = db.logdata.findOne(
       {
-        game: "mhs",
-        playerId: playerId,
+        game: "mhs", playerId: playerId,
         eventType: "TerasGardenBox",
         "data.actionType": "cameraPlaced",
         "data.boxId": boxId,
-        _id: { $gt: windowStartId, $lte: windowEndId }
+        ...windowFilter
       },
-      {
-        sort: { _id: -1 },
-        projection: {
-          _id: 1,
-          "data.boxId": 1,
-          "data.soilType": 1
-        }
-      }
+      { sort: { _id: -1 }, projection: { "data.soilType": 1 } }
     );
 
-    const actualSoil =
-      latestBoxPlacement &&
-      latestBoxPlacement.data &&
-      latestBoxPlacement.data.soilType
-        ? latestBoxPlacement.data.soilType
-        : null;
+    const actual = latestPlacement && latestPlacement.data
+      ? latestPlacement.data.soilType : null;
 
-    latest_answer_for_box_ids[boxId] = actualSoil;
-
-    // 4) If latest answer is missing or incorrect, mark this box as wrong
-    if (actualSoil !== expectedSoil) {
-      wrong_box_ids.push(boxId);
-      correct_answer_for_box_ids[boxId] = expectedSoil;
-      wrong_answer_for_box_ids[boxId] = actualSoil;
+    if (actual === expected) {
+      boxScore += 1;
+    } else if (actual) {
+      wrongParts.push(BOX_LABELS[boxId] + " (chose " + actual + ", needs " + expected + ")");
+    } else {
+      wrongParts.push(BOX_LABELS[boxId] + " (no camera placement recorded, needs " + expected + ")");
     }
   });
 
-  wrongTime = wrong_box_ids.length;
-}
+  // Dialogue-feedback fallback, mirror of the color script
+  const latestReview = db.logdata.findOne(
+    { game: "mhs", playerId: playerId, eventKey: "DialogueNodeEvent:92:33", ...windowFilter },
+    { sort: { _id: -1 }, projection: { _id: 1 } }
+  );
+  const feedbackStartId = latestReview ? latestReview._id : latestStart._id;
 
-({
-  wrongTime: wrongTime,
-  wrong_box_ids: wrong_box_ids,
-  correct_answer_for_box_ids: correct_answer_for_box_ids,
-  wrong_answer_for_box_ids: wrong_answer_for_box_ids
-});
+  const dialogueScore = Math.min(3, db.logdata.countDocuments({
+    game: "mhs", playerId: playerId,
+    eventKey: "DialogueNodeEvent:92:61",
+    _id: { $gt: feedbackStartId, $lte: latestEnd._id }
+  }));
+
+  const finalScore = Math.max(boxScore, dialogueScore);
+
+  ({
+    triggered: finalScore < 2,
+    wrong_box_number: wrongParts.length,
+    wrong_box_summary: wrongParts.join(" and ")
+  });
+}
 ```
+
+### Teacher Guidance
+Remind students that water moves through different soils at different rates. Water will move fastest through sand, and slowest through clay. Water moves through sand at a slower rate than gravel and a faster rate than clay.
