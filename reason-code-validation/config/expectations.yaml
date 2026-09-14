@@ -1,0 +1,289 @@
+# Fixture manifest for the reason-code validation suite.
+#
+# Each fixture pairs one gameplay-log dump with, per progress point, the reason
+# code(s) the CURRENT Corresponding Scripts are expected to trigger and the
+# message variables they are expected to return. `run_all.py` (and each
+# `rc_uXpY.py` run standalone) executes the scripts against the fixture log
+# and compares against `expected`.
+#
+# Per point:
+#   codes:      list of expected TRIGGERED codes ([] = no pop-up: green cell,
+#               or a not-reached point with no attempt window).
+#   variables:  optional, {CODE: {variable: value}} — only listed variables
+#               are compared; values must match exactly (numbers or strings).
+#
+# All 26 points must be present (the runner exits listing any missing one).
+# Log paths are relative to the repository root — the same dumps the
+# rubric-validation fixtures use; nothing is copied.
+#
+# Adding a fixture for a new build:
+#   1. Run `python run_all.py --log <dump>` (ad-hoc): the structural checks
+#      (pop-up <-> cell consistency, message placeholders) already pass/fail.
+#   2. Establish the expected codes + variables INDEPENDENTLY — from the
+#      tester's declared intent for the playthrough and/or raw event-key
+#      counts in the window — never by copying the ad-hoc output back in.
+#   3. Add an entry mirroring the ones below and record the source in
+#      `provenance`.
+
+default_fixture: "09-03-26-3"
+
+fixtures:
+  "09-03-26-3":
+    log: playthrough-logs-and-results/09-03-26-3/wenyi090326-3.stratalog.logdata.json
+    description: >
+      Full deliberately-imperfect playthrough of build 20260902-12353 (11,537
+      records; 20 yellow points) — the live-yellow base used to verify the
+      2026-09 reason-code refinement. First ~10 minutes are an abandoned
+      Unit-1 stub on old build 20260721-11840 (outside every graded window).
+    provenance: >
+      Expected codes follow the fixture colors in rubric-validation
+      (config/fixtures.yaml, audit + tester-confirmed): every yellow cell
+      triggers exactly one code, every green cell none. Variable values were
+      cross-checked 2026-09-13 against (a) the older, independently written
+      diagnose() quantities in rubric-validation/outputs/09-03-26-3/results.md
+      (U1P3 3 attempts, U2P2 19 reminders, U2P5 10 wrong, U2P6 waterfall
+      height, U2P7 8 wrong -> 9 submissions, U3P1 3 wrong rivers, U3P2
+      c27=13 / c29+c230=22, U3P3 color sum 6 incl. success node 84:36 -> 5
+      honest wrongs + bonus opened, U3P5 4 wrong, U4P1 no correct choice +
+      136.13 s, U4P3 7/6, U4P4 16 machine changes + 6 color-negatives + 107:4
+      -> 7 wrong depths, U4P5 14 wrong + success -> 15, U4P6 box0 Clay /
+      box1 Gravel, U5P2 8/10, U5P3 11 flagged), (b) the 2026-09 refinement
+      log walkthroughs (U2P4 accepted assist after 5 wrongs, U4P2 forced
+      assist 102:23 after 4 wrongs, U5P1 accepted assist 100:40/41 after
+      4 wrongs incl. the 100:39 offer, U5P4 single sunlight-blocked run), and
+      (c) raw unwindowed event-key counts in the dump (single attempt per
+      point on this log, so they equal the windowed counts).
+    expected:
+      U1P1: {codes: []}
+      U1P2: {codes: []}
+      U1P3:
+        codes: [WRONG_ARG_SELECTED]
+        variables:
+          WRONG_ARG_SELECTED: {attempt_number: 3}
+      U1P4: {codes: []}
+      U2P1: {codes: []}
+      U2P2:
+        codes: [EXCESS_NAV_REMINDERS]
+        variables:
+          EXCESS_NAV_REMINDERS: {triggering_number: 19}
+      U2P3: {codes: []}
+      U2P4:
+        codes: [SOLVED_WITH_ASSIST]
+        variables:
+          SOLVED_WITH_ASSIST: {attempt_number: 5}
+      U2P5:
+        codes: [EXCESS_MISCLASSIFICATIONS]
+        variables:
+          EXCESS_MISCLASSIFICATIONS:
+            {wrong_number: 10, claim_wrong: 1, reasoning_wrong: 3, evidence_wrong: 6}
+      U2P6:
+        codes: [WRONG_EVIDENCE_SELECTED]
+        variables:
+          WRONG_EVIDENCE_SELECTED: {wrong_choice: "waterfall height"}
+      U2P7:
+        codes: [EXCESS_ATTEMPTS]
+        variables:
+          EXCESS_ATTEMPTS:
+            {attempt_number: 9, wrong_claim_number: 2, irrelevant_evidence_number: 6}
+      U3P1:
+        codes: [EXCESS_WRONG_RIVERS]
+        variables:
+          EXCESS_WRONG_RIVERS: {wrong_river_number: 3}
+      U3P2:
+        codes: [EXCESS_SENSOR_REMINDERS]
+        variables:
+          EXCESS_SENSOR_REMINDERS:
+            {downstream_reminder_number: 13, redundant_reminder_number: 22}
+      U3P3:
+        codes: [EXCESS_ATTEMPTS]
+        variables:
+          EXCESS_ATTEMPTS:
+            {wrong_argument_number: 5, claim_wrong_number: 2, reasoning_wrong_number: 3,
+             evidence_wrong_number: 0, backing_info_phrase: "opened"}
+      U3P4: {codes: []}
+      U3P5:
+        codes: [EXCESS_WRONG_PLANTINGS]
+        variables:
+          EXCESS_WRONG_PLANTINGS: {wrong_planting_number: 4}
+      U4P1:
+        codes: [SCORE_BELOW_THRESHOLD]
+        variables:
+          SCORE_BELOW_THRESHOLD:
+            choice_phrase: "chose 'it's any water found underground' instead of the correct answer on"
+            duration_phrase: "took 136 seconds to solve"
+      U4P2:
+        codes: [SOLVED_WITH_ASSIST]
+        variables:
+          SOLVED_WITH_ASSIST: {attempt_number: 4}
+      U4P3:
+        codes: [SCORE_BELOW_THRESHOLD]
+        variables:
+          SCORE_BELOW_THRESHOLD: {floor3_attempts: 7, floor4_attempts: 6}
+      U4P4:
+        codes: [SCORE_BELOW_THRESHOLD]
+        variables:
+          SCORE_BELOW_THRESHOLD: {machine_attempt_number: 16, wrong_choice_number: 7}
+      U4P5:
+        codes: [EXCESS_ATTEMPTS]
+        variables:
+          EXCESS_ATTEMPTS:
+            {attempt_number: 15, claim_wrong_number: 8, reasoning_wrong_number: 3,
+             evidence_wrong_number: 3}
+      U4P6:
+        codes: [WRONG_SOIL_SELECTED]
+        variables:
+          WRONG_SOIL_SELECTED:
+            wrong_box_number: 2
+            wrong_box_summary: "the first box (chose Clay, needs Gravel) and the second box (chose Gravel, needs Sand)"
+      U5P1:
+        codes: [SOLVED_WITH_ASSIST]
+        variables:
+          SOLVED_WITH_ASSIST: {attempt_number: 4}
+      U5P2:
+        codes: [SCORE_BELOW_THRESHOLD]
+        variables:
+          SCORE_BELOW_THRESHOLD: {floor3_attempts: 8, floor4_attempts: 10}
+      U5P3:
+        codes: [EXCESS_ATTEMPTS]
+        variables:
+          EXCESS_ATTEMPTS:
+            {wrong_argument_number: 11, claim_wrong_number: 7, reasoning_wrong_number: 2,
+             evidence_wrong_number: 2}
+      U5P4:
+        codes: [WRONG_SETTINGS_SELECTED]
+        variables:
+          WRONG_SETTINGS_SELECTED:
+            wrong_run_number: 1
+            failure_phrase: "the settings blocked sunlight, so the salt water could not heat up and evaporate"
+
+  "09-03-26-2":
+    log: playthrough-logs-and-results/09-03-26-2/wenyi090326-2.stratalog.logdata.json
+    description: >
+      Clean full playthrough of build 20260902-12353 (5,837 records, all 26
+      points green).
+    provenance: >
+      Tester-declared clean run (all green, confirmed by the 09-03-26-2
+      grading-readiness audit): no reason code may trigger anywhere. This is
+      the negative control for the suite — a code that fires here is a script
+      (or transcription) defect.
+    expected:
+      U1P1: {codes: []}
+      U1P2: {codes: []}
+      U1P3: {codes: []}
+      U1P4: {codes: []}
+      U2P1: {codes: []}
+      U2P2: {codes: []}
+      U2P3: {codes: []}
+      U2P4: {codes: []}
+      U2P5: {codes: []}
+      U2P6: {codes: []}
+      U2P7: {codes: []}
+      U3P1: {codes: []}
+      U3P2: {codes: []}
+      U3P3: {codes: []}
+      U3P4: {codes: []}
+      U3P5: {codes: []}
+      U4P1: {codes: []}
+      U4P2: {codes: []}
+      U4P3: {codes: []}
+      U4P4: {codes: []}
+      U4P5: {codes: []}
+      U4P6: {codes: []}
+      U5P1: {codes: []}
+      U5P2: {codes: []}
+      U5P3: {codes: []}
+      U5P4: {codes: []}
+
+  "09-03-26-4":
+    log: playthrough-logs-and-results/09-03-26-4/wenyi090326-4.stratalog.logdata.json
+    description: >
+      Playthrough of build 20260902-12353 (8,817 records, units 1-4 complete;
+      Unit 5 truncated ~3.5 minutes in by an internet outage).
+    provenance: >
+      U2P1 / U2P2 / U2P3 yellows are tester-verified play outcomes (U2P3 is
+      the exactly-6-reminders case that motivated the 2026-09-06 "<6" rule;
+      all 6 fired during the Tera search, none during Aryn's). U5P1-U5P4 are
+      the not-reached case: the production color defaults to yellow but no
+      attempt window exists, so NO code may trigger (the dashboard shows the
+      pencil/white state, not a pop-up). U2P2 (11) and U2P3 (6) cross-checked
+      against rubric-validation/outputs/09-03-26-4/results.md diagnostics;
+      U2P1 (5 wrong arrangements, then the forced assist 68:28 — with the
+      success node 68:29 also firing on that assisted path, the known
+      anomaly) from raw conv-68 node counts in the dump.
+    expected:
+      U1P1: {codes: []}
+      U1P2: {codes: []}
+      U1P3: {codes: []}
+      U1P4: {codes: []}
+      U2P1:
+        codes: [SOLVED_WITH_ASSIST]
+        variables:
+          SOLVED_WITH_ASSIST: {attempt_number: 5}
+      U2P2:
+        codes: [EXCESS_NAV_REMINDERS]
+        variables:
+          EXCESS_NAV_REMINDERS: {triggering_number: 11}
+      U2P3:
+        codes: [EXCESS_NAV_REMINDERS]
+        variables:
+          EXCESS_NAV_REMINDERS: {triggering_number: 6, tera_count: 6, aryn_count: 0}
+      U2P4: {codes: []}
+      U2P5: {codes: []}
+      U2P6: {codes: []}
+      U2P7: {codes: []}
+      U3P1: {codes: []}
+      U3P2: {codes: []}
+      U3P3: {codes: []}
+      U3P4: {codes: []}
+      U3P5: {codes: []}
+      U4P1: {codes: []}
+      U4P2: {codes: []}
+      U4P3: {codes: []}
+      U4P4: {codes: []}
+      U4P5: {codes: []}
+      U4P6: {codes: []}
+      U5P1: {codes: []}   # no window (truncated) -> no pop-up
+      U5P2: {codes: []}   # no window (truncated) -> no pop-up
+      U5P3: {codes: []}   # no window (truncated) -> no pop-up
+      U5P4: {codes: []}   # no window (truncated) -> no pop-up
+
+  "08-31-26":
+    log: playthrough-logs-and-results/08-31-26/wenyi083126-1.stratalog.logdata.json
+    description: >
+      Full playthrough of the 08-31-26 weekly build (5,977 records; U1P3
+      yellow, all other points green).
+    provenance: >
+      Colors from the 08-31-26-run2 grading-readiness audit. U1P3's single
+      yellow: one wrong argument submission before the correct one
+      (attempt_number 2, cross-checked against the rubric-validation
+      diagnostics for this fixture).
+    expected:
+      U1P1: {codes: []}
+      U1P2: {codes: []}
+      U1P3:
+        codes: [WRONG_ARG_SELECTED]
+        variables:
+          WRONG_ARG_SELECTED: {attempt_number: 2}
+      U1P4: {codes: []}
+      U2P1: {codes: []}
+      U2P2: {codes: []}
+      U2P3: {codes: []}
+      U2P4: {codes: []}
+      U2P5: {codes: []}
+      U2P6: {codes: []}
+      U2P7: {codes: []}
+      U3P1: {codes: []}
+      U3P2: {codes: []}
+      U3P3: {codes: []}
+      U3P4: {codes: []}
+      U3P5: {codes: []}
+      U4P1: {codes: []}
+      U4P2: {codes: []}
+      U4P3: {codes: []}
+      U4P4: {codes: []}
+      U4P5: {codes: []}
+      U4P6: {codes: []}
+      U5P1: {codes: []}
+      U5P2: {codes: []}
+      U5P3: {codes: []}
+      U5P4: {codes: []}

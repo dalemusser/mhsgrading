@@ -46,3 +46,6 @@ grading-readiness-audit/config/audit-config.override.yaml
 
 # Ad-hoc rubric-validation runs (informational scratch results)
 rubric-validation/outputs/adhoc-*/
+
+# Ad-hoc reason-code-validation runs (informational scratch results)
+reason-code-validation/outputs/adhoc-*/
