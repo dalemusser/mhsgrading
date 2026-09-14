@@ -1,0 +1,8 @@
+# Curriculum goal
+At this progress point, players investigate the water factory after leaving the alien dungeon and then construct a scientific argument with Aryn to explain why the water in the factory has disappeared.
+
+Compared with earlier argumentation tasks, this activity provides a larger set of possible claims, reasoning statements, and evidence. Players must select the correct claim, choose reasoning that scientifically connects the observations to that claim, and identify multiple pieces of relevant evidence that together support the explanation.
+
+The correct argument is that the missing liquid water changed into water vapor through evaporation. The elevated temperature provides evidence of environmental conditions that could promote evaporation, while the increased humidity indicates that a greater amount of water vapor is present in the air. Together, these observations support the conclusion that the water did not simply vanish but underwent a phase change from liquid water to water vapor.
+
+The curriculum goal is to strengthen players’ ability to explain evaporation using observable environmental evidence and to construct a more complex scientific argument supported by multiple pieces of evidence. Players apply their understanding that increased temperature can promote the transition of liquid water into water vapor and that changes in atmospheric moisture can provide evidence that this phase change has occurred. The activity also reinforces the importance of selecting evidence that is relevant to a claim and using reasoning to explain how multiple observations collectively support a scientific conclusion.

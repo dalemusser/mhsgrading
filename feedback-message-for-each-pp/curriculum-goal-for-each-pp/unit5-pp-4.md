@@ -1,0 +1,10 @@
+# Curriculum goal
+At this progress point, players complete a culminating design task that requires them to apply their previously learned knowledge of evaporation and condensation to build a system that can generate and collect usable liquid water.
+
+Players make three design decisions: selecting the shape of the roof (V-shaped, flat, or ^-shaped), determining whether an additional roof should be included, and selecting whether the roof should be kept cold or hot. The correct configuration in the game is a ^-shaped roof, no additional roof, and a cold roof surface.
+
+To solve the task, players must reason about how each design feature affects the movement and phase change of water. Water first evaporates from the liquid state into water vapor. When the vapor encounters a sufficiently cool surface, it can condense back into liquid water. The sloped ^-shaped roof provides a surface on which condensed water can form and then move along the roof toward a collection location rather than remaining distributed across a flat surface.
+
+The curriculum goal is to strengthen players’ ability to apply evaporation and condensation concepts to an engineering-design problem. Players learn that successful water collection depends on coordinating multiple design features: creating conditions that allow water to evaporate, providing a cooler surface that promotes condensation, and using an appropriate structure to direct the condensed water toward a collection area. Rather than identifying individual water-cycle processes in isolation, players must integrate their understanding of phase change, temperature, and physical design to produce a functional water-collection system.
+
+Because the assessment emphasizes the player’s first submitted design, performance on this progress point reflects how successfully the player can independently transfer and apply previously learned water-cycle concepts to a new design problem.

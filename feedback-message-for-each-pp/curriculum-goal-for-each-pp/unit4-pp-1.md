@@ -1,0 +1,6 @@
+# Curriculum goal
+At this progress point, players arrive in a largely desert environment and learn from Anderson that a substantial amount of groundwater exists beneath the surface. Anderson introduces the concept of the water table and asks players to identify the dialogue response that correctly describes it.
+
+After this introduction, players solve a soil-key puzzle involving four visually distinct subsurface elements: clay, sand, gravel, and a water-table element that represents groundwater-saturated material. Players must choose the appropriate proportions or arrangement of these elements so that the groundwater level remains within a specified target range.
+
+The curriculum goal is to help players understand how groundwater is stored below the land surface and how the properties of different subsurface materials influence groundwater movement and retention. Players learn that clay, sand, and gravel differ in how easily water can pass through and be retained within them. They also learn that the water table represents the upper boundary of the saturated zone, where pore spaces in the subsurface are filled with water. By adjusting the different puzzle elements and observing the resulting groundwater level, players practice connecting subsurface composition with groundwater storage and water-table behavior.

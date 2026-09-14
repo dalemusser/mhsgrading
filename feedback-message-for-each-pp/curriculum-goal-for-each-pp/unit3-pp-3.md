@@ -1,0 +1,6 @@
+# Curriculum goal
+At this progress point, players use the evidence collected during the sensor investigation to construct a complete scientific argument identifying the likely source of the river pollution.
+
+Players select all three components of the argument from the available nodes: a claim, evidence, and reasoning. The claim identifies where the pollution source is located. The evidence comes from the pattern of sensor results observed during the investigation, particularly locations where an upstream sensor shows green while a downstream sensor on the same flow path shows red. The reasoning must explain how this change in sensor results supports the conclusion that the pollution source is located between those two sampling locations.
+
+The curriculum goal is to strengthen players’ ability to construct a coherent evidence-based scientific argument. In particular, the activity emphasizes selecting reasoning that logically connects observed evidence to a claim. Players learn that if pollution is not detected at an upstream location but is detected farther downstream, the pollutant must have entered the river somewhere between those locations, assuming the water flows from the upstream point toward the downstream point.

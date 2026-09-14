@@ -1,0 +1,6 @@
+# Curriculum goal
+At this progress point, players use Tara’s drone to deploy special water-quality sensors throughout the river network in order to trace the source of a dissolved pollutant. The sensors provide two possible results: red indicates that the pollutant is detected in the water at that location, while green indicates that the pollutant is not detected.
+
+Players strategically place sensors at different locations and river branches and use the pattern of red and green results to narrow down the possible pollution source. When a sensor on a branch shows green, players can infer that the pollutant is not entering the river from farther upstream along that branch, so additional testing there may not be necessary. When a sensor shows red, players continue testing farther upstream to determine where the contamination begins.
+
+The curriculum goal is to help players use evidence from multiple sampling locations to trace pollution through a branching river system. Players learn to reason about upstream and downstream relationships and progressively narrow the search area until they identify the transition between contaminated and uncontaminated water. Within the logic of the activity, the pollution source can be localized near the point where a downstream sensor detects pollution while an upstream sensor on the same flow path does not.

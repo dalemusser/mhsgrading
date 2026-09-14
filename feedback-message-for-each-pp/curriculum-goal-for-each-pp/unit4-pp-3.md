@@ -1,0 +1,6 @@
+# Curriculum goal
+After completing the previous soil-related puzzle, players unlock access to the basement of the alien ruins. On the first and second floors, they complete smaller practice puzzles that introduce the mechanics of manipulating soil materials and observing how those choices affect water movement.
+
+On the third floor, players apply this knowledge in a more complex task. They must select the appropriate soil material so that the water level and flow within the pipe system allow the key cube to travel successfully to the room containing the lock station. Choosing an inappropriate material can cause the water level or flow conditions to become too low or too high, preventing the cube from reaching its destination.
+
+The curriculum goal is to strengthen players’ ability to apply their understanding of how different subsurface materials influence water movement. Players learn that differences in permeability and water retention can affect the amount and rate of water moving through a system. By selecting a material that produces an appropriate water level and flow condition, players practice using soil-property knowledge to predict and control groundwater-related behavior in a practical problem-solving context.

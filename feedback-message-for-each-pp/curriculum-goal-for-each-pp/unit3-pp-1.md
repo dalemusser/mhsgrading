@@ -1,0 +1,6 @@
+# Curriculum goal
+At this progress point, players begin Unit 3 by talking with Tara and receiving information about the location of her camp and the supplies that need to be delivered. Players must locate three crates positioned in different areas of the environment and use their topographic-map knowledge to determine how to deliver each crate to Tara’s camp.
+
+Players identify Tara’s camp on the map, examine the surrounding river system, and determine which river is connected to the camp. They then place each crate into the river they believe will carry it toward Tara’s location. If a crate is placed into a river that does not flow toward or connect with Tara’s camp, the delivery will be unsuccessful.
+
+The curriculum goal is to strengthen players’ ability to apply topographic-map and watershed knowledge to a practical problem. In particular, players practice interpreting the spatial relationship between locations and river systems, identifying appropriate drainage pathways, and using the direction and connectivity of surface-water flow to predict where an object carried by a river will travel.

@@ -1,0 +1,10 @@
+# Curriculum goal
+At this progress point, players leave the alien ruins and travel to Anderson’s bunker to rescue her. After shutting off the fountain that had been pumping groundwater to the surface, players discover that the bunker continues to fill with water. This indicates that the fountain is not the only source of the flooding.
+
+To investigate the cause, players dive into the flooded bunker and collect pieces of evidence distributed throughout the environment. After gathering the available evidence, they use it to construct a complete scientific argument explaining why the bunker continues to flood even after the fountain has been turned off.
+
+Players must select an appropriate claim, reasoning, and multiple pieces of supporting evidence from the available argumentation nodes. Compared with earlier argumentation tasks, this activity increases the complexity of evidence use because the strongest argument requires players to integrate several observations rather than rely on a single piece of evidence.
+
+The relevant evidence indicates that the bunker is located within or below the groundwater-saturated zone represented by the water-table element, that relatively permeable sand is located above and around the bunker, and that the bunker’s ceiling is open or missing. Together, these conditions allow surrounding groundwater to continue entering the bunker even when the fountain is no longer pumping water.
+
+The curriculum goal is to strengthen players’ understanding of how groundwater location and subsurface permeability can contribute to flooding. Players learn that turning off a groundwater pump does not necessarily stop water from entering a structure when that structure intersects the saturated groundwater zone and is surrounded by materials through which water can readily move. The activity also strengthens players’ ability to construct a scientific explanation by combining multiple relevant pieces of evidence and using reasoning to connect those observations to a supported claim.

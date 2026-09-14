@@ -1,0 +1,8 @@
+# Curriculum goal
+At this progress point, players meet Tara after rescuing Anderson and learn that the team needs to grow crops to help address a food shortage. Before planting the seeds on a larger scale, Tara asks players to determine which soil type is most appropriate for each plant based on the amount of water that plant requires.
+
+Tara provides information about the water needs of different plants. Players must use their understanding of soil properties to predict which planting bed will provide the most suitable growing conditions. In particular, they consider how different soils vary in their ability to retain and drain water.
+
+Players then place a monitoring camera at the planting bed they believe is best suited for each type of seed. The camera allows the growth outcome of the selected plant-soil combination to be observed. At the end of the activity, Tara evaluates the growth of the three groups of plants and provides feedback based on the player’s selections. If all three plants are matched with appropriate soil conditions, the player receives fully positive feedback.
+
+The curriculum goal is to help players apply their understanding of soil properties to a biological and environmental problem. Players learn that different plants have different water requirements and that soil type influences how much water remains available to plant roots. Soils that retain more water may be more suitable for plants with greater water needs, while soils with greater drainage may be better suited for plants that require less retained moisture. By matching plant water requirements with soil characteristics and observing the resulting growth, players practice making and evaluating predictions about how soil conditions affect plant success.
