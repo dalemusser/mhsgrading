@@ -1759,14 +1759,14 @@
           "query": {
             "playerId": "6aa8589346b3c45b562092f8",
             "eventKey": {
-              "$in": "<33 keys>"
+              "$in": "<39 keys>"
             },
             "_id": {
               "$gt": "6aaae3ef485cab4c95457cec",
               "$lte": "6aaae5aa485cab4c95457f4e"
             }
           },
-          "matches": 4
+          "matches": 6
         }
       ],
       "attempt_window": {
@@ -1776,7 +1776,7 @@
         "records_in_window": 305
       },
       "diagnostics": {
-        "WRONG_ARG_SELECTED": "negativeCount=4 (>=4) — too many wrong arguments before submitting the correct one"
+        "WRONG_ARG_SELECTED": "negativeCount=6 (>=4) — too many wrong arguments before submitting the correct one"
       },
       "doc_window": null,
       "expected_color": null,

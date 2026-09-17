@@ -50,7 +50,7 @@
 | U4P6 | This is a score-based progress point. There are three garden boxes, e… | 4 event keys + 1 event type(s) | 4/5 observed | READY_FOR_GRADING_TEST | PASS (yellow) | — | None — supported and validated on this playthrough; keep monitoring weekly. |
 | U5P1 | This progress point is an attempt-based progress. If the player solve… | 7 event keys | 5/7 observed | READY_FOR_GRADING_TEST | EXECUTED_NO_INDEPENDENT_CHECK (yellow) | — | More playtesting: production executed cleanly, but this playthrough gave no independent w… |
 | U5P2 | This progress point is a score-based progress, at the beggining the s… | 2 event keys + 1 event type(s) | 3/3 observed | READY_FOR_GRADING_TEST | EXECUTED_NO_INDEPENDENT_CHECK (yellow) | — | More playtesting: production executed cleanly, but this playthrough gave no independent w… |
-| U5P3 | This progress point is an attempt-based, if the total number of follo… | 35 event keys | 3/35 observed | READY_FOR_GRADING_TEST | EXECUTED_NO_INDEPENDENT_CHECK (yellow) | — | More playtesting: production executed cleanly, but this playthrough gave no independent w… |
+| U5P3 | This progress point is attempt-based: it counts Dr. Toppo's wrong-ans… | 41 event keys | 5/41 observed | READY_FOR_GRADING_TEST | EXECUTED_NO_INDEPENDENT_CHECK (yellow) | — | More playtesting: production executed cleanly, but this playthrough gave no independent w… |
 | U5P4 | This progress point is a number-based progress. Firstly, it will chec… | 14 event keys | 3/14 observed | READY_FOR_GRADING_TEST | EXECUTED_NO_INDEPENDENT_CHECK (yellow) | — | More playtesting: production executed cleanly, but this playthrough gave no independent w… |
 
 ## Answers to the standing audit questions

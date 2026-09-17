@@ -133,3 +133,23 @@ markdowns after the executors were last synced in `4069a9e`. Verified:
    (U2P2, U2P6, U3P4, U4P4, U5P1–U5P4); their yellows here are all
    behaviourally explained by the diagnostics above, but a clean green
    replay of U3P4/U4P4/U5P1–U5P4 on this build is still the missing case.
+
+## Re-run 2026-09-17 (after the U5P3 key-list extension)
+
+The tester noticed that the U5P3 pop-up reported only claim feedback although
+reasoning and evidence feedback had been received. Review of conversation 108
+against the Unity dialogue export showed six wrong-answer feedback nodes
+missing from the 33-key list — the generic/specific pairs on the "one correct
+piece of evidence" branch (`108:63/64` reasoning 3, `108:65/66` reasoning 4)
+and the "two pieces of evidence other than C+D" branch (`108:68/69`). All six
+were added to the color scripts and the reason-code script, and the two
+transcriptions were re-synced. Re-running this audit into the same folders:
+
+- Pipeline outcome unchanged: 26/26 READY, 18 PASS / 0 MISMATCH / 8 no-check,
+  0 failures / 14 warnings, colors unchanged (3 green / 23 yellow).
+- U5P3 now audits 39 target keys; `108:64` and `108:65` are SUPPORTED_EXACTLY
+  (x1 each), the Stage-2 count is 6 (was 4), still yellow; dialogue
+  reconciliation 4/40 exact (was 2/34).
+- No other point changed. The reason-code expectation for this run moved to
+  6 flagged (4 claim, 1 reasoning, 1 evidence); no other fixture log fires any
+  of the six nodes.

@@ -134,7 +134,7 @@ The player completed floors 3 and 4 of the water-chamber puzzles, but with eight
 
 ## Unit 5, Progress Point 3: What Happened Here?
 
-The player completed the argument about Aryn's disappearing water, but four submissions were flagged (green allows fewer than four), so the point is yellow. The first four submissions, made in 50 seconds, all restated Aryn's claim while only the reasoning was changed; after switching claims the player refined the reasoning and added a second piece of evidence, and the argument was accepted on the seventh submission. Both backing-information panels were opened after the first flag. This may indicate difficulty recognising which claim was Aryn's and which was the natural explanation DANI proposed. Consider asking the student to state the two competing claims in their own words and to pick, from the collected observations, the two that show the water turned into vapor.
+The player completed the argument about Aryn's disappearing water, but six submissions were flagged (green allows fewer than four), so the point is yellow. The first four submissions, made in 50 seconds, all restated Aryn's claim while only the reasoning was changed; after switching claims, one submission was flagged for reasoning that did not connect the evidence and one for a missing second piece of evidence, and the argument was accepted on the seventh submission. Both backing-information panels were opened after the first flag. This may indicate difficulty recognising which claim was Aryn's and which was the natural explanation DANI proposed. Consider asking the student to state the two competing claims in their own words and to pick, from the collected observations, the two that show the water turned into vapor.
 
 ---
 

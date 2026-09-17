@@ -1341,12 +1341,12 @@
         "EXCESS_ATTEMPTS": {
           "triggered": true,
           "variables": {
-            "wrong_argument_number": 4,
+            "wrong_argument_number": 6,
             "claim_wrong_number": 4,
-            "reasoning_wrong_number": 0,
-            "evidence_wrong_number": 0
+            "reasoning_wrong_number": 1,
+            "evidence_wrong_number": 1
           },
-          "message": "In What Happened Here?, while building the argument about why the collected water disappeared, the student made 4 flagged submissions - 4 for restating Aryn's claim instead of arguing against it, 0 for reasoning problems, and 0 for evidence or completeness problems. This point earns green only when fewer than 4 submissions are flagged. Claim errors suggest the student did not connect the evidence to the natural explanation - the water evaporated, leaving the salt behind - while the reasoning feedback names specific misconceptions to review, such as the water being filtered or transformed into salt.",
+          "message": "In What Happened Here?, while building the argument about why the collected water disappeared, the student made 6 flagged submissions - 4 for restating Aryn's claim instead of arguing against it, 1 for reasoning problems, and 1 for evidence or completeness problems. This point earns green only when fewer than 4 submissions are flagged. Claim errors suggest the student did not connect the evidence to the natural explanation - the water evaporated, leaving the salt behind - while the reasoning feedback names specific misconceptions to review, such as the water being filtered or transformed into salt.",
           "extra_variables": []
         }
       },
@@ -1375,7 +1375,7 @@
         {
           "name": "expected-variables:EXCESS_ATTEMPTS",
           "ok": true,
-          "detail": "wrong_argument_number=4, claim_wrong_number=4, reasoning_wrong_number=0, evidence_wrong_number=0"
+          "detail": "wrong_argument_number=6, claim_wrong_number=4, reasoning_wrong_number=1, evidence_wrong_number=1"
         }
       ],
       "passed": true

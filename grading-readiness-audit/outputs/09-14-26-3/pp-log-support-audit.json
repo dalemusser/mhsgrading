@@ -5781,6 +5781,12 @@
           "DialogueNodeEvent:108:60",
           "DialogueNodeEvent:108:61",
           "DialogueNodeEvent:108:62",
+          "DialogueNodeEvent:108:63",
+          "DialogueNodeEvent:108:64",
+          "DialogueNodeEvent:108:65",
+          "DialogueNodeEvent:108:66",
+          "DialogueNodeEvent:108:68",
+          "DialogueNodeEvent:108:69",
           "DialogueNodeEvent:108:70",
           "DialogueNodeEvent:108:72",
           "DialogueNodeEvent:108:73",
@@ -6022,6 +6028,110 @@
         },
         {
           "dependency": "DialogueNodeEvent:108:62",
+          "dep_type": "eventKey",
+          "kind": "dialogue",
+          "role": "Target",
+          "expectation": "counted_evidence",
+          "status": "NOT_OBSERVED_IN_PLAYTHROUGH",
+          "observed_count": 0,
+          "first_ts": null,
+          "last_ts": null,
+          "examples": [],
+          "reconciliation": "EXPECTED_DIALOGUE_NOT_OBSERVED",
+          "notes": [
+            "counted evidence; zero occurrences is a valid grading input"
+          ]
+        },
+        {
+          "dependency": "DialogueNodeEvent:108:63",
+          "dep_type": "eventKey",
+          "kind": "dialogue",
+          "role": "Target",
+          "expectation": "counted_evidence",
+          "status": "NOT_OBSERVED_IN_PLAYTHROUGH",
+          "observed_count": 0,
+          "first_ts": null,
+          "last_ts": null,
+          "examples": [],
+          "reconciliation": "EXPECTED_DIALOGUE_NOT_OBSERVED",
+          "notes": [
+            "counted evidence; zero occurrences is a valid grading input"
+          ]
+        },
+        {
+          "dependency": "DialogueNodeEvent:108:64",
+          "dep_type": "eventKey",
+          "kind": "dialogue",
+          "role": "Target",
+          "expectation": "counted_evidence",
+          "status": "SUPPORTED_EXACTLY",
+          "observed_count": 1,
+          "first_ts": "2026-09-16T18:52:59.4950000Z",
+          "last_ts": "2026-09-16T18:52:59.4950000Z",
+          "examples": [
+            {
+              "_id": "6aaae58b485cab4c95457f2c",
+              "_src": "wenyi091426-3.stratalog.logdata.json",
+              "timestamp": "2026-09-16T18:52:59.4950000Z"
+            }
+          ],
+          "reconciliation": "EXACT_MATCH",
+          "notes": []
+        },
+        {
+          "dependency": "DialogueNodeEvent:108:65",
+          "dep_type": "eventKey",
+          "kind": "dialogue",
+          "role": "Target",
+          "expectation": "counted_evidence",
+          "status": "SUPPORTED_EXACTLY",
+          "observed_count": 1,
+          "first_ts": "2026-09-16T18:52:48.8400000Z",
+          "last_ts": "2026-09-16T18:52:48.8400000Z",
+          "examples": [
+            {
+              "_id": "6aaae580485cab4c95457f0c",
+              "_src": "wenyi091426-3.stratalog.logdata.json",
+              "timestamp": "2026-09-16T18:52:48.8400000Z"
+            }
+          ],
+          "reconciliation": "EXACT_MATCH",
+          "notes": []
+        },
+        {
+          "dependency": "DialogueNodeEvent:108:66",
+          "dep_type": "eventKey",
+          "kind": "dialogue",
+          "role": "Target",
+          "expectation": "counted_evidence",
+          "status": "NOT_OBSERVED_IN_PLAYTHROUGH",
+          "observed_count": 0,
+          "first_ts": null,
+          "last_ts": null,
+          "examples": [],
+          "reconciliation": "EXPECTED_DIALOGUE_NOT_OBSERVED",
+          "notes": [
+            "counted evidence; zero occurrences is a valid grading input"
+          ]
+        },
+        {
+          "dependency": "DialogueNodeEvent:108:68",
+          "dep_type": "eventKey",
+          "kind": "dialogue",
+          "role": "Target",
+          "expectation": "counted_evidence",
+          "status": "NOT_OBSERVED_IN_PLAYTHROUGH",
+          "observed_count": 0,
+          "first_ts": null,
+          "last_ts": null,
+          "examples": [],
+          "reconciliation": "EXPECTED_DIALOGUE_NOT_OBSERVED",
+          "notes": [
+            "counted evidence; zero occurrences is a valid grading input"
+          ]
+        },
+        {
+          "dependency": "DialogueNodeEvent:108:69",
           "dep_type": "eventKey",
           "kind": "dialogue",
           "role": "Target",

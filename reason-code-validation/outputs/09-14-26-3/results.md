@@ -163,9 +163,9 @@ Log: `wenyi091426-3.stratalog.logdata.json`
 
 ### U5P3 — What Happened Here? (yellow)
 
-**EXCESS_ATTEMPTS** — `wrong_argument_number=4`, `claim_wrong_number=4`, `reasoning_wrong_number=0`, `evidence_wrong_number=0`
+**EXCESS_ATTEMPTS** — `wrong_argument_number=6`, `claim_wrong_number=4`, `reasoning_wrong_number=1`, `evidence_wrong_number=1`
 
-> In What Happened Here?, while building the argument about why the collected water disappeared, the student made 4 flagged submissions - 4 for restating Aryn's claim instead of arguing against it, 0 for reasoning problems, and 0 for evidence or completeness problems. This point earns green only when fewer than 4 submissions are flagged. Claim errors suggest the student did not connect the evidence to the natural explanation - the water evaporated, leaving the salt behind - while the reasoning feedback names specific misconceptions to review, such as the water being filtered or transformed into salt.
+> In What Happened Here?, while building the argument about why the collected water disappeared, the student made 6 flagged submissions - 4 for restating Aryn's claim instead of arguing against it, 1 for reasoning problems, and 1 for evidence or completeness problems. This point earns green only when fewer than 4 submissions are flagged. Claim errors suggest the student did not connect the evidence to the natural explanation - the water evaporated, leaving the salt behind - while the reasoning feedback names specific misconceptions to review, such as the water being filtered or transformed into salt.
 
 ### U5P4 — Water Problems Require Water Solutions (yellow)
 
@@ -206,5 +206,5 @@ Log: `wenyi091426-3.stratalog.logdata.json`
 | U5P1 | SOLVED_WITH_ASSIST | yes | attempt_number=4 |
 | U5P1 | EXCESS_ATTEMPTS | no | attempt_number=5 |
 | U5P2 | SCORE_BELOW_THRESHOLD | yes | floor3_attempts=8, floor4_attempts=10 |
-| U5P3 | EXCESS_ATTEMPTS | yes | wrong_argument_number=4, claim_wrong_number=4, reasoning_wrong_number=0, evidence_wrong_number=0 |
+| U5P3 | EXCESS_ATTEMPTS | yes | wrong_argument_number=6, claim_wrong_number=4, reasoning_wrong_number=1, evidence_wrong_number=1 |
 | U5P4 | WRONG_SETTINGS_SELECTED | yes | wrong_run_number=1, failure_phrase='the settings blocked sunlight, so the salt water could not heat up and evaporate' |

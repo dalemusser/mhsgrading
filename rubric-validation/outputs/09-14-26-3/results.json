@@ -293,7 +293,7 @@
       "actual": "yellow",
       "passed": true,
       "diagnostics": {
-        "WRONG_ARG_SELECTED": "negativeCount=4 (>=4) — too many wrong arguments before submitting the correct one"
+        "WRONG_ARG_SELECTED": "negativeCount=6 (>=4) — too many wrong arguments before submitting the correct one"
       }
     },
     {

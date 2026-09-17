@@ -36,12 +36,15 @@ REASONING_NEG_KEYS = [
     "DialogueNodeEvent:108:61", "DialogueNodeEvent:108:86",  # "transformed into salt" misconception
     "DialogueNodeEvent:108:60", "DialogueNodeEvent:108:62",  # reasoning doesn't match the argument
     "DialogueNodeEvent:108:87",
-    "DialogueNodeEvent:108:88", "DialogueNodeEvent:108:89",  # reasoning doesn't connect all evidence
+    "DialogueNodeEvent:108:88", "DialogueNodeEvent:108:89",  # reasoning doesn't connect all evidence (C and D)
+    "DialogueNodeEvent:108:65", "DialogueNodeEvent:108:66",  # reasoning doesn't connect all evidence (C or D alone)
 ]
 
 EVIDENCE_NEG_KEYS = [
     "DialogueNodeEvent:108:25", "DialogueNodeEvent:108:80",  # salt amount doesn't explain the water
-    "DialogueNodeEvent:108:82", "DialogueNodeEvent:108:83",  # evidence doesn't support the claim
+    "DialogueNodeEvent:108:82", "DialogueNodeEvent:108:83",  # evidence doesn't support the claim (A alone)
+    "DialogueNodeEvent:108:68", "DialogueNodeEvent:108:69",  # evidence doesn't support the claim (pair other than C+D)
+    "DialogueNodeEvent:108:63", "DialogueNodeEvent:108:64",  # one piece of evidence missing (C or D alone, reasoning 3)
     "DialogueNodeEvent:108:47",                              # incomplete argument
 ]
 

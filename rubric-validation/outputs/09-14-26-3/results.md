@@ -205,7 +205,7 @@ Log: `wenyi091426-3.stratalog.logdata.json`
 [PASS] U5P3 — What Happened Here?
        expected=yellow actual=yellow
        reason(s) for yellow (expected):
-         - WRONG_ARG_SELECTED: negativeCount=4 (>=4) — too many wrong arguments before submitting the correct one
+         - WRONG_ARG_SELECTED: negativeCount=6 (>=4) — too many wrong arguments before submitting the correct one
 ```
 
 ```

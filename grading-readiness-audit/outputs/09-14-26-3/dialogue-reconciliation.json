@@ -1,5 +1,5 @@
 {
-  "reference_count": 283,
+  "reference_count": 289,
   "rows": [
     {
       "conversationId": 10,
@@ -6173,6 +6173,146 @@
       "evidence": [
         "xlsx[108,62]='Your claim and evidence makes sense, but your reasoning does'",
         "export[108,62]='Your claim and evidence makes sense, but your reasoning does'"
+      ]
+    },
+    {
+      "conversationId": 108,
+      "nodeId": 63,
+      "event_key": "DialogueNodeEvent:108:63",
+      "conversation_title": "U5/Argumentation Feedback",
+      "referenced_by": "U5P3",
+      "reference_sources": "grading",
+      "roles": "U5P3:Target",
+      "in_xlsx": true,
+      "in_export": true,
+      "xlsx_text": "Your reasoning and claim make sense. But your argument could use another piece of evidence.",
+      "export_text": "Your reasoning and claim make sense. But your argument could use another piece of evidence. ",
+      "text_agrees": true,
+      "observed_count": 0,
+      "relocation_candidates": [],
+      "status": "EXPECTED_DIALOGUE_NOT_OBSERVED",
+      "confidence": "MEDIUM",
+      "note": "ID exists in current dialogue DB but did not fire in this playthrough (may be conditional dialogue)",
+      "evidence": [
+        "xlsx[108,63]='Your reasoning and claim make sense. But your argument could'",
+        "export[108,63]='Your reasoning and claim make sense. But your argument could'"
+      ]
+    },
+    {
+      "conversationId": 108,
+      "nodeId": 64,
+      "event_key": "DialogueNodeEvent:108:64",
+      "conversation_title": "U5/Argumentation Feedback",
+      "referenced_by": "U5P3",
+      "reference_sources": "grading",
+      "roles": "U5P3:Target",
+      "in_xlsx": true,
+      "in_export": true,
+      "xlsx_text": "Your reasoning and claim make sense. But your argument could use another piece of evidence. Add one more piece to make your argument stronger.",
+      "export_text": "Your reasoning and claim make sense. But your argument could use another piece of evidence. Add one more piece to make your argument stronger. ",
+      "text_agrees": true,
+      "observed_count": 1,
+      "relocation_candidates": [],
+      "status": "EXACT_MATCH",
+      "confidence": "HIGH",
+      "note": "ID exists in current dialogue DB and fired in this playthrough",
+      "evidence": [
+        "xlsx[108,64]='Your reasoning and claim make sense. But your argument could'",
+        "export[108,64]='Your reasoning and claim make sense. But your argument could'",
+        "observed x1, e.g. _id=6aaae58b485cab4c95457f2c ts=2026-09-16T18:52:59.4950000Z (wenyi091426-3.stratalog.logdata.json)"
+      ]
+    },
+    {
+      "conversationId": 108,
+      "nodeId": 65,
+      "event_key": "DialogueNodeEvent:108:65",
+      "conversation_title": "U5/Argumentation Feedback",
+      "referenced_by": "U5P3",
+      "reference_sources": "grading",
+      "roles": "U5P3:Target",
+      "in_xlsx": true,
+      "in_export": true,
+      "xlsx_text": "Your argument is very close to ideal, but your reasoning should connect all of your pieces of evidence with your claim.",
+      "export_text": "Your argument is very close to ideal, but your reasoning should connect all of your pieces of evidence with your claim. ",
+      "text_agrees": true,
+      "observed_count": 1,
+      "relocation_candidates": [],
+      "status": "EXACT_MATCH",
+      "confidence": "HIGH",
+      "note": "ID exists in current dialogue DB and fired in this playthrough",
+      "evidence": [
+        "xlsx[108,65]='Your argument is very close to ideal, but your reasoning sho'",
+        "export[108,65]='Your argument is very close to ideal, but your reasoning sho'",
+        "observed x1, e.g. _id=6aaae580485cab4c95457f0c ts=2026-09-16T18:52:48.8400000Z (wenyi091426-3.stratalog.logdata.json)"
+      ]
+    },
+    {
+      "conversationId": 108,
+      "nodeId": 66,
+      "event_key": "DialogueNodeEvent:108:66",
+      "conversation_title": "U5/Argumentation Feedback",
+      "referenced_by": "U5P3",
+      "reference_sources": "grading",
+      "roles": "U5P3:Target",
+      "in_xlsx": true,
+      "in_export": true,
+      "xlsx_text": "Your reasoning should connect all of your pieces of evidence with your claim.  Try using a different reasoning that connects all of your evidence to your claim.",
+      "export_text": "Your reasoning should connect all of your pieces of evidence with your claim.  Try using a different reasoning that connects all of your evidence to your claim.",
+      "text_agrees": true,
+      "observed_count": 0,
+      "relocation_candidates": [],
+      "status": "EXPECTED_DIALOGUE_NOT_OBSERVED",
+      "confidence": "MEDIUM",
+      "note": "ID exists in current dialogue DB but did not fire in this playthrough (may be conditional dialogue)",
+      "evidence": [
+        "xlsx[108,66]='Your reasoning should connect all of your pieces of evidence'",
+        "export[108,66]='Your reasoning should connect all of your pieces of evidence'"
+      ]
+    },
+    {
+      "conversationId": 108,
+      "nodeId": 68,
+      "event_key": "DialogueNodeEvent:108:68",
+      "conversation_title": "U5/Argumentation Feedback",
+      "referenced_by": "U5P3",
+      "reference_sources": "grading",
+      "roles": "U5P3:Target",
+      "in_xlsx": true,
+      "in_export": true,
+      "xlsx_text": "Your argument contains evidence that does not support your claim. Select the evidence that supports your claim.",
+      "export_text": "Your argument contains evidence that does not support your claim. Select the evidence that supports your claim.",
+      "text_agrees": true,
+      "observed_count": 0,
+      "relocation_candidates": [],
+      "status": "EXPECTED_DIALOGUE_NOT_OBSERVED",
+      "confidence": "MEDIUM",
+      "note": "ID exists in current dialogue DB but did not fire in this playthrough (may be conditional dialogue)",
+      "evidence": [
+        "xlsx[108,68]='Your argument contains evidence that does not support your c'",
+        "export[108,68]='Your argument contains evidence that does not support your c'"
+      ]
+    },
+    {
+      "conversationId": 108,
+      "nodeId": 69,
+      "event_key": "DialogueNodeEvent:108:69",
+      "conversation_title": "U5/Argumentation Feedback",
+      "referenced_by": "U5P3",
+      "reference_sources": "grading",
+      "roles": "U5P3:Target",
+      "in_xlsx": true,
+      "in_export": true,
+      "xlsx_text": "Your argument contains evidence that does not support your claim. Select one piece of the evidence that best supports your claim.",
+      "export_text": "Your argument contains evidence that does not support your claim. Select one piece of the evidence that best supports your claim.",
+      "text_agrees": true,
+      "observed_count": 0,
+      "relocation_candidates": [],
+      "status": "EXPECTED_DIALOGUE_NOT_OBSERVED",
+      "confidence": "MEDIUM",
+      "note": "ID exists in current dialogue DB but did not fire in this playthrough (may be conditional dialogue)",
+      "evidence": [
+        "xlsx[108,69]='Your argument contains evidence that does not support your c'",
+        "export[108,69]='Your argument contains evidence that does not support your c'"
       ]
     },
     {

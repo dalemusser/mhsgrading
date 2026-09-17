@@ -309,14 +309,17 @@ fixtures:
       88:5 absent + 168.45 s, U4P3 10/15, U4P4 18 machine changes + 3
       color-negatives (107:4 absent), U4P5 10 wrong + success 90:57 -> 11,
       U4P6 all three boxes wrong (Clay/Gravel/Sand vs Gravel/Sand/Clay),
-      U5P1 one negative node 100:39, U5P2 8/10, U5P3 4 flagged) and (b) raw
+      U5P1 one negative node 100:39, U5P2 8/10, U5P3 6 flagged) and (b) raw
       per-node counts in the dump mapped through the markdown key lists
       (U2P5 26:138 x8 = wrong_number, claim 197/203, reasoning
       144/195/198/201/210, evidence 145; U2P7 27:0 x9 submissions, claim
       12/14, irrelevant 15/17/20/26/28/30; U3P3 84:0 x7 = 6 wrong + success,
       claim 25/39, reasoning 33/34/40/42; U4P5 90:0 x11, claim 37x5+55,
-      reasoning 61, evidence 58x2+47; U5P3 108:37 x4 (soft twins 64/65 fired
-      but are ungraded); U5P4 single run, 106:25 sunlight-blocked; U2P3 phase
+      reasoning 61, evidence 58x2+47; U5P3 108:37 x4 (claim) + 108:65
+      (reasoning) + 108:64 (evidence) — the last two sit on the "one correct
+      piece of evidence" branch of conversation 108 and were outside the key
+      list until the 2026-09-17 review added that branch (63-66, 68, 69);
+      U5P4 single run, 106:25 sunlight-blocked; U2P3 phase
       split recomputed from the 20:33 / 21:1 / 18:231 / 22:18 markers -> 9
       Tera + 5 Aryn, all conv-28 nodes 187/188/194). Glyph puzzles from the
       conversation sequences: U2P4 five wrong (74:4/6/10/15/17) then accepted
@@ -431,12 +434,12 @@ fixtures:
         codes: [SCORE_BELOW_THRESHOLD]
         variables:
           SCORE_BELOW_THRESHOLD: {floor3_attempts: 8, floor4_attempts: 10}
-      U5P3:
+      U5P3:   # 108:65 (reasoning) + 108:64 (evidence) counted since the 2026-09-17 key-list review
         codes: [EXCESS_ATTEMPTS]
         variables:
           EXCESS_ATTEMPTS:
-            {wrong_argument_number: 4, claim_wrong_number: 4, reasoning_wrong_number: 0,
-             evidence_wrong_number: 0}
+            {wrong_argument_number: 6, claim_wrong_number: 4, reasoning_wrong_number: 1,
+             evidence_wrong_number: 1}
       U5P4:
         codes: [WRONG_SETTINGS_SELECTED]
         variables:

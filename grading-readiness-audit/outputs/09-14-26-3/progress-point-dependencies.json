@@ -2996,21 +2996,21 @@
       "grading_file": "grading-logic/mhs-unit5-point3-grading.md",
       "trigger_start": "DialogueNodeEvent:96:1",
       "trigger_end": "questFinishEvent:44",
-      "grading_rule_prose": "This progress point is an attempt-based, if the total number of following dialogues (`DialogueNodeEvent:108:25`,`DialogueNodeEvent:108:32`,`DialogueNodeEvent:108:33`,`DialogueNodeEvent:108:37`,`DialogueNodeEvent:108:39`,`DialogueNodeEvent:108:41`,`DialogueNodeEvent:108:47`,`DialogueNodeEvent:108:53`,`DialogueNodeEvent:108:54`,`DialogueNodeEvent:108:55`,`DialogueNodeEvent:108:59`,`DialogueNodeEvent:108:60`,`DialogueNodeEvent:108:61`,`DialogueNodeEvent:108:62`,`DialogueNodeEvent:108:70`,`DialogueNodeEvent:108:72`,`DialogueNodeEvent:108:73`,`DialogueNodeEvent:108:74`,`DialogueNodeEvent:108:75`,`DialogueNodeEvent:108:76`,`DialogueNodeEvent:108:78`,`DialogueNodeEvent:108:79`,`DialogueNodeEvent:108:80`,`DialogueNodeEvent:108:82`,`DialogueNodeEvent:108:83`,`DialogueNodeEvent:108:84`,`DialogueNodeEvent:108:85`,`DialogueNodeEvent:108:86`,`DialogueNodeEvent:108:87`,`DialogueNodeEvent:108:88`,`DialogueNodeEvent:108:89`,`DialogueNodeEvent:108:90`,`DialogueNodeEvent:108:91`) happened is euqal to or larger than 4 then the color returns yellow, otherwise it will return green.",
+      "grading_rule_prose": "This progress point is attempt-based: it counts Dr. Toppo's wrong-answer feedback dialogues in the latest attempt window. Every incorrect submission fires exactly one of the 39 conversation-108 feedback nodes listed under Event Keys (each feedback exists as a generic/specific pair, selected by the game's `argSpecificFeedback` flag, and both members of every pair are counted). If the count is 4 or more the color is yellow, otherwise green. The success nodes (`DialogueNodeEvent:108:51`, `DialogueNodeEvent:108:52`) and the backing-information nudges (`DialogueNodeEvent:108:48`, `DialogueNodeEvent:108:49`) are not counted, and no success node is required.",
       "outcome_table": [
         {
           "outcome": "Green",
-          "condition": "attempt <= 4"
+          "condition": "fewer than 4 counted feedback dialogues in the window (0–3 incorrect submissions)"
         },
         {
           "outcome": "Yellow",
-          "condition": "attempt > 4"
+          "condition": "4 or more counted feedback dialogues in the window"
         }
       ],
       "attempt_window": {
         "start": {
-          "raw": "Previous `DialogueNodeEvent:96:1` (exclusive)",
-          "which": "previous",
+          "raw": "Latest `DialogueNodeEvent:96:1` (exclusive)",
+          "which": "latest",
           "key": "DialogueNodeEvent:96:1",
           "bound": "exclusive"
         },
@@ -3109,6 +3109,42 @@
         {
           "role": "Target",
           "key": "DialogueNodeEvent:108:62",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:63",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:64",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:65",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:66",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:68",
+          "kind": "dialogue",
+          "expectation": "counted_evidence"
+        },
+        {
+          "role": "Target",
+          "key": "DialogueNodeEvent:108:69",
           "kind": "dialogue",
           "expectation": "counted_evidence"
         },
@@ -3244,6 +3280,12 @@
           "DialogueNodeEvent:108:60",
           "DialogueNodeEvent:108:61",
           "DialogueNodeEvent:108:62",
+          "DialogueNodeEvent:108:63",
+          "DialogueNodeEvent:108:64",
+          "DialogueNodeEvent:108:65",
+          "DialogueNodeEvent:108:66",
+          "DialogueNodeEvent:108:68",
+          "DialogueNodeEvent:108:69",
           "DialogueNodeEvent:108:70",
           "DialogueNodeEvent:108:72",
           "DialogueNodeEvent:108:73",
@@ -3269,7 +3311,7 @@
         "event_types": [],
         "data_filters": [],
         "data_fields": [],
-        "script": "// Production — replay-safe attempt-based color script\n// Window start: \"DialogueNodeEvent:96:1\"\n// Window end:   \"questFinishEvent:44\"\n\nconst playerId = \"<playerId>\";\n\nconst WINDOW_START_KEY = \"DialogueNodeEvent:96:1\";\nconst WINDOW_END_KEY = \"questFinishEvent:44\";\n\nconst NEGATIVE_KEYS = [\n  \"DialogueNodeEvent:108:25\", \"DialogueNodeEvent:108:32\", \"DialogueNodeEvent:108:33\",\n  \"DialogueNodeEvent:108:37\", \"DialogueNodeEvent:108:39\", \"DialogueNodeEvent:108:41\",\n  \"DialogueNodeEvent:108:47\", \"DialogueNodeEvent:108:53\", \"DialogueNodeEvent:108:54\",\n  \"DialogueNodeEvent:108:55\", \"DialogueNodeEvent:108:59\", \"DialogueNodeEvent:108:60\",\n  \"DialogueNodeEvent:108:61\", \"DialogueNodeEvent:108:62\", \"DialogueNodeEvent:108:70\",\n  \"DialogueNodeEvent:108:72\", \"DialogueNodeEvent:108:73\", \"DialogueNodeEvent:108:74\",\n  \"DialogueNodeEvent:108:75\", \"DialogueNodeEvent:108:76\", \"DialogueNodeEvent:108:78\",\n  \"DialogueNodeEvent:108:79\", \"DialogueNodeEvent:108:80\", \"DialogueNodeEvent:108:82\",\n  \"DialogueNodeEvent:108:83\", \"DialogueNodeEvent:108:84\", \"DialogueNodeEvent:108:85\",\n  \"DialogueNodeEvent:108:86\", \"DialogueNodeEvent:108:87\", \"DialogueNodeEvent:108:88\",\n  \"DialogueNodeEvent:108:89\", \"DialogueNodeEvent:108:90\", \"DialogueNodeEvent:108:91\"\n];\n\n// 1) Most recent window start\nconst latestStart = db.logdata.findOne(\n  {\n    game: \"mhs\",\n    playerId: playerId,\n    eventKey: WINDOW_START_KEY\n  },\n  { sort: { _id: -1 }}\n);\n\n// 2) Most recent window end\nconst latestEnd = db.logdata.findOne(\n  {\n    game: \"mhs\",\n    playerId: playerId,\n    eventKey: WINDOW_END_KEY\n  },\n  { sort: { _id: -1 }}\n);\n\nif (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {\n  \"yellow\";\n} else {\n  const windowStartId = latestStart._id;\n  const windowEndId = latestEnd._id;\n\n  const cnt = db.logdata.countDocuments({\n    game: \"mhs\",\n    playerId: playerId,\n    eventKey: { $in: NEGATIVE_KEYS },\n    _id: { $gt: windowStartId, $lte: windowEndId }\n  });\n\n  cnt >= 4 ? \"yellow\" : \"green\";\n}\n"
+        "script": "// Production — replay-safe attempt-based color script\n// Window start: \"DialogueNodeEvent:96:1\"\n// Window end:   \"questFinishEvent:44\"\n// NEGATIVE_KEYS = all 39 conversation-108 wrong-answer feedback nodes\n// (extended 2026-09-17 with 63/64, 65/66, 68/69 — the \"one correct evidence\"\n// and \"wrong evidence pair\" branches for the correct claim).\n\nconst playerId = \"<playerId>\";\n\nconst WINDOW_START_KEY = \"DialogueNodeEvent:96:1\";\nconst WINDOW_END_KEY = \"questFinishEvent:44\";\n\nconst NEGATIVE_KEYS = [\n  \"DialogueNodeEvent:108:25\", \"DialogueNodeEvent:108:32\", \"DialogueNodeEvent:108:33\",\n  \"DialogueNodeEvent:108:37\", \"DialogueNodeEvent:108:39\", \"DialogueNodeEvent:108:41\",\n  \"DialogueNodeEvent:108:47\", \"DialogueNodeEvent:108:53\", \"DialogueNodeEvent:108:54\",\n  \"DialogueNodeEvent:108:55\", \"DialogueNodeEvent:108:59\", \"DialogueNodeEvent:108:60\",\n  \"DialogueNodeEvent:108:61\", \"DialogueNodeEvent:108:62\", \"DialogueNodeEvent:108:63\",\n  \"DialogueNodeEvent:108:64\", \"DialogueNodeEvent:108:65\", \"DialogueNodeEvent:108:66\",\n  \"DialogueNodeEvent:108:68\", \"DialogueNodeEvent:108:69\", \"DialogueNodeEvent:108:70\",\n  \"DialogueNodeEvent:108:72\", \"DialogueNodeEvent:108:73\", \"DialogueNodeEvent:108:74\",\n  \"DialogueNodeEvent:108:75\", \"DialogueNodeEvent:108:76\", \"DialogueNodeEvent:108:78\",\n  \"DialogueNodeEvent:108:79\", \"DialogueNodeEvent:108:80\", \"DialogueNodeEvent:108:82\",\n  \"DialogueNodeEvent:108:83\", \"DialogueNodeEvent:108:84\", \"DialogueNodeEvent:108:85\",\n  \"DialogueNodeEvent:108:86\", \"DialogueNodeEvent:108:87\", \"DialogueNodeEvent:108:88\",\n  \"DialogueNodeEvent:108:89\", \"DialogueNodeEvent:108:90\", \"DialogueNodeEvent:108:91\"\n];\n\n// 1) Most recent window start\nconst latestStart = db.logdata.findOne(\n  {\n    game: \"mhs\",\n    playerId: playerId,\n    eventKey: WINDOW_START_KEY\n  },\n  { sort: { _id: -1 }}\n);\n\n// 2) Most recent window end\nconst latestEnd = db.logdata.findOne(\n  {\n    game: \"mhs\",\n    playerId: playerId,\n    eventKey: WINDOW_END_KEY\n  },\n  { sort: { _id: -1 }}\n);\n\nif (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {\n  \"yellow\";\n} else {\n  const windowStartId = latestStart._id;\n  const windowEndId = latestEnd._id;\n\n  const cnt = db.logdata.countDocuments({\n    game: \"mhs\",\n    playerId: playerId,\n    eventKey: { $in: NEGATIVE_KEYS },\n    _id: { $gt: windowStartId, $lte: windowEndId }\n  });\n\n  cnt >= 4 ? \"yellow\" : \"green\";\n}\n"
       },
       "analytics_event_keys": [
         "DialogueNodeEvent:108:25",
@@ -3286,6 +3328,12 @@
         "DialogueNodeEvent:108:60",
         "DialogueNodeEvent:108:61",
         "DialogueNodeEvent:108:62",
+        "DialogueNodeEvent:108:63",
+        "DialogueNodeEvent:108:64",
+        "DialogueNodeEvent:108:65",
+        "DialogueNodeEvent:108:66",
+        "DialogueNodeEvent:108:68",
+        "DialogueNodeEvent:108:69",
         "DialogueNodeEvent:108:70",
         "DialogueNodeEvent:108:72",
         "DialogueNodeEvent:108:73",
@@ -3325,6 +3373,12 @@
         "DialogueNodeEvent:108:60",
         "DialogueNodeEvent:108:61",
         "DialogueNodeEvent:108:62",
+        "DialogueNodeEvent:108:63",
+        "DialogueNodeEvent:108:64",
+        "DialogueNodeEvent:108:65",
+        "DialogueNodeEvent:108:66",
+        "DialogueNodeEvent:108:68",
+        "DialogueNodeEvent:108:69",
         "DialogueNodeEvent:108:70",
         "DialogueNodeEvent:108:72",
         "DialogueNodeEvent:108:73",
