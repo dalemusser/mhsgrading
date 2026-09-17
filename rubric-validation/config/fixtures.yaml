@@ -182,3 +182,50 @@ fixtures:
       U5P2: yellow
       U5P3: yellow
       U5P4: yellow
+
+  "09-14-26-3":
+    log: playthrough-logs-and-results/09-14-26-3/wenyi091426-3.stratalog.logdata.json
+    description: >
+      Full imperfect playthrough of build "20260914-" (build number missing
+      after the dash on every record; 12,318 records, units 1-5 complete,
+      single player via top-level user_id, played 2026-09-16 UTC). Two
+      sittings with a ~13 h break mid-Unit 2; Unit 1 was started twice (first
+      attempt abandoned after ~6 min, excluded by latest-anchor windowing).
+      No debug-menu use, no crash records.
+    provenance: >
+      Expected colors established by the grading-readiness-audit run
+      09-14-26-3 (2026-09-16): 18 points PASSed an independent doc-window or
+      completion check; 8 points executed without an independent cross-check
+      and are carried as reviewed regression baselines (U2P2, U2P6, U3P4,
+      U4P4, U5P1, U5P2, U5P3, U5P4), each with a behavioural diagnostic
+      recorded in reports/09-14-26-3/comparison-to-09-03-26-3.md. First
+      fixture to exercise the U2P1 (5 wrong map-terrain matches, > 4), U2P3
+      (14 wrong-direction reminders, green needs < 6) and U3P4 (5 target
+      nodes -> score 0) yellow branches.
+    expected:
+      U1P1: green
+      U1P2: green
+      U1P3: yellow
+      U1P4: green
+      U2P1: yellow
+      U2P2: yellow
+      U2P3: yellow
+      U2P4: yellow
+      U2P5: yellow
+      U2P6: yellow
+      U2P7: yellow
+      U3P1: yellow
+      U3P2: yellow
+      U3P3: yellow
+      U3P4: yellow
+      U3P5: yellow
+      U4P1: yellow
+      U4P2: yellow
+      U4P3: yellow
+      U4P4: yellow
+      U4P5: yellow
+      U4P6: yellow
+      U5P1: yellow
+      U5P2: yellow
+      U5P3: yellow
+      U5P4: yellow

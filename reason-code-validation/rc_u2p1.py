@@ -2,11 +2,13 @@
 
 mhs-unit2-point1-grading.md, "## Reason Codes":
 
-  SOLVED_WITH_ASSIST — triggered when a forced-assist node (68:28 / 68:31)
-      fired in the window; attempt_number = negative-feedback nodes (one per
-      wrong submission).
+  SOLVED_WITH_ASSIST — triggered when DANI completed the puzzle in the window,
+      forced (68:28 / 68:31) or accepted (offer answered "Sure. I'm stuck"
+      68:24 / 68:32, then DANI places the pieces 68:26 / 68:34 — verified in
+      log 09-14-26-3, where 68:29 never fires on that path); attempt_number =
+      negative-feedback nodes (one per wrong submission).
   EXCESS_ATTEMPTS — triggered when the student solved on their own (68:29 in
-      window, no forced-assist node) but needed 4+ wrong submissions;
+      window, no assist node of either kind) but needed 4+ wrong submissions;
       attempt_number = wrong submissions + 1.
 
 Window: previous `questFinishEvent:21` (exclusive) .. latest (inclusive).
@@ -21,8 +23,12 @@ TRIGGER_KEY = "questFinishEvent:21"
 SUCCESS_KEY = "DialogueNodeEvent:68:29"  # solved-on-their-own completion
 
 ASSIST_KEYS = [
-    "DialogueNodeEvent:68:28",
-    "DialogueNodeEvent:68:31",
+    "DialogueNodeEvent:68:24",  # accepted offer after 4th attempt ("Sure. I'm stuck")
+    "DialogueNodeEvent:68:26",  # DANI places the pieces (accepted after 4th attempt)
+    "DialogueNodeEvent:68:28",  # forced assist, 5th attempt, >3 wrong
+    "DialogueNodeEvent:68:31",  # forced assist, 6th attempt, any wrong
+    "DialogueNodeEvent:68:32",  # accepted offer after 5th attempt ("Sure. I'm stuck")
+    "DialogueNodeEvent:68:34",  # DANI places the pieces (accepted after 5th attempt)
 ]
 
 NEGATIVE_KEYS = [

@@ -196,15 +196,25 @@ which logs `102:23`, has been observed).
 // U4P2: SOLVED_WITH_ASSIST — determine trigger and attempt_number
 // Window mirrors the production color script: latest questActiveEvent:48 (end),
 // latest Unit 4 soil-key-puzzle close before it (start, exclusive).
-// Triggers when DANI's assist executed (102:23) in the window. Do NOT infer
-// assistance from 88:11's absence — 88:11 fires on the assisted path too
-// (verified in run 09-03-26-3). attempt_number = incorrect arrangements
-// before DANI completed the puzzle.
+// Triggers when DANI completed the puzzle in the window, on either path:
+//   forced   - 102:23 (5th attempt, any wrong; verified in run 09-03-26-3);
+//   accepted - the player accepted the offer at 102:18 and DANI ordered the
+//              pieces: 102:20 then 102:21 fire (empty-text nodes in the
+//              2026-06-10 dialogue export). Verified in run 09-14-26-3: the
+//              puzzle completed 10 s after the offer with no player inputs.
+// Do NOT infer assistance from 88:11's absence — 88:11 fires on the assisted
+// path too. attempt_number = incorrect arrangements before DANI completed
+// the puzzle.
 
 const playerId = "<playerId>";
 
 const TRIGGER_KEY = "questActiveEvent:48";
-const ASSIST_KEY = "DialogueNodeEvent:102:23"; // DANI orders the pieces
+
+const ASSIST_KEYS = [
+  "DialogueNodeEvent:102:20",  // accepted DANI's offer (after 102:18)
+  "DialogueNodeEvent:102:21",  // DANI orders the pieces (accepted path)
+  "DialogueNodeEvent:102:23"   // DANI orders the pieces (forced, 5th attempt)
+];
 
 const SOIL_KEY_EVENT_TYPE = "Soil Key Puzzle";
 const SOIL_KEY_END_STATUS = "Finished";
@@ -245,12 +255,12 @@ if (!latestTrigger) {
   const windowStartId = soilKeyClose ? soilKeyClose._id : ObjectId("000000000000000000000000");
   const windowEndId = latestTrigger._id;
 
-  // 3) Assist executed?
+  // 3) Assist executed (forced or accepted)?
   const assisted =
     db.logdata.findOne({
       game: "mhs",
       playerId: playerId,
-      eventKey: ASSIST_KEY,
+      eventKey: { $in: ASSIST_KEYS },
       _id: { $gt: windowStartId, $lte: windowEndId }
     }) !== null;
 
@@ -275,14 +285,20 @@ if (!latestTrigger) {
 ```js
 // U4P2: EXCESS_ATTEMPTS — determine trigger and attempt_number
 // Same window as the color script. Triggers when the student completed the
-// puzzle without DANI's executed assist but a yellow key fired — i.e., the
-// 3rd submission (or later) was wrong, so success took 4+ attempts.
+// puzzle without DANI's assist (neither the forced 102:23 nor the accepted
+// 102:20/102:21 path) but a yellow key fired — i.e., the 3rd submission (or
+// later) was wrong, so success took 4+ attempts.
 // attempt_number = incorrect arrangements + 1 (the final correct submission).
 
 const playerId = "<playerId>";
 
 const TRIGGER_KEY = "questActiveEvent:48";
-const ASSIST_KEY = "DialogueNodeEvent:102:23";
+
+const ASSIST_KEYS = [
+  "DialogueNodeEvent:102:20",  // accepted DANI's offer (after 102:18)
+  "DialogueNodeEvent:102:21",  // DANI orders the pieces (accepted path)
+  "DialogueNodeEvent:102:23"   // DANI orders the pieces (forced, 5th attempt)
+];
 
 const SOIL_KEY_EVENT_TYPE = "Soil Key Puzzle";
 const SOIL_KEY_END_STATUS = "Finished";
@@ -330,12 +346,12 @@ if (!latestTrigger) {
   const windowStartId = soilKeyClose ? soilKeyClose._id : ObjectId("000000000000000000000000");
   const windowEndId = latestTrigger._id;
 
-  // 3) DANI's assist did not execute (otherwise SOLVED_WITH_ASSIST applies)
+  // 3) DANI's assist did not execute, forced or accepted (otherwise SOLVED_WITH_ASSIST applies)
   const assisted =
     db.logdata.findOne({
       game: "mhs",
       playerId: playerId,
-      eventKey: ASSIST_KEY,
+      eventKey: { $in: ASSIST_KEYS },
       _id: { $gt: windowStartId, $lte: windowEndId }
     }) !== null;
 

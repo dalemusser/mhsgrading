@@ -154,7 +154,13 @@ if (!latestTrigger) {
 
 ```js
 // U2P1: SOLVED_WITH_ASSIST - determine trigger and attempt_number
-// Triggers when a forced-assist node (68:28 or 68:31) fired in the attempt window.
+// Triggers when DANI completed the puzzle in the attempt window, on either path:
+//   forced   - 68:28 (5th attempt, >3 wrong) or 68:31 (6th attempt, any wrong);
+//   accepted - the player answered DANI's offer (68:23 / 68:27) with
+//              "Sure. I'm stuck" (68:24 / 68:32) and DANI then placed the
+//              pieces (68:26 / 68:34). Verified in log 09-14-26-3:
+//              68:23 -> 68:24 -> 68:26, and the solved-on-own node 68:29
+//              never fires on that path.
 // attempt_number = incorrect submissions before DANI completed the puzzle
 // (each wrong submission fires exactly one negative-feedback node, once per window)
 
@@ -163,8 +169,12 @@ const playerId = "<playerId>";
 const TRIGGER_KEY = "questFinishEvent:21";
 
 const ASSIST_KEYS = [
-  "DialogueNodeEvent:68:28",
-  "DialogueNodeEvent:68:31"
+  "DialogueNodeEvent:68:24",  // accepted offer after 4th attempt ("Sure. I'm stuck")
+  "DialogueNodeEvent:68:26",  // DANI places the pieces (accepted after 4th attempt)
+  "DialogueNodeEvent:68:28",  // forced assist, 5th attempt, >3 wrong
+  "DialogueNodeEvent:68:31",  // forced assist, 6th attempt, any wrong
+  "DialogueNodeEvent:68:32",  // accepted offer after 5th attempt ("Sure. I'm stuck")
+  "DialogueNodeEvent:68:34"   // DANI places the pieces (accepted after 5th attempt)
 ];
 
 const NEGATIVE_KEYS = [
@@ -204,7 +214,7 @@ if (!latestTrigger) {
   const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
   const windowEndId = latestTrigger._id;
 
-  // 3) Reason code triggers if a forced-assist node fired in the window
+  // 3) Reason code triggers if any assist node (forced or accepted) fired in the window
   const assisted =
     db.logdata.findOne({
       game: "mhs",
@@ -233,7 +243,8 @@ if (!latestTrigger) {
 
 ```js
 // U2P1: EXCESS_ATTEMPTS — determine trigger and attempt_number
-// Triggers when the student solved the puzzle independently (68:29 in window, no forced-assist node) but needed 5+ attempts (4+ negative-feedback nodes).
+// Triggers when the student solved the puzzle independently (68:29 in window and
+// no assist node, forced or accepted) but needed 5+ attempts (4+ negative-feedback nodes).
 // attempt_number = incorrect submissions + 1 (the final correct submission)
 
 const playerId = "<playerId>";
@@ -242,8 +253,12 @@ const TRIGGER_KEY = "questFinishEvent:21";
 const SUCCESS_KEY = "DialogueNodeEvent:68:29"; // solved-on-their-own completion
 
 const ASSIST_KEYS = [
-  "DialogueNodeEvent:68:28",
-  "DialogueNodeEvent:68:31"
+  "DialogueNodeEvent:68:24",  // accepted offer after 4th attempt ("Sure. I'm stuck")
+  "DialogueNodeEvent:68:26",  // DANI places the pieces (accepted after 4th attempt)
+  "DialogueNodeEvent:68:28",  // forced assist, 5th attempt, >3 wrong
+  "DialogueNodeEvent:68:31",  // forced assist, 6th attempt, any wrong
+  "DialogueNodeEvent:68:32",  // accepted offer after 5th attempt ("Sure. I'm stuck")
+  "DialogueNodeEvent:68:34"   // DANI places the pieces (accepted after 5th attempt)
 ];
 
 const NEGATIVE_KEYS = [
@@ -292,7 +307,7 @@ if (!latestTrigger) {
       _id: { $gt: windowStartId, $lte: windowEndId }
     }) !== null;
 
-  // 4) DANI did not take over (otherwise SOLVED_WITH_ASSIST applies instead)
+  // 4) DANI did not take over, forced or accepted (otherwise SOLVED_WITH_ASSIST applies instead)
   const assisted =
     db.logdata.findOne({
       game: "mhs",

@@ -1,0 +1,54 @@
+﻿change,eventType,item,baseline,current
+removed_event_type,crash,,3,-
+new_scenes,,PodsEscapingCopernicus Cutscene; Transition,-,
+removed_scenes,,<missing sceneName>,,-
+cadence_change,DEBUGMenu,median_interval_s,7.86,986.431
+removed_values,DEBUGMenu,data.isOpened,True,
+volume_change,DaniEvent,record_count,16,2
+cadence_change,DaniEvent,median_interval_s,2.369,1.016
+removed_values,DaniEvent,data.toolName,Settings,
+cadence_change,DialogueEvent,median_interval_s,0.667,3.493
+cadence_change,EndOfUnit,median_interval_s,1864.391,4953.498
+removed_values,InputEvent,data.actionType,Pause; ToggleDebug,
+removed_values,InputEvent,data.key,backquote; tab,
+new_values,ObjectInterEvent,data.actionType,,Press E to collect broccoli; Press E to collect peas; Press E to collect potatoes; Press E to pick up
+removed_values,ObjectInterEvent,data.actionType,Press E to collect mega turnips; Press E to collect super orange; Press E to collect ultra corn; Press E to go down,
+volume_change,PuzzlePieceVisibleEvent,record_count,1182,4446
+new_values,SolarStillDesignEvent,data.designSelections.glassRoofTemperature,,Hot
+removed_values,SolarStillDesignEvent,data.designSelections.glassRoofTemperature,Cold,
+new_values,SolarStillDesignEvent,data.designSelections.roofCovering,,Covered
+removed_values,SolarStillDesignEvent,data.designSelections.roofCovering,Uncovered,
+new_values,SolarStillDesignEvent,data.designSelections.roofStyle,,Tilted In
+removed_values,SolarStillDesignEvent,data.designSelections.roofStyle,Tilted Out,
+new_values,SolarStillDesignEvent,data.selectedOption,,Covered; Hot; Tilted In
+removed_values,SolarStillDesignEvent,data.selectedOption,Cold; Tilted Out; Uncovered,
+cadence_change,TerasGardenBox,median_interval_s,8.004,1.434
+new_values,TerasGardenBox,data.soilType,,Gravel
+removed_values,TopographicMapEvent,data.actionType,WaypointResetEvent,
+new_values,TopographicMapEvent,data.legendName,,Water
+volume_change,WaterChamberEvent,record_count,12,47
+cadence_change,WaterChamberEvent,median_interval_s,13.039,6.144
+new_values,WaterChamberEvent,data.floor,,3
+new_values,WaterChamberEvent,data.machineNumber,,Two
+new_values,WaterChamberEvent,data.machineType,,DualChamber_Condenser; DualChamber_Evaporator
+new_values,WaterChamberEvent,data.room,,4
+volume_change,argumentationAnswerEvent,record_count,6,37
+cadence_change,argumentationAnswerEvent,median_interval_s,1881.866,20.302
+new_values,argumentationAnswerEvent,data.answerSubmitted,,"; 2,I; A,2,I; A,2,II; A,3,I; A,B,1,I; A,B,2,I; A,B,3,I; A,B,4,I; A,D,C,2,II; B,1,I; B,1,II; B,4,II; B,C,1,I; C,1,I; C,1,II; C,3,II; C,4,II; D,1,I; D,1,II; D,2,II; D,3,I; D,4,I; D,4,II; D,A,2,II"
+removed_values,argumentationAnswerEvent,data.answerSubmitted,"A,C,D,2,II",
+cadence_change,argumentationEvent,median_interval_s,52.427,158.479
+volume_change,argumentationNodeEvent,record_count,133,504
+new_values,argumentationNodeEvent,data.actionType,,argumentationNodeRemove
+cadence_change,argumentationToolEvent,median_interval_s,0.901,15.322
+removed_values,argumentationToolEvent,data.argumentationTitle,Unit 1 - Argumentation Tutorial; Unit 2 – Watershed,
+removed_values,argumentationToolEvent,data.toolName,BackingInfoPanel - Argumentation; BackingInfoPanel - Waterfall Data; BackingInfoPanel - Watershed Graph,
+volume_change,chatEvent,record_count,32,2
+cadence_change,chatEvent,median_interval_s,0.232,991.195
+removed_field,chatEvent,data.actionKey,14,-
+removed_values,chatEvent,data.actionType,Open; ScrollStart,
+removed_values,chatEvent,data.chatID,"[18-102, 18-103, 18-105, 18-109, 18-110, 18-274]; [18-109, 18-110, 18-274, 18-112, 18-113, 18-114]; [18-112, 18-113, 18-114, 18-276, 18-277]; [18-114, 18-276, 18-277, 18-279, 18-116, 18-117]; [18-243, 18-118, 74-21, 23-1, 23-2, 23-3]; [18-279, 18-116, 18-117, 18-243, 18-118, 74-21]; [22-19, 22-20, 22-22, 22-46, 22-48, 22-27]; [22-46, 22-48, 22-27, 18-102, 18-103, 18-105]; [23-1, 23-2, 23-3, 23-4, 23-59, 23-61]; [23-17, 23-18, 23-20, 23-21, 23-70, 23-72]; [23-21, 23-70, 23-72, 23-73, 23-22, 23-24]; [23-59, 23-61, 23-63, 23-65, 23-67, 23-68]; [23-65, 23-67, 23-68, 23-69, 23-17, 23-18]; [23-73, 23-22, 23-24, 23-25, 23-27]",
+cadence_change,gameStartEvent,median_interval_s,841.528,3811.132
+cadence_change,questEvent,median_interval_s,74.645,172.948
+volume_change,soilMachine,record_count,5,43
+cadence_change,soilMachine,median_interval_s,42.837,1.434
+new_values,soilMachine,data.canisterType,,Bedrock

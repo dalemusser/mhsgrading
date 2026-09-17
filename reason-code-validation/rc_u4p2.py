@@ -2,11 +2,13 @@
 
 mhs-unit4-point2-grading.md, "## Reason Codes":
 
-  SOLVED_WITH_ASSIST — triggered when DANI's assist executed (102:23) in the
-      window (never inferred from 88:11's absence — it fires on the assisted
-      path too); attempt_number = incorrect arrangements.
-  EXCESS_ATTEMPTS — triggered when no assist executed but a yellow key fired
-      (3rd-or-later submission wrong); attempt_number = incorrect + 1.
+  SOLVED_WITH_ASSIST — triggered when DANI's assist executed in the window:
+      forced 102:23, or the accepted-offer path 102:20 then 102:21 (verified
+      in log 09-14-26-3). Never inferred from 88:11's absence — it fires on
+      the assisted path too. attempt_number = incorrect arrangements.
+  EXCESS_ATTEMPTS — triggered when no assist executed (either path) but a
+      yellow key fired (3rd-or-later submission wrong); attempt_number =
+      incorrect + 1.
 
 Window: latest Unit-4 soil-key-puzzle close before the trigger (start,
 exclusive; OID_MIN when none) .. latest `questActiveEvent:48` (end, inclusive).
@@ -18,7 +20,11 @@ META = {"unit": 4, "point": 2, "name": "Infiltration Glyph + Alien Well Floors 1
         "doc": "mhs-unit4-point2-grading.md"}
 
 TRIGGER_KEY = "questActiveEvent:48"
-ASSIST_KEY = "DialogueNodeEvent:102:23"  # DANI orders the pieces
+ASSIST_KEYS = [
+    "DialogueNodeEvent:102:20",  # accepted DANI's offer (after 102:18)
+    "DialogueNodeEvent:102:21",  # DANI orders the pieces (accepted path)
+    "DialogueNodeEvent:102:23",  # DANI orders the pieces (forced, 5th attempt)
+]
 
 SOIL_KEY_EVENT_TYPE = "Soil Key Puzzle"
 SOIL_KEY_END_STATUS = "Finished"
@@ -67,8 +73,8 @@ def solved_with_assist(coll, pid):
     if win is None:
         return {"triggered": False, "attempt_number": 0}
     f = gt_lte(win)
-    # 3) Assist executed?
-    assisted = has_keys(coll, pid, ASSIST_KEY, f)
+    # 3) Assist executed (forced or accepted)?
+    assisted = has_keys(coll, pid, ASSIST_KEYS, f)
     # 4) Count incorrect arrangements
     attempt_number = count_keys(coll, pid, NEGATIVE_KEYS, f)
     return {"triggered": assisted, "attempt_number": attempt_number}
@@ -79,8 +85,8 @@ def excess_attempts(coll, pid):
     if win is None:
         return {"triggered": False, "attempt_number": 0}
     f = gt_lte(win)
-    # 3) DANI's assist did not execute (otherwise SOLVED_WITH_ASSIST applies)
-    assisted = has_keys(coll, pid, ASSIST_KEY, f)
+    # 3) DANI's assist did not execute, forced or accepted (otherwise SOLVED_WITH_ASSIST applies)
+    assisted = has_keys(coll, pid, ASSIST_KEYS, f)
     # 4) A yellow key fired — 3rd-or-later submission was wrong
     has_yellow = has_keys(coll, pid, YELLOW_KEYS, f)
     # 5) Count incorrect arrangements

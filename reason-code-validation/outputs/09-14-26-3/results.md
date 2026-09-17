@@ -1,0 +1,210 @@
+# Reason-code validation results — 09-14-26-3
+
+Log: `wenyi091426-3.stratalog.logdata.json`
+
+**26 / 26 points pass every check (expected codes + variables, pop-up/cell consistency, message placeholders).**
+
+| Point | Activity | Color | Window | Triggered code(s) | Expected | Result |
+|---|---|---|---|---|---|---|
+| U1P1 | Getting Your Space Legs | green | yes | - | - | PASS |
+| U1P2 | Info and Intros | green | yes | - | - | PASS |
+| U1P3 | Defend the Expedition | yellow | yes | WRONG_ARG_SELECTED | WRONG_ARG_SELECTED | PASS |
+| U1P4 | What Was That? | green | yes | - | - | PASS |
+| U2P1 | Escape the Ruin | yellow | yes | SOLVED_WITH_ASSIST | SOLVED_WITH_ASSIST | PASS |
+| U2P2 | Foraged Forging | yellow | yes | EXCESS_NAV_REMINDERS | EXCESS_NAV_REMINDERS | PASS |
+| U2P3 | Getting the Band Back Together Part II | yellow | yes | EXCESS_NAV_REMINDERS | EXCESS_NAV_REMINDERS | PASS |
+| U2P4 | Investigate the Temple | yellow | yes | SOLVED_WITH_ASSIST | SOLVED_WITH_ASSIST | PASS |
+| U2P5 | Classified Information | yellow | yes | EXCESS_MISCLASSIFICATIONS | EXCESS_MISCLASSIFICATIONS | PASS |
+| U2P6 | Which Watershed? Part I | yellow | yes | WRONG_EVIDENCE_SELECTED | WRONG_EVIDENCE_SELECTED | PASS |
+| U2P7 | Which Watershed? Part II | yellow | yes | EXCESS_ATTEMPTS | EXCESS_ATTEMPTS | PASS |
+| U3P1 | Establishing a Foothold | yellow | yes | EXCESS_WRONG_RIVERS | EXCESS_WRONG_RIVERS | PASS |
+| U3P2 | Pollution Solution | yellow | yes | EXCESS_SENSOR_REMINDERS | EXCESS_SENSOR_REMINDERS | PASS |
+| U3P3 | Pollution Argument | yellow | yes | EXCESS_ATTEMPTS | EXCESS_ATTEMPTS | PASS |
+| U3P4 | Forsaken Facility | yellow | yes | SOLVED_WITH_ASSIST | SOLVED_WITH_ASSIST | PASS |
+| U3P5 | Plant the Superfruit Seeds | yellow | yes | EXCESS_WRONG_PLANTINGS | EXCESS_WRONG_PLANTINGS | PASS |
+| U4P1 | Well What Have We Here? | yellow | yes | SCORE_BELOW_THRESHOLD | SCORE_BELOW_THRESHOLD | PASS |
+| U4P2 | Infiltration Glyph + Alien Well Floors 1 & 2 | yellow | yes | SOLVED_WITH_ASSIST | SOLVED_WITH_ASSIST | PASS |
+| U4P3 | Alien Well Floor 3 & 4 | yellow | yes | SCORE_BELOW_THRESHOLD | SCORE_BELOW_THRESHOLD | PASS |
+| U4P4 | Alien Well Floor 5 + You Know the Drill | yellow | yes | SCORE_BELOW_THRESHOLD | SCORE_BELOW_THRESHOLD | PASS |
+| U4P5 | Saving Cadet Anderson | yellow | yes | EXCESS_ATTEMPTS | EXCESS_ATTEMPTS | PASS |
+| U4P6 | Desert Delicacies | yellow | yes | WRONG_SOIL_SELECTED | WRONG_SOIL_SELECTED | PASS |
+| U5P1 | If I Had a Nickel- Floors 1 & 2 | yellow | yes | SOLVED_WITH_ASSIST | SOLVED_WITH_ASSIST | PASS |
+| U5P2 | If I Had a Nickel- Floors 3 & 4 | yellow | yes | SCORE_BELOW_THRESHOLD | SCORE_BELOW_THRESHOLD | PASS |
+| U5P3 | What Happened Here? | yellow | yes | EXCESS_ATTEMPTS | EXCESS_ATTEMPTS | PASS |
+| U5P4 | Water Problems Require Water Solutions | yellow | yes | WRONG_SETTINGS_SELECTED | WRONG_SETTINGS_SELECTED | PASS |
+
+## Instructor messages (triggered codes)
+
+### U1P3 — Defend the Expedition (yellow)
+
+**WRONG_ARG_SELECTED** — `attempt_number=2`
+
+> In Defend the Expedition, the student's first argument submission was incorrect; they built the correct argument on attempt 2. This point earns green only when the first submission is correct. The early miss may indicate difficulty identifying which claim is supported by the given evidence and reasoning.
+
+### U2P1 — Escape the Ruin (yellow)
+
+**SOLVED_WITH_ASSIST** — `attempt_number=4`
+
+> In Escape the Ruin, the student did not complete the topographic-map matching independently — after 4 incorrect arrangements, the in-game guide DANI placed the remaining pieces. This point earns green only when the student submits the correct solution on their own within 4 attempts. Needing this level of support may indicate the student would benefit from direct instruction on how contour lines represent elevation and slope before matching maps to terrain shapes.
+
+### U2P2 — Foraged Forging (yellow)
+
+**EXCESS_NAV_REMINDERS** — `triggering_number=4`
+
+> In Foraged Forging, while navigating to find Captain Toppo, the student triggered 4 adaptive reminders — dialogues that fire when the player travels somewhere inconsistent with Anderson's clues or has not been consulting the map. This point earns green only when at most 1 such reminder fires during the search. Repeated reminders may indicate difficulty translating the clues about direction, elevation, and terrain features into a location on the topographic map using contour lines and the compass.
+
+### U2P3 — Getting the Band Back Together Part II (yellow)
+
+**EXCESS_NAV_REMINDERS** — `triggering_number=14`, `tera_count=9`, `aryn_count=5`
+
+> In Getting the Band Back Together Part II, while navigating to find Tera and Aryn, the student triggered 14 adaptive reminders — dialogues that fire when the player travels somewhere inconsistent with the location clues (9 during the search for Tera, 5 during the search for Aryn). This point earns green only when fewer than 6 such reminders fire across the two searches. Repeated reminders may indicate difficulty connecting each set of clues — direction, elevation, landforms, and water features — to locations on the topographic map when planning and adjusting a route.
+
+### U2P4 — Investigate the Temple (yellow)
+
+**SOLVED_WITH_ASSIST** — `attempt_number=5`
+
+> In Investigate the Temple, the student did not complete the watershed glyph puzzle independently - after 5 incorrect arrangements, the in-game guide DANI stepped in to order the watershed pieces. This point earns green only when the student submits the correct arrangement on their own within 5 attempts. Needing this level of support may indicate the student would benefit from reviewing how a larger drainage area collects and delivers more water to the main river, producing a greater flow rate.
+
+### U2P5 — Classified Information (yellow)
+
+**EXCESS_MISCLASSIFICATIONS** — `wrong_number=8`, `claim_wrong=2`, `reasoning_wrong=5`, `evidence_wrong=1`
+
+> In Classified Information, while repairing DANI by classifying highlighted passages of a scientific argument, the student made 8 incorrect classifications - 2 on passages that were claims, 5 on reasoning, and 1 on evidence. This point earns green only when the student completes all six classifications with at most 6 incorrect selections. Errors concentrated on one component may indicate difficulty recognizing that component's role: a claim states the conclusion, evidence provides information collected from the environment, and reasoning explains how the evidence supports the claim.
+
+### U2P6 — Which Watershed? Part I (yellow)
+
+**WRONG_EVIDENCE_SELECTED** — `wrong_choice='waterfall height'`
+
+> In Which Watershed? Part I, when Dr. Toppo asked which observation provides the strongest evidence for identifying the larger watershed, the student selected waterfall height instead of the correct answer, water flow rate. This point earns green only when water flow rate is selected. This may indicate difficulty distinguishing evidence that directly relates to watershed size - a larger drainage area collects and delivers more water, producing a greater flow rate - from observations such as waterfall height or salinity that do not indicate how much land drains to the river.
+
+### U2P7 — Which Watershed? Part II (yellow)
+
+**EXCESS_ATTEMPTS** — `attempt_number=9`, `wrong_claim_number=2`, `irrelevant_evidence_number=6`
+
+> In Which Watershed? Part II, the student built the argument about which watershed is larger, but needed 9 submissions - 2 where the claim did not match the evidence and reasoning, and 6 using evidence that does not indicate watershed size (waterfall height, salinity, or the downstream river). This point earns green only when the correct argument is submitted within 4 attempts. Repeated incorrect submissions may indicate difficulty selecting the claim the data supports and distinguishing relevant evidence - flow rate reflects how much land drains to each river - from irrelevant observations.
+
+### U3P1 — Establishing a Foothold (yellow)
+
+**EXCESS_WRONG_RIVERS** — `wrong_river_number=3`
+
+> In Establishing a Foothold, while sending Tera's three supply crates back to her camp by floating them down a river, the student dropped 3 crates into the wrong river. This point earns green only when at most 1 crate goes into the wrong river. Wrong-river choices may indicate difficulty using the watershed map to determine flow direction - water flows from higher to lower elevation toward the ocean, so the correct river is the one that flows past Tera's camp.
+
+### U3P2 — Pollution Solution (yellow)
+
+**EXCESS_SENSOR_REMINDERS** — `downstream_reminder_number=5`, `redundant_reminder_number=8`
+
+> In Pollution Solution, while using drone-dropped sensors to trace the source of the river pollution, the student triggered 5 reminders that pollution flows only downstream (testing in the wrong direction) and 8 reminders about unnecessary tests (checking upstream of a clean sensor, or pushing past the top of a branch). This point stays green unless reminders accumulate in both categories — one occurring 4 or more times and the other at least twice. Repeated reminders of both kinds may indicate difficulty using sensor readings to reason about how dissolved material spreads through a watershed: pollution can appear only downstream of its source, so a polluted reading means the source is upstream, and a clean reading clears everything upstream of it.
+
+### U3P3 — Pollution Argument (yellow)
+
+**EXCESS_ATTEMPTS** — `wrong_argument_number=6`, `claim_wrong_number=2`, `reasoning_wrong_number=4`, `evidence_wrong_number=0`, `backing_info_phrase='opened'`
+
+> In Pollution Argument, while constructing the argument about where the pollutant enters the river, the student made 6 incorrect submissions — 2 with a claim problem, 4 with a reasoning problem, and 0 with an evidence or structure problem — and opened the Pollution Site Data reference panel. This point earns green only when incorrect submissions stay within the limit (at most 3, or one more when the reference panel has been consulted, which earns a bonus point). Errors concentrated on reasoning may indicate difficulty explaining how pollution travels downstream with the water flow, which is the link between the sensor evidence and the claim.
+
+### U3P4 — Forsaken Facility (yellow)
+
+**SOLVED_WITH_ASSIST** — `attempt_number=4`
+
+> In Forsaken Facility, the student did not complete the ordering puzzle showing how materials dissolve into water independently — after 4 incorrect arrangements, the in-game guide DANI ordered the pieces. This point earns green only when the student submits the correct order on their own within 3 attempts. Needing this level of support may indicate the student would benefit from reviewing how the particles of a dissolved material spread through water, even once they can no longer be seen.
+
+### U3P5 — Plant the Superfruit Seeds (yellow)
+
+**EXCESS_WRONG_PLANTINGS** — `wrong_planting_number=4`
+
+> In Plant the Superfruit Seeds, while helping Tera plant four superfruit seeds in garden plots along the river, the student planted 4 seeds into wrong spots - locations that do not receive the super-nutrient. This point earns green only when at most 1 seed is planted in a wrong spot. Repeated wrong plantings may indicate difficulty predicting how a dissolved material spreads through a watershed: the nutrient travels downstream with the water flow, so only plots downstream of the temple source can receive it.
+
+### U4P1 — Well What Have We Here? (yellow)
+
+**SCORE_BELOW_THRESHOLD** — `choice_phrase="chose 'it's any water found underground' instead of the correct answer on"`, `duration_phrase='took 168 seconds to solve'`
+
+> In Well What Have We Here?, the student chose 'it's any water found underground' instead of the correct answer on Anderson's question about what the water table is, and took 168 seconds to solve the soil key puzzle. This point earns green only when the puzzle is solved within 30 seconds, or within 90 seconds with the water-table question answered correctly. A missed question may reflect the common misconception that the water table is simply any underground water — it is specifically the boundary between the saturated and unsaturated soil layers — and a slow solve may indicate difficulty controlling the water level between the target lines.
+
+### U4P2 — Infiltration Glyph + Alien Well Floors 1 & 2 (yellow)
+
+**SOLVED_WITH_ASSIST** — `attempt_number=4`
+
+> In the Infiltration Glyph puzzle, the student did not complete the soil-infiltration ordering independently — after 4 incorrect arrangements, the in-game guide DANI ordered the pieces. This point earns green only when the student submits the correct order on their own within 3 attempts. Needing this level of support may indicate the student would benefit from reviewing how water infiltrates different soils — the larger the soil particles, the faster water passes through.
+
+### U4P3 — Alien Well Floor 3 & 4 (yellow)
+
+**SCORE_BELOW_THRESHOLD** — `floor3_attempts=10`, `floor4_attempts=15`
+
+> In the Alien Well (floors 3 and 4), the student changed the soil-type canisters 10 times on the third-floor machine and 15 times on the fourth-floor machine. This point earns green only when the fourth-floor machine is set correctly on the first try, or on the second try with the third floor solved in one. Many canister changes may indicate the student was cycling through soil types rather than predicting which soil matches the floor's water-flow requirement - water passes fastest through gravel, more slowly through sand, slowest through clay, and not at all through bedrock.
+
+### U4P4 — Alien Well Floor 5 + You Know the Drill (yellow)
+
+**SCORE_BELOW_THRESHOLD** — `machine_attempt_number=18`, `wrong_choice_number=3`
+
+> In the Alien Well's fifth floor and the drill task, the student changed soil canisters 18 times across the floor's two machines (three changes - one per layer - is optimal) and chose a wrong drilling depth 3 times before reaching clean water. This point earns green only when the drill hits the right depth on the first choice with at least one machine set optimally, or on the second choice with both machines set optimally. Wrong depths may indicate difficulty locating the water table: drilling too shallow finds no water, too deep hits bedrock, and water that has filtered through too few soil layers stays contaminated - the clean water lies just above the bedrock.
+
+### U4P5 — Saving Cadet Anderson (yellow)
+
+**EXCESS_ATTEMPTS** — `attempt_number=11`, `claim_wrong_number=6`, `reasoning_wrong_number=1`, `evidence_wrong_number=3`
+
+> In Saving Cadet Anderson, the student built the argument explaining how water flooded the warehouse, but needed 11 submissions - 6 flagged for the claim, 1 for the reasoning, and 3 for evidence or completeness. This point earns green only when the correct argument is submitted with at most 2 incorrect submissions. Reasoning errors here reflect misconceptions the feedback names directly - water does not flow easily through bedrock, and water does not infiltrate upward - while claim errors suggest difficulty identifying the actual source of the flooding.
+
+### U4P6 — Desert Delicacies (yellow)
+
+**WRONG_SOIL_SELECTED** — `wrong_box_number=3`, `wrong_box_summary='the first box (chose Clay, needs Gravel) and the second box (chose Gravel, needs Sand) and the third box (chose Sand, needs Clay)'`
+
+> In Desert Delicacies, the student placed recording cameras on the soil they predicted would grow each seedling best, but chose a soil that does not match the seedling's water needs in the first box (chose Clay, needs Gravel) and the second box (chose Gravel, needs Sand) and the third box (chose Sand, needs Clay). This point earns green only when at least 2 of the 3 garden boxes have the correct soil. Wrong choices may indicate difficulty connecting soil particle size to water retention — coarse soils like gravel let water drain past the roots, while fine-particle soils like clay trap too much of it, so each seedling needs the soil whose drainage matches its water requirement.
+
+### U5P1 — If I Had a Nickel- Floors 1 & 2 (yellow)
+
+**SOLVED_WITH_ASSIST** — `attempt_number=4`
+
+> In If I Had a Nickel (floors 1 and 2), the student did not complete the evaporation glyph puzzle independently — after 4 incorrect arrangements, the in-game guide DANI ordered the tablets. This point earns green only when the student solves the puzzle on their own within 4 attempts. Needing this level of support may indicate the student would benefit from reviewing how temperature drives evaporation — the higher the temperature, the higher the evaporation rate.
+
+### U5P2 — If I Had a Nickel- Floors 3 & 4 (yellow)
+
+**SCORE_BELOW_THRESHOLD** — `floor3_attempts=8`, `floor4_attempts=10`
+
+> In If I Had a Nickel (floors 3 and 4), the student used 8 condenser and evaporator interactions to solve the third-floor water chamber puzzle and 10 on the fourth floor. This point earns green only when at least one floor is solved within its optimal count (6 interactions on the third floor, 5 on the fourth) and the other stays within its partial range (at most 10 and 9, respectively). Many interactions may indicate trial-and-error switching rather than predicting the phase change each chamber needs — condensation removes energy to turn water vapor into liquid, and evaporation adds energy to turn liquid back into vapor.
+
+### U5P3 — What Happened Here? (yellow)
+
+**EXCESS_ATTEMPTS** — `wrong_argument_number=4`, `claim_wrong_number=4`, `reasoning_wrong_number=0`, `evidence_wrong_number=0`
+
+> In What Happened Here?, while building the argument about why the collected water disappeared, the student made 4 flagged submissions - 4 for restating Aryn's claim instead of arguing against it, 0 for reasoning problems, and 0 for evidence or completeness problems. This point earns green only when fewer than 4 submissions are flagged. Claim errors suggest the student did not connect the evidence to the natural explanation - the water evaporated, leaving the salt behind - while the reasoning feedback names specific misconceptions to review, such as the water being filtered or transformed into salt.
+
+### U5P4 — Water Problems Require Water Solutions (yellow)
+
+**WRONG_SETTINGS_SELECTED** — `wrong_run_number=1`, `failure_phrase='the settings blocked sunlight, so the salt water could not heat up and evaporate'`
+
+> In Water Problems Require Water Solutions, the student ran the solar desalinator with settings that did not produce the maximum amount of water: the settings blocked sunlight, so the salt water could not heat up and evaporate. This point earns green only when the desalinator collects the maximum water with no failed runs. Each failure mode maps directly to the water cycle - the salt water needs sunlight to heat it for evaporation, the glass surface must stay cool for condensation to form, and the roof angle determines whether the condensed water is collected.
+
+## All code evaluations
+
+| Point | Code | Triggered | Variables |
+|---|---|---|---|
+| U1P1 | _(no reason codes)_ | - | - |
+| U1P2 | _(no reason codes)_ | - | - |
+| U1P3 | WRONG_ARG_SELECTED | yes | attempt_number=2 |
+| U1P4 | _(no reason codes)_ | - | - |
+| U2P1 | SOLVED_WITH_ASSIST | yes | attempt_number=4 |
+| U2P1 | EXCESS_ATTEMPTS | no | attempt_number=5 |
+| U2P2 | EXCESS_NAV_REMINDERS | yes | triggering_number=4 |
+| U2P3 | EXCESS_NAV_REMINDERS | yes | triggering_number=14, tera_count=9, aryn_count=5 |
+| U2P4 | SOLVED_WITH_ASSIST | yes | attempt_number=5 |
+| U2P4 | EXCESS_ATTEMPTS | no | attempt_number=6 |
+| U2P5 | EXCESS_MISCLASSIFICATIONS | yes | wrong_number=8, claim_wrong=2, reasoning_wrong=5, evidence_wrong=1 |
+| U2P6 | WRONG_EVIDENCE_SELECTED | yes | wrong_choice='waterfall height' |
+| U2P7 | EXCESS_ATTEMPTS | yes | attempt_number=9, wrong_claim_number=2, irrelevant_evidence_number=6 |
+| U3P1 | EXCESS_WRONG_RIVERS | yes | wrong_river_number=3 |
+| U3P2 | EXCESS_SENSOR_REMINDERS | yes | downstream_reminder_number=5, redundant_reminder_number=8 |
+| U3P3 | EXCESS_ATTEMPTS | yes | wrong_argument_number=6, claim_wrong_number=2, reasoning_wrong_number=4, evidence_wrong_number=0, backing_info_phrase='opened' |
+| U3P4 | SOLVED_WITH_ASSIST | yes | attempt_number=4 |
+| U3P4 | EXCESS_ATTEMPTS | no | attempt_number=6 |
+| U3P5 | EXCESS_WRONG_PLANTINGS | yes | wrong_planting_number=4 |
+| U4P1 | SCORE_BELOW_THRESHOLD | yes | choice_phrase="chose 'it's any water found underground' instead of the correct answer on", duration_phrase='took 168 seconds to solve' |
+| U4P2 | SOLVED_WITH_ASSIST | yes | attempt_number=4 |
+| U4P2 | EXCESS_ATTEMPTS | no | attempt_number=5 |
+| U4P3 | SCORE_BELOW_THRESHOLD | yes | floor3_attempts=10, floor4_attempts=15 |
+| U4P4 | SCORE_BELOW_THRESHOLD | yes | machine_attempt_number=18, wrong_choice_number=3 |
+| U4P5 | EXCESS_ATTEMPTS | yes | attempt_number=11, claim_wrong_number=6, reasoning_wrong_number=1, evidence_wrong_number=3 |
+| U4P6 | WRONG_SOIL_SELECTED | yes | wrong_box_number=3, wrong_box_summary='the first box (chose Clay, needs Gravel) and the second box (chose Gravel, needs Sand) and the third box (chose Sand, needs Clay)' |
+| U5P1 | SOLVED_WITH_ASSIST | yes | attempt_number=4 |
+| U5P1 | EXCESS_ATTEMPTS | no | attempt_number=5 |
+| U5P2 | SCORE_BELOW_THRESHOLD | yes | floor3_attempts=8, floor4_attempts=10 |
+| U5P3 | EXCESS_ATTEMPTS | yes | wrong_argument_number=4, claim_wrong_number=4, reasoning_wrong_number=0, evidence_wrong_number=0 |
+| U5P4 | WRONG_SETTINGS_SELECTED | yes | wrong_run_number=1, failure_phrase='the settings blocked sunlight, so the salt water could not heat up and evaporate' |

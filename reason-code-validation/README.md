@@ -78,11 +78,26 @@ drift the moment either side changes.
 | `09-03-26-2` | Clean run, all green — the negative control: no code may fire. |
 | `09-03-26-4` | U2P1/U2P2/U2P3 yellows (incl. the exactly-6-reminders U2P3 case) plus a truncated Unit 5: production yellow **without** a window → no code, no pop-up. |
 | `08-31-26` | Previous build; U1P3 yellow only. |
+| `09-14-26-3` | Build `20260914-`, 23 yellow points — first log on the U2P1 and U4P2 **accepted**-assist paths and on U3P4's forced assist; it drove the 2026-09-16 assist-key extension (below). |
 
-All four pass 26/26 as of 2026-09-13. The 9 code paths no fixture triggers
-(EXCESS_ATTEMPTS at U2P1/U2P4/U3P4/U4P2/U5P1, SOLVED_WITH_ASSIST at U3P4, and
-the U2P3/U2P6 salinity/both-options branches) are verified only by line-level
-transcription — add a fixture when a playthrough reaches them.
+All five pass 26/26 as of 2026-09-16. `09-14-26-3` initially failed U2P1 and
+U4P2 for one reason: the assist key lists only held DANI's *forced* nodes, so
+the *accepted*-offer path was invisible to the scripts. Both markdown scripts
+and their transcriptions (`rc_u2p1.py`, `rc_u4p2.py`) now carry the
+accepted-path nodes:
+
+* **U2P1** — offer `68:23`/`68:27` → `68:24`/`68:32` "Sure, I'm stuck" →
+  `68:26`/`68:34` DANI places the pieces (`68:29` never fires on this path).
+  Before the fix the yellow cell got **no code**.
+* **U4P2** — offer `102:18` → `102:20` → `102:21` (empty-text nodes in the
+  2026-06-10 dialogue export), puzzle completed 10 s later with no interact
+  inputs; `102:23` never fires. Before the fix the scripts reported
+  **EXCESS_ATTEMPTS (5 attempts)** instead of SOLVED_WITH_ASSIST (4).
+
+The 8 code paths no fixture triggers (EXCESS_ATTEMPTS at
+U2P1/U2P4/U3P4/U4P2/U5P1 and the U2P3/U2P6 salinity/both-options branches)
+are verified only by line-level transcription — add a fixture when a
+playthrough reaches them.
 
 ### Adding a fixture for a new build
 

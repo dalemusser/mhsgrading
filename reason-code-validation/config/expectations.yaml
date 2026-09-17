@@ -287,3 +287,159 @@ fixtures:
       U5P2: {codes: []}
       U5P3: {codes: []}
       U5P4: {codes: []}
+
+  "09-14-26-3":
+    log: playthrough-logs-and-results/09-14-26-3/wenyi091426-3.stratalog.logdata.json
+    description: >
+      Full imperfect playthrough of build "20260914-" (12,318 records; 23
+      yellow points — the rubric-validation fixture of the same id). Two
+      sittings with a ~13 h break mid-Unit 2; Unit 1 started twice (first
+      attempt abandoned, outside the graded windows). First log to exercise
+      the U2P1 and U4P2 ACCEPTED-assist paths and U3P4's forced assist.
+    provenance: >
+      Expected codes follow the fixture colors in rubric-validation
+      (audit 09-14-26-3, 2026-09-16): every yellow cell triggers exactly one
+      code, every green cell none. Variable values were cross-checked
+      2026-09-16 against (a) the independently written diagnose() quantities
+      in rubric-validation/outputs/09-14-26-3/results.md (U1P3 attempt 2,
+      U2P2 4 reminders, U2P3 14, U2P5 8 wrong / score 3.33, U2P6 waterfall
+      height, U2P7 8 wrong -> 9 submissions, U3P1 3 wrong rivers, U3P2
+      c27=5 / c29+c230=8, U3P3 color sum 7 incl. success node 84:36 -> 6
+      honest wrongs + panel opened, U3P4 5 target nodes, U3P5 4 wrong, U4P1
+      88:5 absent + 168.45 s, U4P3 10/15, U4P4 18 machine changes + 3
+      color-negatives (107:4 absent), U4P5 10 wrong + success 90:57 -> 11,
+      U4P6 all three boxes wrong (Clay/Gravel/Sand vs Gravel/Sand/Clay),
+      U5P1 one negative node 100:39, U5P2 8/10, U5P3 4 flagged) and (b) raw
+      per-node counts in the dump mapped through the markdown key lists
+      (U2P5 26:138 x8 = wrong_number, claim 197/203, reasoning
+      144/195/198/201/210, evidence 145; U2P7 27:0 x9 submissions, claim
+      12/14, irrelevant 15/17/20/26/28/30; U3P3 84:0 x7 = 6 wrong + success,
+      claim 25/39, reasoning 33/34/40/42; U4P5 90:0 x11, claim 37x5+55,
+      reasoning 61, evidence 58x2+47; U5P3 108:37 x4 (soft twins 64/65 fired
+      but are ungraded); U5P4 single run, 106:25 sunlight-blocked; U2P3 phase
+      split recomputed from the 20:33 / 21:1 / 18:231 / 22:18 markers -> 9
+      Tera + 5 Aryn, all conv-28 nodes 187/188/194). Glyph puzzles from the
+      conversation sequences: U2P4 five wrong (74:4/6/10/15/17) then accepted
+      assist 74:18 + 74:22; U3P4 four wrong (78:3/7/9/12) then forced assist
+      78:23; U5P1 hints 100:34/35/37, offer 100:39, accepted 100:40/41.
+      ACCEPTED-ASSIST PATHS (first observed here; drove the 2026-09-16
+      assist-key extension in both markdown scripts and their transcriptions):
+      U2P1 — four wrong (68:5/7/18/23), offer accepted (68:24 "Sure, I'm
+      stuck") and executed by 68:26, no 68:29; before the fix ASSIST_KEYS
+      held only the forced nodes 68:28/68:31 and the yellow cell got no code.
+      U4P2 — four wrong (102:3/7/10/18), offer accepted: 102:20 then 102:21
+      fired and the puzzle completed 10 s later with zero interact inputs
+      (each manual attempt took 30-45 s with 9 interacts), no 102:23; before
+      the fix the scripts only knew 102:23 and reported EXCESS_ATTEMPTS (5)
+      instead of SOLVED_WITH_ASSIST (4). Passes 26/26 since the fix.
+    expected:
+      U1P1: {codes: []}
+      U1P2: {codes: []}
+      U1P3:
+        codes: [WRONG_ARG_SELECTED]
+        variables:
+          WRONG_ARG_SELECTED: {attempt_number: 2}
+      U1P4: {codes: []}
+      U2P1:   # accepted-assist path (68:24 -> 68:26); assist keys extended 2026-09-16
+        codes: [SOLVED_WITH_ASSIST]
+        variables:
+          SOLVED_WITH_ASSIST: {attempt_number: 4}
+      U2P2:
+        codes: [EXCESS_NAV_REMINDERS]
+        variables:
+          EXCESS_NAV_REMINDERS: {triggering_number: 4}
+      U2P3:
+        codes: [EXCESS_NAV_REMINDERS]
+        variables:
+          EXCESS_NAV_REMINDERS: {triggering_number: 14, tera_count: 9, aryn_count: 5}
+      U2P4:
+        codes: [SOLVED_WITH_ASSIST]
+        variables:
+          SOLVED_WITH_ASSIST: {attempt_number: 5}
+      U2P5:
+        codes: [EXCESS_MISCLASSIFICATIONS]
+        variables:
+          EXCESS_MISCLASSIFICATIONS:
+            {wrong_number: 8, claim_wrong: 2, reasoning_wrong: 5, evidence_wrong: 1}
+      U2P6:
+        codes: [WRONG_EVIDENCE_SELECTED]
+        variables:
+          WRONG_EVIDENCE_SELECTED: {wrong_choice: "waterfall height"}
+      U2P7:
+        codes: [EXCESS_ATTEMPTS]
+        variables:
+          EXCESS_ATTEMPTS:
+            {attempt_number: 9, wrong_claim_number: 2, irrelevant_evidence_number: 6}
+      U3P1:
+        codes: [EXCESS_WRONG_RIVERS]
+        variables:
+          EXCESS_WRONG_RIVERS: {wrong_river_number: 3}
+      U3P2:
+        codes: [EXCESS_SENSOR_REMINDERS]
+        variables:
+          EXCESS_SENSOR_REMINDERS:
+            {downstream_reminder_number: 5, redundant_reminder_number: 8}
+      U3P3:
+        codes: [EXCESS_ATTEMPTS]
+        variables:
+          EXCESS_ATTEMPTS:
+            {wrong_argument_number: 6, claim_wrong_number: 2, reasoning_wrong_number: 4,
+             evidence_wrong_number: 0, backing_info_phrase: "opened"}
+      U3P4:
+        codes: [SOLVED_WITH_ASSIST]
+        variables:
+          SOLVED_WITH_ASSIST: {attempt_number: 4}
+      U3P5:
+        codes: [EXCESS_WRONG_PLANTINGS]
+        variables:
+          EXCESS_WRONG_PLANTINGS: {wrong_planting_number: 4}
+      U4P1:
+        codes: [SCORE_BELOW_THRESHOLD]
+        variables:
+          SCORE_BELOW_THRESHOLD:
+            choice_phrase: "chose 'it's any water found underground' instead of the correct answer on"
+            duration_phrase: "took 168 seconds to solve"
+      U4P2:   # accepted-assist path (102:20 -> 102:21); assist keys extended 2026-09-16
+        codes: [SOLVED_WITH_ASSIST]
+        variables:
+          SOLVED_WITH_ASSIST: {attempt_number: 4}
+      U4P3:
+        codes: [SCORE_BELOW_THRESHOLD]
+        variables:
+          SCORE_BELOW_THRESHOLD: {floor3_attempts: 10, floor4_attempts: 15}
+      U4P4:
+        codes: [SCORE_BELOW_THRESHOLD]
+        variables:
+          SCORE_BELOW_THRESHOLD: {machine_attempt_number: 18, wrong_choice_number: 3}
+      U4P5:
+        codes: [EXCESS_ATTEMPTS]
+        variables:
+          EXCESS_ATTEMPTS:
+            {attempt_number: 11, claim_wrong_number: 6, reasoning_wrong_number: 1,
+             evidence_wrong_number: 3}
+      U4P6:
+        codes: [WRONG_SOIL_SELECTED]
+        variables:
+          WRONG_SOIL_SELECTED:
+            wrong_box_number: 3
+            wrong_box_summary: "the first box (chose Clay, needs Gravel) and the second box (chose Gravel, needs Sand) and the third box (chose Sand, needs Clay)"
+      U5P1:
+        codes: [SOLVED_WITH_ASSIST]
+        variables:
+          SOLVED_WITH_ASSIST: {attempt_number: 4}
+      U5P2:
+        codes: [SCORE_BELOW_THRESHOLD]
+        variables:
+          SCORE_BELOW_THRESHOLD: {floor3_attempts: 8, floor4_attempts: 10}
+      U5P3:
+        codes: [EXCESS_ATTEMPTS]
+        variables:
+          EXCESS_ATTEMPTS:
+            {wrong_argument_number: 4, claim_wrong_number: 4, reasoning_wrong_number: 0,
+             evidence_wrong_number: 0}
+      U5P4:
+        codes: [WRONG_SETTINGS_SELECTED]
+        variables:
+          WRONG_SETTINGS_SELECTED:
+            wrong_run_number: 1
+            failure_phrase: "the settings blocked sunlight, so the salt water could not heat up and evaporate"

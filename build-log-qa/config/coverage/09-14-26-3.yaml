@@ -1,0 +1,23 @@
+# Gameplay coverage manifest for the 09-14-26-3 playthrough.
+# Statuses: complete | partial | skipped
+# Update this file after each weekly playtest BEFORE running the audit —
+# it is what lets the audit distinguish "logging failed" from "not tested".
+
+build: "09-14-26-3"
+game_version: "20260914-"
+
+tested_content:
+  Unit1: complete
+  Unit2: complete
+  Unit3: complete
+  Unit4: complete
+  Unit5: complete
+
+notes:
+  - "Full playthrough by one tester, logged 2026-09-16 00:22Z to 19:04Z (log shows EndOfUnit for units 1-5). Played in two sittings: Units 1-2 (first half) on the evening of 2026-09-15 local time, then a ~13-hour break mid-Unit 2 (01:48Z-14:42Z) before resuming from the main menu and finishing Units 2-5 on 2026-09-16."
+  - "The build's version string is '20260914-' on every record — the build number after the dash is missing (previous builds looked like '20260902-12353'). Worth reporting to the developers."
+  - "Unit 1 was started twice: a short first attempt (00:22Z-00:28Z, 24 records) was abandoned, then the tester relaunched at 00:45Z (MainMenu -> Transition -> Unit 1 Dev) and completed Unit 1 from the start."
+  - "Seven gameStartEvent records = seven launches from MainMenu (initial launch, Unit 1 restart, overnight resume, and one relaunch before each of Units 2, 3, 4, and 5)."
+  - "Debug menu was NOT used. The 13 DEBUGMenu records (DebugMenuStateChanged, all isOpened=false) each sit at the exact first instant of a gameplay scene load (13 of the 14 gameplay scene loads; only the final 'Unit 5 Dev' load at 18:45:51Z lacks one). In every earlier build (08-13 through 09-03) DEBUGMenu records came as true/false pairs seconds apart from real toggles, so a scene-load emission of isOpened=false is new behavior in this build."
+  - "chatEvent: the two records (actionType Close, chatID NA) coincide exactly with the two Unit 5 scene loads (18:29:20Z dungeon, 18:45:51Z surface), the same pattern as the 08-31-26 and 09-03-26-3 runs; the tester never opened the chat log, so the missing data.actionKey / Open / ScrollStart values are not-exercised rather than a regression."
+  - "No 'crash' eventType records this run (the WASM memory-access crash seen in all three 09-03-26 sessions did not recur)."
