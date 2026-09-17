@@ -10,9 +10,9 @@ Grading in Mission HydroSci for use by mhsgrader.
 | [feedback-message-for-each-pp/](feedback-message-for-each-pp/) | Context and outputs for the teacher-facing feedback behind yellow cells. Four folders hold one `unitX-pp-Y.md` per graded point (U1P3, U2P1–7, U3P1–5, U4P1–6, U5P1–4 — 23 files each): [assessment-score-rubric-for-each-pp/](feedback-message-for-each-pp/assessment-score-rubric-for-each-pp/) (narrative rendering of each row of the EA working-doc score table), [curriculum-goal-for-each-pp/](feedback-message-for-each-pp/curriculum-goal-for-each-pp/), [potential-strategy-for-each-pp/](feedback-message-for-each-pp/potential-strategy-for-each-pp/), and [context-dialogue-for-each-pp/](feedback-message-for-each-pp/context-dialogue-for-each-pp/) (per-unit subfolders with the dialogue each point depends on). [game-combo-doc/](feedback-message-for-each-pp/game-combo-doc/) has the five unit narrative combo docs. [example-pop-up-feedback/](feedback-message-for-each-pp/example-pop-up-feedback/) holds the finished examples — see "Generating teacher feedback for yellow points" below. |
 | [rubric-validation/](rubric-validation/) | Rubric/scoring validation suite for the 26 point-grading scripts — one `test_uXpY.py` per point, a MongoDB-like harness, a fixture manifest with expected colors, and an aggregate runner. See [rubric-validation/README.md](rubric-validation/README.md). |
 | [reason-code-validation/](reason-code-validation/) | Reason-code validation suite for the pop-up messages behind yellow points — one `rc_uXpY.py` per point transcribing the markdown's "Corresponding Script", a fixture manifest with expected triggered codes + message variables, and a runner that renders every instructor message and checks it agrees with the cell color. Writes `outputs/<fixture>/results.md` and `results.json` (per point: color, window, triggered codes, variables, rendered message — the machine-readable input for feedback generation). See [reason-code-validation/README.md](reason-code-validation/README.md). |
-| [playthrough-logs-and-results/](playthrough-logs-and-results/) | Captured gameplay log dumps and their results, organized by playthrough date (`05-01-26/` … `09-03-26-4/`; a `-N` suffix distinguishes several sessions of the same build, e.g. `09-03-26-2/-3/-4`). [08-13-26/Investigation-results/](playthrough-logs-and-results/08-13-26/Investigation-results/) holds the de facto per-event-type log-format specifications (position, puzzle, quest, argumentation, chat, etc.). |
+| [playthrough-logs-and-results/](playthrough-logs-and-results/) | Captured gameplay log dumps and their results, organized by playthrough date (`05-01-26/` … `09-14-26-3/`; a `-N` suffix distinguishes several sessions of the same build, e.g. `09-03-26-2/-3/-4`). [08-13-26/Investigation-results/](playthrough-logs-and-results/08-13-26/Investigation-results/) holds the de facto per-event-type log-format specifications (position, puzzle, quest, argumentation, chat, etc.). |
 | [build-log-qa/](build-log-qa/) | Weekly build-log QA pipeline (event-level): config-driven expectation checks, frequency/sequence/duplicate analysis, build-vs-build regression, and auto-generated audit reports. See [build-log-qa/README.md](build-log-qa/README.md). |
-| [grading-readiness-audit/](grading-readiness-audit/) | Two-stage grading-readiness pipeline (grading-level): Stage 1 checks whether a build's logs still provide the evidence each grading rule needs; Stage 2 executes the production grading logic and validates the resulting colors. Per-run results under `outputs/<run>/` and `reports/<run>/` (`08-25-26`, `08-31-26`, `08-31-26-run2`, `09-03-26-2`, `09-03-26-3`, `09-03-26-4`), each with an `audit-summary.md`, per-point reports, and a run-vs-run comparison doc. See [grading-readiness-audit/README.md](grading-readiness-audit/README.md). |
+| [grading-readiness-audit/](grading-readiness-audit/) | Two-stage grading-readiness pipeline (grading-level): Stage 1 checks whether a build's logs still provide the evidence each grading rule needs; Stage 2 executes the production grading logic and validates the resulting colors. Per-run results under `outputs/<run>/` and `reports/<run>/` (`08-25-26`, `08-31-26`, `08-31-26-run2`, `09-03-26-2`, `09-03-26-3`, `09-03-26-4`, `09-14-26-3`), each with an `audit-summary.md`, per-point reports, and a run-vs-run comparison doc. See [grading-readiness-audit/README.md](grading-readiness-audit/README.md). |
 | [prompts/](prompts/) | Task prompts that produced the major work products: initial grading logic, the teacher-feedback task spec ([adaptive-feedback-1.md](prompts/adaptive-feedback-1.md) — what a yellow-cell pop-up must cover and which folders are evidence), the gameplay-log QA pipeline ([gamelog-test-1.md](prompts/gamelog-test-1.md)), and the progress-point audit pipeline ([gameplay-logs-pp-audit.md](prompts/gameplay-logs-pp-audit.md)). |
 | [docs/](docs/) | Project notes — [issues_and_updates.md](docs/issues_and_updates.md). |
 
@@ -157,8 +157,10 @@ come in two forms and are kept in sync:
 
 | File | Form | Covers |
 | ---- | ---- | ------ |
-| [yellow-pp-teacher-feedback-units1-5-090326-3.md](feedback-message-for-each-pp/example-pop-up-feedback/yellow-pp-teacher-feedback-units1-5-090326-3.md) | Full evidence form — per point: yellow trigger, performance summary, gameplay evidence, learning need, underused support, suggested intervention, pop-up text; plus a summary table and verification notes | all 20 yellow points of run `09-03-26-3` |
-| [yellow-pp-ai-summarized-pop-up-text-units1-5-090326-3.md](feedback-message-for-each-pp/example-pop-up-feedback/yellow-pp-ai-summarized-pop-up-text-units1-5-090326-3.md) | Teacher view — only the point title and the pop-up paragraph (80–150 words) the dashboard displays | same 20 points |
+| [yellow-pp-teacher-feedback-units1-5-091426-3.md](feedback-message-for-each-pp/example-pop-up-feedback/yellow-pp-teacher-feedback-units1-5-091426-3.md) | Full evidence form — per point: yellow trigger, performance summary, gameplay evidence, learning need, underused support, suggested intervention, pop-up text; plus a summary table and verification notes | all 23 yellow points of run `09-14-26-3` (build `20260914-`) — the most complete example, and the first to cover U2P1, U2P3 and U3P4 |
+| [yellow-pp-ai-summarized-pop-up-text-units1-5-091426-3.md](feedback-message-for-each-pp/example-pop-up-feedback/yellow-pp-ai-summarized-pop-up-text-units1-5-091426-3.md) | Teacher view — only the point title and the pop-up paragraph (80–150 words) the dashboard displays | same 23 points |
+| [yellow-pp-teacher-feedback-units1-5-090326-3.md](feedback-message-for-each-pp/example-pop-up-feedback/yellow-pp-teacher-feedback-units1-5-090326-3.md) | Full evidence form (same sections) | all 20 yellow points of run `09-03-26-3` (build `20260902-12353`) |
+| [yellow-pp-ai-summarized-pop-up-text-units1-5-090326-3.md](feedback-message-for-each-pp/example-pop-up-feedback/yellow-pp-ai-summarized-pop-up-text-units1-5-090326-3.md) | Teacher view | same 20 points |
 | [yellow-pp-teacher-feedback-units1-2.md](feedback-message-for-each-pp/example-pop-up-feedback/yellow-pp-teacher-feedback-units1-2.md) | First example, full form | U1P3, U2P2, U2P7 of run `05-01-26` |
 
 Rules the examples follow: definitive wording only for facts the log records
@@ -169,8 +171,10 @@ resolved.
 
 ## Auditing a new build end-to-end
 
-For each new weekly build/playthrough, run both pipelines (write the coverage
-manifest under `build-log-qa/config/coverage/` first):
+For each new weekly build/playthrough, run both audit pipelines (write the
+coverage manifest under `build-log-qa/config/coverage/` first), then turn the
+playthrough into a regression fixture for both validation suites, and finally
+write its teacher feedback:
 
 ```bash
 # 1. Event-level log QA (schemas, frequencies, anomalies, build regression)
@@ -185,10 +189,28 @@ python grading-readiness-audit/scripts/run_audit.py \
     --coverage-yaml build-log-qa/config/coverage/<MM-DD-YY>.yaml \
     --outputs-dir outputs/<MM-DD-YY> \
     --reports-dir reports/<MM-DD-YY>
+# 3. Regression fixtures: add the playthrough to both manifests, then run both suites
+#    - rubric-validation/config/fixtures.yaml: log path + all 26 expected colors
+#      (normally the Stage-2 colors from step 2, cross-checked with the tester)
+#    - reason-code-validation/config/expectations.yaml: expected code(s) and
+#      message variables per point, established from the tester's intent and raw
+#      event counts in the window — never copied from the suite's own ad-hoc output
+cd rubric-validation && python run_all.py --fixture <MM-DD-YY>
+cd ../reason-code-validation && python run_all.py --fixture <MM-DD-YY>
+# 4. Teacher feedback: write the full-form doc and its pop-up-only twin for the
+#    playthrough's yellow points (see "Generating teacher feedback for yellow points")
 ```
 
-Results land in `build-log-qa/reports/<MM-DD-YY>/` and
-`grading-readiness-audit/reports/<MM-DD-YY>/` — read each `audit-report.md` /
-`audit-summary.md` first. Details in
-[build-log-qa/README.md](build-log-qa/README.md) and
-[grading-readiness-audit/README.md](grading-readiness-audit/README.md).
+Results land in `build-log-qa/reports/<MM-DD-YY>/`,
+`grading-readiness-audit/reports/<MM-DD-YY>/` (read each `audit-report.md` /
+`audit-summary.md` first), `rubric-validation/outputs/<MM-DD-YY>/` and
+`reason-code-validation/outputs/<MM-DD-YY>/`. A point that fails a suite while
+its expectation is right points at the grading markdown or its transcription:
+a change to a "Production Script" or "Corresponding Script" reaches the suites
+only once the matching `test_uXpY.py` / `rc_uXpY.py` mirrors it. The
+`09-14-26-3` run found the accepted-assist paths of U2P1 and U4P2 this way
+(the scripts knew only DANI's forced assist), and both fixtures now pass 26/26.
+Details in [build-log-qa/README.md](build-log-qa/README.md),
+[grading-readiness-audit/README.md](grading-readiness-audit/README.md),
+[rubric-validation/README.md](rubric-validation/README.md) and
+[reason-code-validation/README.md](reason-code-validation/README.md).
