@@ -79,9 +79,9 @@ Log: `wenyi091426-3.stratalog.logdata.json`
 
 ### U2P7 — Which Watershed? Part II (yellow)
 
-**EXCESS_ATTEMPTS** — `attempt_number=9`, `wrong_claim_number=2`, `irrelevant_evidence_number=6`
+**EXCESS_ATTEMPTS** — `attempt_number=9`, `wrong_claim_number=1`, `both_wrong_number=3`, `irrelevant_evidence_number=4`
 
-> In Which Watershed? Part II, the student built the argument about which watershed is larger, but needed 9 submissions - 2 where the claim did not match the evidence and reasoning, and 6 using evidence that does not indicate watershed size (waterfall height, salinity, or the downstream river). This point earns green only when the correct argument is submitted within 4 attempts. Repeated incorrect submissions may indicate difficulty selecting the claim the data supports and distinguishing relevant evidence - flow rate reflects how much land drains to each river - from irrelevant observations.
+> In Which Watershed? Part II, the student built the argument about which watershed is larger, but needed 9 submissions - 1 where only the claim was wrong, 3 where both the claim and the evidence were wrong, and 4 where the claim was right but the evidence does not indicate watershed size (waterfall height, salinity, the downstream river, or several pieces at once). This point earns green only when the correct argument is submitted within 4 attempts. Repeated incorrect submissions may indicate difficulty selecting the claim the data supports and distinguishing relevant evidence - flow rate reflects how much land drains to each river - from irrelevant observations.
 
 ### U3P1 — Establishing a Foothold (yellow)
 
@@ -97,9 +97,9 @@ Log: `wenyi091426-3.stratalog.logdata.json`
 
 ### U3P3 — Pollution Argument (yellow)
 
-**EXCESS_ATTEMPTS** — `wrong_argument_number=6`, `claim_wrong_number=2`, `reasoning_wrong_number=4`, `evidence_wrong_number=0`, `backing_info_phrase='opened'`
+**EXCESS_ATTEMPTS** — `wrong_argument_number=6`, `claim_wrong_number=3`, `reasoning_wrong_number=3`, `evidence_wrong_number=0`, `backing_info_phrase='opened'`
 
-> In Pollution Argument, while constructing the argument about where the pollutant enters the river, the student made 6 incorrect submissions — 2 with a claim problem, 4 with a reasoning problem, and 0 with an evidence or structure problem — and opened the Pollution Site Data reference panel. This point earns green only when incorrect submissions stay within the limit (at most 3, or one more when the reference panel has been consulted, which earns a bonus point). Errors concentrated on reasoning may indicate difficulty explaining how pollution travels downstream with the water flow, which is the link between the sensor evidence and the claim.
+> In Pollution Argument, while constructing the argument about where the pollutant enters the river, the student made 6 incorrect submissions — 3 with a claim problem, 3 with a reasoning problem, and 0 with an evidence or structure problem — and opened the Pollution Site Data reference panel. This point earns green only when incorrect submissions stay within the limit (at most 3, or one more when the reference panel has been consulted, which earns a bonus point). Errors concentrated on reasoning may indicate difficulty explaining how pollution travels downstream with the water flow, which is the link between the sensor evidence and the claim.
 
 ### U3P4 — Forsaken Facility (yellow)
 
@@ -189,10 +189,10 @@ Log: `wenyi091426-3.stratalog.logdata.json`
 | U2P4 | EXCESS_ATTEMPTS | no | attempt_number=6 |
 | U2P5 | EXCESS_MISCLASSIFICATIONS | yes | wrong_number=8, claim_wrong=2, reasoning_wrong=5, evidence_wrong=1 |
 | U2P6 | WRONG_EVIDENCE_SELECTED | yes | wrong_choice='waterfall height' |
-| U2P7 | EXCESS_ATTEMPTS | yes | attempt_number=9, wrong_claim_number=2, irrelevant_evidence_number=6 |
+| U2P7 | EXCESS_ATTEMPTS | yes | attempt_number=9, wrong_claim_number=1, both_wrong_number=3, irrelevant_evidence_number=4 |
 | U3P1 | EXCESS_WRONG_RIVERS | yes | wrong_river_number=3 |
 | U3P2 | EXCESS_SENSOR_REMINDERS | yes | downstream_reminder_number=5, redundant_reminder_number=8 |
-| U3P3 | EXCESS_ATTEMPTS | yes | wrong_argument_number=6, claim_wrong_number=2, reasoning_wrong_number=4, evidence_wrong_number=0, backing_info_phrase='opened' |
+| U3P3 | EXCESS_ATTEMPTS | yes | wrong_argument_number=6, claim_wrong_number=3, reasoning_wrong_number=3, evidence_wrong_number=0, backing_info_phrase='opened' |
 | U3P4 | SOLVED_WITH_ASSIST | yes | attempt_number=4 |
 | U3P4 | EXCESS_ATTEMPTS | no | attempt_number=6 |
 | U3P5 | EXCESS_WRONG_PLANTINGS | yes | wrong_planting_number=4 |

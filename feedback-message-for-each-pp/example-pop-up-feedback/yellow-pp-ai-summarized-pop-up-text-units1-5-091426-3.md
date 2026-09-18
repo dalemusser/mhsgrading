@@ -68,7 +68,7 @@ The player traced the pollution source with the drone sensors but triggered 13 r
 
 ## Unit 3, Progress Point 3: Pollution Solution Part II (Pollution Argument)
 
-The player built the pollution-source argument and opened the reference panels, but needed seven submissions — six incorrect — against a limit of three, so the point is yellow (1 of 4 rubric points, the 1 being the reference-panel bonus). Feedback flagged the claim twice and the reasoning four times, including a submission reasoning that water must flow north to south, and the sixth submission repeated the fourth argument unchanged. This may indicate difficulty stating the general rule that pollutants move downstream with the flow, independent of map direction, and difficulty telling which reasoning statement the feedback referred to. Consider asking the student to explain the sensor pattern and phrase the reasoning as a rule before choosing a reasoning statement.
+The player built the pollution-source argument and opened the reference panels, but needed seven submissions — six incorrect — against a limit of three, so the point is yellow (1 of 4 rubric points, the 1 being the reference-panel bonus). Feedback flagged the claim three times and the reasoning three times, including a submission reasoning that water must flow north to south, and the sixth submission repeated the fourth argument unchanged. This may indicate difficulty stating the general rule that pollutants move downstream with the flow, independent of map direction, and difficulty telling which reasoning statement the feedback referred to. Consider asking the student to explain the sensor pattern and phrase the reasoning as a rule before choosing a reasoning statement.
 
 ---
 

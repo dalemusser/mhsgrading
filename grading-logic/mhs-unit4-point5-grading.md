@@ -9,14 +9,12 @@
 
 ## Grading Rule
 
-This progress point recording how players perform within the argumentation task. This will first check whether the player successfully construct the correct argumentation (whether their log record contains (`DialogueNodeEvent:90:50`, `DialogueNodeEvent:90:57`)).
-Then it will check how many negative feedback got from the argumentation construction.
-If there is no correct feedback then the color is yellow, or the negative feedback number surpass 4, or both then the color is yellow, otherwise green.
+This progress point records how the player performs in the flooding argument. It first checks whether the player reached a correct-argument feedback (`DialogueNodeEvent:90:50` on the first try, or `DialogueNodeEvent:90:57` after revisions) inside the attempt window, then counts the negative-feedback dialogues (the 13 conversation-90 wrong-answer nodes listed under Event Keys; each incorrect submission fires exactly one). The color is yellow when no correct-argument feedback exists, or when the negative count is 3 or more, or both; otherwise green.
 
 | Outcome | Condition |
 |---------|-----------|
-| **Green** | Have correct feedback and the negative feedback number is less than 4 |
-| **Yellow** | Either no correct feedback or the negative feedback number is equal to or larger than 4 or both |
+| **Green** | Correct-argument feedback present AND fewer than 3 negative-feedback dialogues (at most 2 incorrect submissions) |
+| **Yellow** | No correct-argument feedback, OR 3 or more negative-feedback dialogues, OR no trigger exists |
 
 ### Attempt Window (Production)
 
@@ -52,7 +50,7 @@ If there is no correct feedback then the color is yellow, or the negative feedba
 ## Analytics Script
 
 ```js
-// Unit 4, Point 5 — Analytics-matching script
+// Unit 4, Point 5 — Analytics-matching script (lifetime)
 // Trigger eventKey: "questActiveEvent:41"
 
 const playerId = "<playerId>";
@@ -67,17 +65,18 @@ const NEG_KEYS = [
   "DialogueNodeEvent:90:61"
 ];
 
-const has_trigger =
+const hasSuccess =
   db.logdata.findOne(
-    { playerId: playerId, eventKey: { $in: POS_KEYS } }
+    { game: "mhs", playerId: playerId, eventKey: { $in: POS_KEYS } }
   ) !== null;
 
 let color;
 
-if (!has_trigger) {
-  color = 2; 
+if (!hasSuccess) {
+  color = "yellow";
 } else {
   const cnt = db.logdata.countDocuments({
+    game: "mhs",
     playerId: playerId,
     eventKey: { $in: NEG_KEYS }
   });

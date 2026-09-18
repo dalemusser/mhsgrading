@@ -153,3 +153,15 @@ transcriptions were re-synced. Re-running this audit into the same folders:
 - No other point changed. The reason-code expectation for this run moved to
   6 flagged (4 claim, 1 reasoning, 1 evidence); no other fixture log fires any
   of the six nodes.
+
+Second re-run the same day, after the gate-by-gate review of the other
+argumentation conversations (70, 26, 27, 84, 90) against the Unity export:
+U1P3, U2P5 and U4P5 needed no key changes; U2P7's reason code now splits
+incorrect submissions by branch gate (claim-only 27:11/12, claim-and-evidence
+27:13–18, evidence-only 27:25–30 + 27:20, new variable `both_wrong_number`);
+U3P3's node `84:40` moved to the claim bucket with its gate siblings; U4P5's
+Grading Rule prose was corrected from "≥ 4" to the scripts' "≥ 3" and its
+Analytics script's `color = 2` bug fixed. Pipeline outcome unchanged (26 READY,
+18 PASS / 0 MISMATCH / 8 no-check, 0 failures / 14 warnings, colors unchanged);
+reason-code expectations for this run moved to U2P7 1/3/4 and U3P3 3 claim /
+3 reasoning (09-03-26-3: U2P7 1/3/4, U3P3 3/2).

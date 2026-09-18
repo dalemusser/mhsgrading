@@ -211,50 +211,66 @@ if (!latestTrigger) {
 
 #### Conversation-84 Feedback Nodes by Argument Component
 
-All keys are `DialogueNodeEvent:84:<n>`. Each incorrect-submission feedback node names
-the component that caused the problem (color-tagged in the dialogue text).
+All keys are `DialogueNodeEvent:84:<n>`. The conversation branches on the argument
+state through player gate nodes (claim I + evidence A is the correct pair, reasoning
+5 the correct reasoning); each incorrect submission fires exactly one Dr. Toppo
+feedback node. Most feedback exists as a generic/specific pair chosen by the game's
+`argSpecificFeedback` flag; both members of a pair describe the same mistake, so the
+categories below follow the argument state (the gate), not the wording. Reviewed
+against the 2026-06-10 Unity dialogue export on 2026-09-17.
 
-| Problem category | Nodes | Feedback gist |
-|------------------|-------|---------------|
-| Claim            | 25, 39, 45, 46 | Claim does not take into consideration that water can carry pollution |
-| Reasoning        | 32, 33, 34, 35, 40, 41, 42, 43, 44 | Reasoning does not explain how water behaves / where the pollution is; "water must flow north to south" is not always true; reasoning does not match the evidence |
-| Evidence / structure | 37, 20, 47 | Evidence does not match the argument; multiple evidence pieces used; argument incomplete |
+| Category | Branch (player gate) | Nodes | Feedback gist |
+|----------|----------------------|-------|---------------|
+| Claim | claim II, evidence A — only the claim is wrong (gate 38) | 39, 45 | "Your claim does not take into consideration that water can carry pollution" |
+| Claim | claim II, evidence B — claim and evidence both wrong; the feedback addresses the claim (gate 8) | 25, 46 (reasoning 1, 2, 3 or 5); 40 (reasoning 4: "Your argument is logical. But it does not accurately describe how water moves.") | Same claim problem; 40 is the reasoning-4 variant at the same gate |
+| Reasoning | claim I, evidence A — only the reasoning is wrong (gate 31) | 32, 41 (reasoning 1); 33, 42 (reasoning 2); 34, 43 (reasoning 3); 35, 44 (reasoning 4) | Reasoning does not explain the location of the pollution / how water behaves; "water must flow north to south" is not always true; reasoning does not match the evidence |
+| Evidence / structure | claim I, evidence B — wrong evidence, any reasoning (gate 4) | 37 | "Your evidence does not match up with the rest of your argument" |
+| Evidence / structure | several pieces of evidence at once, any claim | 20 | Multiple evidence pieces used (the node text still says "size of a watershed" — Unit 2 wording; report to the design team) |
+| Evidence / structure | any component missing | 47 | "Your argument is incomplete" |
 
 Nodes that are **not** incorrect submissions:
 
 | Node | Meaning |
 |------|---------|
-| `84:36` | Success — "Great Job! You made the best argument possible." (currently still counted in the color scripts' TARGET_KEYS — flagged for review) |
-| `84:38` | Empty node, no text (currently still counted in the color scripts' TARGET_KEYS — flagged for review) |
+| `84:36` | Success — "Great Job! You made the best argument possible." Counted in the color scripts' TARGET_KEYS on purpose: it makes the count equal the number of attempts, so the base-score bands (≤ 3 / 4 / 5 / ≥ 6) equal the working document's attempt bands |
+| `84:38` | Branch gate for claim II + evidence A (a player node that never logs); listed in TARGET_KEYS but inert |
 | `84:48`, `84:49` | Hint nudges — "click the Backing Information orbs" (ungraded by design) |
-| `84:0`, `84:4`, `84:8`, `84:31` | Empty structural nodes, never graded |
+| `84:0`, `84:4`, `84:8`, `84:31` | Start node and branch gates, never logged |
+
+Unobserved state (report to the dev team): at gate 8 the reasoning-4 feedback exists
+only in its generic variant (`84:40`); once the specific-wording flag is on, a claim II +
+evidence B + reasoning 4 submission has no matching node and would go uncounted.
 
 #### Correspoinding Script
 
 ```js
 // U3P3: EXCESS_ATTEMPTS — determine trigger and quantities
 // triggered mirrors the color formula verbatim: base score from the color
-// script's TARGET_KEYS count (which currently includes success node 84:36 and
-// empty 84:38 — flagged for review), plus 1 bonus for opening the Pollution
-// Site Data panel; yellow when total < 3.
+// script's TARGET_KEYS count (which includes success node 84:36 by design —
+// the count then equals the number of attempts — and the inert gate 84:38),
+// plus 1 bonus for opening the Pollution Site Data panel; yellow when total < 3.
 // The quantities report honest counts: wrong_argument_number excludes 84:36/38,
-// and the three component counts split it by the problem the feedback named.
+// and the three component counts split it by ARGUMENT STATE (the conversation-84
+// branch gate), so a generic/specific pair and the gate's reasoning variants
+// always land in the same bucket (reviewed against the Unity export 2026-09-17).
 
 const playerId = "<playerId>";
 
 const TRIGGER_KEY = "questFinishEvent:18";
 
 const CLAIM_NEG_KEYS = [
-  "DialogueNodeEvent:84:25", "DialogueNodeEvent:84:39",
-  "DialogueNodeEvent:84:45", "DialogueNodeEvent:84:46"
+  "DialogueNodeEvent:84:39", "DialogueNodeEvent:84:45",  // claim II + evidence A: only the claim is wrong
+  "DialogueNodeEvent:84:25", "DialogueNodeEvent:84:46",  // claim II + evidence B, reasoning 1/2/3/5: claim problem named
+  "DialogueNodeEvent:84:40"                              // claim II + evidence B, reasoning 4: same gate
 ];
-const REASONING_NEG_KEYS = [
-  "DialogueNodeEvent:84:32", "DialogueNodeEvent:84:33", "DialogueNodeEvent:84:34",
-  "DialogueNodeEvent:84:35", "DialogueNodeEvent:84:40", "DialogueNodeEvent:84:41",
-  "DialogueNodeEvent:84:42", "DialogueNodeEvent:84:43", "DialogueNodeEvent:84:44"
+const REASONING_NEG_KEYS = [                             // claim I + evidence A: only the reasoning is wrong
+  "DialogueNodeEvent:84:32", "DialogueNodeEvent:84:41",  // reasoning 1: does not explain the pollution's location
+  "DialogueNodeEvent:84:33", "DialogueNodeEvent:84:42",  // reasoning 2: does not explain how water behaves
+  "DialogueNodeEvent:84:34", "DialogueNodeEvent:84:43",  // reasoning 3: "water must flow north to south"
+  "DialogueNodeEvent:84:35", "DialogueNodeEvent:84:44"   // reasoning 4: does not match the evidence
 ];
 const EVIDENCE_STRUCT_NEG_KEYS = [
-  "DialogueNodeEvent:84:37",  // evidence doesn't match the argument
+  "DialogueNodeEvent:84:37",  // claim I + evidence B: evidence doesn't match the argument
   "DialogueNodeEvent:84:20",  // multiple evidence pieces used
   "DialogueNodeEvent:84:47"   // incomplete argument
 ];

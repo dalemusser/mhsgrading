@@ -7,7 +7,12 @@ mhs-unit3-point3-grading.md, "## Reason Codes":
       node 84:36 and empty 84:38 — flagged for review in the markdown), plus 1
       bonus for opening the Pollution Site Data panel; yellow when total < 3.
       The quantities report honest counts: wrong_argument_number excludes
-      84:36/38 and the component counts split it by the named problem;
+      84:36/38 and the component counts split it by ARGUMENT STATE (the
+      conversation-84 branch gate): claim II + evidence A -> 39/45; claim II +
+      evidence B -> 25/46 (reasoning 1/2/3/5) and 40 (reasoning 4), all claim;
+      claim I + evidence A with wrong reasoning -> 32-35/41-44, reasoning;
+      claim I + evidence B -> 37, multiple evidence -> 20, incomplete -> 47,
+      evidence/structure (reviewed against the Unity export 2026-09-17);
       backing_info_phrase = "opened" / "did not open".
 
 Window: previous `questFinishEvent:18` (exclusive) .. latest (inclusive).
@@ -21,13 +26,15 @@ META = {"unit": 3, "point": 3, "name": "Pollution Argument",
 TRIGGER_KEY = "questFinishEvent:18"
 
 CLAIM_NEG_KEYS = [
-    "DialogueNodeEvent:84:25", "DialogueNodeEvent:84:39",
-    "DialogueNodeEvent:84:45", "DialogueNodeEvent:84:46",
+    "DialogueNodeEvent:84:39", "DialogueNodeEvent:84:45",  # claim II + evidence A: only the claim is wrong
+    "DialogueNodeEvent:84:25", "DialogueNodeEvent:84:46",  # claim II + evidence B, reasoning 1/2/3/5
+    "DialogueNodeEvent:84:40",                             # claim II + evidence B, reasoning 4: same gate
 ]
-REASONING_NEG_KEYS = [
-    "DialogueNodeEvent:84:32", "DialogueNodeEvent:84:33", "DialogueNodeEvent:84:34",
-    "DialogueNodeEvent:84:35", "DialogueNodeEvent:84:40", "DialogueNodeEvent:84:41",
-    "DialogueNodeEvent:84:42", "DialogueNodeEvent:84:43", "DialogueNodeEvent:84:44",
+REASONING_NEG_KEYS = [                                     # claim I + evidence A: only the reasoning is wrong
+    "DialogueNodeEvent:84:32", "DialogueNodeEvent:84:41",  # reasoning 1
+    "DialogueNodeEvent:84:33", "DialogueNodeEvent:84:42",  # reasoning 2
+    "DialogueNodeEvent:84:34", "DialogueNodeEvent:84:43",  # reasoning 3
+    "DialogueNodeEvent:84:35", "DialogueNodeEvent:84:44",  # reasoning 4
 ]
 EVIDENCE_STRUCT_NEG_KEYS = [
     "DialogueNodeEvent:84:37",  # evidence doesn't match the argument

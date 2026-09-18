@@ -84,7 +84,7 @@ fixtures:
         codes: [EXCESS_ATTEMPTS]
         variables:
           EXCESS_ATTEMPTS:
-            {attempt_number: 9, wrong_claim_number: 2, irrelevant_evidence_number: 6}
+            {attempt_number: 9, wrong_claim_number: 1, both_wrong_number: 3, irrelevant_evidence_number: 4}
       U3P1:
         codes: [EXCESS_WRONG_RIVERS]
         variables:
@@ -98,7 +98,7 @@ fixtures:
         codes: [EXCESS_ATTEMPTS]
         variables:
           EXCESS_ATTEMPTS:
-            {wrong_argument_number: 5, claim_wrong_number: 2, reasoning_wrong_number: 3,
+            {wrong_argument_number: 5, claim_wrong_number: 3, reasoning_wrong_number: 2,
              evidence_wrong_number: 0, backing_info_phrase: "opened"}
       U3P4: {codes: []}
       U3P5:
@@ -312,9 +312,11 @@ fixtures:
       U5P1 one negative node 100:39, U5P2 8/10, U5P3 6 flagged) and (b) raw
       per-node counts in the dump mapped through the markdown key lists
       (U2P5 26:138 x8 = wrong_number, claim 197/203, reasoning
-      144/195/198/201/210, evidence 145; U2P7 27:0 x9 submissions, claim
-      12/14, irrelevant 15/17/20/26/28/30; U3P3 84:0 x7 = 6 wrong + success,
-      claim 25/39, reasoning 33/34/40/42; U4P5 90:0 x11, claim 37x5+55,
+      144/195/198/201/210, evidence 145; U2P7 27:0 x9 submissions, categorised by
+      branch gate since 2026-09-17: claim-only 12, claim+evidence 14/15/17,
+      irrelevant evidence 20/26/28/30; U3P3 84:0 x7 = 6 wrong + success,
+      claim 25/39/40 (40 = claim II + evidence B gate, reasoning 4),
+      reasoning 33/34/42; U4P5 90:0 x11, claim 37x5+55,
       reasoning 61, evidence 58x2+47; U5P3 108:37 x4 (claim) + 108:65
       (reasoning) + 108:64 (evidence) — the last two sit on the "one correct
       piece of evidence" branch of conversation 108 and were outside the key
@@ -372,7 +374,7 @@ fixtures:
         codes: [EXCESS_ATTEMPTS]
         variables:
           EXCESS_ATTEMPTS:
-            {attempt_number: 9, wrong_claim_number: 2, irrelevant_evidence_number: 6}
+            {attempt_number: 9, wrong_claim_number: 1, both_wrong_number: 3, irrelevant_evidence_number: 4}
       U3P1:
         codes: [EXCESS_WRONG_RIVERS]
         variables:
@@ -386,7 +388,7 @@ fixtures:
         codes: [EXCESS_ATTEMPTS]
         variables:
           EXCESS_ATTEMPTS:
-            {wrong_argument_number: 6, claim_wrong_number: 2, reasoning_wrong_number: 4,
+            {wrong_argument_number: 6, claim_wrong_number: 3, reasoning_wrong_number: 3,
              evidence_wrong_number: 0, backing_info_phrase: "opened"}
       U3P4:
         codes: [SOLVED_WITH_ASSIST]

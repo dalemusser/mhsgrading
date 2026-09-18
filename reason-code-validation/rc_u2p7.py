@@ -5,8 +5,15 @@ mhs-unit2-point7-grading.md, "## Reason Codes":
   EXCESS_ATTEMPTS — triggered when the color rule goes yellow in the window:
       success (27:7) missing OR more than 3 incorrect submissions.
       attempt_number = incorrect submissions + 1 when success is present
-      (else the incorrect count); wrong_claim_number / irrelevant_evidence_number
-      split the incorrect submissions by problem type.
+      (else the incorrect count). The three sub-counts split the incorrect
+      submissions by ARGUMENT STATE (the conversation-27 branch gate), not by
+      wording — every feedback is a generic/specific pair chosen by
+      argSpecificFeedback and both members describe the same mistake
+      (reviewed against the 2026-06-10 Unity dialogue export, 2026-09-17):
+        gate 27:31       claim I + evidence A (flow rate)   -> 27:11/12   wrong_claim_number
+        gates 27:4/5/6   claim I + evidence B / C / D       -> 27:13-18   both_wrong_number
+        gates 27:8/9/10  claim II + evidence B / C / D      -> 27:25-30   irrelevant_evidence_number
+        any claim        several pieces of evidence at once -> 27:20      irrelevant_evidence_number
 
 Window: previous `questFinishEvent:54` (exclusive) .. latest (inclusive).
 """
@@ -19,28 +26,25 @@ META = {"unit": 2, "point": 7, "name": "Which Watershed? Part II",
 TRIGGER_KEY = "questFinishEvent:54"
 SUCCESS_KEY = "DialogueNodeEvent:27:7"  # "Well done! You have made the best argument possible."
 
-WRONG_CLAIM_KEYS = [           # claim wrong or doesn't fit evidence & reasoning
-    "DialogueNodeEvent:27:11",  # evidence doesn't fit claim (backing-info pointer)
-    "DialogueNodeEvent:27:12",  # evidence doesn't fit claim — try another claim
-    "DialogueNodeEvent:27:14",  # both claim and evidence don't link to reasoning
-    "DialogueNodeEvent:27:16",  # both claim and evidence don't link to reasoning
-    "DialogueNodeEvent:27:18",  # both claim and evidence don't link to reasoning
+WRONG_CLAIM_KEYS = [           # claim I with the flow-rate evidence (A): only the claim is wrong
+    "DialogueNodeEvent:27:11",  # generic: evidence doesn't fit the claim (backing-info pointer)
+    "DialogueNodeEvent:27:12",  # specific: try a more appropriate claim
 ]
 
-IRRELEVANT_EVIDENCE_KEYS = [   # evidence doesn't indicate watershed size
-    "DialogueNodeEvent:27:13",  # waterfall height
-    "DialogueNodeEvent:27:25",  # waterfall height
-    "DialogueNodeEvent:27:26",  # waterfall height (claim was correct)
-    "DialogueNodeEvent:27:15",  # salinity
-    "DialogueNodeEvent:27:27",  # salinity
-    "DialogueNodeEvent:27:28",  # salinity
-    "DialogueNodeEvent:27:17",  # downstream river
-    "DialogueNodeEvent:27:29",  # downstream river
-    "DialogueNodeEvent:27:30",  # downstream river
-    "DialogueNodeEvent:27:20",  # multiple evidence pieces at once
+BOTH_WRONG_KEYS = [            # claim I with irrelevant evidence: claim AND evidence wrong
+    "DialogueNodeEvent:27:13", "DialogueNodeEvent:27:14",  # waterfall height (B)
+    "DialogueNodeEvent:27:15", "DialogueNodeEvent:27:16",  # salinity (C)
+    "DialogueNodeEvent:27:17", "DialogueNodeEvent:27:18",  # downstream river (D)
 ]
 
-NEG_KEYS = WRONG_CLAIM_KEYS + IRRELEVANT_EVIDENCE_KEYS
+IRRELEVANT_EVIDENCE_KEYS = [   # claim II (correct) with evidence that does not indicate watershed size
+    "DialogueNodeEvent:27:25", "DialogueNodeEvent:27:26",  # waterfall height (B)
+    "DialogueNodeEvent:27:27", "DialogueNodeEvent:27:28",  # salinity (C)
+    "DialogueNodeEvent:27:29", "DialogueNodeEvent:27:30",  # downstream river (D)
+    "DialogueNodeEvent:27:20",                             # several pieces of evidence at once (any claim)
+]
+
+NEG_KEYS = WRONG_CLAIM_KEYS + BOTH_WRONG_KEYS + IRRELEVANT_EVIDENCE_KEYS
 
 
 def attempt_window(coll, pid):
@@ -50,14 +54,15 @@ def attempt_window(coll, pid):
 def excess_attempts(coll, pid):
     win = attempt_window(coll, pid)
     if win is None:
-        return {"triggered": False, "attempt_number": 0,
-                "wrong_claim_number": 0, "irrelevant_evidence_number": 0}
+        return {"triggered": False, "attempt_number": 0, "wrong_claim_number": 0,
+                "both_wrong_number": 0, "irrelevant_evidence_number": 0}
     f = gt_lte(win)
     # 3) Student reached the correct-argument completion
     has_success = has_keys(coll, pid, SUCCESS_KEY, f)
     # 4) Counts inside the window
     neg_count = count_keys(coll, pid, NEG_KEYS, f)
     claim_count = count_keys(coll, pid, WRONG_CLAIM_KEYS, f)
+    both_count = count_keys(coll, pid, BOTH_WRONG_KEYS, f)
     evidence_count = count_keys(coll, pid, IRRELEVANT_EVIDENCE_KEYS, f)
     # 5) Mirror the color rule exactly
     triggered = not (has_success and neg_count <= 3)
@@ -65,6 +70,7 @@ def excess_attempts(coll, pid):
         "triggered": triggered,
         "attempt_number": neg_count + 1 if has_success else neg_count,
         "wrong_claim_number": claim_count,
+        "both_wrong_number": both_count,
         "irrelevant_evidence_number": evidence_count,
     }
 

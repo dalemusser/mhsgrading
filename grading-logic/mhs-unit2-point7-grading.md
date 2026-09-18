@@ -32,7 +32,7 @@ Student must successfully build the watershed argument with limited incorrect ev
 
 **Negative Keys (incorrect evidence selections):**
 
-`DialogueNodeEvent:27:11` through `DialogueNodeEvent:27:30` (20 keys)
+`DialogueNodeEvent:27:11` through `DialogueNodeEvent:27:30` (15 keys; `27:19` and `27:21`–`27:24` do not exist in the dialogue database)
 
 <details>
 <summary>Full list</summary>
@@ -149,7 +149,7 @@ if (!latestTrigger) {
 
 ### EXCESS_ATTEMPTS
 
-**Instructor Message:** In Which Watershed? Part II, the student built the argument about which watershed is larger, but needed {attempt_number} submissions - {wrong_claim_number} where the claim did not match the evidence and reasoning, and {irrelevant_evidence_number} using evidence that does not indicate watershed size (waterfall height, salinity, or the downstream river). This point earns green only when the correct argument is submitted within 4 attempts. Repeated incorrect submissions may indicate difficulty selecting the claim the data supports and distinguishing relevant evidence - flow rate reflects how much land drains to each river - from irrelevant observations.
+**Instructor Message:** In Which Watershed? Part II, the student built the argument about which watershed is larger, but needed {attempt_number} submissions - {wrong_claim_number} where only the claim was wrong, {both_wrong_number} where both the claim and the evidence were wrong, and {irrelevant_evidence_number} where the claim was right but the evidence does not indicate watershed size (waterfall height, salinity, the downstream river, or several pieces at once). This point earns green only when the correct argument is submitted within 4 attempts. Repeated incorrect submissions may indicate difficulty selecting the claim the data supports and distinguishing relevant evidence - flow rate reflects how much land drains to each river - from irrelevant observations.
 
 #### Correspoinding Script
 
@@ -159,40 +159,46 @@ if (!latestTrigger) {
 // success (27:7) missing OR more than 3 incorrect submissions.
 // (questFinishEvent:54 only fires after the argument completes, so in
 // practice success is present and the trigger means 4+ wrong submissions.)
-// attempt_number = incorrect submissions + 1 (the final correct submission);
-// the two sub-counts split the incorrect submissions by problem type -
-// wrong/mismatched claim vs. irrelevant evidence.
-// Audit invariants: wrong_claim_number + irrelevant_evidence_number = negCount,
-// and count of structural node 27:0 in the window = total submissions.
+// attempt_number = incorrect submissions + 1 (the final correct submission).
+// The three sub-counts split the incorrect submissions by ARGUMENT STATE (the
+// conversation-27 branch gate that fired), not by wording: every feedback is a
+// generic/specific pair selected by argSpecificFeedback, and both members of a
+// pair describe the same mistake (reviewed against the 2026-06-10 Unity
+// dialogue export on 2026-09-17).
+//   gate 27:31       claim I + evidence A (flow rate)   -> 27:11 / 27:12   only the claim is wrong
+//   gates 27:4/5/6   claim I + evidence B / C / D       -> 27:13 - 27:18   claim AND evidence wrong
+//   gates 27:8/9/10  claim II + evidence B / C / D      -> 27:25 - 27:30   only the evidence is wrong
+//   (any claim)      several pieces of evidence at once -> 27:20           evidence-selection problem
+// Audit invariants: wrong_claim_number + both_wrong_number +
+// irrelevant_evidence_number = negCount, and count of structural node 27:0 in
+// the window = total submissions.
 
 const playerId = "<playerId>";
 
 const TRIGGER_KEY = "questFinishEvent:54";
 const SUCCESS_KEY = "DialogueNodeEvent:27:7"; // "Well done! You have made the best argument possible."
 
-const WRONG_CLAIM_KEYS = [           // claim wrong or doesn't fit evidence & reasoning
-  "DialogueNodeEvent:27:11",  // evidence doesn't fit claim (backing-info pointer)
-  "DialogueNodeEvent:27:12",  // evidence doesn't fit claim — try another claim
-  "DialogueNodeEvent:27:14",  // both claim and evidence don't link to reasoning
-  "DialogueNodeEvent:27:16",  // both claim and evidence don't link to reasoning
-  "DialogueNodeEvent:27:18"   // both claim and evidence don't link to reasoning
+const WRONG_CLAIM_KEYS = [           // claim I with the flow-rate evidence (A): only the claim is wrong
+  "DialogueNodeEvent:27:11",  // generic: evidence doesn't fit the claim (backing-info pointer)
+  "DialogueNodeEvent:27:12"   // specific: try a more appropriate claim
 ];
 
-const IRRELEVANT_EVIDENCE_KEYS = [   // evidence doesn't indicate watershed size
-  "DialogueNodeEvent:27:13",  // waterfall height
-  "DialogueNodeEvent:27:25",  // waterfall height
-  "DialogueNodeEvent:27:26",  // waterfall height (claim was correct)
-  "DialogueNodeEvent:27:15",  // salinity
-  "DialogueNodeEvent:27:27",  // salinity
-  "DialogueNodeEvent:27:28",  // salinity
-  "DialogueNodeEvent:27:17",  // downstream river
-  "DialogueNodeEvent:27:29",  // downstream river
-  "DialogueNodeEvent:27:30",  // downstream river
-  "DialogueNodeEvent:27:20"   // multiple evidence pieces at once
+const BOTH_WRONG_KEYS = [            // claim I with irrelevant evidence: claim AND evidence wrong
+  "DialogueNodeEvent:27:13", "DialogueNodeEvent:27:14",  // waterfall height (B)
+  "DialogueNodeEvent:27:15", "DialogueNodeEvent:27:16",  // salinity (C)
+  "DialogueNodeEvent:27:17", "DialogueNodeEvent:27:18"   // downstream river (D)
+];
+
+const IRRELEVANT_EVIDENCE_KEYS = [   // claim II (correct) with evidence that does not indicate watershed size
+  "DialogueNodeEvent:27:25", "DialogueNodeEvent:27:26",  // waterfall height (B)
+  "DialogueNodeEvent:27:27", "DialogueNodeEvent:27:28",  // salinity (C)
+  "DialogueNodeEvent:27:29", "DialogueNodeEvent:27:30",  // downstream river (D)
+  "DialogueNodeEvent:27:20"                              // several pieces of evidence at once (any claim)
 ];
 
 const NEG_KEYS = [
   ...WRONG_CLAIM_KEYS,
+  ...BOTH_WRONG_KEYS,
   ...IRRELEVANT_EVIDENCE_KEYS
 ];
 
@@ -203,7 +209,7 @@ const latestTrigger = db.logdata.findOne(
 );
 
 if (!latestTrigger) {
-  ({ triggered: false, attempt_number: 0, wrong_claim_number: 0, irrelevant_evidence_number: 0 });
+  ({ triggered: false, attempt_number: 0, wrong_claim_number: 0, both_wrong_number: 0, irrelevant_evidence_number: 0 });
 } else {
   // 2) Previous trigger (attempt boundary)
   const prevTrigger = db.logdata.findOne(
@@ -221,6 +227,10 @@ if (!latestTrigger) {
 
   const windowFilter = { _id: { $gt: windowStartId, $lte: windowEndId } };
 
+  const countIn = (keys) => db.logdata.countDocuments({
+    game: "mhs", playerId: playerId, eventKey: { $in: keys }, ...windowFilter
+  });
+
   // 3) Student reached the correct-argument completion
   const hasSuccess =
     db.logdata.findOne({
@@ -229,20 +239,10 @@ if (!latestTrigger) {
     }) !== null;
 
   // 4) Counts inside the window
-  const negCount = db.logdata.countDocuments({
-    game: "mhs", playerId: playerId,
-    eventKey: { $in: NEG_KEYS }, ...windowFilter
-  });
-
-  const claimCount = db.logdata.countDocuments({
-    game: "mhs", playerId: playerId,
-    eventKey: { $in: WRONG_CLAIM_KEYS }, ...windowFilter
-  });
-
-  const evidenceCount = db.logdata.countDocuments({
-    game: "mhs", playerId: playerId,
-    eventKey: { $in: IRRELEVANT_EVIDENCE_KEYS }, ...windowFilter
-  });
+  const negCount = countIn(NEG_KEYS);
+  const claimCount = countIn(WRONG_CLAIM_KEYS);
+  const bothCount = countIn(BOTH_WRONG_KEYS);
+  const evidenceCount = countIn(IRRELEVANT_EVIDENCE_KEYS);
 
   // 5) Mirror the color rule exactly
   const triggered = !(hasSuccess && negCount <= 3);
@@ -251,6 +251,7 @@ if (!latestTrigger) {
     triggered: triggered,
     attempt_number: hasSuccess ? negCount + 1 : negCount,
     wrong_claim_number: claimCount,
+    both_wrong_number: bothCount,
     irrelevant_evidence_number: evidenceCount
   });
 }

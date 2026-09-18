@@ -473,9 +473,10 @@
           "variables": {
             "attempt_number": 1,
             "wrong_claim_number": 0,
+            "both_wrong_number": 0,
             "irrelevant_evidence_number": 0
           },
-          "message": "In Which Watershed? Part II, the student built the argument about which watershed is larger, but needed 1 submissions - 0 where the claim did not match the evidence and reasoning, and 0 using evidence that does not indicate watershed size (waterfall height, salinity, or the downstream river). This point earns green only when the correct argument is submitted within 4 attempts. Repeated incorrect submissions may indicate difficulty selecting the claim the data supports and distinguishing relevant evidence - flow rate reflects how much land drains to each river - from irrelevant observations.",
+          "message": "In Which Watershed? Part II, the student built the argument about which watershed is larger, but needed 1 submissions - 0 where only the claim was wrong, 0 where both the claim and the evidence were wrong, and 0 where the claim was right but the evidence does not indicate watershed size (waterfall height, salinity, the downstream river, or several pieces at once). This point earns green only when the correct argument is submitted within 4 attempts. Repeated incorrect submissions may indicate difficulty selecting the claim the data supports and distinguishing relevant evidence - flow rate reflects how much land drains to each river - from irrelevant observations.",
           "extra_variables": []
         }
       },
@@ -489,7 +490,7 @@
         {
           "name": "placeholders:EXCESS_ATTEMPTS",
           "ok": true,
-          "detail": "uses attempt_number, wrong_claim_number, irrelevant_evidence_number"
+          "detail": "uses attempt_number, wrong_claim_number, both_wrong_number, irrelevant_evidence_number"
         },
         {
           "name": "color-consistency",

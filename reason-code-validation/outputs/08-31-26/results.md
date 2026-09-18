@@ -57,7 +57,7 @@ Log: `wenyi083126-1.stratalog.logdata.json`
 | U2P4 | EXCESS_ATTEMPTS | no | attempt_number=1 |
 | U2P5 | EXCESS_MISCLASSIFICATIONS | no | wrong_number=0, claim_wrong=0, reasoning_wrong=0, evidence_wrong=0 |
 | U2P6 | WRONG_EVIDENCE_SELECTED | no | wrong_choice=None |
-| U2P7 | EXCESS_ATTEMPTS | no | attempt_number=1, wrong_claim_number=0, irrelevant_evidence_number=0 |
+| U2P7 | EXCESS_ATTEMPTS | no | attempt_number=1, wrong_claim_number=0, both_wrong_number=0, irrelevant_evidence_number=0 |
 | U3P1 | EXCESS_WRONG_RIVERS | no | wrong_river_number=0 |
 | U3P2 | EXCESS_SENSOR_REMINDERS | no | downstream_reminder_number=0, redundant_reminder_number=0 |
 | U3P3 | EXCESS_ATTEMPTS | no | wrong_argument_number=0, claim_wrong_number=0, reasoning_wrong_number=0, evidence_wrong_number=0, backing_info_phrase='opened' |

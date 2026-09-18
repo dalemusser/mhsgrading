@@ -512,10 +512,11 @@
           "triggered": true,
           "variables": {
             "attempt_number": 9,
-            "wrong_claim_number": 2,
-            "irrelevant_evidence_number": 6
+            "wrong_claim_number": 1,
+            "both_wrong_number": 3,
+            "irrelevant_evidence_number": 4
           },
-          "message": "In Which Watershed? Part II, the student built the argument about which watershed is larger, but needed 9 submissions - 2 where the claim did not match the evidence and reasoning, and 6 using evidence that does not indicate watershed size (waterfall height, salinity, or the downstream river). This point earns green only when the correct argument is submitted within 4 attempts. Repeated incorrect submissions may indicate difficulty selecting the claim the data supports and distinguishing relevant evidence - flow rate reflects how much land drains to each river - from irrelevant observations.",
+          "message": "In Which Watershed? Part II, the student built the argument about which watershed is larger, but needed 9 submissions - 1 where only the claim was wrong, 3 where both the claim and the evidence were wrong, and 4 where the claim was right but the evidence does not indicate watershed size (waterfall height, salinity, the downstream river, or several pieces at once). This point earns green only when the correct argument is submitted within 4 attempts. Repeated incorrect submissions may indicate difficulty selecting the claim the data supports and distinguishing relevant evidence - flow rate reflects how much land drains to each river - from irrelevant observations.",
           "extra_variables": []
         }
       },
@@ -529,7 +530,7 @@
         {
           "name": "placeholders:EXCESS_ATTEMPTS",
           "ok": true,
-          "detail": "uses attempt_number, wrong_claim_number, irrelevant_evidence_number"
+          "detail": "uses attempt_number, wrong_claim_number, both_wrong_number, irrelevant_evidence_number"
         },
         {
           "name": "color-consistency",
@@ -544,7 +545,7 @@
         {
           "name": "expected-variables:EXCESS_ATTEMPTS",
           "ok": true,
-          "detail": "attempt_number=9, wrong_claim_number=2, irrelevant_evidence_number=6"
+          "detail": "attempt_number=9, wrong_claim_number=1, both_wrong_number=3, irrelevant_evidence_number=4"
         }
       ],
       "passed": true
@@ -677,12 +678,12 @@
           "triggered": true,
           "variables": {
             "wrong_argument_number": 5,
-            "claim_wrong_number": 2,
-            "reasoning_wrong_number": 3,
+            "claim_wrong_number": 3,
+            "reasoning_wrong_number": 2,
             "evidence_wrong_number": 0,
             "backing_info_phrase": "opened"
           },
-          "message": "In Pollution Argument, while constructing the argument about where the pollutant enters the river, the student made 5 incorrect submissions — 2 with a claim problem, 3 with a reasoning problem, and 0 with an evidence or structure problem — and opened the Pollution Site Data reference panel. This point earns green only when incorrect submissions stay within the limit (at most 3, or one more when the reference panel has been consulted, which earns a bonus point). Errors concentrated on reasoning may indicate difficulty explaining how pollution travels downstream with the water flow, which is the link between the sensor evidence and the claim.",
+          "message": "In Pollution Argument, while constructing the argument about where the pollutant enters the river, the student made 5 incorrect submissions — 3 with a claim problem, 2 with a reasoning problem, and 0 with an evidence or structure problem — and opened the Pollution Site Data reference panel. This point earns green only when incorrect submissions stay within the limit (at most 3, or one more when the reference panel has been consulted, which earns a bonus point). Errors concentrated on reasoning may indicate difficulty explaining how pollution travels downstream with the water flow, which is the link between the sensor evidence and the claim.",
           "extra_variables": []
         }
       },
@@ -711,7 +712,7 @@
         {
           "name": "expected-variables:EXCESS_ATTEMPTS",
           "ok": true,
-          "detail": "wrong_argument_number=5, claim_wrong_number=2, reasoning_wrong_number=3, evidence_wrong_number=0, backing_info_phrase='opened'"
+          "detail": "wrong_argument_number=5, claim_wrong_number=3, reasoning_wrong_number=2, evidence_wrong_number=0, backing_info_phrase='opened'"
         }
       ],
       "passed": true
