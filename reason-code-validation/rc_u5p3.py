@@ -5,8 +5,8 @@ mhs-unit5-point3-grading.md, "## Reason Codes":
   EXCESS_ATTEMPTS — triggered when the color rule goes yellow: 4+ flagged
       submissions (count-only; no success-node requirement).
       wrong_argument_number = total flagged submissions; the component counts
-      split it. The softer twins 108:63-69 are not in the color rule (flagged
-      in the markdown) and are not counted.
+      split it. The softer twins 108:63-66/68/69 were added to the colour rule and
+      the buckets on 2026-09-17 and are counted.
 
 Window: latest `DialogueNodeEvent:96:1` (start, exclusive) .. latest
 `questFinishEvent:44` (end, inclusive); guard `latestEnd._id < latestStart._id`.

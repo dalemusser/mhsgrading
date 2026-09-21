@@ -2,7 +2,7 @@
 
 **Activity:** Getting the Band Back Together Part II
 
-**Trigger(Start) Event:** `DialogueNodeEvent:20:26`
+**Trigger(Start) Event:** `DialogueNodeEvent:20:33`
 **Trigger(End) Event:** `DialogueNodeEvent:22:18`
 
 ---
@@ -195,7 +195,7 @@ if (!endDoc || !endDoc.timestamp) {
 
 **Instructor Message:** In Getting the Band Back Together Part II, while navigating to find Tera and Aryn, the student triggered {triggering_number} adaptive reminders, dialogues that fire when the player travels somewhere inconsistent with the location clues ({tera_count} during the search for Tera, {aryn_count} during the search for Aryn). This point earns green only when fewer than 6 such reminders fire across the two searches. Repeated reminders may indicate difficulty connecting each set of clues (direction, elevation, landforms, and water features) to locations on the topographic map when planning and adjusting a route.
 
-#### Correspoinding Script
+#### Corresponding Script
 
 ```js
 // U2P3: EXCESS_NAV_REMINDERS — trigger, total, and per-search reminder counts

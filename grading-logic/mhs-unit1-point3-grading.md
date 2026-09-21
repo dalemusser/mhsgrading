@@ -18,8 +18,9 @@ Check whether the student needed multiple attempts to build the correct argument
 
 ### Attempt Window (Production)
 
-- **Start:** `DialogueNodeEvent:30:98` (exclusive)
-- **End:** `questActiveEvent:34` (inclusive)
+- **Start:** Previous `questActiveEvent:34` (exclusive)
+- **End:** Latest `questActiveEvent:34` (inclusive)
+- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
 
 > Without windowing, one early mistake permanently results in yellow. With windowing, a student can replay and earn green on a later attempt.
 

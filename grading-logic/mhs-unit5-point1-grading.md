@@ -13,13 +13,14 @@ This progress point is an attempt-based progress. If the player solved the puzzl
 
 | Outcome | Condition |
 |---------|-----------|
-| **Green** | score >= 1 |
-| **Yellow** | score < 1 |
+| **Green** | `DialogueNodeEvent:100:44` present AND none of `100:38`, `100:39`, `100:43` in the window |
+| **Yellow** | Success node missing OR any of those bad-feedback nodes present |
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questActiveEvent:43` (exclusive)
+- **Start:** Latest `questActiveEvent:43` (exclusive; the window is valid only when the end event comes after it)
 - **End:** Latest `questFinishEvent:43` (inclusive)
+- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
 
 ---
 
@@ -78,7 +79,7 @@ color;
 
 ```js
 // Unit 5, Point 1 — Attempt-based standalone production script (latest attempt)
-// Trigger eventKey: "questActiveEvent:39"
+// Trigger eventKey: "questFinishEvent:43"
 
 const playerId = "<playerId>";
 

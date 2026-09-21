@@ -18,8 +18,9 @@ This progress point is a score-based progress, at the beggining the score euqual
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questFinishEvent:43` (exclusive)
+- **Start:** Latest `questFinishEvent:43` (exclusive; the window is valid only when the end event comes after it)
 - **End:** Latest `DialogueNodeEvent:96:1` (inclusive)
+- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
 
 ---
 

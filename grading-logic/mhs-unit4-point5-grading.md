@@ -18,8 +18,9 @@ This progress point records how the player performs in the flooding argument. It
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questActiveEvent:36` (exclusive)
+- **Start:** Previous `questActiveEvent:41` (exclusive)
 - **End:** Latest `questActiveEvent:41` (inclusive)
+- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
 
 ---
 

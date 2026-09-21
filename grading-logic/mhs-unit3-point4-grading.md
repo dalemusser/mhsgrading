@@ -26,8 +26,9 @@ Gate + score-based rule. First, the student must have the gate event (78:24). Th
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questActiveEvent:18` (exclusive)
+- **Start:** Latest `questActiveEvent:18` (exclusive; the window is valid only when the end event comes after it)
 - **End:** Latest `DialogueNodeEvent:73:200` (inclusive)
+- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
 
 ---
 
@@ -167,7 +168,7 @@ if (!latestStart || !latestEnd) {
 
 **Instructor Message:** In Forsaken Facility, the student did not complete the ordering puzzle showing how materials dissolve into water independently. After {attempt_number} incorrect arrangements, the in-game guide DANI ordered the pieces. This point earns green only when the student submits the correct order on their own within 3 attempts. Needing this level of support may indicate the student would benefit from reviewing how the particles of a dissolved material spread through water, even once they can no longer be seen.
 
-#### Correspoinding Script
+#### Corresponding Script
 
 ```js
 // U3P4: SOLVED_WITH_ASSIST — determine trigger and attempt_number
@@ -229,7 +230,7 @@ if (!latestStart || !latestEnd || latestEnd._id <= latestStart._id) {
 
 **Instructor Message:** In Forsaken Facility, the student ordered the puzzle pieces showing how materials dissolve into water on their own, but needed {attempt_number} attempts. This point earns green only when the correct order is submitted within 3 attempts. Repeated incorrect arrangements may indicate difficulty sequencing how particles of a dissolved material spread through water over time.
 
-#### Correspoinding Script
+#### Corresponding Script
 
 ```js
 // U3P4: EXCESS_ATTEMPTS — determine trigger and attempt_number

@@ -18,8 +18,9 @@ This progress point is a score-based assessment rubric. First, it will check whe
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `DialogueNodeEvent:88:0` (exclusive)
+- **Start:** Latest `DialogueNodeEvent:88:0` (exclusive; the window is valid only when the end event comes after it)
 - **End:** Latest Unit 4 `Soil Key Puzzle` event with `Soil Key Puzzle Status` = `Finished` (inclusive)
+- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
 
 ---
 

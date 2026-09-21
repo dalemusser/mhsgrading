@@ -18,8 +18,9 @@ This progress point is a number-based progress. Firstly, it will check whether t
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questFinishEvent:44` (exclusive)
+- **Start:** Latest `questFinishEvent:44` before the end event (exclusive; zero ObjectId when there is none)
 - **End:** Latest `questFinishEvent:45` (inclusive)
+- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
 
 ---
 
@@ -27,7 +28,7 @@ This progress point is a number-based progress. Firstly, it will check whether t
 
 | Role | Event Key |
 |------|-----------|
-| Trigger | `questFinishEvent:44` |
+| Trigger | `questFinishEvent:45` |
 | Target | `DialogueNodeEvent:106:35` |
 | Target | `DialogueNodeEvent:106:4` |
 | Target | `DialogueNodeEvent:106:25` |

@@ -215,3 +215,26 @@ The MHS Dashboard `reasonCodeToMessage` map in `stratahub/internal/app/features/
 | Documentation | 1 | U5P4 title error | **Fixed** |
 | Documentation | 1 | 10 files missing reason codes | **Fixed** |
 | Fixed | 1 | Dashboard reason code display | **Fixed** |
+
+---
+
+## Addendum — 2026-09-21
+
+The September 2026 grading logic (`grading-logic/`, validated by
+`rubric-validation/` and `reason-code-validation/` against five playthrough
+fixtures) supersedes several items above, and the Go grader now follows it:
+
+- Item 4 (U4P4): the current scripts, transcriptions and instructor message all
+  use `c_m1_top === 1 && c_m1_bottom === 1`; the `=== 0` "fix" recorded here was
+  never applied to the scripts. Open question A6 in
+  `grading-team-questions-2026-09.md`.
+- Item 5 (U4P5): the September scripts grade yellow at `negCount >= 3` (the
+  "less than 4" prose was corrected on 2026-09-17); the grader uses `>= 3`.
+- Item 6 (U2P7): `attempt_number` is now `negCount + 1` when the argument
+  succeeded (the spec's definition); the message says "within 4 attempts".
+- Item 3 (U3P3): `MISSING_SUCCESS_NODE` no longer exists; the point has a single
+  code, `EXCESS_ATTEMPTS`, with a `backing_info_phrase` variable.
+- The reason-code vocabulary and the dashboard mappings changed wholesale; see
+  `grading-doc-changes-2026-09-21.md` and, in `mhsgrader`,
+  `docs/grading-sync-plan-092026.md`.
+

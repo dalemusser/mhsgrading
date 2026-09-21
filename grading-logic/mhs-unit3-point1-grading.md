@@ -18,8 +18,9 @@ Count-based rule. The student must have more than one occurrence of the target e
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `DialogueNodeEvent:10:1` (exclusive)
+- **Start:** Previous `DialogueNodeEvent:11:22` (exclusive)
 - **End:** Latest `DialogueNodeEvent:11:22` (inclusive)
+- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
 
 ---
 
@@ -104,7 +105,7 @@ if (!latestTrigger) {
 
 **Instructor Message:** In Establishing a Foothold, while sending Tera's three supply crates back to her camp by floating them down a river, the student dropped {wrong_river_number} crates into the wrong river. This point earns green only when at most 1 crate goes into the wrong river. Wrong-river choices may indicate difficulty using the watershed map to determine flow direction - water flows from higher to lower elevation toward the ocean, so the correct river is the one that flows past Tera's camp.
 
-#### Correspoinding Script
+#### Corresponding Script
 
 ```js
 // U3P1: EXCESS_WRONG_RIVERS - determine trigger and wrong_river_number

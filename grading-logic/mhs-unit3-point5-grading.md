@@ -29,8 +29,9 @@ sum_score = pos_score - neg_score
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `DialogueNodeEvent:73:200` (exclusive)
+- **Start:** Previous `DialogueNodeEvent:10:194` (exclusive)
 - **End:** Latest `DialogueNodeEvent:10:194` (inclusive)
+- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
 
 ---
 

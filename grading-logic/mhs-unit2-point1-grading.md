@@ -18,8 +18,9 @@ Student must complete the map-profile matching independently and without excessi
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `DialogueNodeEvent:18:1` (exclusive)
+- **Start:** Previous `questFinishEvent:21` (exclusive)
 - **End:** Latest `questFinishEvent:21` (inclusive)
+- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
 
 ---
 
@@ -150,7 +151,7 @@ if (!latestTrigger) {
 
 **Instructor Message:** In Escape the Ruin, the student did not complete the topographic-map matching independently. After {attempt_number} incorrect arrangements, the in-game guide DANI placed the remaining pieces. This point earns green only when the student submits the correct solution on their own within 4 attempts. Needing this level of support may indicate the student would benefit from direct instruction on how contour lines represent elevation and slope before matching maps to terrain shapes.
 
-#### Correspoinding Script
+#### Corresponding Script
 
 ```js
 // U2P1: SOLVED_WITH_ASSIST - determine trigger and attempt_number
@@ -239,7 +240,7 @@ if (!latestTrigger) {
 
 **Instructor Message:** In Escape the Ruin, the student matched all six topographic maps to their elevation profiles on their own, but needed {attempt_number} attempts. This point earns green only when the correct solution is submitted within 4 attempts. Repeated incorrect arrangements may indicate difficulty connecting the top-down contour-line view of a landscape to its side-view profile.
 
-#### Correspoinding Script
+#### Corresponding Script
 
 ```js
 // U2P1: EXCESS_ATTEMPTS — determine trigger and attempt_number

@@ -18,8 +18,9 @@ This progress point will check how many times the player interacts with the soil
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questActiveEvent:48` (exclusive)
+- **Start:** Previous `questActiveEvent:50` (exclusive)
 - **End:** Latest `questActiveEvent:50` (inclusive)
+- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
 
 ---
 

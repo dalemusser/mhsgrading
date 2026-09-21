@@ -41,8 +41,9 @@ Player must have a log entry with:
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `DialogueNodeEvent:11:34` (exclusive)
+- **Start:** Previous `questFinishEvent:18` (exclusive)
 - **End:** Latest `questFinishEvent:18` (inclusive)
+- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
 
 ---
 
@@ -241,7 +242,7 @@ Unobserved state (report to the dev team): at gate 8 the reasoning-4 feedback ex
 only in its generic variant (`84:40`); once the specific-wording flag is on, a claim II +
 evidence B + reasoning 4 submission has no matching node and would go uncounted.
 
-#### Correspoinding Script
+#### Corresponding Script
 
 ```js
 // U3P3: EXCESS_ATTEMPTS — determine trigger and quantities

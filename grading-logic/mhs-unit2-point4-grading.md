@@ -18,8 +18,9 @@ Student must complete the watershed-flow matching independently and solve the gl
 
 ### Attempt Window (Production)
 
-- **Start:** `DialogueNodeEvent:22:18` (exclusive)
-- **End:** `DialogueNodeEvent:23:17` (inclusive)
+- **Start:** Previous `DialogueNodeEvent:23:17` (exclusive)
+- **End:** Latest `DialogueNodeEvent:23:17` (inclusive)
+- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
 
 ---
 
@@ -29,6 +30,10 @@ Student must complete the watershed-flow matching independently and solve the gl
 |------|-----------|
 | Trigger | `DialogueNodeEvent:23:17` |
 | Success | `DialogueNodeEvent:74:21` |
+| Bad Feedback | `DialogueNodeEvent:74:16` |
+| Bad Feedback | `DialogueNodeEvent:74:17` |
+| Bad Feedback | `DialogueNodeEvent:74:20` |
+| Bad Feedback | `DialogueNodeEvent:74:22` |
 ---
 
 ## Analytics Script
@@ -38,11 +43,6 @@ Student must complete the watershed-flow matching independently and solve the gl
 // Trigger eventKey: "DialogueNodeEvent:23:17"
 
 const playerId = "<playerId>";
-| Bad Feedback | `DialogueNodeEvent:74:16` |
-| Bad Feedback | `DialogueNodeEvent:74:17` |
-| Bad Feedback | `DialogueNodeEvent:74:20` |
-| Bad Feedback | `DialogueNodeEvent:74:22` |
-
 
 const successKey = "DialogueNodeEvent:74:21";
 
@@ -142,7 +142,7 @@ if (!latestTrigger) {
 
 **Instructor Message:** In Investigate the Temple, the student did not complete the watershed glyph puzzle independently - after {attempt_number} incorrect arrangements, the in-game guide DANI stepped in to order the watershed pieces. This point earns green only when the student submits the correct arrangement on their own within 5 attempts. Needing this level of support may indicate the student would benefit from reviewing how a larger drainage area collects and delivers more water to the main river, producing a greater flow rate.
 
-#### Correspoinding Script
+#### Corresponding Script
 
 ```js
 // U2P4: SOLVED_WITH_ASSIST — determine trigger and attempt_number
@@ -222,7 +222,7 @@ if (!latestTrigger) {
 
 **Instructor Message:** In Investigate the Temple, the student arranged the watershed terrain pieces correctly on their own, but needed {attempt_number} attempts. This point earns green only when the correct arrangement is submitted within 5 attempts. Repeated incorrect arrangements may indicate difficulty connecting drainage-area size with relative flow rate, the pattern that a larger watershed collects and delivers more water to its main river.
 
-#### Correspoinding Script
+#### Corresponding Script
 
 ```js
 // U2P4: EXCESS_ATTEMPTS — determine trigger and attempt_number

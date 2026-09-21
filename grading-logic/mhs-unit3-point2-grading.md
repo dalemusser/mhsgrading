@@ -2,7 +2,7 @@
 
 **Activity:** Pollution Solution
 
-**Trigger(Start) Event:** `questFinishEvent:17`
+**Trigger(Start) Event:** `questActiveEvent:17`
 **Trigger(End) Event:** `DialogueNodeEvent:11:34`
 
 ---
@@ -38,8 +38,9 @@ Where `capped_penalty(cnt)`:
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questFinishEvent:17` (exclusive)
+- **Start:** Previous `DialogueNodeEvent:11:34` (exclusive)
 - **End:** Latest `DialogueNodeEvent:11:34` (inclusive)
+- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
 
 ---
 
@@ -165,7 +166,7 @@ if (!latestTrigger) {
 
 **Instructor Message:** In Pollution Solution, while using drone-dropped sensors to trace the source of the river pollution, the student triggered {downstream_reminder_number} reminders that pollution flows only downstream (testing in the wrong direction) and {redundant_reminder_number} reminders about unnecessary tests (checking upstream of a clean sensor, or pushing past the top of a branch). This point stays green unless reminders accumulate in both categories: one occurring 4 or more times and the other at least twice. Repeated reminders of both kinds may indicate difficulty using sensor readings to reason about how dissolved material spreads through a watershed: pollution can appear only downstream of its source, so a polluted reading means the source is upstream, and a clean reading clears everything upstream of it.
 
-#### Correspoinding Script
+#### Corresponding Script
 
 ```js
 // U3P2: EXCESS_SENSOR_REMINDERS — determine trigger and reminder counts

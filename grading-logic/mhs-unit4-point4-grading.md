@@ -22,8 +22,9 @@ Finally, if the aggregated score is larger than 2 then the color is green; other
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questActiveEvent:50` (exclusive)
+- **Start:** Latest `questActiveEvent:50` (exclusive; the window is valid only when the end event comes after it)
 - **End:** Latest `questActiveEvent:36` (inclusive)
+- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
 
 ---
 

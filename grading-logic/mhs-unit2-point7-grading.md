@@ -151,7 +151,7 @@ if (!latestTrigger) {
 
 **Instructor Message:** In Which Watershed? Part II, the student built the argument about which watershed is larger, but needed {attempt_number} submissions - {wrong_claim_number} where only the claim was wrong, {both_wrong_number} where both the claim and the evidence were wrong, and {irrelevant_evidence_number} where the claim was right but the evidence does not indicate watershed size (waterfall height, salinity, the downstream river, or several pieces at once). This point earns green only when the correct argument is submitted within 4 attempts. Repeated incorrect submissions may indicate difficulty selecting the claim the data supports and distinguishing relevant evidence - flow rate reflects how much land drains to each river - from irrelevant observations.
 
-#### Correspoinding Script
+#### Corresponding Script
 
 ```js
 // U2P7: EXCESS_ATTEMPTS - determine trigger and quantities

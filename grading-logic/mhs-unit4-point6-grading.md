@@ -20,8 +20,9 @@ This is a score-based progress point. There are three garden boxes, each time wh
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questActiveEvent:41` (exclusive)
+- **Start:** Latest `questActiveEvent:41` (exclusive; the window is valid only when the end event comes after it)
 - **End:** Latest `questFinishEvent:56` (inclusive)
+- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
 
 ---
 
