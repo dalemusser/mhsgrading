@@ -188,7 +188,7 @@ which logs `102:23`, has been observed).
 
 ### SOLVED_WITH_ASSIST
 
-**Instructor Message:** In the Infiltration Glyph puzzle, the student did not complete the soil-infiltration ordering independently — after {attempt_number} incorrect arrangements, the in-game guide DANI ordered the pieces. This point earns green only when the student submits the correct order on their own within 3 attempts. Needing this level of support may indicate the student would benefit from reviewing how water infiltrates different soils — the larger the soil particles, the faster water passes through.
+**Instructor Message:** In the Infiltration Glyph puzzle, the student did not complete the soil-infiltration ordering independently. After {attempt_number} incorrect arrangements, the in-game guide DANI ordered the pieces. This point earns green only when the student submits the correct order on their own within 3 attempts. Needing this level of support may indicate the student would benefit from reviewing how water infiltrates different soils: the larger the soil particles, the faster water passes through.
 
 #### Corresponding Script
 
@@ -278,7 +278,7 @@ if (!latestTrigger) {
 
 ### EXCESS_ATTEMPTS
 
-**Instructor Message:** In the Infiltration Glyph puzzle, the student arranged the pieces showing how water passes through different soils, but needed {attempt_number} attempts. This point earns green only when the correct order is submitted within 3 attempts. Repeated incorrect arrangements may indicate difficulty connecting soil particle size to infiltration rate — water moves quickly through gravel, more slowly through sand, and slowest through clay.
+**Instructor Message:** In the Infiltration Glyph puzzle, the student arranged the pieces showing how water passes through different soils, but needed {attempt_number} attempts. This point earns green only when the correct order is submitted within 3 attempts. Repeated incorrect arrangements may indicate difficulty connecting soil particle size to infiltration rate: water moves quickly through gravel, more slowly through sand, and slowest through clay.
 
 #### Corresponding Scripts
 

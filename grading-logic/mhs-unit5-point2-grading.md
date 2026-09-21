@@ -163,7 +163,7 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
 
 ### SCORE_BELOW_THRESHOLD
 
-**Instructor Message:** In If I Had a Nickel (floors 3 and 4), the student used {floor3_attempts} condenser and evaporator interactions to solve the third-floor water chamber puzzle and {floor4_attempts} on the fourth floor. This point earns green only when at least one floor is solved within its optimal count (6 interactions on the third floor, 5 on the fourth) and the other stays within its partial range (at most 10 and 9, respectively). Many interactions may indicate trial-and-error switching rather than predicting the phase change each chamber needs — condensation removes energy to turn water vapor into liquid, and evaporation adds energy to turn liquid back into vapor.
+**Instructor Message:** In If I Had a Nickel (floors 3 and 4), the student used {floor3_attempts} condenser and evaporator interactions to solve the third-floor water chamber puzzle and {floor4_attempts} on the fourth floor. This point earns green only when at least one floor is solved within its optimal count (6 interactions on the third floor, 5 on the fourth) and the other stays within its partial range (at most 10 and 9, respectively). Many interactions may indicate trial-and-error switching rather than predicting the phase change each chamber needs: condensation removes energy to turn water vapor into liquid, and evaporation adds energy to turn liquid back into vapor.
 
 #### Corresponding Script
 

@@ -165,7 +165,7 @@ if (!latestStart || !latestEnd) {
 
 ### SOLVED_WITH_ASSIST
 
-**Instructor Message:** In Forsaken Facility, the student did not complete the ordering puzzle showing how materials dissolve into water independently — after {attempt_number} incorrect arrangements, the in-game guide DANI ordered the pieces. This point earns green only when the student submits the correct order on their own within 3 attempts. Needing this level of support may indicate the student would benefit from reviewing how the particles of a dissolved material spread through water, even once they can no longer be seen.
+**Instructor Message:** In Forsaken Facility, the student did not complete the ordering puzzle showing how materials dissolve into water independently. After {attempt_number} incorrect arrangements, the in-game guide DANI ordered the pieces. This point earns green only when the student submits the correct order on their own within 3 attempts. Needing this level of support may indicate the student would benefit from reviewing how the particles of a dissolved material spread through water, even once they can no longer be seen.
 
 #### Correspoinding Script
 

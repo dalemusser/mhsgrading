@@ -220,7 +220,7 @@ if (!latestTrigger) {
 
 ### EXCESS_ATTEMPTS
 
-**Instructor Message:** In Investigate the Temple, the student arranged the watershed terrain pieces correctly on their own, but needed {attempt_number} attempts. This point earns green only when the correct arrangement is submitted within 5 attempts. Repeated incorrect arrangements may indicate difficulty connecting drainage-area size with relative flow rate — the pattern that a larger watershed collects and delivers more water to its main river.
+**Instructor Message:** In Investigate the Temple, the student arranged the watershed terrain pieces correctly on their own, but needed {attempt_number} attempts. This point earns green only when the correct arrangement is submitted within 5 attempts. Repeated incorrect arrangements may indicate difficulty connecting drainage-area size with relative flow rate, the pattern that a larger watershed collects and delivers more water to its main river.
 
 #### Correspoinding Script
 

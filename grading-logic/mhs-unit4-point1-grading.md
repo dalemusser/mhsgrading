@@ -213,7 +213,7 @@ if (!latestStart || !latestEnd) {
 
 ### SCORE_BELOW_THRESHOLD
 
-**Instructor Message:** In Well What Have We Here?, the student {choice_phrase} Anderson's question about what the water table is, and {duration_phrase} the soil key puzzle. This point earns green only when the puzzle is solved within 30 seconds, or within 90 seconds with the water-table question answered correctly. A missed question may reflect the common misconception that the water table is simply any underground water — it is specifically the boundary between the saturated and unsaturated soil layers — and a slow solve may indicate difficulty controlling the water level between the target lines.
+**Instructor Message:** In Well What Have We Here?, the student {choice_phrase} Anderson's question about what the water table is, and {duration_phrase} the soil key puzzle. This point earns green only when the puzzle is solved within 30 seconds, or within 90 seconds with the water-table question answered correctly. A missed question may reflect the common misconception that the water table is simply any underground water (it is specifically the boundary between the saturated and unsaturated soil layers), and a slow solve may indicate difficulty controlling the water level between the target lines.
 
 #### Corresponding Script
 

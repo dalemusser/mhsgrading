@@ -183,7 +183,7 @@ curricular explanation (higher temperature → higher evaporation rate);
 
 ### SOLVED_WITH_ASSIST
 
-**Instructor Message:** In If I Had a Nickel (floors 1 and 2), the student did not complete the evaporation glyph puzzle independently — after {attempt_number} incorrect arrangements, the in-game guide DANI ordered the tablets. This point earns green only when the student solves the puzzle on their own within 4 attempts. Needing this level of support may indicate the student would benefit from reviewing how temperature drives evaporation — the higher the temperature, the higher the evaporation rate.
+**Instructor Message:** In If I Had a Nickel (floors 1 and 2), the student did not complete the evaporation glyph puzzle independently. After {attempt_number} incorrect arrangements, the in-game guide DANI ordered the tablets. This point earns green only when the student solves the puzzle on their own within 4 attempts. Needing this level of support may indicate the student would benefit from reviewing how temperature drives evaporation: the higher the temperature, the higher the evaporation rate.
 
 #### Corresponding Scripts
 
@@ -254,7 +254,7 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
 
 ### EXCESS_ATTEMPTS
 
-**Instructor Message:** In If I Had a Nickel (floors 1 and 2), the student solved the evaporation glyph puzzle on their own, but needed {attempt_number} attempts. This point earns green only when the puzzle is solved within 4 attempts. Repeated incorrect arrangements may indicate difficulty matching the wall images — temperatures at different times of day — to the evaporation rates they would produce.
+**Instructor Message:** In If I Had a Nickel (floors 1 and 2), the student solved the evaporation glyph puzzle on their own, but needed {attempt_number} attempts. This point earns green only when the puzzle is solved within 4 attempts. Repeated incorrect arrangements may indicate difficulty matching the wall images (temperatures at different times of day) to the evaporation rates they would produce.
 
 #### Corresponding Scripts
 

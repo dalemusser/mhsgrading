@@ -148,7 +148,7 @@ if (!latestTrigger) {
 
 ### SOLVED_WITH_ASSIST
 
-**Instructor Message:** In Escape the Ruin, the student did not complete the topographic-map matching independently — after {attempt_number} incorrect arrangements, the in-game guide DANI placed the remaining pieces. This point earns green only when the student submits the correct solution on their own within 4 attempts. Needing this level of support may indicate the student would benefit from direct instruction on how contour lines represent elevation and slope before matching maps to terrain shapes.
+**Instructor Message:** In Escape the Ruin, the student did not complete the topographic-map matching independently. After {attempt_number} incorrect arrangements, the in-game guide DANI placed the remaining pieces. This point earns green only when the student submits the correct solution on their own within 4 attempts. Needing this level of support may indicate the student would benefit from direct instruction on how contour lines represent elevation and slope before matching maps to terrain shapes.
 
 #### Correspoinding Script
 

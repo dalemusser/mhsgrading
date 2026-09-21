@@ -163,7 +163,7 @@ if (!latestTrigger) {
 
 ### EXCESS_SENSOR_REMINDERS
 
-**Instructor Message:** In Pollution Solution, while using drone-dropped sensors to trace the source of the river pollution, the student triggered {downstream_reminder_number} reminders that pollution flows only downstream (testing in the wrong direction) and {redundant_reminder_number} reminders about unnecessary tests (checking upstream of a clean sensor, or pushing past the top of a branch). This point stays green unless reminders accumulate in both categories — one occurring 4 or more times and the other at least twice. Repeated reminders of both kinds may indicate difficulty using sensor readings to reason about how dissolved material spreads through a watershed: pollution can appear only downstream of its source, so a polluted reading means the source is upstream, and a clean reading clears everything upstream of it.
+**Instructor Message:** In Pollution Solution, while using drone-dropped sensors to trace the source of the river pollution, the student triggered {downstream_reminder_number} reminders that pollution flows only downstream (testing in the wrong direction) and {redundant_reminder_number} reminders about unnecessary tests (checking upstream of a clean sensor, or pushing past the top of a branch). This point stays green unless reminders accumulate in both categories: one occurring 4 or more times and the other at least twice. Repeated reminders of both kinds may indicate difficulty using sensor readings to reason about how dissolved material spreads through a watershed: pollution can appear only downstream of its source, so a polluted reading means the source is upstream, and a clean reading clears everything upstream of it.
 
 #### Correspoinding Script
 

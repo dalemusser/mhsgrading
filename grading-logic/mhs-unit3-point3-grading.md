@@ -207,7 +207,7 @@ if (!latestTrigger) {
 
 ### EXCESS_ATTEMPTS
 
-**Instructor Message:** In Pollution Argument, while constructing the argument about where the pollutant enters the river, the student made {wrong_argument_number} incorrect submissions — {claim_wrong_number} with a claim problem, {reasoning_wrong_number} with a reasoning problem, and {evidence_wrong_number} with an evidence or structure problem — and {backing_info_phrase} the Pollution Site Data reference panel. This point earns green only when incorrect submissions stay within the limit (at most 3, or one more when the reference panel has been consulted, which earns a bonus point). Errors concentrated on reasoning may indicate difficulty explaining how pollution travels downstream with the water flow, which is the link between the sensor evidence and the claim.
+**Instructor Message:** In Pollution Argument, while constructing the argument about where the pollutant enters the river, the student made {wrong_argument_number} incorrect submissions ({claim_wrong_number} with a claim problem, {reasoning_wrong_number} with a reasoning problem, and {evidence_wrong_number} with an evidence or structure problem), and {backing_info_phrase} the Pollution Site Data reference panel. This point earns green only when incorrect submissions stay within the limit (at most 3, or one more when the reference panel has been consulted, which earns a bonus point). Errors concentrated on reasoning may indicate difficulty explaining how pollution travels downstream with the water flow, which is the link between the sensor evidence and the claim.
 
 #### Conversation-84 Feedback Nodes by Argument Component
 
