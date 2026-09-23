@@ -253,8 +253,23 @@ def docx_paragraphs(path):
 # ---------------------------------------------------------------------------
 
 
+_EXPORT_DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
+
+
+def dialogue_export_label(cfg):
+    """Label for the configured Unity dialogue export: the YYYY-MM-DD in its
+    file name (e.g. '2026-09-21'), else the bare file name. Report and
+    reconciliation wording is built from this so switching
+    `dialogue_export_csv` in audit-config.yaml never leaves a stale date."""
+    name = os.path.basename(cfg.get("dialogue_export_csv") or "")
+    m = _EXPORT_DATE_RE.search(name)
+    return m.group(0) if m else (name or "unknown")
+
+
 def load_dialogue_xlsx(cfg):
-    """Historical map: (conv, node) -> text (Dialogue-ID-Texts.xlsx)."""
+    """(conv, node) -> text map from the workbook named by `dialogue_xlsx`
+    (Dialogue-ID-Texts.xlsx; replaced 2026-09-21 to match build 20260914-,
+    the previous copy is kept as Dialogue-ID-Texts-Old.xlsx)."""
     import openpyxl
 
     path, _ = _readable_copy(repo_path(cfg["dialogue_xlsx"]))
@@ -275,7 +290,9 @@ def load_dialogue_xlsx(cfg):
 
 
 def load_dialogue_export(cfg):
-    """2026-06-10 Unity dialogue-database export.
+    """Unity dialogue-database export named by `dialogue_export_csv`
+    (2026-09-21-MHSDialogueExport.csv since 2026-09-23; sections Database /
+    Conversations / DialogueEntries / OutgoingLinks).
 
     Returns (conversations, entries):
       conversations: conv_id -> title

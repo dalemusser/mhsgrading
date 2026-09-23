@@ -81,6 +81,8 @@ File:
 
 `grading-logic/original-score-rubric-table-and-dialogue-database/Dialogue-ID-Texts.xlsx`
 
+(Replaced on 2026-09-21 to match build 20260914-; the previous mapping is kept as `Dialogue-ID-Texts-Old.xlsx` for historical comparison only.)
+
 This file contains mappings among:
 
 * conversation ID;
@@ -101,7 +103,9 @@ Do not assume that an old numeric dialogue/event key is still valid simply becau
 
 File:
 
-`grading-logic/original-score-rubric-table-and-dialogue-database/2026-06-10-MHSDialogueExport.csv`
+`grading-logic/original-score-rubric-table-and-dialogue-database/2026-09-21-MHSDialogueExport.csv`
+
+(The 2026-06-10 export it replaced on 2026-09-23 is still in the folder; audit runs up to `09-14-26-3` used it.)
 
 This contains more detailed information extracted from the Unity dialogue database.
 
@@ -329,7 +333,7 @@ For each dialogue-based event key referenced by the grading rubric or production
 
 1. parse its conversation ID and node/dialogue ID;
 2. resolve it using `Dialogue-ID-Texts.xlsx`;
-3. compare it with `2026-06-10-MHSDialogueExport.csv`;
+3. compare it with `2026-09-21-MHSDialogueExport.csv`;
 4. identify the expected dialogue text;
 5. search the August 25 gameplay logs for the corresponding dialogue event;
 6. determine whether the same numeric identifier still exists;

@@ -325,8 +325,10 @@ def main():
           agreement + ".")
         n += 1
     build_versions = ", ".join(inv["meta"].get("versions") or ["?"])
-    a(f"{n}. **Dialogue DB export is 2026-06-10** vs game build {build_versions}: "
-      "text-level conclusions carry that staleness caveat (MEDIUM confidence ceiling).")
+    export_label = lib.dialogue_export_label(cfg)
+    a(f"{n}. **Dialogue DB export is {export_label}** vs game build {build_versions}: "
+      "text-level conclusions are only as current as that export "
+      "(MEDIUM confidence ceiling whenever it lags the build).")
     n += 1
     kv_mm = inv.get("anomalies", {}).get("dialogue_eventKey_vs_data_mismatches", [])
     if kv_mm:

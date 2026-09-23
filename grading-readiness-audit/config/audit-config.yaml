@@ -15,9 +15,13 @@ grading_dir: "grading-logic"
 # Prior 1:1 Python transcriptions of the production scripts (Stage 2 executor).
 tests_dir: "rubric-validation"
 
-# Dialogue reference materials.
+# Dialogue reference materials. Both were refreshed on 2026-09-21 (commit
+# 68417c8) to match build 20260914-; the previous xlsx is kept alongside as
+# Dialogue-ID-Texts-Old.xlsx for historical comparison only. Audit runs up to
+# 09-14-26-3 reconciled against that old xlsx and the 2026-06-10 export.
+# Report/reconciliation wording takes the export date from this file name.
 dialogue_xlsx: "grading-logic/original-score-rubric-table-and-dialogue-database/Dialogue-ID-Texts.xlsx"
-dialogue_export_csv: "grading-logic/original-score-rubric-table-and-dialogue-database/2026-06-10-MHSDialogueExport.csv"
+dialogue_export_csv: "grading-logic/original-score-rubric-table-and-dialogue-database/2026-09-21-MHSDialogueExport.csv"
 
 # Assessment-intent source documents (docx). The pipeline reads the docx
 # directly; OneDrive placeholder files are hydrated via a temp copy.

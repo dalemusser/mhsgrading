@@ -81,8 +81,8 @@ working files), `08-31-26`, `08-31-26-run2` (same logs re-audited after the
 |---|---|
 | `grading-logic/mhs-unit*-point*-grading.md` | current production behavior (audited, **not** ground truth; never modified) |
 | `.../Progress-Points.docx`, `.../MHS-2.0-Embedded-Assessment-Working-Doc.docx` | assessment intent; their technical IDs are treated as historical claims |
-| `.../Dialogue-ID-Texts.xlsx` | historical (conversation, node) → text map |
-| `.../2026-06-10-MHSDialogueExport.csv` | freshest dialogue DB (may still lag the build — noted in confidences) |
+| `.../Dialogue-ID-Texts.xlsx` | (conversation, node) → text map (config key `dialogue_xlsx`); replaced on 2026-09-21 (commit 68417c8) to match build 20260914-, the previous copy is kept as `Dialogue-ID-Texts-Old.xlsx` for historical comparison only |
+| `.../2026-09-21-MHSDialogueExport.csv` | Unity dialogue DB export matching that build (config key `dialogue_export_csv`; switched from the 2026-06-10 export on 2026-09-23 — runs up to `09-14-26-3` reconciled against the old xlsx + 2026-06-10 export; report wording takes the export date from the file name) |
 | `playthrough-logs-and-results/<build>/*.json` | observational evidence from one playthrough |
 | `build-log-qa/config/coverage/<build>.yaml` | which units the tester actually played (separates "not logged" from "not exercised") |
 | `rubric-validation/test_uXpY.py` + `rubric-validation/mhs_harness.py` | 1:1 Python transcriptions of the production scripts, reused as the Stage-2 executor (config key `tests_dir`) |

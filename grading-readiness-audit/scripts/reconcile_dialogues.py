@@ -3,8 +3,11 @@ the dialogue databases and the current playthrough.
 
 For each (conversationId, nodeId) referenced by production grading logic or
 the source documents:
-  1. resolve its text in Dialogue-ID-Texts.xlsx        (historical mapping)
-  2. resolve its text in 2026-06-10-MHSDialogueExport  (freshest dialogue DB)
+  1. resolve its text in the workbook named by `dialogue_xlsx`
+     (Dialogue-ID-Texts.xlsx)
+  2. resolve its text in the Unity export named by `dialogue_export_csv`
+     (2026-09-21-MHSDialogueExport.csv since 2026-09-23; notes below quote
+     the export date taken from that file name)
   3. compare the two texts (same ID → same dialogue?)
   4. check whether the key fired in the audited playthrough
   5. if the ID vanished from the export, look for the same text elsewhere
@@ -48,6 +51,7 @@ def main():
 
     xlsx = lib.load_dialogue_xlsx(cfg)
     conversations, export = lib.load_dialogue_export(cfg)
+    export_label = lib.dialogue_export_label(cfg)
 
     observed = {}
     for key, rec in inv["event_keys"].items():
@@ -141,14 +145,14 @@ def main():
             # leave holes) — a referenced ID in such a gap is a dead key that
             # can never fire in the current dialogue database.
             status = "DIALOGUE_REMOVED_OR_CHANGED"
-            note = ("dead reference: not present in the historical xlsx NOR the "
-                    "2026-06-10 export — key cannot fire unless the live DB "
+            note = ("dead reference: not present in the xlsx NOR the "
+                    f"{export_label} export — key cannot fire unless the live DB "
                     "differs from both sources")
             confidence = "MEDIUM"
         elif in_export:
             if text_agrees is False:
                 status = "ID_EXISTS_DIFFERENT_TEXT"
-                note = "xlsx text and 2026-06-10 export text differ for the same ID"
+                note = f"xlsx text and {export_label} export text differ for the same ID"
                 confidence = "MEDIUM"
             else:
                 if obs_count > 0:
@@ -163,12 +167,12 @@ def main():
         else:  # in_xlsx only — gone from the freshest DB export
             if relocation:
                 status = "TEXT_MATCH_DIFFERENT_ID"
-                note = (f"node absent from 2026-06-10 export but identical text exists at "
+                note = (f"node absent from {export_label} export but identical text exists at "
                         f"{[(r['conv'], r['node']) for r in relocation]} — candidate remap, NOT auto-applied")
                 confidence = "MEDIUM"
             else:
                 status = "DIALOGUE_REMOVED_OR_CHANGED"
-                note = "node absent from 2026-06-10 export; no text match found elsewhere"
+                note = f"node absent from {export_label} export; no text match found elsewhere"
                 confidence = "MEDIUM" if len(nx) >= min_chars else "LOW"
 
         rows.append(
