@@ -1,9 +1,13 @@
 """Test for Unit 2 Point 6 — "Which Watershed? Part I".
 
-Production rule (mhs-unit2-point6-grading.md): within the attempt window
-(latest `DialogueNodeEvent:23:42` exclusive .. latest `DialogueNodeEvent:20:46`
-inclusive), green iff the pass node is present AND no yellow node is present.
-Missing/invalid window => yellow.
+Production rule (mhs-unit2-point6-grading.md): within the attempt window,
+green iff the pass node is present AND no yellow node is present. Window
+(end-first form since 2026-09-24): anchor on the latest END
+(`DialogueNodeEvent:20:46`); if missing => yellow. Take the latest START
+(`DialogueNodeEvent:23:42`) at `_id < latestEnd._id` (else ObjectId("000..."))
+as the exclusive window start. Until 2026-09-24 the script took the latest
+start and the latest end and returned yellow unless the end came after the
+start.
 
 The 2026-07-22 grading-logic fix re-anchored the window: the script previously
 windowed on `DialogueNodeEvent:20:35`, which fires BEFORE the pass node
@@ -11,7 +15,7 @@ windowed on `DialogueNodeEvent:20:35`, which fires BEFORE the pass node
 HIT_YELLOW_NODE reason script now uses the same 23:42 .. 20:46 window.
 """
 
-from mhs_harness import GAME
+from mhs_harness import GAME, OID_MIN, ObjectId
 
 META = {"unit": 2, "point": 6, "name": "Which Watershed? Part I"}
 
@@ -24,19 +28,26 @@ YELLOW_KEYS = [KEY_44, KEY_45]
 
 
 def _window(coll, pid):
-    """(windowStartId, windowEndId) or None, matching the production guard
-    `!startTrigger || !endTrigger || endTrigger._id <= startTrigger._id`."""
-    start_t = coll.find_one(
-        {"game": GAME, "playerId": pid, "eventKey": WINDOW_START_KEY},
-        sort={"_id": -1},
+    """Returns (windowStartId, windowEndId) or None when no latest END trigger
+    exists (=> yellow)."""
+    # 1) Latest end anchor
+    latest_end = coll.find_one(
+        {"game": GAME, "playerId": pid, "eventKey": WINDOW_END_KEY}, sort={"_id": -1}
     )
-    end_t = coll.find_one(
-        {"game": GAME, "playerId": pid, "eventKey": WINDOW_END_KEY},
-        sort={"_id": -1},
-    )
-    if not start_t or not end_t or end_t["_id"] <= start_t["_id"]:
+    if not latest_end:
         return None
-    return start_t["_id"], end_t["_id"]
+    # 2) Latest start anchor before the latest end
+    latest_start = coll.find_one(
+        {
+            "game": GAME,
+            "playerId": pid,
+            "eventKey": WINDOW_START_KEY,
+            "_id": {"$lt": latest_end["_id"]},
+        },
+        sort={"_id": -1},
+    )
+    window_start_id = latest_start["_id"] if latest_start else ObjectId(OID_MIN)
+    return window_start_id, latest_end["_id"]
 
 
 def grade(coll, pid):

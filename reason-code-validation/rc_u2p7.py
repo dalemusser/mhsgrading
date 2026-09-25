@@ -9,21 +9,27 @@ mhs-unit2-point7-grading.md, "## Reason Codes":
       submissions by ARGUMENT STATE (the conversation-27 branch gate), not by
       wording — every feedback is a generic/specific pair chosen by
       argSpecificFeedback and both members describe the same mistake
-      (reviewed against the 2026-06-10 Unity dialogue export, 2026-09-17):
+      (reviewed against the 2026-06-10 Unity dialogue export, 2026-09-17;
+      re-verified unchanged against the 2026-09-21 export, 2026-09-24):
         gate 27:31       claim I + evidence A (flow rate)   -> 27:11/12   wrong_claim_number
         gates 27:4/5/6   claim I + evidence B / C / D       -> 27:13-18   both_wrong_number
         gates 27:8/9/10  claim II + evidence B / C / D      -> 27:25-30   irrelevant_evidence_number
         any claim        several pieces of evidence at once -> 27:20      irrelevant_evidence_number
 
-Window: previous `questFinishEvent:54` (exclusive) .. latest (inclusive).
+Window (start-and-end form since 2026-09-24): latest `questFinishEvent:54`
+(end, inclusive), latest `DialogueNodeEvent:20:46` before it (start,
+exclusive; OID_MIN when none) — the same window as the production color
+script. Until 2026-09-24: previous `questFinishEvent:54` (exclusive) ..
+latest (inclusive).
 """
 
-from rc_common import count_keys, gt_lte, has_keys, latest_trigger_window
+from rc_common import OID_MIN, count_keys, gt_lte, has_keys, latest
 
 META = {"unit": 2, "point": 7, "name": "Which Watershed? Part II",
         "doc": "mhs-unit2-point7-grading.md"}
 
-TRIGGER_KEY = "questFinishEvent:54"
+START_KEY = "DialogueNodeEvent:20:46"
+END_KEY = "questFinishEvent:54"
 SUCCESS_KEY = "DialogueNodeEvent:27:7"  # "Well done! You have made the best argument possible."
 
 WRONG_CLAIM_KEYS = [           # claim I with the flow-rate evidence (A): only the claim is wrong
@@ -48,7 +54,14 @@ NEG_KEYS = WRONG_CLAIM_KEYS + BOTH_WRONG_KEYS + IRRELEVANT_EVIDENCE_KEYS
 
 
 def attempt_window(coll, pid):
-    return latest_trigger_window(coll, pid, TRIGGER_KEY)
+    # 1) Latest end anchor
+    latest_end = latest(coll, pid, END_KEY)
+    if not latest_end:
+        return None
+    # 2) Latest start anchor before the latest end
+    latest_start = latest(coll, pid, START_KEY, {"_id": {"$lt": latest_end["_id"]}})
+    window_start_id = latest_start["_id"] if latest_start else OID_MIN
+    return window_start_id, latest_end["_id"]
 
 
 def excess_attempts(coll, pid):

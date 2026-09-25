@@ -18,9 +18,10 @@ Student must complete the watershed-flow matching independently and solve the gl
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `DialogueNodeEvent:23:17` (exclusive)
+- **Start:** Latest `DialogueNodeEvent:22:18` before the end event (exclusive; zero ObjectId when there is none)
 - **End:** Latest `DialogueNodeEvent:23:17` (inclusive)
-- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
+- The Production Script below bounds the window this way: it anchors on the latest end event and takes the latest start event before it, so a completed attempt keeps its grade if the student re-enters the activity afterwards. The Trigger(Start) event in the header is that same start event; it also drives the dashboard's in-progress state and the duration metrics.
+- Changed 2026-09-24 from the previous-and-latest end window (previous `DialogueNodeEvent:23:17` exclusive .. latest `DialogueNodeEvent:23:17` inclusive), per the start-and-end window decision (A1). Same-day review against the 2026-09-21 dialogue database: `DialogueNodeEvent:74:25` no longer exists and was removed from the reason-code assist keys (both assisted paths now run 74:18 or 74:20 → 74:26 → 74:22); `DialogueNodeEvent:74:20` (forced assist on the 6th wrong submission) is now also counted as a wrong submission in the reason codes, as at U2P1. Colour keys unchanged. Both Python transcriptions follow; the Go rule must be updated in step.
 
 ---
 
@@ -28,7 +29,8 @@ Student must complete the watershed-flow matching independently and solve the gl
 
 | Role | Event Key |
 |------|-----------|
-| Trigger | `DialogueNodeEvent:23:17` |
+| Trigger (Start) | `DialogueNodeEvent:22:18` |
+| Trigger (End) | `DialogueNodeEvent:23:17` |
 | Success | `DialogueNodeEvent:74:21` |
 | Bad Feedback | `DialogueNodeEvent:74:16` |
 | Bad Feedback | `DialogueNodeEvent:74:17` |
@@ -79,11 +81,13 @@ color;
 
 ```js
 // Unit 2, Point 4 — Standalone replay-aware grading (latest attempt)
-// Trigger eventKey: "DialogueNodeEvent:23:17"
+// Window start: latest DialogueNodeEvent:22:18 before the end event (exclusive)
+// Window end:   latest DialogueNodeEvent:23:17 (inclusive)
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "DialogueNodeEvent:23:17";
+const START_KEY = "DialogueNodeEvent:22:18";
+const END_KEY = "DialogueNodeEvent:23:17";
 
 const successKey = "DialogueNodeEvent:74:21";
 const badKeys = [
@@ -93,23 +97,23 @@ const badKeys = [
   "DialogueNodeEvent:74:22"
 ];
 
-// 1) Latest trigger
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!latestTrigger) {
+if (!latestEnd) {
   "yellow";
 } else {
-  // 2) Previous trigger (defines prior attempt boundary)
-  const prevTrigger = db.logdata.findOne(
-    { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY, _id: { $lt: latestTrigger._id } },
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
+    { game: "mhs", playerId: playerId, eventKey: START_KEY, _id: { $lt: latestEnd._id } },
     { sort: { _id: -1 } }
   );
 
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestEnd._id;
 
   // 3) Check success/bad within this attempt window
   const hasSuccess =
@@ -146,56 +150,64 @@ if (!latestTrigger) {
 
 ```js
 // U2P4: SOLVED_WITH_ASSIST — determine trigger and attempt_number
+// Window mirrors the production color script: latest DialogueNodeEvent:23:17 (end),
+// latest DialogueNodeEvent:22:18 before it (start, exclusive; zero ObjectId when none).
 // Triggers when an assist marker fired in the attempt window: 74:18 (player
-// accepted DANI's offer — the node that reliably logs on this build), or
-// 74:20 / 74:25 (DANI orders the pieces) / 74:22 (helped completion).
+// accepted DANI's offer after the 5th wrong submission), 74:20 (forced assist
+// on the 6th wrong submission), or 74:22 "SolvedHelp" (the DANI-completed
+// outcome node, counterpart of 74:21). In the 2026-09-21 dialogue database both
+// assisted paths run 18 -> 26 -> 22 and 20 -> 26 -> 22 (26 is an empty
+// structural node); the former video-link variant 74:25 no longer exists and
+// was removed 2026-09-24.
 // attempt_number = incorrect submissions before DANI completed the puzzle
 // (each wrong submission fires exactly one feedback node, once per window)
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "DialogueNodeEvent:23:17";
+const START_KEY = "DialogueNodeEvent:22:18";
+const END_KEY = "DialogueNodeEvent:23:17";
 
 const ASSIST_KEYS = [
-  "DialogueNodeEvent:74:18",  // "Sure. I'm stuck" — accepted assist offer
-  "DialogueNodeEvent:74:20",  // DANI orders the pieces
-  "DialogueNodeEvent:74:22",  // DANI-helped completion
-  "DialogueNodeEvent:74:25"   // DANI orders the pieces (video-link variant)
+  "DialogueNodeEvent:74:18",  // "Sure. I'm stuck" — accepted assist offer (5th attempt)
+  "DialogueNodeEvent:74:20",  // forced assist, 6th wrong submission: DANI orders the pieces
+  "DialogueNodeEvent:74:22"   // "SolvedHelp" — DANI-helped completion
 ];
 
 const NEGATIVE_KEYS = [
-  "DialogueNodeEvent:74:4",   // 1st attempt, any wrong
-  "DialogueNodeEvent:74:5",   // 2nd attempt, 2-3 wrong
-  "DialogueNodeEvent:74:6",   // 2nd attempt, >3 wrong
-  "DialogueNodeEvent:74:9",   // 3rd attempt, 2-3 wrong
-  "DialogueNodeEvent:74:10",  // 3rd attempt, >3 wrong (video offered)
+  "DialogueNodeEvent:74:4",   // 1st attempt, any wrong   (gate: Attempts == 1)
+  "DialogueNodeEvent:74:5",   // 2nd attempt, 1-2 wrong   (gate: Attempts == 2, IncorrectInLast 1-2)
+  "DialogueNodeEvent:74:6",   // 2nd attempt, 3-5 wrong   (gate: Attempts == 2, IncorrectInLast 3-5)
+  "DialogueNodeEvent:74:9",   // 3rd attempt, 1-2 wrong
+  "DialogueNodeEvent:74:10",  // 3rd attempt, 3-5 wrong (video offered)
   "DialogueNodeEvent:74:15",  // 4th attempt, any wrong
-  "DialogueNodeEvent:74:16",  // 5th attempt, 2-3 wrong
-  "DialogueNodeEvent:74:17"   // 5th attempt, >3 wrong (assist offered)
+  "DialogueNodeEvent:74:16",  // 5th attempt, 1-2 wrong
+  "DialogueNodeEvent:74:17",  // 5th attempt, 3-5 wrong (assist offered)
+  "DialogueNodeEvent:74:20"   // 6th wrong submission (gate: Attempts >= 6) — DANI takes over; counted as a
+                              // wrong submission like the forced nodes at U2P1 (added 2026-09-24)
 ];
 
-// 1) Latest trigger (end anchor)
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!latestTrigger) {
+if (!latestEnd) {
   ({ triggered: false, attempt_number: 0 });
 } else {
-  // 2) Previous trigger (attempt boundary)
-  const prevTrigger = db.logdata.findOne(
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
+      eventKey: START_KEY,
+      _id: { $lt: latestEnd._id }
     },
     { sort: { _id: -1 } }
   );
 
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestEnd._id;
 
   // 3) Reason code triggers if any assist marker fired in the window
   const assisted =
@@ -226,6 +238,8 @@ if (!latestTrigger) {
 
 ```js
 // U2P4: EXCESS_ATTEMPTS — determine trigger and attempt_number
+// Window mirrors the production color script: latest DialogueNodeEvent:23:17 (end),
+// latest DialogueNodeEvent:22:18 before it (start, exclusive; zero ObjectId when none).
 // Triggers when the student solved the puzzle independently (74:21 in window,
 // no assist marker) but the 5th submission was wrong (74:16 or 74:17 fired),
 // meaning success took 6+ attempts. Mirrors the color rule's yellow keys.
@@ -233,54 +247,56 @@ if (!latestTrigger) {
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "DialogueNodeEvent:23:17";
+const START_KEY = "DialogueNodeEvent:22:18";
+const END_KEY = "DialogueNodeEvent:23:17";
 const SUCCESS_KEY = "DialogueNodeEvent:74:21"; // solved-on-their-own completion
 
 const FIFTH_ATTEMPT_KEYS = [
-  "DialogueNodeEvent:74:16",  // 5th attempt, 2-3 wrong
-  "DialogueNodeEvent:74:17"   // 5th attempt, >3 wrong (assist offered)
+  "DialogueNodeEvent:74:16",  // 5th attempt, 1-2 wrong
+  "DialogueNodeEvent:74:17"   // 5th attempt, 3-5 wrong (assist offered)
 ];
 
 const ASSIST_KEYS = [
-  "DialogueNodeEvent:74:18",
-  "DialogueNodeEvent:74:20",
-  "DialogueNodeEvent:74:22",
-  "DialogueNodeEvent:74:25"
+  "DialogueNodeEvent:74:18",  // accepted assist offer
+  "DialogueNodeEvent:74:20",  // forced assist (6th wrong submission)
+  "DialogueNodeEvent:74:22"   // "SolvedHelp" outcome node (74:25 removed 2026-09-24: gone from the dialogue database)
 ];
 
 const NEGATIVE_KEYS = [
-  "DialogueNodeEvent:74:4",   // 1st attempt, any wrong
-  "DialogueNodeEvent:74:5",   // 2nd attempt, 2-3 wrong
-  "DialogueNodeEvent:74:6",   // 2nd attempt, >3 wrong
-  "DialogueNodeEvent:74:9",   // 3rd attempt, 2-3 wrong
-  "DialogueNodeEvent:74:10",  // 3rd attempt, >3 wrong (video offered)
+  "DialogueNodeEvent:74:4",   // 1st attempt, any wrong   (gate: Attempts == 1)
+  "DialogueNodeEvent:74:5",   // 2nd attempt, 1-2 wrong   (gate: Attempts == 2, IncorrectInLast 1-2)
+  "DialogueNodeEvent:74:6",   // 2nd attempt, 3-5 wrong   (gate: Attempts == 2, IncorrectInLast 3-5)
+  "DialogueNodeEvent:74:9",   // 3rd attempt, 1-2 wrong
+  "DialogueNodeEvent:74:10",  // 3rd attempt, 3-5 wrong (video offered)
   "DialogueNodeEvent:74:15",  // 4th attempt, any wrong
-  "DialogueNodeEvent:74:16",  // 5th attempt, 2-3 wrong
-  "DialogueNodeEvent:74:17"   // 5th attempt, >3 wrong (assist offered)
+  "DialogueNodeEvent:74:16",  // 5th attempt, 1-2 wrong
+  "DialogueNodeEvent:74:17",  // 5th attempt, 3-5 wrong (assist offered)
+  "DialogueNodeEvent:74:20"   // 6th wrong submission (gate: Attempts >= 6) — DANI takes over; counted as a
+                              // wrong submission like the forced nodes at U2P1 (added 2026-09-24)
 ];
 
-// 1) Latest trigger (end anchor)
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!latestTrigger) {
+if (!latestEnd) {
   ({ triggered: false, attempt_number: 0 });
 } else {
-  // 2) Previous trigger (attempt boundary)
-  const prevTrigger = db.logdata.findOne(
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
+      eventKey: START_KEY,
+      _id: { $lt: latestEnd._id }
     },
     { sort: { _id: -1 } }
   );
 
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestEnd._id;
 
   // 3) Student reached the solved-on-their-own completion
   const solvedSelf =

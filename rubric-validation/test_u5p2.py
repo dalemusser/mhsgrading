@@ -1,39 +1,60 @@
 """Test for Unit 5 Point 2 — "If I Had a Nickel- Floors 3 & 4".
 
 Production rule (mhs-unit5-point2-grading.md): score-based on WaterChamberEvent
-machine interactions within the latest attempt window. The window is anchored on
-the latest START (`questFinishEvent:43`) and latest END (`DialogueNodeEvent:96:1`)
-found independently; if either is missing or the end precedes the start =>
-yellow. Inside the window:
+machine interactions within the latest attempt window.
+
+Window (start-and-end form since 2026-09-24): anchor on the latest END
+(`DialogueNodeEvent:96:1`); if missing => yellow. Take the latest START
+(`questFinishEvent:43`) at `_id < latestEnd._id` (else ObjectId("000...")) as
+the exclusive window start. Until 2026-09-24 the script took the latest start
+and the latest end independently and returned yellow when the end preceded
+the start (guard `!latestStart || !latestEnd || latestEnd._id < latestStart._id`).
+
+Inside the window:
 
     floor3_attempts = WaterChamberEvent, data.floor "3", data.machineType in
-                      VALID_TYPES (Condenser/Evaporator)
+                      VALID_TYPES
     floor4_attempts = same but data.floor "4"
     score = 0
     floor3: +2 if <=6,  +1 if <11
     floor4: +2 if <=5,  +1 if <10
     green iff score >= 3.
+
+VALID_TYPES = Condenser / Evaporator plus, since 2026-09-24 (grading-team
+review item approved 2026-09-21), the floor-3 dual-chamber machine's
+DualChamber_Condenser / DualChamber_Evaporator. VentSwitch is never counted.
 """
 
-from mhs_harness import GAME
+from mhs_harness import GAME, OID_MIN, ObjectId
 
 META = {"unit": 5, "point": 2, "name": "If I Had a Nickel- Floors 3 & 4"}
 
 WINDOW_START_KEY = "questFinishEvent:43"
 WINDOW_END_KEY = "DialogueNodeEvent:96:1"
-VALID_TYPES = ["Condenser", "Evaporator"]
+VALID_TYPES = ["Condenser", "Evaporator", "DualChamber_Condenser", "DualChamber_Evaporator"]
 
 
 def _window(coll, pid):
-    latest_start = coll.find_one(
-        {"game": GAME, "playerId": pid, "eventKey": WINDOW_START_KEY}, sort={"_id": -1}
-    )
+    """Returns (windowStartId, windowEndId) or None when no latest END trigger
+    exists (=> yellow)."""
+    # 1) Latest end anchor
     latest_end = coll.find_one(
         {"game": GAME, "playerId": pid, "eventKey": WINDOW_END_KEY}, sort={"_id": -1}
     )
-    if not latest_start or not latest_end or latest_end["_id"] < latest_start["_id"]:
+    if not latest_end:
         return None
-    return latest_start["_id"], latest_end["_id"]
+    # 2) Latest start anchor before the latest end
+    latest_start = coll.find_one(
+        {
+            "game": GAME,
+            "playerId": pid,
+            "eventKey": WINDOW_START_KEY,
+            "_id": {"$lt": latest_end["_id"]},
+        },
+        sort={"_id": -1},
+    )
+    window_start_id = latest_start["_id"] if latest_start else ObjectId(OID_MIN)
+    return window_start_id, latest_end["_id"]
 
 
 def _score_parts(coll, pid):
@@ -90,10 +111,7 @@ def diagnose(coll, pid):
     out = {}
     parts = _score_parts(coll, pid)
     if parts is None:
-        out["NO_TRIGGER"] = (
-            f"no {WINDOW_END_KEY}/{WINDOW_START_KEY} attempt window found — "
-            f"defaults to yellow"
-        )
+        out["NO_TRIGGER"] = f"no {WINDOW_END_KEY} trigger found — defaults to yellow"
         return out
     floor3_attempts, floor4_attempts, score = parts
     out["_score"] = (

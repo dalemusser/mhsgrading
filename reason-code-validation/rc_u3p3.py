@@ -3,27 +3,34 @@
 mhs-unit3-point3-grading.md, "## Reason Codes":
 
   EXCESS_ATTEMPTS — `triggered` mirrors the color formula verbatim: base score
-      from the color script's TARGET_KEYS count (which still includes success
-      node 84:36 and empty 84:38 — flagged for review in the markdown), plus 1
-      bonus for opening the Pollution Site Data panel; yellow when total < 3.
+      from the color script's TARGET_KEYS count (which includes the success
+      node 84:36 on purpose, so the count equals the number of attempts, and
+      the inert gate 84:38 — decision B1, 2026-09-21: keep), plus 1 bonus for
+      opening the Pollution Site Data panel; yellow when total < 3.
       The quantities report honest counts: wrong_argument_number excludes
       84:36/38 and the component counts split it by ARGUMENT STATE (the
       conversation-84 branch gate): claim II + evidence A -> 39/45; claim II +
       evidence B -> 25/46 (reasoning 1/2/3/5) and 40 (reasoning 4), all claim;
       claim I + evidence A with wrong reasoning -> 32-35/41-44, reasoning;
       claim I + evidence B -> 37, multiple evidence -> 20, incomplete -> 47,
-      evidence/structure (reviewed against the Unity export 2026-09-17);
+      evidence/structure (reviewed against the Unity export 2026-09-17;
+      re-verified unchanged against the 2026-09-21 export, 2026-09-24);
       backing_info_phrase = "opened" / "did not open".
 
-Window: previous `questFinishEvent:18` (exclusive) .. latest (inclusive).
+Window (start-and-end form since 2026-09-24): latest `questFinishEvent:18`
+(end, inclusive), latest `DialogueNodeEvent:11:34` before it (start,
+exclusive; OID_MIN when none) — the same window as the production color
+script. Until 2026-09-24: previous `questFinishEvent:18` (exclusive) ..
+latest (inclusive).
 """
 
-from rc_common import GAME, count_keys, gt_lte, latest_trigger_window
+from rc_common import GAME, OID_MIN, count_keys, gt_lte, latest
 
 META = {"unit": 3, "point": 3, "name": "Pollution Argument",
         "doc": "mhs-unit3-point3-grading.md"}
 
-TRIGGER_KEY = "questFinishEvent:18"
+START_KEY = "DialogueNodeEvent:11:34"
+END_KEY = "questFinishEvent:18"
 
 CLAIM_NEG_KEYS = [
     "DialogueNodeEvent:84:39", "DialogueNodeEvent:84:45",  # claim II + evidence A: only the claim is wrong
@@ -51,7 +58,14 @@ BACKING_INFO_TOOL = "BackingInfoPanel - Pollution Site Data"
 
 
 def attempt_window(coll, pid):
-    return latest_trigger_window(coll, pid, TRIGGER_KEY)
+    # 1) Latest end anchor
+    latest_end = latest(coll, pid, END_KEY)
+    if not latest_end:
+        return None
+    # 2) Latest start anchor before the latest end
+    latest_start = latest(coll, pid, START_KEY, {"_id": {"$lt": latest_end["_id"]}})
+    window_start_id = latest_start["_id"] if latest_start else OID_MIN
+    return window_start_id, latest_end["_id"]
 
 
 def excess_attempts(coll, pid):

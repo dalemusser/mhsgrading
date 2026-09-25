@@ -123,7 +123,7 @@ Log: `wenyi091426-3.stratalog.logdata.json`
        expected=yellow actual=yellow
        reason(s) for yellow (expected):
          - _score: has_gate=1 total_count=5 score=0
-         - TOO_MANY_NEGATIVES: attempts_number=5 (> 3) — too many attempts to make the correct matches
+         - TOO_MANY_NEGATIVES: attempts_number=5 (>= 3) — too many attempts to make the correct matches
 ```
 
 ```
@@ -166,7 +166,7 @@ Log: `wenyi091426-3.stratalog.logdata.json`
          - _score: score=0 attempt_time=18 negative_feedback_number=3
          - SCORE_BELOW_THRESHOLD: score=0 (<= 2) — combined soil-machine and dialogue score too low
          - TOO_MANY_ATTEMPTS: attempt_time=18 (> 3) — too many fifth-floor soil machine interactions
-         - BAD_FEEDBACK: negative_feedback_number=3 (> 0) — wrong water-table choices before the correct layer
+         - BAD_FEEDBACK: negative_feedback_number=3 (> 0) — wrong drilling depths before the clean-water depth
 ```
 
 ```
@@ -196,8 +196,8 @@ Log: `wenyi091426-3.stratalog.logdata.json`
 [PASS] U5P2 — If I Had a Nickel- Floors 3 & 4
        expected=yellow actual=yellow
        reason(s) for yellow (expected):
-         - _score: floor3_attempts=8 floor4_attempts=10 score=1
-         - TOO_MANY_ATTEMPTS_3: floor3_attempts=8 (>6) — too many condenser/evaporator interactions on the 3rd floor
+         - _score: floor3_attempts=21 floor4_attempts=10 score=0
+         - TOO_MANY_ATTEMPTS_3: floor3_attempts=21 (>6) — too many condenser/evaporator interactions on the 3rd floor
          - TOO_MANY_ATTEMPTS_4: floor4_attempts=10 (>5) — too many condenser/evaporator interactions on the 4th floor
 ```
 

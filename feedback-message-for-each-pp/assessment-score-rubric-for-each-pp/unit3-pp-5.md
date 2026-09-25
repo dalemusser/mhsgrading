@@ -15,4 +15,4 @@ The player selects 4 garden boxes, so the maximum score for this progress point 
 
 ## Implementation Note
 
-The rubric’s on-track band for this point is 3 to 4 points (at most one wrong planting, with no penalty carried past the four boxes). The current dashboard script (grading-logic/mhs-unit3-point5-grading.md) turns green at 2.5 points or more, which also admits one wrong planting; the two thresholds are flagged for reconciliation.
+The rubric’s on-track band for this point is 3 to 4 points (at most one wrong planting, with no penalty carried past the four boxes). The dashboard script (grading-logic/mhs-unit3-point5-grading.md) turns green at 2.5 points or more. With four seeds the two say the same thing: one wrong planting scores 3 − 0.5 = 2.5 and stays green, two wrong plantings score 2 − 1 = 1 and turn yellow. The 2.5 threshold was confirmed with the grading team on 2026-09-21 (decision A5), and the grading file's rule table, Analytics Script, Production Script and reason code all use it as of 2026-09-24.

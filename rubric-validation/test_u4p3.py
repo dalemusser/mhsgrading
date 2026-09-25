@@ -1,32 +1,62 @@
 """Test for Unit 4 Point 3 — "Alien Well Floor 3 & 4".
 
 Production rule (mhs-unit4-point3-grading.md): score-based on soilMachine
-interaction counts, within the latest attempt window (previous
-`questActiveEvent:50` exclusive .. latest `questActiveEvent:50` inclusive).
+interaction counts, within the attempt window.
 
     floor3 = count of soilMachine (data.machine="1", data.floor="3") in window
     floor4 = count of soilMachine (data.machine="1", data.floor="4") in window
     score  = (1 if floor3 == 1 else 0)
            + (2 if floor4 == 1 else 1 if floor4 == 2 else 0)
     green iff score > 1, else yellow. No trigger => yellow.
+
+Window (start-and-end form since 2026-09-24): anchor on the latest END
+(`questActiveEvent:50`); if missing => yellow. Take the latest START
+(`questActiveEvent:48`) at `_id < latestEnd._id` (else ObjectId("000...")) as
+the exclusive window start. Until 2026-09-24 the window was (previous
+`questActiveEvent:50` exclusive .. latest `questActiveEvent:50` inclusive).
 """
 
-from mhs_harness import GAME, latest_trigger_window
+from mhs_harness import GAME, OID_MIN, ObjectId
 
 META = {"unit": 4, "point": 3, "name": "Alien Well Floor 3 & 4"}
 
-TRIGGER_KEY = "questActiveEvent:50"
+START_KEY = "questActiveEvent:48"
+END_KEY = "questActiveEvent:50"
 EVENT_TYPE = "soilMachine"
+
+
+def _window(coll, pid):
+    """Returns (windowStartId, windowEndId) or None when no latest END trigger
+    exists (=> yellow)."""
+    # 1) Latest end anchor
+    latest_end = coll.find_one(
+        {"game": GAME, "playerId": pid, "eventKey": END_KEY}, sort={"_id": -1}
+    )
+    if not latest_end:
+        return None
+    # 2) Latest start anchor before the latest end
+    latest_start = coll.find_one(
+        {
+            "game": GAME,
+            "playerId": pid,
+            "eventKey": START_KEY,
+            "_id": {"$lt": latest_end["_id"]},
+        },
+        sort={"_id": -1},
+    )
+    window_start_id = latest_start["_id"] if latest_start else ObjectId(OID_MIN)
+    return window_start_id, latest_end["_id"]
 
 
 def _parts(coll, pid):
     """Returns (score, c_floor3, c_floor4) or None when no trigger."""
-    win = latest_trigger_window(coll, pid, TRIGGER_KEY)
+    win = _window(coll, pid)
     if win is None:
         return None
     start, end = win
     win_filter = {"_id": {"$gt": start, "$lte": end}}
 
+    # 3) Count soilMachine interactions inside attempt window
     c_floor3 = coll.count_documents(
         {
             "game": GAME,
@@ -71,7 +101,7 @@ def diagnose(coll, pid):
     out = {}
     parts = _parts(coll, pid)
     if parts is None:
-        out["NO_TRIGGER"] = f"no {TRIGGER_KEY} trigger found — defaults to yellow"
+        out["NO_TRIGGER"] = f"no {END_KEY} trigger found — defaults to yellow"
         return out
     score, c_floor3, c_floor4 = parts
     out["_score"] = (

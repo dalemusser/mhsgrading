@@ -7,15 +7,20 @@ mhs-unit3-point2-grading.md, "## Reason Codes":
       (<=1: 0, 2-3: 1, >=4: 2). downstream_reminder_number = 11:27 count;
       redundant_reminder_number = 11:29 + 11:230 count.
 
-Window: previous `DialogueNodeEvent:11:34` (exclusive) .. latest (inclusive).
+Window (start-and-end form since 2026-09-24): latest `DialogueNodeEvent:11:34`
+(end, inclusive), latest `questActiveEvent:17` before it (start, exclusive;
+OID_MIN when none) — the same window as the production color script. Until
+2026-09-24: previous `11:34` (exclusive) .. latest (inclusive). Keys
+re-verified 2026-09-24 against the 2026-09-21 dialogue database.
 """
 
-from rc_common import count_keys, gt_lte, latest_trigger_window
+from rc_common import OID_MIN, count_keys, gt_lte, latest
 
 META = {"unit": 3, "point": 2, "name": "Pollution Solution",
         "doc": "mhs-unit3-point2-grading.md"}
 
-TRIGGER_KEY = "DialogueNodeEvent:11:34"
+START_KEY = "questActiveEvent:17"
+END_KEY = "DialogueNodeEvent:11:34"
 
 DOWNSTREAM_KEY = "DialogueNodeEvent:11:27"   # test further upstream
 REDUNDANT_KEYS = [
@@ -33,7 +38,14 @@ def capped_penalty(cnt):
 
 
 def attempt_window(coll, pid):
-    return latest_trigger_window(coll, pid, TRIGGER_KEY)
+    # 1) Latest end anchor
+    latest_end = latest(coll, pid, END_KEY)
+    if not latest_end:
+        return None
+    # 2) Latest start anchor before the latest end
+    latest_start = latest(coll, pid, START_KEY, {"_id": {"$lt": latest_end["_id"]}})
+    window_start_id = latest_start["_id"] if latest_start else OID_MIN
+    return window_start_id, latest_end["_id"]
 
 
 def excess_sensor_reminders(coll, pid):

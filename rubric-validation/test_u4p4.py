@@ -1,18 +1,28 @@
 """Test for Unit 4 Point 4 — "Alien Well Floor 5 + You Know the Drill".
 
-Production rule (mhs-unit4-point4-grading.md): score-based, within an attempt
-window anchored on TWO distinct triggers — latest `questActiveEvent:50` (start,
-exclusive) .. latest `questActiveEvent:36` (end, inclusive). Yellow unless both
-triggers exist AND end._id > start._id.
+Production rule (mhs-unit4-point4-grading.md): score-based, within the attempt
+window.
 
     +1 if soilMachine floor 5 machine 1 TopRow count == 1 AND BottomRow count == 1
     +1 if soilMachine floor 5 machine 2 count == 1
     +2 if success_total > 0 and neg_total == 0
     +1 elif success_total > 0 and neg_total == 1
     green iff score > 2, else yellow.
+
+Window (end-first form since 2026-09-24): anchor on the latest END
+(`questActiveEvent:36`, which logs twice back-to-back — the latest absorbs the
+duplicate); if missing => yellow. Take the latest START (`questActiveEvent:50`)
+at `_id < latestEnd._id` (else ObjectId("000...")) as the exclusive window
+start. Until 2026-09-24 the script took the latest start and the latest end and
+returned yellow unless the end came after the start.
+
+Keys (decision B3, applied 2026-09-24): SUCCESS_KEYS = 107:5 only (fourth floor,
+clean water); NEG_KEYS = 107:2 / 107:3 / 107:4 / 107:6 (107:4 "middle" yields
+contaminated water and the task continues). Conversation 107 re-verified
+against the 2026-09-21 dialogue database (unchanged).
 """
 
-from mhs_harness import GAME
+from mhs_harness import GAME, OID_MIN, ObjectId
 
 META = {
     "unit": 4,
@@ -20,32 +30,39 @@ META = {
     "name": "Alien Well Floor 5 + You Know the Drill",
 }
 
-WINDOW_START_KEY = "questActiveEvent:50"
-WINDOW_END_KEY = "questActiveEvent:36"
+START_KEY = "questActiveEvent:50"
+END_KEY = "questActiveEvent:36"
 
-SUCCESS_KEYS = ["DialogueNodeEvent:107:4", "DialogueNodeEvent:107:5"]
+SUCCESS_KEYS = ["DialogueNodeEvent:107:5"]
 NEG_KEYS = [
     "DialogueNodeEvent:107:2",
     "DialogueNodeEvent:107:3",
+    "DialogueNodeEvent:107:4",
     "DialogueNodeEvent:107:6",
 ]
 
 
 def _window(coll, pid):
-    """Return (windowStartId, windowEndId) or None when the window is invalid
-    (=> yellow), matching the production guard
-    `!latestStart || !latestEnd || latestEnd._id <= latestStart._id`."""
-    latest_start = coll.find_one(
-        {"game": GAME, "playerId": pid, "eventKey": WINDOW_START_KEY},
-        sort={"_id": -1},
-    )
+    """Returns (windowStartId, windowEndId) or None when no latest END trigger
+    exists (=> yellow)."""
+    # 1) Latest end anchor
     latest_end = coll.find_one(
-        {"game": GAME, "playerId": pid, "eventKey": WINDOW_END_KEY},
+        {"game": GAME, "playerId": pid, "eventKey": END_KEY}, sort={"_id": -1}
+    )
+    if not latest_end:
+        return None
+    # 2) Latest start anchor before the latest end
+    latest_start = coll.find_one(
+        {
+            "game": GAME,
+            "playerId": pid,
+            "eventKey": START_KEY,
+            "_id": {"$lt": latest_end["_id"]},
+        },
         sort={"_id": -1},
     )
-    if not latest_start or not latest_end or latest_end["_id"] <= latest_start["_id"]:
-        return None
-    return latest_start["_id"], latest_end["_id"]
+    window_start_id = latest_start["_id"] if latest_start else ObjectId(OID_MIN)
+    return window_start_id, latest_end["_id"]
 
 
 def _score_parts(coll, pid):
@@ -120,9 +137,7 @@ def diagnose(coll, pid):
     out = {}
     parts = _score_parts(coll, pid)
     if parts is None:
-        out["NO_TRIGGER"] = (
-            f"no valid window from {WINDOW_START_KEY}/{WINDOW_END_KEY} — defaults to yellow"
-        )
+        out["NO_TRIGGER"] = f"no {END_KEY} trigger found — defaults to yellow"
         return out
     score, attempt_time, neg_total = parts
     out["_score"] = f"score={score} attempt_time={attempt_time} negative_feedback_number={neg_total}"
@@ -136,8 +151,8 @@ def diagnose(coll, pid):
         )
     if neg_total > 0:
         out["BAD_FEEDBACK"] = (
-            f"negative_feedback_number={neg_total} (> 0) — wrong water-table choices "
-            f"before the correct layer"
+            f"negative_feedback_number={neg_total} (> 0) — wrong drilling depths "
+            f"before the clean-water depth"
         )
     return out
 

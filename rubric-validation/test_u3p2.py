@@ -1,8 +1,7 @@
 """Test for Unit 3 Point 2 — "Pollution Solution".
 
 Production rule (mhs-unit3-point2-grading.md): score-based with capped
-penalties, within the latest attempt window (previous `DialogueNodeEvent:11:34`
-exclusive .. latest `DialogueNodeEvent:11:34` inclusive).
+penalties, within the attempt window.
 
     c27  = windowed count of DialogueNodeEvent:11:27
     c29  = windowed count of DialogueNodeEvent:11:29
@@ -11,13 +10,22 @@ exclusive .. latest `DialogueNodeEvent:11:34` inclusive).
     score = 5 - cappedPenalty(c27) - cappedPenalty(cSum)
     cappedPenalty(cnt): 0 if <=1, 1 if <=3, else 2
     green iff score >= 3 (i.e. not score < 3). No trigger => yellow.
+
+Window (start-and-end form since 2026-09-24): anchor on the latest END
+(`DialogueNodeEvent:11:34`); if missing => yellow. Take the latest START
+(`questActiveEvent:17`) at `_id < latestEnd._id` (else ObjectId("000...")) as
+the exclusive window start. Until 2026-09-24 the window was (previous
+`DialogueNodeEvent:11:34` exclusive .. latest `DialogueNodeEvent:11:34`
+inclusive). Keys re-verified 2026-09-24 against the 2026-09-21 dialogue
+database.
 """
 
-from mhs_harness import GAME, latest_trigger_window
+from mhs_harness import GAME, OID_MIN, ObjectId
 
 META = {"unit": 3, "point": 2, "name": "Pollution Solution"}
 
-TRIGGER_KEY = "DialogueNodeEvent:11:34"
+START_KEY = "questActiveEvent:17"
+END_KEY = "DialogueNodeEvent:11:34"
 C27_KEY = "DialogueNodeEvent:11:27"
 C29_KEY = "DialogueNodeEvent:11:29"
 C230_KEY = "DialogueNodeEvent:11:230"
@@ -37,12 +45,36 @@ def _capped_penalty(cnt):
     return 2
 
 
+def _window(coll, pid):
+    """Returns (windowStartId, windowEndId) or None when no latest END trigger
+    exists (=> yellow)."""
+    # 1) Latest end anchor
+    latest_end = coll.find_one(
+        {"game": GAME, "playerId": pid, "eventKey": END_KEY}, sort={"_id": -1}
+    )
+    if not latest_end:
+        return None
+    # 2) Latest start anchor before the latest end
+    latest_start = coll.find_one(
+        {
+            "game": GAME,
+            "playerId": pid,
+            "eventKey": START_KEY,
+            "_id": {"$lt": latest_end["_id"]},
+        },
+        sort={"_id": -1},
+    )
+    window_start_id = latest_start["_id"] if latest_start else ObjectId(OID_MIN)
+    return window_start_id, latest_end["_id"]
+
+
 def _score_parts(coll, pid):
-    win = latest_trigger_window(coll, pid, TRIGGER_KEY)
+    win = _window(coll, pid)
     if win is None:
         return None
     start, end = win
     win_filter = {"_id": {"$gt": start, "$lte": end}}
+    # 3) Category counts inside the window
     c27 = coll.count_documents(
         {"game": GAME, "playerId": pid, "eventKey": C27_KEY, **win_filter}
     )
@@ -71,7 +103,7 @@ def diagnose(coll, pid):
     out = {}
     parts = _score_parts(coll, pid)
     if parts is None:
-        out["MISSING_TRIGGER"] = f"no {TRIGGER_KEY} trigger found — defaults to yellow"
+        out["MISSING_TRIGGER"] = f"no {END_KEY} trigger found — defaults to yellow"
         return out
     c27, c29, c230, c_sum, score = parts
     reminding_count = c27 + c29 + c230

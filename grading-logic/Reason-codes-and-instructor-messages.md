@@ -33,6 +33,8 @@
 
 Generated from the per-point grading documents (`mhs-unitN-pointM-grading.md`, section "Reason Codes") on 2026-09-21; those documents are authoritative and this table is a convenience copy. Regenerate it when a message or guidance changes.
 
+Re-verified 2026-09-24 after the dialogue-database realignment pass: every code set, instructor message and teacher guidance below still matches its grading document word for word (no message text changed in that pass). What changed is how some placeholders are computed, which the documents describe: `{attempt_number}` in the SOLVED_WITH_ASSIST codes of U3P4, U4P2 and U5P1 now counts the fifth wrong order that forces DANI's assist, as U2P1 and U2P4 always did; `{floor3_attempts}` and `{floor4_attempts}` in U5P2 now include the third floor's dual-chamber machine; `{wrong_choice_number}` in U4P4 counts the middle layer as a wrong depth; and the U2P4 assist codes no longer reference the retired node 74:25. All windows now use the start-and-end (latest end, latest start before it) form.
+
 | Progress Point | Reason Code | Instructor Message | Teacher Guidance |
 | :---- | :---- | :---- | :---- |
 | U1P1 | (none) | No reason codes — this point is always green when the trigger event exists. | |

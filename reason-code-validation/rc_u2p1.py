@@ -5,21 +5,30 @@ mhs-unit2-point1-grading.md, "## Reason Codes":
   SOLVED_WITH_ASSIST — triggered when DANI completed the puzzle in the window,
       forced (68:28 / 68:31) or accepted (offer answered "Sure. I'm stuck"
       68:24 / 68:32, then DANI places the pieces 68:26 / 68:34 — verified in
-      log 09-14-26-3, where 68:29 never fires on that path); attempt_number =
+      log 09-14-26-3, where 68:29 never fires on that path) or by the
+      "SolvedHelp" outcome node 68:30 (added 2026-09-23; the game's own
+      DANI-completed counterpart of 68:29); attempt_number =
       negative-feedback nodes (one per wrong submission).
   EXCESS_ATTEMPTS — triggered when the student solved on their own (68:29 in
       window, no assist node of either kind) but needed 4+ wrong submissions;
-      attempt_number = wrong submissions + 1.
+      attempt_number = wrong submissions + 1. The >= 4 threshold mirrors the
+      color rule (yellow nodes = 4th-attempt feedback and later); re-verified
+      2026-09-23 against builds 20260902-12353 and 20260914-.
 
-Window: previous `questFinishEvent:21` (exclusive) .. latest (inclusive).
+Window (start-and-end form since 2026-09-23): latest `questFinishEvent:21`
+(end, inclusive), latest `DialogueNodeEvent:18:1` before it (start,
+exclusive; OID_MIN when none) — the same window as the production color
+script. Until 2026-09-23: previous `questFinishEvent:21` (exclusive) ..
+latest (inclusive).
 """
 
-from rc_common import count_keys, gt_lte, has_keys, latest_trigger_window
+from rc_common import OID_MIN, count_keys, gt_lte, has_keys, latest
 
 META = {"unit": 2, "point": 1, "name": "Escape the Ruin",
         "doc": "mhs-unit2-point1-grading.md"}
 
-TRIGGER_KEY = "questFinishEvent:21"
+START_KEY = "DialogueNodeEvent:18:1"
+END_KEY = "questFinishEvent:21"
 SUCCESS_KEY = "DialogueNodeEvent:68:29"  # solved-on-their-own completion
 
 ASSIST_KEYS = [
@@ -29,6 +38,9 @@ ASSIST_KEYS = [
     "DialogueNodeEvent:68:31",  # forced assist, 6th attempt, any wrong
     "DialogueNodeEvent:68:32",  # accepted offer after 5th attempt ("Sure. I'm stuck")
     "DialogueNodeEvent:68:34",  # DANI places the pieces (accepted after 5th attempt)
+    "DialogueNodeEvent:68:30",  # "SolvedHelp" outcome node: DANI completed the puzzle on any
+                                # assisted path (added 2026-09-23; fires instead of 68:29 on
+                                # build 20260914-)
 ]
 
 NEGATIVE_KEYS = [
@@ -47,7 +59,14 @@ NEGATIVE_KEYS = [
 
 
 def attempt_window(coll, pid):
-    return latest_trigger_window(coll, pid, TRIGGER_KEY)
+    # 1) Latest end anchor
+    latest_end = latest(coll, pid, END_KEY)
+    if not latest_end:
+        return None
+    # 2) Latest start anchor before the latest end
+    latest_start = latest(coll, pid, START_KEY, {"_id": {"$lt": latest_end["_id"]}})
+    window_start_id = latest_start["_id"] if latest_start else OID_MIN
+    return window_start_id, latest_end["_id"]
 
 
 def solved_with_assist(coll, pid):
@@ -55,7 +74,7 @@ def solved_with_assist(coll, pid):
     if win is None:
         return {"triggered": False, "attempt_number": 0}
     f = gt_lte(win)
-    # 3) Reason code triggers if a forced-assist node fired in the window
+    # 3) Reason code triggers if any assist node (forced or accepted) fired in the window
     assisted = has_keys(coll, pid, ASSIST_KEYS, f)
     # 4) attempt_number: count negative-feedback nodes in the window
     attempt_number = count_keys(coll, pid, NEGATIVE_KEYS, f)

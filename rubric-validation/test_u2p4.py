@@ -1,16 +1,21 @@
 """Test for Unit 2 Point 4 — "Investigate the Temple".
 
-Production rule (mhs-unit2-point4-grading.md): within the latest attempt window
-(previous `DialogueNodeEvent:23:17` exclusive .. latest `DialogueNodeEvent:23:17`
-inclusive), green iff the success key is present AND no bad-feedback key is
-present. No trigger => yellow.
+Production rule (mhs-unit2-point4-grading.md): within the attempt window,
+green iff the success key is present AND no bad-feedback key is present.
+Window (start-and-end form since 2026-09-24): anchor on the latest END
+(`DialogueNodeEvent:23:17`); if missing => yellow. Take the latest START
+(`DialogueNodeEvent:22:18`) at `_id < latestEnd._id` (else ObjectId("000..."))
+as the exclusive window start. Until 2026-09-24 the window was (previous
+`DialogueNodeEvent:23:17` exclusive .. latest `DialogueNodeEvent:23:17`
+inclusive). Colour keys unchanged by the 2026-09-21 dialogue-database review.
 """
 
-from mhs_harness import GAME, latest_trigger_window
+from mhs_harness import GAME, OID_MIN, ObjectId
 
 META = {"unit": 2, "point": 4, "name": "Investigate the Temple"}
 
-TRIGGER_KEY = "DialogueNodeEvent:23:17"
+START_KEY = "DialogueNodeEvent:22:18"
+END_KEY = "DialogueNodeEvent:23:17"
 SUCCESS_KEY = "DialogueNodeEvent:74:21"
 
 BAD_KEYS = [
@@ -31,12 +36,37 @@ SIX_ATTEMPT_KEYS = [
 ]
 
 
+def _window(coll, pid):
+    """Returns (windowStartId, windowEndId) or None when no latest END trigger
+    exists (=> yellow)."""
+    # 1) Latest end anchor
+    latest_end = coll.find_one(
+        {"game": GAME, "playerId": pid, "eventKey": END_KEY}, sort={"_id": -1}
+    )
+    if not latest_end:
+        return None
+    # 2) Latest start anchor before the latest end
+    latest_start = coll.find_one(
+        {
+            "game": GAME,
+            "playerId": pid,
+            "eventKey": START_KEY,
+            "_id": {"$lt": latest_end["_id"]},
+        },
+        sort={"_id": -1},
+    )
+    window_start_id = latest_start["_id"] if latest_start else ObjectId(OID_MIN)
+    window_end_id = latest_end["_id"]
+    return window_start_id, window_end_id
+
+
 def grade(coll, pid):
-    win = latest_trigger_window(coll, pid, TRIGGER_KEY)
+    win = _window(coll, pid)
     if win is None:
         return "yellow"
     start, end = win
     win_filter = {"_id": {"$gt": start, "$lte": end}}
+    # 3) Check success/bad within this attempt window
     has_success = (
         coll.find_one({"game": GAME, "playerId": pid, "eventKey": SUCCESS_KEY, **win_filter})
         is not None
@@ -50,9 +80,9 @@ def grade(coll, pid):
 
 def diagnose(coll, pid):
     out = {}
-    win = latest_trigger_window(coll, pid, TRIGGER_KEY)
+    win = _window(coll, pid)
     if win is None:
-        out["MISSING_TRIGGER"] = f"no {TRIGGER_KEY} trigger found — defaults to yellow"
+        out["MISSING_TRIGGER"] = f"no {END_KEY} trigger found — defaults to yellow"
         return out
     start, end = win
     win_filter = {"_id": {"$gt": start, "$lte": end}}

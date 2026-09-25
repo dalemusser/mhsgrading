@@ -27,8 +27,10 @@ score = pos_count - (neg_count / 3.0)
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `DialogueNodeEvent:23:42` (exclusive)
+- **Start:** Latest `DialogueNodeEvent:23:17` before the end event (exclusive; zero ObjectId when there is none)
 - **End:** Latest `DialogueNodeEvent:23:42` (inclusive)
+- The Production Script below bounds the window this way: it anchors on the latest end event and takes the latest start event before it, so a completed attempt keeps its grade if the student re-enters the activity afterwards. The Trigger(Start) event in the header is that same start event; it also drives the dashboard's in-progress state and the duration metrics.
+- Changed 2026-09-24 from the previous-and-latest end window (previous `DialogueNodeEvent:23:42` exclusive .. latest `DialogueNodeEvent:23:42` inclusive), per the start-and-end window decision (A1). Keys re-verified the same day against the 2026-09-21 dialogue database (conversation 26 unchanged, all 27 ✓ and 27 ✗ nodes present). Both Python transcriptions follow; the Go rule must be updated in step.
 
 ---
 
@@ -36,7 +38,8 @@ score = pos_count - (neg_count / 3.0)
 
 | Role | Event Key |
 |------|-----------|
-| Trigger | `DialogueNodeEvent:23:42` |
+| Trigger (Start) | `DialogueNodeEvent:23:17` |
+| Trigger (End) | `DialogueNodeEvent:23:42` |
 
 All keys are `DialogueNodeEvent:26:<n>`. ✓ = correct classification ("Nice Job!"/"Great!");
 ✗ = incorrect classification ("Too bad!"/"Oh no!" — the node names the component the passage actually was).
@@ -56,8 +59,13 @@ All keys are `DialogueNodeEvent:26:<n>`. ✓ = correct classification ("Nice Job
 Structural nodes (no component semantics): `26:141` fires once after every correct
 selection, `26:138` once after every incorrect selection (audit cross-check:
 count(138) = total negatives), `26:136` = activity completion. `26:171` does not
-exist in the dialogue database; `26:190` is an empty, unused node — neither
-belongs in any key list.
+exist in the dialogue database. `26:190` is not empty content but one of the nine
+"ID Gate" nodes (`157`, `158`, `159`, `160`, `161`, `162`, `163`, `164`, `190`) that
+route each incorrect selection to that statement's three ✗ nodes by
+`classifierStatementClass`; the matching ✓ gates are `212`–`220`. Gates never log.
+`26:130` (Toppo's "That's not right…" line, the parent of every ✗ gate) has never
+fired in any playthrough. None of these belong in a key list. (Verified 2026-09-24
+against the 2026-09-21 dialogue database: conversation 26 unchanged, 77 nodes.)
 
 ---
 
@@ -112,11 +120,13 @@ color;
 
 ```js
 // Unit 2, Point 5 — Attempt-based standalone production grading script
-// Trigger eventKey: "DialogueNodeEvent:23:42"
+// Window start: latest DialogueNodeEvent:23:17 before the end event (exclusive)
+// Window end:   latest DialogueNodeEvent:23:42 (inclusive)
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "DialogueNodeEvent:23:42";
+const START_KEY = "DialogueNodeEvent:23:17";
+const END_KEY = "DialogueNodeEvent:23:42";
 
 const POS_KEYS = [
   "DialogueNodeEvent:26:140", "DialogueNodeEvent:26:142",
@@ -144,28 +154,28 @@ const NEG_KEYS = [
   "DialogueNodeEvent:26:211"
 ];
 
-// 1) Latest trigger (end anchor) by arrival order
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!latestTrigger) {
+if (!latestEnd) {
   "yellow";
 } else {
-  // 2) Previous trigger (defines attempt start boundary)
-  const prevTrigger = db.logdata.findOne(
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
+      eventKey: START_KEY,
+      _id: { $lt: latestEnd._id }
     },
     { sort: { _id: -1 } }
   );
 
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestEnd._id;
 
   // 3) Count POS/NEG inside window
   const posCount = db.logdata.countDocuments({
@@ -197,6 +207,8 @@ if (!latestTrigger) {
 
 ```js
 // U2P5: EXCESS_MISCLASSIFICATIONS — determine trigger and quantities
+// Window mirrors the production color script: latest DialogueNodeEvent:23:42 (end),
+// latest DialogueNodeEvent:23:17 before it (start, exclusive; zero ObjectId when none).
 // Triggers when the color formula goes yellow: score = posCount - negCount/3 < 4
 // (with the activity completed, this is equivalent to 7+ incorrect selections).
 // wrong_number = total incorrect classifications; the three component counts
@@ -208,7 +220,8 @@ if (!latestTrigger) {
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "DialogueNodeEvent:23:42";
+const START_KEY = "DialogueNodeEvent:23:17";
+const END_KEY = "DialogueNodeEvent:23:42";
 
 const POS_KEYS = [
   // claim correct
@@ -249,28 +262,28 @@ const NEG_KEYS = [
   ...EVIDENCE_NEG_KEYS
 ];
 
-// 1) Latest trigger (end anchor)
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!latestTrigger) {
+if (!latestEnd) {
   ({ triggered: false, wrong_number: 0, claim_wrong: 0, reasoning_wrong: 0, evidence_wrong: 0 });
 } else {
-  // 2) Previous trigger (attempt boundary)
-  const prevTrigger = db.logdata.findOne(
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
+      eventKey: START_KEY,
+      _id: { $lt: latestEnd._id }
     },
     { sort: { _id: -1 } }
   );
 
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestEnd._id;
 
   const windowFilter = { _id: { $gt: windowStartId, $lte: windowEndId } };
 

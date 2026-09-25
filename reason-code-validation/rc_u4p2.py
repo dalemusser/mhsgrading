@@ -5,7 +5,9 @@ mhs-unit4-point2-grading.md, "## Reason Codes":
   SOLVED_WITH_ASSIST — triggered when DANI's assist executed in the window:
       forced 102:23, or the accepted-offer path 102:20 then 102:21 (verified
       in log 09-14-26-3). Never inferred from 88:11's absence — it fires on
-      the assisted path too. attempt_number = incorrect arrangements.
+      the assisted path too. attempt_number = incorrect arrangements, one
+      feedback node each, 102:23 included (the 5th wrong order that forces
+      the assist is counted since 2026-09-24, as at U2P1/U2P4).
   EXCESS_ATTEMPTS — triggered when no assist executed (either path) but a
       yellow key fired (3rd-or-later submission wrong); attempt_number =
       incorrect + 1.
@@ -45,6 +47,7 @@ NEGATIVE_KEYS = [
     "DialogueNodeEvent:102:10",  # 3rd attempt, 3-4 wrong (rate-graph hint)
     "DialogueNodeEvent:102:12",  # 4th attempt, 1-2 wrong
     "DialogueNodeEvent:102:18",  # 4th attempt, 3-4 wrong (assist offered)
+    "DialogueNodeEvent:102:23",  # 5th attempt, any wrong — forces the assist (counted since 2026-09-24)
 ]
 
 

@@ -20,9 +20,10 @@ This is a score-based progress point. There are three garden boxes, each time wh
 
 ### Attempt Window (Production)
 
-- **Start:** Latest `questActiveEvent:41` (exclusive; the window is valid only when the end event comes after it)
+- **Start:** Latest `questActiveEvent:41` before the end event (exclusive; zero ObjectId when there is none)
 - **End:** Latest `questFinishEvent:56` (inclusive)
-- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
+- The Production Script below bounds the window this way: it anchors on the latest end event and takes the latest start event before it, so a completed attempt keeps its grade if the student re-enters the activity afterwards. The Trigger(Start) event in the header is that same start event; it also drives the dashboard's in-progress state and the duration metrics.
+- Changed 2026-09-24 from the latest-start / latest-end form (yellow whenever the latest `questFinishEvent:56` preceded the latest `questActiveEvent:41`), per the start-and-end window decision (A1). Keys re-verified the same day against the 2026-09-21 dialogue database (conversation 92: two empty structural nodes added, review and feedback nodes unchanged). Both Python transcriptions follow; the Go rule must be updated in step.
 
 ---
 
@@ -30,12 +31,20 @@ This is a score-based progress point. There are three garden boxes, each time wh
 
 | Role | Event Key |
 |------|-----------|
-| Trigger | `questFinishEvent:56` |
+| Trigger (Start) | `questActiveEvent:41` |
+| Trigger (End) | `questFinishEvent:56` |
 | Target | TerasGardenBox |
 | Target | `DialogueNodeEvent:92:33` |
 | Target | `DialogueNodeEvent:92:61` |
 | Target | `DialogueNodeEvent:92:62` |
 | Target | `DialogueNodeEvent:92:63` |
+
+Notes on conversation 92 ("U4/DesertDelicacies"), re-verified against the 2026-09-21 dialogue database on 2026-09-24:
+
+- `92:33` and `92:36` carry the same text ("I'm all set. Let's see the results."). `92:33` answers Tera's first check (`92:32`, quest entry 9); `92:36` answers her second check (`92:35`, quest entry 10), which the player only reaches by first choosing `92:34` ("Actually, let me move some cameras and I'll come back."; `92:37` repeats that loop). Exactly one of the two fires per attempt, and the feedback round (`92:61` / `92:62` / `92:63`, one per box, then `92:64` once all three cameras are checked) follows it. Playthrough 09-03-26-2 took the second route (moved the second box's camera from Clay to Sand, then `92:36` → 63, 61, 61); `92:33` never fired there, so the scripts' whole-attempt-window fallback counted the round, with the same result as anchoring on `92:36` would give. Adding `92:36` as a second review anchor is agreed in principle (grading-team questions, B list) and waits for a release-build playthrough of that route (imperfect-playthrough checklist, item 11).
+- `92:39` ("Excellent performance…", `Cameras_Placed_Correctly >= 2`) and `92:40` ("…soil that did not suit their water needs", `< 2`) are the game's own verdict on the same "at least 2 of 3" rule. In every log they agree with the dashboard colour (39 in the green runs, 40 in the yellow runs). They are not graded, but they are a ready cross-check if the camera records or the feedback nodes ever change.
+- `92:66` and `92:67` are new in the 2026-09-21 database: empty structural nodes under the second- and third-seedling prompts (`92:27` / `92:28` and `92:30` / `92:31`), matching `92:65` under the first; the stage directions were also stripped from `92:9`–`92:16` and `92:59`. None of that touches the graded keys.
+- The game's Box 0 / 1 / 2 → Gravel / Sand / Clay mapping has held on every build in the logs (05-01 through 09-14), and the feedback nodes agree with it box by box. `TerasGardenBox` records other than `cameraPlaced` log an empty `actionType` since the 20260902 builds (it was `soilSelected` before); the scripts only read `cameraPlaced`, so that is a logging note for the game team, not a grading issue.
 
 ---
 
@@ -142,44 +151,47 @@ color;
 
 ```js
 // Production — replay-safe TerasGardenBox scoring
-// Window start: "questActiveEvent:41"
-// Window end:   "questFinishEvent:56"
+// Window start: latest questActiveEvent:41 before the end event (exclusive)
+// Window end:   latest questFinishEvent:56 (inclusive)
 
 const playerId = "<playerId>";
 
 const WINDOW_START_KEY = "questActiveEvent:41";
 const WINDOW_END_KEY = "questFinishEvent:56";
 
-// 1) Most recent window start
-const latestStart = db.logdata.findOne(
-  {
-    game: "mhs",
-    playerId: playerId,
-    eventKey: WINDOW_START_KEY
-  },
-  { sort: { _id: -1 }}
-);
-
-// 2) Most recent window end
+// 1) Latest end anchor
 const latestEnd = db.logdata.findOne(
   {
     game: "mhs",
     playerId: playerId,
     eventKey: WINDOW_END_KEY
   },
-  { sort: { _id: -1 }}
+  { sort: { _id: -1 } }
 );
 
-if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
+if (!latestEnd) {
   "yellow";
 } else {
-  const windowStartId = latestStart._id;
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventKey: WINDOW_START_KEY,
+      _id: { $lt: latestEnd._id }
+    },
+    { sort: { _id: -1 } }
+  );
+
+  const windowStartId = latestStart
+    ? latestStart._id
+    : ObjectId("000000000000000000000000");
   const windowEndId = latestEnd._id;
 
   let score = 0;
 
-  // Latest placement for Box 1 within window
-  const latestBox1 = db.logdata.findOne(
+  // Latest placement for Box 0 within window
+  const latestBox0 = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
@@ -193,12 +205,12 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
     }
   );
 
-  if (latestBox1 && latestBox1.data && latestBox1.data.soilType === "Gravel") {
+  if (latestBox0 && latestBox0.data && latestBox0.data.soilType === "Gravel") {
     score += 1;
   }
 
   // Latest placement for Box 1 within window
-  const latestBox2 = db.logdata.findOne(
+  const latestBox1 = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
@@ -212,12 +224,12 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
     }
   );
 
-  if (latestBox2 && latestBox2.data && latestBox2.data.soilType === "Sand") {
+  if (latestBox1 && latestBox1.data && latestBox1.data.soilType === "Sand") {
     score += 1;
   }
 
   // Latest placement for Box 2 within window
-  const latestBox3 = db.logdata.findOne(
+  const latestBox2 = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
@@ -231,7 +243,7 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
     }
   );
 
-  if (latestBox3 && latestBox3.data && latestBox3.data.soilType === "Clay") {
+  if (latestBox2 && latestBox2.data && latestBox2.data.soilType === "Clay") {
     score += 1;
   }
 
@@ -284,12 +296,18 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
 #### Corresponding Script
 ```js
 // U4P6: WRONG_SOIL_SELECTED — determine trigger and wrong-box summary
+// Window mirrors the production color script: latest questFinishEvent:56 (end),
+// latest questActiveEvent:41 before it (start, exclusive; zero ObjectId when none).
 // Mirrors the production color rule verbatim: per-box latest cameraPlaced
 // (Box 0=Gravel, 1=Sand, 2=Clay) with the dialogue-feedback fallback
 // (92:61 count in the latest review round, anchored on 92:33), final score =
-// max of both, yellow when < 2. Note: the review can also start at 92:36
-// (second-round "see the results") — flagged as a color-script improvement;
-// this script stays mirror-exact until that is applied to the color scripts.
+// max of both, yellow when < 2. Note: when the player first answers "let me
+// move some cameras" (92:34) the results are requested through 92:36 instead
+// of 92:33 (seen in 09-03-26-2, where 92:33 never fired); the 92:33-missing
+// fallback then counts the whole attempt window, which holds exactly one
+// results round, so the count is the same. Adding 92:36 as a second review
+// anchor is agreed in principle and waits for a release-build check; this
+// script stays mirror-exact until that is applied to the color scripts.
 
 const playerId = "<playerId>";
 
@@ -299,19 +317,23 @@ const WINDOW_END_KEY = "questFinishEvent:56";
 const EXPECTED_SOIL_BY_BOX = { "0": "Gravel", "1": "Sand", "2": "Clay" };
 const BOX_LABELS = { "0": "the first box", "1": "the second box", "2": "the third box" };
 
-const latestStart = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: WINDOW_START_KEY },
-  { sort: { _id: -1 }, projection: { _id: 1 } }
-);
+// 1) Latest end anchor
 const latestEnd = db.logdata.findOne(
   { game: "mhs", playerId: playerId, eventKey: WINDOW_END_KEY },
   { sort: { _id: -1 }, projection: { _id: 1 } }
 );
 
-if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
+if (!latestEnd) {
   ({ triggered: false, wrong_box_number: 0, wrong_box_summary: "" });
 } else {
-  const windowFilter = { _id: { $gt: latestStart._id, $lte: latestEnd._id } };
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
+    { game: "mhs", playerId: playerId, eventKey: WINDOW_START_KEY, _id: { $lt: latestEnd._id } },
+    { sort: { _id: -1 }, projection: { _id: 1 } }
+  );
+
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowFilter = { _id: { $gt: windowStartId, $lte: latestEnd._id } };
 
   let boxScore = 0;
   const wrongParts = [];
@@ -346,7 +368,7 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
     { game: "mhs", playerId: playerId, eventKey: "DialogueNodeEvent:92:33", ...windowFilter },
     { sort: { _id: -1 }, projection: { _id: 1 } }
   );
-  const feedbackStartId = latestReview ? latestReview._id : latestStart._id;
+  const feedbackStartId = latestReview ? latestReview._id : windowStartId;
 
   const dialogueScore = Math.min(3, db.logdata.countDocuments({
     game: "mhs", playerId: playerId,

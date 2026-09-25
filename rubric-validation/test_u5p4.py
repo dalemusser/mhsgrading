@@ -7,6 +7,10 @@ negative count within the latest attempt window. Anchor on the latest END
 exclusive window start. Inside the window green iff the success node
 `DialogueNodeEvent:106:35` is present AND the negative count == 0; otherwise
 yellow.
+
+This point has used the start-and-end form since 2026-09-01. Keys re-verified
+2026-09-24 against the 2026-09-21 dialogue database (conversation 106: same
+twelve outcome nodes; the empty continuation node 106:37 is new and ungraded).
 """
 
 from mhs_harness import GAME, OID_MIN, ObjectId
@@ -39,12 +43,14 @@ NEGATIVE_KEYS = [
 def _window(coll, pid):
     """Returns (windowStartId, windowEndId) or None when no latest END trigger
     exists (=> yellow)."""
+    # 1) Latest end anchor
     latest_end = coll.find_one(
         {"game": GAME, "playerId": pid, "eventKey": END_KEY}, sort={"_id": -1}
     )
     if not latest_end:
         return None
-    prev_start = coll.find_one(
+    # 2) Latest start anchor before the latest end
+    latest_start = coll.find_one(
         {
             "game": GAME,
             "playerId": pid,
@@ -53,9 +59,8 @@ def _window(coll, pid):
         },
         sort={"_id": -1},
     )
-    window_start_id = prev_start["_id"] if prev_start else ObjectId(OID_MIN)
-    window_end_id = latest_end["_id"]
-    return window_start_id, window_end_id
+    window_start_id = latest_start["_id"] if latest_start else ObjectId(OID_MIN)
+    return window_start_id, latest_end["_id"]
 
 
 def grade(coll, pid):

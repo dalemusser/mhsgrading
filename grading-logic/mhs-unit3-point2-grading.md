@@ -38,9 +38,10 @@ Where `capped_penalty(cnt)`:
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `DialogueNodeEvent:11:34` (exclusive)
+- **Start:** Latest `questActiveEvent:17` before the end event (exclusive; zero ObjectId when there is none)
 - **End:** Latest `DialogueNodeEvent:11:34` (inclusive)
-- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
+- The Production Script below bounds the window this way: it anchors on the latest end event and takes the latest start event before it, so a completed attempt keeps its grade if the student re-enters the activity afterwards. The Trigger(Start) event in the header is that same start event; it also drives the dashboard's in-progress state and the duration metrics.
+- Changed 2026-09-24 from the previous-and-latest end window (previous `DialogueNodeEvent:11:34` exclusive .. latest `DialogueNodeEvent:11:34` inclusive), per the start-and-end window decision (A1). Keys re-verified the same day against the 2026-09-21 dialogue database (`11:27`, `11:29`, `11:230`, `11:34` unchanged and unique; the ungraded `11:28` / `11:30` unchanged; conversation 11 lost only the Aryn crate-chat nodes 18–20). Both Python transcriptions follow; the Go rule must be updated in step.
 
 ---
 
@@ -48,10 +49,16 @@ Where `capped_penalty(cnt)`:
 
 | Role | Event Key |
 |------|-----------|
-| Trigger | `DialogueNodeEvent:11:34` |
+| Trigger (Start) | `questActiveEvent:17` |
+| Trigger (End) | `DialogueNodeEvent:11:34` |
 | Penalty group 1 | `DialogueNodeEvent:11:27` |
 | Penalty group 2 | `DialogueNodeEvent:11:29` |
 | Penalty group 2 | `DialogueNodeEvent:11:230` |
+
+**Known, deliberately ungraded reminders (decision 2026-09-24):**
+
+- `DialogueNodeEvent:11:30` — "We are at the ocean downstream of Tera's base—logically, there will be pollution here. I recommend proceeding upstream." (the design's ocean-throw reminder). Present and unchanged in the 2026-09-21 dialogue database, but it has never fired in any playthrough log (eight runs, builds 20260501 through 20260914-), and the logs carry no sensor-drop or drone-position event, so whether the game still plays it cannot be determined. It is kept OUT of every script on purpose: the Progress-Points row grades only `11:27` / `11:29` / `11:230`, while the rubric file scores the ocean throw as its own 1-point category, and its placement (penalty group 1, group 2, or a third category) would change the capped-penalty formula the moment it fires. Decision deferred until the deliberately imperfect release-build playthrough includes one sensor thrown into the ocean at the river mouth, which will show whether `11:30` fires at all and whether `11:27` fires with it. If it is then added, the change must reach both colour scripts, the reason-code script, both Python transcriptions and the Go rule; no fixture outcome would move.
+- `DialogueNodeEvent:11:28` — "We previously tested close to this area. Consider heading further upstream." Ungraded by design (a proximity hint, not a flow-logic error); fired twice in 09-03-26-3.
 
 ---
 
@@ -95,11 +102,13 @@ color;
 
 ```js
 // Unit 3, Point 2 — Attempt-based standalone production script (latest attempt)
-// Trigger eventKey: "DialogueNodeEvent:11:34"
+// Window start: latest questActiveEvent:17 before the end event (exclusive)
+// Window end:   latest DialogueNodeEvent:11:34 (inclusive)
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "DialogueNodeEvent:11:34";
+const START_KEY = "questActiveEvent:17";
+const END_KEY = "DialogueNodeEvent:11:34";
 
 function cappedPenalty(cnt) {
   if (cnt <= 1) return 0;
@@ -107,29 +116,30 @@ function cappedPenalty(cnt) {
   return 2;
 }
 
-// 1) Latest trigger (end anchor)
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!latestTrigger) {
+if (!latestEnd) {
   "yellow";
 } else {
-  // 2) Previous trigger (attempt boundary)
-  const prevTrigger = db.logdata.findOne(
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
+      eventKey: START_KEY,
+      _id: { $lt: latestEnd._id }
     },
     { sort: { _id: -1 } }
   );
 
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestEnd._id;
 
+  // 3) Category counts inside the window
   const c27 = db.logdata.countDocuments({
     game: "mhs", playerId: playerId,
     eventKey: "DialogueNodeEvent:11:27",
@@ -170,6 +180,8 @@ if (!latestTrigger) {
 
 ```js
 // U3P2: EXCESS_SENSOR_REMINDERS — determine trigger and reminder counts
+// Window mirrors the production color script: latest DialogueNodeEvent:11:34 (end),
+// latest questActiveEvent:17 before it (start, exclusive; zero ObjectId when none).
 // Triggers when the color formula goes yellow: score = 5 - pen(c27) - pen(c29+c230) < 3,
 // where pen caps each category (<=1: 0, 2-3: 1, >=4: 2). Yellow therefore requires
 // reminders in BOTH categories — never gate this on a lump-sum reminder count.
@@ -179,7 +191,8 @@ if (!latestTrigger) {
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "DialogueNodeEvent:11:34";
+const START_KEY = "questActiveEvent:17";
+const END_KEY = "DialogueNodeEvent:11:34";
 
 const DOWNSTREAM_KEY = "DialogueNodeEvent:11:27";   // test further upstream
 const REDUNDANT_KEYS = [
@@ -193,28 +206,28 @@ function cappedPenalty(cnt) {
   return 2;
 }
 
-// 1) Latest trigger (end anchor)
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!latestTrigger) {
+if (!latestEnd) {
   ({ triggered: false, downstream_reminder_number: 0, redundant_reminder_number: 0 });
 } else {
-  // 2) Previous trigger (attempt boundary)
-  const prevTrigger = db.logdata.findOne(
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
+      eventKey: START_KEY,
+      _id: { $lt: latestEnd._id }
     },
     { sort: { _id: -1 } }
   );
 
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestEnd._id;
 
   // 3) Category counts inside the window
   const downstreamCount = db.logdata.countDocuments({

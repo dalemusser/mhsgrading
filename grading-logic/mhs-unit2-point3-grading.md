@@ -23,7 +23,10 @@ Windowed rule using client timestamps. Count wrong-direction prompts between the
 
 ### Attempt Window (Production)
 
-Uses the latest trigger `DialogueNodeEvent:22:18` and the most recent start key before it, fenced by `_id` range.
+- **Start:** Latest `DialogueNodeEvent:20:33` at or before the end event (inclusive; the window is valid only when both anchors exist and carry a client `timestamp`)
+- **End:** Latest `DialogueNodeEvent:22:18` (inclusive)
+- Counted events must lie inside BOTH the `_id` range and the client-`timestamp` range of the two anchors; the timestamp fence guards against batched-upload reordering (decision A7). The Production Script below bounds the window this way. The Trigger(Start) event in the header is that same start event; it also drives the dashboard's in-progress state and the duration metrics.
+- Already in the start-and-end form (latest end, latest start before it). Changed 2026-09-24: the Corresponding Script now applies the same timestamp fence (A7 follow-up), and `DialogueNodeEvent:28:195` / `DialogueNodeEvent:59:195` (Aryn search: "a mountain range, but this passage doesn't go all the way through") were added to the target keys in all three scripts after the review against the 2026-09-21 dialogue database. The Go rule must be updated in step.
 
 ---
 
@@ -67,6 +70,8 @@ Uses the latest trigger `DialogueNodeEvent:22:18` and the most recent start key 
 | Target (wrong direction) | `DialogueNodeEvent:18:237` |
 | Target (wrong direction) | `DialogueNodeEvent:28:190` |
 | Target (wrong direction) | `DialogueNodeEvent:59:190` |
+| Target (wrong direction) | `DialogueNodeEvent:28:195` |
+| Target (wrong direction) | `DialogueNodeEvent:59:195` |
 
 ---
 
@@ -91,7 +96,8 @@ const TARGET_KEYS = [
   "DialogueNodeEvent:18:233", "DialogueNodeEvent:28:192", "DialogueNodeEvent:59:192",
   "DialogueNodeEvent:18:234", "DialogueNodeEvent:28:193", "DialogueNodeEvent:59:193",
   "DialogueNodeEvent:18:235", "DialogueNodeEvent:28:194", "DialogueNodeEvent:59:194",
-  "DialogueNodeEvent:18:236", "DialogueNodeEvent:18:237", "DialogueNodeEvent:28:190", "DialogueNodeEvent:59:190"
+  "DialogueNodeEvent:18:236", "DialogueNodeEvent:18:237", "DialogueNodeEvent:28:190", "DialogueNodeEvent:59:190",
+  "DialogueNodeEvent:28:195", "DialogueNodeEvent:59:195"  // Aryn: "a mountain range, but this passage doesn't go all the way through" (added 2026-09-24)
 ];
 
 // 1) Earliest start by timestamp
@@ -144,7 +150,8 @@ const TARGET_KEYS = [
   "DialogueNodeEvent:18:233", "DialogueNodeEvent:28:192", "DialogueNodeEvent:59:192",
   "DialogueNodeEvent:18:234", "DialogueNodeEvent:28:193", "DialogueNodeEvent:59:193",
   "DialogueNodeEvent:18:235", "DialogueNodeEvent:28:194", "DialogueNodeEvent:59:194",
-  "DialogueNodeEvent:18:236", "DialogueNodeEvent:18:237", "DialogueNodeEvent:28:190", "DialogueNodeEvent:59:190"
+  "DialogueNodeEvent:18:236", "DialogueNodeEvent:18:237", "DialogueNodeEvent:28:190", "DialogueNodeEvent:59:190",
+  "DialogueNodeEvent:28:195", "DialogueNodeEvent:59:195"  // Aryn: "a mountain range, but this passage doesn't go all the way through" (added 2026-09-24)
 ];
 
 // 1) Latest trigger (end anchor) by arrival order
@@ -199,7 +206,11 @@ if (!endDoc || !endDoc.timestamp) {
 
 ```js
 // U2P3: EXCESS_NAV_REMINDERS — trigger, total, and per-search reminder counts
-// Outer window mirrors the production color script: latest 22:18, latest 20:33 at/before it.
+// Outer window mirrors the production color script exactly: latest 22:18 (end),
+// latest 20:33 at/before it (start), both needing a client timestamp; every
+// count is fenced by BOTH the timestamp range and the _id range of the anchors
+// (fence added 2026-09-24, decision A7, so the pop-up count can never differ
+// from the color).
 // Phase split (verified markers): Tera search = 20:33 → 21:1 (Tera's greeting);
 // Aryn search = 18:231 (Aryn waypoint prompt) → 22:18. The stretch between 21:1
 // and 18:231 is dialogue only — no travel, so no reminders can fire there.
@@ -221,16 +232,17 @@ const TARGET_KEYS = [
   "DialogueNodeEvent:18:233", "DialogueNodeEvent:28:192", "DialogueNodeEvent:59:192",
   "DialogueNodeEvent:18:234", "DialogueNodeEvent:28:193", "DialogueNodeEvent:59:193",
   "DialogueNodeEvent:18:235", "DialogueNodeEvent:28:194", "DialogueNodeEvent:59:194",
-  "DialogueNodeEvent:18:236", "DialogueNodeEvent:18:237", "DialogueNodeEvent:28:190", "DialogueNodeEvent:59:190"
+  "DialogueNodeEvent:18:236", "DialogueNodeEvent:18:237", "DialogueNodeEvent:28:190", "DialogueNodeEvent:59:190",
+  "DialogueNodeEvent:28:195", "DialogueNodeEvent:59:195"  // Aryn: "a mountain range, but this passage doesn't go all the way through" (added 2026-09-24)
 ];
 
-// 1) Latest trigger (end anchor)
+// 1) Latest trigger (end anchor) by arrival order
 const endDoc = db.logdata.findOne(
   { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!endDoc) {
+if (!endDoc || !endDoc.timestamp) {
   ({ triggered: false, triggering_number: 0, tera_count: 0, aryn_count: 0 });
 } else {
   // 2) Latest start at/before the end (same attempt)
@@ -239,36 +251,41 @@ if (!endDoc) {
     { sort: { _id: -1 } }
   );
 
-  if (!startDoc) {
+  if (!startDoc || !startDoc.timestamp) {
     ({ triggered: false, triggering_number: 0, tera_count: 0, aryn_count: 0 });
   } else {
+    // Outer fence, identical to the production color script: client timestamp AND _id
+    const fence = {
+      timestamp: { $gte: startDoc.timestamp, $lte: endDoc.timestamp },
+      _id: { $gte: startDoc._id, $lte: endDoc._id }
+    };
+
     // 3) Phase boundaries: first occurrence of each marker inside the window
     const teraEnd = db.logdata.findOne(
-      { game: "mhs", playerId: playerId, eventKey: TERA_FOUND_KEY,
-        _id: { $gte: startDoc._id, $lte: endDoc._id } },
+      { game: "mhs", playerId: playerId, eventKey: TERA_FOUND_KEY, ...fence },
       { sort: { _id: 1 } }
     );
     const arynStart = db.logdata.findOne(
-      { game: "mhs", playerId: playerId, eventKey: ARYN_START_KEY,
-        _id: { $gte: startDoc._id, $lte: endDoc._id } },
+      { game: "mhs", playerId: playerId, eventKey: ARYN_START_KEY, ...fence },
       { sort: { _id: 1 } }
     );
 
-    // 4) Total across the whole window — authoritative, matches the color rule
+    // 4) Total across the whole window — authoritative, identical to the color rule
     const total = db.logdata.countDocuments({
-      game: "mhs", playerId: playerId, eventKey: { $in: TARGET_KEYS },
-      _id: { $gte: startDoc._id, $lte: endDoc._id }
+      game: "mhs", playerId: playerId, eventKey: { $in: TARGET_KEYS }, ...fence
     });
 
-    // 5) Per-phase counts by time window
+    // 5) Per-phase counts: the same fence, narrowed by _id to each search
     const teraCount = db.logdata.countDocuments({
       game: "mhs", playerId: playerId, eventKey: { $in: TARGET_KEYS },
+      timestamp: fence.timestamp,
       _id: { $gte: startDoc._id, $lte: (teraEnd ? teraEnd._id : endDoc._id) }
     });
 
     const arynCount = arynStart
       ? db.logdata.countDocuments({
           game: "mhs", playerId: playerId, eventKey: { $in: TARGET_KEYS },
+          timestamp: fence.timestamp,
           _id: { $gte: arynStart._id, $lte: endDoc._id }
         })
       : 0;

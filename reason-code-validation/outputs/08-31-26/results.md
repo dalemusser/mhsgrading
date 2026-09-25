@@ -73,6 +73,6 @@ Log: `wenyi083126-1.stratalog.logdata.json`
 | U4P6 | WRONG_SOIL_SELECTED | no | wrong_box_number=0, wrong_box_summary='' |
 | U5P1 | SOLVED_WITH_ASSIST | no | attempt_number=0 |
 | U5P1 | EXCESS_ATTEMPTS | no | attempt_number=1 |
-| U5P2 | SCORE_BELOW_THRESHOLD | no | floor3_attempts=4, floor4_attempts=6 |
+| U5P2 | SCORE_BELOW_THRESHOLD | no | floor3_attempts=5, floor4_attempts=6 |
 | U5P3 | EXCESS_ATTEMPTS | no | wrong_argument_number=0, claim_wrong_number=0, reasoning_wrong_number=0, evidence_wrong_number=0 |
 | U5P4 | WRONG_SETTINGS_SELECTED | no | wrong_run_number=0, failure_phrase='no successful desalinator run was recorded' |

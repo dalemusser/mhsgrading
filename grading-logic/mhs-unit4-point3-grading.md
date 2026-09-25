@@ -18,9 +18,10 @@ This progress point will check how many times the player interacts with the soil
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questActiveEvent:50` (exclusive)
+- **Start:** Latest `questActiveEvent:48` before the end event (exclusive; zero ObjectId when there is none)
 - **End:** Latest `questActiveEvent:50` (inclusive)
-- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
+- The Production Script below bounds the window this way: it anchors on the latest end event and takes the latest start event before it, so a completed attempt keeps its grade if the student re-enters the activity afterwards. The Trigger(Start) event in the header is that same start event; it also drives the dashboard's in-progress state and the duration metrics.
+- Changed 2026-09-24 from the previous-and-latest end window (previous `questActiveEvent:50` exclusive .. latest `questActiveEvent:50` inclusive), per the start-and-end window decision (A1). This point has no dialogue keys; re-verified the same day on the logs: every floor-3 / floor-4 `soilMachine` record (machine `"1"`, all `ChangeCanister`, string `floor` / `machine`) lies between the two quest events, so the counts are unchanged. Both Python transcriptions follow; the Go rule must be updated in step.
 
 ---
 
@@ -28,8 +29,9 @@ This progress point will check how many times the player interacts with the soil
 
 | Role | Event Key |
 |------|-----------|
-| Trigger | `questActiveEvent:50` |
-| Target | soil machine logs related to dungeon floor 3 and 4 |
+| Trigger (Start) | `questActiveEvent:48` |
+| Trigger (End) | `questActiveEvent:50` |
+| Target | `soilMachine` records with `data.machine` = `"1"` and `data.floor` = `"3"` / `"4"` (eventType + data match, not an eventKey) |
 
 
 ---
@@ -76,38 +78,36 @@ color;
 
 ```js
 // Unit 4, Point 3 — Production (replay-safe, latest attempt window)
-// Trigger eventKey: "questActiveEvent:50"
+// Window start: latest questActiveEvent:48 before the end event (exclusive)
+// Window end:   latest questActiveEvent:50 (inclusive)
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "questActiveEvent:50";
+const START_KEY = "questActiveEvent:48";
+const END_KEY = "questActiveEvent:50";
 
-// 1) Latest trigger (end anchor)
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 }, projection: { _id: 1 } }
 );
 
-if (!latestTrigger) {
+if (!latestEnd) {
   "yellow";
 } else {
-
-  // 2) Previous trigger (attempt boundary)
-  const prevTrigger = db.logdata.findOne(
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
+      eventKey: START_KEY,
+      _id: { $lt: latestEnd._id }
     },
     { sort: { _id: -1 }, projection: { _id: 1 } }
   );
 
-  const windowStartId = prevTrigger
-    ? prevTrigger._id
-    : ObjectId("000000000000000000000000");
-
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestEnd._id;
 
   // 3) Count soilMachine interactions inside attempt window
 
@@ -149,7 +149,7 @@ if (!latestTrigger) {
 
 ## Reason Codes
 
-If the color truns out to be yellow then depending on which condition(s) described below was reached, we decided which reaon codes to show on the pup-up message.
+If the color turns out to be yellow then depending on which condition(s) described below was reached, we decide which reason codes to show in the pop-up message.
 
 ### SCORE_BELOW_THRESHOLD
 
@@ -159,38 +159,39 @@ If the color truns out to be yellow then depending on which condition(s) describ
 
 ```js
 // U4P3: SCORE_BELOW_THRESHOLD — determine trigger and per-floor counts
-// Window mirrors the production color script: trigger-to-trigger on
-// questActiveEvent:50 (previous occurrence exclusive, latest inclusive).
+// Window mirrors the production color script: latest questActiveEvent:50 (end),
+// latest questActiveEvent:48 before it (start, exclusive; zero ObjectId when none).
 // Score: floor3==1 -> +1; floor4==1 -> +2, floor4==2 -> +1; yellow when <= 1.
 // Counts are soilMachine ChangeCanister interactions on machine "1"
 // (data.floor/machine are strings; floor 5 has a machine "2", excluded).
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "questActiveEvent:50";
+const START_KEY = "questActiveEvent:48";
+const END_KEY = "questActiveEvent:50";
 
-// 1) Latest trigger (end anchor)
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 }, projection: { _id: 1 } }
 );
 
-if (!latestTrigger) {
+if (!latestEnd) {
   ({ triggered: false, floor3_attempts: 0, floor4_attempts: 0 });
 } else {
-  // 2) Previous trigger (attempt boundary)
-  const prevTrigger = db.logdata.findOne(
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
+      eventKey: START_KEY,
+      _id: { $lt: latestEnd._id }
     },
     { sort: { _id: -1 }, projection: { _id: 1 } }
   );
 
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestEnd._id;
 
   // 3) Per-floor interaction counts inside the window
   const floor3 = db.logdata.countDocuments({

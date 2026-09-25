@@ -39,19 +39,19 @@ Log: `wenyi090326-4.stratalog.logdata.json`
 
 **SOLVED_WITH_ASSIST** — `attempt_number=5`
 
-> In Escape the Ruin, the student did not complete the topographic-map matching independently — after 5 incorrect arrangements, the in-game guide DANI placed the remaining pieces. This point earns green only when the student submits the correct solution on their own within 4 attempts. Needing this level of support may indicate the student would benefit from direct instruction on how contour lines represent elevation and slope before matching maps to terrain shapes.
+> In Escape the Ruin, the student did not complete the topographic-map matching independently. After 5 incorrect arrangements, the in-game guide DANI placed the remaining pieces. This point earns green only when the student submits the correct solution on their own within 4 attempts. Needing this level of support may indicate the student would benefit from direct instruction on how contour lines represent elevation and slope before matching maps to terrain shapes.
 
 ### U2P2 — Foraged Forging (yellow)
 
 **EXCESS_NAV_REMINDERS** — `triggering_number=11`
 
-> In Foraged Forging, while navigating to find Captain Toppo, the student triggered 11 adaptive reminders — dialogues that fire when the player travels somewhere inconsistent with Anderson's clues or has not been consulting the map. This point earns green only when at most 1 such reminder fires during the search. Repeated reminders may indicate difficulty translating the clues about direction, elevation, and terrain features into a location on the topographic map using contour lines and the compass.
+> In Foraged Forging, while navigating to find Captain Toppo, the student triggered 11 adaptive reminders, dialogues that fire when the player travels somewhere inconsistent with Anderson's clues or has not been consulting the map. This point earns green only when at most 1 such reminder fires during the search. Repeated reminders may indicate difficulty translating the clues about direction, elevation, and terrain features into a location on the topographic map using contour lines and the compass.
 
 ### U2P3 — Getting the Band Back Together Part II (yellow)
 
 **EXCESS_NAV_REMINDERS** — `triggering_number=6`, `tera_count=6`, `aryn_count=0`
 
-> In Getting the Band Back Together Part II, while navigating to find Tera and Aryn, the student triggered 6 adaptive reminders — dialogues that fire when the player travels somewhere inconsistent with the location clues (6 during the search for Tera, 0 during the search for Aryn). This point earns green only when fewer than 6 such reminders fire across the two searches. Repeated reminders may indicate difficulty connecting each set of clues — direction, elevation, landforms, and water features — to locations on the topographic map when planning and adjusting a route.
+> In Getting the Band Back Together Part II, while navigating to find Tera and Aryn, the student triggered 6 adaptive reminders, dialogues that fire when the player travels somewhere inconsistent with the location clues (6 during the search for Tera, 0 during the search for Aryn). This point earns green only when fewer than 6 such reminders fire across the two searches. Repeated reminders may indicate difficulty connecting each set of clues (direction, elevation, landforms, and water features) to locations on the topographic map when planning and adjusting a route.
 
 ## All code evaluations
 

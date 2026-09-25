@@ -18,9 +18,10 @@ Check whether the student needed multiple attempts to build the correct argument
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questActiveEvent:34` (exclusive)
+- **Start:** Latest `DialogueNodeEvent:30:98` before the end event (exclusive; zero ObjectId when there is none)
 - **End:** Latest `questActiveEvent:34` (inclusive)
-- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
+- The Production Script below bounds the window this way: it anchors on the latest end event and takes the latest start event before it, so a completed attempt keeps its grade if the student re-enters the activity afterwards. The Trigger(Start) event in the header is that same start event; it also drives the dashboard's in-progress state and the duration metrics.
+- Changed 2026-09-23 from the previous-and-latest end window (previous `questActiveEvent:34` exclusive .. latest `questActiveEvent:34` inclusive), per the start-and-end window decision (A1). Both Python transcriptions follow; the Go rule must be updated in step.
 
 > Without windowing, one early mistake permanently results in yellow. With windowing, a student can replay and earn green on a later attempt.
 
@@ -30,7 +31,8 @@ Check whether the student needed multiple attempts to build the correct argument
 
 | Role | Event Key |
 |------|-----------|
-| Trigger | `questActiveEvent:34` |
+| Trigger (Start) | `DialogueNodeEvent:30:98` |
+| Trigger (End) | `questActiveEvent:34` |
 | Yellow | `DialogueNodeEvent:70:25` |
 
 ---
@@ -63,39 +65,42 @@ color;
 
 ```js
 // Unit 1, Point 3 — Attempt-based standalone production script
-// Trigger eventKey: "questActiveEvent:34"
+// Window start: latest DialogueNodeEvent:30:98 before the end event (exclusive)
+// Window end:   latest questActiveEvent:34 (inclusive)
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "questActiveEvent:34";
+const START_KEY = "DialogueNodeEvent:30:98";
+const END_KEY = "questActiveEvent:34";
 
 const YELLOW_KEYS = [
   "DialogueNodeEvent:70:25"
 ];
 
-// 1) Latest trigger (end anchor)
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!latestTrigger) {
+if (!latestEnd) {
   "yellow";
 } else {
-  // 2) Previous trigger (attempt boundary)
-  const prevTrigger = db.logdata.findOne(
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
+      eventKey: START_KEY,
+      _id: { $lt: latestEnd._id }
     },
     { sort: { _id: -1 } }
   );
 
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestEnd._id;
 
+  // 3) Any yellow node inside the window?
   const hasYellow =
     db.logdata.findOne({
       game: "mhs",
@@ -116,57 +121,65 @@ if (!latestTrigger) {
 
 **Instructor Message:** In Defend the Expedition, the student's first argument submission was incorrect; they built the correct argument on attempt {attempt_number}. This point earns green only when the first submission is correct. The early miss may indicate difficulty identifying which claim is supported by the given evidence and reasoning.
 
-#### Quantitative script
+#### Corresponding Script
 
 ```js
-// U1P3: Determine attempt_number for WRONG_ARG_SELECTED
-// With windowing for replay support
+// U1P3: WRONG_ARG_SELECTED — determine trigger and attempt_number
+// Window mirrors the production color script: latest questActiveEvent:34 (end),
+// latest DialogueNodeEvent:30:98 before it (start, exclusive; zero ObjectId when none).
+// `triggered` recomputes the color rule verbatim (any yellow node inside the
+// window), so the pop-up can never disagree with the cell.
+// attempt_number = argument submissions inside the window: every wrong submission
+// fires 70:25 and the correct one fires 70:7, so wrong + correct = the attempt on
+// which the correct argument was built.
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "questActiveEvent:34";
+const START_KEY = "DialogueNodeEvent:30:98";
+const END_KEY = "questActiveEvent:34";
+
+const YELLOW_KEYS = [
+  "DialogueNodeEvent:70:25"
+];
 
 const ATTEMPT_KEYS = [
   "DialogueNodeEvent:70:25",
   "DialogueNodeEvent:70:7"
 ];
 
-// 1) Latest trigger (end anchor)
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
-  { sort: { _id: -1 } }
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
+  { sort: { _id: -1 }, projection: { _id: 1 } }
 );
 
-if (!latestTrigger) {
-  0;
+if (!latestEnd) {
+  ({ triggered: false, attempt_number: 0 });
 } else {
-  // 2) Previous trigger (attempt boundary)
-  const prevTrigger = db.logdata.findOne(
-    {
-      game: "mhs",
-      playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
-    },
-    { sort: { _id: -1 }}
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
+    { game: "mhs", playerId: playerId, eventKey: START_KEY, _id: { $lt: latestEnd._id } },
+    { sort: { _id: -1 }, projection: { _id: 1 } }
   );
 
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowFilter = { _id: { $gt: windowStartId, $lte: latestEnd._id } };
 
-  // 3) Count attempt dialogue triggers only inside the window
+  // 3) Color rule, mirrored: any yellow node inside the window
+  const hasYellow = db.logdata.findOne({
+    game: "mhs", playerId: playerId, eventKey: { $in: YELLOW_KEYS }, ...windowFilter
+  }, { projection: { _id: 1 } }) !== null;
+
+  // 4) Count argument submissions inside the window
   const attempts = db.logdata.countDocuments({
-    game: "mhs",
-    playerId: playerId,
-    eventKey: { $in: ATTEMPT_KEYS },
-    _id: { $gt: windowStartId, $lte: windowEndId }
+    game: "mhs", playerId: playerId, eventKey: { $in: ATTEMPT_KEYS }, ...windowFilter
   });
 
-  attempts;
+  ({ triggered: hasYellow, attempt_number: attempts });
 }
 ```
 
-### Teacher Guidance:
+### Teacher Guidance
 1. Claim: statement that answers the driving question.
 2. Evidence: scientific data and facts that support your claim.
 3. Reasoning: links your claim to the evidence presented by explaining how or why the evidence supports the claim.

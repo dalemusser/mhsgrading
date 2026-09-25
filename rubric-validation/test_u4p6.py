@@ -1,10 +1,14 @@
 """Test for Unit 4 Point 6 — "Desert Delicacies".
 
 Production rule (mhs-unit4-point6-grading.md): score-based on the latest camera
-placement per garden box, within an attempt window anchored on TWO distinct
-triggers — latest `questActiveEvent:41` (start) .. latest `questFinishEvent:56`
-(end, inclusive). Yellow unless both triggers exist AND end._id >= start._id
-(production guard: `!latestStart || !latestEnd || latestEnd._id < latestStart._id`).
+placement per garden box, within the attempt window.
+
+Window (start-and-end form since 2026-09-24): anchor on the latest END
+(`questFinishEvent:56`); if missing => yellow. Take the latest START
+(`questActiveEvent:41`) at `_id < latestEnd._id` (else ObjectId("000...")) as
+the exclusive window start. Until 2026-09-24 the script took the latest start
+and the latest end and returned yellow when the end preceded the start
+(guard `!latestStart || !latestEnd || latestEnd._id < latestStart._id`).
 
 Box score: +1 each for
     Box 0 latest soilType == "Gravel"
@@ -16,12 +20,16 @@ Dialogue-feedback fallback (2026-09-01 update, OR logic): box ids have shifted
 between builds, so the score is additionally secured by Dani's review
 feedback — dialogueScore = count of correct-soil feedback `DialogueNodeEvent:92:61`
 after the latest review-start `DialogueNodeEvent:92:33` in the window (whole
-window if 92:33 missing), capped at 3.
+window if 92:33 missing — the case when the player asks for the results through
+the second-round node 92:36 instead), capped at 3.
 
     final score = max(box score, dialogueScore); green iff final score >= 2.
+
+Keys re-verified 2026-09-24 against the 2026-09-21 dialogue database
+(conversation 92: review and feedback nodes unchanged).
 """
 
-from mhs_harness import GAME
+from mhs_harness import GAME, OID_MIN, ObjectId
 
 META = {"unit": 4, "point": 6, "name": "Desert Delicacies"}
 
@@ -36,20 +44,27 @@ CORRECT_FEEDBACK_KEY = "DialogueNodeEvent:92:61"
 
 
 def _window(coll, pid):
-    """Return (windowStartId, windowEndId) or None when the window is invalid
-    (=> yellow), matching the production guard
-    `!latestStart || !latestEnd || latestEnd._id < latestStart._id`."""
-    latest_start = coll.find_one(
-        {"game": GAME, "playerId": pid, "eventKey": WINDOW_START_KEY},
-        sort={"_id": -1},
-    )
+    """Returns (windowStartId, windowEndId) or None when no latest END trigger
+    exists (=> yellow)."""
+    # 1) Latest end anchor
     latest_end = coll.find_one(
         {"game": GAME, "playerId": pid, "eventKey": WINDOW_END_KEY},
         sort={"_id": -1},
     )
-    if not latest_start or not latest_end or latest_end["_id"] < latest_start["_id"]:
+    if not latest_end:
         return None
-    return latest_start["_id"], latest_end["_id"]
+    # 2) Latest start anchor before the latest end
+    latest_start = coll.find_one(
+        {
+            "game": GAME,
+            "playerId": pid,
+            "eventKey": WINDOW_START_KEY,
+            "_id": {"$lt": latest_end["_id"]},
+        },
+        sort={"_id": -1},
+    )
+    window_start_id = latest_start["_id"] if latest_start else ObjectId(OID_MIN)
+    return window_start_id, latest_end["_id"]
 
 
 def _box_results(coll, pid):
@@ -107,9 +122,7 @@ def diagnose(coll, pid):
     out = {}
     res = _box_results(coll, pid)
     if res is None:
-        out["NO_TRIGGER"] = (
-            f"no valid window from {WINDOW_START_KEY}/{WINDOW_END_KEY} — defaults to yellow"
-        )
+        out["NO_TRIGGER"] = f"no {WINDOW_END_KEY} trigger found — defaults to yellow"
         return out
     box_score, dialogue_score, latest_answer = res
     wrong_box_ids = [

@@ -20,8 +20,10 @@ Another check is to see whether the player figured out the correct matches by th
 
 ### Attempt Window (Production)
 
-- **Start:** Latest Unit 4 `Soil Key Puzzle` event with `Soil Key Puzzle Status` = `Finished` before the trigger (exclusive)
+- **Start:** Latest Unit 4 `Soil Key Puzzle` event with `Soil Key Puzzle Status` = `Finished` before the end event (exclusive; zero ObjectId when there is none)
 - **End:** Latest `questActiveEvent:48` (inclusive)
+- The Production Script below bounds the window this way: it anchors on the latest end event and takes the latest start event before it, so a completed attempt keeps its grade if the student re-enters the activity afterwards. The Trigger(Start) event in the header is that same start event; it also drives the dashboard's in-progress state and the duration metrics.
+- Already in the start-and-end form (latest end, latest start before it); scripts unchanged. Keys re-verified 2026-09-24 against the 2026-09-21 dialogue database: conversation 102 unchanged (16 nodes; the export carries explicit attempt gates on `glyphGame_Infiltration_Attempts` / `IncorrectInLast`), `88:11` unchanged, and the soil-key `data.Unit` value is still `"Unit 4 Dev"` on build 20260914-.
 
 ---
 
@@ -29,8 +31,8 @@ Another check is to see whether the player figured out the correct matches by th
 
 | Role | Event Key |
 |------|-----------|
-| Trigger | `questActiveEvent:48` |
-| Window Start | `Soil Key Puzzle` event with `Soil Key Puzzle Status` = `Finished` and `Unit` matching Unit 4 (eventType + data match, not an eventKey) |
+| Trigger (Start) | `Soil Key Puzzle` event with `Soil Key Puzzle Status` = `Finished` and `Unit` matching Unit 4 (eventType + data match, not an eventKey) |
+| Trigger (End) | `questActiveEvent:48` |
 | Target | `DialogueNodeEvent:88:11` |
 | Target | `DialogueNodeEvent:102:9` |
 | Target | `DialogueNodeEvent:102:10` |
@@ -65,7 +67,7 @@ const has_8811 =
 let color;
 
 if (!has_8811) {
-  color = 2; // yellow
+  color = "yellow";
 } else {
   const has_any_102 =
     db.logdata.findOne(
@@ -73,7 +75,7 @@ if (!has_8811) {
       { projection: { _id: 1 } }
     ) !== null;
 
-  color = has_any_102 ? 2 : 1; // yellow if any negative else green
+  color = has_any_102 ? "yellow" : "green";  // (returned numeric 2 / 1 until 2026-09-24)
 }
 
 color;
@@ -179,12 +181,24 @@ green = correct order within 3 attempts.
 ★ = yellow key in the color rule.
 
 Other nodes: `88:11` is the post-puzzle explanation and fires on BOTH the
-independent and DANI-assisted paths (verified in run 09-03-26-3) — it is NOT an
-independence signal. `102:0` is structural; `102:14/15/16` are the player's
-empty-text response choices to feedback (they DO log); `102:19/20/21/24` are
-empty and unobserved. If the player accepts the assist offer at `102:18`, the
-node the execution logs as is unconfirmed (only the forced 5th-attempt path,
-which logs `102:23`, has been observed).
+independent and DANI-assisted paths (forced path verified in run 09-03-26-3,
+accepted path in run 09-14-26-3) — it is NOT an independence signal. `102:0` is
+structural; `102:14/15/16` are DANI's idle hints ("the stone pieces on the floor
+may fit into the wall panels", etc.; they DO log, e.g. 09-03-26-3 and 09-14-26-3);
+`102:19` "No. I'm okay." (decline) has not been observed; `102:20` "Sure. I'm stuck."
+and `102:21` "I have calculated the correct order... Activating holid projector."
+are the accepted-assist pair, observed in run 09-14-26-3 (their text is in the
+2026-09-21 dialogue export; the xlsx cells are blank); `102:24` "OnSolve" is a
+placeholder that has never logged. Build note: on build 20260902-12353 the forced
+assist (`102:23`) was followed by one more placement before `88:11`, while on
+build 20260914- the accepted assist (`102:20` → `102:21`) completed the puzzle
+with no placements — the same auto-solve behaviour difference recorded at U3P4.
+Assistance is therefore detected from the assist nodes, never from `88:11`.
+`attempt_number` counts every attempt-indexed node, `102:23` included, so the
+fifth wrong order that forces the assist is counted like the forced nodes at
+U2P1 and U2P4 (aligned across U3P4, U4P2 and U5P1 on 2026-09-24; until then the
+glyph puzzles reported 4 on the forced path).
+(Node table re-verified against the 2026-09-21 dialogue database on 2026-09-24.)
 
 ### SOLVED_WITH_ASSIST
 
@@ -199,12 +213,14 @@ which logs `102:23`, has been observed).
 // Triggers when DANI completed the puzzle in the window, on either path:
 //   forced   - 102:23 (5th attempt, any wrong; verified in run 09-03-26-3);
 //   accepted - the player accepted the offer at 102:18 and DANI ordered the
-//              pieces: 102:20 then 102:21 fire (empty-text nodes in the
-//              2026-06-10 dialogue export). Verified in run 09-14-26-3: the
-//              puzzle completed 10 s after the offer with no player inputs.
+//              pieces: 102:20 "Sure. I'm stuck." then 102:21 "Activating holid
+//              projector." (text present in the 2026-09-21 dialogue export).
+//              Verified in run 09-14-26-3: the puzzle completed 10 s after the
+//              offer with no player inputs.
 // Do NOT infer assistance from 88:11's absence — 88:11 fires on the assisted
-// path too. attempt_number = incorrect arrangements before DANI completed
-// the puzzle.
+// path too. attempt_number = incorrect arrangements, one feedback node each,
+// 102:23 included (the 5th wrong order that forces the assist is counted, as
+// at U2P1/U2P4; aligned 2026-09-24).
 
 const playerId = "<playerId>";
 
@@ -227,7 +243,8 @@ const NEGATIVE_KEYS = [
   "DialogueNodeEvent:102:9",   // 3rd attempt, 1-2 wrong
   "DialogueNodeEvent:102:10",  // 3rd attempt, 3-4 wrong (rate-graph hint)
   "DialogueNodeEvent:102:12",  // 4th attempt, 1-2 wrong
-  "DialogueNodeEvent:102:18"   // 4th attempt, 3-4 wrong (assist offered)
+  "DialogueNodeEvent:102:18",  // 4th attempt, 3-4 wrong (assist offered)
+  "DialogueNodeEvent:102:23"   // 5th attempt, any wrong — forces the assist (counted since 2026-09-24, as at U2P1/U2P4)
 ];
 
 // 1) Latest trigger (end anchor)
@@ -318,7 +335,8 @@ const NEGATIVE_KEYS = [
   "DialogueNodeEvent:102:9",   // 3rd attempt, 1-2 wrong
   "DialogueNodeEvent:102:10",  // 3rd attempt, 3-4 wrong (rate-graph hint)
   "DialogueNodeEvent:102:12",  // 4th attempt, 1-2 wrong
-  "DialogueNodeEvent:102:18"   // 4th attempt, 3-4 wrong (assist offered)
+  "DialogueNodeEvent:102:18",  // 4th attempt, 3-4 wrong (assist offered)
+  "DialogueNodeEvent:102:23"   // 5th attempt, any wrong — forces the assist (counted since 2026-09-24, as at U2P1/U2P4)
 ];
 
 // 1) Latest trigger (end anchor)

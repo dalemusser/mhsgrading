@@ -45,19 +45,19 @@ Log: `wenyi091426-3.stratalog.logdata.json`
 
 **SOLVED_WITH_ASSIST** — `attempt_number=4`
 
-> In Escape the Ruin, the student did not complete the topographic-map matching independently — after 4 incorrect arrangements, the in-game guide DANI placed the remaining pieces. This point earns green only when the student submits the correct solution on their own within 4 attempts. Needing this level of support may indicate the student would benefit from direct instruction on how contour lines represent elevation and slope before matching maps to terrain shapes.
+> In Escape the Ruin, the student did not complete the topographic-map matching independently. After 4 incorrect arrangements, the in-game guide DANI placed the remaining pieces. This point earns green only when the student submits the correct solution on their own within 4 attempts. Needing this level of support may indicate the student would benefit from direct instruction on how contour lines represent elevation and slope before matching maps to terrain shapes.
 
 ### U2P2 — Foraged Forging (yellow)
 
 **EXCESS_NAV_REMINDERS** — `triggering_number=4`
 
-> In Foraged Forging, while navigating to find Captain Toppo, the student triggered 4 adaptive reminders — dialogues that fire when the player travels somewhere inconsistent with Anderson's clues or has not been consulting the map. This point earns green only when at most 1 such reminder fires during the search. Repeated reminders may indicate difficulty translating the clues about direction, elevation, and terrain features into a location on the topographic map using contour lines and the compass.
+> In Foraged Forging, while navigating to find Captain Toppo, the student triggered 4 adaptive reminders, dialogues that fire when the player travels somewhere inconsistent with Anderson's clues or has not been consulting the map. This point earns green only when at most 1 such reminder fires during the search. Repeated reminders may indicate difficulty translating the clues about direction, elevation, and terrain features into a location on the topographic map using contour lines and the compass.
 
 ### U2P3 — Getting the Band Back Together Part II (yellow)
 
 **EXCESS_NAV_REMINDERS** — `triggering_number=14`, `tera_count=9`, `aryn_count=5`
 
-> In Getting the Band Back Together Part II, while navigating to find Tera and Aryn, the student triggered 14 adaptive reminders — dialogues that fire when the player travels somewhere inconsistent with the location clues (9 during the search for Tera, 5 during the search for Aryn). This point earns green only when fewer than 6 such reminders fire across the two searches. Repeated reminders may indicate difficulty connecting each set of clues — direction, elevation, landforms, and water features — to locations on the topographic map when planning and adjusting a route.
+> In Getting the Band Back Together Part II, while navigating to find Tera and Aryn, the student triggered 14 adaptive reminders, dialogues that fire when the player travels somewhere inconsistent with the location clues (9 during the search for Tera, 5 during the search for Aryn). This point earns green only when fewer than 6 such reminders fire across the two searches. Repeated reminders may indicate difficulty connecting each set of clues (direction, elevation, landforms, and water features) to locations on the topographic map when planning and adjusting a route.
 
 ### U2P4 — Investigate the Temple (yellow)
 
@@ -93,19 +93,19 @@ Log: `wenyi091426-3.stratalog.logdata.json`
 
 **EXCESS_SENSOR_REMINDERS** — `downstream_reminder_number=5`, `redundant_reminder_number=8`
 
-> In Pollution Solution, while using drone-dropped sensors to trace the source of the river pollution, the student triggered 5 reminders that pollution flows only downstream (testing in the wrong direction) and 8 reminders about unnecessary tests (checking upstream of a clean sensor, or pushing past the top of a branch). This point stays green unless reminders accumulate in both categories — one occurring 4 or more times and the other at least twice. Repeated reminders of both kinds may indicate difficulty using sensor readings to reason about how dissolved material spreads through a watershed: pollution can appear only downstream of its source, so a polluted reading means the source is upstream, and a clean reading clears everything upstream of it.
+> In Pollution Solution, while using drone-dropped sensors to trace the source of the river pollution, the student triggered 5 reminders that pollution flows only downstream (testing in the wrong direction) and 8 reminders about unnecessary tests (checking upstream of a clean sensor, or pushing past the top of a branch). This point stays green unless reminders accumulate in both categories: one occurring 4 or more times and the other at least twice. Repeated reminders of both kinds may indicate difficulty using sensor readings to reason about how dissolved material spreads through a watershed: pollution can appear only downstream of its source, so a polluted reading means the source is upstream, and a clean reading clears everything upstream of it.
 
 ### U3P3 — Pollution Argument (yellow)
 
 **EXCESS_ATTEMPTS** — `wrong_argument_number=6`, `claim_wrong_number=3`, `reasoning_wrong_number=3`, `evidence_wrong_number=0`, `backing_info_phrase='opened'`
 
-> In Pollution Argument, while constructing the argument about where the pollutant enters the river, the student made 6 incorrect submissions — 3 with a claim problem, 3 with a reasoning problem, and 0 with an evidence or structure problem — and opened the Pollution Site Data reference panel. This point earns green only when incorrect submissions stay within the limit (at most 3, or one more when the reference panel has been consulted, which earns a bonus point). Errors concentrated on reasoning may indicate difficulty explaining how pollution travels downstream with the water flow, which is the link between the sensor evidence and the claim.
+> In Pollution Argument, while constructing the argument about where the pollutant enters the river, the student made 6 incorrect submissions (3 with a claim problem, 3 with a reasoning problem, and 0 with an evidence or structure problem), and opened the Pollution Site Data reference panel. This point earns green only when incorrect submissions stay within the limit (at most 3, or one more when the reference panel has been consulted, which earns a bonus point). Errors concentrated on reasoning may indicate difficulty explaining how pollution travels downstream with the water flow, which is the link between the sensor evidence and the claim.
 
 ### U3P4 — Forsaken Facility (yellow)
 
-**SOLVED_WITH_ASSIST** — `attempt_number=4`
+**SOLVED_WITH_ASSIST** — `attempt_number=5`
 
-> In Forsaken Facility, the student did not complete the ordering puzzle showing how materials dissolve into water independently — after 4 incorrect arrangements, the in-game guide DANI ordered the pieces. This point earns green only when the student submits the correct order on their own within 3 attempts. Needing this level of support may indicate the student would benefit from reviewing how the particles of a dissolved material spread through water, even once they can no longer be seen.
+> In Forsaken Facility, the student did not complete the ordering puzzle showing how materials dissolve into water independently. After 5 incorrect arrangements, the in-game guide DANI ordered the pieces. This point earns green only when the student submits the correct order on their own within 3 attempts. Needing this level of support may indicate the student would benefit from reviewing how the particles of a dissolved material spread through water, even once they can no longer be seen.
 
 ### U3P5 — Plant the Superfruit Seeds (yellow)
 
@@ -117,13 +117,13 @@ Log: `wenyi091426-3.stratalog.logdata.json`
 
 **SCORE_BELOW_THRESHOLD** — `choice_phrase="chose 'it's any water found underground' instead of the correct answer on"`, `duration_phrase='took 168 seconds to solve'`
 
-> In Well What Have We Here?, the student chose 'it's any water found underground' instead of the correct answer on Anderson's question about what the water table is, and took 168 seconds to solve the soil key puzzle. This point earns green only when the puzzle is solved within 30 seconds, or within 90 seconds with the water-table question answered correctly. A missed question may reflect the common misconception that the water table is simply any underground water — it is specifically the boundary between the saturated and unsaturated soil layers — and a slow solve may indicate difficulty controlling the water level between the target lines.
+> In Well What Have We Here?, the student chose 'it's any water found underground' instead of the correct answer on Anderson's question about what the water table is, and took 168 seconds to solve the soil key puzzle. This point earns green only when the puzzle is solved within 30 seconds, or within 90 seconds with the water-table question answered correctly. A missed question may reflect the common misconception that the water table is simply any underground water (it is specifically the boundary between the saturated and unsaturated soil layers), and a slow solve may indicate difficulty controlling the water level between the target lines.
 
 ### U4P2 — Infiltration Glyph + Alien Well Floors 1 & 2 (yellow)
 
 **SOLVED_WITH_ASSIST** — `attempt_number=4`
 
-> In the Infiltration Glyph puzzle, the student did not complete the soil-infiltration ordering independently — after 4 incorrect arrangements, the in-game guide DANI ordered the pieces. This point earns green only when the student submits the correct order on their own within 3 attempts. Needing this level of support may indicate the student would benefit from reviewing how water infiltrates different soils — the larger the soil particles, the faster water passes through.
+> In the Infiltration Glyph puzzle, the student did not complete the soil-infiltration ordering independently. After 4 incorrect arrangements, the in-game guide DANI ordered the pieces. This point earns green only when the student submits the correct order on their own within 3 attempts. Needing this level of support may indicate the student would benefit from reviewing how water infiltrates different soils: the larger the soil particles, the faster water passes through.
 
 ### U4P3 — Alien Well Floor 3 & 4 (yellow)
 
@@ -147,19 +147,19 @@ Log: `wenyi091426-3.stratalog.logdata.json`
 
 **WRONG_SOIL_SELECTED** — `wrong_box_number=3`, `wrong_box_summary='the first box (chose Clay, needs Gravel) and the second box (chose Gravel, needs Sand) and the third box (chose Sand, needs Clay)'`
 
-> In Desert Delicacies, the student placed recording cameras on the soil they predicted would grow each seedling best, but chose a soil that does not match the seedling's water needs in the first box (chose Clay, needs Gravel) and the second box (chose Gravel, needs Sand) and the third box (chose Sand, needs Clay). This point earns green only when at least 2 of the 3 garden boxes have the correct soil. Wrong choices may indicate difficulty connecting soil particle size to water retention — coarse soils like gravel let water drain past the roots, while fine-particle soils like clay trap too much of it, so each seedling needs the soil whose drainage matches its water requirement.
+> In Desert Delicacies, the student placed recording cameras on the soil they predicted would grow each seedling best, but chose a soil that does not match the seedling's water needs in the first box (chose Clay, needs Gravel) and the second box (chose Gravel, needs Sand) and the third box (chose Sand, needs Clay). This point earns green only when at least 2 of the 3 garden boxes have the correct soil. Wrong choices may indicate difficulty connecting soil particle size to water retention: coarse soils like gravel let water drain past the roots, while fine-particle soils like clay trap too much of it, so each seedling needs the soil whose drainage matches its water requirement.
 
 ### U5P1 — If I Had a Nickel- Floors 1 & 2 (yellow)
 
 **SOLVED_WITH_ASSIST** — `attempt_number=4`
 
-> In If I Had a Nickel (floors 1 and 2), the student did not complete the evaporation glyph puzzle independently — after 4 incorrect arrangements, the in-game guide DANI ordered the tablets. This point earns green only when the student solves the puzzle on their own within 4 attempts. Needing this level of support may indicate the student would benefit from reviewing how temperature drives evaporation — the higher the temperature, the higher the evaporation rate.
+> In If I Had a Nickel (floors 1 and 2), the student did not complete the evaporation glyph puzzle independently. After 4 incorrect arrangements, the in-game guide DANI ordered the tablets. This point earns green only when the student solves the puzzle on their own within 4 attempts. Needing this level of support may indicate the student would benefit from reviewing how temperature drives evaporation: the higher the temperature, the higher the evaporation rate.
 
 ### U5P2 — If I Had a Nickel- Floors 3 & 4 (yellow)
 
-**SCORE_BELOW_THRESHOLD** — `floor3_attempts=8`, `floor4_attempts=10`
+**SCORE_BELOW_THRESHOLD** — `floor3_attempts=21`, `floor4_attempts=10`
 
-> In If I Had a Nickel (floors 3 and 4), the student used 8 condenser and evaporator interactions to solve the third-floor water chamber puzzle and 10 on the fourth floor. This point earns green only when at least one floor is solved within its optimal count (6 interactions on the third floor, 5 on the fourth) and the other stays within its partial range (at most 10 and 9, respectively). Many interactions may indicate trial-and-error switching rather than predicting the phase change each chamber needs — condensation removes energy to turn water vapor into liquid, and evaporation adds energy to turn liquid back into vapor.
+> In If I Had a Nickel (floors 3 and 4), the student used 21 condenser and evaporator interactions to solve the third-floor water chamber puzzle and 10 on the fourth floor. This point earns green only when at least one floor is solved within its optimal count (6 interactions on the third floor, 5 on the fourth) and the other stays within its partial range (at most 10 and 9, respectively). Many interactions may indicate trial-and-error switching rather than predicting the phase change each chamber needs: condensation removes energy to turn water vapor into liquid, and evaporation adds energy to turn liquid back into vapor.
 
 ### U5P3 — What Happened Here? (yellow)
 
@@ -193,7 +193,7 @@ Log: `wenyi091426-3.stratalog.logdata.json`
 | U3P1 | EXCESS_WRONG_RIVERS | yes | wrong_river_number=3 |
 | U3P2 | EXCESS_SENSOR_REMINDERS | yes | downstream_reminder_number=5, redundant_reminder_number=8 |
 | U3P3 | EXCESS_ATTEMPTS | yes | wrong_argument_number=6, claim_wrong_number=3, reasoning_wrong_number=3, evidence_wrong_number=0, backing_info_phrase='opened' |
-| U3P4 | SOLVED_WITH_ASSIST | yes | attempt_number=4 |
+| U3P4 | SOLVED_WITH_ASSIST | yes | attempt_number=5 |
 | U3P4 | EXCESS_ATTEMPTS | no | attempt_number=6 |
 | U3P5 | EXCESS_WRONG_PLANTINGS | yes | wrong_planting_number=4 |
 | U4P1 | SCORE_BELOW_THRESHOLD | yes | choice_phrase="chose 'it's any water found underground' instead of the correct answer on", duration_phrase='took 168 seconds to solve' |
@@ -205,6 +205,6 @@ Log: `wenyi091426-3.stratalog.logdata.json`
 | U4P6 | WRONG_SOIL_SELECTED | yes | wrong_box_number=3, wrong_box_summary='the first box (chose Clay, needs Gravel) and the second box (chose Gravel, needs Sand) and the third box (chose Sand, needs Clay)' |
 | U5P1 | SOLVED_WITH_ASSIST | yes | attempt_number=4 |
 | U5P1 | EXCESS_ATTEMPTS | no | attempt_number=5 |
-| U5P2 | SCORE_BELOW_THRESHOLD | yes | floor3_attempts=8, floor4_attempts=10 |
+| U5P2 | SCORE_BELOW_THRESHOLD | yes | floor3_attempts=21, floor4_attempts=10 |
 | U5P3 | EXCESS_ATTEMPTS | yes | wrong_argument_number=6, claim_wrong_number=4, reasoning_wrong_number=1, evidence_wrong_number=1 |
 | U5P4 | WRONG_SETTINGS_SELECTED | yes | wrong_run_number=1, failure_phrase='the settings blocked sunlight, so the salt water could not heat up and evaporate' |

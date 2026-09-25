@@ -5,6 +5,11 @@ U2P2. Anchor on latest trigger `DialogueNodeEvent:22:18`, take latest start
 `DialogueNodeEvent:20:33` at/before it, count TARGET keys within both the
 timestamp window and the _id window. Green iff count < 6. Missing start/end
 => yellow.
+
+2026-09-24: `DialogueNodeEvent:28:195` / `59:195` (Aryn search, "a mountain
+range, but this passage doesn't go all the way through") added to TARGET_KEYS
+after the review against the 2026-09-21 dialogue database (same Aryn quest
+gate as 192/193/194; never observed in a fixture, so no color moves).
 """
 
 from mhs_harness import GAME
@@ -26,6 +31,7 @@ TARGET_KEYS = [
     "DialogueNodeEvent:18:234", "DialogueNodeEvent:28:193", "DialogueNodeEvent:59:193",
     "DialogueNodeEvent:18:235", "DialogueNodeEvent:28:194", "DialogueNodeEvent:59:194",
     "DialogueNodeEvent:18:236", "DialogueNodeEvent:18:237", "DialogueNodeEvent:28:190", "DialogueNodeEvent:59:190",
+    "DialogueNodeEvent:28:195", "DialogueNodeEvent:59:195",  # Aryn: passage doesn't go all the way through (added 2026-09-24)
 ]
 
 

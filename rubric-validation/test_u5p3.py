@@ -1,13 +1,22 @@
 """Test for Unit 5 Point 3 — "What Happened Here?".
 
 Production rule (mhs-unit5-point3-grading.md): attempt-based negative-dialogue
-count within the latest attempt window. The window is anchored on the latest
-START (`DialogueNodeEvent:96:1`) and latest END (`questFinishEvent:44`) found
-independently; if either is missing or the end precedes the start => yellow.
-Inside the window green iff the negative count is < 4 (yellow iff cnt >= 4).
+count within the latest attempt window; green iff the count is < 4 (yellow iff
+cnt >= 4). No success node is required.
+
+Window (start-and-end form since 2026-09-24): anchor on the latest END
+(`questFinishEvent:44`); if missing => yellow. Take the latest START
+(`DialogueNodeEvent:96:1`) at `_id < latestEnd._id` (else ObjectId("000..."))
+as the exclusive window start. Until 2026-09-24 the script took the latest
+start and the latest end independently and returned yellow when the end
+preceded the start (guard `!latestStart || !latestEnd || latestEnd._id < latestStart._id`).
+
+NEGATIVE_KEYS = all 39 conversation-108 wrong-answer feedback nodes (extended
+2026-09-17 with 63/64, 65/66, 68/69; re-verified 2026-09-24 against the
+2026-09-21 dialogue database — conversation 108 unchanged).
 """
 
-from mhs_harness import GAME
+from mhs_harness import GAME, OID_MIN, ObjectId
 
 META = {"unit": 5, "point": 3, "name": "What Happened Here?"}
 
@@ -32,15 +41,26 @@ NEGATIVE_KEYS = [
 
 
 def _window(coll, pid):
-    latest_start = coll.find_one(
-        {"game": GAME, "playerId": pid, "eventKey": WINDOW_START_KEY}, sort={"_id": -1}
-    )
+    """Returns (windowStartId, windowEndId) or None when no latest END trigger
+    exists (=> yellow)."""
+    # 1) Latest end anchor
     latest_end = coll.find_one(
         {"game": GAME, "playerId": pid, "eventKey": WINDOW_END_KEY}, sort={"_id": -1}
     )
-    if not latest_start or not latest_end or latest_end["_id"] < latest_start["_id"]:
+    if not latest_end:
         return None
-    return latest_start["_id"], latest_end["_id"]
+    # 2) Latest start anchor before the latest end
+    latest_start = coll.find_one(
+        {
+            "game": GAME,
+            "playerId": pid,
+            "eventKey": WINDOW_START_KEY,
+            "_id": {"$lt": latest_end["_id"]},
+        },
+        sort={"_id": -1},
+    )
+    window_start_id = latest_start["_id"] if latest_start else ObjectId(OID_MIN)
+    return window_start_id, latest_end["_id"]
 
 
 def _count(coll, pid):
@@ -48,6 +68,7 @@ def _count(coll, pid):
     if win is None:
         return None
     window_start_id, window_end_id = win
+    # 3) Count flagged submissions inside the window
     return coll.count_documents(
         {
             "game": GAME,
@@ -69,10 +90,7 @@ def diagnose(coll, pid):
     out = {}
     cnt = _count(coll, pid)
     if cnt is None:
-        out["NO_TRIGGER"] = (
-            f"no {WINDOW_END_KEY}/{WINDOW_START_KEY} attempt window found — "
-            f"defaults to yellow"
-        )
+        out["NO_TRIGGER"] = f"no {WINDOW_END_KEY} trigger found — defaults to yellow"
         return out
     if cnt >= 4:
         out["WRONG_ARG_SELECTED"] = (

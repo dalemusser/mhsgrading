@@ -7,15 +7,21 @@ mhs-unit2-point5-grading.md, "## Reason Codes":
       classifications; claim_wrong / reasoning_wrong / evidence_wrong split it
       by what the misclassified passage actually was.
 
-Window: previous `DialogueNodeEvent:23:42` (exclusive) .. latest (inclusive).
+Window (start-and-end form since 2026-09-24): latest `DialogueNodeEvent:23:42`
+(end, inclusive), latest `DialogueNodeEvent:23:17` before it (start,
+exclusive; OID_MIN when none) — the same window as the production color
+script. Until 2026-09-24: previous `23:42` (exclusive) .. latest (inclusive).
+Keys re-verified 2026-09-24 against the 2026-09-21 dialogue database
+(conversation 26 unchanged; 26:190 is a wrong-answer gate, not an empty node).
 """
 
-from rc_common import count_keys, gt_lte, latest_trigger_window
+from rc_common import OID_MIN, count_keys, gt_lte, latest
 
 META = {"unit": 2, "point": 5, "name": "Classified Information",
         "doc": "mhs-unit2-point5-grading.md"}
 
-TRIGGER_KEY = "DialogueNodeEvent:23:42"
+START_KEY = "DialogueNodeEvent:23:17"
+END_KEY = "DialogueNodeEvent:23:42"
 
 POS_KEYS = [
     # claim correct
@@ -54,7 +60,14 @@ NEG_KEYS = CLAIM_NEG_KEYS + REASONING_NEG_KEYS + EVIDENCE_NEG_KEYS
 
 
 def attempt_window(coll, pid):
-    return latest_trigger_window(coll, pid, TRIGGER_KEY)
+    # 1) Latest end anchor
+    latest_end = latest(coll, pid, END_KEY)
+    if not latest_end:
+        return None
+    # 2) Latest start anchor before the latest end
+    latest_start = latest(coll, pid, START_KEY, {"_id": {"$lt": latest_end["_id"]}})
+    window_start_id = latest_start["_id"] if latest_start else OID_MIN
+    return window_start_id, latest_end["_id"]
 
 
 def excess_misclassifications(coll, pid):

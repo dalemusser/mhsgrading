@@ -41,17 +41,19 @@ Player must have a log entry with:
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questFinishEvent:18` (exclusive)
+- **Start:** Latest `DialogueNodeEvent:11:34` before the end event (exclusive; zero ObjectId when there is none)
 - **End:** Latest `questFinishEvent:18` (inclusive)
-- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
+- The Production Script below bounds the window this way: it anchors on the latest end event and takes the latest start event before it, so a completed attempt keeps its grade if the student re-enters the activity afterwards. The Trigger(Start) event in the header is that same start event; it also drives the dashboard's in-progress state and the duration metrics.
+- Changed 2026-09-24 from the previous-and-latest end window (previous `questFinishEvent:18` exclusive .. latest `questFinishEvent:18` inclusive), per the start-and-end window decision (A1). Keys re-verified the same day against the 2026-09-21 dialogue database (conversation 84 unchanged: 24 nodes, same gates). The bonus lookup now also starts at `11:34`, so Unit 2's backing-info panel events can no longer fall inside the window. Both Python transcriptions follow; the Go rule must be updated in step.
 
 ---
 
 ## Event Keys
 
-| Role          | Event Key             |
-|---------------|-----------------------|
-| Trigger (End) | `questFinishEvent:18` |
+| Role            | Event Key                   |
+|-----------------|-----------------------------|
+| Trigger (Start) | `DialogueNodeEvent:11:34`   |
+| Trigger (End)   | `questFinishEvent:18`       |
 
 **Target Keys (incorrect argument selections):**
 
@@ -135,11 +137,13 @@ color;
 
 ```js
 // Unit 3, Point 3 — Attempt-based standalone production script (latest attempt)
-// Trigger eventKey: "questFinishEvent:18"
+// Window start: latest DialogueNodeEvent:11:34 before the end event (exclusive)
+// Window end:   latest questFinishEvent:18 (inclusive)
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "questFinishEvent:18";
+const START_KEY = "DialogueNodeEvent:11:34";
+const END_KEY = "questFinishEvent:18";
 
 const TARGET_KEYS = [
   "DialogueNodeEvent:84:20", "DialogueNodeEvent:84:25", "DialogueNodeEvent:84:32",
@@ -150,29 +154,30 @@ const TARGET_KEYS = [
   "DialogueNodeEvent:84:45", "DialogueNodeEvent:84:46", "DialogueNodeEvent:84:47"
 ];
 
-// 1) Latest trigger (end anchor)
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!latestTrigger) {
+if (!latestEnd) {
   "yellow";
 } else {
-  // 2) Previous trigger (attempt boundary)
-  const prevTrigger = db.logdata.findOne(
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
+      eventKey: START_KEY,
+      _id: { $lt: latestEnd._id }
     },
     { sort: { _id: -1 } }
   );
 
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestEnd._id;
 
+  // 3) Target count and bonus inside the window
   const sumCount = db.logdata.countDocuments({
     game: "mhs", playerId: playerId,
     eventKey: { $in: TARGET_KEYS },
@@ -218,7 +223,8 @@ state through player gate nodes (claim I + evidence A is the correct pair, reaso
 feedback node. Most feedback exists as a generic/specific pair chosen by the game's
 `argSpecificFeedback` flag; both members of a pair describe the same mistake, so the
 categories below follow the argument state (the gate), not the wording. Reviewed
-against the 2026-06-10 Unity dialogue export on 2026-09-17.
+against the 2026-06-10 Unity dialogue export on 2026-09-17; re-verified unchanged
+against the 2026-09-21 export on 2026-09-24.
 
 | Category | Branch (player gate) | Nodes | Feedback gist |
 |----------|----------------------|-------|---------------|
@@ -246,6 +252,8 @@ evidence B + reasoning 4 submission has no matching node and would go uncounted.
 
 ```js
 // U3P3: EXCESS_ATTEMPTS — determine trigger and quantities
+// Window mirrors the production color script: latest questFinishEvent:18 (end),
+// latest DialogueNodeEvent:11:34 before it (start, exclusive; zero ObjectId when none).
 // triggered mirrors the color formula verbatim: base score from the color
 // script's TARGET_KEYS count (which includes success node 84:36 by design —
 // the count then equals the number of attempts — and the inert gate 84:38),
@@ -257,7 +265,8 @@ evidence B + reasoning 4 submission has no matching node and would go uncounted.
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "questFinishEvent:18";
+const START_KEY = "DialogueNodeEvent:11:34";
+const END_KEY = "questFinishEvent:18";
 
 const CLAIM_NEG_KEYS = [
   "DialogueNodeEvent:84:39", "DialogueNodeEvent:84:45",  // claim II + evidence A: only the claim is wrong
@@ -281,24 +290,24 @@ const WRONG_KEYS = [...CLAIM_NEG_KEYS, ...REASONING_NEG_KEYS, ...EVIDENCE_STRUCT
 // Color-rule key list, kept verbatim so triggered matches the cell (incl. 36/38)
 const COLOR_TARGET_KEYS = [...WRONG_KEYS, "DialogueNodeEvent:84:36", "DialogueNodeEvent:84:38"];
 
-// 1) Latest trigger (end anchor)
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!latestTrigger) {
+if (!latestEnd) {
   ({ triggered: false, wrong_argument_number: 0, claim_wrong_number: 0,
      reasoning_wrong_number: 0, evidence_wrong_number: 0, backing_info_phrase: "did not open" });
 } else {
-  // 2) Previous trigger (attempt boundary)
-  const prevTrigger = db.logdata.findOne(
-    { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY, _id: { $lt: latestTrigger._id } },
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
+    { game: "mhs", playerId: playerId, eventKey: START_KEY, _id: { $lt: latestEnd._id } },
     { sort: { _id: -1 } }
   );
 
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestEnd._id;
   const windowFilter = { _id: { $gt: windowStartId, $lte: windowEndId } };
 
   const countIn = (keys) => db.logdata.countDocuments({

@@ -7,19 +7,30 @@ mhs-unit4-point3-grading.md, "## Reason Codes":
       interactions on machine "1" per floor (data.floor / data.machine are
       strings; floor 5's machine "2" is excluded).
 
-Window: previous `questActiveEvent:50` (exclusive) .. latest (inclusive).
+Window (start-and-end form since 2026-09-24): latest `questActiveEvent:50`
+(end, inclusive), latest `questActiveEvent:48` before it (start, exclusive;
+OID_MIN when none) — the same window as the production color script. Until
+2026-09-24: previous `questActiveEvent:50` (exclusive) .. latest (inclusive).
 """
 
-from rc_common import GAME, gt_lte, latest_trigger_window
+from rc_common import GAME, OID_MIN, gt_lte, latest
 
 META = {"unit": 4, "point": 3, "name": "Alien Well Floor 3 & 4",
         "doc": "mhs-unit4-point3-grading.md"}
 
-TRIGGER_KEY = "questActiveEvent:50"
+START_KEY = "questActiveEvent:48"
+END_KEY = "questActiveEvent:50"
 
 
 def attempt_window(coll, pid):
-    return latest_trigger_window(coll, pid, TRIGGER_KEY)
+    # 1) Latest end anchor
+    latest_end = latest(coll, pid, END_KEY)
+    if not latest_end:
+        return None
+    # 2) Latest start anchor before the latest end
+    latest_start = latest(coll, pid, START_KEY, {"_id": {"$lt": latest_end["_id"]}})
+    window_start_id = latest_start["_id"] if latest_start else OID_MIN
+    return window_start_id, latest_end["_id"]
 
 
 def _floor_count(coll, pid, floor, f):

@@ -60,21 +60,21 @@ Log: `wenyi090326-4.stratalog.logdata.json`
 [PASS] U5P1 — If I Had a Nickel- Floors 1 & 2
        expected=yellow actual=yellow
        reason(s) for yellow (expected):
-         - NO_TRIGGER: no questFinishEvent:43/questActiveEvent:43 attempt window found — defaults to yellow
+         - NO_TRIGGER: no questFinishEvent:43 trigger found — defaults to yellow
 ```
 
 ```
 [PASS] U5P2 — If I Had a Nickel- Floors 3 & 4
        expected=yellow actual=yellow
        reason(s) for yellow (expected):
-         - NO_TRIGGER: no DialogueNodeEvent:96:1/questFinishEvent:43 attempt window found — defaults to yellow
+         - NO_TRIGGER: no DialogueNodeEvent:96:1 trigger found — defaults to yellow
 ```
 
 ```
 [PASS] U5P3 — What Happened Here?
        expected=yellow actual=yellow
        reason(s) for yellow (expected):
-         - NO_TRIGGER: no questFinishEvent:44/DialogueNodeEvent:96:1 attempt window found — defaults to yellow
+         - NO_TRIGGER: no questFinishEvent:44 trigger found — defaults to yellow
 ```
 
 ```

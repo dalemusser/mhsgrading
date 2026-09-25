@@ -5,15 +5,23 @@ mhs-unit4-point6-grading.md, "## Reason Codes":
   WRONG_SOIL_SELECTED — mirrors the production color rule verbatim: per-box
       latest cameraPlaced soil (Box 0 = Gravel, 1 = Sand, 2 = Clay) with the
       dialogue-feedback fallback (92:61 count after the latest 92:33 in the
-      window, capped at 3), final score = max of both; triggered when < 2.
-      wrong_box_summary lists the boxes whose latest placement is wrong or
-      missing; wrong_box_number = their count.
+      window — whole window when 92:33 is absent, i.e. when the results were
+      requested through the second-round node 92:36 — capped at 3), final
+      score = max of both; triggered when < 2. wrong_box_summary lists the
+      boxes whose latest placement is wrong or missing; wrong_box_number =
+      their count.
 
-Window: latest `questActiveEvent:41` (start, exclusive) .. latest
-`questFinishEvent:56` (end, inclusive); guard `latestEnd._id < latestStart._id`.
+Window (start-and-end form since 2026-09-24): latest `questFinishEvent:56`
+(end, inclusive), latest `questActiveEvent:41` before it (start, exclusive;
+OID_MIN when none) — the same window as the production color script. Until
+2026-09-24: latest start and latest end, yellow when the end preceded the
+start (guard `latestEnd._id < latestStart._id`).
+
+Keys re-verified 2026-09-24 against the 2026-09-21 dialogue database
+(conversation 92: review and feedback nodes unchanged).
 """
 
-from rc_common import GAME, gt_lte, latest, start_end_window
+from rc_common import GAME, OID_MIN, gt_lte, latest
 
 META = {"unit": 4, "point": 6, "name": "Desert Delicacies",
         "doc": "mhs-unit4-point6-grading.md"}
@@ -29,8 +37,14 @@ CORRECT_FEEDBACK_KEY = "DialogueNodeEvent:92:61"
 
 
 def attempt_window(coll, pid):
-    # guard: !latestStart || !latestEnd || latestEnd._id < latestStart._id
-    return start_end_window(coll, pid, WINDOW_START_KEY, WINDOW_END_KEY, strict=False)
+    # 1) Latest end anchor
+    latest_end = latest(coll, pid, WINDOW_END_KEY)
+    if not latest_end:
+        return None
+    # 2) Latest start anchor before the latest end
+    latest_start = latest(coll, pid, WINDOW_START_KEY, {"_id": {"$lt": latest_end["_id"]}})
+    window_start_id = latest_start["_id"] if latest_start else OID_MIN
+    return window_start_id, latest_end["_id"]
 
 
 def wrong_soil_selected(coll, pid):

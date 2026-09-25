@@ -18,10 +18,12 @@ Student must select the correct criterion for determining watershed size on the 
 
 ### Attempt Window (Production)
 
-- **Start:** Latest `DialogueNodeEvent:23:42` (exclusive)
+- **Start:** Latest `DialogueNodeEvent:23:42` before the end event (exclusive; zero ObjectId when there is none)
 - **End:** Latest `DialogueNodeEvent:20:46` (inclusive)
+- The Production Script below bounds the window this way: it anchors on the latest end event and takes the latest start event before it, so a completed attempt keeps its grade if the student re-enters the activity afterwards. The Trigger(Start) event in the header is that same start event; it also drives the dashboard's in-progress state and the duration metrics.
+- Changed 2026-09-24: previously the script took the latest start and the latest end and returned yellow unless the end came after the start (a re-entered activity with no new end lost its grade); per the start-and-end window decision (A1) it now anchors on the end first. Keys re-verified the same day against the 2026-09-21 dialogue database (conversation 20 unchanged; `20:42` offers exactly `20:43` / `20:44` / `20:45`, each leading straight to `20:46`). Both Python transcriptions follow; the Go rule must be updated in step.
 
-> Note: The production script windows on `DialogueNodeEvent:23:42` (Trigger Start) and `DialogueNodeEvent:20:46` (Trigger End). `DialogueNodeEvent:20:35` opens the question mid-attempt and must not anchor the window, since the pass/yellow nodes fire after it.
+> Note: `DialogueNodeEvent:20:35` opens the question mid-attempt and must not anchor the window, since the pass/yellow nodes fire after it.
 
 ---
 
@@ -78,9 +80,8 @@ if (!hasPass) {
 
 ```js
 // Unit 2, Point 6 — Attempt-based standalone production grading script
-// Attempt window:
-//   Start: latest "DialogueNodeEvent:23:42" (Trigger Start, exclusive)
-//   End:   latest "DialogueNodeEvent:20:46" (Trigger End, inclusive)
+// Window start: latest DialogueNodeEvent:23:42 before the end event (exclusive)
+// Window end:   latest DialogueNodeEvent:20:46 (inclusive)
 
 const playerId = "<playerId>";
 
@@ -89,24 +90,23 @@ const END_KEY   = "DialogueNodeEvent:20:46"; // closes the attempt
 const PASS_KEY  = "DialogueNodeEvent:20:43";
 const YELLOW_KEYS = ["DialogueNodeEvent:20:44", "DialogueNodeEvent:20:45"];
 
-// 1) Latest start trigger (window start, exclusive)
-const startTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: START_KEY },
-  { sort: { _id: -1 } }
-);
-
-// 2) Latest end trigger (window end, inclusive)
-const endTrigger = db.logdata.findOne(
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
   { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!startTrigger || !endTrigger || endTrigger._id <= startTrigger._id) {
-  // No valid window (missing start/end, or end not after start)
+if (!latestEnd) {
   "yellow";
 } else {
-  const windowStartId = startTrigger._id;
-  const windowEndId = endTrigger._id;
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
+    { game: "mhs", playerId: playerId, eventKey: START_KEY, _id: { $lt: latestEnd._id } },
+    { sort: { _id: -1 } }
+  );
+
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestEnd._id;
 
   // 3) Must have PASS_KEY within attempt window
   const hasPass =
@@ -140,18 +140,18 @@ if (!startTrigger || !endTrigger || endTrigger._id <= startTrigger._id) {
 
 ### WRONG_EVIDENCE_SELECTED
 
-**Short Description:** Chose an incorrect criterion for watershed size on first try
-
 **Instructor Message:** In Which Watershed? Part I, when Dr. Toppo asked which observation provides the strongest evidence for identifying the larger watershed, the student selected {wrong_choice} instead of the correct answer, water flow rate. This point earns green only when water flow rate is selected. This may indicate difficulty distinguishing evidence that directly relates to watershed size - a larger drainage area collects and delivers more water, producing a greater flow rate - from observations such as waterfall height or salinity that do not indicate how much land drains to the river.
 
 #### Corresponding Script
 
 ```js
 // U2P6: WRONG_EVIDENCE_SELECTED — determine trigger and wrong_choice
+// Window mirrors the production color script: latest DialogueNodeEvent:20:46 (end),
+// latest DialogueNodeEvent:23:42 before it (start, exclusive; zero ObjectId when none).
 // Triggers when a wrong-option node (20:44 waterfall height, 20:45 salinity)
-// fired in the attempt window. The question is single-select with no retry on
-// the current build, so exactly one choice node fires per window; the
-// both-options fallback below is defensive only.
+// fired in the attempt window. The question is single-select with no retry
+// (20:42 -> 43 | 44 | 45 -> 46 in the 2026-09-21 dialogue database), so exactly
+// one choice node fires per window; the both-options fallback below is defensive only.
 
 const playerId = "<playerId>";
 
@@ -160,20 +160,23 @@ const END_KEY   = "DialogueNodeEvent:20:46"; // closes the attempt (inclusive)
 const HEIGHT_KEY   = "DialogueNodeEvent:20:44"; // chose waterfall height
 const SALINITY_KEY = "DialogueNodeEvent:20:45"; // chose salinity
 
-const startTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: START_KEY },
-  { sort: { _id: -1 } }
-);
-
-const endTrigger = db.logdata.findOne(
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
   { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!startTrigger || !endTrigger || endTrigger._id <= startTrigger._id) {
+if (!latestEnd) {
   ({ triggered: false, wrong_choice: null });
 } else {
-  const windowFilter = { _id: { $gt: startTrigger._id, $lte: endTrigger._id } };
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
+    { game: "mhs", playerId: playerId, eventKey: START_KEY, _id: { $lt: latestEnd._id } },
+    { sort: { _id: -1 } }
+  );
+
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowFilter = { _id: { $gt: windowStartId, $lte: latestEnd._id } };
 
   const hasHeight =
     db.logdata.findOne({

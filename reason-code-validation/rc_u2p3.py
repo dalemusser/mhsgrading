@@ -6,13 +6,18 @@ mhs-unit2-point3-grading.md, "## Reason Codes":
       across the Tera and Aryn searches; triggering_number = total,
       tera_count / aryn_count = per-phase splits.
 
-Outer window mirrors the production color script: latest `22:18` (end),
-latest `20:33` at/before it (start); counts use `$gte start, $lte end`.
-Phase split: Tera search = start → first `21:1` in window; Aryn search =
-first `18:231` in window → end.
+Outer window mirrors the production color script exactly: latest `22:18`
+(end), latest `20:33` at/before it (start), both needing a client
+`timestamp`; every count is fenced by BOTH the timestamp range and the `_id`
+range of the anchors (fence added 2026-09-24, decision A7, so the pop-up
+count can never differ from the color). Phase split: Tera search = start →
+first `21:1` in window; Aryn search = first `18:231` in window → end.
+
+2026-09-24: `28:195` / `59:195` added to TARGET_KEYS (Aryn search, same quest
+gate as 192/193/194; never observed in a fixture).
 """
 
-from rc_common import count_keys, earliest, latest
+from rc_common import GAME, latest
 
 META = {"unit": 2, "point": 3, "name": "Getting the Band Back Together Part II",
         "doc": "mhs-unit2-point3-grading.md"}
@@ -33,43 +38,61 @@ TARGET_KEYS = [
     "DialogueNodeEvent:18:234", "DialogueNodeEvent:28:193", "DialogueNodeEvent:59:193",
     "DialogueNodeEvent:18:235", "DialogueNodeEvent:28:194", "DialogueNodeEvent:59:194",
     "DialogueNodeEvent:18:236", "DialogueNodeEvent:18:237", "DialogueNodeEvent:28:190", "DialogueNodeEvent:59:190",
+    "DialogueNodeEvent:28:195", "DialogueNodeEvent:59:195",  # Aryn: passage doesn't go all the way through (added 2026-09-24)
 ]
 
 _EMPTY = {"triggered": False, "triggering_number": 0, "tera_count": 0, "aryn_count": 0}
 
 
-def attempt_window(coll, pid):
-    # 1) Latest trigger (end anchor)
+def _anchors(coll, pid):
+    """(startDoc, endDoc) or None, mirroring the script's two guards."""
+    # 1) Latest trigger (end anchor) by arrival order
     end_doc = latest(coll, pid, TRIGGER_KEY)
-    if not end_doc:
+    if not end_doc or not end_doc.get("timestamp"):
         return None
     # 2) Latest start at/before the end (same attempt)
     start_doc = latest(coll, pid, START_KEY, {"_id": {"$lte": end_doc["_id"]}})
-    if not start_doc:
+    if not start_doc or not start_doc.get("timestamp"):
         return None
-    return start_doc["_id"], end_doc["_id"]
+    return start_doc, end_doc
+
+
+def attempt_window(coll, pid):
+    a = _anchors(coll, pid)
+    return (a[0]["_id"], a[1]["_id"]) if a else None
+
+
+def _count(coll, pid, keys, ts_fence, id_lo, id_hi):
+    return coll.count_documents({
+        "game": GAME, "playerId": pid, "eventKey": {"$in": keys} if isinstance(keys, list) else keys,
+        "timestamp": ts_fence,
+        "_id": {"$gte": id_lo, "$lte": id_hi},
+    })
 
 
 def excess_nav_reminders(coll, pid):
-    win = attempt_window(coll, pid)
-    if win is None:
+    a = _anchors(coll, pid)
+    if a is None:
         return dict(_EMPTY)
-    start_id, end_id = win
-    inside = {"_id": {"$gte": start_id, "$lte": end_id}}
+    start_doc, end_doc = a
+    # Outer fence, identical to the production color script: client timestamp AND _id
+    ts_fence = {"$gte": start_doc["timestamp"], "$lte": end_doc["timestamp"]}
+    fence = {"timestamp": ts_fence, "_id": {"$gte": start_doc["_id"], "$lte": end_doc["_id"]}}
 
     # 3) Phase boundaries: first occurrence of each marker inside the window
-    tera_end = earliest(coll, pid, TERA_FOUND_KEY, inside)
-    aryn_start = earliest(coll, pid, ARYN_START_KEY, inside)
+    tera_end = coll.find_one({"game": GAME, "playerId": pid, "eventKey": TERA_FOUND_KEY, **fence},
+                             sort={"_id": 1})
+    aryn_start = coll.find_one({"game": GAME, "playerId": pid, "eventKey": ARYN_START_KEY, **fence},
+                               sort={"_id": 1})
 
-    # 4) Total across the whole window — authoritative, matches the color rule
-    total = count_keys(coll, pid, TARGET_KEYS, inside)
+    # 4) Total across the whole window — authoritative, identical to the color rule
+    total = _count(coll, pid, TARGET_KEYS, ts_fence, start_doc["_id"], end_doc["_id"])
 
-    # 5) Per-phase counts by time window
-    tera_count = count_keys(coll, pid, TARGET_KEYS, {
-        "_id": {"$gte": start_id, "$lte": (tera_end["_id"] if tera_end else end_id)}
-    })
+    # 5) Per-phase counts: the same fence, narrowed by _id to each search
+    tera_count = _count(coll, pid, TARGET_KEYS, ts_fence, start_doc["_id"],
+                        tera_end["_id"] if tera_end else end_doc["_id"])
     aryn_count = (
-        count_keys(coll, pid, TARGET_KEYS, {"_id": {"$gte": aryn_start["_id"], "$lte": end_id}})
+        _count(coll, pid, TARGET_KEYS, ts_fence, aryn_start["_id"], end_doc["_id"])
         if aryn_start else 0
     )
 

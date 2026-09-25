@@ -2,22 +2,27 @@
 
 mhs-unit1-point3-grading.md, "## Reason Codes":
 
-  WRONG_ARG_SELECTED — "Quantitative script": the one script in the set that
-  predates the settled `{triggered, ...}` template. It returns only
-  `attempt_number` (count of ATTEMPT_KEYS in the window); the pop-up shows the
-  code whenever the cell is yellow, so `triggered` here mirrors the production
-  color rule verbatim (any YELLOW key inside the window).
+  WRONG_ARG_SELECTED — "Corresponding Script" (on the settled
+  `{triggered, ...}` template since 2026-09-23; before that a bare-count
+  "Quantitative script"). `triggered` recomputes the production color rule
+  verbatim (any YELLOW key inside the window); `attempt_number` = count of
+  ATTEMPT_KEYS (70:25 wrong + 70:7 correct) inside the window, i.e. the
+  attempt on which the correct argument was built.
 
-Window: previous `questActiveEvent:34` (exclusive) .. latest (inclusive), the
-same trigger-to-trigger window as the production color script.
+Window (start-and-end form since 2026-09-23): latest `questActiveEvent:34`
+(end, inclusive), latest `DialogueNodeEvent:30:98` before it (start,
+exclusive; OID_MIN when none) — the same window as the production color
+script. Until 2026-09-23: previous `questActiveEvent:34` (exclusive) ..
+latest (inclusive).
 """
 
-from rc_common import count_keys, gt_lte, has_keys, latest_trigger_window
+from rc_common import OID_MIN, count_keys, gt_lte, has_keys, latest
 
 META = {"unit": 1, "point": 3, "name": "Defend the Expedition",
         "doc": "mhs-unit1-point3-grading.md"}
 
-TRIGGER_KEY = "questActiveEvent:34"
+START_KEY = "DialogueNodeEvent:30:98"
+END_KEY = "questActiveEvent:34"
 
 YELLOW_KEYS = ["DialogueNodeEvent:70:25"]
 
@@ -28,7 +33,14 @@ ATTEMPT_KEYS = [
 
 
 def attempt_window(coll, pid):
-    return latest_trigger_window(coll, pid, TRIGGER_KEY)
+    # 1) Latest end anchor
+    latest_end = latest(coll, pid, END_KEY)
+    if not latest_end:
+        return None
+    # 2) Latest start anchor before the latest end
+    latest_start = latest(coll, pid, START_KEY, {"_id": {"$lt": latest_end["_id"]}})
+    window_start_id = latest_start["_id"] if latest_start else OID_MIN
+    return window_start_id, latest_end["_id"]
 
 
 def wrong_arg_selected(coll, pid):
@@ -36,9 +48,9 @@ def wrong_arg_selected(coll, pid):
     if win is None:
         return {"triggered": False, "attempt_number": 0}
     f = gt_lte(win)
-    # Production color rule (mirrored so the pop-up follows the cell).
+    # 3) Color rule, mirrored: any yellow node inside the window
     has_yellow = has_keys(coll, pid, YELLOW_KEYS, f)
-    # 3) Count attempt dialogue triggers only inside the window
+    # 4) Count argument submissions inside the window
     attempts = count_keys(coll, pid, ATTEMPT_KEYS, f)
     return {"triggered": has_yellow, "attempt_number": attempts}
 

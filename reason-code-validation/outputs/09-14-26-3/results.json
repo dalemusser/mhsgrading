@@ -176,7 +176,7 @@
           "variables": {
             "attempt_number": 4
           },
-          "message": "In Escape the Ruin, the student did not complete the topographic-map matching independently — after 4 incorrect arrangements, the in-game guide DANI placed the remaining pieces. This point earns green only when the student submits the correct solution on their own within 4 attempts. Needing this level of support may indicate the student would benefit from direct instruction on how contour lines represent elevation and slope before matching maps to terrain shapes.",
+          "message": "In Escape the Ruin, the student did not complete the topographic-map matching independently. After 4 incorrect arrangements, the in-game guide DANI placed the remaining pieces. This point earns green only when the student submits the correct solution on their own within 4 attempts. Needing this level of support may indicate the student would benefit from direct instruction on how contour lines represent elevation and slope before matching maps to terrain shapes.",
           "extra_variables": []
         },
         "EXCESS_ATTEMPTS": {
@@ -243,7 +243,7 @@
           "variables": {
             "triggering_number": 4
           },
-          "message": "In Foraged Forging, while navigating to find Captain Toppo, the student triggered 4 adaptive reminders — dialogues that fire when the player travels somewhere inconsistent with Anderson's clues or has not been consulting the map. This point earns green only when at most 1 such reminder fires during the search. Repeated reminders may indicate difficulty translating the clues about direction, elevation, and terrain features into a location on the topographic map using contour lines and the compass.",
+          "message": "In Foraged Forging, while navigating to find Captain Toppo, the student triggered 4 adaptive reminders, dialogues that fire when the player travels somewhere inconsistent with Anderson's clues or has not been consulting the map. This point earns green only when at most 1 such reminder fires during the search. Repeated reminders may indicate difficulty translating the clues about direction, elevation, and terrain features into a location on the topographic map using contour lines and the compass.",
           "extra_variables": []
         }
       },
@@ -299,7 +299,7 @@
             "tera_count": 9,
             "aryn_count": 5
           },
-          "message": "In Getting the Band Back Together Part II, while navigating to find Tera and Aryn, the student triggered 14 adaptive reminders — dialogues that fire when the player travels somewhere inconsistent with the location clues (9 during the search for Tera, 5 during the search for Aryn). This point earns green only when fewer than 6 such reminders fire across the two searches. Repeated reminders may indicate difficulty connecting each set of clues — direction, elevation, landforms, and water features — to locations on the topographic map when planning and adjusting a route.",
+          "message": "In Getting the Band Back Together Part II, while navigating to find Tera and Aryn, the student triggered 14 adaptive reminders, dialogues that fire when the player travels somewhere inconsistent with the location clues (9 during the search for Tera, 5 during the search for Aryn). This point earns green only when fewer than 6 such reminders fire across the two searches. Repeated reminders may indicate difficulty connecting each set of clues (direction, elevation, landforms, and water features) to locations on the topographic map when planning and adjusting a route.",
           "extra_variables": []
         }
       },
@@ -361,7 +361,7 @@
           "variables": {
             "attempt_number": 6
           },
-          "message": "In Investigate the Temple, the student arranged the watershed terrain pieces correctly on their own, but needed 6 attempts. This point earns green only when the correct arrangement is submitted within 5 attempts. Repeated incorrect arrangements may indicate difficulty connecting drainage-area size with relative flow rate — the pattern that a larger watershed collects and delivers more water to its main river.",
+          "message": "In Investigate the Temple, the student arranged the watershed terrain pieces correctly on their own, but needed 6 attempts. This point earns green only when the correct arrangement is submitted within 5 attempts. Repeated incorrect arrangements may indicate difficulty connecting drainage-area size with relative flow rate, the pattern that a larger watershed collects and delivers more water to its main river.",
           "extra_variables": []
         }
       },
@@ -643,7 +643,7 @@
             "downstream_reminder_number": 5,
             "redundant_reminder_number": 8
           },
-          "message": "In Pollution Solution, while using drone-dropped sensors to trace the source of the river pollution, the student triggered 5 reminders that pollution flows only downstream (testing in the wrong direction) and 8 reminders about unnecessary tests (checking upstream of a clean sensor, or pushing past the top of a branch). This point stays green unless reminders accumulate in both categories — one occurring 4 or more times and the other at least twice. Repeated reminders of both kinds may indicate difficulty using sensor readings to reason about how dissolved material spreads through a watershed: pollution can appear only downstream of its source, so a polluted reading means the source is upstream, and a clean reading clears everything upstream of it.",
+          "message": "In Pollution Solution, while using drone-dropped sensors to trace the source of the river pollution, the student triggered 5 reminders that pollution flows only downstream (testing in the wrong direction) and 8 reminders about unnecessary tests (checking upstream of a clean sensor, or pushing past the top of a branch). This point stays green unless reminders accumulate in both categories: one occurring 4 or more times and the other at least twice. Repeated reminders of both kinds may indicate difficulty using sensor readings to reason about how dissolved material spreads through a watershed: pollution can appear only downstream of its source, so a polluted reading means the source is upstream, and a clean reading clears everything upstream of it.",
           "extra_variables": []
         }
       },
@@ -701,7 +701,7 @@
             "evidence_wrong_number": 0,
             "backing_info_phrase": "opened"
           },
-          "message": "In Pollution Argument, while constructing the argument about where the pollutant enters the river, the student made 6 incorrect submissions — 3 with a claim problem, 3 with a reasoning problem, and 0 with an evidence or structure problem — and opened the Pollution Site Data reference panel. This point earns green only when incorrect submissions stay within the limit (at most 3, or one more when the reference panel has been consulted, which earns a bonus point). Errors concentrated on reasoning may indicate difficulty explaining how pollution travels downstream with the water flow, which is the link between the sensor evidence and the claim.",
+          "message": "In Pollution Argument, while constructing the argument about where the pollutant enters the river, the student made 6 incorrect submissions (3 with a claim problem, 3 with a reasoning problem, and 0 with an evidence or structure problem), and opened the Pollution Site Data reference panel. This point earns green only when incorrect submissions stay within the limit (at most 3, or one more when the reference panel has been consulted, which earns a bonus point). Errors concentrated on reasoning may indicate difficulty explaining how pollution travels downstream with the water flow, which is the link between the sensor evidence and the claim.",
           "extra_variables": []
         }
       },
@@ -753,9 +753,9 @@
         "SOLVED_WITH_ASSIST": {
           "triggered": true,
           "variables": {
-            "attempt_number": 4
+            "attempt_number": 5
           },
-          "message": "In Forsaken Facility, the student did not complete the ordering puzzle showing how materials dissolve into water independently — after 4 incorrect arrangements, the in-game guide DANI ordered the pieces. This point earns green only when the student submits the correct order on their own within 3 attempts. Needing this level of support may indicate the student would benefit from reviewing how the particles of a dissolved material spread through water, even once they can no longer be seen.",
+          "message": "In Forsaken Facility, the student did not complete the ordering puzzle showing how materials dissolve into water independently. After 5 incorrect arrangements, the in-game guide DANI ordered the pieces. This point earns green only when the student submits the correct order on their own within 3 attempts. Needing this level of support may indicate the student would benefit from reviewing how the particles of a dissolved material spread through water, even once they can no longer be seen.",
           "extra_variables": []
         },
         "EXCESS_ATTEMPTS": {
@@ -797,7 +797,7 @@
         {
           "name": "expected-variables:SOLVED_WITH_ASSIST",
           "ok": true,
-          "detail": "attempt_number=4"
+          "detail": "attempt_number=5"
         }
       ],
       "passed": true
@@ -877,7 +877,7 @@
             "choice_phrase": "chose 'it's any water found underground' instead of the correct answer on",
             "duration_phrase": "took 168 seconds to solve"
           },
-          "message": "In Well What Have We Here?, the student chose 'it's any water found underground' instead of the correct answer on Anderson's question about what the water table is, and took 168 seconds to solve the soil key puzzle. This point earns green only when the puzzle is solved within 30 seconds, or within 90 seconds with the water-table question answered correctly. A missed question may reflect the common misconception that the water table is simply any underground water — it is specifically the boundary between the saturated and unsaturated soil layers — and a slow solve may indicate difficulty controlling the water level between the target lines.",
+          "message": "In Well What Have We Here?, the student chose 'it's any water found underground' instead of the correct answer on Anderson's question about what the water table is, and took 168 seconds to solve the soil key puzzle. This point earns green only when the puzzle is solved within 30 seconds, or within 90 seconds with the water-table question answered correctly. A missed question may reflect the common misconception that the water table is simply any underground water (it is specifically the boundary between the saturated and unsaturated soil layers), and a slow solve may indicate difficulty controlling the water level between the target lines.",
           "extra_variables": []
         }
       },
@@ -931,7 +931,7 @@
           "variables": {
             "attempt_number": 4
           },
-          "message": "In the Infiltration Glyph puzzle, the student did not complete the soil-infiltration ordering independently — after 4 incorrect arrangements, the in-game guide DANI ordered the pieces. This point earns green only when the student submits the correct order on their own within 3 attempts. Needing this level of support may indicate the student would benefit from reviewing how water infiltrates different soils — the larger the soil particles, the faster water passes through.",
+          "message": "In the Infiltration Glyph puzzle, the student did not complete the soil-infiltration ordering independently. After 4 incorrect arrangements, the in-game guide DANI ordered the pieces. This point earns green only when the student submits the correct order on their own within 3 attempts. Needing this level of support may indicate the student would benefit from reviewing how water infiltrates different soils: the larger the soil particles, the faster water passes through.",
           "extra_variables": []
         },
         "EXCESS_ATTEMPTS": {
@@ -939,7 +939,7 @@
           "variables": {
             "attempt_number": 5
           },
-          "message": "In the Infiltration Glyph puzzle, the student arranged the pieces showing how water passes through different soils, but needed 5 attempts. This point earns green only when the correct order is submitted within 3 attempts. Repeated incorrect arrangements may indicate difficulty connecting soil particle size to infiltration rate — water moves quickly through gravel, more slowly through sand, and slowest through clay.",
+          "message": "In the Infiltration Glyph puzzle, the student arranged the pieces showing how water passes through different soils, but needed 5 attempts. This point earns green only when the correct order is submitted within 3 attempts. Repeated incorrect arrangements may indicate difficulty connecting soil particle size to infiltration rate: water moves quickly through gravel, more slowly through sand, and slowest through clay.",
           "extra_variables": []
         }
       },
@@ -1166,7 +1166,7 @@
             "wrong_box_number": 3,
             "wrong_box_summary": "the first box (chose Clay, needs Gravel) and the second box (chose Gravel, needs Sand) and the third box (chose Sand, needs Clay)"
           },
-          "message": "In Desert Delicacies, the student placed recording cameras on the soil they predicted would grow each seedling best, but chose a soil that does not match the seedling's water needs in the first box (chose Clay, needs Gravel) and the second box (chose Gravel, needs Sand) and the third box (chose Sand, needs Clay). This point earns green only when at least 2 of the 3 garden boxes have the correct soil. Wrong choices may indicate difficulty connecting soil particle size to water retention — coarse soils like gravel let water drain past the roots, while fine-particle soils like clay trap too much of it, so each seedling needs the soil whose drainage matches its water requirement.",
+          "message": "In Desert Delicacies, the student placed recording cameras on the soil they predicted would grow each seedling best, but chose a soil that does not match the seedling's water needs in the first box (chose Clay, needs Gravel) and the second box (chose Gravel, needs Sand) and the third box (chose Sand, needs Clay). This point earns green only when at least 2 of the 3 garden boxes have the correct soil. Wrong choices may indicate difficulty connecting soil particle size to water retention: coarse soils like gravel let water drain past the roots, while fine-particle soils like clay trap too much of it, so each seedling needs the soil whose drainage matches its water requirement.",
           "extra_variables": [
             "wrong_box_number"
           ]
@@ -1222,7 +1222,7 @@
           "variables": {
             "attempt_number": 4
           },
-          "message": "In If I Had a Nickel (floors 1 and 2), the student did not complete the evaporation glyph puzzle independently — after 4 incorrect arrangements, the in-game guide DANI ordered the tablets. This point earns green only when the student solves the puzzle on their own within 4 attempts. Needing this level of support may indicate the student would benefit from reviewing how temperature drives evaporation — the higher the temperature, the higher the evaporation rate.",
+          "message": "In If I Had a Nickel (floors 1 and 2), the student did not complete the evaporation glyph puzzle independently. After 4 incorrect arrangements, the in-game guide DANI ordered the tablets. This point earns green only when the student solves the puzzle on their own within 4 attempts. Needing this level of support may indicate the student would benefit from reviewing how temperature drives evaporation: the higher the temperature, the higher the evaporation rate.",
           "extra_variables": []
         },
         "EXCESS_ATTEMPTS": {
@@ -1230,7 +1230,7 @@
           "variables": {
             "attempt_number": 5
           },
-          "message": "In If I Had a Nickel (floors 1 and 2), the student solved the evaporation glyph puzzle on their own, but needed 5 attempts. This point earns green only when the puzzle is solved within 4 attempts. Repeated incorrect arrangements may indicate difficulty matching the wall images — temperatures at different times of day — to the evaporation rates they would produce.",
+          "message": "In If I Had a Nickel (floors 1 and 2), the student solved the evaporation glyph puzzle on their own, but needed 5 attempts. This point earns green only when the puzzle is solved within 4 attempts. Repeated incorrect arrangements may indicate difficulty matching the wall images (temperatures at different times of day) to the evaporation rates they would produce.",
           "extra_variables": []
         }
       },
@@ -1287,10 +1287,10 @@
         "SCORE_BELOW_THRESHOLD": {
           "triggered": true,
           "variables": {
-            "floor3_attempts": 8,
+            "floor3_attempts": 21,
             "floor4_attempts": 10
           },
-          "message": "In If I Had a Nickel (floors 3 and 4), the student used 8 condenser and evaporator interactions to solve the third-floor water chamber puzzle and 10 on the fourth floor. This point earns green only when at least one floor is solved within its optimal count (6 interactions on the third floor, 5 on the fourth) and the other stays within its partial range (at most 10 and 9, respectively). Many interactions may indicate trial-and-error switching rather than predicting the phase change each chamber needs — condensation removes energy to turn water vapor into liquid, and evaporation adds energy to turn liquid back into vapor.",
+          "message": "In If I Had a Nickel (floors 3 and 4), the student used 21 condenser and evaporator interactions to solve the third-floor water chamber puzzle and 10 on the fourth floor. This point earns green only when at least one floor is solved within its optimal count (6 interactions on the third floor, 5 on the fourth) and the other stays within its partial range (at most 10 and 9, respectively). Many interactions may indicate trial-and-error switching rather than predicting the phase change each chamber needs: condensation removes energy to turn water vapor into liquid, and evaporation adds energy to turn liquid back into vapor.",
           "extra_variables": []
         }
       },
@@ -1319,7 +1319,7 @@
         {
           "name": "expected-variables:SCORE_BELOW_THRESHOLD",
           "ok": true,
-          "detail": "floor3_attempts=8, floor4_attempts=10"
+          "detail": "floor3_attempts=21, floor4_attempts=10"
         }
       ],
       "passed": true

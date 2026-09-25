@@ -1,7 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python -m py_compile grading-readiness-audit/scripts/audit_lib.py grading-readiness-audit/scripts/generate_reports.py grading-readiness-audit/scripts/reconcile_dialogues.py)"
+      "Bash(python -m py_compile grading-readiness-audit/scripts/audit_lib.py grading-readiness-audit/scripts/generate_reports.py grading-readiness-audit/scripts/reconcile_dialogues.py)",
+      "PowerShell(python \"C:\\\\Users\\\\wldh6\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-wenyi-OneDrive-Documents-GitHub-mhsgrading\\\\61234c14-c2db-4e1c-befe-e8984fc330fe\\\\scratchpad\\\\u1p2_check.py\")",
+      "PowerShell(python \"C:\\\\Users\\\\wldh6\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-wenyi-OneDrive-Documents-GitHub-mhsgrading\\\\61234c14-c2db-4e1c-befe-e8984fc330fe\\\\scratchpad\\\\u1p3_check.py\")",
+      "Bash(python run_all.py --help)",
+      "Bash(python run_all.py --fixture 09-14-26-3 --no-report)",
+      "Bash(python run_all.py --fixture 09-14-26-3 --no-report --quiet)",
+      "Bash(python run_all.py --fixture 09-03-26-3 --no-report)"
     ]
   }
 }

@@ -8,8 +8,13 @@ mhs-unit5-point4-grading.md, "## Reason Codes":
       glass too hot / roof angle, with run counts when > 1); wrong_run_number
       = failed runs.
 
-Window: latest `questFinishEvent:45` (end, inclusive), previous
-`questFinishEvent:44` before it (start, exclusive; OID_MIN when none).
+Window (start-and-end form since 2026-09-01): latest `questFinishEvent:45`
+(end, inclusive), latest `questFinishEvent:44` before it (start, exclusive;
+OID_MIN when none) — the same window as the production color script.
+
+Keys re-verified 2026-09-24 against the 2026-09-21 dialogue database
+(conversation 106: same twelve outcome nodes; the empty continuation node
+106:37 is new and ungraded).
 """
 
 from rc_common import OID_MIN, count_keys, gt_lte, has_keys, latest
@@ -40,9 +45,9 @@ def attempt_window(coll, pid):
     latest_end = latest(coll, pid, END_KEY)
     if not latest_end:
         return None
-    # 2) Previous start anchor before the latest end
-    prev_start = latest(coll, pid, START_KEY, {"_id": {"$lt": latest_end["_id"]}})
-    window_start_id = prev_start["_id"] if prev_start else OID_MIN
+    # 2) Latest start anchor before the latest end
+    latest_start = latest(coll, pid, START_KEY, {"_id": {"$lt": latest_end["_id"]}})
+    window_start_id = latest_start["_id"] if latest_start else OID_MIN
     return window_start_id, latest_end["_id"]
 
 

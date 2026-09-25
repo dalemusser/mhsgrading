@@ -9,7 +9,7 @@
 
 ## Grading Rule
 
-This progress point is a score-based progress, at the beggining the score euquals to 0, if the player solved the puzzle on the third floor by interactig with condenser or evaporator machines within equal to or less than 6, attempts, then the score will add 2; If the interaction attempts on the third floor are larger than 6 but less than 11 attempts, then the score will add 1; interaction attempts larger than 10 times, will let the score add 0; Then the players will continue the puzzle solving on the forth floor, if they solved the puzzle on this floor by interacting with condenser or evaporator machines within equal to or less than 5 attempts, then the score will further add 2; if they solved the puzzle on the forth floor by interacting with condenser or evaporator machines larger than 5 and less than 10 times, then the score will fruther add 1; No further score will be added if the interaction attempts on the forth floor surpass 9 times. If the score is euqal to or larger than 3 then the block color turns to green, otherwise if the score is less than 3 then the block color turns to yellow.
+This is a score-based progress point. The score starts at 0. On the third floor, count the player's interactions with the condenser and evaporator panels — the four single-chamber machines and the dual-chamber machine, i.e. `WaterChamberEvent` records whose `data.machineType` is `Condenser`, `Evaporator`, `DualChamber_Condenser` or `DualChamber_Evaporator`, each On/Off toggle being one interaction: 6 or fewer adds 2, 7 to 10 adds 1, 11 or more adds 0. On the fourth floor, count the same interactions: 5 or fewer adds 2, 6 to 9 adds 1, 10 or more adds 0. A score of 3 or more is green; less than 3 is yellow. The vent switches (`VentSwitch`) and the floor-1 / floor-2 chamber events that fall inside the window are not counted. The two dual-chamber types were added on 2026-09-24 (grading-team review item approved 2026-09-21); until then only `Condenser` and `Evaporator` were counted.
 
 | Outcome | Condition |
 |---------|-----------|
@@ -18,9 +18,10 @@ This progress point is a score-based progress, at the beggining the score euqual
 
 ### Attempt Window (Production)
 
-- **Start:** Latest `questFinishEvent:43` (exclusive; the window is valid only when the end event comes after it)
+- **Start:** Latest `questFinishEvent:43` before the end event (exclusive; zero ObjectId when there is none)
 - **End:** Latest `DialogueNodeEvent:96:1` (inclusive)
-- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
+- The Production Script below bounds the window this way: it anchors on the latest end event and takes the latest start event before it, so a completed attempt keeps its grade if the student re-enters the activity afterwards. The Trigger(Start) event in the header is that same start event; it also drives the dashboard's in-progress state and the duration metrics.
+- Changed 2026-09-24 from the latest-start / latest-end form (yellow whenever the latest `DialogueNodeEvent:96:1` preceded the latest `questFinishEvent:43`), per the start-and-end window decision (A1). The end key was re-verified the same day against the 2026-09-21 dialogue database (conversation 96 unchanged). Both Python transcriptions follow; the Go rule must be updated in step.
 
 ---
 
@@ -28,8 +29,16 @@ This progress point is a score-based progress, at the beggining the score euqual
 
 | Role | Event Key |
 |------|-----------|
-| Trigger | `DialogueNodeEvent:96:1` |
-| Target | WaterChamberEvent |
+| Trigger (Start) | `questFinishEvent:43` |
+| Trigger (End) | `DialogueNodeEvent:96:1` |
+| Target | `eventType: "WaterChamberEvent"` with `data.floor` `"3"` or `"4"` and `data.machineType` in `Condenser`, `Evaporator`, `DualChamber_Condenser`, `DualChamber_Evaporator` (one record per On/Off toggle; `VentSwitch` records and other floors are not counted) |
+
+Notes (re-verified 2026-09-24):
+
+- The end anchor `96:1` (Aryn: "What a week. Stuck on this island without a teleporter…", conversation 96 "U5/PostDungeon") is unchanged and unique in the 2026-09-21 dialogue database; conversation 96 is identical to the 2026-06-10 export. It fires once per playthrough (twice, 13 s apart, in the non-fixture log 08-13-26; the latest is taken). The start anchor `questFinishEvent:43` is U5P1's end and fires once.
+- Quest sequence inside the window: `questActiveEvent:51` (with the start) → `questFinishEvent:51` / `questActiveEvent:52` (floor 3) → `questFinishEvent:52` / `questActiveEvent:53` (floor 4) → `96:1`. The floor-2 chamber events fall inside the window, before quest 51 finishes, and are excluded by the floor filter.
+- Dual-chamber machine: floor 3 has four single-chamber machines and one dual-chamber machine whose two switches log as `DualChamber_Condenser` / `DualChamber_Evaporator`. The rubric's "minimum of 5 panel interactions" on floor 3 is 4 single + 1 dual, so the rubric always assumed the dual chamber counts; the scripts count it since 2026-09-24. Effect on the logs: fixtures 08-31-26 4 → 5 (green unchanged), 09-03-26-3 8 → 24 and 09-14-26-3 8 → 21 (yellow unchanged, score 1 → 0); the older log 05-01-26 moves 4 → 7 (two extra dual-chamber toggles) and its colour from green to yellow, which is what the rubric intends.
+- Known weakness (not changed): a floor with zero counted interactions scores +2, whereas the rubric gives 0 for a floor that was not completed. It has only been observed in 09-03-26-2, where the tester skipped floor 3 with the debug menu (quests 51 and 52 finished in the same second while the menu was open), so that fixture's U5P2 green rests on the skip. A student cannot reach `96:1` without playing floor 3, so this only matters for QA runs or lost logging; if the team wants it closed, require at least the rubric minimum (5 on floor 3, 4 on floor 4) before a floor earns any points.
 
 ---
 
@@ -42,7 +51,8 @@ This progress point is a score-based progress, at the beggining the score euqual
 let score = 0;
 
 const playerId = "<playerId>";
-const VALID_TYPES = ["Condenser", "Evaporator"];
+// Single-chamber and dual-chamber condenser/evaporator panels (DualChamber_* added 2026-09-24)
+const VALID_TYPES = ["Condenser", "Evaporator", "DualChamber_Condenser", "DualChamber_Evaporator"];
 
 // Count relevant interactions on Floor 3
 const floor3_attempts = db.logdata.countDocuments({
@@ -83,26 +93,17 @@ color;
 
 ```js
 // Production — replay-safe score calculation for Unit 5 water chamber puzzle
-// Window start: "questFinishEvent:43"
-// Window end:   "DialogueNodeEvent:96:1"
+// Window start: latest questFinishEvent:43 before the end event (exclusive)
+// Window end:   latest DialogueNodeEvent:96:1 (inclusive)
 
 const playerId = "<playerId>";
 
 const WINDOW_START_KEY = "questFinishEvent:43";
 const WINDOW_END_KEY = "DialogueNodeEvent:96:1";
-const VALID_TYPES = ["Condenser", "Evaporator"];
+// Single-chamber and dual-chamber condenser/evaporator panels (DualChamber_* added 2026-09-24)
+const VALID_TYPES = ["Condenser", "Evaporator", "DualChamber_Condenser", "DualChamber_Evaporator"];
 
-// 1) Most recent window start
-const latestStart = db.logdata.findOne(
-  {
-    game: "mhs",
-    playerId: playerId,
-    eventKey: WINDOW_START_KEY
-  },
-  { sort: { _id: -1 }, projection: { _id: 1 } }
-);
-
-// 2) Most recent window end
+// 1) Latest end anchor
 const latestEnd = db.logdata.findOne(
   {
     game: "mhs",
@@ -112,10 +113,23 @@ const latestEnd = db.logdata.findOne(
   { sort: { _id: -1 }, projection: { _id: 1 } }
 );
 
-if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
+if (!latestEnd) {
   "yellow";
 } else {
-  const windowStartId = latestStart._id;
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventKey: WINDOW_START_KEY,
+      _id: { $lt: latestEnd._id }
+    },
+    { sort: { _id: -1 }, projection: { _id: 1 } }
+  );
+
+  const windowStartId = latestStart
+    ? latestStart._id
+    : ObjectId("000000000000000000000000");
   const windowEndId = latestEnd._id;
 
   let score = 0;
@@ -170,33 +184,36 @@ if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
 
 ```js
 // U5P2: SCORE_BELOW_THRESHOLD — determine trigger and per-floor counts
-// Window mirrors the production color script: latest questFinishEvent:43 (start)
-// to latest DialogueNodeEvent:96:1 (end). Score: floor3 <=6 -> +2, 7-10 -> +1;
-// floor4 <=5 -> +2, 6-9 -> +1; yellow when total < 3.
-// VALID_TYPES stays mirror-exact with the color script — note the flagged gap:
-// floor 3 also logs DualChamber_Condenser / DualChamber_Evaporator, which are
-// currently not counted (add to both scripts once approved). VentSwitch and
-// the floors-1/2 events inside this window are excluded by design.
+// Window mirrors the production color script: latest DialogueNodeEvent:96:1 (end),
+// latest questFinishEvent:43 before it (start, exclusive; zero ObjectId when none).
+// Score: floor3 <=6 -> +2, 7-10 -> +1; floor4 <=5 -> +2, 6-9 -> +1; yellow when
+// total < 3. VALID_TYPES is mirror-exact with the color script and, since
+// 2026-09-24, includes the floor-3 dual-chamber machine (DualChamber_Condenser /
+// DualChamber_Evaporator). VentSwitch and the floors-1/2 events inside this
+// window are excluded by design.
 
 const playerId = "<playerId>";
 
 const WINDOW_START_KEY = "questFinishEvent:43";
 const WINDOW_END_KEY = "DialogueNodeEvent:96:1";
-const VALID_TYPES = ["Condenser", "Evaporator"];
+const VALID_TYPES = ["Condenser", "Evaporator", "DualChamber_Condenser", "DualChamber_Evaporator"];
 
-const latestStart = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: WINDOW_START_KEY },
-  { sort: { _id: -1 }, projection: { _id: 1 } }
-);
+// 1) Latest end anchor
 const latestEnd = db.logdata.findOne(
   { game: "mhs", playerId: playerId, eventKey: WINDOW_END_KEY },
   { sort: { _id: -1 }, projection: { _id: 1 } }
 );
 
-if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
+if (!latestEnd) {
   ({ triggered: false, floor3_attempts: 0, floor4_attempts: 0 });
 } else {
-  const windowFilter = { _id: { $gt: latestStart._id, $lte: latestEnd._id } };
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
+    { game: "mhs", playerId: playerId, eventKey: WINDOW_START_KEY, _id: { $lt: latestEnd._id } },
+    { sort: { _id: -1 }, projection: { _id: 1 } }
+  );
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowFilter = { _id: { $gt: windowStartId, $lte: latestEnd._id } };
 
   const floorCount = (floor) => db.logdata.countDocuments({
     game: "mhs", playerId: playerId,

@@ -23,7 +23,10 @@ Windowed rule using client timestamps. Count wrong-direction prompts between the
 
 ### Attempt Window (Production)
 
-Uses the latest end trigger and the most recent start key before it, fenced by `_id` range.
+- **Start:** Latest `questFinishEvent:21` at or before the end event (inclusive; the window is valid only when both anchors exist and carry a client `timestamp`)
+- **End:** Latest `DialogueNodeEvent:20:26` (inclusive)
+- Counted events must lie inside BOTH the `_id` range and the client-`timestamp` range of the two anchors; the timestamp fence guards against batched-upload reordering (decision A7). The Production Script below bounds the window this way. The Trigger(Start) event in the header is that same start event; it also drives the dashboard's in-progress state and the duration metrics.
+- Already in the start-and-end form (latest end, latest start before it); scripts unchanged. Keys re-verified 2026-09-23 against the 2026-09-21 dialogue database: conversations 28 and 59 are identical clones, and nodes 179 / 182 / 183 are the only reminders gated on the Toppo quest entry (the other conversation-28 nodes belong to the Tera and Aryn searches).
 
 ---
 

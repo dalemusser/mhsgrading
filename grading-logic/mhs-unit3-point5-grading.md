@@ -13,8 +13,8 @@ Score-based rule using weighted positive and negative counts.
 
 | Outcome | Condition |
 |---------|-----------|
-| **Green** | sum_score >= 3 |
-| **Yellow** | sum_score < 3, or no trigger exists |
+| **Green** | sum_score >= 2.5 |
+| **Yellow** | sum_score < 2.5, or no trigger exists |
 
 ### Score Formula
 
@@ -26,12 +26,14 @@ sum_score = pos_score - neg_score
 
 - `pos_count` = count of `DialogueNodeEvent:73:163`
 - `neg_count` = count of events in NEG_KEYS
+- Four seeds are planted, so `pos_count + neg_count = 4` and green (>= 2.5) means at most one wrong planting, matching the rubric's on-track band of 3–4 points. Threshold confirmed as 2.5 in the grading-team replies of 2026-09-21 (decision A5); the rule table and the Analytics Script were aligned to it on 2026-09-24.
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `DialogueNodeEvent:10:194` (exclusive)
+- **Start:** Latest `DialogueNodeEvent:73:200` before the end event (exclusive; zero ObjectId when there is none)
 - **End:** Latest `DialogueNodeEvent:10:194` (inclusive)
-- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
+- The Production Script below bounds the window this way: it anchors on the latest end event and takes the latest start event before it, so a completed attempt keeps its grade if the student re-enters the activity afterwards. The Trigger(Start) event in the header is that same start event; it also drives the dashboard's in-progress state and the duration metrics.
+- Changed 2026-09-24 from the previous-and-latest end window (previous `DialogueNodeEvent:10:194` exclusive .. latest `DialogueNodeEvent:10:194` inclusive), per the start-and-end window decision (A1). Keys re-verified the same day against the 2026-09-21 dialogue database (conversation 73 unchanged; `73:164` fires on the first wrong planting, `73:168` on the second and third, `73:171` when a third or later wrong planting is the last seed — the export gates on `seedsIncorrectlyPlanted` / `seedsPlanted`). Both Python transcriptions follow; the Go rule must be updated in step.
 
 ---
 
@@ -39,7 +41,8 @@ sum_score = pos_score - neg_score
 
 | Role | Event Key |
 |------|-----------|
-| Trigger | `DialogueNodeEvent:10:194` |
+| Trigger (Start) | `DialogueNodeEvent:73:200` |
+| Trigger (End) | `DialogueNodeEvent:10:194` |
 | Positive | `DialogueNodeEvent:73:163` |
 | Negative | `DialogueNodeEvent:73:164` |
 | Negative | `DialogueNodeEvent:73:168` |
@@ -70,7 +73,7 @@ const posScore = posCount * 1.0;
 const negScore = negCount * 0.5;
 const sumScore = posScore - negScore;
 
-const color = sumScore < 3 ? "yellow" : "green";
+const color = sumScore < 2.5 ? "yellow" : "green";  // 2.5 per decision A5 (was 3)
 color;
 ```
 
@@ -78,37 +81,40 @@ color;
 
 ```js
 // Unit 3, Point 5 — Attempt-based standalone production script (latest attempt)
-// Trigger eventKey: "DialogueNodeEvent:10:194"
+// Window start: latest DialogueNodeEvent:73:200 before the end event (exclusive)
+// Window end:   latest DialogueNodeEvent:10:194 (inclusive)
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "DialogueNodeEvent:10:194";
+const START_KEY = "DialogueNodeEvent:73:200";
+const END_KEY = "DialogueNodeEvent:10:194";
 const POS_KEY = "DialogueNodeEvent:73:163";
 const NEG_KEYS = ["DialogueNodeEvent:73:164", "DialogueNodeEvent:73:168", "DialogueNodeEvent:73:171"];
 
-// 1) Latest trigger (end anchor)
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!latestTrigger) {
+if (!latestEnd) {
   "yellow";
 } else {
-  // 2) Previous trigger (attempt boundary)
-  const prevTrigger = db.logdata.findOne(
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
+      eventKey: START_KEY,
+      _id: { $lt: latestEnd._id }
     },
     { sort: { _id: -1 } }
   );
 
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestEnd._id;
 
+  // 3) Counts inside the window
   const posCount = db.logdata.countDocuments({
     game: "mhs", playerId: playerId,
     eventKey: POS_KEY,
@@ -138,48 +144,52 @@ if (!latestTrigger) {
 
 ```js
 // U3P5: EXCESS_WRONG_PLANTINGS — determine trigger and wrong_planting_number
-// Triggers when the PRODUCTION color formula goes yellow:
-// sum_score = posCount*1.0 - negCount*0.5 < 2.5 (i.e., 2+ wrong plantings).
-// Note: the analytics script and rule table currently say >= 3 (zero-wrong) —
-// flagged for reconciliation; this script mirrors the production dashboard.
+// Window mirrors the production color script: latest DialogueNodeEvent:10:194 (end),
+// latest DialogueNodeEvent:73:200 before it (start, exclusive; zero ObjectId when none).
+// Triggers when the color formula goes yellow:
+// sum_score = posCount*1.0 - negCount*0.5 < 2.5 (i.e., 2+ wrong plantings;
+// threshold 2.5 confirmed as decision A5, 2026-09-21).
 // wrong_planting_number counts wrong-spot feedback directly (164 first wrong,
-// 168 per intermediate wrong — repeats, 171 fourth wrong / activity ends).
+// 168 second and third wrong, 171 when a third or later wrong planting is the
+// last seed — gates verified in the 2026-09-21 dialogue export).
 // Invariant: posCount + negCount = 4 seeds when the segment completed.
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "DialogueNodeEvent:10:194";
+const START_KEY = "DialogueNodeEvent:73:200";
+const END_KEY = "DialogueNodeEvent:10:194";
 const POS_KEY = "DialogueNodeEvent:73:163";
 
 const NEG_KEYS = [
   "DialogueNodeEvent:73:164",  // 1st wrong spot
   "DialogueNodeEvent:73:168",  // intermediate wrong spot (repeats)
-  "DialogueNodeEvent:73:171"   // 4th wrong spot, activity terminates
+  "DialogueNodeEvent:73:171"   // 3rd+ wrong spot on the last seed, activity terminates
 ];
 
-// 1) Latest trigger (end anchor)
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!latestTrigger) {
+if (!latestEnd) {
   ({ triggered: false, wrong_planting_number: 0 });
 } else {
-  // 2) Previous trigger (attempt boundary)
-  const prevTrigger = db.logdata.findOne(
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
+      eventKey: START_KEY,
+      _id: { $lt: latestEnd._id }
     },
     { sort: { _id: -1 } }
   );
 
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestEnd._id;
 
+  // 3) Counts inside the window
   const posCount = db.logdata.countDocuments({
     game: "mhs", playerId: playerId,
     eventKey: POS_KEY,

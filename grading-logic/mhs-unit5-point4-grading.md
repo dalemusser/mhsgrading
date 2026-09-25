@@ -9,7 +9,7 @@
 
 ## Grading Rule
 
-This progress point is a number-based progress. Firstly, it will check whether the plan is correctly figured out - (`DialogueNodeEvent:106:35`) - if we don't find the record within the players' event, then the color will return yellow; then it will check if the total number of following dialogues (`DialogueNodeEvent:106:4`,`DialogueNodeEvent:106:25`,`DialogueNodeEvent:106:26`,`DialogueNodeEvent:106:27`,`DialogueNodeEvent:106:28`,`DialogueNodeEvent:106:29`,`DialogueNodeEvent:106:30`,`DialogueNodeEvent:106:31`,`DialogueNodeEvent:106:32`,`DialogueNodeEvent:106:33`,`DialogueNodeEvent:106:34`) happened is euqal to 0 then the color returns green, otherwise it will return yellow.
+This progress point is a number-based progress. Firstly, it will check whether the plan is correctly figured out - (`DialogueNodeEvent:106:35`) - if we don't find the record within the players' event, then the color will return yellow; then it will check if the total number of following dialogues (`DialogueNodeEvent:106:4`,`DialogueNodeEvent:106:25`,`DialogueNodeEvent:106:26`,`DialogueNodeEvent:106:27`,`DialogueNodeEvent:106:28`,`DialogueNodeEvent:106:29`,`DialogueNodeEvent:106:30`,`DialogueNodeEvent:106:31`,`DialogueNodeEvent:106:32`,`DialogueNodeEvent:106:33`,`DialogueNodeEvent:106:34`) happened is equal to 0 then the color returns green, otherwise it will return yellow.
 
 | Outcome | Condition |
 |---------|-----------|
@@ -20,7 +20,8 @@ This progress point is a number-based progress. Firstly, it will check whether t
 
 - **Start:** Latest `questFinishEvent:44` before the end event (exclusive; zero ObjectId when there is none)
 - **End:** Latest `questFinishEvent:45` (inclusive)
-- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
+- The Production Script below bounds the window this way: it anchors on the latest end event and takes the latest start event before it, so a completed attempt keeps its grade if the student re-enters the activity afterwards. The Trigger(Start) event in the header is that same start event; it also drives the dashboard's in-progress state and the duration metrics.
+- This point has used the start-and-end form since 2026-09-01 and served as the model for the other 25 points (decision A1). Re-verified 2026-09-24 against the 2026-09-21 dialogue database and all logs; the scripts' variable names were aligned with the other files the same day (no logic change).
 
 ---
 
@@ -28,7 +29,8 @@ This progress point is a number-based progress. Firstly, it will check whether t
 
 | Role | Event Key |
 |------|-----------|
-| Trigger | `questFinishEvent:45` |
+| Trigger (Start) | `questFinishEvent:44` |
+| Trigger (End) | `questFinishEvent:45` |
 | Target | `DialogueNodeEvent:106:35` |
 | Target | `DialogueNodeEvent:106:4` |
 | Target | `DialogueNodeEvent:106:25` |
@@ -41,6 +43,8 @@ This progress point is a number-based progress. Firstly, it will check whether t
 | Target | `DialogueNodeEvent:106:32` |
 | Target | `DialogueNodeEvent:106:33` |
 | Target | `DialogueNodeEvent:106:34` |
+
+Notes (re-verified 2026-09-24): conversation 106 ("U5/Solar Still") has the same twelve outcome nodes in the 2026-09-21 dialogue database, with unchanged texts and conditions; the database adds the empty continuation node `106:37` (already logged since build 20260812) and prefixes each outcome title with its setting number ("01 - Tilted In, Covered, Cold" … "12 - Tilted Out, Uncovered, Cold"). The outcome titles name the three settings, which confirms the buckets: every "Covered" design (4, 25–29) blocks the sunlight; "Uncovered, Hot" (30–32) overheats the glass; "Uncovered, Cold" with a Tilted In or Flat roof (33, 34) loses the water to the roof angle; only "Tilted Out, Uncovered, Cold" (35) succeeds. The game also logs the design itself as `SolarStillDesignEvent` (three `optionSelected` records and one `DesignSubmitted` record with `designSelections`); the scripts grade the outcome node, and in every log the submitted design matches the outcome node that fired. The Progress-Points U5.C4 row lists exactly these nodes. `questFinishEvent:45` logs twice in the same second; the latest is taken.
 
 ---
 
@@ -96,7 +100,7 @@ color;
 
 ```js
 // Production — replay-safe color script
-// Window start: previous questFinishEvent:44 (exclusive)
+// Window start: latest questFinishEvent:44 before the end event (exclusive)
 // Window end:   latest questFinishEvent:45 (inclusive)
 
 const playerId = "<playerId>";
@@ -132,19 +136,19 @@ const latestEnd = db.logdata.findOne(
 if (!latestEnd) {
   "yellow";
 } else {
-  // 2) Previous start anchor before latest end
-  const prevStart = db.logdata.findOne(
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
       eventKey: START_KEY,
       _id: { $lt: latestEnd._id }
     },
-    { sort: { _id: -1 }}
+    { sort: { _id: -1 } }
   );
 
-  const windowStartId = prevStart
-    ? prevStart._id
+  const windowStartId = latestStart
+    ? latestStart._id
     : ObjectId("000000000000000000000000");
 
   const windowEndId = latestEnd._id;
@@ -195,9 +199,11 @@ requires the success node with no failure nodes in the window.
 | Small amount — roof angle | `106:33`, `106:34` | Evaporation and condensation worked, but the roof's angle let most of the condensed water escape (2 variants) |
 
 Nodes that are **not** graded: `106:37` fires after either outcome (structural
-continuation); `106:36` is the engine's "No matching response found" line;
+continuation; new in the 2026-09-21 dialogue database, logged since build
+20260812); `106:36` is the engine's "No matching response found" line;
 `106:0` is empty. Window note: `questFinishEvent:45` (the end trigger) logs
 twice back-to-back — the latest-anchor windowing absorbs the duplicate.
+(Node table re-verified against the 2026-09-21 dialogue database on 2026-09-24.)
 
 ### WRONG_SETTINGS_SELECTED
 
@@ -208,8 +214,9 @@ twice back-to-back — the latest-anchor windowing absorbs the duplicate.
 ```js
 // U5P4: WRONG_SETTINGS_SELECTED — determine trigger and failure summary
 // Window mirrors the production color script: latest questFinishEvent:45 (end),
-// previous questFinishEvent:44 before it (start, exclusive; note 45 logs twice
-// back-to-back — latest-anchor windowing absorbs the duplicate).
+// latest questFinishEvent:44 before it (start, exclusive; zero ObjectId when
+// none; note 45 logs twice back-to-back — latest-anchor windowing absorbs the
+// duplicate).
 // Color rule (zero tolerance): green only when 106:35 fired AND no failure
 // outcome fired. Each desalinator run produces exactly one outcome node, so
 // success-missing and failure-present coincide on single-run paths.
@@ -243,13 +250,13 @@ const latestEnd = db.logdata.findOne(
 if (!latestEnd) {
   ({ triggered: false, wrong_run_number: 0, failure_phrase: "" });
 } else {
-  // 2) Previous start anchor before the latest end
-  const prevStart = db.logdata.findOne(
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
     { game: "mhs", playerId: playerId, eventKey: START_KEY, _id: { $lt: latestEnd._id } },
     { sort: { _id: -1 }, projection: { _id: 1 } }
   );
 
-  const windowStartId = prevStart ? prevStart._id : ObjectId("000000000000000000000000");
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
   const windowFilter = { _id: { $gt: windowStartId, $lte: latestEnd._id } };
 
   const countIn = (keys) => db.logdata.countDocuments({

@@ -18,9 +18,10 @@ Count-based rule. The student must have more than one occurrence of the target e
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `DialogueNodeEvent:11:22` (exclusive)
+- **Start:** Latest `DialogueNodeEvent:10:1` before the end event (exclusive; zero ObjectId when there is none)
 - **End:** Latest `DialogueNodeEvent:11:22` (inclusive)
-- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
+- The Production Script below bounds the window this way: it anchors on the latest end event and takes the latest start event before it, so a completed attempt keeps its grade if the student re-enters the activity afterwards. The Trigger(Start) event in the header is that same start event; it also drives the dashboard's in-progress state and the duration metrics.
+- Changed 2026-09-24 from the previous-and-latest end window (previous `DialogueNodeEvent:11:22` exclusive .. latest `DialogueNodeEvent:11:22` inclusive), per the start-and-end window decision (A1). Keys re-verified the same day against the 2026-09-21 dialogue database (`10:1`, `10:30`, `10:31`, `10:32`, `11:22` unchanged and unique; conversation 11 lost nodes 18–20, none graded here). Both Python transcriptions follow; the Go rule must be updated in step.
 
 ---
 
@@ -28,7 +29,8 @@ Count-based rule. The student must have more than one occurrence of the target e
 
 | Role | Event Key |
 |------|-----------|
-| Trigger | `DialogueNodeEvent:11:22` |
+| Trigger (Start) | `DialogueNodeEvent:10:1` |
+| Trigger (End) | `DialogueNodeEvent:11:22` |
 | Target | `DialogueNodeEvent:10:30` |
 
 ---
@@ -55,35 +57,37 @@ color;
 
 ```js
 // Unit 3, Point 1 — Attempt-based standalone production script (latest attempt)
-// Trigger eventKey: "DialogueNodeEvent:11:22"
+// Window start: latest DialogueNodeEvent:10:1 before the end event (exclusive)
+// Window end:   latest DialogueNodeEvent:11:22 (inclusive)
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "DialogueNodeEvent:11:22";
+const START_KEY = "DialogueNodeEvent:10:1";
+const END_KEY = "DialogueNodeEvent:11:22";
 const TARGET_KEY = "DialogueNodeEvent:10:30";
 
-// 1) Latest trigger (end anchor)
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!latestTrigger) {
+if (!latestEnd) {
   "yellow";
 } else {
-  // 2) Previous trigger (attempt boundary)
-  const prevTrigger = db.logdata.findOne(
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
+      eventKey: START_KEY,
+      _id: { $lt: latestEnd._id }
     },
     { sort: { _id: -1 } }
   );
 
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestEnd._id;
 
   // 3) Count target occurrences within attempt window
   const cnt = db.logdata.countDocuments({
@@ -109,6 +113,8 @@ if (!latestTrigger) {
 
 ```js
 // U3P1: EXCESS_WRONG_RIVERS - determine trigger and wrong_river_number
+// Window mirrors the production color script: latest DialogueNodeEvent:11:22 (end),
+// latest DialogueNodeEvent:10:1 before it (start, exclusive; zero ObjectId when none).
 // Triggers when the color rule goes yellow: fewer than 2 correct-river
 // confirmations (10:30) in the attempt window. wrong_river_number counts the
 // wrong-river feedback nodes directly (10:31 mid-task, 10:32 last crate).
@@ -118,7 +124,8 @@ if (!latestTrigger) {
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "DialogueNodeEvent:11:22";
+const START_KEY = "DialogueNodeEvent:10:1";
+const END_KEY = "DialogueNodeEvent:11:22";
 const CORRECT_KEY = "DialogueNodeEvent:10:30";  // "you picked the right river"
 
 const WRONG_RIVER_KEYS = [
@@ -126,28 +133,28 @@ const WRONG_RIVER_KEYS = [
   "DialogueNodeEvent:10:32"   // wrong river, last crate
 ];
 
-// 1) Latest trigger (end anchor)
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!latestTrigger) {
+if (!latestEnd) {
   ({ triggered: false, wrong_river_number: 0 });
 } else {
-  // 2) Previous trigger (attempt boundary)
-  const prevTrigger = db.logdata.findOne(
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
+      eventKey: START_KEY,
+      _id: { $lt: latestEnd._id }
     },
     { sort: { _id: -1 } }
   );
 
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestEnd._id;
 
   // 3) Correct-river confirmations (the color rule's target)
   const correctCount = db.logdata.countDocuments({

@@ -6,13 +6,18 @@ mhs-unit5-point3-grading.md, "## Reason Codes":
       submissions (count-only; no success-node requirement).
       wrong_argument_number = total flagged submissions; the component counts
       split it. The softer twins 108:63-66/68/69 were added to the colour rule and
-      the buckets on 2026-09-17 and are counted.
+      the buckets on 2026-09-17 and are counted. Key lists and buckets
+      re-verified 2026-09-24 against the 2026-09-21 dialogue database
+      (conversation 108 unchanged: 55 nodes, same gates).
 
-Window: latest `DialogueNodeEvent:96:1` (start, exclusive) .. latest
-`questFinishEvent:44` (end, inclusive); guard `latestEnd._id < latestStart._id`.
+Window (start-and-end form since 2026-09-24): latest `questFinishEvent:44`
+(end, inclusive), latest `DialogueNodeEvent:96:1` before it (start, exclusive;
+OID_MIN when none) — the same window as the production color script. Until
+2026-09-24: latest start and latest end, yellow when the end preceded the
+start (guard `latestEnd._id < latestStart._id`).
 """
 
-from rc_common import count_keys, gt_lte, start_end_window
+from rc_common import OID_MIN, count_keys, gt_lte, latest
 
 META = {"unit": 5, "point": 3, "name": "What Happened Here?",
         "doc": "mhs-unit5-point3-grading.md"}
@@ -52,7 +57,14 @@ NEG_KEYS = CLAIM_NEG_KEYS + REASONING_NEG_KEYS + EVIDENCE_NEG_KEYS
 
 
 def attempt_window(coll, pid):
-    return start_end_window(coll, pid, WINDOW_START_KEY, WINDOW_END_KEY, strict=False)
+    # 1) Latest end anchor
+    latest_end = latest(coll, pid, WINDOW_END_KEY)
+    if not latest_end:
+        return None
+    # 2) Latest start anchor before the latest end
+    latest_start = latest(coll, pid, WINDOW_START_KEY, {"_id": {"$lt": latest_end["_id"]}})
+    window_start_id = latest_start["_id"] if latest_start else OID_MIN
+    return window_start_id, latest_end["_id"]
 
 
 def excess_attempts(coll, pid):

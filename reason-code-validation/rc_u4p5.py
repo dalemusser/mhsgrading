@@ -5,17 +5,29 @@ mhs-unit4-point5-grading.md, "## Reason Codes":
   EXCESS_ATTEMPTS — `triggered` mirrors the color rule verbatim: no success
       node (90:50 first-try / 90:57 after revisions) OR 3+ negative
       submissions. attempt_number = incorrect submissions + 1 when success is
-      present; the three component counts split the incorrect submissions.
+      present; the three component counts split the incorrect submissions by
+      the conversation-90 gate that fired (re-verified against the 2026-09-21
+      Unity export on 2026-09-24, unchanged since 2026-06-10):
+        gate 90:4          claim I (any evidence)       -> 90:37/55   claim_wrong_number
+        gates 90:8/51/53   claim II, reasoning 1/3/4    -> 25,56/52,60/54,61  reasoning_wrong_number
+        gate 90:38         claim II, reasoning 2 (ok)   -> 39/58 missing, 45/59 unsupportive  evidence_wrong_number
+        (no gate)          any part empty               -> 90:47      evidence_wrong_number
 
-Window: previous `questActiveEvent:41` (exclusive) .. latest (inclusive).
+Window (start-and-end form since 2026-09-24): latest `questActiveEvent:41`
+(end, inclusive), latest `questActiveEvent:36` before it (start, exclusive;
+OID_MIN when none) — the same window as the production color script.
+`questActiveEvent:36` logs twice per playthrough; the later one is taken and
+every conversation-90 submission follows it. Until 2026-09-24: previous
+`questActiveEvent:41` (exclusive) .. latest (inclusive).
 """
 
-from rc_common import count_keys, gt_lte, has_keys, latest_trigger_window
+from rc_common import OID_MIN, count_keys, gt_lte, has_keys, latest
 
 META = {"unit": 4, "point": 5, "name": "Saving Cadet Anderson",
         "doc": "mhs-unit4-point5-grading.md"}
 
-TRIGGER_KEY = "questActiveEvent:41"
+START_KEY = "questActiveEvent:36"
+END_KEY = "questActiveEvent:41"
 
 POS_KEYS = ["DialogueNodeEvent:90:50", "DialogueNodeEvent:90:57"]
 
@@ -37,7 +49,14 @@ NEG_KEYS = CLAIM_NEG_KEYS + REASONING_NEG_KEYS + EVIDENCE_NEG_KEYS
 
 
 def attempt_window(coll, pid):
-    return latest_trigger_window(coll, pid, TRIGGER_KEY)
+    # 1) Latest end anchor
+    latest_end = latest(coll, pid, END_KEY)
+    if not latest_end:
+        return None
+    # 2) Latest start anchor before the latest end
+    latest_start = latest(coll, pid, START_KEY, {"_id": {"$lt": latest_end["_id"]}})
+    window_start_id = latest_start["_id"] if latest_start else OID_MIN
+    return window_start_id, latest_end["_id"]
 
 
 def excess_attempts(coll, pid):

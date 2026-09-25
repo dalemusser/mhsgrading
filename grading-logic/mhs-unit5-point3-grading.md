@@ -18,8 +18,10 @@ This progress point is attempt-based: it counts Dr. Toppo's wrong-answer feedbac
 
 ### Attempt Window (Production)
 
-- **Start:** Latest `DialogueNodeEvent:96:1` (exclusive)
+- **Start:** Latest `DialogueNodeEvent:96:1` before the end event (exclusive; zero ObjectId when there is none)
 - **End:** Latest `questFinishEvent:44` (inclusive)
+- The Production Script below bounds the window this way: it anchors on the latest end event and takes the latest start event before it, so a completed attempt keeps its grade if the student re-enters the activity afterwards. The Trigger(Start) event in the header is that same start event; it also drives the dashboard's in-progress state and the duration metrics.
+- Changed 2026-09-24 from the latest-start / latest-end form (yellow whenever the latest `questFinishEvent:44` preceded the latest `DialogueNodeEvent:96:1`), per the start-and-end window decision (A1). Keys re-verified the same day against the 2026-09-21 dialogue database (conversation 108 unchanged: 55 nodes, same gates, texts and links). Both Python transcriptions follow; the Go rule must be updated in step.
 
 ---
 
@@ -27,7 +29,8 @@ This progress point is attempt-based: it counts Dr. Toppo's wrong-answer feedbac
 
 | Role | Event Key |
 |------|-----------|
-| Trigger | `questFinishEvent:44` |
+| Trigger (Start) | `DialogueNodeEvent:96:1` |
+| Trigger (End) | `questFinishEvent:44` |
 | Target | `DialogueNodeEvent:108:25` |
 | Target | `DialogueNodeEvent:108:32` |
 | Target | `DialogueNodeEvent:108:33` |
@@ -67,6 +70,8 @@ This progress point is attempt-based: it counts Dr. Toppo's wrong-answer feedbac
 | Target | `DialogueNodeEvent:108:89` |
 | Target | `DialogueNodeEvent:108:90` |
 | Target | `DialogueNodeEvent:108:91` |
+
+Notes (re-verified 2026-09-24): the start anchor `96:1` (Aryn, conversation 96 "U5/PostDungeon"; also U5P2's end) and the end anchor `questFinishEvent:44` each fire once per playthrough (`96:1` twice, 13 s apart, in the non-fixture log 08-13-26; the latest is taken). The Progress-Points U5.C3 row lists exactly these 39 incorrect-argument nodes, and its colour band (green 2–3 points, yellow 0–1) matches the script's threshold: a correct argument on the 4th attempt, i.e. 3 flagged submissions, is 2 points and green, while 4 or more flagged submissions is yellow. The row also names `108:51` / `108:52` and `98:60` as correct-argument markers; the script does not require a success node, because the quest completes without one (both yellow fixtures finished with no `108:51`/`108:52`).
 
 ---
 
@@ -111,8 +116,8 @@ color;
 
 ```js
 // Production — replay-safe attempt-based color script
-// Window start: "DialogueNodeEvent:96:1"
-// Window end:   "questFinishEvent:44"
+// Window start: latest DialogueNodeEvent:96:1 before the end event (exclusive)
+// Window end:   latest questFinishEvent:44 (inclusive)
 // NEGATIVE_KEYS = all 39 conversation-108 wrong-answer feedback nodes
 // (extended 2026-09-17 with 63/64, 65/66, 68/69 — the "one correct evidence"
 // and "wrong evidence pair" branches for the correct claim).
@@ -138,32 +143,36 @@ const NEGATIVE_KEYS = [
   "DialogueNodeEvent:108:89", "DialogueNodeEvent:108:90", "DialogueNodeEvent:108:91"
 ];
 
-// 1) Most recent window start
-const latestStart = db.logdata.findOne(
-  {
-    game: "mhs",
-    playerId: playerId,
-    eventKey: WINDOW_START_KEY
-  },
-  { sort: { _id: -1 }}
-);
-
-// 2) Most recent window end
+// 1) Latest end anchor
 const latestEnd = db.logdata.findOne(
   {
     game: "mhs",
     playerId: playerId,
     eventKey: WINDOW_END_KEY
   },
-  { sort: { _id: -1 }}
+  { sort: { _id: -1 } }
 );
 
-if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
+if (!latestEnd) {
   "yellow";
 } else {
-  const windowStartId = latestStart._id;
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
+    {
+      game: "mhs",
+      playerId: playerId,
+      eventKey: WINDOW_START_KEY,
+      _id: { $lt: latestEnd._id }
+    },
+    { sort: { _id: -1 } }
+  );
+
+  const windowStartId = latestStart
+    ? latestStart._id
+    : ObjectId("000000000000000000000000");
   const windowEndId = latestEnd._id;
 
+  // 3) Count flagged submissions inside the window
   const cnt = db.logdata.countDocuments({
     game: "mhs",
     playerId: playerId,
@@ -186,8 +195,9 @@ state (claim, evidence combination, reasoning) through player gate nodes, and ea
 flagged submission fires exactly one Dr. Toppo feedback node. Every feedback exists
 as a generic/specific pair (the game's `argSpecificFeedback` flag picks the wording),
 and both members of each pair are counted. The color rule counts all 39 nodes below
-(reviewed against the 2026-06-10 Unity dialogue export on 2026-09-17; the six nodes
-marked ★ were added that day).
+(reviewed against the 2026-06-10 Unity dialogue export on 2026-09-17, when the six
+nodes marked ★ were added; re-verified unchanged against the 2026-09-21 export on
+2026-09-24).
 
 | Category | Branch (player gate) | Nodes | Feedback gist |
 |----------|----------------------|-------|---------------|
@@ -229,15 +239,16 @@ Script bucket lists derived from these rows: claim = {32, 33, 37, 41, 70, 72, 73
 
 ```js
 // U5P3: EXCESS_ATTEMPTS — determine trigger and component quantities
-// Window mirrors the production color script: latest DialogueNodeEvent:96:1
-// (start) to latest questFinishEvent:44 (end), end must not precede start.
+// Window mirrors the production color script: latest questFinishEvent:44 (end),
+// latest DialogueNodeEvent:96:1 before it (start, exclusive; zero ObjectId when none).
 // Triggers when the color rule goes yellow: 4+ flagged submissions (count-only —
 // this point has NO success-node requirement; the ideal-argument nodes 108:51/52
 // are not part of the color rule and may not fire even on completed runs).
 // wrong_argument_number = total flagged submissions; the three component counts
 // split it by the problem the feedback named. The key lists cover all 39
 // conversation-108 wrong-answer feedback nodes (reviewed against the Unity
-// dialogue export 2026-09-17; 63/64, 65/66, 68/69 added then).
+// dialogue export 2026-09-17, when 63/64, 65/66, 68/69 were added; re-verified
+// unchanged against the 2026-09-21 export on 2026-09-24).
 // Audit invariant: claim + reasoning + evidence counts = wrong_argument_number.
 
 const playerId = "<playerId>";
@@ -275,22 +286,24 @@ const EVIDENCE_NEG_KEYS = [
 
 const NEG_KEYS = [...CLAIM_NEG_KEYS, ...REASONING_NEG_KEYS, ...EVIDENCE_NEG_KEYS];
 
-// 1) Window anchors (mirror of the color production script)
-const latestStart = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: WINDOW_START_KEY },
-  { sort: { _id: -1 }, projection: { _id: 1 } }
-);
+// 1) Latest end anchor (mirror of the color production script)
 const latestEnd = db.logdata.findOne(
   { game: "mhs", playerId: playerId, eventKey: WINDOW_END_KEY },
   { sort: { _id: -1 }, projection: { _id: 1 } }
 );
 
-if (!latestStart || !latestEnd || latestEnd._id < latestStart._id) {
-  // Missing/invalid window (incl. started-but-unfinished pencil case)
+if (!latestEnd) {
+  // No finished attempt (incl. the started-but-unfinished pencil case)
   ({ triggered: false, wrong_argument_number: 0, claim_wrong_number: 0,
      reasoning_wrong_number: 0, evidence_wrong_number: 0 });
 } else {
-  const windowFilter = { _id: { $gt: latestStart._id, $lte: latestEnd._id } };
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
+    { game: "mhs", playerId: playerId, eventKey: WINDOW_START_KEY, _id: { $lt: latestEnd._id } },
+    { sort: { _id: -1 }, projection: { _id: 1 } }
+  );
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowFilter = { _id: { $gt: windowStartId, $lte: latestEnd._id } };
 
   const countIn = (keys) => db.logdata.countDocuments({
     game: "mhs", playerId: playerId, eventKey: { $in: keys }, ...windowFilter

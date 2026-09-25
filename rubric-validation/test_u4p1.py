@@ -1,11 +1,11 @@
 """Test for Unit 4 Point 1 — "Well What Have We Here?: Water Table Basics".
 
-Production rule (mhs-unit4-point1-grading.md): score-based, within the latest
-attempt window anchored on the latest START (`DialogueNodeEvent:88:0`,
-exclusive) and, as END, the latest close of the Unit 4 soil key puzzle — the
+Production rule (mhs-unit4-point1-grading.md): score-based, within the attempt
+window whose END is the latest close of the Unit 4 soil key puzzle — the
 `Soil Key Puzzle` event with `Soil Key Puzzle Status` = "Finished" and
-`data.Unit` matching /^Unit 4/ (an eventType + data match, not an eventKey).
-Both anchors required and END must be after START (else yellow).
+`data.Unit` matching /^Unit 4/ (an eventType + data match, not an eventKey) —
+and whose START is the latest `DialogueNodeEvent:88:0` before it (exclusive;
+ObjectId("000...") when there is none). No END => yellow.
 
     +0.5  if CORRECT_KEY (`DialogueNodeEvent:88:5`) present inside window
     +1.0  if 0 < soil-key-puzzle duration <= 30s
@@ -15,16 +15,19 @@ Both anchors required and END must be after START (else yellow).
 The duration runs from the earliest Unit-4 "Started" soil-key event inside the
 window to the END anchor itself (the puzzle close), using serverTimestamp.
 
-The 2026-09-01 grading-logic update replaced the old END anchor
-`DialogueNodeEvent:88:10`, an optional branch node that never fires on a clean
-solve (the 08-31-26 audit finding). `data.Unit` holds the build-flavored scene
-name (currently "Unit 4 Dev"), and the soil key puzzle also fires in Units 2
-and 3 — hence the prefix match.
+History: until 2026-09-24 the script took the latest start and the latest end
+and returned yellow unless the end came after the start (end-first form since
+2026-09-24, decision A1). The 2026-09-01 grading-logic update replaced the old
+END anchor `DialogueNodeEvent:88:10`, an optional branch node that never fires
+on a clean solve (the 08-31-26 audit finding). `data.Unit` holds the
+build-flavored scene name (still "Unit 4 Dev" on build 20260914-), and the
+soil key puzzle also fires in Units 2 and 3 — hence the prefix match. Keys
+re-verified 2026-09-24 against the 2026-09-21 dialogue database.
 """
 
 from datetime import datetime
 
-from mhs_harness import GAME
+from mhs_harness import GAME, OID_MIN, ObjectId
 
 META = {
     "unit": 4,
@@ -40,7 +43,7 @@ START_STATUS = "Started"
 END_STATUS = "Finished"
 UNIT_4_REGEX = "^Unit 4"
 
-WINDOW_DESC = "latest DialogueNodeEvent:88:0 .. latest Unit-4 soil-key close"
+WINDOW_DESC = "latest DialogueNodeEvent:88:0 before the latest Unit-4 soil-key close .. that close"
 
 
 def _server_iso(doc):
@@ -74,27 +77,37 @@ def _soilkey_query(pid, status):
     }
 
 
-def attempt_window(coll, pid):
-    """(windowStartId, windowEndId) or None, matching the production guard
-    `!latestStart || !latestEnd || latestEnd._id <= latestStart._id`."""
-    latest_start = coll.find_one(
-        {"game": GAME, "playerId": pid, "eventKey": START_KEY}, sort={"_id": -1}
-    )
+def _anchors(coll, pid):
+    """(windowStartId, latestEndDoc) or None when no Unit-4 soil-key close
+    exists (=> yellow)."""
+    # 1) Latest end anchor: latest Unit 4 soil key puzzle close
     latest_end = coll.find_one(_soilkey_query(pid, END_STATUS), sort={"_id": -1})
-    if not latest_start or not latest_end or latest_end["_id"] <= latest_start["_id"]:
+    if not latest_end:
         return None
-    return latest_start["_id"], latest_end["_id"]
+    # 2) Latest start anchor before the latest end
+    latest_start = coll.find_one(
+        {"game": GAME, "playerId": pid, "eventKey": START_KEY,
+         "_id": {"$lt": latest_end["_id"]}},
+        sort={"_id": -1},
+    )
+    window_start_id = latest_start["_id"] if latest_start else ObjectId(OID_MIN)
+    return window_start_id, latest_end
+
+
+def attempt_window(coll, pid):
+    a = _anchors(coll, pid)
+    return (a[0], a[1]["_id"]) if a else None
 
 
 def _parts(coll, pid):
     """Returns (score, has_correct, duration_seconds, reason).
     reason is None on success or a string when the window cannot be
     established (=> yellow)."""
-    win = attempt_window(coll, pid)
-    if win is None:
-        return None, None, None, "missing start anchor or Unit-4 soil-key close, or close not after start"
-    window_start_id, window_end_id = win
-    win_filter = {"_id": {"$gt": window_start_id, "$lte": window_end_id}}
+    a = _anchors(coll, pid)
+    if a is None:
+        return None, None, None, "missing Unit-4 soil-key close"
+    window_start_id, latest_end = a
+    win_filter = {"_id": {"$gt": window_start_id, "$lte": latest_end["_id"]}}
 
     score = 0.0
 
@@ -113,8 +126,6 @@ def _parts(coll, pid):
     )
 
     # The end anchor itself is the puzzle close — its timestamp is the end time.
-    latest_end = coll.find_one(_soilkey_query(pid, END_STATUS), sort={"_id": -1})
-
     duration_seconds = None
     if start_doc and _server_iso(start_doc) and _server_iso(latest_end):
         start_ms = _to_ms(_server_iso(start_doc))

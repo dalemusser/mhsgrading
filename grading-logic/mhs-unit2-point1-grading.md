@@ -18,9 +18,10 @@ Student must complete the map-profile matching independently and without excessi
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questFinishEvent:21` (exclusive)
+- **Start:** Latest `DialogueNodeEvent:18:1` before the end event (exclusive; zero ObjectId when there is none)
 - **End:** Latest `questFinishEvent:21` (inclusive)
-- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
+- The Production Script below bounds the window this way: it anchors on the latest end event and takes the latest start event before it, so a completed attempt keeps its grade if the student re-enters the activity afterwards. The Trigger(Start) event in the header is that same start event; it also drives the dashboard's in-progress state and the duration metrics.
+- Changed 2026-09-23 from the previous-and-latest end window (previous `questFinishEvent:21` exclusive .. latest `questFinishEvent:21` inclusive), per the start-and-end window decision (A1). Both Python transcriptions follow; the Go rule must be updated in step.
 
 ---
 
@@ -28,7 +29,8 @@ Student must complete the map-profile matching independently and without excessi
 
 | Role | Event Key |
 |------|-----------|
-| Trigger | `questFinishEvent:21` |
+| Trigger (Start) | `DialogueNodeEvent:18:1` |
+| Trigger (End) | `questFinishEvent:21` |
 | Success | `DialogueNodeEvent:68:29` |
 | Yellow | `DialogueNodeEvent:68:22` |
 | Yellow | `DialogueNodeEvent:68:23` |
@@ -82,11 +84,13 @@ color;
 
 ```js
 // Unit 2, Point 1 — Attempt-based standalone production grading script
-// Trigger eventKey: "questFinishEvent:21"
+// Window start: latest DialogueNodeEvent:18:1 before the end event (exclusive)
+// Window end:   latest questFinishEvent:21 (inclusive)
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "questFinishEvent:21";
+const START_KEY = "DialogueNodeEvent:18:1";
+const END_KEY = "questFinishEvent:21";
 
 const successKey = "DialogueNodeEvent:68:29";
 
@@ -98,29 +102,30 @@ const yellowNodes = [
   "DialogueNodeEvent:68:31"
 ];
 
-// 1) Latest trigger (end anchor)
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!latestTrigger) {
+if (!latestEnd) {
   "yellow";
 } else {
-  // 2) Previous trigger (attempt boundary)
-  const prevTrigger = db.logdata.findOne(
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
+      eventKey: START_KEY,
+      _id: { $lt: latestEnd._id }
     },
     { sort: { _id: -1 } }
   );
 
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestEnd._id;
 
+  // 3) Success node and yellow nodes inside the window
   const hasSuccess =
     db.logdata.findOne({
       game: "mhs",
@@ -155,19 +160,24 @@ if (!latestTrigger) {
 
 ```js
 // U2P1: SOLVED_WITH_ASSIST - determine trigger and attempt_number
+// Window mirrors the production color script: latest questFinishEvent:21 (end),
+// latest DialogueNodeEvent:18:1 before it (start, exclusive; zero ObjectId when none).
 // Triggers when DANI completed the puzzle in the attempt window, on either path:
 //   forced   - 68:28 (5th attempt, >3 wrong) or 68:31 (6th attempt, any wrong);
 //   accepted - the player answered DANI's offer (68:23 / 68:27) with
 //              "Sure. I'm stuck" (68:24 / 68:32) and DANI then placed the
 //              pieces (68:26 / 68:34). Verified in log 09-14-26-3:
 //              68:23 -> 68:24 -> 68:26, and the solved-on-own node 68:29
-//              never fires on that path.
+//              never fires on that path;
+//   outcome  - 68:30 "SolvedHelp", the game's own DANI-completed outcome node
+//              (counterpart of 68:29), which closes every assisted path.
 // attempt_number = incorrect submissions before DANI completed the puzzle
 // (each wrong submission fires exactly one negative-feedback node, once per window)
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "questFinishEvent:21";
+const START_KEY = "DialogueNodeEvent:18:1";
+const END_KEY = "questFinishEvent:21";
 
 const ASSIST_KEYS = [
   "DialogueNodeEvent:68:24",  // accepted offer after 4th attempt ("Sure. I'm stuck")
@@ -175,7 +185,11 @@ const ASSIST_KEYS = [
   "DialogueNodeEvent:68:28",  // forced assist, 5th attempt, >3 wrong
   "DialogueNodeEvent:68:31",  // forced assist, 6th attempt, any wrong
   "DialogueNodeEvent:68:32",  // accepted offer after 5th attempt ("Sure. I'm stuck")
-  "DialogueNodeEvent:68:34"   // DANI places the pieces (accepted after 5th attempt)
+  "DialogueNodeEvent:68:34",  // DANI places the pieces (accepted after 5th attempt)
+  "DialogueNodeEvent:68:30"   // "SolvedHelp" outcome node: DANI completed the puzzle on any
+                              // assisted path (added 2026-09-23; on build 20260914- it fires
+                              // instead of 68:29, so it survives future rerouting of the
+                              // offer/placement nodes above)
 ];
 
 const NEGATIVE_KEYS = [
@@ -192,28 +206,28 @@ const NEGATIVE_KEYS = [
   "DialogueNodeEvent:68:31"   // 6th attempt, any wrong (DANI assists)
 ];
 
-// 1) Latest trigger (end anchor)
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!latestTrigger) {
+if (!latestEnd) {
   ({ triggered: false, attempt_number: 0 });
 } else {
-  // 2) Previous trigger (attempt boundary)
-  const prevTrigger = db.logdata.findOne(
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
+      eventKey: START_KEY,
+      _id: { $lt: latestEnd._id }
     },
     { sort: { _id: -1 } }
   );
 
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestEnd._id;
 
   // 3) Reason code triggers if any assist node (forced or accepted) fired in the window
   const assisted =
@@ -244,13 +258,16 @@ if (!latestTrigger) {
 
 ```js
 // U2P1: EXCESS_ATTEMPTS — determine trigger and attempt_number
+// Window mirrors the production color script: latest questFinishEvent:21 (end),
+// latest DialogueNodeEvent:18:1 before it (start, exclusive; zero ObjectId when none).
 // Triggers when the student solved the puzzle independently (68:29 in window and
 // no assist node, forced or accepted) but needed 5+ attempts (4+ negative-feedback nodes).
 // attempt_number = incorrect submissions + 1 (the final correct submission)
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "questFinishEvent:21";
+const START_KEY = "DialogueNodeEvent:18:1";
+const END_KEY = "questFinishEvent:21";
 const SUCCESS_KEY = "DialogueNodeEvent:68:29"; // solved-on-their-own completion
 
 const ASSIST_KEYS = [
@@ -259,7 +276,11 @@ const ASSIST_KEYS = [
   "DialogueNodeEvent:68:28",  // forced assist, 5th attempt, >3 wrong
   "DialogueNodeEvent:68:31",  // forced assist, 6th attempt, any wrong
   "DialogueNodeEvent:68:32",  // accepted offer after 5th attempt ("Sure. I'm stuck")
-  "DialogueNodeEvent:68:34"   // DANI places the pieces (accepted after 5th attempt)
+  "DialogueNodeEvent:68:34",  // DANI places the pieces (accepted after 5th attempt)
+  "DialogueNodeEvent:68:30"   // "SolvedHelp" outcome node: DANI completed the puzzle on any
+                              // assisted path (added 2026-09-23; on build 20260914- it fires
+                              // instead of 68:29, so it survives future rerouting of the
+                              // offer/placement nodes above)
 ];
 
 const NEGATIVE_KEYS = [
@@ -276,28 +297,28 @@ const NEGATIVE_KEYS = [
   "DialogueNodeEvent:68:31"   // 6th attempt, any wrong (DANI assists)
 ];
 
-// 1) Latest trigger (end anchor)
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!latestTrigger) {
+if (!latestEnd) {
   ({ triggered: false, attempt_number: 0 });
 } else {
-  // 2) Previous trigger (attempt boundary)
-  const prevTrigger = db.logdata.findOne(
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
+      eventKey: START_KEY,
+      _id: { $lt: latestEnd._id }
     },
     { sort: { _id: -1 } }
   );
 
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestEnd._id;
 
   // 3) Student reached the solved-on-their-own completion
   const solvedSelf =
@@ -325,7 +346,13 @@ if (!latestTrigger) {
     _id: { $gt: windowStartId, $lte: windowEndId }
   });
 
-  // 6) 4+ wrong submissions means success came on attempt 5 or later
+  // 6) 4+ wrong submissions means success came on attempt 5 or later.
+  //    The threshold mirrors the color rule: the yellow nodes are the 4th-attempt
+  //    feedback (68:22 / 68:23) and later, so a self-solved yellow cell always
+  //    carries >= 4 negative nodes, and a 3-negative run (solved on attempt 4) is
+  //    green and must not trigger. Re-verified 2026-09-23 on builds 20260902-12353
+  //    and 20260914-: every wrong submission fires exactly one listed node, in
+  //    attempt order 68:4/5 -> 68:6/7 -> 68:17/18 -> 68:22/23 -> assist nodes.
   const triggered = solvedSelf && !assisted && negativeCount >= 4;
 
   ({ triggered: triggered, attempt_number: negativeCount + 1 });

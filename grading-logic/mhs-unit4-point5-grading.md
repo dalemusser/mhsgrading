@@ -18,9 +18,11 @@ This progress point records how the player performs in the flooding argument. It
 
 ### Attempt Window (Production)
 
-- **Start:** Previous `questActiveEvent:41` (exclusive)
+- **Start:** Latest `questActiveEvent:36` before the end event (exclusive; zero ObjectId when there is none)
 - **End:** Latest `questActiveEvent:41` (inclusive)
-- The Production Script below bounds the window this way. The Trigger(Start) event in the header marks when the activity begins and drives the dashboard's in-progress state and the duration metrics.
+- The Production Script below bounds the window this way: it anchors on the latest end event and takes the latest start event before it, so a completed attempt keeps its grade if the student re-enters the activity afterwards. The Trigger(Start) event in the header is that same start event; it also drives the dashboard's in-progress state and the duration metrics.
+- `questActiveEvent:36` logs twice per playthrough (a few minutes apart, with Anderson's base-entry dialogue, conversation 82, between the two); the second emission is the one the script picks, and every conversation-90 submission follows it, so the two emissions bound the same argument.
+- Changed 2026-09-24 from the previous-and-latest end window (previous `questActiveEvent:41` exclusive .. latest `questActiveEvent:41` inclusive), per the start-and-end window decision (A1). Keys re-verified the same day against the 2026-09-21 dialogue database (conversation 90 unchanged: 23 nodes, same gates and texts). Both Python transcriptions follow; the Go rule must be updated in step.
 
 ---
 
@@ -28,7 +30,8 @@ This progress point records how the player performs in the flooding argument. It
 
 | Role | Event Key |
 |------|-----------|
-| Trigger | `questActiveEvent:41` |
+| Trigger (Start) | `questActiveEvent:36` |
+| Trigger (End) | `questActiveEvent:41` |
 | Target | `DialogueNodeEvent:90:50` |
 | Target | `DialogueNodeEvent:90:57` |
 | Target | `DialogueNodeEvent:90:25` |
@@ -92,11 +95,13 @@ color;
 
 ```js
 // Unit 4, Point 5 — Production (replay-safe, latest attempt window)
-// Trigger eventKey: "questActiveEvent:41"
+// Window start: latest questActiveEvent:36 before the end event (exclusive)
+// Window end:   latest questActiveEvent:41 (inclusive)
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "questActiveEvent:41";
+const START_KEY = "questActiveEvent:36";
+const END_KEY = "questActiveEvent:41";
 
 const POS_KEYS = ["DialogueNodeEvent:90:50", "DialogueNodeEvent:90:57"];
 
@@ -108,31 +113,34 @@ const NEG_KEYS = [
   "DialogueNodeEvent:90:61"
 ];
 
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
-  { sort: { _id: -1 }}
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
+  { sort: { _id: -1 } }
 );
 
-if (!latestTrigger) {
+if (!latestEnd) {
   "yellow";
 } else {
-  const prevTrigger = db.logdata.findOne(
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
     {
       game: "mhs",
       playerId: playerId,
-      eventKey: TRIGGER_KEY,
-      _id: { $lt: latestTrigger._id }
+      eventKey: START_KEY,
+      _id: { $lt: latestEnd._id }
     },
-    { sort: { _id: -1 }}
+    { sort: { _id: -1 } }
   );
 
-  const windowStartId = prevTrigger
-    ? prevTrigger._id
+  const windowStartId = latestStart
+    ? latestStart._id
     : ObjectId("000000000000000000000000");
 
-  const windowEndId = latestTrigger._id;
+  const windowEndId = latestEnd._id;
 
-  const has_trigger =
+  // 3) Success node and negative count inside the window
+  const hasSuccess =
     db.logdata.findOne(
       {
         game: "mhs",
@@ -142,7 +150,7 @@ if (!latestTrigger) {
       }
     ) !== null;
 
-  if (!has_trigger) {
+  if (!hasSuccess) {
     "yellow";
   } else {
     const cnt = db.logdata.countDocuments({
@@ -180,9 +188,19 @@ that name the same problem.
 | Completeness | `90:47` | "Your argument is incomplete. Make sure you have included all three parts." |
 
 Nodes that are **not** graded: `90:48`, `90:49` — "click the Backing Information
-orbs" hint nudges; `90:0`, `90:38`, `90:51`, `90:53` — empty structural nodes.
-The script's three component key lists group these rows as: claim = {37, 55};
-reasoning = {25, 56, 52, 60, 54, 61}; evidence/completeness = {39, 58, 45, 59, 47}.
+orbs" hint nudges; `90:0`, `90:4`, `90:8`, `90:38`, `90:51`, `90:53` — empty
+structural nodes (`90:0` fires once per submission; the others are argument-state
+gates that never log). The script's three component key lists group these rows
+as: claim = {37, 55}; reasoning = {25, 56, 52, 60, 54, 61};
+evidence/completeness = {39, 58, 45, 59, 47}. The grouping follows the
+conversation-90 gates in the Unity export (re-verified against the 2026-09-21
+export on 2026-09-24, unchanged since 2026-06-10): gate `90:4` (claim I, any
+evidence) → 37 / 55; gates `90:8` / `90:51` / `90:53` (claim II with reasoning
+1 / 3 / 4) → 25, 56 / 52, 60 / 54, 61; gate `90:38` (claim II with reasoning 2,
+the correct reasoning) → 39 / 58 (fewer than three pieces of evidence, none
+irrelevant), 45 / 59 (evidence B included), or the success nodes 50 / 57
+(evidence exactly A, C, D); `90:47` fires directly when any part is empty.
+Each pair is selected by `argSpecificFeedback` (first vs. repeated occurrence).
 
 ### EXCESS_ATTEMPTS
 
@@ -192,7 +210,8 @@ reasoning = {25, 56, 52, 60, 54, 61}; evidence/completeness = {39, 58, 45, 59, 4
 
 ```js
 // U4P5: EXCESS_ATTEMPTS - determine trigger and component quantities
-// Window mirrors the production color script: trigger-to-trigger on questActiveEvent:41.
+// Window mirrors the production color script: latest questActiveEvent:41 (end),
+// latest questActiveEvent:36 before it (start, exclusive; zero ObjectId when none).
 // triggered mirrors the color rule verbatim: no success node (90:50 first-try /
 // 90:57 after revisions) OR 3+ negative submissions. Note: the color scripts use
 // >= 3 (green = at most 2 negatives); the older prose saying ">= 4" is wrong.
@@ -200,7 +219,8 @@ reasoning = {25, 56, 52, 60, 54, 61}; evidence/completeness = {39, 58, 45, 59, 4
 
 const playerId = "<playerId>";
 
-const TRIGGER_KEY = "questActiveEvent:41";
+const START_KEY = "questActiveEvent:36";
+const END_KEY = "questActiveEvent:41";
 
 const POS_KEYS = ["DialogueNodeEvent:90:50", "DialogueNodeEvent:90:57"];
 
@@ -220,24 +240,24 @@ const EVIDENCE_NEG_KEYS = [
 
 const NEG_KEYS = [...CLAIM_NEG_KEYS, ...REASONING_NEG_KEYS, ...EVIDENCE_NEG_KEYS];
 
-// 1) Latest trigger (end anchor)
-const latestTrigger = db.logdata.findOne(
-  { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY },
+// 1) Latest end anchor
+const latestEnd = db.logdata.findOne(
+  { game: "mhs", playerId: playerId, eventKey: END_KEY },
   { sort: { _id: -1 } }
 );
 
-if (!latestTrigger) {
+if (!latestEnd) {
   ({ triggered: false, attempt_number: 0, claim_wrong_number: 0,
      reasoning_wrong_number: 0, evidence_wrong_number: 0 });
 } else {
-  // 2) Previous trigger (attempt boundary)
-  const prevTrigger = db.logdata.findOne(
-    { game: "mhs", playerId: playerId, eventKey: TRIGGER_KEY, _id: { $lt: latestTrigger._id } },
+  // 2) Latest start anchor before the latest end
+  const latestStart = db.logdata.findOne(
+    { game: "mhs", playerId: playerId, eventKey: START_KEY, _id: { $lt: latestEnd._id } },
     { sort: { _id: -1 } }
   );
 
-  const windowStartId = prevTrigger ? prevTrigger._id : ObjectId("000000000000000000000000");
-  const windowEndId = latestTrigger._id;
+  const windowStartId = latestStart ? latestStart._id : ObjectId("000000000000000000000000");
+  const windowEndId = latestEnd._id;
   const windowFilter = { _id: { $gt: windowStartId, $lte: windowEndId } };
 
   const countIn = (keys) => db.logdata.countDocuments({

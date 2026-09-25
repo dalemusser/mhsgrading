@@ -220,7 +220,7 @@
       "actual": "yellow",
       "passed": true,
       "diagnostics": {
-        "NO_TRIGGER": "no questFinishEvent:43/questActiveEvent:43 attempt window found — defaults to yellow"
+        "NO_TRIGGER": "no questFinishEvent:43 trigger found — defaults to yellow"
       }
     },
     {
@@ -231,7 +231,7 @@
       "actual": "yellow",
       "passed": true,
       "diagnostics": {
-        "NO_TRIGGER": "no DialogueNodeEvent:96:1/questFinishEvent:43 attempt window found — defaults to yellow"
+        "NO_TRIGGER": "no DialogueNodeEvent:96:1 trigger found — defaults to yellow"
       }
     },
     {
@@ -242,7 +242,7 @@
       "actual": "yellow",
       "passed": true,
       "diagnostics": {
-        "NO_TRIGGER": "no questFinishEvent:44/DialogueNodeEvent:96:1 attempt window found — defaults to yellow"
+        "NO_TRIGGER": "no questFinishEvent:44 trigger found — defaults to yellow"
       }
     },
     {

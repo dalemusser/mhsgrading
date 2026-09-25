@@ -7,16 +7,19 @@ mhs-unit4-point1-grading.md, "## Reason Codes":
       puzzle took <= 30s, +0.5 if 30-90s; triggered when score < 1.
       choice_phrase / duration_phrase are the message fragments.
 
-Window: latest `DialogueNodeEvent:88:0` (start, exclusive) .. latest Unit-4
-`Soil Key Puzzle` close (`Soil Key Puzzle Status` = "Finished",
-`data.Unit` =~ /^Unit 4/; end, inclusive); end must be after start. The
-duration runs from the earliest Unit-4 "Started" soil-key event inside the
-window to the end anchor, using serverTimestamp.
+Window (end-first form since 2026-09-24): latest Unit-4 `Soil Key Puzzle`
+close (`Soil Key Puzzle Status` = "Finished", `data.Unit` =~ /^Unit 4/; end,
+inclusive), latest `DialogueNodeEvent:88:0` before it (start, exclusive;
+OID_MIN when none) — the same window as the production color script. Until
+2026-09-24: latest start and latest end, end must follow start. The duration
+runs from the earliest Unit-4 "Started" soil-key event inside the window to
+the end anchor, using serverTimestamp. Keys re-verified 2026-09-24 against
+the 2026-09-21 dialogue database (conversation 88 unchanged).
 """
 
 from datetime import datetime
 
-from rc_common import GAME, gt_lte, has_keys, js_round, latest
+from rc_common import GAME, OID_MIN, gt_lte, has_keys, js_round, latest
 
 META = {"unit": 4, "point": 1, "name": "Well What Have We Here?",
         "doc": "mhs-unit4-point1-grading.md"}
@@ -59,24 +62,28 @@ def _to_ms(iso):
 
 
 def _anchors(coll, pid):
-    latest_start = latest(coll, pid, START_KEY)
+    """(windowStartId, latestEndDoc) or None when no Unit-4 soil-key close."""
+    # 1) Latest end anchor: latest Unit 4 soil key puzzle close
     latest_end = coll.find_one(_soilkey_query(pid, END_STATUS), sort={"_id": -1})
-    if not latest_start or not latest_end or latest_end["_id"] <= latest_start["_id"]:
+    if not latest_end:
         return None
-    return latest_start, latest_end
+    # 2) Latest start anchor before the latest end
+    latest_start = latest(coll, pid, START_KEY, {"_id": {"$lt": latest_end["_id"]}})
+    window_start_id = latest_start["_id"] if latest_start else OID_MIN
+    return window_start_id, latest_end
 
 
 def attempt_window(coll, pid):
     a = _anchors(coll, pid)
-    return (a[0]["_id"], a[1]["_id"]) if a else None
+    return (a[0], a[1]["_id"]) if a else None
 
 
 def score_below_threshold(coll, pid):
     a = _anchors(coll, pid)
     if a is None:
         return {"triggered": False, "choice_phrase": "", "duration_phrase": ""}
-    latest_start, latest_end = a
-    f = gt_lte((latest_start["_id"], latest_end["_id"]))
+    window_start_id, latest_end = a
+    f = gt_lte((window_start_id, latest_end["_id"]))
 
     has_correct = has_keys(coll, pid, CORRECT_KEY, f)
 
