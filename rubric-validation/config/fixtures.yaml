@@ -229,3 +229,61 @@ fixtures:
       U5P2: yellow
       U5P3: yellow
       U5P4: yellow
+
+  "09-23-26":
+    log: playthrough-logs-and-results/09-23-26/wenyi09232026.stratalog.logdata.json
+    description: >
+      Full playthrough logged 2026-09-25 UTC on version string "20260914-"
+      (build number missing after the dash; the Unit 4 garden crop names differ
+      from 09-14-26-3, so this is probably a newer build behind the same
+      truncated string). 11,648 records, units 1-5 complete in one sitting,
+      single player via top-level user_id, no debug-menu use, no crash records.
+      Unit 2 was resumed once from a checkpoint (quest 23 replayed; outside every
+      graded window). Every non-glyph activity was solved first try; the five
+      glyph puzzles were deliberately failed: U2P1, U2P4 and U5P1 solved on the
+      6th/6th/5th attempt without assist (EXCESS_ATTEMPTS), U3P4 and U4P2 forced
+      into DANI's 5th-attempt assist (SOLVED_WITH_ASSIST).
+    provenance: >
+      Expected colors established by the grading-readiness-audit run 09-23-26
+      (2026-09-26, first run with the doc-window cross-check extended to the
+      start-and-end transcriptions): 23 points PASSed an independent doc-window,
+      completion or special-case check; U2P2 and U5P4 executed without an
+      independent check (green: 0 wrong-direction prompts; success node 106:35
+      "Tilted Out, Uncovered, Cold"); U2P6 is green by the correct choice 20:43
+      although the audit flags a doc-window mismatch (the Progress-Points end
+      marker 18:284 fires ~1 min BEFORE the choice in every log, so the
+      doc-bounded window can never contain it - documented anchor divergence,
+      not a grading defect). All 26 colors cross-checked against raw windowed
+      event-key counts (reports/09-23-26/comparison-to-09-14-26-3.md). First
+      fixture on the EXCESS_ATTEMPTS branches of U2P1 (68:5/7/18/23/27, offers
+      declined, 68:29), U2P4 (74:4/6/10/15/16, 74:21) and U5P1
+      (100:34/35/36/38, 100:44), and on the FORCED-assist paths of U3P4
+      (78:4/7/9/12 -> 78:23) and U4P2 (102:3/7/10/18 -> 102:23) on the
+      "20260914-" build.
+    expected:
+      U1P1: green
+      U1P2: green
+      U1P3: green
+      U1P4: green
+      U2P1: yellow
+      U2P2: green
+      U2P3: green
+      U2P4: yellow
+      U2P5: green
+      U2P6: green
+      U2P7: green
+      U3P1: green
+      U3P2: green
+      U3P3: green
+      U3P4: yellow
+      U3P5: green
+      U4P1: green
+      U4P2: yellow
+      U4P3: green
+      U4P4: green
+      U4P5: green
+      U4P6: green
+      U5P1: yellow
+      U5P2: green
+      U5P3: green
+      U5P4: green

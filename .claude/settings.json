@@ -7,7 +7,9 @@
       "Bash(python run_all.py --help)",
       "Bash(python run_all.py --fixture 09-14-26-3 --no-report)",
       "Bash(python run_all.py --fixture 09-14-26-3 --no-report --quiet)",
-      "Bash(python run_all.py --fixture 09-03-26-3 --no-report)"
+      "Bash(python run_all.py --fixture 09-03-26-3 --no-report)",
+      "Bash(python build-log-qa/scripts/audit_logs.py --input playthrough-logs-and-results/09-23-26 --build-id 09-23-26 --baseline build-log-qa/reports/09-14-26-3)",
+      "Bash(grep -n \"09-14-26-3\\\\|09-03-26-4\\\\|## Fixtures\\\\|^| Fixture\\\\|^| \\\\`\" rubric-validation/README.md reason-code-validation/README.md)"
     ]
   }
 }

@@ -68,7 +68,8 @@ show up as a git diff). Ad-hoc `--log` results go to `outputs/adhoc-<name>/`
 
 Expected colors live **per fixture** in `config/fixtures.yaml`, not in the
 test modules — the same rubric gives different colors on different
-playthroughs. Current fixture:
+playthroughs. Current fixtures (all pass 26/26 as of 2026-09-26; provenance
+details in the manifest):
 
 * **`08-31-26`** (default) — full playthrough of the 08-31-26 build.
   Expected colors were established by the grading-readiness-audit run
@@ -76,6 +77,20 @@ playthroughs. Current fixture:
   verified against an independent expectation; 8 (U2P2, U2P6, U3P4, U4P4,
   U5P1–U5P4) are reviewed regression baselines (the audit executed them
   without an independent cross-check).
+* **`09-03-26-2`** — clean run of build 20260902-12353, all 26 green.
+* **`09-03-26-3`** — deliberately imperfect run of the same build, 17 yellow
+  (drove the U5P1 zero-negatives rule).
+* **`09-03-26-4`** — U2P1/U2P2/U2P3 yellow (the exactly-6-reminders U2P3
+  case); Unit 5 truncated by an internet outage, so U5P1–U5P4 are yellow
+  not-played artifacts.
+* **`09-14-26-3`** — build `20260914-`, imperfect play, 3 green / 23 yellow;
+  first fixture on the U2P1, U2P3 and U3P4 yellow branches.
+* **`09-23-26`** — version string `20260914-` (probably a newer build), one
+  sitting, 21 green / 5 yellow: only the five glyph puzzles were failed —
+  U2P1 / U2P4 / U5P1 solved late without assist, U3P4 / U4P2 forced into
+  DANI's 5th-attempt assist. 23 points PASSed an independent check in the
+  audit (the doc-window cross-check now covers the start-and-end
+  transcriptions).
 
 Newer log exports identify the player via top-level `user_id` instead of
 `playerId`; the loader detects this and copies `user_id` into `playerId` so

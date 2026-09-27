@@ -14,11 +14,15 @@ current grading markdown on 2026-09-02 and the overrides retired. If a module
 goes stale again, prefer re-syncing it over reintroducing an override.)
 
 Independent cross-check: for every module whose grade() windows via
-`latest_trigger_window`, the same logic is re-run over a *doc-derived
+`latest_trigger_window` (TRIGGER_KEY) or via a module-level `_window(coll,
+pid)` function (the start-and-end form every transcription uses since the
+2026-09-24 realignment), the same logic is re-run over a *doc-derived
 activity window* (last start-marker occurrence before the last end-marker
 occurrence, markers from Progress-Points.docx). Production color vs
 doc-window color disagreement reproduces the round-1 "window anchored on the
-wrong key" bug class.
+wrong key" bug class. (Until 2026-09-26 only TRIGGER_KEY modules were
+cross-checked; the 09-23-26 run first exposed the gap — 19 points silently
+fell to EXECUTED_NO_INDEPENDENT_CHECK.)
 
 Outputs: outputs/grading-validation.json / .csv
 """
@@ -326,22 +330,28 @@ def doc_window(coll, pid, doc_markers):
 
 
 def run_with_doc_window(module, grade_fn, coll, pid, win):
-    """Re-run a latest_trigger_window-based grader with the window pinned to
-    the doc-derived interval. Patches the module attribute, restores after."""
+    """Re-run a grader with its window pinned to the doc-derived interval.
+    Patches whichever window helper the module uses — `latest_trigger_window`
+    (TRIGGER_KEY modules) and/or the module-level `_window(coll, pid)` of the
+    start-and-end form — and restores the originals afterwards."""
     fixed = lambda c, p, k: win  # noqa: E731
+    fixed_window = lambda c, p: win  # noqa: E731
     patched = []
     for holder in (module,):
         if holder is not None and hasattr(holder, "latest_trigger_window"):
-            patched.append((holder, holder.latest_trigger_window))
+            patched.append((holder, "latest_trigger_window", holder.latest_trigger_window))
             holder.latest_trigger_window = fixed
+        if holder is not None and hasattr(holder, "_window"):
+            patched.append((holder, "_window", holder._window))
+            holder._window = fixed_window
     # some graders reach latest_trigger_window via the mhs_harness module
-    patched.append((mhs_harness, mhs_harness.latest_trigger_window))
+    patched.append((mhs_harness, "latest_trigger_window", mhs_harness.latest_trigger_window))
     mhs_harness.latest_trigger_window = fixed
     try:
         return grade_fn(coll, pid)
     finally:
-        for holder, orig in patched:
-            holder.latest_trigger_window = orig
+        for holder, attr, orig in patched:
+            setattr(holder, attr, orig)
 
 
 # ---------------------------------------------------------------------------
@@ -452,9 +462,10 @@ def main():
         doc = (intent["progress_points"].get(pp_id) or {}).get("progress_points_doc") or {}
         markers = doc.get("markers") or {}
         rec["doc_window"] = None
+        pinnable = bool(trigger_key) or hasattr(module, "_window")
         if pp_id in COMPLETION_ONLY:
             pass
-        elif trigger_key and markers.get("end"):
+        elif pinnable and markers.get("end"):
             dwin = doc_window(coll, pid, markers)
             if dwin:
                 try:

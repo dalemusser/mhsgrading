@@ -1,0 +1,32 @@
+﻿change,eventType,item,baseline,current
+removed_event_type,DaniEvent,,2,-
+removed_scenes,,PodsEscapingCopernicus Cutscene,,-
+new_values,ObjectInterEvent,data.actionType,,Press E to collect mega turnips; Press E to collect super orange; Press E to collect ultra corn
+removed_values,ObjectInterEvent,data.actionType,Press E to collect broccoli; Press E to collect peas; Press E to collect potatoes; Press E to pick up,
+new_values,SolarStillDesignEvent,data.designSelections.glassRoofTemperature,,Cold
+removed_values,SolarStillDesignEvent,data.designSelections.glassRoofTemperature,Hot,
+new_values,SolarStillDesignEvent,data.designSelections.roofCovering,,Uncovered
+removed_values,SolarStillDesignEvent,data.designSelections.roofCovering,Covered,
+new_values,SolarStillDesignEvent,data.designSelections.roofStyle,,Tilted Out
+removed_values,SolarStillDesignEvent,data.designSelections.roofStyle,Tilted In,
+new_values,SolarStillDesignEvent,data.selectedOption,,Cold; Tilted Out; Uncovered
+removed_values,SolarStillDesignEvent,data.selectedOption,Covered; Hot; Tilted In,
+cadence_change,TerasGardenBox,median_interval_s,1.434,4.06
+new_values,TopographicMapEvent,data.actionType,,WaypointResetEvent
+removed_values,TopographicMapEvent,data.legendName,Water,
+cadence_change,WaterChamberEvent,median_interval_s,6.144,19.608
+volume_change,argumentationAnswerEvent,record_count,37,5
+cadence_change,argumentationAnswerEvent,median_interval_s,20.302,3024.27
+new_values,argumentationAnswerEvent,data.answerSubmitted,,"A,C,D,2,II; D,C,3,II"
+removed_values,argumentationAnswerEvent,data.answerSubmitted,"; 2,I; A,2,I; A,2,II; A,3,I; A,B,1,I; A,B,2,I; A,B,3,I; A,B,4,I; A,D,C,2,II; B,1,I; B,1,II; B,4,II; B,C,1,I; C,1,I; C,1,II; C,3,II; C,4,II; C,D,3,II; D,1,I; D,1,II; D,2,II; D,3,I; D,4,I; D,4,II; D,A,2,II",
+removed_values,argumentationAnswerEvent,data.argumentationTitle,Unit 1 - Argumentation Tutorial,
+cadence_change,argumentationEvent,median_interval_s,158.479,66.927
+volume_change,argumentationNodeEvent,record_count,504,140
+cadence_change,argumentationNodeEvent,median_interval_s,0.218,0.467
+removed_values,argumentationNodeEvent,data.actionType,argumentationNodeRemove,
+removed_values,argumentationToolEvent,data.actionType,argumentationToolClose,
+new_values,argumentationToolEvent,data.argumentationTitle,,Unit 2 – Watershed
+new_values,argumentationToolEvent,data.toolName,,BackingInfoPanel - Waterfall Data; BackingInfoPanel - Watershed Graph
+volume_change,soilMachine,record_count,43,5
+cadence_change,soilMachine,median_interval_s,1.434,62.313
+removed_values,soilMachine,data.canisterType,Bedrock,

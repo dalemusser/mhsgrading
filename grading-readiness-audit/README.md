@@ -73,7 +73,12 @@ grading-readiness-audit/
 Run labels so far: `08-25-26` (first run; also holds the one-off
 `phase0-repo-inventory.md` inspection notes and the docx `*.extracted.txt`
 working files), `08-31-26`, `08-31-26-run2` (same logs re-audited after the
-2026-09-01 grading-logic edits).
+2026-09-01 grading-logic edits), `09-03-26-2` / `-3` / `-4`, `09-14-26-3`,
+`09-23-26` (first run after the 2026-09-24 start-and-end realignment of the
+transcriptions; the Stage-2 doc-window cross-check was extended the same day
+to pin a module's `_window(coll, pid)` as well as `latest_trigger_window`,
+and the Attempt Window parser accepts the "Latest `KEY` before the end event
+(exclusive; …)" phrasing — see `reports/09-23-26/comparison-to-09-14-26-3.md`).
 
 ## Data sources
 

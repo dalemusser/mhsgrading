@@ -1,0 +1,1360 @@
+{
+  "sources": {
+    "progress_points_docx": "grading-logic/original-score-rubric-table-and-dialogue-database/Progress-Points.docx",
+    "ea_working_doc_docx": "grading-logic/original-score-rubric-table-and-dialogue-database/MHS-2.0-Embedded-Assessment-Working-Doc.docx"
+  },
+  "progress_points": {
+    "U1P1": {
+      "progress_points_doc": {
+        "doc_id": "U1.C1",
+        "unit": 1,
+        "name": "Getting Your Space Legs",
+        "description": "Start of gameplay until the conclusion of task 1.2 “Gear Up”. Encompasses character creator, tutorials, and grabbing holo-watch, player meeting Toppo, and Toppo lesson. Ends just before Toppo tells the player to speak to other cadets.",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "NA- default to green for all players on complete",
+        "progress_log_mark_raw": "Start: {“questEventType”: “questActiveEvent,\nquestID: “28”}\nEnd:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “31”,\n“nodeId”: “29”}",
+        "ea_color_log_mark_raw": "White: Not completed.\n\nGreen: completed.",
+        "arg_attempt_log_mark_raw": "NA",
+        "markers": {
+          "start": [
+            "questActiveEvent:28"
+          ],
+          "end": [
+            "DialogueNodeEvent:31:29"
+          ]
+        },
+        "color_rule_dialogue_tags": []
+      },
+      "ea_working_doc": null
+    },
+    "U1P2": {
+      "progress_points_doc": {
+        "doc_id": "U1.C2",
+        "unit": 1,
+        "name": "Info and Intros",
+        "description": "Starts with Toppo telling the player to visit other cadets and assignment of task 2.2 “Infos and Intros.” Encompasses the player collecting arg pieces from all NPCs. Ends when task 2.2 is complete just before DANI tells the player to go back to Toppo.",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "NA- default to green for all players on complete",
+        "progress_log_mark_raw": "Start: {dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “31”,\n“nodeId”: “29”} \nEnd: {dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “30”,\n“nodeId”: “98”}",
+        "ea_color_log_mark_raw": "White: Not completed.\n\nGreen: completed.",
+        "arg_attempt_log_mark_raw": "NA",
+        "markers": {
+          "start": [
+            "DialogueNodeEvent:31:29"
+          ],
+          "end": [
+            "DialogueNodeEvent:30:98"
+          ]
+        },
+        "color_rule_dialogue_tags": []
+      },
+      "ea_working_doc": null
+    },
+    "U1P3": {
+      "progress_points_doc": {
+        "doc_id": "U1.C3",
+        "unit": 1,
+        "name": "Defend the Expedition (Argumentation: Identify a claim)",
+        "description": "Starts with DANI telling the player to go back to Toppo. Encompasses arg tutorial and completion of first argument. Ends just before the cutscene “Copernicus Rumbles” (task 3.1).",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "EA item 1.1\nGreen: 1 point \nYellow: less than 1 point",
+        "progress_log_mark_raw": "Start: {dialogueEventType: “DialogueN odeEvent”,\n“conversationId”: “30”,\n“nodeId”: “98”}\nEnd: {“questEventType”: “questActiveEvent,\nquestID: “34”}",
+        "ea_color_log_mark_raw": "Green (1 point): The feedback dialogue during or right before the close event of the argumentation only contains the following: 70-7 (Conversation ID-Dialogue Node ID)\n\nYellow (less than 1 point): Other conditions (e.g., 70-33 and 70-7, and each of them only happens once).",
+        "arg_attempt_log_mark_raw": "Calculate how many feedback dialogues happened (the count of dialogues with conversation ID of 70 )",
+        "markers": {
+          "start": [
+            "DialogueNodeEvent:30:98"
+          ],
+          "end": [
+            "questActiveEvent:34"
+          ]
+        },
+        "color_rule_dialogue_tags": [
+          [
+            70,
+            7
+          ],
+          [
+            70,
+            33
+          ]
+        ]
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U1.C3",
+          "ea_item": "1.1",
+          "topic": "Argumentation",
+          "task": "Build first argument",
+          "dashboard": "X\nOn-track:\n(1 pts.)\nConcern:\n(0 pts.)",
+          "student_action_scoring": "1 Point for correct answer on first attempt\n0 points for anything else",
+          "log_tag_raw": "Check the argument success event\n\nDialogue tags:\n1 point: The feedback dialogue during or right before the close event of the argumentation only contains the following: 70-7 (Conversation ID-Dialogue Node ID)\n\n0 points: Other conditions (e.g., 70-33|25 and 70-7. And each of them only happens once.)",
+          "score_formula_raw": "1 point for correct submission on 1st attempt.\n\n0 for anything else.\n\nCorrect feedback: Great!  You chose the main idea that Toppo is trying to support, also known as the claim. Good Job Cadet!",
+          "log_tag_dialogue_tags": [
+            [
+              70,
+              7
+            ],
+            [
+              70,
+              33
+            ],
+            [
+              70,
+              25
+            ]
+          ]
+        }
+      ]
+    },
+    "U1P4": {
+      "progress_points_doc": {
+        "doc_id": "U1.C4",
+        "unit": 1,
+        "name": "Unexpected Turbulence",
+        "description": "Starts with cutscene “Copernicus Rumbles” (beginning of task 3.1). Encompasses following Toppo, the alien hieroglyph cutscene, and player escaping the Copernicus. Ends when unit 1 concludes.",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "NA- default to green for all players on complete",
+        "progress_log_mark_raw": "Start: {“questEventType”: “questActiveEvent,\nquestID: “34”}\nEnd: {“questEventType”: “questFinishEvent,\nquestID: “34”}",
+        "ea_color_log_mark_raw": "White: Not completed.\n\nGreen: completed.",
+        "arg_attempt_log_mark_raw": "NA",
+        "markers": {
+          "start": [
+            "questActiveEvent:34"
+          ],
+          "end": [
+            "questFinishEvent:34"
+          ]
+        },
+        "color_rule_dialogue_tags": []
+      },
+      "ea_working_doc": null
+    },
+    "U2P1": {
+      "progress_points_doc": {
+        "doc_id": "U2.C1",
+        "unit": 2,
+        "name": "Escape the Ruins + Topographic Glyph (Identify Topographic map features)",
+        "description": "Starts at the beginning of Unit 2. Encompasses first rooms of ruins, both nanomachine panel interactions, and map tutorial #1, topography glyph game and initial soil key interaction. Ends at conclusion of task 1.1 just before cutscene of the player exiting the temple.",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "EA Item 2.1\nGreen: 1-2 Points \nYellow: less than 1 point",
+        "progress_log_mark_raw": "Start: {dialogueEventType: “DialogueStartEvent”,\n“conversationId”: “18”}\nEnd: {“questEventType”: “questFinishEvent,\nquestID: “21”}",
+        "ea_color_log_mark_raw": "Green (1-2 points): \n\n2 points: Only feedback dialogue 68-29 happens, or feedback dialogues 68-4 (68-5) and 68-29 happen.  \n\n\n1 point: Before the feedback dialogue 68-29 happens, there are 2 or 3 other feedback dialogues (68-4, 68-5, 68-6, 68-7, 68-17, 68-18)\n\n\nYellow (0 points): Before the feedback dialogue 68-29 happens, the following feedback happens: 68-23, 68-28, 68-27, 68-31.",
+        "arg_attempt_log_mark_raw": "NA",
+        "markers": {
+          "start": [],
+          "end": [
+            "questFinishEvent:21"
+          ]
+        },
+        "color_rule_dialogue_tags": [
+          [
+            68,
+            29
+          ],
+          [
+            68,
+            4
+          ],
+          [
+            68,
+            5
+          ],
+          [
+            68,
+            6
+          ],
+          [
+            68,
+            7
+          ],
+          [
+            68,
+            17
+          ],
+          [
+            68,
+            18
+          ],
+          [
+            68,
+            23
+          ],
+          [
+            68,
+            28
+          ],
+          [
+            68,
+            27
+          ],
+          [
+            68,
+            31
+          ]
+        ]
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U2.C1",
+          "ea_item": "2.1",
+          "topic": "Topography",
+          "task": "Topographic Map Matching Glyph",
+          "dashboard": "X\nOn-track:\n(1-2 pts.)\nConcern:\n(0 pts.)",
+          "student_action_scoring": "2 Points correct answer in 1 or 2 attempts\n1 Points 3 or 4 attempts\n0 Points 5 or more attempts",
+          "log_tag_raw": "Check number of submissions needed to complete the task\n\nDialogue tags:\n2 points: Only feedback dialogue 68-29 happens or feedback dialogues 68-4 (68-5) and 68-29 happen.  \n\n\n1 point: Before the feedback dialogue 68-29 happens, there are 2 or 3 other feedback dialogues (68-4, 68-5, 68-6, 68-7, 68-17, 68-18)\n\n\n0 point: Before the feedback dialogue 68-29 happens, there are more than 3 other feedback dialogues.",
+          "score_formula_raw": "2 points for submitting correct answer in 1 or 2 attempts.\n\n1 point for 3 or 4 attempts needed to submit the correct answer.\n\n0 point for anything else ( 5 or more attempts, or if task is not attempted)",
+          "log_tag_dialogue_tags": [
+            [
+              68,
+              29
+            ],
+            [
+              68,
+              4
+            ],
+            [
+              68,
+              5
+            ],
+            [
+              68,
+              6
+            ],
+            [
+              68,
+              7
+            ],
+            [
+              68,
+              17
+            ],
+            [
+              68,
+              18
+            ]
+          ]
+        }
+      ]
+    },
+    "U2P2": {
+      "progress_points_doc": {
+        "doc_id": "U2.C2",
+        "unit": 2,
+        "name": "Foraged Forging + Finding Toppo (Find geographic locations on topographic map)",
+        "description": "Starts with cutscene of the player exiting the temple. Encompasses player talking to Anderson, second map tutorial, the scrap collection task, map tutorial #3, and the player locating Toppo. Ends at end of task 1.3 just before DANI patches Anderson’s call through.",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "EA Item 2.2 \nGreen: 1 points\nYellow: less than 1 point",
+        "progress_log_mark_raw": "Start: {“questEventType”: “questFinishEvent,\nquestID: “21”}\nEnd: {dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “20”,\n“nodeId”: “26”}",
+        "ea_color_log_mark_raw": "Sum score rubric: \n\n1 point: calculate the time duration between the triggering of dialogue 19-46 and the triggering of dialogue 20-1. If the time duration is equal to or less than 5 minutes, then the player will get 1 point. Otherwise, 0 points.\n\nGreen: the sum score is between 1.5 to 2.5.\n\nYellow: the sum score is less than 1.5 points.",
+        "arg_attempt_log_mark_raw": "NA",
+        "markers": {
+          "start": [
+            "questFinishEvent:21"
+          ],
+          "end": [
+            "DialogueNodeEvent:20:26"
+          ]
+        },
+        "color_rule_dialogue_tags": [
+          [
+            19,
+            46
+          ],
+          [
+            20,
+            1
+          ]
+        ]
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U2.C2",
+          "ea_item": "2.2",
+          "topic": "Topography",
+          "task": "Find Toppo",
+          "dashboard": "X",
+          "student_action_scoring": "1 Point Player triggers help dialog one time or less\n½ Point Player triggers help dialog two times \n0 points Player triggers help dialog more than two times",
+          "log_tag_raw": "Help dialog statements:\n\nAnderson said that Toppo’s pod was northwest of our original location. We should look for a location on a hill at an elevation of approximately 90 feet. Remember you can move the waypoint on your map at any time.\n\nRemember to use your map. To open it, [press M/tap the Map button].\n\nWe need to find Toppo soon, TK. Use your map to find an area on a hill at an elevation of approximately 90 feet.\n\nDialogue tags:18-99; 28-179; 59-179; 18-223; 28-182; 59-182; 18-224; 28-183; 59-183.\n\n1 point: the aggregated triggering time of any of 18-99; 28-179; 59-179; 18-223; 28-182; 59-182; 18-224; 28-183; 59-183; is equal to or less than 1 time.\n\n½ point: the aggregated triggering time of any of 18-99, 18-223 and 18-224 is equal to 2 times.\n\n0 point: the aggregated triggering time of any of 18-99, 18-223 and 18-224 is more than 2 times.",
+          "score_formula_raw": "1 point:Player triggers help dialog one time or less\n\n½ point: Player triggers help dialog two times\n \n0 points: Player triggers help dialog more than two times",
+          "log_tag_dialogue_tags": [
+            [
+              18,
+              99
+            ],
+            [
+              28,
+              179
+            ],
+            [
+              59,
+              179
+            ],
+            [
+              18,
+              223
+            ],
+            [
+              28,
+              182
+            ],
+            [
+              59,
+              182
+            ],
+            [
+              18,
+              224
+            ],
+            [
+              28,
+              183
+            ],
+            [
+              59,
+              183
+            ]
+          ]
+        }
+      ]
+    },
+    "U2P3": {
+      "progress_points_doc": {
+        "doc_id": "U2.C3",
+        "unit": 2,
+        "name": "Finding Tera & Aryn\n(Find geographic locations on topographic map)",
+        "description": "Starts with DANI patching Anderson’s call with the next topographic clue through. Encompasses the player finding Tera and Aryn. Ends with conclusion of task 1.5 just before DANI’s line about finding Jasper.",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "Sum of EA Items 2.3 and 2.4 \n\nGreen: 2-3 points\nYellow: less than 2 points",
+        "progress_log_mark_raw": "Start: {dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “20”,\n“nodeId”: “26”}\nEnd: {dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “22”,\n“nodeId”: “18”}",
+        "ea_color_log_mark_raw": "Sum score rubric: \n(3 points: Waiting for map-usage related logs (map (or hotkey-M) open and close; waypoint position on the map))\n\n1 point: calculate the time duration between the triggering of dialogue 20-33 and the triggering of dialogue 21-1. If the time duration is equal to or less than 5 minutes, then the player will get 1 point. Otherwise, 0 points.\n\n1 point: calculate the time duration between the triggering of dialogue 21-15 and the triggering of dialogue 22-1. If the time duration is equal to or less than 5 minutes, then the player will get 1 point. Otherwise, 0 points.\n\nGreen: the sum score is equal to or larger than 2 points\n\nYellow: the sum score is less than 2 points.",
+        "arg_attempt_log_mark_raw": "NA",
+        "markers": {
+          "start": [
+            "DialogueNodeEvent:20:26"
+          ],
+          "end": [
+            "DialogueNodeEvent:22:18"
+          ]
+        },
+        "color_rule_dialogue_tags": [
+          [
+            20,
+            33
+          ],
+          [
+            21,
+            1
+          ],
+          [
+            21,
+            15
+          ],
+          [
+            22,
+            1
+          ]
+        ]
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U2.C3",
+          "ea_item": "2.3",
+          "topic": "Topography",
+          "task": "Find Tera",
+          "dashboard": "",
+          "student_action_scoring": "1 ½  Points Player triggers help dialog one time or less\n1 Point Player triggers help dialog two or three times \n½  Point Player triggers help dialog four times\n0 points Player triggers help dialog more than four times",
+          "log_tag_raw": "Help dialog statements:\n\nAnderson said that Tera’s pod was beside a nearby river. Let’s look for a river closer to where we started.\n\nThis area has a fairly high elevation. We’re looking for an area with low elevation. Check your map and see if you can find any good candidates on the eastern shore of a river.\n\nTera’s pod crashed on the eastern shore of a river, but we’re on the western shore. We should make our way to the eastern shore of this river.  Check the compass rose on your map to find it.\n\nLooks like you found an island, Tera's pod is not on an island. Check your map to see if you can find an area of around 0 feet elevation north of Toppo's location along a river.\n\nYou found an area of low elevation on this river’s eastern shore, but I don’t see Tera’s pod anywhere. Check your map to see if there’s another area of low elevation along this same shoreline. Maybe Tera’s pod is there?\n\nTry to find Tera as soon as you can. Use your map to find a river nearby then look for an area with an elevation of around 0 feet on its eastern shore.\n\nDialogue tags:\n18-225; 28-185; 59-185; 28-184; 28-191; 59-184; 59-191; 18-226; 18-227; 28-186; 59-186; 18-228; 28-187; 59-187; 18-229; 28-188; 59-188; 18-230; 28-180; 59-180    \n\n1.5 point: the aggregated triggering time of any of 18-225; 28-185; 59-185; 28-184; 28-191; 59-184; 59-191; 18-226; 18-227; 28-186; 59-186; 18-228; 28-187; 59-187; 18-229; 28-188; 59-188; 18-230; 28-180; 59-180 is equal to or less than 1 time.\n\n1 point: the aggregated triggering time of any of 18-225; 28-185; 59-185; 28-184; 28-191; 59-184; 59-191; 18-226; 18-227; 28-186; 59-186; 18-228; 28-187; 59-187; 18-229; 28-188; 59-188; 18-230; 28-180; 59-180 is equal to 2 or 3 times.\n\n0.5 point: the aggregated triggering time of any of 18-225; 28-185; 59-185; 28-184; 28-191; 59-184; 59-191; 18-226; 18-227; 28-186; 59-186; 18-228; 28-187; 59-187; 18-229; 28-188; 59-188; 18-230; 28-180; 59-180 is equal to 4 times.\n\n0 point: the aggregated triggering time of any of 18-225; 28-185; 59-185; 28-184; 28-191; 59-184; 59-191; 18-226; 18-227; 28-186; 59-186; 18-228; 28-187; 59-187; 18-229; 28-188; 59-188; 18-230; 28-180; 59-180 is more than 4 times.",
+          "score_formula_raw": "1 ½ points:Player triggers help dialog one time or less\n\n1 point: Player triggers help dialog two or three time\n\n½ point: Player triggers help dialog four time\n \n0 points: Player triggers help dialog more than four times",
+          "log_tag_dialogue_tags": [
+            [
+              18,
+              225
+            ],
+            [
+              28,
+              185
+            ],
+            [
+              59,
+              185
+            ],
+            [
+              28,
+              184
+            ],
+            [
+              28,
+              191
+            ],
+            [
+              59,
+              184
+            ],
+            [
+              59,
+              191
+            ],
+            [
+              18,
+              226
+            ],
+            [
+              18,
+              227
+            ],
+            [
+              28,
+              186
+            ],
+            [
+              59,
+              186
+            ],
+            [
+              18,
+              228
+            ],
+            [
+              28,
+              187
+            ],
+            [
+              59,
+              187
+            ],
+            [
+              18,
+              229
+            ],
+            [
+              28,
+              188
+            ],
+            [
+              59,
+              188
+            ],
+            [
+              18,
+              230
+            ],
+            [
+              28,
+              180
+            ],
+            [
+              59,
+              180
+            ]
+          ]
+        }
+      ]
+    },
+    "U2P4": {
+      "progress_points_doc": {
+        "doc_id": "U2.C4",
+        "unit": 2,
+        "name": "Investigate the Temple & Watershed Glyph\n(Relate watershed size to flow rate through main river)",
+        "description": "Starts with DANI’s line about finding Jasper. Encompasses soil key puzzle and nanomachine cutsceneU2 Toppo lesson, watershed glyph game, and conversation with Jasper at the end of task 1.6. Ends with conclusion of task 1.6.",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "EA Item 2.5\n\nGreen: 1-2 points\nYellow: less than 1 point",
+        "progress_log_mark_raw": "Start: {dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “22”,\n“nodeId”: “18”}\nEnd: {dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “23”,\n“nodeId”: “17”}",
+        "ea_color_log_mark_raw": "Green (1-2 points): \n2 points: Feedback dialogue74-21 or before 74-21 happens, one or two other feedback dialogues happen (74-4, 74-5, 74-6)\n\n1 point: before the feedback dialogue 74-21 happens, three or four feedback dialogues happen (74-9, 74-10, 74-15)\n\nYellow:\n0 point: Other situations happen (74-16, 74-17, 74-20, 74-22).",
+        "arg_attempt_log_mark_raw": "NA",
+        "markers": {
+          "start": [
+            "DialogueNodeEvent:22:18"
+          ],
+          "end": [
+            "DialogueNodeEvent:23:17"
+          ]
+        },
+        "color_rule_dialogue_tags": [
+          [
+            74,
+            21
+          ],
+          [
+            74,
+            4
+          ],
+          [
+            74,
+            5
+          ],
+          [
+            74,
+            6
+          ],
+          [
+            74,
+            9
+          ],
+          [
+            74,
+            10
+          ],
+          [
+            74,
+            15
+          ],
+          [
+            74,
+            16
+          ],
+          [
+            74,
+            17
+          ],
+          [
+            74,
+            20
+          ],
+          [
+            74,
+            22
+          ]
+        ]
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U2.C4",
+          "ea_item": "2.5",
+          "topic": "Cycling of Water",
+          "task": "Watershed Size/ Flow Rate Glyph Activity",
+          "dashboard": "X\nOn-track:\n(1-2 pts.)\nConcern:\n(0 pts.)",
+          "student_action_scoring": "2 Points correct answer within 3 attempts\n1 Points 4-5 attempts\n0 Points more than 5 attempts",
+          "log_tag_raw": "Count of submissions before obtaining win state\n\nDialogue tag:\n\n2 points: Feedback dialogue \n74-21 or before 74-21 happens, one or two other feedback dialogues happen (74-4, 74-5, 74-6)\n\n1 point: Feedback dialogue 74-21 happens, three or four feedback dialogues happen (74-9, 74-10, 74-15)\n\n0 point: Other situations happen.",
+          "score_formula_raw": "2 points for submitting correct answers within 3 trials.\n\n1 point for 4 or 5 attempts before submitting the correct answer.\n\n0 point for anything else",
+          "log_tag_dialogue_tags": [
+            [
+              74,
+              21
+            ],
+            [
+              74,
+              4
+            ],
+            [
+              74,
+              5
+            ],
+            [
+              74,
+              6
+            ],
+            [
+              74,
+              9
+            ],
+            [
+              74,
+              10
+            ],
+            [
+              74,
+              15
+            ]
+          ]
+        }
+      ]
+    },
+    "U2P5": {
+      "progress_points_doc": {
+        "doc_id": "U2.C5",
+        "unit": 2,
+        "name": "Getting the Band Back Together (Identify the parts of a scientific argument)",
+        "description": "Starts at the beginning of task 1.7 where Toppo tells the player to meet up with the team. Encompasses Toppo telling the player to meet up with the team, group arguing cutscene,the classifier activity,and the player visiting other cadets to discuss the watershed issue. Ends with conclusion of task 2.2 just before the player launches the drone.",
+        "checkpoint": "Start \nEnd",
+        "color_determination": "EA Item 2.6\n\nGreen: 4-6 points\nYellow: less than 4 points",
+        "progress_log_mark_raw": "Start: {dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “23”,\n“nodeId”: “17”}\nEnd: {dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “23”,\n“nodeId”: “42”}",
+        "ea_color_log_mark_raw": "Sum score rubric: \n\nThe total problem number is 6 (?)\n\n1 Point: Each time when one of the following dialogues happen: \n26-140, 142, 143, 146, 147, 148, 165-170, 172-186.\n\n-⅓ Point: Each time when one of the following dialogues happen: 26-137, 144, 145, 187-189, 191-211.\n\nGreen:\nThe sum score is between 4 and 6.\n\nYellow:\nThe sum score is less than 4 points.",
+        "arg_attempt_log_mark_raw": "NA",
+        "markers": {
+          "start": [
+            "DialogueNodeEvent:23:17"
+          ],
+          "end": [
+            "DialogueNodeEvent:23:42"
+          ]
+        },
+        "color_rule_dialogue_tags": [
+          [
+            26,
+            140
+          ],
+          [
+            26,
+            137
+          ]
+        ]
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U2.C5",
+          "ea_item": "2.6",
+          "topic": "Argumentation",
+          "task": "Classify Argument Components",
+          "dashboard": "X\nOn-track:\n(4-6 pts.)\nConcern:\n(less than 4 pts.)",
+          "student_action_scoring": "1 Point for each correct placement\n-1/3 Points for each incorrect throw",
+          "log_tag_raw": "Check classifier system related events\n\n1 Point: Each time when the following dialogues happen: \n26-140, 142, 143, 146, 147, 148, 165-170, 172-186.\n\n-⅓ Point: Each time when the following dialogues happen: 26-137, 144, 145, 187-189, 191-211.",
+          "score_formula_raw": "Final score = 1*C - 0.33*I (6 - 0.33*I), where C is the count of making correct classification; I is the count of making wrong classification.\n\nNeed 6 correct for completion",
+          "log_tag_dialogue_tags": [
+            [
+              26,
+              140
+            ],
+            [
+              26,
+              137
+            ]
+          ]
+        }
+      ]
+    },
+    "U2P6": {
+      "progress_points_doc": {
+        "doc_id": "U2.C6",
+        "unit": 2,
+        "name": "Drone Tutorial +Data Collection (Relate watershed size to flow rate through main river)",
+        "description": "Starts with animation of drone launching. Encompasses the drone tutorial & eastern and western watershed data collection. Ends with conclusion of task 2.3.",
+        "checkpoint": "Start \nEnd",
+        "color_determination": "EA Item  2.7\n\nGreen: 0.5 point\nYellow: 0 points",
+        "progress_log_mark_raw": "Start: {dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “23”,\n“nodeId”: “42”}\nEnd: {dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “18”,\n“nodeId”: “284”}",
+        "ea_color_log_mark_raw": "Green (0.5 points): When the dialogue of 20-43 happens.\n\nYellow (0 points): When the dialogues of 20-44 or 20-45 happen.",
+        "arg_attempt_log_mark_raw": "NA",
+        "markers": {
+          "start": [
+            "DialogueNodeEvent:23:42"
+          ],
+          "end": [
+            "DialogueNodeEvent:18:284"
+          ]
+        },
+        "color_rule_dialogue_tags": [
+          [
+            20,
+            43
+          ],
+          [
+            20,
+            44
+          ],
+          [
+            20,
+            45
+          ]
+        ]
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U2.C6",
+          "ea_item": "2.7",
+          "topic": "Argumentation",
+          "task": "Evidence Selection (asked by Toppo)",
+          "dashboard": "",
+          "student_action_scoring": "1/2 Point for selecting flow rate\n0 Points for each anything else",
+          "log_tag_raw": "Dialog event selection\n\n()\n0.5 Point: when the dialogue of 20-43 happens.\n\n0 Point: when the dialogues of 20-44 or 20-45 happens.",
+          "score_formula_raw": "½ Point for selecting flow rate\n\n0 Points for anything else",
+          "log_tag_dialogue_tags": [
+            [
+              20,
+              43
+            ],
+            [
+              20,
+              44
+            ],
+            [
+              20,
+              45
+            ]
+          ]
+        }
+      ]
+    },
+    "U2P7": {
+      "progress_points_doc": {
+        "doc_id": "U2.C7",
+        "unit": 2,
+        "name": "Watershed Argument (Support a claim with evidence)",
+        "description": "Starts with the beginning of task 2.4 and Toppos arg introduction. Encompasses argumentation and final dialogue. Ends with the conclusion of Unit 2.",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "EA Item 2.8\n\nGreen: 2-3 points\nYellow: less than 2 points",
+        "progress_log_mark_raw": "Start: {dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “18”,\n“nodeId”: “284”}\nEnd: {dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “20”,\n“nodeId”: “74”}\n \nOR\n\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “20”,\n“nodeId”: “75”}",
+        "ea_color_log_mark_raw": "Green (2-3 points):\n\n3 Points: Only the feedback dialogue 27-7 happens; Or, before 27-7 happens, there are 1 or 2 following feedback dialogues that happen (27 - 11, 12…..30)\n\n2 Points: Before 27-7 happens, there are 3 following feedback dialogues that happen (27 - 11, 12, ….. 30)\n\nYellow (0-1 points):\n\n1 Points: Before 27-7 happens, there are 4 following feedback dialogues that happen (27 - 11, 12, ….. 30)\n\n0 Points: Other conditions happened.",
+        "arg_attempt_log_mark_raw": "Calculate how many feedback dialogues happened (the count of dialogues with conversation ID of 27)\n\nExclude feedback “Remember, you can click on the \"Backing Information\" orbs to see important information that might help you with your argument.”",
+        "markers": {
+          "start": [
+            "DialogueNodeEvent:18:284"
+          ],
+          "end": [
+            "DialogueNodeEvent:20:74",
+            "DialogueNodeEvent:20:75"
+          ]
+        },
+        "color_rule_dialogue_tags": [
+          [
+            27,
+            7
+          ]
+        ]
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U2.C7",
+          "ea_item": "2.8",
+          "topic": "Argumentation/ Cycling of Water",
+          "task": "Argue Which Watershed is Bigger",
+          "dashboard": "X\nOn-track:\n(3 or 2 pts.)\nConcern:\n(less than 2 pts.)",
+          "student_action_scoring": "3 Points correct answer within 3 attempts\n2 Points 4 attempts\n1 Points 5 attempts\n0 Points more than 5 attempts",
+          "log_tag_raw": "Check argument success event’s frequency and argument failure event’s frequency. \n\n3 Points: Only the feedback dialogue 27-7 happens; Or, before 27-7 happens, there are 1 or 2 following feedback dialogues happen (27 - 11, 12…..30)\n\n2 Points: Before 27-7 happens, there are 3 following feedback dialogues happen (27 - 11, 12, ….. 30)\n\n1 Points: Before 27-7 happens, there are 4 following feedback dialogues happen (27 - 11, 12, ….. 30)\n\n0 Points: Other conditions happened.",
+          "score_formula_raw": "3 points for submitting correct answer within 3 attempts.\n2 points for submitting correct answer in 4 attempts.\n1 point for 5 attempts before submitting the correct answer.\n0 point for anything else\n\nCorrect feedback: Well done! You have made the best argument possible. Good Job, cadet!",
+          "log_tag_dialogue_tags": [
+            [
+              27,
+              7
+            ]
+          ]
+        }
+      ]
+    },
+    "U3P1": {
+      "progress_points_doc": {
+        "doc_id": "U3.C1",
+        "unit": 3,
+        "name": "Good morning cadet + Establishing a foothold (Identify the direction of water flow based on a map of the watershed)",
+        "description": "Starts at the beginning of Unit 3. Encompasses checking in with Toppo, Toppo lesson, checking in with Anderson, and retrieving Tera’s supplies. Ends with conclusion of task 1.1 just before the alarm siren SFX plays and Tera alerts the player of the pollution issue.",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "EA Item 3.1\n\nGreen: 2-3 points\nYellow: less than 2 points",
+        "progress_log_mark_raw": "Start:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “10”,\n“nodeId”: “1”}\nEnd:\nquestActiveEvent:17",
+        "ea_color_log_mark_raw": "Add point: {dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “10”,\n“nodeId”: “30”}\n\nNo add point: \n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “10”,\n“nodeId”: “32”}",
+        "arg_attempt_log_mark_raw": "",
+        "markers": {
+          "start": [
+            "DialogueNodeEvent:10:1"
+          ],
+          "end": [
+            "questActiveEvent:17"
+          ]
+        },
+        "color_rule_dialogue_tags": []
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U3.C1",
+          "ea_item": "3.1",
+          "topic": "Surface Water",
+          "task": "Placement of Crates (multiple instances)",
+          "dashboard": "On-track: 2-3 points\nConcern: less than 2 points",
+          "student_action_scoring": "1 Point for correct each crate placement",
+          "log_tag_raw": "Add point: {dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “10”,\n“nodeId”: “30”}\n\nNo add point: \n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “10”,\n“nodeId”: “32”}",
+          "score_formula_raw": "final score= (number of correct crate placements)\n\nThe player places 3 crates ( 3pts. possible)",
+          "log_tag_dialogue_tags": []
+        }
+      ]
+    },
+    "U3P2": {
+      "progress_points_doc": {
+        "doc_id": "U3.C2",
+        "unit": 3,
+        "name": "Pollution solution (Predict the spread of dissolved materials through a watershed.)",
+        "description": "Starts with Tera alerting the player to pollution in the river. Encompasses pollution solution task. Ends just after drone flying back to camp cutscene but before Dani shows player backing info.",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "EA Item 3.2\n\nGreen: 3-5 points\nYellow: less than 3 points",
+        "progress_log_mark_raw": "Start:\nquestActiveEvent:17\nEnd:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “11”,\n“nodeId”: “34”}",
+        "ea_color_log_mark_raw": "Three reminding dialogues:\n\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “11”,\n“nodeId”: “27”}\n\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “11”,\n“nodeId”: “29”}\n\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “11”,\n“nodeId”: “230”}\n\nLogic: the initial score is 5 points\n\nWhen certain condition met, minus corresponding scores.",
+        "arg_attempt_log_mark_raw": "",
+        "markers": {
+          "start": [
+            "questActiveEvent:17"
+          ],
+          "end": [
+            "DialogueNodeEvent:11:34"
+          ]
+        },
+        "color_rule_dialogue_tags": []
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U3.C2",
+          "ea_item": "3.2",
+          "topic": "Surface Water",
+          "task": "Placement of Pollution Sensors (multiple instances)",
+          "dashboard": "X\nOn-track:\n(3- 5 pts.)\nConcern:\n(less than 3 pts.)",
+          "student_action_scoring": "2 Points for only triggering Dialog (Pollution will only flow downstream, so we need to test upstream of the pollution) fewer than 2 times\n\n2 Points for only triggering Dialog (Blue checkmark means clean. You won’t need to check upstream of a clean sensor.) fewer than 2 times\n\n1 Point for not triggering Dialog (We are at the ocean downstream of Tera’s base–logically, there will be pollution here. I recommended proceeding upstream..)",
+          "log_tag_raw": "Counts of placement of sensors downstream of previous sensor placements\n\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “11”,\n“nodeId”: “230”}\n\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “11”,\n“nodeId”: “27”}\n\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “11”,\n“nodeId”: “29”}",
+          "score_formula_raw": "(5 points possible)\n\n2 points if Dialog (Pollution will only flow downstream, so we need to test further upstream) is triggered 0 or 1 time.\n\n1 point if Dialog (Pollution will only flow downstream, so we need to test further upstream) is triggered 2 or 3 times\n\n0 points if Dialog (Pollution will only flow downstream, so we need to test further upstream) is triggered 4 or more times\n\n—-----------------------------------------------------------------------------\n\n2 points if Dialog (Green checkmark means clean. You won’t need to check upstream of a clean sensor.) is triggered 0 or 1 time.\n\n1 point if Dialog (Green checkmark means clean. You won’t need to check upstream of a clean sensor.) is triggered 2 or 3 times\n\n0 points if Dialog (Green checkmark means clean. You won’t need to check upstream of a clean sensor.) is triggered 4 or more times\n\n—-----------------------------------------------------------------------------\n\n1 point if Dialog (We are at the ocean downstream of Tera’s base–logically, there will be pollution here. I recommended proceeding upstream...) is not triggered\n\n0 point if Dialog (We are at the ocean downstream of Tera’s base–logically, there will be pollution here. I recommended proceeding upstream...) is triggered",
+          "log_tag_dialogue_tags": []
+        }
+      ]
+    },
+    "U3P3": {
+      "progress_points_doc": {
+        "doc_id": "U3.C3",
+        "unit": 3,
+        "name": "Pollution argument (Construct an argument with reasoning that links a claim with evidence.)",
+        "description": "Starts with Dani showing the player the backing info map. Encompasses argumentation, cutscene of the battery being removed, conversation with Jasper and Tera, and player finding the Alien ruin. Ends just before the cutscene that appears when the player finds the ruins.",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "EA Item 3.3\n\nGreen: 3-5 points\nYellow: less than 3 points",
+        "progress_log_mark_raw": "Start:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “11”,\n“nodeId”: “34”}\n\nEnd:\nquestActiveEvent:18",
+        "ea_color_log_mark_raw": "Correct feedback:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “84”,\n“nodeId”: “36”}\n\nIncorrect feedback:\n84-20,25,32,33,34,35,37,39,40,41,42,43,44,45,46,47.\n\nargumentationToolEvent: \ntoolName: backingInforPanel - Pollution Site Data.\nargumentationTitle: Unit 3",
+        "arg_attempt_log_mark_raw": "Exclude feedback “Remember, you can click on the \"Backing Information\" orbs to see important information that might help you with your argument.”",
+        "markers": {
+          "start": [
+            "DialogueNodeEvent:11:34"
+          ],
+          "end": [
+            "questActiveEvent:18"
+          ]
+        },
+        "color_rule_dialogue_tags": [
+          [
+            84,
+            20
+          ]
+        ]
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U3.C3",
+          "ea_item": "3.3",
+          "topic": "Argumentation",
+          "task": "Convince Tera of Pollution Location",
+          "dashboard": "X\nOn-track:\n(3 - 4 pts.)\nConcern:\n(less than 3 pts.)",
+          "student_action_scoring": "3 Points correct answer within 3 attempts\n2 Points 4 attempts\n1 Point 5 attempts\n1 Point for opening back info 2 at any time\n0 Points more than 5 attempts",
+          "log_tag_raw": "Check argument success event’s frequency and argument failure event’s frequency \n\nUse of backing info (unit 3 #2)\n\nCorrect feedback:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “84”,\n“nodeId”: “36”}\n\nIncorrect feedback:\n84-20,25,32,33,34,35,37,39,40,41,42,43,44,45,46,47.\n\nargumentationToolEvent",
+          "score_formula_raw": "3 points for submitting correct answer within 3 attempts.\n2 points for submitting correct answer in 4 attempts.\n1 point for 5 attempts before submitting the correct answer.\n\n1 point for viewing backing info  unit 3 item#2  that shows site A and site B at any time\n\n0 point for anything else\n\nCorrect feedback: Great Job! You made the best argument possible. Way to go Cadet!",
+          "log_tag_dialogue_tags": [
+            [
+              84,
+              20
+            ]
+          ]
+        }
+      ]
+    },
+    "U3P4": {
+      "progress_points_doc": {
+        "doc_id": "U3.C4",
+        "unit": 3,
+        "name": "Forsaken Facility (Predict the spread of dissolved materials)",
+        "description": "Starts with the cutscene of the player reaching ruins/ bridge crumbling. Encompasses the soil key, dissolved particles glyph, and the entirety of the alien ruins. Ends after cinematic ends/ just before Tera says her line about planting seeds.",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "EA Item 3.4\n\nGreen: 1-2 points\nYellow: less than 1 point",
+        "progress_log_mark_raw": "Start:\nquestActiveEvent:18\n\nEnd:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “73”,\n“nodeId”: “200”}",
+        "ea_color_log_mark_raw": "Correct feedback:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “78”,\n“nodeId”: “24”}\n\nIncorrect feedback:\n78-3,4,7,9,10,12,18,23.",
+        "arg_attempt_log_mark_raw": "",
+        "markers": {
+          "start": [
+            "questActiveEvent:18"
+          ],
+          "end": [
+            "DialogueNodeEvent:73:200"
+          ]
+        },
+        "color_rule_dialogue_tags": [
+          [
+            78,
+            3
+          ]
+        ]
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U3.C4",
+          "ea_item": "3.4",
+          "topic": "Surface Water",
+          "task": "Glyph: Dissolved Particles",
+          "dashboard": "On-track: 1-2 points\nConcern: less than 1 points",
+          "student_action_scoring": "2 Points correct answer on first attempt \n1 Points 2 attempt\n0 Points more than 2 attempts",
+          "log_tag_raw": "Count of submissions before obtaining win state\n\nCorrect feedback:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “78”,\n“nodeId”: “24”}\n\nIncorrect feedback:\n78-3,4,7,9,10,12,18,23.",
+          "score_formula_raw": "Count of submissions before obtaining win state\n2 points for submitting correct answers on first attempt\n\n1 point for correct answer in 2 attempts\n\n0 point for anything else",
+          "log_tag_dialogue_tags": [
+            [
+              78,
+              3
+            ]
+          ]
+        }
+      ]
+    },
+    "U3P5": {
+      "progress_points_doc": {
+        "doc_id": "U3.C5",
+        "unit": 3,
+        "name": "Plant the superfruit seeds (Predict the spread of dissolved materials through a watershed)",
+        "description": "Starts with Tera instructing the player to plant the superfruit seeds. Encompasses superfruit seeds planting activity. Ends with the conclusion of Unit 3.",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "EA Item 3.5\n\nGreen: 3-4 points\nYellow: less than 3 points",
+        "progress_log_mark_raw": "Start:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “73”,\n“nodeId”: “200”}\n\nEnd:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “10”,\n“nodeId”: “194”}",
+        "ea_color_log_mark_raw": "The correct feedback:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “73”,\n“nodeId”: “163”}\n\nThe incorrect feedback:\n73-164;\n73-168;\n73-171.",
+        "arg_attempt_log_mark_raw": "",
+        "markers": {
+          "start": [
+            "DialogueNodeEvent:73:200"
+          ],
+          "end": [
+            "DialogueNodeEvent:10:194"
+          ]
+        },
+        "color_rule_dialogue_tags": [
+          [
+            73,
+            164
+          ],
+          [
+            73,
+            168
+          ],
+          [
+            73,
+            171
+          ]
+        ]
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U3.C5",
+          "ea_item": "3.5",
+          "topic": "Surface Water",
+          "task": "Plant Superfruit Seeds in Correct Locations (multiple instances)",
+          "dashboard": "X\nOn-track:\n(3 or 4 pts.)\nConcern:\n(less than 3 pts.)",
+          "student_action_scoring": "1 Point Selecting a correct garden location\n-1/2 Points selecting an incorrect garden location",
+          "log_tag_raw": "Seed box selections\n\nThe correct feedback:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “73”,\n“nodeId”: “163”}\n\nThe incorrect feedback:\n73-164,165,166,167;\n73-168,169,170;\n73-171,172,173",
+          "score_formula_raw": "final score= correct seed planting selections - (incorrect locations selections *0.5)\n\nPlayer selects 4 boxes (4pts. Maximum)",
+          "log_tag_dialogue_tags": [
+            [
+              73,
+              164
+            ],
+            [
+              73,
+              168
+            ],
+            [
+              73,
+              171
+            ]
+          ]
+        }
+      ]
+    },
+    "U4P1": {
+      "progress_points_doc": {
+        "doc_id": "U4.C1",
+        "unit": 4,
+        "name": "Well Wishes",
+        "description": "Starts with the beginning of Unit 4. Encompasses intro material, Toppo lesson, and well wishes dialogue. Ends just after completion of soil key puzzle.",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "EA Item 4.1 & 4.2\n\nGreen: greater than or = to 1 point\nYellow: less than 1 point",
+        "progress_log_mark_raw": "Start:\n\nEnd:\neventKey: “questActiveEvent:39”",
+        "ea_color_log_mark_raw": "Green:\nIf the eventKey - “DialogueNodeEvent:88:5” exists\n(The soil key puzzle doesn’t have logs yet.)\n\n\nYellow:\nThe eventKey not exists",
+        "arg_attempt_log_mark_raw": "",
+        "markers": {
+          "start": [],
+          "end": [
+            "questActiveEvent:39"
+          ]
+        },
+        "color_rule_dialogue_tags": []
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U4.C1",
+          "ea_item": "4.1",
+          "topic": "Groundwater",
+          "task": "Well Wishes (dialog)",
+          "dashboard": "",
+          "student_action_scoring": "½ Point for selecting “It’s the boundary between saturated and unsaturated soil layers” in dialog",
+          "log_tag_raw": "Dialog selection\n\nCorrect:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “88”,\n“nodeId”: “5”}",
+          "score_formula_raw": "½ point for selecting  “;It’s the boundary between saturated and unsaturated soil layers”\n\n0 points for anything else",
+          "log_tag_dialogue_tags": []
+        }
+      ]
+    },
+    "U4P2": {
+      "progress_points_doc": {
+        "doc_id": "U4.C2",
+        "unit": 4,
+        "name": "Infiltration Glyph + Alien Well Floors 1 & 2",
+        "description": "Starts at the entrance to the dungeon once the door is open. Encompasses infiltration glyph and first two dungeon floors. Ends just after the cutscene/animations of elevator door + associated dialogue.",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "EA Item 4.3\n\nGreen: 1-2 points\nYellow: 0 points",
+        "progress_log_mark_raw": "Start:\neventKey: “questActiveEvent:39”\n\nEnd:\neventKey: “questActiveEvent:48”",
+        "ea_color_log_mark_raw": "Correct submission\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “88”,\n“nodeId”: “11”}\n\nIncorrect submission\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “102”,\n“nodeId”: “3”}\n102-3,4,7,9,10,12,18,23.",
+        "arg_attempt_log_mark_raw": "",
+        "markers": {
+          "start": [
+            "questActiveEvent:39"
+          ],
+          "end": [
+            "questActiveEvent:48"
+          ]
+        },
+        "color_rule_dialogue_tags": [
+          [
+            102,
+            3
+          ]
+        ]
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U4.C2",
+          "ea_item": "4.3",
+          "topic": "Groundwater",
+          "task": "Glyph: Infiltration",
+          "dashboard": "x",
+          "student_action_scoring": "2 Points correct answer on first attempt \n1 Points 2 attempt\n0 Points more than 2 attempts",
+          "log_tag_raw": "Count of submissions before obtaining win state\n\nCorrect submission\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “88”,\n“nodeId”: “11”}\n\nIncorrect submission\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “102”,\n“nodeId”: “3”}",
+          "score_formula_raw": "Count of submissions before obtaining win state\n2 points for submitting correct answers on first attempt\n\n1 point for correct answer in 2 attempts\n\n0 point for anything else",
+          "log_tag_dialogue_tags": []
+        }
+      ]
+    },
+    "U4P3": {
+      "progress_points_doc": {
+        "doc_id": "U4.C3",
+        "unit": 4,
+        "name": "Alien Well Floor 3 & 4",
+        "description": "Starts with updating the quest tracker to “See if there’s another pipe to repair somewhere on this floor.” Encompasses the third floor of well ruins. Ends just after the cutscene/animations of elevator door + associated dialogue.",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "EA Items 4.4 & 4.5\n\nGreen: 2-3 points\nYellow: 0-1 points",
+        "progress_log_mark_raw": "Start:\neventKey: “questActiveEvent:48”\n\nEnd:\neventKey: “questActiveEvent:50”",
+        "ea_color_log_mark_raw": "Add points:\n{\"eventType\": \"soilMachine\"}\n{“data.canisterType”: “Gravel”}\n{“data.floor\n”: “3”}\n{“data.machine\n”: “1”}\n\n{\"eventType\": \"soilMachine\"}\n{“data.canisterType”: “Sand”}\n{“data.floor\n”: “4”}\n{“data.machine\n”: “1”}No points added:\nOther records",
+        "arg_attempt_log_mark_raw": "",
+        "markers": {
+          "start": [
+            "questActiveEvent:48"
+          ],
+          "end": [
+            "questActiveEvent:50"
+          ]
+        },
+        "color_rule_dialogue_tags": []
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U4.C3",
+          "ea_item": "4.4",
+          "topic": "Groundwater",
+          "task": "Dungeon (third level)",
+          "dashboard": "x",
+          "student_action_scoring": "1 Points player selects gravel from missing pipe section in room 3-2 on first attempt.\n0 Points anything else",
+          "log_tag_raw": "Missing pipe selection in room 3-2 \n\n{\"eventType\": \"soilMachine\"}\n{“data.canisterType”: “Gravel”}\n{“data.floor\n”: “3”}\n{“data.machine\n”: “1”}",
+          "score_formula_raw": "1 point for selecting gravel on first attempt \n0 point for anything else",
+          "log_tag_dialogue_tags": []
+        }
+      ]
+    },
+    "U4P4": {
+      "progress_points_doc": {
+        "doc_id": "U4.C4",
+        "unit": 4,
+        "name": "Alien Well Floor 5 + You Know the Drill",
+        "description": "Starts with updating the quest tracker to “Let’s see what this floor requires of us.” Encompasses the fifth floor of well ruins and the drill task. Ends with the conclusion of Part 1/ quest tracker updating to “Anderson needs our help. Hurry to her base.”",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "EA Items 4.6 & 4.7\n\nGreen: 3-4 points\nYellow: 0-2 points",
+        "progress_log_mark_raw": "Start:\neventKey: “questActiveEvent:50”\n\nEnd:\neventKey: “questActiveEvent:36”",
+        "ea_color_log_mark_raw": "Add points:\n{\"eventType\": \"soilMachine\"}\n{“data.canisterType”: “Sand”}\n{“data.floor\n”: “5”}\n{“data.machine\n”: “1”}\n{“data.row\n”: “TopRow”}\n\nNo record regarding {\"eventType\": \"soilMachine\"}\n{“data.floor\n”: “5”}\n{“data.machine\n”: “1”}\n{“data.row\n”: “BottomRow”}\n\n\n{\"eventType\": \"soilMachine\"}\n{“data.canisterType”: “Sand”}\n{“data.floor\n”: “5”}\n{“data.machine\n”: “2”}\n\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “107”,\n“nodeId”: “4”}\n\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “107”,\n“nodeId”: “5”}\n\n\nNo points:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “107”,\n“nodeId”: “2”}\n\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “107”,\n“nodeId”: “3”}\n\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “107”,\n“nodeId”: “6”}",
+        "arg_attempt_log_mark_raw": "",
+        "markers": {
+          "start": [
+            "questActiveEvent:50"
+          ],
+          "end": [
+            "questActiveEvent:36"
+          ]
+        },
+        "color_rule_dialogue_tags": []
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U4.C4",
+          "ea_item": "4.6",
+          "topic": "Groundwater",
+          "task": "Dungeon (fifth level)",
+          "dashboard": "x",
+          "student_action_scoring": "2 Points total:\n\n1 Point in room 5-1, player selects clay from top canister on first attempt AND does not change Bottom canister\n1 Points in room 5-2, player selects clay on bottom canister on first attempt OR selects sand on top canister AND does not change bottom canister",
+          "log_tag_raw": "{\"eventType\": \"soilMachine\"}\n{“data.canisterType”: “Sand”}\n{“data.floor\n”: “5”}\n{“data.machine\n”: “1”}\n\n{\"eventType\": \"soilMachine\"}\n{“data.canisterType”: “Sand”}\n{“data.floor\n”: “5”}\n{“data.machine\n”: “2”}",
+          "score_formula_raw": "1 Point for correct solution to 5-1 puzzle on first attempt\n\n1 Point for correct solution to 5-2 puzzle on first attempt",
+          "log_tag_dialogue_tags": []
+        }
+      ]
+    },
+    "U4P5": {
+      "progress_points_doc": {
+        "doc_id": "U4.C5",
+        "unit": 4,
+        "name": "Saving Cadet Anderson",
+        "description": "Starts with the beginning of task 2.1. Encompasses all floors of Anderson’s base and argumentation. Ends with the conclusion of Part 2.",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "EA Item 4.8\n\nGreen: 2-4 points\nYellow: 0-1 points",
+        "progress_log_mark_raw": "Start:\neventKey: “questActiveEvent:36”\n\nEnd:\neventKey: “questActiveEvent:41”",
+        "ea_color_log_mark_raw": "Correct argument:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “90”,\n“nodeId”: “50”} or {dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “90”,\n“nodeId”: “57”}\n\nWrong argument:\n90-25,37,39,45,47,52,54,55,56,58,59,60,61",
+        "arg_attempt_log_mark_raw": "",
+        "markers": {
+          "start": [
+            "questActiveEvent:36"
+          ],
+          "end": [
+            "questActiveEvent:41"
+          ]
+        },
+        "color_rule_dialogue_tags": [
+          [
+            90,
+            25
+          ]
+        ]
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U4.C5",
+          "ea_item": "4.8",
+          "topic": "Argumentation",
+          "task": "Saving Cadet Anderson",
+          "dashboard": "x",
+          "student_action_scoring": "3 Points correct answer within 3 attempts\n2 Points 4 attempts\n1 Point 5 attempts\n1 Point for accessing backing info with warehouse layout\n0 Points more than 5 attempts",
+          "log_tag_raw": "Check argument success event’s frequency and argument failure event’s frequency \n\nUse of backing info\n\nCorrect argument:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “90”,\n“nodeId”: “50”} or {dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “90”,\n“nodeId”: “57”}\n\nWrong argument:\n90-25,37,39,45,47,52,54,55,56,58,59,60,61",
+          "score_formula_raw": "3 points for submitting correct answer within 3 attempts.\n2 points for submitting correct answer in 4 attempts.\n1 point for 5 attempts before submitting the correct answer.\n\n0 point for anything else\n\n1 point for opening backing info with warehouse layout",
+          "log_tag_dialogue_tags": [
+            [
+              90,
+              25
+            ]
+          ]
+        }
+      ]
+    },
+    "U4P6": {
+      "progress_points_doc": {
+        "doc_id": "U4.C6",
+        "unit": 4,
+        "name": "Tera’s Garden Boxes",
+        "description": "Starts with the beginning of task 3.1. Encompasses Tera’s garden box activity and concluding sequences. Ends with the conclusion of the unit.",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "EA Item 4.9\n\nGreen: 2-3 points\nYellow: 0-1 points",
+        "progress_log_mark_raw": "Start:\neventKey: “questActiveEvent:41”\n\nEnd:\neventKey: “questFinishEvent:56” or\n“dialogueEventType: \n\"DialogueFinishEvent\",\nconversationId: 105”",
+        "ea_color_log_mark_raw": "",
+        "arg_attempt_log_mark_raw": "",
+        "markers": {
+          "start": [
+            "questActiveEvent:41"
+          ],
+          "end": [
+            "questFinishEvent:56"
+          ]
+        },
+        "color_rule_dialogue_tags": []
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U4.C6",
+          "ea_item": "4.9",
+          "topic": "Groundwater",
+          "task": "Tera’s Garden Boxes",
+          "dashboard": "x",
+          "student_action_scoring": "3 Points for correctly placing 3 cameras\n2 Points for correct placement of 2 cameras\n1 Point for correct placement of 1 camera\n0 Points more no correct camera placements",
+          "log_tag_raw": "Camera location selection",
+          "score_formula_raw": "1 point for each correct camera placement",
+          "log_tag_dialogue_tags": []
+        }
+      ]
+    },
+    "U5P1": {
+      "progress_points_doc": {
+        "doc_id": "U5.C1",
+        "unit": 5,
+        "name": "Glyph evaporation + Floor 1-2",
+        "description": "Starts with the beginning of U5. Encompasses evaporation glyph game and floors 1-2 of the dungeon. Ends with the end of the elevator cutscene on the second floor.",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "EA Item 5.1\n\nGreen: 1-2 pts.\nYellow:  0 pts.",
+        "progress_log_mark_raw": "Start:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “95”,\n“nodeId”: “1”}\n\nEnd:\n“questFinishEvent:43”",
+        "ea_color_log_mark_raw": "Correct submission:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “100”,\n“nodeId”: “44”}\n\nYellow trigger:\n100-38,39,43",
+        "arg_attempt_log_mark_raw": "",
+        "markers": {
+          "start": [
+            "DialogueNodeEvent:95:1"
+          ],
+          "end": [
+            "questFinishEvent:43"
+          ]
+        },
+        "color_rule_dialogue_tags": [
+          [
+            100,
+            38
+          ]
+        ]
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U5.C1",
+          "ea_item": "5.1",
+          "topic": "Atmospheric Water",
+          "task": "Glyph: Evaporation Rate",
+          "dashboard": "x",
+          "student_action_scoring": "2 Points correct answer on first attempt \n1 Points 2-3 attempt\n0 Points more than 4 or more attempts",
+          "log_tag_raw": "Count of submissions before obtaining win state\n\nCorrect submission:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “100”,\n“nodeId”: “44”}\n\nYellow trigger:\n100-38,39,43",
+          "score_formula_raw": "Count of submissions before obtaining win state\n2 points for submitting correct answers on first attempt\n\n1 point for correct answer in 2 or 3 attempts\n\n0 point for anything else",
+          "log_tag_dialogue_tags": [
+            [
+              100,
+              38
+            ]
+          ]
+        }
+      ]
+    },
+    "U5P2": {
+      "progress_points_doc": {
+        "doc_id": "U5.C2",
+        "unit": 5,
+        "name": "Floor 3-4",
+        "description": "Starts with arrival on the 3rd floor. Encompasses floors 3-4 of the dungeon. End with end of task 1.1.",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "EA Item 5.2 & 5.3\n\nGreen: 3-4 pts.\nYellow: 0-2 pts.",
+        "progress_log_mark_raw": "Start:\n“questFinishEvent:43”\n\nEnd:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “96”,\n“nodeId”: “1”}",
+        "ea_color_log_mark_raw": "",
+        "arg_attempt_log_mark_raw": "",
+        "markers": {
+          "start": [
+            "questFinishEvent:43"
+          ],
+          "end": [
+            "DialogueNodeEvent:96:1"
+          ]
+        },
+        "color_rule_dialogue_tags": []
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U5.C2",
+          "ea_item": "5.2",
+          "topic": "Dungeon",
+          "task": "Third Level",
+          "dashboard": "x",
+          "student_action_scoring": "2 Points player interacts with condenser or evaporator panels 6 or less  times while  completing the third level\n1 Point player interacts with condenser or evaporator panels 7-10 times while  completing the third level\n0 points for anything else",
+          "log_tag_raw": "5 total minimum  interactions with condenser or evaporator panels needed to progress\n\nAll relevant event logs:\n“data”: {“floor”: “3”, \"machineType\": (\"Condenser\",”Evaporator\n“)\n}\n“eventType”: \"WaterChamberEvent\"\n\nCalculate the total count of the relevant event logs.",
+          "score_formula_raw": "Count of interactions with condenser or evaporator panels",
+          "log_tag_dialogue_tags": []
+        }
+      ]
+    },
+    "U5P3": {
+      "progress_points_doc": {
+        "doc_id": "U5.C3",
+        "unit": 5,
+        "name": "Argumentation",
+        "description": "Starts with Aryn rescuing the player from dungeon. Includes evidence collection and argumentation. Ends with conclusion of task 2.1.",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "EA Item 5.4\n\nGreen: 2-3 pts.\nYellow: 0-1 pts.",
+        "progress_log_mark_raw": "Start:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “96”,\n“nodeId”: “1”}\n\nEnd:\n\"questFinishEvent:44\"",
+        "ea_color_log_mark_raw": "Correct argumentation:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “108”,\n“nodeId”: “51”} or  {dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “108”,\n“nodeId”: “52”} or\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “98”,\n“nodeId”: “60”}\n\nIncorrect argumentation:\n108-25,32,33,37,39,41,47,53,54,55,59,60,61,62,63,64,65,66,68,69,70,72,73,74,75,76,78,79,80,82,83,84,85,86,87,88,89,90,91.",
+        "arg_attempt_log_mark_raw": "",
+        "markers": {
+          "start": [
+            "DialogueNodeEvent:96:1"
+          ],
+          "end": [
+            "questFinishEvent:44"
+          ]
+        },
+        "color_rule_dialogue_tags": [
+          [
+            108,
+            25
+          ]
+        ]
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U5.C3",
+          "ea_item": "5.4",
+          "topic": "Atmospheric Water",
+          "task": "Argumentation: What happened to the water?",
+          "dashboard": "x",
+          "student_action_scoring": "3 Points correct answer within 3 attempts\n2 Points 4 attempts\n1 Point 5 attempts\n0 Points more than 5 attempts",
+          "log_tag_raw": "Check argument success event’s frequency and argument failure event’s frequency \n\nCorrect argumentation:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “108”,\n“nodeId”: “51”} or  {dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “108”,\n“nodeId”: “52”} or\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “98”,\n“nodeId”: “60”}\n\nIncorrect argumentation:\n108-25,32,33,37,39,41,47,53,54,55,59,60,61,62,63,64,65,66,68,69,70,72,73,74,75,76,78,79,80,82,83,84,85,86,87,88,89,90,91.",
+          "score_formula_raw": "3 points for submitting correct answer within 3 attempts.\n2 points for submitting correct answer in 4 attempts.\n1 point for 5 attempts before submitting the correct answer.\n\n0 point for anything else",
+          "log_tag_dialogue_tags": [
+            [
+              108,
+              25
+            ]
+          ]
+        }
+      ]
+    },
+    "U5P4": {
+      "progress_points_doc": {
+        "doc_id": "U5.C4",
+        "unit": 5,
+        "name": "Solar still",
+        "description": "Starts with the beginning of  task 2.2. Encompasses the solar still activity and final dialogue. Ends with the conclusion of the unit.",
+        "checkpoint": "Start\nEnd",
+        "color_determination": "EA Item 5.5\n\nGreen: 2 pts.\nYellow: 0-1 pts.",
+        "progress_log_mark_raw": "Start:\n\"questFinishEvent:44\"",
+        "ea_color_log_mark_raw": "Correct feedback:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “106”,\n“nodeId”: “35”} \n\nIncorrect feedback:\n106-4,25,26,27,28,29,30,31,32,33,34.",
+        "arg_attempt_log_mark_raw": "",
+        "markers": {
+          "start": [
+            "questFinishEvent:44"
+          ]
+        },
+        "color_rule_dialogue_tags": [
+          [
+            106,
+            4
+          ]
+        ]
+      },
+      "ea_working_doc": [
+        {
+          "doc_id": "U5.C4",
+          "ea_item": "5.5",
+          "topic": "Atmospheric Water",
+          "task": "Solar Still Activity",
+          "dashboard": "x",
+          "student_action_scoring": "½  Point: Selecting Tilted Out (icon on left)\n\n½  Point: Selecting X mark for no extra converting\n\n½  Point: Selecting cold for glass roof temperature",
+          "log_tag_raw": "Count of submissions before obtaining win state\n\nCorrect feedback:\n{dialogueEventType: “DialogueNodeEvent”,\n“conversationId”: “106”,\n“nodeId”: “35”} \n\nIncorrect feedback:\n106-4,25,26,27,28,29,30,31,32,33,34",
+          "score_formula_raw": "1.5 points possible (0.5 points for each selection of the solar still)",
+          "log_tag_dialogue_tags": [
+            [
+              106,
+              4
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "unmatched_rows": {
+    "progress_points_docx": [
+      {
+        "table": 0,
+        "unit": 1,
+        "row_head": "U1 Finish"
+      },
+      {
+        "table": 1,
+        "unit": 2,
+        "row_head": "Unit Finish"
+      },
+      {
+        "table": 2,
+        "unit": 3,
+        "row_head": "Unit Finish"
+      },
+      {
+        "table": 3,
+        "unit": 4,
+        "row_head": "Unit Finish"
+      }
+    ],
+    "ea_doc": []
+  }
+}

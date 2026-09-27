@@ -47,7 +47,12 @@ def _keys_in(text):
 
 
 def _window_part(raw):
-    """Parse '- **Start:** Previous `X` (exclusive)' fragments.
+    """Parse '- **Start:** Previous `X` (exclusive)' fragments, and the
+    start-and-end form used since the 2026-09-24 realignment:
+    '- **Start:** Latest `X` before the end event (exclusive; zero ObjectId
+    when there is none)' / '- **End:** Latest `Y` (inclusive; ...)'. Prose is
+    allowed between the key and the parenthesised boundary word, and the
+    boundary word may be followed by a ';' clause.
 
     `key` is only set when the backticked token is a real eventKey
     (DialogueNodeEvent/questEvent). Anchors described in prose (e.g. the
@@ -55,7 +60,7 @@ def _window_part(raw):
     a stray backticked word like `Finished` must not become a phantom anchor."""
     if raw is None:
         return None
-    m = re.search(r"(Previous|Latest|First)?\s*`([^`]+)`\s*\((exclusive|inclusive)\)?", raw)
+    m = re.search(r"(Previous|Latest|First)?\s*`([^`]+)`[^`()]*\((exclusive|inclusive)\b", raw)
     if not m or not (STRICT_DLG.fullmatch(m.group(2)) or STRICT_QST.fullmatch(m.group(2))):
         return {"raw": raw}
     return {

@@ -79,8 +79,9 @@ drift the moment either side changes.
 | `09-03-26-4` | U2P1/U2P2/U2P3 yellows (incl. the exactly-6-reminders U2P3 case) plus a truncated Unit 5: production yellow **without** a window → no code, no pop-up. |
 | `08-31-26` | Previous build; U1P3 yellow only. |
 | `09-14-26-3` | Build `20260914-`, 23 yellow points — first log on the U2P1 and U4P2 **accepted**-assist paths and on U3P4's forced assist; it drove the 2026-09-16 assist-key extension (below). |
+| `09-23-26` | Version string `20260914-` (probably a newer build), 5 yellow points, all glyph puzzles — first log on the **EXCESS_ATTEMPTS** branches of U2P1 (attempt 6), U2P4 (6) and U5P1 (5), plus the **forced** 5th-attempt assist of U3P4 and U4P2 (SOLVED_WITH_ASSIST 5 each) on this build; every other point green. |
 
-All five pass 26/26 as of 2026-09-16. `09-14-26-3` initially failed U2P1 and
+All six pass 26/26 as of 2026-09-26. `09-14-26-3` initially failed U2P1 and
 U4P2 for one reason: the assist key lists only held DANI's *forced* nodes, so
 the *accepted*-offer path was invisible to the scripts. Both markdown scripts
 and their transcriptions (`rc_u2p1.py`, `rc_u4p2.py`) now carry the
@@ -94,10 +95,12 @@ accepted-path nodes:
   inputs; `102:23` never fires. Before the fix the scripts reported
   **EXCESS_ATTEMPTS (5 attempts)** instead of SOLVED_WITH_ASSIST (4).
 
-The 8 code paths no fixture triggers (EXCESS_ATTEMPTS at
-U2P1/U2P4/U3P4/U4P2/U5P1 and the U2P3/U2P6 salinity/both-options branches)
-are verified only by line-level transcription — add a fixture when a
-playthrough reaches them.
+The 5 code paths no fixture triggers (EXCESS_ATTEMPTS at U3P4/U4P2 — a
+solve on attempt 4 or 5 after declining the offer — and the U2P3/U2P6
+salinity/both-options branches) are verified only by line-level
+transcription — add a fixture when a playthrough reaches them. (The
+EXCESS_ATTEMPTS branches of U2P1/U2P4/U5P1 were first reached by
+`09-23-26`.)
 
 ### Adding a fixture for a new build
 

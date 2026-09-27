@@ -1,0 +1,24 @@
+# Gameplay coverage manifest for the 09-23-26 playthrough.
+# Statuses: complete | partial | skipped
+# Update this file after each weekly playtest BEFORE running the audit —
+# it is what lets the audit distinguish "logging failed" from "not tested".
+
+build: "09-23-26"
+game_version: "20260914-"
+
+tested_content:
+  Unit1: complete
+  Unit2: complete
+  Unit3: complete
+  Unit4: complete
+  Unit5: complete
+
+notes:
+  - "Full playthrough by one tester in a single sitting, logged 2026-09-25 20:06Z to 23:55Z (~3h49m, 11,648 records; EndOfUnit fired for units 1-5). No gap longer than 20 minutes. Log file is named wenyi09232026 but every record is dated 2026-09-25."
+  - "SAME BUILD as the 09-14-26-3 run: the version string is again literally '20260914-' on every record, with the build number after the dash still missing. This run is therefore a second playthrough of the 2026-09-14 build, not a new build; build-vs-baseline differences are playthrough variation unless stated otherwise."
+  - "Six gameStartEvent records = six launches from MainMenu: initial launch, one relaunch mid-Unit 2 (20:57Z, see next note), and one relaunch before each of Units 3, 4 and 5 (Unit 1 -> Unit 2 also went through Transition + MainMenu)."
+  - "Unit 2 was played in two scene loads: 20:38Z-20:55Z, then MainMenu, then 20:57Z-21:45Z. The relaunch resumed from a checkpoint that predates the 'Foraged Forging' (quest 23) completion: questActiveEvent:23 / questFinishEvent:23 / questActiveEvent:22 each appear twice (20:52-20:54Z and again 20:57-21:00Z), so Unit 2 quest 23 was played twice and its duplicated quest records are player-driven, not a logging defect. EndOfUnit 2 fires once, at 21:45Z."
+  - "Debug menu was NOT used. The 12 DEBUGMenu records (DebugMenuStateChanged, all isOpened=false) each sit at the exact first instant of a gameplay scene load (12 of the 13 gameplay scene loads; only the final 'Unit 5 Dev' load at 23:36:21Z lacks one) — the same scene-load emission pattern first seen in 09-14-26-3."
+  - "chatEvent: the two records (actionType Close, chatID NA) coincide exactly with the two Unit 5 scene loads (23:20:57Z dungeon, 23:36:21Z surface), the same pattern as 08-31-26, 09-03-26-3 and 09-14-26-3; the tester never opened the chat log."
+  - "argumentationToolEvent: 9 records, all argumentationToolOpen, in Units 1, 2, 3 and 5 only — NO Unit 4 backing-info panel event at all, although the Unit 4 argumentation was completed (answer submitted 23:06:47Z). Consistent with the Unit 4 panel-logging gap reported to the team."
+  - "No 'crash' eventType records this run."

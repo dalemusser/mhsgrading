@@ -453,3 +453,79 @@ fixtures:
           WRONG_SETTINGS_SELECTED:
             wrong_run_number: 1
             failure_phrase: "the settings blocked sunlight, so the salt water could not heat up and evaporate"
+
+  "09-23-26":
+    log: playthrough-logs-and-results/09-23-26/wenyi09232026.stratalog.logdata.json
+    description: >
+      Full one-sitting playthrough logged 2026-09-25 on version string
+      "20260914-" (11,648 records; 5 yellow points - the rubric-validation
+      fixture of the same id). Every non-glyph activity solved first try; the
+      five glyph puzzles deliberately failed. First log on the EXCESS_ATTEMPTS
+      paths of U2P1, U2P4 and U5P1 (previously transcription-verified only) and
+      on the forced-assist paths of U3P4 and U4P2 on this build.
+    provenance: >
+      Expected codes follow the fixture colors in rubric-validation (audit
+      09-23-26, 2026-09-26): every yellow cell triggers exactly one code, every
+      green cell none. Variables established from the raw conversation-node
+      sequences in the dump mapped through the markdown key lists (single
+      attempt per point, so unwindowed = windowed): U2P1 conv 68 =
+      5,7,18,(20 decline),23,(25 decline),27,(33 decline),29 SolvedSolo -> 5
+      negatives + solved = attempt 6, no assist key; U2P4 conv 74 =
+      4,6,(11/23 lesson),10,(13/24/27 video),15,16,21 SolvedSolo -> 5 negatives
+      -> attempt 6, no 74:20; U3P4 conv 78 = 4,7,9,12,23 forced -> 24 -> 5 with
+      the forcing submission counted (2026-09-24 rule); U4P2 conv 102 =
+      3,7,10,18 offer,(19 decline),23 forced -> 88:11 -> 5 (14/15/16 are idle
+      hints); U5P1 conv 100 = 34,35,36,38,44 OnPlayerSolve -> 4 negatives ->
+      attempt 5, no 39 offer and no assist key. Green cells cross-checked: 0
+      negatives on every argumentation conversation (70/27/84/90/108), 0
+      wrong-direction reminders (conv 28), 26:141 x6 / 26:138 x0, 10:30 x3,
+      11:27 x3 (score 4), 84:36 + panel opened, 73:163 x4, 88:5 + 15 s soil
+      key, soilMachine 1/1 and machine-1 top+bottom once + drill 107:5,
+      TerasGardenBox Gravel/Sand/Clay (92:61 x3), WaterChamber floor 3 = 9
+      (4 Condenser + 3 DualChamber_Condenser + 2 DualChamber_Evaporator) /
+      floor 4 = 4 -> score 3, 106:35 success. Auto-solve note: after 78:23 the
+      player still placed two glyphs before 78:24 (assist does not solve the
+      puzzle on this build either); after 102:23 four interacts preceded 88:11
+      by 20 s.
+    expected:
+      U1P1: {codes: []}
+      U1P2: {codes: []}
+      U1P3: {codes: []}
+      U1P4: {codes: []}
+      U2P1:   # 68:5/7/18/23/27 then 68:29 on the 6th attempt; DANI's offers (68:23, 68:27) declined
+        codes: [EXCESS_ATTEMPTS]
+        variables:
+          EXCESS_ATTEMPTS: {attempt_number: 6}
+      U2P2: {codes: []}
+      U2P3: {codes: []}
+      U2P4:   # 74:4/6/10/15/16 then 74:21 on the 6th attempt (no forced 74:20)
+        codes: [EXCESS_ATTEMPTS]
+        variables:
+          EXCESS_ATTEMPTS: {attempt_number: 6}
+      U2P5: {codes: []}
+      U2P6: {codes: []}
+      U2P7: {codes: []}
+      U3P1: {codes: []}
+      U3P2: {codes: []}
+      U3P3: {codes: []}
+      U3P4:   # 78:4/7/9/12 then forced 78:23 (counted) -> 78:24
+        codes: [SOLVED_WITH_ASSIST]
+        variables:
+          SOLVED_WITH_ASSIST: {attempt_number: 5}
+      U3P5: {codes: []}
+      U4P1: {codes: []}
+      U4P2:   # 102:3/7/10/18 (offer declined via 102:19) then forced 102:23 (counted) -> 88:11
+        codes: [SOLVED_WITH_ASSIST]
+        variables:
+          SOLVED_WITH_ASSIST: {attempt_number: 5}
+      U4P3: {codes: []}
+      U4P4: {codes: []}
+      U4P5: {codes: []}
+      U4P6: {codes: []}
+      U5P1:   # 100:34/35/36/38 then 100:44 OnPlayerSolve on the 5th attempt; no offer, no assist
+        codes: [EXCESS_ATTEMPTS]
+        variables:
+          EXCESS_ATTEMPTS: {attempt_number: 5}
+      U5P2: {codes: []}
+      U5P3: {codes: []}
+      U5P4: {codes: []}
