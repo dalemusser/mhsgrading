@@ -166,7 +166,9 @@ Conversation 78 ("U3/Glyph Games/Dissolving Particles", 16 nodes; gates re-verif
 
 ### SOLVED_WITH_ASSIST
 
-**Instructor Message:** In Forsaken Facility, the student did not complete the ordering puzzle showing how materials dissolve into water independently. After {attempt_number} incorrect arrangements, the in-game guide DANI ordered the pieces. This point earns green only when the student submits the correct order on their own within 3 attempts. Needing this level of support may indicate the student would benefit from reviewing how the particles of a dissolved material spread through water, even once they can no longer be seen.
+<!--**Instructor Message:** In Forsaken Facility, the student did not complete the ordering puzzle showing how materials dissolve into water independently. After {attempt_number} incorrect arrangements, the in-game guide DANI ordered the pieces. This point earns green only when the student submits the correct order on their own within 3 attempts. Needing this level of support may indicate the student would benefit from reviewing how the particles of a dissolved material spread through water, even once they can no longer be seen.-->
+
+**Instructor Message:** The student did not complete the ordering puzzle showing how materials dissolve into water independently. After {attempt_number} incorrect arrangements, the in-game guide DANI completed the puzzle. Needing this level of support may indicate the student would benefit from reviewing how the particles of a dissolved material spread through water, even once they can no longer be seen.
 
 #### Corresponding Script
 
@@ -245,7 +247,9 @@ if (!latestEnd) {
 
 ### EXCESS_ATTEMPTS
 
-**Instructor Message:** In Forsaken Facility, the student ordered the puzzle pieces showing how materials dissolve into water on their own, but needed {attempt_number} attempts. This point earns green only when the correct order is submitted within 3 attempts. Repeated incorrect arrangements may indicate difficulty sequencing how particles of a dissolved material spread through water over time.
+<!--**Instructor Message:** In Forsaken Facility, the student ordered the puzzle pieces showing how materials dissolve into water on their own, but needed {attempt_number} attempts. This point earns green only when the correct order is submitted within 3 attempts. Repeated incorrect arrangements may indicate difficulty sequencing how particles of a dissolved material spread through water over time.-->
+
+**Instructor Message:** The student ordered the puzzle pieces showing how materials dissolve into water on their own, but needed {attempt_number} attempts. This point earns green only when the correct order is submitted within 3 attempts. Repeated incorrect arrangements may indicate difficulty sequencing how particles of a dissolved material spread through water over time.
 
 #### Corresponding Script
 

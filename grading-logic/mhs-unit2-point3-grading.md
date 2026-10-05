@@ -200,7 +200,9 @@ if (!endDoc || !endDoc.timestamp) {
 
 ### EXCESS_NAV_REMINDERS
 
-**Instructor Message:** In Getting the Band Back Together Part II, while navigating to find Tera and Aryn, the student triggered {triggering_number} adaptive reminders, dialogues that fire when the player travels somewhere inconsistent with the location clues ({tera_count} during the search for Tera, {aryn_count} during the search for Aryn). This point earns green only when fewer than 6 such reminders fire across the two searches. Repeated reminders may indicate difficulty connecting each set of clues (direction, elevation, landforms, and water features) to locations on the topographic map when planning and adjusting a route.
+<!--**Instructor Message:** In Getting the Band Back Together Part II, while navigating to find Tera and Aryn, the student triggered {triggering_number} adaptive reminders, dialogues that fire when the player travels somewhere inconsistent with the location clues ({tera_count} during the search for Tera, {aryn_count} during the search for Aryn). This point earns green only when fewer than 6 such reminders fire across the two searches. Repeated reminders may indicate difficulty connecting each set of clues (direction, elevation, landforms, and water features) to locations on the topographic map when planning and adjusting a route.-->
+
+**Instructor Message:** While navigating to find Tera and Aryn, the student triggered {triggering_number} hints. The hints occur when the player travels somewhere inconsistent with the location clues ({tera_count} during the search for Tera, {aryn_count} during the search for Aryn). Triggering hints may indicate difficulty connecting each set of clues (direction, elevation, landforms, and water features) to locations on the topographic map when planning and adjusting a route.
 
 #### Corresponding Script
 

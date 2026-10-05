@@ -140,7 +140,9 @@ if (!latestEnd) {
 
 ### WRONG_EVIDENCE_SELECTED
 
-**Instructor Message:** In Which Watershed? Part I, when Dr. Toppo asked which observation provides the strongest evidence for identifying the larger watershed, the student selected {wrong_choice} instead of the correct answer, water flow rate. This point earns green only when water flow rate is selected. This may indicate difficulty distinguishing evidence that directly relates to watershed size - a larger drainage area collects and delivers more water, producing a greater flow rate - from observations such as waterfall height or salinity that do not indicate how much land drains to the river.
+<!--**Instructor Message:** In Which Watershed? Part I, when Dr. Toppo asked which observation provides the strongest evidence for identifying the larger watershed, the student selected {wrong_choice} instead of the correct answer, water flow rate. This point earns green only when water flow rate is selected. This may indicate difficulty distinguishing evidence that directly relates to watershed size - a larger drainage area collects and delivers more water, producing a greater flow rate - from observations such as waterfall height or salinity that do not indicate how much land drains to the river.-->
+
+**Instructor Message:** When Dr. Toppo asked which observation provides the strongest evidence for identifying the larger watershed, the student selected {wrong_choice} instead of the correct answer, water flow rate. This may indicate difficulty distinguishing evidence that directly relates to watershed size - a larger drainage area collects and delivers more water, producing a greater flow rate - from observations such as waterfall height or salinity that do not indicate how much land drains to the river.
 
 #### Corresponding Script
 

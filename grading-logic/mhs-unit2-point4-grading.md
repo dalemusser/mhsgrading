@@ -144,7 +144,9 @@ if (!latestEnd) {
 
 ### SOLVED_WITH_ASSIST
 
-**Instructor Message:** In Investigate the Temple, the student did not complete the watershed glyph puzzle independently - after {attempt_number} incorrect arrangements, the in-game guide DANI stepped in to order the watershed pieces. This point earns green only when the student submits the correct arrangement on their own within 5 attempts. Needing this level of support may indicate the student would benefit from reviewing how a larger drainage area collects and delivers more water to the main river, producing a greater flow rate.
+<!--**Instructor Message:** In Investigate the Temple, the student did not complete the watershed glyph puzzle independently - after {attempt_number} incorrect arrangements, the in-game guide DANI stepped in to order the watershed pieces. This point earns green only when the student submits the correct arrangement on their own within 5 attempts. Needing this level of support may indicate the student would benefit from reviewing how a larger drainage area collects and delivers more water to the main river, producing a greater flow rate.-->
+
+**Instructor Message:** The student did not complete the watershed glyph puzzle independently - after {attempt_number} incorrect attempts. The in-game guide DANI stepped in to order the watershed pieces. Needing this level of support may indicate the student would benefit from reviewing how a larger drainage area collects and delivers more water to the main river, producing a greater flow rate.
 
 #### Corresponding Script
 
@@ -232,7 +234,9 @@ if (!latestEnd) {
 
 ### EXCESS_ATTEMPTS
 
-**Instructor Message:** In Investigate the Temple, the student arranged the watershed terrain pieces correctly on their own, but needed {attempt_number} attempts. This point earns green only when the correct arrangement is submitted within 5 attempts. Repeated incorrect arrangements may indicate difficulty connecting drainage-area size with relative flow rate, the pattern that a larger watershed collects and delivers more water to its main river.
+<!--**Instructor Message:** In Investigate the Temple, the student arranged the watershed terrain pieces correctly on their own, but needed {attempt_number} attempts. This point earns green only when the correct arrangement is submitted within 5 attempts. Repeated incorrect arrangements may indicate difficulty connecting drainage-area size with relative flow rate, the pattern that a larger watershed collects and delivers more water to its main river.-->
+
+**Instructor Message:** The student arranged the watershed terrain pieces correctly on their own, but needed {attempt_number} attempts. This point earns green only when the correct arrangement is submitted within 5 attempts. Repeated incorrect arrangements may indicate difficulty connecting drainage-area size with relative flow rate, the pattern that a larger watershed collects and delivers more water to its main river.
 
 #### Corresponding Script
 

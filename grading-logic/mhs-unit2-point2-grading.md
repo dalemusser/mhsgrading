@@ -172,7 +172,9 @@ if (!endDoc || !endDoc.timestamp) {
 
 ### EXCESS_NAV_REMINDERS
 
-**Instructor Message:** In Foraged Forging, while navigating to find Captain Toppo, the student triggered {triggering_number} adaptive reminders, dialogues that fire when the player travels somewhere inconsistent with Anderson's clues or has not been consulting the map. This point earns green only when at most 1 such reminder fires during the search. Repeated reminders may indicate difficulty translating the clues about direction, elevation, and terrain features into a location on the topographic map using contour lines and the compass.
+<!--**Instructor Message:** In Foraged Forging, while navigating to find Captain Toppo, the student triggered {triggering_number} adaptive reminders, dialogues that fire when the player travels somewhere inconsistent with Anderson's clues or has not been consulting the map. This point earns green only when at most 1 such reminder fires during the search. Repeated reminders may indicate difficulty translating the clues about direction, elevation, and terrain features into a location on the topographic map using contour lines and the compass.-->
+
+**Instructor Message:** While navigating to find Captain Toppo, the student triggered {triggering_number} hints. These occur when the player travels somewhere inconsistent with Anderson's clues or has not been consulting the map. Triggering these hints may indicate difficulty translating the clues about direction, elevation, and terrain features into a location on the topographic map using contour lines and the compass.
 
 #### Corresponding Script
 

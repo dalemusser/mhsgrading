@@ -138,7 +138,9 @@ if (!latestEnd) {
 
 ### EXCESS_WRONG_PLANTINGS
 
-**Instructor Message:** In Plant the Superfruit Seeds, while helping Tera plant four superfruit seeds in garden plots along the river, the student planted {wrong_planting_number} seeds into wrong spots - locations that do not receive the super-nutrient. This point earns green only when at most 1 seed is planted in a wrong spot. Repeated wrong plantings may indicate difficulty predicting how a dissolved material spreads through a watershed: the nutrient travels downstream with the water flow, so only plots downstream of the temple source can receive it.
+<!--**Instructor Message:** In Plant the Superfruit Seeds, while helping Tera plant four superfruit seeds in garden plots along the river, the student planted {wrong_planting_number} seeds into wrong spots - locations that do not receive the super-nutrient. This point earns green only when at most 1 seed is planted in a wrong spot. Repeated wrong plantings may indicate difficulty predicting how a dissolved material spreads through a watershed: the nutrient travels downstream with the water flow, so only plots downstream of the temple source can receive it.-->
+
+**Instructor Message:** While helping Tera plant four superfruit seeds in garden plots along the river, the student planted {wrong_planting_number} seeds into wrong spots - locations that do not receive the super-nutrient. Repeated wrong plantings may indicate difficulty predicting how a dissolved material spreads through a watershed: the nutrient travels downstream with the water flow, so only plots downstream of the temple source can receive it.
 
 #### Corresponding Script
 

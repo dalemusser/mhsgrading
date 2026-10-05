@@ -201,7 +201,9 @@ if (!latestEnd) {
 
 ### EXCESS_MISCLASSIFICATIONS
 
-**Instructor Message:** In Classified Information, while repairing DANI by classifying highlighted passages of a scientific argument, the student made {wrong_number} incorrect classifications - {claim_wrong} on passages that were claims, {reasoning_wrong} on reasoning, and {evidence_wrong} on evidence. This point earns green only when the student completes all six classifications with at most 6 incorrect selections. Errors concentrated on one component may indicate difficulty recognizing that component's role: a claim states the conclusion, evidence provides information collected from the environment, and reasoning explains how the evidence supports the claim.
+<!--**Instructor Message:** In Classified Information, while repairing DANI by classifying highlighted passages of a scientific argument, the student made {wrong_number} incorrect classifications - {claim_wrong} on passages that were claims, {reasoning_wrong} on reasoning, and {evidence_wrong} on evidence. This point earns green only when the student completes all six classifications with at most 6 incorrect selections. Errors concentrated on one component may indicate difficulty recognizing that component's role: a claim states the conclusion, evidence provides information collected from the environment, and reasoning explains how the evidence supports the claim.-->
+
+**Instructor Message:** While repairing DANI by classifying highlighted pieces of a scientific argument, the student made {wrong_number} incorrect classifications - {claim_wrong} on passages that were claims, {reasoning_wrong} on reasoning, and {evidence_wrong} on evidence. Errors concentrated on one component may indicate difficulty recognizing that component's role: a claim states the conclusion, evidence provides information collected from the environment, and reasoning explains how the evidence supports the claim.
 
 #### Corresponding Script
 

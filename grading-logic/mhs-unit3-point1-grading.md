@@ -107,7 +107,9 @@ if (!latestEnd) {
 
 ### EXCESS_WRONG_RIVERS
 
-**Instructor Message:** In Establishing a Foothold, while sending Tera's three supply crates back to her camp by floating them down a river, the student dropped {wrong_river_number} crates into the wrong river. This point earns green only when at most 1 crate goes into the wrong river. Wrong-river choices may indicate difficulty using the watershed map to determine flow direction - water flows from higher to lower elevation toward the ocean, so the correct river is the one that flows past Tera's camp.
+<!--**Instructor Message:** In Establishing a Foothold, while sending Tera's three supply crates back to her camp by floating them down a river, the student dropped {wrong_river_number} crates into the wrong river. This point earns green only when at most 1 crate goes into the wrong river. Wrong-river choices may indicate difficulty using the watershed map to determine flow direction - water flows from higher to lower elevation toward the ocean, so the correct river is the one that flows past Tera's camp.-->
+
+**Instructor Message:** While sending Tera's three supply crates back to her camp by floating them down a river, the student dropped {wrong_river_number} crates into the wrong river.Wrong-river choices may indicate difficulty using the watershed map to determine flow direction - water flows from higher to lower elevation toward the ocean, so the correct river is the one that flows past Tera's camp.
 
 #### Corresponding Script
 

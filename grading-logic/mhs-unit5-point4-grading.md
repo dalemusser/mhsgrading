@@ -207,7 +207,9 @@ twice back-to-back — the latest-anchor windowing absorbs the duplicate.
 
 ### WRONG_SETTINGS_SELECTED
 
-**Instructor Message:** In Water Problems Require Water Solutions, the student ran the solar desalinator with settings that did not produce the maximum amount of water: {failure_phrase}. This point earns green only when the desalinator collects the maximum water with no failed runs. Each failure mode maps directly to the water cycle - the salt water needs sunlight to heat it for evaporation, the glass surface must stay cool for condensation to form, and the roof angle determines whether the condensed water is collected.
+<!--**Instructor Message:** In Water Problems Require Water Solutions, the student ran the solar desalinator with settings that did not produce the maximum amount of water: {failure_phrase}. This point earns green only when the desalinator collects the maximum water with no failed runs. Each failure mode maps directly to the water cycle - the salt water needs sunlight to heat it for evaporation, the glass surface must stay cool for condensation to form, and the roof angle determines whether the condensed water is collected.-->
+
+**Instructor Message:** The student ran the solar desalinator with settings that did not produce the maximum amount of water: {failure_phrase}. Each failure mode maps directly to the water cycle - the salt water needs sunlight to heat it for evaporation, the glass surface must stay cool for condensation to form, and the roof angle determines whether the condensed water is collected.
 
 #### Corresponding Script
 

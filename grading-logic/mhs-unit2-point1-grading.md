@@ -154,7 +154,9 @@ if (!latestEnd) {
 
 ### SOLVED_WITH_ASSIST
 
-**Instructor Message:** In Escape the Ruin, the student did not complete the topographic-map matching independently. After {attempt_number} incorrect arrangements, the in-game guide DANI placed the remaining pieces. This point earns green only when the student submits the correct solution on their own within 4 attempts. Needing this level of support may indicate the student would benefit from direct instruction on how contour lines represent elevation and slope before matching maps to terrain shapes.
+<!--**Instructor Message:** In Escape the Ruin, the student did not complete the topographic-map matching independently. After {attempt_number} incorrect arrangements, the in-game guide DANI placed the remaining pieces. This point earns green only when the student submits the correct solution on their own within 4 attempts. Needing this level of support may indicate the student would benefit from direct instruction on how contour lines represent elevation and slope before matching maps to terrain shapes.-->
+
+**Instructor Message:** The student did not complete the topographic-map matching independently. After {attempt_number} incorrect attempts, the in-game guide DANI placed the remaining pieces. The student would benefit from direct instruction on how contour lines represent elevation and slope before matching maps to terrain shapes.
 
 #### Corresponding Script
 
@@ -252,7 +254,9 @@ if (!latestEnd) {
 
 ### EXCESS_ATTEMPTS
 
-**Instructor Message:** In Escape the Ruin, the student matched all six topographic maps to their elevation profiles on their own, but needed {attempt_number} attempts. This point earns green only when the correct solution is submitted within 4 attempts. Repeated incorrect arrangements may indicate difficulty connecting the top-down contour-line view of a landscape to its side-view profile.
+<!--**Instructor Message:** In Escape the Ruin, the student matched all six topographic maps to their elevation profiles on their own, but needed {attempt_number} attempts. This point earns green only when the correct solution is submitted within 4 attempts. Repeated incorrect arrangements may indicate difficulty connecting the top-down contour-line view of a landscape to its side-view profile.-->
+
+**Instructor Message:** The student matched all six topographic maps to their elevation profiles on their own, but needed {attempt_number} attempts. This point earns green only when the correct solution is submitted within 4 attempts. Repeated incorrect arrangements may indicate difficulty connecting the top-down contour-line view of a landscape to its side-view profile.
 
 #### Corresponding Script
 

@@ -234,7 +234,9 @@ re-verified against the 2026-09-21 dialogue database (11 nodes, unchanged).
 
 ### SCORE_BELOW_THRESHOLD
 
-**Instructor Message:** In the Alien Well's fifth floor and the drill task, the student changed soil canisters {machine_attempt_number} times across the floor's two machines (three changes - one per layer - is optimal) and chose a wrong drilling depth {wrong_choice_number} times before reaching clean water. This point earns green only when the drill hits the right depth on the first choice with at least one machine set optimally, or on the second choice with both machines set optimally. Wrong depths may indicate difficulty locating the water table: drilling too shallow finds no water, too deep hits bedrock, and water that has filtered through too few soil layers stays contaminated - the clean water lies just above the bedrock.
+<!--**Instructor Message:** In the Alien Well's fifth floor and the drill task, the student changed soil canisters {machine_attempt_number} times across the floor's two machines (three changes - one per layer - is optimal) and chose a wrong drilling depth {wrong_choice_number} times before reaching clean water. This point earns green only when the drill hits the right depth on the first choice with at least one machine set optimally, or on the second choice with both machines set optimally. Wrong depths may indicate difficulty locating the water table: drilling too shallow finds no water, too deep hits bedrock, and water that has filtered through too few soil layers stays contaminated - the clean water lies just above the bedrock.-->
+
+**Instructor Message:** The student changed soil canisters {machine_attempt_number} times across the floor's two machines (three changes - one per layer - is optimal) and chose a wrong drilling depth {wrong_choice_number} before reaching clean water. Wrong depths may indicate difficulty locating the water table: drilling too shallow finds no water, too deep hits bedrock, and water that has filtered through too few soil layers stays contaminated - the clean water lies just above the bedrock.
 
 #### Corresponding Script
 

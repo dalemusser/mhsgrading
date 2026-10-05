@@ -204,7 +204,9 @@ Each pair is selected by `argSpecificFeedback` (first vs. repeated occurrence).
 
 ### EXCESS_ATTEMPTS
 
-**Instructor Message:** In Saving Cadet Anderson, the student built the argument explaining how water flooded the warehouse, but needed {attempt_number} submissions - {claim_wrong_number} flagged for the claim, {reasoning_wrong_number} for the reasoning, and {evidence_wrong_number} for evidence or completeness. This point earns green only when the correct argument is submitted with at most 2 incorrect submissions. Reasoning errors here reflect misconceptions the feedback names directly - water does not flow easily through bedrock, and water does not infiltrate upward - while claim errors suggest difficulty identifying the actual source of the flooding.
+<!--**Instructor Message:** In Saving Cadet Anderson, the student built the argument explaining how water flooded the warehouse, but needed {attempt_number} submissions - {claim_wrong_number} flagged for the claim, {reasoning_wrong_number} for the reasoning, and {evidence_wrong_number} for evidence or completeness. This point earns green only when the correct argument is submitted with at most 2 incorrect submissions. Reasoning errors here reflect misconceptions the feedback names directly - water does not flow easily through bedrock, and water does not infiltrate upward - while claim errors suggest difficulty identifying the actual source of the flooding.-->
+
+**Instructor Message:** The student built the argument explaining how water flooded the warehouse, but needed {attempt_number} submissions - {claim_wrong_number} flagged for the claim, {reasoning_wrong_number} for the reasoning, and {evidence_wrong_number} for evidence or completeness. Reasoning errors here reflect various misconceptions: water does not flow easily through bedrock, and water does not infiltrate upward.  Claim errors suggest difficulty identifying the actual source of the flooding.
 
 #### Corresponding Script
 

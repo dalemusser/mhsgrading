@@ -153,7 +153,9 @@ If the color turns out to be yellow then depending on which condition(s) describ
 
 ### SCORE_BELOW_THRESHOLD
 
-**Instructor Message:** In the Alien Well (floors 3 and 4), the student changed the soil-type canisters {floor3_attempts} times on the third-floor machine and {floor4_attempts} times on the fourth-floor machine. This point earns green only when the fourth-floor machine is set correctly on the first try, or on the second try with the third floor solved in one. Many canister changes may indicate the student was cycling through soil types rather than predicting which soil matches the floor's water-flow requirement - water passes fastest through gravel, more slowly through sand, slowest through clay, and not at all through bedrock.
+<!--**Instructor Message:** In the Alien Well (floors 3 and 4), the student changed the soil-type canisters {floor3_attempts} times on the third-floor machine and {floor4_attempts} times on the fourth-floor machine. This point earns green only when the fourth-floor machine is set correctly on the first try, or on the second try with the third floor solved in one. Many canister changes may indicate the student was cycling through soil types rather than predicting which soil matches the floor's water-flow requirement - water passes fastest through gravel, more slowly through sand, slowest through clay, and not at all through bedrock.-->
+
+**Instructor Message:** The student changed the soil-type canisters {floor3_attempts} times on the third-floor machine and {floor4_attempts} times on the fourth-floor machine. Many canister changes may indicate the student was cycling through soil types rather than predicting which soil matches the floor's water-flow requirement - water passes fastest through gravel, more slowly through sand, slowest through clay, and not at all through bedrock.
 
 #### Corresponding Script
 
