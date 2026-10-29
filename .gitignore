@@ -49,3 +49,18 @@ rubric-validation/outputs/adhoc-*/
 
 # Ad-hoc reason-code-validation runs (informational scratch results)
 reason-code-validation/outputs/adhoc-*/
+
+# Data files: never commit CSV/JSON that hold actual data (gameplay logs,
+# classroom exports, audit outputs, per-student reports). Code here is Python
+# and configuration is YAML; the few JSON configuration files are allow-listed below.
+*.csv
+*.tsv
+*.json
+*.jsonl
+*.ndjson
+
+# Allow-list: JSON that is configuration, not data
+!.claude/settings.json
+!package.json
+!package-lock.json
+!tsconfig*.json

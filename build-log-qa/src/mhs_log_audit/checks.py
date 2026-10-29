@@ -317,11 +317,19 @@ def expectation_findings(profiles: Dict[str, EventProfile],
 
 
 class _DotDict(dict):
-    """Lets '{data.questID}'-style templates work with str.format."""
+    """Lets '{data.questID}'-style templates work with str.format.
+
+    Whole-number floats render as integers: some exports write every number
+    as a float (conversationId 30.0) while eventKeys use the integer (…:30:1),
+    so a textual comparison would otherwise flag every record."""
 
     def __getattr__(self, name):
         v = self.get(name)
-        return _DotDict(v) if isinstance(v, dict) else v
+        if isinstance(v, dict):
+            return _DotDict(v)
+        if isinstance(v, float) and v.is_integer():
+            return int(v)
+        return v
 
 
 def cross_event_findings(profiles: Dict[str, EventProfile],

@@ -30,8 +30,10 @@ build-log-qa/
 │   ├── regression.py  # snapshot + build-vs-build diff
 │   ├── examples.py    # representative raw records
 │   ├── report.py      # CSV/JSON exports + audit-report.md
-│   └── pipeline.py    # run_audit() orchestration
+│   ├── pipeline.py    # run_audit() orchestration
+│   └── field_quality.py  # per-player classroom metrics (late uploads, seq loss, ...)
 ├── scripts/audit_logs.py         # CLI entry point
+├── scripts/audit_per_user.py     # classroom exports: one audit per user_id + cohort roll-up
 ├── tests/                        # synthetic-data unit tests (no real logs needed)
 └── reports/<build-id>/           # generated outputs, one folder per build
 ```
@@ -204,6 +206,43 @@ fields, type changes, new/removed categorical values, >3x volume changes and
 
 ---
 
+## Classroom / multi-student exports
+
+A field-test export holds many students (one `user_id` each) and often
+several builds. `scripts/audit_per_user.py` runs the unchanged weekly audit
+once per `user_id` and adds the per-player metrics of `field_quality.py` —
+the questions an internal playthrough never raises:
+
+```bash
+python build-log-qa/scripts/audit_per_user.py     --input playthrough-logs-and-results/<export-folder>/<export>.jsonl     --build-id <export-folder>     --baseline build-log-qa/reports/<newest internal audit>
+```
+
+* The export is split into per-user files in a temp folder (`--work-dir` to
+  choose); the export is never modified. 218 users take about 40 s.
+* Each user gets an evidence-based coverage manifest
+  (`reports/<id>/users/<user_id>/coverage.yaml`: EndOfUnit fired = complete,
+  unit scene seen = partial, else skipped), so unreached content is
+  NOT_TESTED rather than an "absent event" warning.
+* Extra metrics per player: upload delay and **stale-payload risk** (on
+  builds without the `session_id` envelope, a record uploaded > 5 s late
+  carries a stale `data` payload), DialogueEvent eventKey/payload agreement,
+  **transport loss and resends** from `session_id`/`seq`/`entry_id` (builds
+  from 20261005-12466), exact duplicates, crashes, debug-menu use, progress.
+* Outputs in `reports/<build-id>/`: `cohort-report.md` (verdict per student
+  A ready / B usable with handling / C partly usable / D too little data,
+  finding prevalence vs the baseline, per-build table), `csv/user_summary.csv`,
+  `csv/finding_prevalence.csv`, `csv/build_summary.csv`,
+  `csv/transport_sessions.csv`, `csv/user_unit_summary.csv` (student x unit:
+  finished / played / not reached, late-upload share, transport loss — players
+  switch builds mid-unit, so readiness is also rated per unit), and the
+  standard audit under `users/<id>/`.
+  `--reuse` re-renders the tables from `cohort_data.json` without re-auditing.
+* Runs: `reports/fall2026-bowling-green-wayne-county/` (whole export, 218
+  ids) and `reports/fall2026-bowling-green-wayne-county-129users/` (the
+  129-student analysis dataset); each `README.md` holds the interpretation.
+
+---
+
 ## Tests
 
 ```bash
@@ -211,9 +250,10 @@ cd build-log-qa/tests
 python -m unittest discover
 ```
 
-41 tests, all on synthetic records (missing fields, type drift, unknown
+48 tests, all on synthetic records (missing fields, type drift, unknown
 events, duplicates, start-without-finish, new values, skipped coverage,
-cadence, no-baseline runs, end-to-end pipeline). Real logs are not required.
+cadence, no-baseline runs, end-to-end pipeline, per-player classroom
+metrics). Real logs are not required.
 
 ---
 

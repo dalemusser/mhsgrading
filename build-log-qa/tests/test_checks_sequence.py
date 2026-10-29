@@ -98,6 +98,17 @@ class TestExpectationChecks(unittest.TestCase):
         _one(finds, status=WARNING, fld="eventKey", summary="format")
         _one(finds, status=FAIL, fld="eventKey", summary="missing")
 
+    def test_event_key_format_whole_number_floats(self):
+        # exports that write every number as a float (30.0) must still match
+        events = {"D": {"event_key": {
+            "required": True, "format": "{data.t}:{data.c}:{data.n}"}}}
+        finds = self._run(
+            [rec("D", 0, {"t": "Node", "c": 30.0, "n": 1.0}, event_key="Node:30:1"),
+             rec("D", 1, {"t": "Node", "c": 30, "n": 2}, event_key="Node:30:2")],
+            events)
+        _one(finds, status=PASS, fld="eventKey", summary="matches its documented format")
+        self.assertFalse([f for f in finds if f.status == WARNING and f.fld == "eventKey"])
+
     def test_semantics_sufficiency(self):
         events = {"E": {"semantics": [
             {"question": "what was chosen?", "satisfied_by": ["choice"]},
