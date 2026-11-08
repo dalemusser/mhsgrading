@@ -64,3 +64,6 @@ reason-code-validation/outputs/adhoc-*/
 !package.json
 !package-lock.json
 !tsconfig*.json
+
+# macOS Finder metadata
+.DS_Store
